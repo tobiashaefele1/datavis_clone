@@ -1,3 +1,4 @@
+import os
 from unittest import TestCase
 
 from data.data import Data
@@ -6,7 +7,9 @@ from data.data import Data
 class TestData(TestCase):
 
     def setUp(self):
-        self.data = Data('resources/test_dummy.csv')
+        my_path = os.path.abspath(os.path.dirname(__file__))
+        file = os.path.join(my_path,'resources/test_dummy.csv' )
+        self.data = Data(file)
 
     def test_get_amr(self):
         self.assertEqual('1', self.data.get(1, 'AMR15_no'))
