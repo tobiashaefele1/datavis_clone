@@ -1,7 +1,9 @@
+'''This is the module to tryout the data file'''
 from data.data import Data
 
 # amrData = Data('test_dummy.csv')
 def main():
+    '''This is the function'''
     kreise_data = Data('./resources/kreise.csv')
     print(kreise_data.labels)
     print(kreise_data.data[0])
@@ -55,4 +57,3 @@ main()
 # for x in range(1, len(amrData.data) + 1):
 #     print(x)
 #     print(bruttoverdienst(2002, x))
-
