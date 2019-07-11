@@ -29,19 +29,20 @@ class Data:
                 # print(row)
                 self.labels.append(row)
         self.__cleanlabels()
-
+        file.close()
         return data
 
-    def __matchamr(self, array):
+    @staticmethod
+    def __matchamr(array):
         # returns object if the array is starting with an AMR15_no.
-        return re.search('^\d', array[0])
+        return re.search(r'^\d', array[0])
 
     def __cleanlabels(self):
         # cleans the labels
         cleanlabels = []
         for x in range(3, len(self.labels)):
             for y in range(0, len(self.labels[x])):
-                if self.labels[x][y] != '' and re.search('^\D', self.labels[x][y]):
+                if self.labels[x][y] != '' and re.search(r'^\D', self.labels[x][y]):
                     if x == 3:
                         cleanlabels.append((self.labels[x][y].rstrip() + ' ' + self.labels[x+1][y], y))
                     else:
@@ -53,9 +54,10 @@ class Data:
         try:
             return self.labels[label]
         except KeyError:
-            print('Label is not found')
-            return
+            print('Label not found')
+            raise
 
     def get(self, area, label):
         index = self.__findposition(label)
+        area = area - 1
         return self.data[area][index]
