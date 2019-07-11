@@ -6,7 +6,7 @@ from data.data import Data
 class TestData(TestCase):
 
     def setUp(self):
-        self.data = Data('./resources/test_dummy.csv')
+        self.data = Data('resources/test_dummy.csv')
 
     def test_get_amr(self):
         self.assertEqual('1', self.data.get(1, 'AMR15_no'))
