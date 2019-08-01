@@ -219,7 +219,7 @@ def retrieve_sd_data(var_name, var_year, ref_name, ref_year, layer, scale="HIB")
     return output
 
 
-def retrieve_col_names():
+def retrieve_col_names(table_name):
     ''' this function returns a LIST of all unique column names in the KREISE TABLE from the database'''
     col_names = []
     temp = []
@@ -235,8 +235,7 @@ def retrieve_col_names():
                                 SELECT COLUMN_NAME 
                                     FROM information_schema.columns 
                                     WHERE table_schema = "mydb" 
-                                    AND table_name = "Kreise";
-                                """)
+                                    AND table_name = '%s';""" % (table_name))
     try:
         # executed quiery and closes cursor
         cursor = mySQLconnection.cursor()
@@ -261,7 +260,7 @@ def retrieve_col_names():
 
 # TESTS FOR THIS SECTION
 
-col_names = retrieve_col_names()
+col_names = retrieve_col_names("reference")
 print(col_names)
 
 # var_name = "Lohn pro Beschäftigtem 2010 _ORIGINAL_200"
