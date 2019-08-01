@@ -255,41 +255,41 @@ console.log(width);
 console.log(height);
 
 
-var projection = d3.geoMercator()
-
-    .scale(scale())
-    .center([10.3736325636218, 51.053178814923065])
-        .translate([width/2,height/2])
-    ;
-
-
-
-var path = d3.geoPath().projection(projection);
-
-var svg = d3.select("#map_place").append("svg")
-    .attr("width", width)
-    .attr("height", height);
-
-
-d3.json(AMR_12_url).then( function(topology, error) {
-  if (error) console.log(error);
-
-  console.log("topojson", topology)
-  var geojson = topojson.feature(topology, topology.objects.Kreise_402_all_features);
-  console.log("geojson", geojson)
-  svg.selectAll("path")
-      .data(geojson.features)
-     .enter()
-      .append("path")
-      .attr("d", path)
-      .on("click", clicked);
-  console.log("end");
-});
-
-function clicked(d) {
-    UpdateName(d.properties.NAME_2);
-    UpdateBund(d.properties.NAME_1);
-    UpdateID(d.properties.CC_2);
-
-    console.log(d.properties);
-}
+// var projection = d3.geoMercator()
+//
+//     .scale(scale())
+//     .center([10.3736325636218, 51.053178814923065])
+//         .translate([width/2,height/2])
+//     ;
+//
+//
+//
+// var path = d3.geoPath().projection(projection);
+//
+// var svg = d3.select("#map_place").append("svg")
+//     .attr("width", width)
+//     .attr("height", height);
+//
+//
+// d3.json(AMR_12_url).then( function(topology, error) {
+//   if (error) console.log(error);
+//
+//   console.log("topojson", topology)
+//   var geojson = topojson.feature(topology, topology.objects.Kreise_402_all_features);
+//   console.log("geojson", geojson)
+//   svg.selectAll("path")
+//       .data(geojson.features)
+//      .enter()
+//       .append("path")
+//       .attr("d", path)
+//       .on("click", clicked);
+//   console.log("end");
+// });
+//
+// function clicked(d) {
+//     UpdateName(d.properties.NAME_2);
+//     UpdateBund(d.properties.NAME_1);
+//     UpdateID(d.properties.CC_2);
+//
+//     console.log(d.properties);
+// }
