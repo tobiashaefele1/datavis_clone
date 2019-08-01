@@ -1,0 +1,102 @@
+{% extends 'bmf_base.html' %}
+{% load static %}
+
+{% block Info %}
+    <label>Maps</label>
+    <select class="u-80-width" id="map_selector" onchange="ChangeMap()">
+        <option value="Kreise">Kreise</option>
+        <option value="AMR12">AMR12</option>
+        <option value="AMR20">AMR20</option>
+    </select>
+    <table id="specInfo" class="u-80-width">
+        <thead>
+        <tr>
+            <th colspan="2">Area specific information</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="specInfoFirst">Name</td>
+            <td id="specInfoName">Placeholder</td>
+        </tr>
+        <tr>
+            <td class="specInfoFirst">ID</td>
+            <td id="specInfoID">Placeholder</td>
+        </tr>
+        <tr>
+            <td class="specInfoFirst" id="specInfoValueName">Value</td>
+            <td id="specInfoValue">Placeholder</td>
+        </tr>
+        <tr>
+            <td class="specInfoFirst">Bund</td>
+            <td id="specInfoBund">Placeholder</td>
+        </tr>
+        <tr>
+            <td class="specInfoFirst">Rank</td>
+            <td id="specInfoRank">Placeholder</td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block Map %}
+    <div id="map_place">
+
+    </div>
+    <div class="row">
+        <table class="u-80-width" id="table">
+            <thead>
+            <tr>
+                <th>Min</th>
+                <th>Max</th>
+                <th>Average</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td id="min_value">Value 1</td>
+                <td id="max_value">Value 2</td>
+                <td id="avg_value">Value 3</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+
+{% block Indikators %}
+    Indikatoren
+    {% block indikator %}
+    {% endblock %}
+
+    <button id="indikator_plus">+</button>
+    <button id="indikator_min">-</button>
+
+    Export / Upload
+    <div class="row">
+        <button id="csv_export">Export zu CSV</button>
+        <button id="csv_upload">Import CSV</button>
+        <!-- The Modal -->
+        <div id="myImportModal" class="import_modal">
+
+            <!-- Modal content -->
+            <div class="import_modal-content">
+                <span class="close">&times;</span>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="file" name="csv" accept="text/csv">
+                    <input type="submit">
+                </form>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block table %}
+    This is the table!
+    {% block table2 %}
+
+
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="US-ASCII">
+    <title>Tryout</title>
+    <link rel="stylesheet" href="{% static './bmf/css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static './bmf/css/skeleton.css' %}">
+    <link rel="stylesheet" href="{% static './bmf/css/custom.css' %}">
+    <link rel="stylesheet" href="{% static './bmf/css/map.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <div class="example-grid-logo">
+        <div class="row">
+            <div class="three columns">
+                <object type="image/svg+xml" data="{% static './bmf/resources/BMF.svg' %}" width="100%" ,
+                        height="100%">Your browser does not support
+                    SVG
+                </object>
+            </div>
+
+            <div class="six columns">
+                <h3>BMF - GRW - Datenvisualisierung</h3>
+            </div>
+            <div class="three columns">
+
+
+                <button id="conf">Settings</button>
+
+            </div>
+
+            <div id="settings" class="import_modal">
+
+                <!-- Modal content -->
+                <div class="import_modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Settings</h2>
+                    <p>
+
+                    </p>
+                    <h3>Color:</h3>
+                    <label>
+                        <input type="radio" name="test" value="small" onclick="pickColor(1)">
+                        <svg width="10" height="10" class="Purples">
+                            <rect width="10" height="10" class="q0-5"/>
+                        </svg>
+                        <svg width="10" height="10" class="Purples">
+                            <rect width="10" height="10" class="q1-5"/>
+                        </svg>
+                        <svg width="10" height="10" class="Purples">
+                            <rect width="10" height="10" class="q2-5"/>
+                        </svg>
+                        <svg width="10" height="10" class="Purples">
+                            <rect width="10" height="10" class="q3-5"/>
+                        </svg>
+                        <svg width="10" height="10" class="Purples">
+                            <rect width="10" height="10" class="q4-5"/>
+                        </svg>
+                        <svg width="10" height="10" class="Purples">
+                            <rect width="10" height="10" class="q5-5"/>
+                        </svg>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="test" value="big" onclick="pickColor(2)">
+                        <svg width="10" height="10" class="Reds">
+                            <rect width="10" height="10" class="q0-5"/>
+                        </svg>
+                        <svg width="10" height="10" class="Reds">
+                            <rect width="10" height="10" class="q1-5"/>
+                        </svg>
+                        <svg width="10" height="10" class="Reds">
+                            <rect width="10" height="10" class="q2-5"/>
+                        </svg>
+                        <svg width="10" height="10" class="Reds">
+                            <rect width="10" height="10" class="q3-5"/>
+                        </svg>
+                        <svg width="10" height="10" class="Reds">
+                            <rect width="10" height="10" class="q4-5"/>
+                        </svg>
+                        <svg width="10" height="10" class="Reds">
+                            <rect width="10" height="10" class="q5-5"/>
+                        </svg>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="test" value="big" onclick="pickColor(3)">
+                        <svg width="10" height="10" class="Oranges">
+                            <rect width="10" height="10" class="q0-5"/>
+                        </svg>
+                        <svg width="10" height="10" class="Oranges">
+                            <rect width="10" height="10" class="q1-5"/>
+                        </svg>
+                        <svg width="10" height="10" class="Oranges">
+                            <rect width="10" height="10" class="q2-5"/>
+                        </svg>
+                        <svg width="10" height="10" class="Oranges">
+                            <rect width="10" height="10" class="q3-5"/>
+                        </svg>
+                        <svg width="10" height="10" class="Oranges">
+                            <rect width="10" height="10" class="q4-5"/>
+                        </svg>
+                        <svg width="10" height="10" class="Oranges">
+                            <rect width="10" height="10" class="q5-5"/>
+                        </svg>
+
+                    </label>
+
+                    STD:
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="example-grid-body">
+    <div class="row">
+        <div class="box">
+            <div class="three columns" id="big">
+                {% block Info %}
+                {% endblock %}
+
+            </div>
+            <div class="six columns" id="big">
+                {% block Map %}
+                {% endblock %}
+
+            </div>
+            <div class="three columns" id="big">
+                {% block Indikators %}
+                {% endblock %}
+
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="twelve columns" id="big">
+            {% block table %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+
+</div>
+<script>
+var AMR_12_url = "{% static 'bmf/resources/Kreise_402_all_features_topo.json' %}";
+</script>
+
+<script type="text/javascript" src="{{ STATIC_URL }} /static/bmf/js/jquery-3.4.1.min.js"></script>
+<script src="http://d3js.org/d3.v5.min.js" charset="utf-8"></script>
+<script src="{{ STATIC_URL }} /static/bmf/js/topojson.min.js"></script>
+<script src="{% static './bmf/js/main.js' %}"  ></script>
+
+</body>
+</html>

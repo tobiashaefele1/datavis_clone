@@ -1,0 +1,7 @@
+sqlalchemy
+django
+django-heroku
+pymysql
+pylint
+pandas
+numpy

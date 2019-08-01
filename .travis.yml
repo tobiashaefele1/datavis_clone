@@ -1,0 +1,21 @@
+language: python
+
+services:
+  - docker
+
+before_install:
+  - sudo service mysql stop
+  - docker-compose up -d
+
+# Command to install dependencies
+install: "pip3 install -r requirements.txt"
+
+# command to run pylint and pytest
+script:
+  - pylint *.py
+  - pytest
+  - python manage.py test
+
+#this will send a notification to the slack
+notifications:
+  slack: bmfdatavis:pmKFM7e6XZ5kzyP7I0cahN5C

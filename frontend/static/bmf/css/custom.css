@@ -1,0 +1,224 @@
+{% load static %}
+.example-grid-title .columns {
+  background: #EEE;
+  text-align: center;
+  border-radius: 4px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  height: 4vh;
+  min-height: 30px;
+  line-height: 30px;
+  margin-bottom: .75rem;
+  font-weight: 600;
+  letter-spacing: .1rem; }
+
+.example-grid-logo .columns {
+  background: #EEE;
+  text-align: center;
+  border-radius: 4px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  height: 5vh;
+  min-height: 50px;
+  line-height: 30px;
+  margin-bottom: .75rem;
+  font-weight: 600;
+  letter-spacing: .1rem; }
+/* Larger than tablet */
+@media (min-width: 1000px) {
+#big {
+  background: #EEE;
+  text-align: center;
+  border-radius: 4px;
+  min-height: 91vh;
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin-bottom: .75rem;
+  font-weight: 600;
+  letter-spacing: .1rem; }
+
+
+}
+#big {
+  background: #EEE;
+  text-align: center;
+  border-radius: 4px;
+  height: none;
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin-bottom: .75rem;
+  font-weight: 600;
+  letter-spacing: .1rem; }
+
+.indicator {
+	text-align: left;
+	text-indent: 10px;
+} 
+
+#table, #specInfo {
+  margin-top: auto;
+  margin-left: auto;
+	margin-right: auto;
+  background: #EEE;
+  text-align: center;
+  border-radius: 4px;
+  min-height: none;
+  font-size: 1rem;
+  margin-bottom: auto;
+  text-transform:none;
+  font-weight: 300;
+  letter-spacing: .1rem;
+}
+
+
+#version {
+  text-align: right;
+  padding-right: 10px;
+  
+}
+#standardiser {
+  font-weight: normal;
+}
+#weight {
+  text-align: center;
+}
+#placeholder {
+  content: "";
+}
+/* The Modal (background) */
+.modal {
+  display: block; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,1); /* Black w/ opacity */
+}
+
+
+/* Larger than tablet */
+@media (min-width: 1000px) {
+
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  text-align: center;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 20%;
+}
+}
+.modal-content {
+  background-color: #fefefe;
+  text-align: center;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  box-sizing: border-box;
+  width:none;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.my-custom-scrollbar {
+position: relative;
+overflow: auto;
+height: 100%;
+max-height: 80vh;
+box-sizing: border-box;
+margin:0 auto;
+}
+.table-wrapper-scroll-y {
+display: flex;
+}
+ /* The Modal (background) */
+.import_modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.import_modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%; /* Could be more or less, depending on screen size */
+  text-align: center;
+}
+
+/* HIDE RADIO */
+[type=radio] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* IMAGE STYLES */
+[type=radio] + img {
+  cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked + img {
+  outline: 2px solid #f00;
+}
+
+.Oranges .q0-5{fill:rgb(254,237,222)}
+.Oranges .q1-5{fill:rgb(253,190,133)}
+.Oranges .q2-5{fill:rgb(253,141,60)}
+.Oranges .q3-5{fill:rgb(230,85,13)}
+.Oranges .q4-5{fill:rgb(166,54,3)}
+
+.Purples .q0-5{fill:rgb(242,240,247)}
+.Purples .q1-5{fill:rgb(203,201,226)}
+.Purples .q2-5{fill:rgb(158,154,200)}
+.Purples .q3-5{fill:rgb(117,107,177)}
+.Purples .q4-5{fill:rgb(84,39,143)}
+
+.Reds .q0-5{fill:rgb(254,229,217)}
+.Reds .q1-5{fill:rgb(252,174,145)}
+.Reds .q2-5{fill:rgb(251,106,74)}
+.Reds .q3-5{fill:rgb(222,45,38)}
+.Reds .q4-5{fill:rgb(165,15,21)}
+
+#data_table {
+  margin-left: 20px;
+}
+#data_table tbody{
+  overflow-y:auto;
+   height:91vh;
+   display:block;
+}
+#data_table thead{
+  overflow-y: none;
+  display: block;
+}
