@@ -198,7 +198,7 @@
                                         {% csrf_token %}
                                         <select class="u-95-width" id="indikator_1" onchange="SendIndikator()">
                                             <option disabled selected value="0"> -- select an option --</option>
-                                            {% for i in col_names %}
+                                            {% for i in col_names_var %}
                                                 <option value="{{ i }}">{{ i }}</option>
                                             {% endfor %}
                                         </select>
@@ -214,7 +214,7 @@
 
                                     <div class="six columns" , id=standardiser>
                                         <select class="u-95-width">
-                                            {% for i in std %}
+                                            {% for i in col_names_ref %}
                                                 <option value="{{ i }}">{{ i }}</option>
                                             {% endfor %}
                                         </select>
@@ -236,7 +236,7 @@
                                         <label class="indicator">Indikator 2</label>
                                         <select class="u-95-width" id="indikator_2" onchange="SendIndikator()">
                                             <option disabled selected value> -- select an option --</option>
-                                            {% for i in col_names %}
+                                            {% for i in col_names_var %}
                                                 <option value="{{ i }}">{{ i }}</option>
                                             {% endfor %}
                                         </select>
@@ -252,7 +252,7 @@
 
                                     <div class="six columns" , id=standardiser>
                                         <select class="u-95-width">
-                                            {% for i in std %}
+                                            {% for i in col_names_ref %}
                                                 <option value="{{ i }}">{{ i }}</option>
                                             {% endfor %}
                                         </select>
@@ -274,7 +274,7 @@
                                         <label class="indicator">Indikator 3</label>
                                         <select class="u-95-width" id="indikator_3" onchange="SendIndikator()">
                                             <option disabled selected value> -- select an option --</option>
-                                            {% for i in col_names %}
+                                            {% for i in col_names_var %}
                                                 <option value="{{ i }}">{{ i }}</option>
                                             {% endfor %}
                                         </select>
@@ -290,7 +290,7 @@
 
                                     <div class="six columns" , id=standardiser>
                                         <select class="u-95-width">
-                                            {% for i in std %}
+                                            {% for i in col_names_ref %}
                                                 <option value="{{ i }}">{{ i }}</option>
                                             {% endfor %}
                                         </select>
@@ -312,7 +312,7 @@
                                         <label class="indicator">Indikator 4</label>
                                         <select class="u-95-width" id="indikator_4" onchange="SendIndikator()">
                                             <option disabled selected value> -- select an option --</option>
-                                            {% for i in col_names %}
+                                            {% for i in col_names_var %}
                                                 <option value="{{ i }}">{{ i }}</option>
                                             {% endfor %}
                                         </select>
@@ -328,7 +328,7 @@
 
                                     <div class="six columns" , id=standardiser>
                                         <select class="u-95-width">
-                                            {% for i in std %}
+                                            {% for i in col_names_ref %}
                                                 <option value="{{ i }}">{{ i }}</option>
                                             {% endfor %}
                                         </select>
@@ -350,7 +350,7 @@
                                         <label class="indicator">Indikator 5</label>
                                         <select class="u-95-width" id="indikator_5" onchange="SendIndikator()">
                                             <option disabled selected value> -- select an option --</option>
-                                            {% for i in col_names %}
+                                            {% for i in col_names_var %}
                                                 <option value="{{ i }}">{{ i }}</option>
                                             {% endfor %}
                                         </select>
@@ -366,7 +366,7 @@
 
                                     <div class="six columns" , id=standardiser>
                                         <select class="u-95-width">
-                                            {% for i in std %}
+                                            {% for i in col_names_ref %}
                                                 <option value="{{ i }}">{{ i }}</option>
                                             {% endfor %}
                                         </select>
@@ -389,7 +389,7 @@
                                         <label class="indicator">Indikator 6</label>
                                         <select class="u-95-width" id="indikator_6" onchange="SendIndikator()">
                                             <option disabled selected value> -- select an option --</option>
-                                            {% for i in col_names %}
+                                            {% for i in col_names_var %}
                                                 <option value="{{ i }}">{{ i }}</option>
                                             {% endfor %}
                                         </select>
@@ -405,7 +405,7 @@
 
                                     <div class="six columns" , id=standardiser>
                                         <select class="u-95-width">
-                                            {% for i in std %}
+                                            {% for i in col_names_ref %}
                                                 <option value="{{ i }}">{{ i }}</option>
                                             {% endfor %}
                                         </select>
