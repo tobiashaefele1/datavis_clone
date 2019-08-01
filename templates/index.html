@@ -121,9 +121,10 @@
                         <div class="nine columns">
                             <label class="indicator">Indikator 1</label>
                             <select class="u-95-width">
-                                <option value="Option 1">Arbeitslosenquote</option>
-                                <option value="Option 2">option 2</option>
-                                <option value="Option 3">option 3</option>
+>
+                                 {% for col_name in col_names %}
+                                    <option value="{{col_name.id}}">{{col_name}}</option>
+                                {% endfor %}
                             </select>
 
                         </div>
