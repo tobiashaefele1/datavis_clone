@@ -13,7 +13,7 @@ def retrieve_data(var_name, var_year, ref_name, ref_year, layer):
     chosen ref variable and the chosen year, CURRENTLY AS A TUPLE LIST'''
     output = []
     # connect to database
-    mySQLconnection = pymysql.connect(host='bmf-datavis_db_1',
+    mySQLconnection = pymysql.connect(host='localhost',
                                                  database='mydb',
                                                  user='user',
                                                 password='password')
@@ -81,7 +81,7 @@ def retrieve_fed_avg (var_name, var_year, ref_name, ref_year, layer):
     fed_avg_name = var_name[:-3]
     fed_avg_name = fed_avg_name + "400"
      # connect to database
-    mySQLconnection = pymysql.connect(host='bmf-datavis_db_1',
+    mySQLconnection = pymysql.connect(host='localhost',
                                                database='mydb',
                                                user='user',
                                                password='password')
@@ -117,15 +117,15 @@ def retrieve_ref_share (ref_name, ref_year, layer):
     ''' this function returns the share of a chosen reference value in a chosen year, for a chosen layer as a % of the total as a tuple list'''
     output = []
     ref_share = []
-    try:
-        # connect to database
-        mySQLconnection = pymysql.connect(host='bmf-datavis_db_1',
-                                                 database='mydb',
-                                                 user='user',
-                                                password='password')
+
+    # connect to database
+    mySQLconnection = pymysql.connect(host='localhost',
+                                             database='mydb',
+                                             user='user',
+                                             password='password')
 
         # Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
-        sql_select_Query = (""" SELECT 
+    sql_select_Query = (""" SELECT 
                                 mapping.`%s`, (SUM(reference.`%s`)), sum(sum(reference.`%s`)) over () as grandtotal
                                 FROM reference 
                                 LEFT JOIN mapping
@@ -134,7 +134,7 @@ def retrieve_ref_share (ref_name, ref_year, layer):
                                 GROUP BY mapping.`%s` 
                                 ORDER BY mapping.`%s` ASC """ % (layer, ref_name, ref_name, ref_year, layer, layer))
 
-
+    try:
         # executed quiery and closes cursor
         cursor = mySQLconnection .cursor()
         cursor.execute(sql_select_Query)
@@ -218,7 +218,51 @@ def retrieve_sd_data(var_name, var_year, ref_name, ref_year, layer, scale="HIB")
 
     return output
 
+
+def retrieve_col_names():
+    ''' this function returns a LIST of all unique column names in the KREISE TABLE from the database'''
+    col_names = []
+    temp = []
+    output = []
+    # connect to database
+    mySQLconnection = pymysql.connect(host='localhost',
+                                      database='mydb',
+                                      user='user',
+                                      password='password')
+
+    # Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
+    sql_select_Query = (""" 
+                                SELECT COLUMN_NAME 
+                                    FROM information_schema.columns 
+                                    WHERE table_schema = "mydb" 
+                                    AND table_name = "Kreise";
+                                """)
+    try:
+        # executed quiery and closes cursor
+        cursor = mySQLconnection.cursor()
+        cursor.execute(sql_select_Query)
+        col_names = cursor.fetchall()
+        cursor.close()
+        # error handling
+    except Error as e:
+        print("Error while connecting to MySQL", e)
+    finally:
+        # closing database connection.
+        mySQLconnection.close()
+        print("MySQL connection is closed")
+
+    # for x in range (0, len(col_names)):
+    #     output.append(x)
+        temp = list(col_names)
+        for (x,) in temp:
+            output.append(x)
+
+        return output
+
 # TESTS FOR THIS SECTION
+
+col_names = retrieve_col_names()
+print(col_names)
 
 # var_name = "Lohn pro Beschäftigtem 2010 _ORIGINAL_200"
 # var_year = "2010"
