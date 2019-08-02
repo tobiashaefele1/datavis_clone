@@ -196,21 +196,18 @@
                                     <div class="six columns">
                                         <label class="indicator">Indikator 1</label>
                                         {% csrf_token %}
-                                        <form method = "POST">
-                                        {% csrf_token %}
-                                        <select class="u-95-width" id="var_name_1" onchange='if(this.value != 0) { this.form.submit(); }'>
+                                        <select class="u-95-width" id="var_name_1" method="POST" onchange="send_var_names_to_backend()">
                                             <option disabled selected value="0"> -- Wähle Variable --</option>
                                             {% for i in col_names_var %}
                                                 <option value="{{ i }}">{{ i }}</option>
                                             {% endfor %}
                                         </select>
-                                        </form>
                                     </div>
 
                                     <div class="three columns">
                                     <label class="indicator">Jahr </label>
 
-                                        <select class="u-80-width" id="var_year_1">
+                                        <select class="u-80-width" id="var_year_1" method="POST" onchange="send_var_names_to_backend()">
                                             {% for i in years_var %}
                                                 <option value="{{ i }}">{{ i }}</option>
                                             {% endfor %}
@@ -218,16 +215,16 @@
                                     </div>
 
 
-                                    <div class="three columns">
+                                    <div class="three columns" >
                                         <label>%</label>
-                                        <input class="u-80-width" id= "weight_1" type="number" placeholder="45">
+                                        <input class="u-80-width" id= "weight_1" type="number" placeholder="45" method="POST" onchange="send_var_names_to_backend()">
                                     </div>
                                 </div>
                                 <div id="in_1">
                                 <div class="row">
 
-                                    <div class="six columns" , id="ref_name_1">
-                                        <select class="u-95-width">
+                                    <div class="six columns" , >
+                                        <select class="u-95-width" id="ref_name_1" method="POST" onchange="send_var_names_to_backend()">
                                         <option disabled selected value="0">  standardisiert über... </option>
                                             {% for i in col_names_ref %}
                                                 <option value="{{ i }}">{{ i }}</option>
@@ -235,8 +232,8 @@
                                         </select>
                                     </div>
 
-                                    <div class="three columns" , id="ref_year_1">
-                                        <select class="u-80-width">
+                                    <div class="three columns"  >
+                                        <select class="u-80-width" id="ref_year_1" method="POST" onchange="send_var_names_to_backend()">
                                             {% for i in years_ref %}
                                                 <option value="{{ i }}">{{ i }}</option>
                                             {% endfor %}
@@ -249,7 +246,7 @@
 
                                     <div class="six columns">
                                         <label class="indicator">Indikator 2</label>
-                                        <select class="u-95-width" id="var_name_2" onchange="SendIndikator()">
+                                        <select class="u-95-width" id="var_name_2" method="POST" onchange="send_var_names_to_backend()">
                                             <option disabled selected value> -- Wähle Variable --</option>
                                             {% for i in col_names_var %}
                                                 <option value="{{ i }}">{{ i }}</option>
@@ -260,7 +257,7 @@
 
                                     <div class="three columns">
                                     <label class="indicator">Jahr </label>
-                                        <select class="u-80-width" id="var_year_2">
+                                        <select class="u-80-width" id="var_year_2" method="POST" onchange="send_var_names_to_backend()">
                                             {% for i in years_var %}
                                                 <option value="{{ i }}">{{ i }}</option>
                                             {% endfor %}
@@ -270,14 +267,14 @@
 
                                     <div class="three columns">
                                         <label>%</label>
-                                        <input class="u-80-width" id= "weight_2" type="number" placeholder="45">
+                                        <input class="u-80-width" id= "weight_2" type="number" placeholder="45" method="POST" onchange="send_var_names_to_backend()">
                                     </div>
                                 </div>
 
                                 <div class="row">
 
-                                    <div class="six columns" , id="ref_name_2">
-                                        <select class="u-95-width">
+                                    <div class="six columns">
+                                        <select class="u-95-width" id="ref_name_2" method="POST" onchange="send_var_names_to_backend()">
                                         <option disabled selected value="0">  standardisiert über... </option>
                                             {% for i in col_names_ref %}
                                                 <option value="{{ i }}">{{ i }}</option>
@@ -285,8 +282,8 @@
                                         </select>
 
                                     </div>
-                                    <div class="three columns" , id="ref_year_2">
-                                        <select class="u-80-width">
+                                    <div class="three columns" >
+                                        <select class="u-80-width" id="ref_year_2" method="POST" onchange="send_var_names_to_backend()">
                                             {% for i in years_ref %}
                                                 <option value="{{ i }}">{{ i }}</option>
                                             {% endfor %}
@@ -299,7 +296,7 @@
 
                                     <div class="six columns">
                                         <label class="indicator">Indikator 3</label>
-                                        <select class="u-95-width" id="indikator_3" onchange="SendIndikator()">
+                                        <select class="u-95-width" id="var_name_3" method="POST" onchange="send_var_names_to_backend()">
                                             <option disabled selected value> -- Wähle Variable --</option>
                                             {% for i in col_names_var %}
                                                 <option value="{{ i }}">{{ i }}</option>
@@ -309,7 +306,7 @@
 
                                     <div class="three columns">
                                     <label class="indicator">Jahr </label>
-                                        <select class="u-80-width" id="var_year_3">
+                                        <select class="u-80-width" id="var_year_3" method="POST" onchange="send_var_names_to_backend()">
                                             {% for i in years_var %}
                                                 <option value="{{ i }}">{{ i }}</option>
                                             {% endfor %}
@@ -321,14 +318,14 @@
 
                                     <div class="three columns">
                                         <label>%</label>
-                                        <input class="u-80-width" id= "weight_3" type="number" placeholder="45">
+                                        <input class="u-80-width" id= "weight_3" type="number" placeholder="45" method="POST" onchange="send_var_names_to_backend()">
                                     </div>
                                 </div>
 
                                 <div class="row">
 
                                     <div class="six columns" >
-                                        <select class="u-95-width" id="ref_name_3">
+                                        <select class="u-95-width" id="ref_name_3" method="POST" onchange="send_var_names_to_backend()">
                                             <option disabled selected value="0">  standardisiert über... </option>
                                             {% for i in col_names_ref %}
                                                 <option value="{{ i }}">{{ i }}</option>
@@ -337,7 +334,7 @@
 
                                     </div>
                                     <div class="three columns" >
-                                        <select class="u-80-width" id="ref_year_3">
+                                        <select class="u-80-width" id="ref_year_3" method="POST" onchange="send_var_names_to_backend()">
                                             {% for i in years_ref %}
                                                 <option value="{{ i }}">{{ i }}</option>
                                             {% endfor %}
@@ -350,7 +347,7 @@
 
                                     <div class="six columns">
                                         <label class="indicator">Indikator 4</label>
-                                        <select class="u-95-width" id="indikator_4" onchange="SendIndikator()">
+                                        <select class="u-95-width" id="var_name_4" method="POST" onchange="send_var_names_to_backend()">
                                             <option disabled selected value> -- Wähle Variable --</option>
                                             {% for i in col_names_var %}
                                                 <option value="{{ i }}">{{ i }}</option>
@@ -361,7 +358,7 @@
 
                                     <div class="three columns">
                                     <label class="indicator">Jahr </label>
-                                        <select class="u-80-width" id="var_year_4">
+                                        <select class="u-80-width" id="var_year_4" method="POST" onchange="send_var_names_to_backend()">
                                             {% for i in years_var %}
                                                 <option value="{{ i }}">{{ i }}</option>
                                             {% endfor %}
@@ -373,14 +370,14 @@
 
                                     <div class="three columns">
                                         <label>%</label>
-                                        <input class="u-80-width" id="weight_4" type="number" placeholder="45">
+                                        <input class="u-80-width" id="weight_4" type="number" placeholder="45" method="POST" onchange="send_var_names_to_backend()">
                                     </div>
                                 </div>
 
                                 <div class="row">
 
                                     <div class="six columns" >
-                                        <select class="u-95-width" id="ref_name_4">
+                                        <select class="u-95-width" id="ref_name_4" method="POST" onchange="send_var_names_to_backend()">
                                         <option disabled selected value="0">  standardisiert über... </option>
                                             {% for i in col_names_ref %}
                                                 <option value="{{ i }}">{{ i }}</option>
@@ -389,7 +386,7 @@
 
                                     </div>
                                     <div class="three columns" >
-                                        <select class="u-80-width" id="ref_year_4">
+                                        <select class="u-80-width" id="ref_year_4" method="POST" onchange="send_var_names_to_backend()">
                                             {% for i in years_ref %}
                                                 <option value="{{ i }}">{{ i }}</option>
                                             {% endfor %}
@@ -402,10 +399,10 @@
 
                                     <div class="six columns">
                                         <label class="indicator">Indikator 5</label>
-                                        <select class="u-95-width" id="indikator_5" onchange="SendIndikator()">
+                                        <select class="u-95-width" id="var_name_5" onchange="send_var_names_to_backend()">
                                             <option disabled selected value> -- Wähle Variable --</option>
                                             {% for i in col_names_var %}
-                                                <option value="{{ i }}">{{ i }}</option>
+                                                <option value="{{ i }}">{{ i }} </option>
                                             {% endfor %}
                                         </select>
                                     </div>
@@ -413,26 +410,24 @@
 
                                     <div class="three columns">
                                     <label class="indicator">Jahr </label>
-                                        <select class="u-80-width" id="var_year_5">
+                                        <select class="u-80-width" id="var_year_5" onchange="send_var_names_to_backend()">
                                             {% for i in years_var %}
-                                                <option value="{{ i }}">{{ i }}</option>
+                                                <option value="{{ i }}">{{ i }} </option>
                                             {% endfor %}
                                         </select>
                                     </div>
 
 
-
-
                                     <div class="three columns">
                                         <label>%</label>
-                                        <input class="u-80-width" id="weight_5" type="number" placeholder="45">
+                                        <input class="u-80-width" id="weight_5" type="number" placeholder="45" method="POST" onchange="send_var_names_to_backend()">
                                     </div>
                                 </div>
 
                                 <div class="row">
 
                                     <div class="six columns">
-                                        <select class="u-95-width" id="ref_name_5">
+                                        <select class="u-95-width" id="ref_name_5" method="POST" onchange="send_var_names_to_backend()">
                                         <option disabled selected value="0">  standardisiert über... </option>
                                             {% for i in col_names_ref %}
                                                 <option value="{{ i }}">{{ i }}</option>
@@ -441,10 +436,10 @@
 
                                     </div>
                                     <div class="three columns" >
-                                        <select class="u-80-width" id="ref-year_5">
-                                            {% for i in ref_years %}
+                                        <select class="u-80-width" id="ref_year_5" onchange="send_var_names_to_backend()">
+                                              {% for i in years_ref %}
                                                 <option value="{{ i }}">{{ i }}</option>
-                                            {% endfor %}
+                                             {% endfor %}
                                         </select>
                                     </div>
                                 </div>
@@ -455,7 +450,7 @@
 
                                     <div class="six columns">
                                         <label class="indicator">Indikator 6</label>
-                                        <select class="u-95-width" id="indikator_6" onchange="SendIndikator()">
+                                        <select class="u-95-width" id="var_name_6" onchange="send_var_names_to_backend()">
                                             <option disabled selected value> -- Wähle Variable --</option>
                                             {% for i in col_names_var %}
                                                 <option value="{{ i }}">{{ i }}</option>
@@ -466,7 +461,7 @@
 
                                     <div class="three columns">
                                     <label class="indicator">Jahr </label>
-                                        <select class="u-80-width" id="var_year_6">
+                                        <select class="u-80-width" id="var_year_6" onchange="send_var_names_to_backend()">
                                             {% for i in years_var %}
                                                 <option value="{{ i }}">{{ i }}</option>
                                             {% endfor %}
@@ -477,23 +472,23 @@
 
                                     <div class="three columns">
                                         <label>%</label>
-                                        <input class="u-80-width" id="weight_6" type="number" placeholder="45">
+                                        <input class="u-80-width" id="weight_6" type="number" placeholder="45" onchange="send_var_names_to_backend()">
                                     </div>
                                 </div>
 
                                 <div class="row">
 
                                     <div class="six columns" >
-                                        <select class="u-95-width" id="ref_name_6">
+                                        <select class="u-95-width" id="ref_name_6" onchange="send_var_names_to_backend()">
                                         <option disabled selected value="0">  standardisiert über... </option>
                                             {% for i in col_names_ref %}
                                                 <option value="{{ i }}">{{ i }}</option>
                                             {% endfor %}
                                         </select>
-
                                     </div>
+
                                     <div class="three columns" >
-                                        <select class="u-80-width" id="ref_year_6">
+                                        <select class="u-80-width" id="ref_year_6" onchange="send_var_names_to_backend()">
                                             {% for i in years_ref %}
                                                 <option value="{{ i }}">{{ i }}</option>
                                             {% endfor %}
@@ -561,5 +556,7 @@
 <script src="{% static './bmf/js/main.js' %}"></script>
 <script src="{% static './bmf/js/modal.js' %}"></script>
 <script src="{% static "frontend/main.js" %}"></script>
+<script src="{% static "./bmf/js/ajax.js" %}"></script>
+
 </body>
 </html>
