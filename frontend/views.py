@@ -8,18 +8,21 @@ from django.http import HttpResponse
 
 
 
-
 # Create your views here.
 @csrf_exempt
 def index(request):
+    received_data = {}
+    indicator_data = []
+    table_data = []
     ### on load
     col_names_var = retrieve_col_names("Kreise")  # this returns all unique column names from the KREISE table
     col_names_ref = ['Einwohner 15-65_100', 'Einwohner gesamt_100', 'Erwerbspersonen gesamt_100', 'Erwerbstätige gesamt_100', 'Fläche_100']  # this returns all unique labels for standardisation drop downs
     years_ref = retrieve_col_years("reference")
     years_var = retrieve_col_years("Kreise")
     if request.method == 'POST':
-        indicator_data = retrieve_indicator(request.POST)
-        table_data = retrieve_table_data(request.POST)
+        received_data = (dict(request.POST))
+        indicator_data = retrieve_indicator(received_data)
+        table_data = retrieve_table_data(received_data)
     return render(request, 'frontend/index.html', {'col_names_var': col_names_var, 'col_names_ref': col_names_ref, 'years_ref': years_ref, 'years_var': years_var, 'table_data': table_data, 'indicator_data': indicator_data})
 
 

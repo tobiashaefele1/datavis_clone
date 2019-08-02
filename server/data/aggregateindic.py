@@ -32,6 +32,7 @@ def retrieve_indicator (ajax_dictionary):
     # this code scans the dictionary to ensure only complete entries are being searched for in the db
     var = []
     var = aggregate_args(ajax_dictionary)
+    print(var)
 
     # this code returns the database array from all valid entries and stores them in a list
     list = []
@@ -52,7 +53,7 @@ def retrieve_indicator (ajax_dictionary):
     for i in range (0, len(list)):
         multiplication = []
         for (k,l) in list[i]:
-             multiplication.append(l*var[i][6])
+             multiplication.append(float(l)*float(var[i][6]))
         interim.append(multiplication)
     # print(interim)
     ### the following code then sums all the individual items and returns one list
@@ -105,18 +106,18 @@ def retrieve_table_data (ajax_dictionary):
 
 #### test the code like that
 
-test_dict = {'var_1': ['Arbeitslosenquote_100', '2015', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', 'HIB', 0.05],
-             'var_2': ['Arbeitslosenquote_100', '2015', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', 'HIB', 0.05],
-             'var_3': ['', '1990', '0', '2011', 'KRS_15', 'HIB', ''],
-             'var_4': ['', '', '', '', 'KRS_15', 'HIB', ''],
-             'var_5': ['', '', '', '', 'KRS_15', 'HIB', ''],
-             'var_6': ['', '', '', '', 'KRS_15', 'HIB', '']}
-
-test = retrieve_table_data(test_dict)
-
-# print(test)
-
-print(len(test[3]))
+# test_dict = {'var_1': ['Arbeitslosenquote_100', '2015', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', 'HIB', 0.05],
+#              'var_2': ['Arbeitslosenquote_100', '2015', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', 'HIB', 0.05],
+#              'var_3': ['', '1990', '0', '2011', 'KRS_15', 'HIB', ''],
+#              'var_4': ['', '', '', '', 'KRS_15', 'HIB', ''],
+#              'var_5': ['', '', '', '', 'KRS_15', 'HIB', ''],
+#              'var_6': ['', '', '', '', 'KRS_15', 'HIB', '']}
+#
+# test = retrieve_table_data(test_dict)
+#
+# # print(test)
+#
+# print(len(test[3]))
 
 
 
