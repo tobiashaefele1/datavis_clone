@@ -239,22 +239,22 @@ function specInfo(target){
 }
 
 
-//Map logic
-
-var width = document.getElementById("map_place").clientWidth;
-var height = document.getElementById("big").clientHeight;
-var scale = function() {
-    if(width < 500){
-      return  300/width*1600;
-    }
-     return 960/width*2000;
-
-}
-var geojson = {}
-console.log(width);
-console.log(height);
-
-
+// //Map logic
+//
+// var width = document.getElementById("map").clientWidth;
+// var height = document.getElementById("big").clientHeight;
+// var scale = function() {
+//     if(width < 500){
+//       return  300/width*1600;
+//     }
+//      return 960/width*2000;
+//
+// }
+// var geojson = {}
+// console.log(width);
+// console.log(height);
+//
+//
 // var projection = d3.geoMercator()
 //
 //     .scale(scale())
@@ -286,10 +286,10 @@ console.log(height);
 //   console.log("end");
 // });
 //
-// function clicked(d) {
-//     UpdateName(d.properties.NAME_2);
-//     UpdateBund(d.properties.NAME_1);
-//     UpdateID(d.properties.CC_2);
-//
-//     console.log(d.properties);
-// }
+// // function clicked(d) {
+// //     UpdateName(d.properties.NAME_2);
+// //     UpdateBund(d.properties.NAME_1);
+// //     UpdateID(d.properties.CC_2);
+// //
+// //     console.log(d.properties);
+// // }

@@ -4,9 +4,9 @@
 
 import pymysql
 
-from .data import Data
-from .dataprep import readin258AMR, readin257AMR, readinBund, mapping_to_db
-from .reader import create_table_and_load_data, add_columns, add_tuples_new
+from server.data.data import Data
+from server.data.dataprep import readin258AMR, readin257AMR, readinBund, mapping_to_db
+from server.data.reader import create_table_and_load_data, add_columns, add_tuples_new
 
 # links to all the required data files
 link_to_mapping_file = './resources/KRS_ROR_AMR_clean_mapping.csv'

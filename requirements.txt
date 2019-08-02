@@ -5,3 +5,4 @@ pymysql
 pylint
 pandas
 numpy
+djangorestframework
