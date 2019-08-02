@@ -1,4 +1,6 @@
 from django.shortcuts import render
+
+from server.data.aggregateindic import retrieve_indicator, retrieve_table_data
 from server.data.retrieve_db_data import retrieve_col_names, retrieve_data
 from server.data.retrieve_db_data import retrieve_col_years
 from django.views.decorators.csrf import csrf_exempt
@@ -16,9 +18,9 @@ def index(request):
     years_ref = retrieve_col_years("reference")
     years_var = retrieve_col_years("Kreise")
     if request.method == 'POST':
-        print(request.POST)
-        var = request.POST
-    return render(request, 'frontend/index.html', {'col_names_var': col_names_var, 'col_names_ref': col_names_ref, 'years_ref': years_ref, 'years_var': years_var})
+        indicator_data = retrieve_indicator(request.POST)
+        table_data = retrieve_table_data(request.POST)
+    return render(request, 'frontend/index.html', {'col_names_var': col_names_var, 'col_names_ref': col_names_ref, 'years_ref': years_ref, 'years_var': years_var, 'table_data': table_data, 'indicator_data': indicator_data})
 
 
 
