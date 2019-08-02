@@ -299,11 +299,11 @@ def retrieve_col_years(table_name):
 
 
 
-# TESTS FOR THIS SECTION
-
-col_years = retrieve_col_years("Kreise")
-print (col_years)
-
+# # TESTS FOR THIS SECTION
+#
+# col_years = retrieve_col_years("Kreise")
+# print (col_years)
+#
 
 # col_names = retrieve_col_names("reference")
 # print(col_names)
@@ -322,6 +322,24 @@ print (col_years)
 #
 # test = retrieve_sd_data(var_name, var_year, ref_name, ref_year, layer, scale)
 # print (test)
+
+################### PLAY AROUND FOR DICT FUNCTION:
+# #
+# test_dict =  {'var_1[]': ['Anteil unternehmensorientierte Dienstleistungen_OR_200', '1990', '0', '2011', 'KRS_15', 'HIB', ''], 'var_2[]': ['', '1990', 'Einwohner gesamt_100', '2011', 'KRS_15', 'HIB', ''], 'var_3[]': ['', '1990', '0', '2011', 'KRS_15', 'HIB', ''],
+# 'var_4[]': ['', '', '', '', 'KRS_15', 'HIB', ''], 'var_5[]': ['', '', '', '', 'KRS_15', 'HIB', ''], 'var_6[]': ['', '', '', '', 'KRS_15', 'HIB', '']}
+#
+# print(test_dict)
+# print(test_dict['var_1'])
+#
+# # for key, value in test_dict:
+# #     print(value)
+
+
+    # retrieve_data(var_name, var_year, ref_name, ref_year, layer)
+
+
+
+
 
 
 
