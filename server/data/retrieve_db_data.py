@@ -220,7 +220,7 @@ def retrieve_sd_data(var_name, var_year, ref_name, ref_year, layer, scale="HIB")
 
 
 def retrieve_col_names(table_name):
-    ''' this function returns a LIST of all unique column names in the KREISE TABLE from the database'''
+    ''' this function returns a LIST of all unique column names in a selected TABLE from the database'''
     col_names = []
     temp = []
     output = []
@@ -258,10 +258,55 @@ def retrieve_col_names(table_name):
 
         return output
 
+def retrieve_col_years(table_name):
+    output = []
+    col_years = []
+    temp = []
+    # connect to database
+    mySQLconnection = pymysql.connect(host='localhost',
+                                      database='mydb',
+                                      user='user',
+                                      password='password')
+
+    # Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
+    sql_select_Query = (""" 
+                                  SELECT DISTINCT YEAR
+                                      FROM `%s`;""" % (table_name))
+    try:
+        # executed quiery and closes cursor
+        cursor = mySQLconnection.cursor()
+        cursor.execute(sql_select_Query)
+        col_years = cursor.fetchall()
+        cursor.close()
+        # error handling
+    except Error as e:
+        print("Error while connecting to MySQL", e)
+    finally:
+        # closing database connection.
+        mySQLconnection.close()
+        print("MySQL connection is closed")
+        temp = list(col_years)
+        for (x,) in temp:
+            output.append(x)
+
+        return output
+
+
+
+
+
+
+
+
+
 # TESTS FOR THIS SECTION
 
-col_names = retrieve_col_names("reference")
-print(col_names)
+col_years = retrieve_col_years("Kreise")
+print (col_years)
+
+
+# col_names = retrieve_col_names("reference")
+# print(col_names)
 
 # var_name = "Lohn pro Beschäftigtem 2010 _ORIGINAL_200"
 # var_year = "2010"
