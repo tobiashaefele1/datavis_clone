@@ -6,6 +6,39 @@ import * as ReactDOM from "react-dom";
 import MapSelector from './maps/MapSelector';
 import { feature } from "../../static/bmf/js/topojson";
 import SmallTable from './tables/SmallTable';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import produce from 'immer';
+import Indikators from './indikators/Indikators';
+const initalState = {
+	smalltable: [['Name', 'placeholder'], ['ID', 'placeholder'], ['Bund', 'placeholder'], ['Value', 'placeholder'], ['Rank', 'placeholder']],
+	counter: 0
+}
+
+
+
+function reducer(state = initalState, action) {
+	console.log('reducer', state, action);
+	switch(action.type){
+		case 'CHANGE_NAME':
+			return produce(state, draft =>{
+				 draft.smalltable[0][1] =  action.value //draft.get_current_map()[value].properties.NAME_2
+			})
+		default:
+			return state;
+		}
+	
+}
+
+const store = createStore(reducer);
+function changeName(value){
+	return {
+		type: "CHANGE_NAME",
+		value
+	};
+}
+
+store.dispatch(changeName("pieter"))
 
 
 
@@ -27,6 +60,7 @@ class App extends Component {
 					"static/bmf/resources/Bundesland_all_features_topo.json"
 				],
 				loading: true,
+				indikator_count: ['indikator1', 'indikator2', 'indikator3']
 
 			},
 		this.smalltable = [['Name', 'placeholder'], ['ID', 'placeholder'], ['Bund', 'placeholder'], ['Value', 'placeholder'], ['Rank', 'placeholder']]
@@ -261,14 +295,18 @@ class App extends Component {
 					<div className="three columns" id="big">
 						<MapSelector handleMapChange={this.handleMapChange} /> 
 
-						<SmallTable tabledata={this.smalltable}/>
+						<Provider store={store}>
+						<SmallTable  />
+						</Provider>
 
 
 					</div>
 					<div className="six columns" id="big">
 						
 								{console.log(this.handleMapChange)}
-								<Map current_map={this.get_current_map()} handleMapClick={this.handleMapClick} />
+								<Provider store={store}>
+									<Map current_map={this.get_current_map()} />
+								</Provider>
 
 
 					
@@ -296,7 +334,7 @@ class App extends Component {
 						<div className="three columns" id="big">
 
 							Indikatoren
-
+							<Indikators indikator_count={this.state.indikator_count} />
 
 										<button id="indikator_plus">+</button>
 										<button id="indikator_min">-</button>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-export default class SmallTable extends Component {
+class SmallTable extends Component {
 
 
 
@@ -14,7 +15,7 @@ export default class SmallTable extends Component {
 					</tr>
 				</thead>
 				<tbody>
-					{this.props.tabledata.map((d, i) => 
+					{this.props.smalltable.map((d, i) => 
 						<tr key= {`tr-${i}`}>
 							<td key= {`td-${i}-key`}>{d[0]}</td>
 							<td key={`td-${i}-value`}>{d[1]}</td>
@@ -27,3 +28,11 @@ export default class SmallTable extends Component {
 		)
 	}
 }
+
+function mapStateToProps(state) {
+	return {
+		smalltable: state.smalltable
+	};
+}
+
+export default connect(mapStateToProps)(SmallTable)
