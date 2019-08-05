@@ -7,7 +7,8 @@ var indikator5 = document.getElementById("indikator_5");
 var indikator6 = document.getElementById("indikator_6");
 var indikators = [indikator1, indikator2, indikator3, indikator4, indikator5, indikator6];
 
-let indikator = 3;
+// TObias: variable transferred to ajax.js
+// let indicator_count = 3;
 
 var current_color_set = [];
 
@@ -26,28 +27,28 @@ function pickColor(number) {
     console.log(current_color_set);
 }
 
-function SendIndikator() {
-   let data = {csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val(),
-                indikator1: indikator1.options[indikator1.selectedIndex].value,
-                indikator2: (indikator >= 2 ? indikator2.options[indikator2.selectedIndex].value : ""),
-                indikator3: (indikator >= 3 ? indikator3.options[indikator3.selectedIndex].value : ""),
-                indikator4: (indikator >= 4 ? indikator4.options[indikator4.selectedIndex].value : ""),
-                indikator5: (indikator >= 5 ? indikator5.options[indikator5.selectedIndex].value : ""),
-                indikator6: (indikator >= 6 ? indikator6.options[indikator6.selectedIndex].value : "")};
-
-    $.ajax({
-        type: "POST",
-        url: window.location.pathname,
-        dataType: "json",
-        async: true,
-        data: data,
-        success: function (data) {
-            FillTable(data);
-            UpdateValue();
-            UpdateNumbers(data);
-        }
-    });
-}
+// function SendIndikator() {
+//    let data = {csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val(),
+//                 indikator1: indikator1.options[indikator1.selectedIndex].value,
+//                 indikator2: (indicator_count >= 2 ? indikator2.options[indikator2.selectedIndex].value : ""),
+//                 indikator3: (indicator_count >= 3 ? indikator3.options[indikator3.selectedIndex].value : ""),
+//                 indikator4: (indicator_count >= 4 ? indikator4.options[indikator4.selectedIndex].value : ""),
+//                 indikator5: (indicator_count >= 5 ? indikator5.options[indikator5.selectedIndex].value : ""),
+//                 indikator6: (indicator_count >= 6 ? indikator6.options[indikator6.selectedIndex].value : "")};
+//
+//     $.ajax({
+//         type: "POST",
+//         url: window.location.pathname,
+//         dataType: "json",
+//         async: true,
+//         data: data,
+//         success: function (data) {
+//             FillTable(data);
+//             UpdateValue();
+//             UpdateNumbers(data);
+//         }
+//     });
+// }
 
 function UpdateValue(){
     var value = document.getElementById("specInfoValueName");
@@ -77,7 +78,7 @@ function FillTable(data) {
     table_data += "<thead>"
     table_data += "<tr>";
     table_data += "<th> Rank </th>";
-    for(let i = 0; i < indikator; i++){
+    for(let i = 0; i < indicator_count; i++){
         table_data += "<th>"+ indikators[i].options[indikators[i].selectedIndex].value + "</th>";
     }
     table_data += "</tr>";
@@ -128,27 +129,27 @@ function FindMinMaxAvg(arr) {
 }
 
 
-
-
-document.getElementById("indikator_plus").onclick = function () {
-    document.getElementById("indikator_min").style.display = "";
-    indikator++
-    document.getElementById("in_" + indikator).style.display = "";
-    if (indikator >= 6) {
-        document.getElementById("indikator_plus").style.display = "none";
-    }
-    SendIndikator();
-}
-document.getElementById("indikator_min").onclick = function () {
-    document.getElementById("indikator_plus").style.display = "";
-    document.getElementById("in_" + indikator).style.display = "none";
-    indikator--
-    if (indikator <= 1) {
-        document.getElementById("indikator_min").style.display = "none";
-    }
-    SendIndikator();
-
-}
+// TOBIAS: formula transferred into my own file (ajax.js)
+//
+// document.getElementById("indikator_plus").onclick = function () {
+//     document.getElementById("indikator_min").style.display = "";
+//     indicator_count++
+//     document.getElementById("in_" + indicator_count).style.display = "";
+//     if (indicator_count >= 6) {
+//         document.getElementById("indikator_plus").style.display = "none";
+//     }
+//     SendIndikator();
+// }
+// document.getElementById("indikator_min").onclick = function () {
+//     document.getElementById("indikator_plus").style.display = "";
+//     document.getElementById("in_" + indicator_count).style.display = "none";
+//     indicator_count--
+//     if (indicator_count <= 1) {
+//         document.getElementById("indikator_min").style.display = "none";
+//     }
+//     SendIndikator();
+//
+// }
 
 
 document.getElementById("csv_export").onclick = function () {

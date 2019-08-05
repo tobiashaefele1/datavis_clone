@@ -118,6 +118,7 @@ def indikator(request):
     data ="hiii"
 
     if request.method == 'POST':
+        output = request.POST
         current_indikator.clear()
         for i in indikators:
             if request.POST.get(i) != "":

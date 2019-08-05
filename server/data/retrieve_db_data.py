@@ -299,11 +299,11 @@ def retrieve_col_years(table_name):
 
 
 
-# TESTS FOR THIS SECTION
-
-col_years = retrieve_col_years("Kreise")
-print (col_years)
-
+# # TESTS FOR THIS SECTION
+#
+# col_years = retrieve_col_years("Kreise")
+# print (col_years)
+#
 
 # col_names = retrieve_col_names("reference")
 # print(col_names)
@@ -322,6 +322,16 @@ print (col_years)
 #
 # test = retrieve_sd_data(var_name, var_year, ref_name, ref_year, layer, scale)
 # print (test)
+
+################## PLAY AROUND FOR DICT FUNCTION:
+#
+
+
+    # retrieve_data(var_name, var_year, ref_name, ref_year, layer)
+
+
+
+
 
 
 
