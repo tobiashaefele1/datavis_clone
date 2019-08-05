@@ -1,18 +1,21 @@
 import React, { Component } from 'react'
-import indikator from './indikator';
+import Indikator from './Indikator';
+import {connect} from 'react-redux';
 
-export default class Indikators extends Component {
+class Indikators extends Component {
 	
 	
 	
 	
 	render() {
 		return (
-			<div>
-			{this.props.indikator_count.map( (d ,i) => {
-					<p>{d}</p>
+			<div key='indikators'>
+			{this.props.indikators.map( (d ,i) => 
+					
+					
+					<Indikator key={i} name={d} />
 				
-			})
+			)
 		}
 			
 			
@@ -20,3 +23,12 @@ export default class Indikators extends Component {
 		)
 	}
 }
+
+function mapStateToProps(state) {
+	return {
+		indikator_count: state.indikator_count,
+		indikators: state.indikators
+	};
+}
+
+export default connect(mapStateToProps)(Indikators)

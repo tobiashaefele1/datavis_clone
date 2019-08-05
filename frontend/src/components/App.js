@@ -1,44 +1,15 @@
 import React, { Component } from 'react';
 
 import Map from "./maps/Map";
-
-import * as ReactDOM from "react-dom";
 import MapSelector from './maps/MapSelector';
 import { feature } from "../../static/bmf/js/topojson";
 import SmallTable from './tables/SmallTable';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import produce from 'immer';
 import Indikators from './indikators/Indikators';
-const initalState = {
-	smalltable: [['Name', 'placeholder'], ['ID', 'placeholder'], ['Bund', 'placeholder'], ['Value', 'placeholder'], ['Rank', 'placeholder']],
-	counter: 0
-}
+import { connect } from 'react-redux';
+import { store } from './Store';
 
 
-
-function reducer(state = initalState, action) {
-	console.log('reducer', state, action);
-	switch(action.type){
-		case 'CHANGE_NAME':
-			return produce(state, draft =>{
-				 draft.smalltable[0][1] =  action.value //draft.get_current_map()[value].properties.NAME_2
-			})
-		default:
-			return state;
-		}
-	
-}
-
-const store = createStore(reducer);
-function changeName(value){
-	return {
-		type: "CHANGE_NAME",
-		value
-	};
-}
-
-store.dispatch(changeName("pieter"))
 
 
 
@@ -46,12 +17,7 @@ class App extends Component {
 	constructor() {
 		super(),
 			this.state = {
-				current_map: 0,
-				kreise: [],
-				amr12: [],
-				amr15: [],
-				amr20: [],
-				bund: [],
+				
 				maps: [
 					"static/bmf/resources/Kreise_402_all_features_topo.json",
 					"static/bmf/resources/AMR_12_all_features_topo.json",
@@ -66,6 +32,14 @@ class App extends Component {
 		this.smalltable = [['Name', 'placeholder'], ['ID', 'placeholder'], ['Bund', 'placeholder'], ['Value', 'placeholder'], ['Rank', 'placeholder']]
 
 	}
+	
+	setMapinStore(value, map) {
+	return {
+		type: "SETMAPINSTORE",
+		value,
+		map
+	};
+}
 
 	componentWillMount() {
 			fetch(this.state.maps[0])
@@ -75,10 +49,13 @@ class App extends Component {
 						return
 					}
 					response.json().then(mapdata => {
-						this.setState({
-							kreise: feature(mapdata, mapdata.objects.Kreise_402_all_features).features,
+						
+						this.props.dispatch(this.setMapinStore(feature(mapdata, mapdata.objects.Kreise_402_all_features).features, 0))
+
+							this.setState({
 							loading: false
 						})
+						
 					})
 				})
 			
@@ -93,10 +70,8 @@ class App extends Component {
 						return
 					}
 					response.json().then(mapdata => {
-						this.setState({
-							amr12: feature(mapdata, mapdata.objects.Kreise_402_all_features).features,
-
-						})
+						
+						this.props.dispatch(this.setMapinStore(feature(mapdata, mapdata.objects.Kreise_402_all_features).features, 1))
 					})
 					
 				}).then(console.log('amr12'))
@@ -109,10 +84,8 @@ class App extends Component {
 						return
 					}
 					response.json().then(mapdata => {
-						this.setState({
-							amr15: feature(mapdata, mapdata.objects.Kreise_402_all_features).features,
-
-						})
+						
+						this.props.dispatch(this.setMapinStore(feature(mapdata, mapdata.objects.Kreise_402_all_features).features, 2))
 					})
 					console.log('amr15')
 				})
@@ -124,10 +97,8 @@ class App extends Component {
 						return
 					}
 					response.json().then(mapdata => {
-						this.setState({
-							amr20: feature(mapdata, mapdata.objects.Kreise_402_all_features).features,
-
-						})
+						
+						this.props.dispatch(this.setMapinStore(feature(mapdata, mapdata.objects.Kreise_402_all_features).features, 3))
 					})
 					console.log('amr20')
 				})
@@ -139,10 +110,7 @@ class App extends Component {
 						return
 					}
 					response.json().then(mapdata => {
-						this.setState({
-							bund: feature(mapdata, mapdata.objects.Kreise_402_all_features).features,
-
-						})
+						this.props.dispatch(this.setMapinStore(feature(mapdata, mapdata.objects.Kreise_402_all_features).features, 4))
 					})
 					console.log('bund')
 				})
@@ -153,41 +121,10 @@ class App extends Component {
 	
 
 
-	get_current_map() {
 	
-		switch (this.state.current_map) {
-			case (0):
-				return this.state.kreise;
 
-			case (1):
-				return this.state.amr12;
-			case (2):
-				return this.state.amr15;
-			case (3):
-				return this.state.amr20;
-			case (4):
-				return this.state.bund;
-		}
+	
 
-	}
-
-	handleMapChange = (e) => {
-		console.log(this.state.current_map)
-		this.setState({
-			current_map: parseInt(e.target.value)
-
-		})
-
-	}
-
-	handleMapClick = (i) => {
-		console.log(this.get_current_map())
-		var updatetable = [['Name', this.get_current_map()[i].properties.NAME_2], 
-	['ID', this.get_current_map()[i].properties.CC_2],
-['Bund', this.get_current_map()[i].properties.NAME_1],
-['Value', 'placeholder'], ['Rank', 'palceholder']]
-		this.smalltable = updatetable
-	}
 
 
 	render() {
@@ -195,7 +132,9 @@ class App extends Component {
 			return 'Loading...'
 		} 
 		return(
+			
 		<div>
+			{console.log(this.props.kreise)}
 		<div className="example-grid-logo">
 			{/* Top Row */}
 			<div className="row">
@@ -293,9 +232,10 @@ class App extends Component {
 			<div className="row">
 				<div className="box">
 					<div className="three columns" id="big">
-						<MapSelector handleMapChange={this.handleMapChange} /> 
+						<Provider store={store}>	
+						<MapSelector /> 
 
-						<Provider store={store}>
+						
 						<SmallTable  />
 						</Provider>
 
@@ -303,9 +243,9 @@ class App extends Component {
 					</div>
 					<div className="six columns" id="big">
 						
-								{console.log(this.handleMapChange)}
+
 								<Provider store={store}>
-									<Map current_map={this.get_current_map()} />
+									<Map  />
 								</Provider>
 
 
@@ -398,4 +338,14 @@ class App extends Component {
 
 }
 
-ReactDOM.render(<App />, document.getElementById('container'));
+function mapStateToProps(state) {
+	return {
+		kreise: state.kreise,
+		amr12: state.amr12,
+		amr15: state.amr15,
+		amr20: state.amr20,
+		bund: state.bund
+	};
+}
+
+export default connect(mapStateToProps)(App)

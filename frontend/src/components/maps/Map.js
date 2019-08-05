@@ -68,6 +68,11 @@ function changeName(value){
 		value
 	};
 }
+function mapStateToProps(state) {
+	return {
+		current_map: state.current_map,
+	};
+}
 
 
-export default connect()(Map);
+export default connect(mapStateToProps)(Map);

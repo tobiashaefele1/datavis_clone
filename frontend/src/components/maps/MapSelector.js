@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Map from './Map'
-import {useStoreActions} from "easy-peasy";
-
+import { connect } from 'react-redux'
+ 
 
 
 
@@ -9,14 +9,19 @@ class MapSelector extends Component {
     constructor(props) {
         super(props);
 
-    }
+	}
+	
+	handleMapChange = (e) => {
+		
+		this.props.dispatch(changeMap(parseInt(e.target.value)))
+	}	
 
 
     render() {
         return (
             <div>
                 <label>Maps</label>
-                <select className="u-80-width" id="map_selector" onChange={this.props.handleMapChange.bind(this)}>
+                <select className="u-80-width" id="map_selector" onChange={this.handleMapChange.bind(this)}>
                     <option value="0">Kreise</option>
                     <option value="1">AMR12</option>
                     <option value="2">AMR15</option>
@@ -28,6 +33,11 @@ class MapSelector extends Component {
         );
     }
 }
+function changeMap(value){
+	return {
+		type: "CHANGEMAP",
+		value
+	};
+}
 
-
-export default MapSelector;
+export default  connect()(MapSelector);
