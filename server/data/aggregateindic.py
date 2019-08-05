@@ -32,13 +32,13 @@ def retrieve_indicator (ajax_dictionary):
     # this code scans the dictionary to ensure only complete entries are being searched for in the db
     var = []
     var = aggregate_args(ajax_dictionary)
-    print(var)
+    # print(var)
 
     # this code returns the database array from all valid entries and stores them in a list
     list = []
     for i in range(0, len(var)):
         list.append(retrieve_sd_data(var[i][0], var[i][1], var[i][2], var[i][3], var[i][4], var[i][5]))
-    print (list)
+    # print (list)
     result = []
     var_name = []
 

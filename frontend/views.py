@@ -5,6 +5,8 @@ from server.data.retrieve_db_data import retrieve_col_names, retrieve_data
 from server.data.retrieve_db_data import retrieve_col_years
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
+import json
+
 
 
 
@@ -23,7 +25,8 @@ def index(request):
         received_data = (dict(request.POST))
         indicator_data = retrieve_indicator(received_data)
         table_data = retrieve_table_data(received_data)
-    return render(request, 'frontend/index.html', {'col_names_var': col_names_var, 'col_names_ref': col_names_ref, 'years_ref': years_ref, 'years_var': years_var, 'table_data': table_data, 'indicator_data': indicator_data})
+        print(table_data)
+    return render(request, 'frontend/index.html', {'col_names_var': col_names_var, 'col_names_ref': col_names_ref, 'years_ref': years_ref, 'years_var': years_var, 'table_data': json.dumps(table_data), 'indicator_data': json.dumps(indicator_data)})
 
 
 
