@@ -274,8 +274,9 @@ class App extends Component {
 						<div className="three columns" id="big">
 
 							Indikatoren
-							<Indikators indikator_count={this.state.indikator_count} />
+							<Indikators  />
 
+										{/* <PlusButton /> */}
 										<button id="indikator_plus">+</button>
 										<button id="indikator_min">-</button>
 
