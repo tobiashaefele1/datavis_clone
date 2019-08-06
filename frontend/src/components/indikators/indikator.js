@@ -68,7 +68,8 @@ class Indikator extends Component {
 		data: data,
 		traditional: true,
 		success: function (data) {
-			console.log(data);
+			console.log(data)
+			changevars();
 		}
 
 
@@ -148,19 +149,23 @@ function changeValue(value1, value2) {
 	};
 }
 
-function changevars(abc) {
-
+function changevars() {
 	var i;
+	var template = state.current_map.properties;
 	for (i = 0; i < state.current_map.properties.length; i++)
 		{
 			var j;
 			for (j = 0; j <state.indicator_data[0].length; j++)
 				{
-				if (parsefloat(state.current_map.properties.CC_2[i]) == parsefloat(state.indicator_data[0][j]))
-					{draft.current_map.properties['indicator'][i] = state.indicator_data[j]}
+				if (parsefloat(state.current_map.properties.Kennziffer[i]) == parsefloat(state.indicator_data[0][j]))
+					{template['indicator'][i] = state.indicator_data[j]}
 				}
 		}
-
+	console.log(template['indicator'])
+	return {
+		type: "CHANGEVAR",
+		template,
+	};
 
 
 }
