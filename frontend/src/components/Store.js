@@ -16,12 +16,15 @@ const initalState = {
 	bund: [],
 	indikator_counter: 3,
 	indikators: ['indikator1', 'indikator2', 'indikator3'],
+	//insertion tobias - empty state for indicator_map
+	indicator_map: [],
+	indikators: ['indikator1', 'indikator2', 'indikator3'],
 	col_names_var: JSON.parse(context.col_names_var),
 	col_names_ref: JSON.parse(context.col_names_ref),
 	years_ref: JSON.parse(context.years_ref),
 	years_var: JSON.parse(context.years_var),
 	table_data: JSON.parse(context.table_data),
-	indicator_data: JSON.parse(context.indicator_data), 
+	indicator_data: JSON.parse(context.indicator_data),
 	value_dic: {
 		'var_name_1': null,
 		'var_name_2': null,
@@ -67,10 +70,10 @@ function reducer(state = initalState, action) {
 			return produce(state, draft =>{
 				console.log(state.value_dic)
 				draft.value_dic[action.value1] = action.value2
-				
+
 			})
-			
-	
+
+
 		case 'CHANGE_NAME':
 			return produce(state, draft => {
 				console.log(state.current_map)
@@ -125,7 +128,16 @@ function reducer(state = initalState, action) {
 			}
 		}
 				)
-		
+
+		// insertion Tobias: load map here with indicators
+		case 'CHANGEVARS':
+			return product(state, draft => {
+
+					draft.current_map.properties['indicator'] = state.indicator_map
+				}
+			)
+
+
 		default:
 			return state;
 	}
