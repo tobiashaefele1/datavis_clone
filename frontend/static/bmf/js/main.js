@@ -27,48 +27,7 @@ function pickColor(number) {
     console.log(current_color_set);
 }
 
-// function SendIndikator() {
-//    let data = {csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val(),
-//                 indikator1: indikator1.options[indikator1.selectedIndex].value,
-//                 indikator2: (indicator_count >= 2 ? indikator2.options[indikator2.selectedIndex].value : ""),
-//                 indikator3: (indicator_count >= 3 ? indikator3.options[indikator3.selectedIndex].value : ""),
-//                 indikator4: (indicator_count >= 4 ? indikator4.options[indikator4.selectedIndex].value : ""),
-//                 indikator5: (indicator_count >= 5 ? indikator5.options[indikator5.selectedIndex].value : ""),
-//                 indikator6: (indicator_count >= 6 ? indikator6.options[indikator6.selectedIndex].value : "")};
-//
-//     $.ajax({
-//         type: "POST",
-//         url: window.location.pathname,
-//         dataType: "json",
-//         async: true,
-//         data: data,
-//         success: function (data) {
-//             FillTable(data);
-//             UpdateValue();
-//             UpdateNumbers(data);
-//         }
-//     });
-// }
 
-function UpdateValue(){
-    var value = document.getElementById("specInfoValueName");
-    value.innerText = indikator1.options[indikator1.selectedIndex].value;
-}
-
-function UpdateName(area_name){
-    var name = document.getElementById("specInfoName");
-    name.innerText = area_name;
-}
-
-function UpdateBund(area_name){
-    var bund = document.getElementById("specInfoBund");
-    bund.innerText = area_name;
-}
-
-function UpdateID(area_ID){
-    var ID = document.getElementById("specInfoID");
-    ID.innerText = area_ID;
-}
 
 
 function FillTable(data) {
@@ -152,9 +111,6 @@ function FindMinMaxAvg(arr) {
 // }
 
 
-document.getElementById("csv_export").onclick = function () {
-    window.location.href = "csv";
-};
 
 // Get the modal
 var import_modal = document.getElementById("myImportModal");
@@ -207,90 +163,3 @@ window.onclick = function (event) {
     }
 }
 
-var map_selector = document.getElementById("map_selector");
-
-function ChangeMap(){
-      let value = map_selector.options[map_selector.selectedIndex].value;
-      let map = document.getElementById("svg_map");
-      switch(value){
-          case "Kreise":
-              map.setAttribute("data", "static/bmf/resources/kreise.svg");
-              break;
-          case "AMR12":
-              map.setAttribute("data", "static/bmf/resources/amr12.svg");
-              break;
-          case "AMR20":
-              map.setAttribute("data", "static/bmf/resources/amr20.svg");
-              break;
-      }
-}
-
-function specInfo(target){
-    console.log(target);
-    let name = document.getElementById("specInfoName");
-    let id = document.getElementById("specInfoID");
-    let value = document.getElementById("specInfoValue");
-    let Bund = document.getElementById("specInfoBund");
-    let rank = document.getElementById("specInfoRank");
-    name.innerText = Math.floor(Math.random()*10);
-    id.innerText = Math.floor(Math.random()*10);
-    value.innerText = Math.floor(Math.random()*10);
-    Bund.innerText = Math.floor(Math.random()*10);
-    rank.innerText = Math.floor(Math.random()*10);
-}
-
-
-// //Map logic
-//
-// var width = document.getElementById("map").clientWidth;
-// var height = document.getElementById("big").clientHeight;
-// var scale = function() {
-//     if(width < 500){
-//       return  300/width*1600;
-//     }
-//      return 960/width*2000;
-//
-// }
-// var geojson = {}
-// console.log(width);
-// console.log(height);
-//
-//
-// var projection = d3.geoMercator()
-//
-//     .scale(scale())
-//     .center([10.3736325636218, 51.053178814923065])
-//         .translate([width/2,height/2])
-//     ;
-//
-//
-//
-// var path = d3.geoPath().projection(projection);
-//
-// var svg = d3.select("#map_place").append("svg")
-//     .attr("width", width)
-//     .attr("height", height);
-//
-//
-// d3.json(AMR_12_url).then( function(topology, error) {
-//   if (error) console.log(error);
-//
-//   console.log("topojson", topology)
-//   var geojson = topojson.feature(topology, topology.objects.Kreise_402_all_features);
-//   console.log("geojson", geojson)
-//   svg.selectAll("path")
-//       .data(geojson.features)
-//      .enter()
-//       .append("path")
-//       .attr("d", path)
-//       .on("click", clicked);
-//   console.log("end");
-// });
-//
-// // function clicked(d) {
-// //     UpdateName(d.properties.NAME_2);
-// //     UpdateBund(d.properties.NAME_1);
-// //     UpdateID(d.properties.CC_2);
-// //
-// //     console.log(d.properties);
-// // }

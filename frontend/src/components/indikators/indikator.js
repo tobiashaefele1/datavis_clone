@@ -8,10 +8,11 @@ class Indikator extends Component {
 	handleChange = (e) => { 
 
 		this.props.dispatch(changeValue(e.target.id,  e.target.value))
+	}
+	componentDidUpdate(prevProps){
+	if (prevProps.value_dic !== this.props.value_dic) {
 		this.post_req()
-
-
-
+	}
 	}
 
 
@@ -85,8 +86,8 @@ class Indikator extends Component {
 				<div className="row">
 					<div className="six columns">
 						<label className="indicator">{this.props.name}</label>
-						<select className="u-95-width" id={`var_name_${this.props.number}`} onChange={this.handleChange.bind(this)} >
-							<option disabled defaultValue value="0"> -- Wähle Variable --</option>
+						<select className="u-95-width" defaultValue="0" id={`var_name_${this.props.number}`} onChange={this.handleChange.bind(this)} >
+							<option disabled value="0"> -- Wähle Variable --</option>
 							{this.props.col_names_var.map((d, i) =>
 								<option value={d} key={i}>{d}</option>
 							)
@@ -96,7 +97,8 @@ class Indikator extends Component {
 
 					<div className="three columns">
 						<label className="indicator">Jahr </label>
-						<select className="u-80-width" id={`var_year_${this.props.number}`} onChange={this.handleChange.bind(this)}>
+						<select className="u-80-width" defaultValue="0" id={`var_year_${this.props.number}`} onChange={this.handleChange.bind(this)}>
+							<option disabled value="0"> -- Wähle Variable --</option>
 							{this.props.years_var.map((d, i) =>
 								<option value={d} key={i}>{d}</option>
 							)
@@ -114,8 +116,8 @@ class Indikator extends Component {
 					<div className="row">
 
 						<div className="six columns">
-							<select className="u-95-width" id={`ref_name_${this.props.number}`} onChange={this.handleChange.bind(this)}>
-								<option disabled defaultValue value="0">  standardisiert über... </option>
+							<select className="u-95-width" defaultValue="0" id={`ref_name_${this.props.number}`} onChange={this.handleChange.bind(this)}>
+								<option disabled  value="0">  standardisiert über... </option>
 								{this.props.col_names_ref.map((d, i) =>
 									<option value={d} key={i}>{d}</option>
 								)
@@ -124,7 +126,8 @@ class Indikator extends Component {
 						</div>
 
 						<div className="three columns">
-							<select className="u-80-width" id={`ref_year_${this.props.number}`} onChange={this.handleChange.bind(this)}>
+							<select className="u-80-width" defaultValue="0" id={`ref_year_${this.props.number}`} onChange={this.handleChange.bind(this)}>
+								<option disabled value="0"> -- Wähle Variable --</option>
 								{this.props.years_ref.map((d, i) =>
 									<option value={d} key={i}>{d}</option>
 								)
