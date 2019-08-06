@@ -10,10 +10,11 @@ class Indikator extends Component {
 	handleChange = (e) => { 
 
 		this.props.dispatch(changeValue(e.target.id,  e.target.value))
+	}
+	componentDidUpdate(prevProps){
+	if (prevProps.value_dic !== this.props.value_dic) {
 		this.post_req()
-
-
-
+	}
 	}
 
 
