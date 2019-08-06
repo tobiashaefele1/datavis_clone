@@ -48,7 +48,8 @@ class Map extends Component {
                                 key={`path-${i}`}
                                 d={d3.geoPath().projection(this.projection())(d)}
                                 className={d.properties.NAME_2}
-                                fill={`rgba(256,0,0,${(1 / this.props.current_map.length) * i})`}
+                                // fill={`rgba(256,0,0,${(1 / this.props.current_map.length) * i})`}
+								fill =
                                 stroke="#000000"
                                 strokeWidth={0.5}
                                 onClick={this.handleClick.bind(this, i)}
@@ -73,6 +74,9 @@ function mapStateToProps(state) {
 		current_map: state.current_map,
 	};
 }
+
+
+
 
 
 export default connect(mapStateToProps)(Map);

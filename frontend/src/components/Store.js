@@ -12,7 +12,9 @@ const initalState = {
 	amr20: [],
 	bund: [],
 	indikator_counter: 3,
-	indikators: ['indikator1', 'indikator2', 'indikator3']
+	indikators: ['indikator1', 'indikator2', 'indikator3'],
+	//insertion tobias - empty state for indicator_map
+	indicator_map: [],
 }
 
 
@@ -75,7 +77,16 @@ function reducer(state = initalState, action) {
 			}
 		}
 				)
-		
+
+		// insertion Tobias: load map here with indicators
+		case 'CHANGEVARS':
+			return product(state, draft => {
+
+					draft.current_map.properties['indicator'] = state.indicator_map
+				}
+			)
+
+
 		default:
 			return state;
 	}
