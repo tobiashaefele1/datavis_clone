@@ -39,12 +39,7 @@
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
     "react-simple-maps": "^0.12.1",
-<<<<<<< HEAD
     "react-table": "^6.10.0",
     "redux": "^4.0.4"
-=======
-    "redux": "^4.0.4",
-    "react-table": "^6.10.0"
->>>>>>> 3ca4f2d102f1cf3b239989788695666a63ddd5cb
   }
 }
