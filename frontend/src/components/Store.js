@@ -5,7 +5,7 @@ import * as json from "webpack/lib/JsonParser";
 
 
 const initalState = {
-	smalltable: [['Name', 'placeholder'], ['ID', 'placeholder'],['Bevolkerung (2017)', 'placeholder'],['Fläche km^2', 'placeholder'], ['Bund', 'placeholder'], ['Value', 'placeholder'], ['Rank', 'placeholder']],
+	smalltable: [['Name', 'placeholder'], ['ID', 'placeholder'],['Einwohner (2017)', 'placeholder'],['Fläche km2', 'placeholder'], ['Bund', 'placeholder'], ['Rank', 'placeholder']],
 	counter: 0,
 	count_map: 0,
 	current_map: [],
@@ -40,6 +40,14 @@ function reducer(state = initalState, action) {
 
 	switch (action.type) {
 
+		case 'UPDATEDATA':
+			return produce(state, draft =>{
+				draft.table_data = [...action.data.table_data],
+				draft.indicator_data = [...action.data.indicator_data]
+				console.log(draft.table_data)
+				console.log(draft.indicator_data)
+			})
+
 		case 'MODAL':
 			return produce(state, draft =>{
 				draft.show_modal = !state.show_modal
@@ -71,9 +79,19 @@ function reducer(state = initalState, action) {
 				console.log(state.current_map)
 				draft.smalltable[0][1] = state.current_map[action.value].properties.Name,
 				draft.smalltable[1][1] = state.current_map[action.value].properties.Kennziffer,
-				// draft.smalltable[2][1] = state.current_map[action.value].properties.'Bevölkerung (2017)',
-				// draft.smalltable[3][1] = state.current_map[action.value].properties.'Fläche (km^2)',
+				draft.smalltable[2][1] = state.current_map[action.value].properties.Einwohner_2017,
+				draft.smalltable[3][1] = state.current_map[action.value].properties.area_km2,
 				draft.smalltable[4][1] = state.current_map[action.value].properties.Bundesland
+				while (draft.smalltable.length > 6){
+					draft.smalltable.pop()
+				}
+				if(draft.smalltable.length < state.indikator_counter + 6){
+					state.indikators.map((d, i) =>
+						draft.smalltable.push([state.value_dic['var_name_'+ i], 'place'])
+					)
+				}
+	
+			
 			})
 
 		case 'SETMAPINSTORE':	

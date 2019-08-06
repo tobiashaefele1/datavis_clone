@@ -12,11 +12,11 @@ services:
     depends_on:
       - db
   db:
-    image: mysql:5.7
+    image: mysql
     restart: always
     volumes:
        - db_data:/var/lib/mysql
-    command: --disable-partition-engine-check
+
     ports:
       - "3306:3306"
     environment:
