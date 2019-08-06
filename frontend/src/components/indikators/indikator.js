@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 
 class Indikator extends Component {
-	
-	
-	
+
 
 
 	handleChange = (e) => { 
@@ -149,6 +147,29 @@ function changeValue(value1, value2) {
 		value2
 	};
 }
+
+function changevars(abc) {
+
+	var i;
+	for (i = 0; i < state.current_map.properties.length; i++)
+		{
+			var j;
+			for (j = 0; j <state.indicator_data[0].length; j++)
+				{
+				if (parsefloat(state.current_map.properties.CC_2[i]) == parsefloat(state.indicator_data[0][j]))
+					{draft.current_map.properties['indicator'][i] = state.indicator_data[j]}
+				}
+		}
+
+
+
+}
+
+
+
+
+
+
 
 
 function mapStateToProps(state) {
