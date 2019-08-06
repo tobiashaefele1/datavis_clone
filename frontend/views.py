@@ -24,8 +24,8 @@ def index(request):
         received_data = (dict(request.POST))
         indicator_data = retrieve_indicator(received_data)
         table_data = retrieve_table_data(received_data)
-        print(table_data)
-    print (col_names_var)
+        print(indicator_data[1])
+    # print (col_names_var)
     context ={ 
               'col_names_var': json.dumps(col_names_var),
               'col_names_ref': json.dumps(col_names_ref),
