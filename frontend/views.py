@@ -24,7 +24,9 @@ def index(request):
         received_data = (dict(request.POST))
         indicator_data = retrieve_indicator(received_data)
         table_data = retrieve_table_data(received_data)
-        print(indicator_data[1])
+        data = {'indicator_data': indicator_data, 'table_data': table_data}
+        return HttpResponse(json.dumps(data), content_type="application/json")
+
     # print (col_names_var)
     context ={ 
               'col_names_var': json.dumps(col_names_var),

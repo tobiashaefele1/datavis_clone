@@ -40,6 +40,14 @@ function reducer(state = initalState, action) {
 
 	switch (action.type) {
 
+		case 'UPDATEDATA':
+			return produce(state, draft =>{
+				draft.table_data = [...action.data.table_data],
+				draft.indicator_data = [...action.data.indicator_data]
+				console.log(draft.table_data)
+				console.log(draft.indicator_data)
+			})
+
 		case 'MODAL':
 			return produce(state, draft =>{
 				draft.show_modal = !state.show_modal

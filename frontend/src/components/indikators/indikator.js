@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 
 class Indikator extends Component {
-
-
+	
+	
 
 	handleChange = (e) => { 
 
@@ -11,14 +11,14 @@ class Indikator extends Component {
 	}
 	componentDidUpdate(prevProps){
 	if (prevProps.value_dic !== this.props.value_dic) {
-		this.post_req()
+		this.ajax_req()
 	}
 	}
 
 
 	post_req(){
 		// TODO: change hardcoded HIB or LIB
-	let data = {
+	var data = {
 		csrf_token: $("[name=csrf_token]").val(),
 		'var_1': [this.props.value_dic['var_name_0'],
 			this.props.value_dic['var_year_0'],
@@ -56,26 +56,32 @@ class Indikator extends Component {
 			(this.props.indikator_count >= 5 ? this.props.value_dic['ref_name_5'] : ""),
 			(this.props.indikator_count >= 5 ? this.props.value_dic['ref_year_5'] : ""),
 			this.props.count_map, 'HIB', (this.props.indikator_count >= 5 ? this.props.value_dic['weight_5'] : "")],
-
+	
 	};
 
-	console.log(data)
-	$.ajax({
-		type: "POST",
-		url: window.location.pathname,
-		dataType: "json",
-		asnyc: true,
-		data: data,
-		traditional: true,
-		success: function (data) {
-			console.log(data);
-		}
-
-
-	})
+		return data;
+	
 }
+	ajax_req(){
+		$.ajax({
+			type: "POST",
+			url: window.location.pathname,
+			dataType: "json",
+			asnyc: true,
+			data: this.post_req(),
+			traditional: true,
+			success: function (data) {
+				this.updateData(data)
+			}.bind(this)
 
 
+		})
+	}
+
+
+	updateData = (data) =>{
+		this.props.dispatch({type: "UPDATEDATA", data})
+	}
 
 
 
@@ -139,6 +145,10 @@ class Indikator extends Component {
 		</div>
 		)
 	}
+}
+function changeData(value) {
+	Indikator.updateData(value)
+	
 }
 function changeValue(value1, value2) {
 	return {
