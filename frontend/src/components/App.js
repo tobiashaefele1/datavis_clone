@@ -21,7 +21,7 @@ class App extends Component {
 			this.state = {
 				
 				maps: [
-					"static/bmf/resources/Kreise_402_all_features_topo.json",
+					"static/bmf/resources/20190805_Kreise402.json",
 					"static/bmf/resources/AMR_12_all_features_topo.json",
 					"static/bmf/resources/AMR_15_all_features_topo.json",
 					"static/bmf/resources/AMR_20_all_features_topo.json",
@@ -49,10 +49,11 @@ class App extends Component {
 					if (response.status !== 200) {
 						console.log('There was a problem: ${response.status}')
 						return
-					}
+					} 
+					console.log(response)
 					response.json().then(mapdata => {
-						
-						this.props.dispatch(this.setMapinStore(feature(mapdata, mapdata.objects.Kreise_402_all_features).features, 0))
+						console.log(mapdata)
+						this.props.dispatch(this.setMapinStore(feature(mapdata, mapdata.objects.Kreise402).features, 0))
 
 							this.setState({
 							loading: false

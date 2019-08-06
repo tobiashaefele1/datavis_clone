@@ -25,14 +25,14 @@ def retrieve_data(var_name, var_year, ref_name, ref_year, layer):
                             FROM (
                                   SELECT 
                                          mapping.`%s`, 
-                                         SUM(KREISE.`%s` * reference.`%s`) as absvalue
+                                         SUM(Kreise.`%s` * reference.`%s`) as absvalue
                                   FROM 
-                                          KREISE 
+                                          Kreise 
                                   LEFT JOIN mapping
-                                        ON KREISE.Kennziffer=mapping.KRS_15
+                                        ON Kreise.Kennziffer=mapping.KRS_15
                                   LEFT JOIN reference
-                                         ON KREISE.Kennziffer=reference.Kennziffer 
-                                  WHERE KREISE.YEAR = '%s' AND reference.Year = '%s'
+                                         ON Kreise.Kennziffer=reference.Kennziffer 
+                                  WHERE Kreise.YEAR = '%s' AND reference.Year = '%s'
                                   GROUP BY mapping.`%s`
                                   ORDER BY mapping.`%s` ASC
                                    ) a
@@ -89,9 +89,9 @@ def retrieve_fed_avg (var_name, var_year, ref_name, ref_year, layer):
     try:
         # Returns quiery with tuple [(layer_ID, value)] for federal average at Kreise level, IF IT EXISTS.
         sql_select_Query = (""" SELECT 
-                                       KREISE.KENNZIFFER, KREISE.`%s`
-                                       FROM KREISE 
-                                       WHERE KREISE.YEAR = '%s' AND KREISE.Kennziffer = "01001" """ % (fed_avg_name, var_year) )
+                                       Kreise.KENNZIFFER, Kreise.`%s`
+                                       FROM Kreise 
+                                       WHERE Kreise.YEAR = '%s' AND Kreise.Kennziffer = "01001" """ % (fed_avg_name, var_year) )
 
         # executed quiery and closes cursor
         cursor = mySQLconnection .cursor()
@@ -338,22 +338,22 @@ def retrieve_col_years(table_name):
 '''
 # throw away code:
 
-    # this selects any variable for any year from KREISE and returns array with tuples [(Kennziffer, value),()...]
-    sql_select_Query = (""" SELECT Kennziffer, `%s` from KREISE where YEAR = '%s' """ % (var_name, var_year))
+    # this selects any variable for any year from Kreise and returns array with tuples [(Kennziffer, value),()...]
+    sql_select_Query = (""" SELECT Kennziffer, `%s` from Kreise where YEAR = '%s' """ % (var_name, var_year))
 
    # this selects any variable for any year from Reference and returns array with tuples [(Kennziffer, value),()...]
     sql_select_Query = (""" SELECT Kennziffer, `%s` from REFERENCE where YEAR = '%s' """ % (ref_name, ref_year))
 
     # this quiery selects any variable at any layer and builds the SIMPLE average
     sql_select_Query = (""" SELECT mapping.AMR_15, Kreise.`Einwohner Gesamt_100`
-                        FROM KREISE 
+                        FROM Kreise 
                         LEFT JOIN mapping 
                         ON Kreise.Kennziffer=mapping.KRS_15 
                         WHERE YEAR = 2015
                         GROUP BY mapping.AMR_15
                         """)
     sql_select_Query = (""" SELECT mapping.AMR_12, Kreise.`Arbeitslosenquote_100`, Reference.`Einwohner gesamt`
-                        FROM KREISE 
+                        FROM Kreise 
                             LEFT JOIN mapping
                                 ON Kreise.Kennziffer=mapping.KRS_15
                             LEFT JOIN REFERENCE
@@ -389,7 +389,7 @@ def retrieve_col_years(table_name):
                                     mapping.`%s`, 
                                     SUM(Kreise.`%s` * Reference.`%s`)
                                 FROM 
-                                KREISE 
+                                Kreise 
                                 LEFT JOIN mapping
                                     ON Kreise.Kennziffer=mapping.KRS_15
                                 LEFT JOIN REFERENCE
