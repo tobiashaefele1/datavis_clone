@@ -10,6 +10,8 @@ import { connect } from 'react-redux';
 import { store } from './Store';
 import PlusButton from './buttons/PlusButton';
 import MinButton from './buttons/MinButton';
+import SettingButton from './buttons/SettingButton';
+import Settings from './modals/Settings';
 
 
 
@@ -21,7 +23,7 @@ class App extends Component {
 			this.state = {
 				
 				maps: [
-					"static/bmf/resources/20190805_Kreise402.json",
+					"static/bmf/resources/Kreise15map.json",
 					"static/bmf/resources/AMR_12_all_features_topo.json",
 					"static/bmf/resources/AMR_15_all_features_topo.json",
 					"static/bmf/resources/AMR_20_all_features_topo.json",
@@ -53,7 +55,7 @@ class App extends Component {
 					console.log(response)
 					response.json().then(mapdata => {
 						console.log(mapdata)
-						this.props.dispatch(this.setMapinStore(feature(mapdata, mapdata.objects.Kreise402).features, 0))
+						this.props.dispatch(this.setMapinStore(feature(mapdata, mapdata.objects.Kreise15map).features, 0))
 
 							this.setState({
 							loading: false
@@ -150,84 +152,11 @@ class App extends Component {
 					<h3>BMF - GRW - Datenvisualisierung</h3>
 				</div>
 				<div className="three columns">
-					<button id="conf">Settings</button>
+					<SettingButton/>
+					<Settings/>
 				</div>
 			{/* Settings modal */}
-			<div id="settings" className="import_modal">
-                <div className="import_modal-content">
-					<span className="close">&times;</span>
-					<h2>Settings</h2>
-					<h3>Color:</h3>
-					<label>
-
-							<svg width="10" height="10" className="Purples">
-								<rect width="10" height="10" className="q0-5" />
-							</svg>
-							<svg width="10" height="10" className="Purples">
-								<rect width="10" height="10" className="q1-5" />
-							</svg>
-							<svg width="10" height="10" className="Purples">
-								<rect width="10" height="10" className="q2-5" />
-							</svg>
-							<svg width="10" height="10" className="Purples">
-								<rect width="10" height="10" className="q3-5" />
-							</svg>
-							<svg width="10" height="10" className="Purples">
-								<rect width="10" height="10" className="q4-5" />
-							</svg>
-							<svg width="10" height="10" className="Purples">
-								<rect width="10" height="10" className="q5-5" />
-							</svg>
-
-                    </label>
-					<label>
-
-							<svg width="10" height="10" className="Reds">
-								<rect width="10" height="10" className="q0-5" />
-							</svg>
-							<svg width="10" height="10" className="Reds">
-								<rect width="10" height="10" className="q1-5" />
-							</svg>
-							<svg width="10" height="10" className="Reds">
-								<rect width="10" height="10" className="q2-5" />
-							</svg>
-							<svg width="10" height="10" className="Reds">
-								<rect width="10" height="10" className="q3-5" />
-							</svg>
-							<svg width="10" height="10" className="Reds">
-								<rect width="10" height="10" className="q4-5" />
-							</svg>
-							<svg width="10" height="10" className="Reds">
-								<rect width="10" height="10" className="q5-5" />
-							</svg>
-	
-                    </label>
-
-					<label>
-
-								<svg width="10" height="10" className="Oranges">
-									<rect width="10" height="10" className="q0-5" />
-								</svg>
-								<svg width="10" height="10" className="Oranges">
-									<rect width="10" height="10" className="q1-5" />
-								</svg>
-								<svg width="10" height="10" className="Oranges">
-									<rect width="10" height="10" className="q2-5" />
-								</svg>
-								<svg width="10" height="10" className="Oranges">
-									<rect width="10" height="10" className="q3-5" />
-								</svg>
-								<svg width="10" height="10" className="Oranges">
-									<rect width="10" height="10" className="q4-5" />
-								</svg>
-								<svg width="10" height="10" className="Oranges">
-									<rect width="10" height="10" className="q5-5" />
-								</svg>
-
-						</label>
-									STD:
-					</div>
-				</div>
+			
 			</div>
 		</div>
 		<div className="example-grid-body">
@@ -289,22 +218,7 @@ class App extends Component {
 											<button id="csv_export">Export zu CSV</button>
 											<button id="csv_upload">Import CSV</button>
 
-                        <div id="myImportModal" className="import_modal">
-
-
-                            <div className="import_modal-content">
-													<span className="close">&times;</span>
-													<form method="post" encType="multipart/form-data">
-
-														<input type="file" name="csv" accept="text/csv">
-														</input>
-														<input type="submit">
-														</input>
-
-													</form>
-                            </div>
-
-                        </div>
+                        
 												</div>
 
 
