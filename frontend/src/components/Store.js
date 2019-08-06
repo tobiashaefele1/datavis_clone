@@ -66,6 +66,19 @@ function reducer(state = initalState, action) {
 
 	switch (action.type) {
 
+		case 'INCREMENTINDIKATOR':
+			return produce(state, draft =>{
+				draft.indikator_counter = state.indikator_counter + 1
+				draft.indikators.push('indikator' + draft.indikator_counter )
+			}
+			)
+		case 'DECREMENTINDIKATOR':
+			return produce(state, draft => {
+				draft.indikator_counter = state.indikator_counter - 1
+				draft.indikators.pop()
+			}
+			)
+
 		case 'CHANGEVALUE':
 			return produce(state, draft =>{
 				console.log(state.value_dic)

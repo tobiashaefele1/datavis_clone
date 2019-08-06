@@ -8,6 +8,8 @@ import { Provider } from 'react-redux';
 import Indikators from './indikators/Indikators';
 import { connect } from 'react-redux';
 import { store } from './Store';
+import PlusButton from './buttons/PlusButton';
+import MinButton from './buttons/MinButton';
 
 
 
@@ -276,9 +278,9 @@ class App extends Component {
 							Indikatoren
 							<Indikators  />
 
-										{/* <PlusButton /> */}
-										<button id="indikator_plus">+</button>
-										<button id="indikator_min">-</button>
+										<PlusButton />
+										<MinButton />
+										
 
 										<div className="row"> Export / Upload </div>
 
