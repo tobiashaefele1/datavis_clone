@@ -1,13 +1,12 @@
-from django.shortcuts import render
-
-from server.data.aggregateindic import retrieve_indicator, retrieve_table_data
-from server.data.retrieve_db_data import retrieve_col_names, retrieve_data
-from server.data.retrieve_db_data import retrieve_col_years
-from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponse
 import json
 
+from django.http import HttpResponse
+from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 
+from server.data.aggregateindic import retrieve_indicator, retrieve_table_data
+from server.data.retrieve_db_data import (retrieve_col_names,
+                                          retrieve_col_years, retrieve_data)
 
 
 # Create your views here.
@@ -26,7 +25,17 @@ def index(request):
         indicator_data = retrieve_indicator(received_data)
         table_data = retrieve_table_data(received_data)
         print(table_data)
-    return render(request, 'frontend/index.html', {'col_names_var': col_names_var, 'col_names_ref': col_names_ref, 'years_ref': years_ref, 'years_var': years_var, 'table_data': json.dumps(table_data), 'indicator_data': json.dumps(indicator_data)})
+    print (col_names_var)
+    context ={ 
+              'col_names_var': json.dumps(col_names_var),
+              'col_names_ref': json.dumps(col_names_ref),
+               'years_ref': json.dumps(years_ref),
+                'years_var': json.dumps(years_var),
+                 'table_data': json.dumps(table_data),
+                  'indicator_data': json.dumps(indicator_data)
+              }    
+    
+    return render(request, 'frontend/index.html', context=context)
 
 
 
