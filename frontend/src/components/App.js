@@ -24,10 +24,10 @@ class App extends Component {
 				
 				maps: [
 					"static/bmf/resources/Kreise15map.json",
-					"static/bmf/resources/AMR_12_all_features_topo.json",
-					"static/bmf/resources/AMR_15_all_features_topo.json",
-					"static/bmf/resources/AMR_20_all_features_topo.json",
-					"static/bmf/resources/Bundesland_all_features_topo.json"
+					"static/bmf/resources/AMR12map.json",
+					"static/bmf/resources/AMR15map.json",
+					"static/bmf/resources/AMR20map.json",
+					"static/bmf/resources/bundeslandmap.json"
 				],
 				loading: true,
 				indikator_count: ['indikator1', 'indikator2', 'indikator3']
@@ -76,7 +76,7 @@ class App extends Component {
 					}
 					response.json().then(mapdata => {
 						
-						this.props.dispatch(this.setMapinStore(feature(mapdata, mapdata.objects.Kreise_402_all_features).features, 1))
+						this.props.dispatch(this.setMapinStore(feature(mapdata, mapdata.objects.AMR12map).features, 1))
 					})
 					
 				}).then(console.log('amr12'))
@@ -90,7 +90,7 @@ class App extends Component {
 					}
 					response.json().then(mapdata => {
 						
-						this.props.dispatch(this.setMapinStore(feature(mapdata, mapdata.objects.Kreise_402_all_features).features, 2))
+						this.props.dispatch(this.setMapinStore(feature(mapdata, mapdata.objects.AMR15map).features, 2))
 					})
 					console.log('amr15')
 				})
@@ -103,7 +103,7 @@ class App extends Component {
 					}
 					response.json().then(mapdata => {
 						
-						this.props.dispatch(this.setMapinStore(feature(mapdata, mapdata.objects.Kreise_402_all_features).features, 3))
+						this.props.dispatch(this.setMapinStore(feature(mapdata, mapdata.objects.AMR20map).features, 3))
 					})
 					console.log('amr20')
 				})
@@ -115,7 +115,7 @@ class App extends Component {
 						return
 					}
 					response.json().then(mapdata => {
-						this.props.dispatch(this.setMapinStore(feature(mapdata, mapdata.objects.Kreise_402_all_features).features, 4))
+						this.props.dispatch(this.setMapinStore(feature(mapdata, mapdata.objects.bundeslandmap).features, 4))
 					})
 					console.log('bund')
 				})

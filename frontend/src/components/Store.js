@@ -71,8 +71,8 @@ function reducer(state = initalState, action) {
 				console.log(state.current_map)
 				draft.smalltable[0][1] = state.current_map[action.value].properties.Name,
 				draft.smalltable[1][1] = state.current_map[action.value].properties.Kennziffer,
-				// draft.smalltable[2][1] = state.current_map[action.value].properties.'Bevölkerung (2017)',
-				// draft.smalltable[3][1] = state.current_map[action.value].properties.'Fläche (km^2)',
+				draft.smalltable[2][1] = state.current_map[action.value].properties.Einwohner_2017,
+				draft.smalltable[3][1] = state.current_map[action.value].properties.area_km2,
 				draft.smalltable[4][1] = state.current_map[action.value].properties.Bundesland
 			})
 
