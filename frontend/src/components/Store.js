@@ -25,37 +25,13 @@ const initalState = {
 	years_var: JSON.parse(context.years_var),
 	table_data: JSON.parse(context.table_data),
 	indicator_data: JSON.parse(context.indicator_data),
+	show_modal: false,
 	value_dic: {
-		'var_name_1': null,
-		'var_name_2': null,
-		'var_name_3': null,
-		'var_name_4': null,
-		'var_name_5': null,
-
-		'var_year_1': null,
-		'var_year_2': null,
-		'var_year_3': null,
-		'var_year_4': null,
-		'var_year_5': null,
-
-		'weight_1': null,
-		'weight_2': null,
-		'weight_3': null,
-		'weight_4': null,
-		'weight_5': null,
-
-		'ref_name_1': null,
-		'ref_name_2': null,
-		'ref_name_3': null,
-		'ref_name_4': null,
-		'ref_name_5': null,
-
-		'ref_year_1': null,
-		'ref_year_2': null,
-		'ref_year_3': null,
-		'ref_year_4': null,
-		'ref_year_5': null,
-
+		'var_name_0': null, 'var_name_1': null, 'var_name_2': null, 'var_name_3': null, 'var_name_4': null,'var_name_5': null,
+		'var_year_0': null, 'var_year_1': null, 'var_year_2': null, 'var_year_3': null, 'var_year_4': null, 'var_year_5': null,
+		'weight_0': null, 'weight_1': null, 'weight_2': null, 'weight_3': null, 'weight_4': null, 'weight_5': null,
+		'ref_name_0': null, 'ref_name_1': null, 'ref_name_2': null, 'ref_name_3': null, 'ref_name_4': null, 'ref_name_5': null,
+		'ref_year_0': null, 'ref_year_1': null, 'ref_year_2': null, 'ref_year_3': null, 'ref_year_4': null, 'ref_year_5': null,
 	}
 }
 
@@ -65,6 +41,11 @@ function reducer(state = initalState, action) {
 	console.log('reducer', state, action);
 
 	switch (action.type) {
+
+		case 'MODAL':
+			return produce(state, draft =>{
+				draft.show_modal = !state.show_modal
+			})
 
 		case 'INCREMENTINDIKATOR':
 			return produce(state, draft =>{
