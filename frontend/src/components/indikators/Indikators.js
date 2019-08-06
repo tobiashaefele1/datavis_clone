@@ -13,7 +13,7 @@ class Indikators extends Component {
 			{this.props.indikators.map( (d ,i) => 
 					
 					
-					<Indikator key={i} name={d} />
+					<Indikator key={i} number={i} name={d} />
 				
 			)
 		}

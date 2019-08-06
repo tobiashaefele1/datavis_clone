@@ -1,5 +1,8 @@
 import { createStore } from 'redux';
 import produce from 'immer';
+import * as json from "webpack/lib/JsonParser";
+
+
 
 const initalState = {
 	smalltable: [['Name', 'placeholder'], ['ID', 'placeholder'], ['Bund', 'placeholder'], ['Value', 'placeholder'], ['Rank', 'placeholder']],
@@ -12,14 +15,20 @@ const initalState = {
 	amr20: [],
 	bund: [],
 	indikator_counter: 3,
-	indikators: ['indikator1', 'indikator2', 'indikator3']
+	indikators: ['indikator1', 'indikator2', 'indikator3'],
+	col_names_var: JSON.parse(context.col_names_var),
+	col_names_ref: JSON.parse(context.col_names_ref),
+	years_ref: JSON.parse(context.years_ref),
+	years_var: JSON.parse(context.years_var),
+	table_data: JSON.parse(context.table_data),
+	indicator_data: JSON.parse(context.indicator_data) 
 }
 
 
 
 function reducer(state = initalState, action) {
 	console.log('reducer', state, action);
-	
+
 	switch (action.type) {
 
 		case 'CHANGE_NAME':
