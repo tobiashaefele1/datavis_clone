@@ -30,7 +30,10 @@ const initalState = {
 		'weight_0': null, 'weight_1': null, 'weight_2': null, 'weight_3': null, 'weight_4': null, 'weight_5': null,
 		'ref_name_0': null, 'ref_name_1': null, 'ref_name_2': null, 'ref_name_3': null, 'ref_name_4': null, 'ref_name_5': null,
 		'ref_year_0': null, 'ref_year_1': null, 'ref_year_2': null, 'ref_year_3': null, 'ref_year_4': null, 'ref_year_5': null,
-	}
+	},
+	table_columns: [{
+					Header: 'Kennzifer',
+					accessor: 'Kennzifer'},]
 }
 
 
@@ -39,6 +42,16 @@ function reducer(state = initalState, action) {
 	console.log('reducer', state, action);
 
 	switch (action.type) {
+
+		case 'UPDATECOLUMNS':
+			return produce(state, draft =>{
+				while(draft.table_columns > 1){
+					draft.table_columns.pop()
+				}				
+					state.indikators.map((d, i) =>
+						draft.table_columns.push({ Header: state.value_dic['var_name_' + i], accessor: state.value_dic['var_name_' + i] })
+					)
+			})
 
 		case 'UPDATEDATA':
 			return produce(state, draft =>{
