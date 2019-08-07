@@ -123,15 +123,15 @@ def retrieve_table_data(ajax_dictionary):
 
 #### test the code like that
 
-test_dict = {'var_1': ['Arbeitslosenquote_100', '2015', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', 'HIB', 0.05],
-             'var_2': ['Bruttoinlandsprodukt je Erwerbstätigen_100', '2015', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', 'HIB', 0.05],
-             'var_3': ['', '1990', '0', '2011', 'KRS_15', 'HIB', ''],
-             'var_4': ['', '', '', '', 'KRS_15', 'HIB', ''],
-             'var_5': ['', '', '', '', 'KRS_15', 'HIB', ''],
-             'var_6': ['', '', '', '', 'KRS_15', 'HIB', '']}
-#
-test = retrieve_table_data(test_dict)
-print (test)
+# test_dict = {'var_1': ['Arbeitslosenquote_100', '2015', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', 'HIB', 0.05],
+#              'var_2': ['Bruttoinlandsprodukt je Erwerbstätigen_100', '2015', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', 'HIB', 0.05],
+#              'var_3': ['', '1990', '0', '2011', 'KRS_15', 'HIB', ''],
+#              'var_4': ['', '', '', '', 'KRS_15', 'HIB', ''],
+#              'var_5': ['', '', '', '', 'KRS_15', 'HIB', ''],
+#              'var_6': ['', '', '', '', 'KRS_15', 'HIB', '']}
+# #
+# test = retrieve_table_data(test_dict)
+# print (test)
 
 # # print(test)
 #

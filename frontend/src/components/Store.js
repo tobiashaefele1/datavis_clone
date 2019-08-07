@@ -32,8 +32,10 @@ const initalState = {
 		'ref_year_0': null, 'ref_year_1': null, 'ref_year_2': null, 'ref_year_3': null, 'ref_year_4': null, 'ref_year_5': null,
 	},
 	table_columns: [{
-					Header: 'Kennzifer',
-					accessor: 'Kennzifer'},]
+					Header: 'Kennziffer',
+					accessor: 'Kennziffer'},
+				{Header: 'Aggregated',
+					accessor: 'Aggregated'}]
 }
 
 
@@ -45,12 +47,17 @@ function reducer(state = initalState, action) {
 
 		case 'UPDATECOLUMNS':
 			return produce(state, draft =>{
-				while(draft.table_columns > 1){
+				while(draft.table_columns.length > 2){
 					draft.table_columns.pop()
+				}
+				for(let i = 0; i < state.indikator_counter; i++){
+					console.log("hello " + i)
+					let column_name = state.value_dic['var_name_' + i] + state.value_dic['var_year_' + i]
+					if (column_name in state.table_data[0]) {
+						draft.table_columns.push({ Header: column_name , accessor: column_name })
+					}
 				}				
-					state.indikators.map((d, i) =>
-						draft.table_columns.push({ Header: state.value_dic['var_name_' + i], accessor: state.value_dic['var_name_' + i] })
-					)
+				
 			})
 
 		case 'UPDATEDATA':
