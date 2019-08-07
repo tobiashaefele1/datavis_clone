@@ -45,10 +45,11 @@ class App extends Component {
 		map
 	};
 }
-
+	
 	componentWillMount() {
 		fetch("static/bmf/resources/Kreise15map.json")
 				.then(response => {
+					console.log('done')
 					if (response.status !== 200) {
 						console.log('There was a problem: ${response.status}')
 						return
