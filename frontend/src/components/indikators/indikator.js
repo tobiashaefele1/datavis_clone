@@ -12,7 +12,7 @@ class Indikator extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.value_dic !== this.props.value_dic) {
+        if (prevProps.value_dic !== this.props.value_dic || prevProps.count_map !== this.props.count_map) {
             this.ajax_req()
         }
     }
