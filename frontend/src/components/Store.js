@@ -17,7 +17,6 @@ const initalState = {
 	map_name: ['KRS_15', 'AMR_12', 'AMR_15', 'AMR_20', 'Bundesland_ID'],
 	indikator_counter: 3,
 	indikators: ['indikator1', 'indikator2', 'indikator3'],
-		indikators: ['indikator1', 'indikator2', 'indikator3'],
 	col_names_var: JSON.parse(context.col_names_var),
 	col_names_ref: JSON.parse(context.col_names_ref),
 	years_ref: JSON.parse(context.years_ref),
