@@ -2,18 +2,48 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 
 class Indikator extends Component {
-	
-	
+
+
 
 	handleChange = (e) => { 
-
 		this.props.dispatch(changeValue(e.target.id,  e.target.value))
+		this.changevars()
+
 	}
-	componentDidUpdate(prevProps){
-	if (prevProps.value_dic !== this.props.value_dic) {
-		this.ajax_req()
+	componentDidUpdate(prevProps) {
+		if (prevProps.value_dic !== this.props.value_dic) {
+			this.ajax_req()
+		}
 	}
-	}
+
+	changevars(){
+		var i;
+		console.log("hello");
+		console.log(this.props.current_map);
+		var template = this.props.current_map;
+		console.log(this.props.current_map[1].properties);
+		console.log(template.length);
+		console.log(this.props.indicator_data.length);
+		for (i = 0; i < template.length; i++)
+			{
+				var j;
+				for (j = 0; j <this.props.indicator_data.length; j++)
+					{
+					if (parsefloat(template[i].properties.Kennziffer) == parsefloat(this.props.indicator_data[0][j]))
+						{template[i].properties['indicator'] = this.props.indicator_data[1][j]}
+					}
+			}
+		console.log(template['indicator'])
+
+		 return {
+			type: "CHANGEVAR",
+			template,
+		};
+
+	  }
+
+
+
 
 
 	post_req(){
@@ -56,11 +86,11 @@ class Indikator extends Component {
 			(this.props.indikator_count >= 5 ? this.props.value_dic['ref_name_5'] : ""),
 			(this.props.indikator_count >= 5 ? this.props.value_dic['ref_year_5'] : ""),
 			this.props.count_map, 'HIB', (this.props.indikator_count >= 5 ? this.props.value_dic['weight_5'] : "")],
-	
+
 	};
 
 		return data;
-	
+
 }
 	ajax_req(){
 		$.ajax({
@@ -148,7 +178,9 @@ class Indikator extends Component {
 }
 function changeData(value) {
 	Indikator.updateData(value)
-	
+
+
+
 }
 function changeValue(value1, value2) {
 	return {
@@ -157,23 +189,14 @@ function changeValue(value1, value2) {
 		value2
 	};
 }
-
-function changevars(abc) {
-
-	var i;
-	for (i = 0; i < state.current_map.properties.length; i++)
-		{
-			var j;
-			for (j = 0; j <state.indicator_data[0].length; j++)
-				{
-				if (parsefloat(state.current_map.properties.CC_2[i]) == parsefloat(state.indicator_data[0][j]))
-					{draft.current_map.properties['indicator'][i] = state.indicator_data[j]}
-				}
-		}
+// function to transform the current mapp to inject the returned indicator data from the ajax call
 
 
 
-}
+
+
+
+
 
 
 
@@ -192,7 +215,8 @@ function mapStateToProps(state) {
 		indicator_data: state.indicator_data, 
 		indikator_count: state.indikator_count,
 		value_dic: state.value_dic,
-		count_map: state.count_map
+		count_map: state.count_map,
+		current_map : state.current_map,
 	};
 }
 

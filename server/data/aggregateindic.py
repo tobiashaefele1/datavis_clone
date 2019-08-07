@@ -65,9 +65,11 @@ def retrieve_indicator (ajax_dictionary):
     return result
 
 
-def retrieve_table_data (ajax_dictionary):
+
+
+def retrieve_table_data(ajax_dictionary):
     ''' THIS FUNCTION THAT AN AJAX DICTIONNARY AS AN INPUT
-    it returns a list of lists of the format output = [[ID1, ID2, ID3....],[var1_1, var1_2...],[var2_1, var2_2...]]
+    it returns a list of lists of the format output = [[ID1,var1, var2.],[ID2, var1, var2...],[etc
     this can be used to poplate the table
     '''
     # this code scans the dictionary to ensure only complete entries are being searched for in the db
@@ -76,45 +78,61 @@ def retrieve_table_data (ajax_dictionary):
 
     # this code returns the database array from all valid entries and stores them in a list
     list = []
+    dictionary_keys = []
+    dictionary_keys.append("Kennziffer")
     for i in range(0, len(var)):
         list.append(retrieve_data(var[i][0], var[i][1], var[i][2], var[i][3], var[i][4]))
+        dictionary_keys.append(var[i][0] + " " + var[i][1])
     # print(list)
     result = []
     var_name = []
+    print (dictionary_keys)
+
 
     ## the following code copies the layer IDs as the first column into the results list
     for (j, k) in list[0]:
-        var_name.append(j)
-    result.append(var_name)
+        var_name.append([j])
+    result = var_name
     # print (result)
 
+    ## the following converts all of this into a list of lists in the right format
     for x in list:
-        temp = []
+        count = 0
         for (j,k) in x:
-            temp.append(k)
-        result.append(temp)
-    # print(data)
+            result[count].append(k)
+            count +=1
 
-    return result
+    # the following converts this into a list of dicts
+    target_dict = []
+    for x in result:
+        count = 0
+        temp_dict = {}
+        for y in x:
+            temp_dict[dictionary_keys[count]] = y
+            count +=1
+        target_dict.append(temp_dict)
+
+    return target_dict
 
 
 
 
 
 
-    return result
+
 
 #### test the code like that
 
-# test_dict = {'var_1': ['Arbeitslosenquote_100', '2015', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', 'HIB', 0.05],
-#              'var_2': ['Arbeitslosenquote_100', '2015', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', 'HIB', 0.05],
-#              'var_3': ['', '1990', '0', '2011', 'KRS_15', 'HIB', ''],
-#              'var_4': ['', '', '', '', 'KRS_15', 'HIB', ''],
-#              'var_5': ['', '', '', '', 'KRS_15', 'HIB', ''],
-#              'var_6': ['', '', '', '', 'KRS_15', 'HIB', '']}
+test_dict = {'var_1': ['Arbeitslosenquote_100', '2015', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', 'HIB', 0.05],
+             'var_2': ['Bruttoinlandsprodukt je Erwerbstätigen_100', '2015', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', 'HIB', 0.05],
+             'var_3': ['', '1990', '0', '2011', 'KRS_15', 'HIB', ''],
+             'var_4': ['', '', '', '', 'KRS_15', 'HIB', ''],
+             'var_5': ['', '', '', '', 'KRS_15', 'HIB', ''],
+             'var_6': ['', '', '', '', 'KRS_15', 'HIB', '']}
 #
-# test = retrieve_table_data(test_dict)
-#
+test = retrieve_table_data(test_dict)
+print (test)
+
 # # print(test)
 #
 # print(len(test[3]))
@@ -171,3 +189,38 @@ def retrieve_table_data (ajax_dictionary):
 # var = aggregate_args(arg1, arg2, arg3, arg4)
 #
 # list = build_indicator(var)
+
+
+#### THIS IS THE OLD FUNCTION TO RETRUN TABLE DATA THAT RETURNS A LIST OF LISTS RATHER THAN A DICT LIST AS AN OUTPUT
+#
+# def retrieve_table_data (ajax_dictionary):
+#     ''' THIS FUNCTION THAT AN AJAX DICTIONNARY AS AN INPUT
+#     it returns a list of lists of the format output = [[ID1,var1, var2.],[ID2, var1, var2...],[etc
+#     this can be used to poplate the table
+#     '''
+#     # this code scans the dictionary to ensure only complete entries are being searched for in the db
+#     var = []
+#     var = aggregate_args(ajax_dictionary)
+#
+#     # this code returns the database array from all valid entries and stores them in a list
+#     list = []
+#     for i in range(0, len(var)):
+#         list.append(retrieve_data(var[i][0], var[i][1], var[i][2], var[i][3], var[i][4]))
+#     # print(list)
+#     result = []
+#     var_name = []
+#
+#     ## the following code copies the layer IDs as the first column into the results list
+#     for (j, k) in list[0]:
+#         var_name.append([j])
+#     result = var_name
+#     # print (result)
+#
+#     for x in list:
+#         count = 0
+#         for (j,k) in x:
+#             result[count].append(k)
+#             count +=1
+#     # print(data)
+#
+#     return result
