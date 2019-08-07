@@ -129,7 +129,7 @@ def retrieve_table_data(ajax_dictionary):
 
 
 
-
+    print(target_dict)
     return target_dict
 
 
