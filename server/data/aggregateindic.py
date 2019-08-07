@@ -78,10 +78,9 @@ def retrieve_table_data(ajax_dictionary):
 
     # this checks whether the aggreagted indicator comes back empty - if it does no valid
     # combination has been submitted, just return empty list
-    if aggregated_indicator == []:
+    if aggregated_indicator == [[]]:
         return empty_return
     else:
-
         aggregated_indicator = aggregated_indicator[1]
         # print(aggregated_indicator)
 
