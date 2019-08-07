@@ -173,7 +173,7 @@ function reducer(state = initalState, action) {
 		case 'CHANGEVARS':
 			return product(state, draft => {
 
-				// draft.current_map = valuevaluevalefromfunction
+				draft.current_map = valuevaluevalefromfunction
 
 				}
 			)

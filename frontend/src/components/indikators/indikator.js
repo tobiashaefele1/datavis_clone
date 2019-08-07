@@ -19,23 +19,24 @@ class Indikator extends Component {
 
 	changevars(){
 		var i;
-		console.log("hello");
+		// console.log("hello");
 		// console.log(this.props.current_map);
 		var template = this.props.current_map;
 		// console.log(this.props.current_map[1].properties);
 		// console.log(template.length);
-		console.log(this.props.indicator_data.length);
-		console.log(template.length);
-		console.log(template[1].properties.Kennziffer);
+		// console.log(this.props.indicator_data.length);
+		// console.log(template.length);
+		// console.log(template[1].properties.Kennziffer);
 		// console.log(this.props.indicator_data[0].length);
 		// console.log(this.props.indicator_data[0][1])
+		var value = this.props.indicator_data;
 		for (i = 0; i < template.length; i++)
 			{
 				var j;
-				for (j = 0; j <this.props.indicator_data[0].length; j++)
-					{if (template[i].properties.Kennziffer == this.props.indicator_data[0][j])
-						{template[i].properties.indicator = this.props.indicator_data[1][j]}
-						console.log(template[i].properties.indicator)
+				for (j = 0; j <value[0].length; j++)
+					{if (template[i].properties.Kennziffer == value[0][j])
+						{template[i].properties.indicator = value[1][j]}
+						// console.log(template[i].properties.indicator)
 					}
 			}
 		console.log(template);
