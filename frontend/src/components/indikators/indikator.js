@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import 'jquery'
 
 class Indikator extends Component {
 
@@ -20,7 +21,13 @@ class Indikator extends Component {
 		var i;
 		
 		var template = this.props.current_map;
-		
+		// console.log(this.props.current_map[1].properties);
+		// console.log(template.length);
+		console.log(this.props.indicator_data.length);
+		console.log(template.length);
+		console.log(template[1].properties.Kennziffer);
+		// console.log(this.props.indicator_data[0].length);
+		// console.log(this.props.indicator_data[0][1])
 		for (i = 0; i < template.length; i++)
 			{
 				var j;
@@ -34,8 +41,13 @@ class Indikator extends Component {
 						
 					}
 			}
-		this.props.dispatch(changeVars(template))
-		 
+		console.log(template);
+
+		 return {
+			type: "CHANGEVAR",
+			template,
+		};
+
 	  }
 
 
