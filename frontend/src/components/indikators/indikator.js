@@ -6,15 +6,17 @@ class Indikator extends Component {
 
 
 	handleChange = (e) => { 
-		this.changevars()
 		this.props.dispatch(changeValue(e.target.id,  e.target.value))
+		this.changevars()
+
 	}
-	componentDidUpdate(prevProps){
-	if (prevProps.value_dic !== this.props.value_dic) {
-		this.ajax_req()
+	componentDidUpdate(prevProps) {
+		if (prevProps.value_dic !== this.props.value_dic) {
+			this.ajax_req()
+		}
 	}
 
-	 changevars () {
+	changevars(){
 		var i;
 		console.log("hello");
 		console.log(this.props.current_map);
@@ -27,8 +29,8 @@ class Indikator extends Component {
 				var j;
 				for (j = 0; j <this.props.indicator_data.length; j++)
 					{
-					if (parsefloat(template.Kennziffer[i]) == parsefloat(this.props.indicator_data[0][j]))
-						{template['indicator'][i] = this.props.indicator_data[j]}
+					if (parsefloat(template[i].properties.Kennziffer) == parsefloat(this.props.indicator_data[0][j]))
+						{template[i].properties['indicator'] = this.props.indicator_data[1][j]}
 					}
 			}
 		console.log(template['indicator'])
