@@ -77,7 +77,7 @@ def retrieve_table_data(ajax_dictionary):
     ## this code retrieves the indicator from the database
     aggregated_indicator = retrieve_indicator(ajax_dictionary)
     aggregated_indicator = aggregated_indicator[1]
-    print(aggregated_indicator)
+    # print(aggregated_indicator)
 
 
 
