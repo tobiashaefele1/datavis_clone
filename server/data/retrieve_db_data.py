@@ -297,6 +297,44 @@ def retrieve_col_years(table_name):
         return output
 
 
+def retrieve_distinct_years (var_name):
+    distinct_years = []
+
+    # connect to database
+    mySQLconnection = pymysql.connect(host='localhost',
+                                      database='mydb',
+                                      user='user',
+                                      password='password')
+
+    # Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
+    sql_select_Query = (""" SELECT
+                                DISTINCT `YEAR`
+                            FROM `KREISE`
+                            WHERE `%s` IS NOT NULL; """ % (var_name))
+    try:
+        # executed quiery and closes cursor
+        cursor = mySQLconnection.cursor()
+        cursor.execute(sql_select_Query)
+        distinct_years = cursor.fetchall()
+        cursor.close()
+        # error handling
+    except Error as e:
+        print("Error while connecting to MySQL", e)
+    finally:
+        # closing database connection.
+        mySQLconnection.close()
+        print("MySQL connection is closed")
+        output = []
+        for (x,) in distinct_years:
+                output.append(x)
+        # print (output)
+        return output
+
+
+
+
+
+
 # # TESTS FOR THIS SECTION
 #
 # col_years = retrieve_col_years("Kreise")

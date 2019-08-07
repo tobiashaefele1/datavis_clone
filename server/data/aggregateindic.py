@@ -1,4 +1,4 @@
-from server.data.retrieve_db_data import retrieve_sd_data, retrieve_data
+from server.data.retrieve_db_data import retrieve_sd_data, retrieve_data, retrieve_distinct_years
 
 
 def aggregate_args(ajax_dictionary):
@@ -122,19 +122,49 @@ def retrieve_table_data(ajax_dictionary):
 
 #### test the code like that
 
-# test_dict = {'var_1': ['Arbeitslosenquote_100', '2015', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', 'HIB', 0.05],
-#              'var_2': ['Bruttoinlandsprodukt je Erwerbstätigen_100', '2014', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', 'HIB', 0.05],
-#              'var_3': ['', '1990', '0', '2011', 'KRS_15', 'HIB', ''],
-#              'var_4': ['', '', '', '', 'KRS_15', 'HIB', ''],
-#              'var_5': ['', '', '', '', 'KRS_15', 'HIB', ''],
-#              'var_6': ['', '', '', '', 'KRS_15', 'HIB', '']}
-# # #
+test_dict = {'var_1': ['Arbeitslosenquote_100', '2015', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', 'HIB', 0.05],
+             'var_2': ['Bruttoinlandsprodukt je Erwerbstätigen_100', '2014', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', 'HIB', 0.05],
+             'var_3': ['', '1990', '0', '2011', 'KRS_15', 'HIB', ''],
+             'var_4': ['', '', '', '', 'KRS_15', 'HIB', ''],
+             'var_5': ['', '', '', '', 'KRS_15', 'HIB', ''],
+             'var_6': ['', '', '', '', 'KRS_15', 'HIB', '']}
+# #
 # test = retrieve_table_data(test_dict)
 # print (test)
-
-# print(test)
+#
+# # print(test)
 
 # print(len(test[3]))
+
+
+
+def retrieve_var_year (ajax_dictionary):
+    chosen_indicators = []
+    for k,v in ajax_dictionary.items():
+        chosen_indicators.append(v[0])
+
+    dict_keys = ["var_year_0", "var_year_1", "var_year_2", "var_year_3", "var_year_4", "var_year_5"]
+    dictionary = {}
+
+    output = {"var_year_0"}
+    counter = 0
+    for x in chosen_indicators:
+        if x != '':
+            print (x)
+            dictionary[dict_keys[counter]] = retrieve_distinct_years(x)
+            counter += 1
+
+        else:
+            dictionary[dict_keys[counter]] = ""
+            counter += 1
+
+
+    return dictionary
+
+# test = retrieve_var_year(test_dict)
+# print (test)
+
+
 
 
 ############## GARBAGE CODE - NO LONGER NEEDED
