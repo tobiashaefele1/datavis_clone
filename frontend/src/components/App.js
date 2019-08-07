@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Map from "./maps/Map";
 import MapSelector from './maps/MapSelector';
-import { feature } from "../../static/bmf/js/topojson";
+import { feature } from "topojson";
 import SmallTable from './tables/SmallTable';
 import { Provider } from 'react-redux';
 import Indikators from './indikators/Indikators';
@@ -47,25 +47,22 @@ class App extends Component {
 }
 
 	componentWillMount() {
-			fetch(this.state.maps[0])
+		fetch("static/bmf/resources/Kreise15map.json")
 				.then(response => {
 					if (response.status !== 200) {
 						console.log('There was a problem: ${response.status}')
 						return
 					} 
-					console.log(response)
+					
 					response.json().then(mapdata => {
-						console.log(mapdata)
 						this.props.dispatch(this.setMapinStore(feature(mapdata, mapdata.objects.Kreise15map).features, 0))
-
-							this.setState({
-							loading: false
-						})
+						this.props.dispatch({type: 'LOADINGDONE'})
+					})
 						
 					})
-				})
+				}
 			
-	}
+	
 
 	componentDidMount() {
 		
@@ -80,7 +77,7 @@ class App extends Component {
 						this.props.dispatch(this.setMapinStore(feature(mapdata, mapdata.objects.AMR12map).features, 1))
 					})
 					
-				}).then(console.log('amr12'))
+				})
 		
 			
 			fetch(this.state.maps[2])
@@ -93,7 +90,7 @@ class App extends Component {
 						
 						this.props.dispatch(this.setMapinStore(feature(mapdata, mapdata.objects.AMR15map).features, 2))
 					})
-					console.log('amr15')
+				
 				})
 
 			fetch(this.state.maps[3])
@@ -106,7 +103,7 @@ class App extends Component {
 						
 						this.props.dispatch(this.setMapinStore(feature(mapdata, mapdata.objects.AMR20map).features, 3))
 					})
-					console.log('amr20')
+					
 				})
 			
 			fetch(this.state.maps[4])
@@ -118,7 +115,7 @@ class App extends Component {
 					response.json().then(mapdata => {
 						this.props.dispatch(this.setMapinStore(feature(mapdata, mapdata.objects.bundeslandmap).features, 4))
 					})
-					console.log('bund')
+					
 				})
 
 		
@@ -134,13 +131,10 @@ class App extends Component {
 
 
 	render() {
-		if (this.state.loading) {
-			return 'Loading...'
-		} 
 		return(
 			
 		<div>
-			{console.log(this.props.kreise)}
+			
 		<div className="example-grid-logo">
 			{/* Top Row */}
 			<div className="row">
