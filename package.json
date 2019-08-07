@@ -45,6 +45,7 @@
     "react-simple-maps": "^0.12.1",
     "react-table": "^6.10.0",
     "redux": "^4.0.4",
-    "topojson": "^3.0.2"
+    "topojson": "^3.0.2",
+    "topojson-simplify": "^3.0.2"
   }
 }

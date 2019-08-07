@@ -171,9 +171,9 @@ function reducer(state = initalState, action) {
 
 		// insertion Tobias: load map here with indicators
 		case 'CHANGEVARS':
-			return product(state, draft => {
+			return produce(state, draft => {
 
-				draft.current_map = valuevaluevalefromfunction
+				draft.current_map = [...action.template]
 
 				}
 			)

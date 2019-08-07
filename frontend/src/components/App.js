@@ -4,7 +4,6 @@ import Map from "./maps/Map";
 import MapSelector from './maps/MapSelector';
 import { feature } from "topojson";
 import SmallTable from './tables/SmallTable';
-import { Provider } from 'react-redux';
 import Indikators from './indikators/Indikators';
 import { connect } from 'react-redux';
 import { store } from './Store';
@@ -15,36 +14,18 @@ import Settings from './modals/Settings';
 import Table from './tables/Table';
 
 
-
-
-
 class App extends Component {
-	constructor() {
-		super(),
-			this.state = {
-				
-				maps: [
-					"static/bmf/resources/Kreise15map.json",
-					"static/bmf/resources/AMR12map.json",
-					"static/bmf/resources/AMR15map.json",
-					"static/bmf/resources/AMR20map.json",
-					"static/bmf/resources/bundeslandmap.json"
-				],
-				loading: true,
-				indikator_count: ['indikator1', 'indikator2', 'indikator3']
-
-			},
-		this.smalltable = [['Name', 'placeholder'], ['ID', 'placeholder'], ['Bund', 'placeholder'], ['Value', 'placeholder'], ['Rank', 'placeholder']]
-
+	constructor(props) {
+		super(props)
 	}
 	
 	setMapinStore(value, map) {
-	return {
-		type: "SETMAPINSTORE",
-		value,
-		map
-	};
-}
+		return {
+			type: "SETMAPINSTORE",
+			value,
+			map
+		};
+	}
 	
 	componentWillMount() {
 		fetch("static/bmf/resources/Kreise15map.json")
@@ -54,20 +35,21 @@ class App extends Component {
 						console.log('There was a problem: ${response.status}')
 						return
 					} 
-					
 					response.json().then(mapdata => {
 						this.props.dispatch(this.setMapinStore(feature(mapdata, mapdata.objects.Kreise15map).features, 0))
 						this.props.dispatch({type: 'LOADINGDONE'})
 					})
 						
 					})
+				
+			
 				}
 			
 	
 
 	componentDidMount() {
-		
-			fetch(this.state.maps[1])
+			
+			fetch("static/bmf/resources/AMR12map.json")
 				.then(response => {
 					if (response.status !== 200) {
 						console.log('There was a problem: ${response.status}')
@@ -81,7 +63,7 @@ class App extends Component {
 				})
 		
 			
-			fetch(this.state.maps[2])
+			fetch("static/bmf/resources/AMR15map.json")
 				.then(response => {
 					if (response.status !== 200) {
 						console.log('There was a problem: ${response.status}')
@@ -94,7 +76,7 @@ class App extends Component {
 				
 				})
 
-			fetch(this.state.maps[3])
+			fetch("static/bmf/resources/AMR20map.json")
 				.then(response => {
 					if (response.status !== 200) {
 						console.log('There was a problem: ${response.status}')
@@ -107,7 +89,7 @@ class App extends Component {
 					
 				})
 			
-			fetch(this.state.maps[4])
+			fetch("static/bmf/resources/bundeslandmap.json")
 				.then(response => {
 					if (response.status !== 200) {
 						console.log('There was a problem: ${response.status}')
@@ -160,21 +142,21 @@ class App extends Component {
 			<div className="row">
 				<div className="box">
 					<div className="three columns" id="big">
-						<Provider store={store}>	
+
 						<MapSelector /> 
 
 						
 						<SmallTable  />
-						</Provider>
+
 
 
 					</div>
 					<div className="six columns" id="big">
 						
 
-								<Provider store={store}>
+
 									<Map  />
-								</Provider>
+
 
 
 					
@@ -211,7 +193,7 @@ class App extends Component {
 										<div className="row"> Export / Upload </div>
 
 										<div className="row">
-											<button id="csv_export">Export zu CSV</button>
+
 											<button id="csv_upload">Import CSV</button>
 
                         
@@ -241,14 +223,6 @@ class App extends Component {
 
 }
 
-function mapStateToProps(state) {
-	return {
-		kreise: state.kreise,
-		amr12: state.amr12,
-		amr15: state.amr15,
-		amr20: state.amr20,
-		bund: state.bund
-	};
-}
 
-export default connect(mapStateToProps)(App)
+
+export default connect()(App)
