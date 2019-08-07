@@ -29,10 +29,11 @@ def retrieve_indicator(ajax_dictionary):
     # this code scans the dictionary to ensure only complete entries are being searched for in the db
     var = []
     var = aggregate_args(ajax_dictionary)
+    empty_return = [[]]
 
     result = []
     if var == []:
-        return result
+        return empty_return
 
     else:
         # this code returns the database array from all valid entries and stores them in a list
@@ -73,18 +74,19 @@ def retrieve_table_data(ajax_dictionary):
 
     ## this code retrieves the indicator from the database
     aggregated_indicator = retrieve_indicator(ajax_dictionary)
-    var = []
+    empty_return = [[]]
 
     # this checks whether the aggreagted indicator comes back empty - if it does no valid
     # combination has been submitted, just return empty list
     if aggregated_indicator == []:
-        return var
+        return empty_return
     else:
 
         aggregated_indicator = aggregated_indicator[1]
         # print(aggregated_indicator)
 
         # this code scans the dictionary to ensure only complete entries are being searched for in the db
+        var = []
         var = aggregate_args(ajax_dictionary)
 
         # this code returns the database array from all valid entries and stores them in a list
