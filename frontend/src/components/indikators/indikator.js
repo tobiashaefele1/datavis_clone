@@ -126,11 +126,11 @@ class Indikator extends Component {
                     </div>
 
                     <div className="three columns">
-                        <label className="indicator">Jahr </label>
+                        <label >Jahr </label>
                         <select className="u-80-width" defaultValue="0" id={`var_year_${this.props.number}`}
                                 onChange={this.handleChange.bind(this)}>
                             <option disabled value="0"> -- Wähle Variable --</option>
-                            {this.props.years_var.map((d, i) =>
+                            {this.props.var_year_data[`var_year_${this.props.number}`].map((d, i) =>
                                 <option value={d} key={i}>{d}</option>
                             )
                             }
@@ -212,7 +212,8 @@ function mapStateToProps(state) {
         value_dic: state.value_dic,
         count_map: state.count_map,
         current_map: state.current_map,
-        map_name: state.map_name
+		map_name: state.map_name,
+		var_year_data: state.var_year_data
     };
 }
 

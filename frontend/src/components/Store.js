@@ -21,8 +21,8 @@ const initalState = {
 	col_names_ref: JSON.parse(context.col_names_ref),
 	years_ref: JSON.parse(context.years_ref),
 	years_var: JSON.parse(context.years_var),
-	table_data: [],
-	indicator_data: [],
+	table_data: [[]],
+	indicator_data: [[]],
 	show_modal: false,
 	value_dic: {
 		'var_name_0': null, 'var_name_1': null, 'var_name_2': null, 'var_name_3': null, 'var_name_4': null,'var_name_5': null,
@@ -36,7 +36,9 @@ const initalState = {
 					accessor: 'Kennziffer'},
 				{Header: 'Aggregated',
 					accessor: 'selbstersteller_Indikator'}],
-	loading: true
+	loading: true,
+	var_year_data: { 'var_year_0': [], 'var_year_1': [], 'var_year_2': [], 'var_year_3': [], 'var_year_4': [], 'var_year_5': []},
+	
 }
 
 
@@ -72,6 +74,7 @@ function reducer(state = initalState, action) {
 			return produce(state, draft =>{
 				draft.table_data = [...action.data.table_data],
 				draft.indicator_data = [...action.data.indicator_data]
+				draft.var_year_data = [...action.data.var_year_data]
 				console.log(draft.table_data)
 				console.log(draft.indicator_data)
 			})

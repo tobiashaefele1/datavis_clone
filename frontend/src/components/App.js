@@ -29,13 +29,13 @@ class App extends Component {
     componentWillMount() {
         fetch("static/bmf/resources/Kreise15map.json")
             .then(response => {
-                console.log('done')
+        
                 if (response.status !== 200) {
                     console.log('There was a problem: ${response.status}')
                     return
                 }
                 response.json().then(mapdata => {
-					console.log('json done')
+				
                     this.props.dispatch(this.setMapinStore(feature(mapdata, mapdata.objects.Kreise15map).features, 0))
                     this.props.dispatch({type: 'LOADINGDONE'})
                 })
@@ -101,14 +101,25 @@ class App extends Component {
             })
 
 
-    }
-
+	}
+	
+	mobile(value){
+		if(value < 1000){
+		this.props.dispatch({
+			type: 'DECREMENTINDIKATOR'
+		})
+		this.props.dispatch({
+			type: 'DECREMENTINDIKATOR'
+		})
+	}
+	}
 
     render() {
         return (
 
             <div>
-
+			{ this.mobile(window.screen.width) }
+				
                 <div className="example-grid-logo">
                     {/* Top Row */}
                     <div className="row">
@@ -180,7 +191,8 @@ class App extends Component {
                                 <div className="row">
 
                                     <button id="csv_upload">Import CSV</button>
-
+									
+								
 
                                 </div>
 
