@@ -37,8 +37,39 @@
   font-weight: 600;
   letter-spacing: .1rem; }
 
+  #var_year_0,
+#var_year_1,
+#var_year_2,
+#var_year_3,
+#var_year_4,
+#var_year_5,
+#weight_0,
+#weight_1,
+#weight_2,
+#weight_3,
+#weight_4,
+#weight_5  {
+	width: 80%;
+}
 
 }
+
+#var_year_0,
+#var_year_1,
+#var_year_2,
+#var_year_3,
+#var_year_4,
+#var_year_5,
+#weight_0,
+#weight_1,
+#weight_2,
+#weight_3,
+#weight_4,
+#weight_5 {
+	width: 40%;
+}
+
+
 #big {
   background: #EEE;
   text-align: center;
@@ -253,4 +284,6 @@ display: flex;
   background-color: #000000;
   color: white;
 }
+
+
 
