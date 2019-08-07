@@ -32,11 +32,11 @@ class Table extends Component {
 					age: 28
 				}],
 				columns: [{
-					Header: 'Name',
-					accessor: 'name'
+					Header: 'Kennziffer',
+					accessor: 'Kennziffer'
 				}, {
-					Header: 'Age',
-					accessor: 'age'
+					Header: 'Arbeitslosenquote_100 2011',
+						accessor: 'Arbeitslosenquote_100 2011'
 				}
 			],
 				dataToDownload: []
@@ -59,13 +59,7 @@ class Table extends Component {
 		})
 	} 
 	
-	componentWillUpdate(){
-		this.props.dispatch({type: 'UPDATECOLUMNS'})
-		
-	}
-	componentDidMount(){
-		console.log(this.props.table_columns)
-	}
+	
 	
 	render() {
 		return (
@@ -85,8 +79,8 @@ class Table extends Component {
 
 				</div>
 				<div>
-					<ReactTable ref={(r) => this.reactTable = r } data={this.state.table}
-					columns={this.state.columns}
+					<ReactTable ref={(r) => this.reactTable = r } data={this.props.table_data}
+					columns={this.props.table_columns}
 					defaultPageSize= {50} pageSizeOptions={[10,50,100,200]}/>
 					
 				</div>
