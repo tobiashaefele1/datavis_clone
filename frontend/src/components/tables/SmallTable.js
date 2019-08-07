@@ -3,9 +3,6 @@ import { connect } from 'react-redux'
 
 class SmallTable extends Component {
 
-
-
-
 	render() {
 		return (
 			<table id="specInfo" className="u-80-width">

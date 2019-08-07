@@ -12,7 +12,6 @@ class Table extends Component {
 			super(props),
 			this.download = this.download.bind(this);
 			this.state ={
-				
 				dataToDownload: []
 		}
 
@@ -37,7 +36,7 @@ class Table extends Component {
 	
 	render() {
 		return (
-			<div>
+			<div style={{marginLeft: '20px', marginRight: '20px'}}>
 				<div>
 					<button onClick={this.download}>
 						Download
@@ -55,7 +54,8 @@ class Table extends Component {
 				<div>
 					<ReactTable ref={(r) => this.reactTable = r } data={this.props.table_data}
 					columns={this.props.table_columns}
-					 pageSizeOptions={[10,50,100,200]}/>
+					 pageSizeOptions={[10,50,100,200]}
+					 widht={500}/>
 					
 				</div>
 			</div>
@@ -66,9 +66,9 @@ class Table extends Component {
 function mapStateToProps(state) {
 	return {
 		table_data: state.table_data,
-		value_dic: state.value_dic,
 		indikators: state.indikators,
 		table_columns: state.table_columns
+
 	};
 }
 

@@ -4,6 +4,9 @@ import {connect} from 'react-redux';
 
 class Indikators extends Component {
 	
+	componentDidUpdate(){
+		this.props.dispatch({type: 'UPDATECOLUMNS'})
+	}
 	render() {
 		return (
 			<div key='indikators'>
