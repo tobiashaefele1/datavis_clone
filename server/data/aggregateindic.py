@@ -72,9 +72,19 @@ def retrieve_table_data(ajax_dictionary):
     it returns a list of lists of the format output = [[ID1,var1, var2.],[ID2, var1, var2...],[etc
     this can be used to poplate the table
     '''
+
+
+    ## this code retrieves the indicator from the database
+    aggregated_indicator = retrieve_indicator(ajax_dictionary)
+    aggregated_indicator = aggregated_indicator[1]
+    # print(aggregated_indicator)
+
+
+
     # this code scans the dictionary to ensure only complete entries are being searched for in the db
     var = []
     var = aggregate_args(ajax_dictionary)
+
 
     # this code returns the database array from all valid entries and stores them in a list
     list = []
@@ -86,7 +96,7 @@ def retrieve_table_data(ajax_dictionary):
     # print(list)
     result = []
     var_name = []
-    print (dictionary_keys)
+    # print (dictionary_keys)
 
 
     ## the following code copies the layer IDs as the first column into the results list
@@ -104,13 +114,21 @@ def retrieve_table_data(ajax_dictionary):
 
     # the following converts this into a list of dicts
     target_dict = []
+    aggreg_count = 0
     for x in result:
         count = 0
         temp_dict = {}
         for y in x:
             temp_dict[dictionary_keys[count]] = y
             count +=1
+        ### the following lines of code add the value from the aggreagted indicator
+        temp_dict["selbstersteller_Indikator"] = aggregated_indicator[aggreg_count]
+        aggreg_count += 1
+        ## and finally, the following lines of code append the dict to the summary list output
         target_dict.append(temp_dict)
+
+
+
 
     return target_dict
 
@@ -224,3 +242,54 @@ def retrieve_table_data(ajax_dictionary):
 #     # print(data)
 #
 #     return result
+
+
+## THIS IS THE WORKING VERSION; NOW TRYING TO ADD THE AGGREGATED INDICATOR TO THIS
+
+
+# def retrieve_table_data(ajax_dictionary):
+#     ''' THIS FUNCTION THAT AN AJAX DICTIONNARY AS AN INPUT
+#     it returns a list of lists of the format output = [[ID1,var1, var2.],[ID2, var1, var2...],[etc
+#     this can be used to poplate the table
+#     '''
+#     # this code scans the dictionary to ensure only complete entries are being searched for in the db
+#     var = []
+#     var = aggregate_args(ajax_dictionary)
+#
+#     # this code returns the database array from all valid entries and stores them in a list
+#     list = []
+#     dictionary_keys = []
+#     dictionary_keys.append("Kennziffer")
+#     for i in range(0, len(var)):
+#         list.append(retrieve_data(var[i][0], var[i][1], var[i][2], var[i][3], var[i][4]))
+#         dictionary_keys.append(var[i][0] + " " + var[i][1])
+#     # print(list)
+#     result = []
+#     var_name = []
+#     print (dictionary_keys)
+#
+#
+#     ## the following code copies the layer IDs as the first column into the results list
+#     for (j, k) in list[0]:
+#         var_name.append([j])
+#     result = var_name
+#     # print (result)
+#
+#     ## the following converts all of this into a list of lists in the right format
+#     for x in list:
+#         count = 0
+#         for (j,k) in x:
+#             result[count].append(k)
+#             count +=1
+#
+#     # the following converts this into a list of dicts
+#     target_dict = []
+#     for x in result:
+#         count = 0
+#         temp_dict = {}
+#         for y in x:
+#             temp_dict[dictionary_keys[count]] = y
+#             count +=1
+#         target_dict.append(temp_dict)
+#
+#     return target_dict

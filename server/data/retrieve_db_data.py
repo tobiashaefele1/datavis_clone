@@ -170,8 +170,8 @@ def retrieve_sd (var_name, var_year, ref_name, ref_year, layer):
     # print(type(data[0][1]))
     Standard_deviation = 0
     for i in range(0, len(data)):
-        print(ref_share)
-        print (((data[i][1])-(fed_avg))**2)
+        # print(ref_share)
+        # print (((data[i][1])-(fed_avg))**2)
         Standard_deviation += (((data[i][1])-(fed_avg))**2)*(ref_share[i])
         # print ( (((data[i][1])-(fed_avg))**2)*(ref_share[i]))
         
