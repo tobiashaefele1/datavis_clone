@@ -67,6 +67,7 @@ function mapStateToProps(state) {
 		table_data: state.table_data,
 		indikators: state.indikators,
 		table_columns: state.table_columns
+
 	};
 }
 
