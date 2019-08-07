@@ -20,7 +20,7 @@ const initalState = {
 	col_names_var: JSON.parse(context.col_names_var),
 	col_names_ref: JSON.parse(context.col_names_ref),
 	years_ref: JSON.parse(context.years_ref),
-	years_var: JSON.parse(context.years_var),
+
 	table_data: [[]],
 	indicator_data: [[]],
 	show_modal: false,
@@ -74,7 +74,8 @@ function reducer(state = initalState, action) {
 			return produce(state, draft =>{
 				draft.table_data = [...action.data.table_data],
 				draft.indicator_data = [...action.data.indicator_data]
-				draft.var_year_data = [...action.data.var_year_data]
+				draft.var_year_data = action.data.var_year_data
+				console.log(draft.var_year_data)
 				console.log(draft.table_data)
 				console.log(draft.indicator_data)
 			})

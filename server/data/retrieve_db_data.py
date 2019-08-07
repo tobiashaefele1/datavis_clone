@@ -301,7 +301,7 @@ def retrieve_distinct_years (var_name):
     distinct_years = []
 
     # connect to database
-    mySQLconnection = pymysql.connect(host='localhost',
+    mySQLconnection = pymysql.connect(host='bmf_db_1',
                                       database='mydb',
                                       user='user',
                                       password='password')
