@@ -1,18 +1,12 @@
 import React, {Component} from 'react';
-import Map from './Map'
 import { connect } from 'react-redux'
  
-
-
-
 class MapSelector extends Component {
     constructor(props) {
-        super(props);
-
+        super(props)
 	}
 	
 	handleMapChange = (e) => {
-		
 		this.props.dispatch(changeMap(parseInt(e.target.value)))
 	}	
 

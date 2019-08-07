@@ -12,7 +12,6 @@ class Table extends Component {
 			super(props),
 			this.download = this.download.bind(this);
 			this.state ={
-				
 				dataToDownload: []
 		}
 
@@ -66,7 +65,6 @@ class Table extends Component {
 function mapStateToProps(state) {
 	return {
 		table_data: state.table_data,
-		value_dic: state.value_dic,
 		indikators: state.indikators,
 		table_columns: state.table_columns
 	};

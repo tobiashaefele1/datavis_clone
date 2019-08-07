@@ -90,9 +90,7 @@ class Settings extends Component {
 					</div>
 				</div>)
 		}else{
-			return(
-				""
-			)
+			return ("")
 		}
 		
 		
