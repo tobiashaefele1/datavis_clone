@@ -14,6 +14,7 @@ const initalState = {
 	amr15: [],
 	amr20: [],
 	bund: [],
+	map_name: ['KRS_15', 'AMR_12', 'AMR_15', 'AMR_20', 'Bundesland_ID'],
 	indikator_counter: 3,
 	indikators: ['indikator1', 'indikator2', 'indikator3'],
 		indikators: ['indikator1', 'indikator2', 'indikator3'],
@@ -35,7 +36,7 @@ const initalState = {
 					Header: 'Kennziffer',
 					accessor: 'Kennziffer'},
 				{Header: 'Aggregated',
-					accessor: 'Aggregated'}]
+					accessor: 'selbstersteller_Indikator'}]
 }
 
 
@@ -51,8 +52,8 @@ function reducer(state = initalState, action) {
 					draft.table_columns.pop()
 				}
 				for(let i = 0; i < state.indikator_counter; i++){
-					console.log("hello " + i)
-					let column_name = state.value_dic['var_name_' + i] + state.value_dic['var_year_' + i]
+					let column_name = state.value_dic['var_name_' + i]+ " " + state.value_dic['var_year_' + i]
+					console.log(column_name)
 					if (column_name in state.table_data[0]) {
 						draft.table_columns.push({ Header: column_name , accessor: column_name })
 					}

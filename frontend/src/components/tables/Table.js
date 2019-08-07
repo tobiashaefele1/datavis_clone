@@ -12,33 +12,7 @@ class Table extends Component {
 			super(props),
 			this.download = this.download.bind(this);
 			this.state ={
-				table: [{
-					name: 'Roy Agasthyan',
-					age: 26
-				}, {
-					name: 'Sam Thomason',
-					age: 22
-				}, {
-					name: 'Michael Jackson',
-					age: 36
-				}, {
-					name: 'Samuel Roy',
-					age: 56
-				}, {
-					name: 'Rima Soy',
-					age: 28
-				}, {
-					name: 'Suzi Eliamma',
-					age: 28
-				}],
-				columns: [{
-					Header: 'Kennziffer',
-					accessor: 'Kennziffer'
-				}, {
-					Header: 'Arbeitslosenquote_100 2011',
-						accessor: 'Arbeitslosenquote_100 2011'
-				}
-			],
+				
 				dataToDownload: []
 		}
 
@@ -48,8 +22,8 @@ class Table extends Component {
 		var data_to_download = []
 		for (var index = 0; index < currentRecords.length; index++) {
 			let record_to_download = {}
-			for (var colIndex = 0; colIndex < this.state.columns.length; colIndex++) {
-				record_to_download[this.state.columns[colIndex].Header] = currentRecords[index][this.state.columns[colIndex].accessor]
+			for (var colIndex = 0; colIndex < this.props.table_columns.length; colIndex++) {
+				record_to_download[this.porps.table_columns[colIndex].Header] = currentRecords[index][this.props.table_columns[colIndex].accessor]
 			}
 			data_to_download.push(record_to_download)
 		}

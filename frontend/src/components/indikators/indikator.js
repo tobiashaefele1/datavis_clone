@@ -48,47 +48,48 @@ class Indikator extends Component {
 
 	get_data(){
 		// TODO: change hardcoded HIB or LIB
+		console.log(this.props.indikator_counter)
 	var data = {
 		csrf_token: $("[name=csrf_token]").val(),
 		'var_1': [this.props.value_dic['var_name_0'],
 			this.props.value_dic['var_year_0'],
 			this.props.value_dic['ref_name_0'],
 			this.props.value_dic['ref_year_0'],
-			'KRS_15', 'HIB', this.props.value_dic['weight_0']],
-
+			this.props.map_name[this.props.count_map], 'HIB', this.props.value_dic['weight_0']],
+			
 		'var_2': [
-			(this.props.indikator_count >= 1 ? this.props.value_dic['var_name_1'] : ""),
-			(this.props.indikator_count >= 1 ? this.props.value_dic['var_year_1'] : ""),
-			(this.props.indikator_count >= 1 ? this.props.value_dic['ref_name_1'] : ""),
-			(this.props.indikator_count >= 1 ? this.props.value_dic['ref_year_1'] : ""),
-			this.props.count_map, 'HIB', (this.props.indikator_count >= 1 ? this.props.value_dic['weight_1'] : "")],
+			(this.props.indikator_counter >= 1 ? this.props.value_dic['var_name_1'] : ""),
+			(this.props.indikator_counter >= 1 ? this.props.value_dic['var_year_1'] : ""),
+			(this.props.indikator_counter >= 1 ? this.props.value_dic['ref_name_1'] : ""),
+			(this.props.indikator_counter >= 1 ? this.props.value_dic['ref_year_1'] : ""),
+			this.props.map_name[this.props.count_map], 'HIB', (this.props.indikator_counter >= 1 ? this.props.value_dic['weight_1'] : "")],
 		'var_3': [
-			(this.props.indikator_count >= 2 ? this.props.value_dic['var_name_2'] : ""),
-			(this.props.indikator_count >= 2 ? this.props.value_dic['var_year_2'] : ""),
-			(this.props.indikator_count >= 2 ? this.props.value_dic['ref_name_2'] : ""),
-			(this.props.indikator_count >= 2 ? this.props.value_dic['ref_year_2'] : ""),
-			this.props.count_map, 'HIB', (this.props.indikator_count >= 2 ? this.props.value_dic['weight_2'] : "")],
+			(this.props.indikator_counter >= 2 ? this.props.value_dic['var_name_2'] : ""),
+			(this.props.indikator_counter >= 2 ? this.props.value_dic['var_year_2'] : ""),
+			(this.props.indikator_counter >= 2 ? this.props.value_dic['ref_name_2'] : ""),
+			(this.props.indikator_counter >= 2 ? this.props.value_dic['ref_year_2'] : ""),
+			this.props.map_name[this.props.count_map], 'HIB', (this.props.indikator_counter >= 2 ? this.props.value_dic['weight_2'] : "")],
 		'var_4': [
-			(this.props.indikator_count >= 3 ? this.props.value_dic['var_name_3'] : ""),
-			(this.props.indikator_count >= 3 ? this.props.value_dic['var_year_3'] : ""),
-			(this.props.indikator_count >= 3 ? this.props.value_dic['ref_name_3'] : ""),
-			(this.props.indikator_count >= 3 ? this.props.value_dic['ref_year_3'] : ""),
-			this.props.count_map, 'HIB', (this.props.indikator_count >= 3 ? this.props.value_dic['weight_3'] : "")],
+			(this.props.indikator_counter >= 3 ? this.props.value_dic['var_name_3'] : ""),
+			(this.props.indikator_counter >= 3 ? this.props.value_dic['var_year_3'] : ""),
+			(this.props.indikator_counter >= 3 ? this.props.value_dic['ref_name_3'] : ""),
+			(this.props.indikator_counter >= 3 ? this.props.value_dic['ref_year_3'] : ""),
+			this.props.map_name[this.props.count_map], 'HIB', (this.props.indikator_counter >= 3 ? this.props.value_dic['weight_3'] : "")],
 		'var_5': [
-			(this.props.indikator_count >= 4 ? this.props.value_dic['var_name_4'] : ""),
-			(this.props.indikator_count >= 4 ? this.props.value_dic['var_year_4'] : ""),
-			(this.props.indikator_count >= 4 ? this.props.value_dic['ref_name_4'] : ""),
-			(this.props.indikator_count >= 4 ? this.props.value_dic['ref_year_4'] : ""),
-			this.props.count_map, 'HIB', (this.props.indikator_count >= 4 ? this.props.value_dic['weight_4'] : "")],
+			(this.props.indikator_counter >= 4 ? this.props.value_dic['var_name_4'] : ""),
+			(this.props.indikator_counter >= 4 ? this.props.value_dic['var_year_4'] : ""),
+			(this.props.indikator_counter >= 4 ? this.props.value_dic['ref_name_4'] : ""),
+			(this.props.indikator_counter >= 4 ? this.props.value_dic['ref_year_4'] : ""),
+			this.props.map_name[this.props.count_map], 'HIB', (this.props.indikator_counter >= 4 ? this.props.value_dic['weight_4'] : "")],
 		'var_6': [
-			(this.props.indikator_count >= 5 ? this.props.value_dic['var_name_5'] : ""),
-			(this.props.indikator_count >= 5 ? this.props.value_dic['var_year_5'] : ""),
-			(this.props.indikator_count >= 5 ? this.props.value_dic['ref_name_5'] : ""),
-			(this.props.indikator_count >= 5 ? this.props.value_dic['ref_year_5'] : ""),
-			this.props.count_map, 'HIB', (this.props.indikator_count >= 5 ? this.props.value_dic['weight_5'] : "")],
+			(this.props.indikator_counter >= 5 ? this.props.value_dic['var_name_5'] : ""),
+			(this.props.indikator_counter >= 5 ? this.props.value_dic['var_year_5'] : ""),
+			(this.props.indikator_counter >= 5 ? this.props.value_dic['ref_name_5'] : ""),
+			(this.props.indikator_counter >= 5 ? this.props.value_dic['ref_year_5'] : ""),
+			this.props.map_name[this.props.count_map], 'HIB', (this.props.indikator_counter >= 5 ? this.props.value_dic['weight_5'] : "")],
 
 	};
-
+		console.log(data)
 		return data;
 
 }
@@ -214,10 +215,11 @@ function mapStateToProps(state) {
 		years_var: state.years_var,
 		table_data: state.table_data,
 		indicator_data: state.indicator_data, 
-		indikator_count: state.indikator_count,
+		indikator_counter: state.indikator_counter,
 		value_dic: state.value_dic,
 		count_map: state.count_map,
 		current_map : state.current_map,
+		map_name: state.map_name
 	};
 }
 
