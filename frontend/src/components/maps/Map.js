@@ -1,9 +1,6 @@
 import React, {Component} from "react"
-import ReactDOM from "react-dom";
 import 'd3';
 import * as d3 from "d3";
-import {feature} from "../../../static/bmf/js/topojson";
-import MapSelector from "./MapSelector"
 import { connect } from 'react-redux'
 
 
@@ -28,12 +25,15 @@ class Map extends Component {
 	// 	alert(`${this.props.current_map[i].properties.NAME_2}`)
 	// }
 	handleClick = (i) =>{
-		console.log(i)
+
 		this.props.dispatch(changeName(i))
 	}
 
 
     render() {
+		if (this.props.loading) {
+			return 'Loading...'
+		} 
         return (
 
             <div>
@@ -72,6 +72,7 @@ function changeName(value){
 function mapStateToProps(state) {
 	return {
 		current_map: state.current_map,
+		loading: state.loading
 	};
 }
 

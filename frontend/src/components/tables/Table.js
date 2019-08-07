@@ -23,7 +23,7 @@ class Table extends Component {
 		for (var index = 0; index < currentRecords.length; index++) {
 			let record_to_download = {}
 			for (var colIndex = 0; colIndex < this.props.table_columns.length; colIndex++) {
-				record_to_download[this.porps.table_columns[colIndex].Header] = currentRecords[index][this.props.table_columns[colIndex].accessor]
+				record_to_download[this.props.table_columns[colIndex].Header] = currentRecords[index][this.props.table_columns[colIndex].accessor]
 			}
 			data_to_download.push(record_to_download)
 		}
@@ -55,7 +55,7 @@ class Table extends Component {
 				<div>
 					<ReactTable ref={(r) => this.reactTable = r } data={this.props.table_data}
 					columns={this.props.table_columns}
-					defaultPageSize= {50} pageSizeOptions={[10,50,100,200]}/>
+					 pageSizeOptions={[10,50,100,200]}/>
 					
 				</div>
 			</div>

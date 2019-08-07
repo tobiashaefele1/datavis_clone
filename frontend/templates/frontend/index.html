@@ -4,7 +4,8 @@
 <head>
 	{% load static %}
 	<meta charset="UTF-8">
-	<title>Tryout</title>
+	<title>BMF</title>
+	<link rel='shortcut icon' type='image/png' href="{% static './bmf/resources/favicon.png' %}"/>
 	<link rel="stylesheet" href="{% static './bmf/css/normalize.css' %}">
 	<link rel="stylesheet" href="{% static './bmf/css/skeleton.css' %}">
 	<link rel="stylesheet" href="{% static './bmf/css/custom.css' %}">
@@ -37,21 +38,17 @@
 			col_names_ref: `{{ col_names_ref|safe }}`,
 			years_ref: `{{ years_ref|safe }}`,
 			years_var: `{{ years_var|safe }}`,
-			table_data: `{{ table_data|safe }}`,
-			indicator_data: `{{ indicator_data|safe }}`
+			
 		};
 
 
 
 
 	</script>
-	<script type="text/javascript" src="{{ STATIC_URL }} /static/bmf/js/jquery-3.4.1.min.js"></script>
-	<script src="http://d3js.org/d3.v5.min.js" charset="utf-8"></script>
-	<script src="{{ STATIC_URL }} /static/bmf/js/topojson.min.js"></script>
-	<script src="{% static './bmf/js/main.js' %}"></script>
-	<script src="{% static './bmf/js/modal.js' %}"></script>
+
+
 	<script src="{% static "frontend/main.js" %}"></script>
-	<script src="{% static "./bmf/js/ajax.js" %}"></script>
+	
 
 </body>
 

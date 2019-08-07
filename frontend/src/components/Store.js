@@ -22,8 +22,8 @@ const initalState = {
 	col_names_ref: JSON.parse(context.col_names_ref),
 	years_ref: JSON.parse(context.years_ref),
 	years_var: JSON.parse(context.years_var),
-	table_data: JSON.parse(context.table_data),
-	indicator_data: JSON.parse(context.indicator_data),
+	table_data: [],
+	indicator_data: [],
 	show_modal: false,
 	value_dic: {
 		'var_name_0': null, 'var_name_1': null, 'var_name_2': null, 'var_name_3': null, 'var_name_4': null,'var_name_5': null,
@@ -36,7 +36,8 @@ const initalState = {
 					Header: 'Kennziffer',
 					accessor: 'Kennziffer'},
 				{Header: 'Aggregated',
-					accessor: 'selbstersteller_Indikator'}]
+					accessor: 'selbstersteller_Indikator'}],
+	loading: true
 }
 
 
@@ -45,6 +46,13 @@ function reducer(state = initalState, action) {
 	console.log('reducer', state, action);
 
 	switch (action.type) {
+
+		case 'LOADINGDONE':
+			return produce(state, draft =>{
+				draft.loading = false
+			}
+				
+				)
 
 		case 'UPDATECOLUMNS':
 			return produce(state, draft =>{
