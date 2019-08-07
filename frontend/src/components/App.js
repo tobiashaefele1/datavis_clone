@@ -12,6 +12,7 @@ import PlusButton from './buttons/PlusButton';
 import MinButton from './buttons/MinButton';
 import SettingButton from './buttons/SettingButton';
 import Settings from './modals/Settings';
+import Table from './tables/Table';
 
 
 
@@ -231,22 +232,11 @@ class App extends Component {
 
 											This is the table!
 						
-            							<div id='table_complete'></div>
-
-											<table id="data_table">
-												<thead>
-												<tr>
-
-												</tr>
-												</thead>
-
-											</table>
-
-										</div>
+            							<Table/>
 			</div>
 		</div>					
 		</div>
-		
+			</div>
 		
 		
 
