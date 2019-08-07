@@ -1,7 +1,7 @@
 from server.data.retrieve_db_data import retrieve_sd_data, retrieve_data
 
 
-def aggregate_args (ajax_dictionary):
+def aggregate_args(ajax_dictionary):
     """ this function groups a dynamic number of args into a list of args and returns this list """
     var = []
     for x in ajax_dictionary.values():
@@ -16,10 +16,7 @@ def aggregate_args (ajax_dictionary):
     return var
 
 
-
-
-
-def retrieve_indicator (ajax_dictionary):
+def retrieve_indicator(ajax_dictionary):
     '''
     THIS FUNCTION THAT THE AJAX DICTIONANARY AS AN INPUT
      this function takes in the dictionary that is returned from ajax (6 entries with 7 variables in order each.
@@ -43,17 +40,17 @@ def retrieve_indicator (ajax_dictionary):
     var_name = []
 
     ## the following code copies the layer IDs as the first column into the results list
-    for (j,k) in list[0]:
+    for (j, k) in list[0]:
         var_name.append(j)
     result.append(var_name)
     # print (result)
 
     ### the following code creates the multiplications of each of the variables and stores them in a list of list
     interim = []
-    for i in range (0, len(list)):
+    for i in range(0, len(list)):
         multiplication = []
-        for (k,l) in list[i]:
-             multiplication.append(float(l)*float(var[i][6]))
+        for (k, l) in list[i]:
+            multiplication.append(float(l) * float(var[i][6]))
         interim.append(multiplication)
     # print(interim)
     ### the following code then sums all the individual items and returns one list
@@ -65,26 +62,20 @@ def retrieve_indicator (ajax_dictionary):
     return result
 
 
-
-
 def retrieve_table_data(ajax_dictionary):
     ''' THIS FUNCTION THAT AN AJAX DICTIONNARY AS AN INPUT
     it returns a list of lists of the format output = [[ID1,var1, var2.],[ID2, var1, var2...],[etc
     this can be used to poplate the table
     '''
 
-
     ## this code retrieves the indicator from the database
     aggregated_indicator = retrieve_indicator(ajax_dictionary)
     aggregated_indicator = aggregated_indicator[1]
     # print(aggregated_indicator)
 
-
-
     # this code scans the dictionary to ensure only complete entries are being searched for in the db
     var = []
     var = aggregate_args(ajax_dictionary)
-
 
     # this code returns the database array from all valid entries and stores them in a list
     list = []
@@ -98,7 +89,6 @@ def retrieve_table_data(ajax_dictionary):
     var_name = []
     # print (dictionary_keys)
 
-
     ## the following code copies the layer IDs as the first column into the results list
     for (j, k) in list[0]:
         var_name.append([j])
@@ -108,9 +98,9 @@ def retrieve_table_data(ajax_dictionary):
     ## the following converts all of this into a list of lists in the right format
     for x in list:
         count = 0
-        for (j,k) in x:
+        for (j, k) in x:
             result[count].append(k)
-            count +=1
+            count += 1
 
     # the following converts this into a list of dicts
     target_dict = []
@@ -119,25 +109,16 @@ def retrieve_table_data(ajax_dictionary):
         count = 0
         temp_dict = {}
         for y in x:
-            temp_dict[dictionary_keys[count]] = round(float(y),2)
-            count +=1
+            temp_dict[dictionary_keys[count]] = round(float(y), 2)
+            count += 1
         ### the following lines of code add the value from the aggreagted indicator
-        temp_dict["selbstersteller_Indikator"] = round(float(aggregated_indicator[aggreg_count]),2)
+        temp_dict["selbstersteller_Indikator"] = round(float(aggregated_indicator[aggreg_count]), 2)
         aggreg_count += 1
         ## and finally, the following lines of code append the dict to the summary list output
         target_dict.append(temp_dict)
 
-
-
     print(target_dict)
     return target_dict
-
-
-
-
-
-
-
 
 #### test the code like that
 
@@ -154,10 +135,6 @@ def retrieve_table_data(ajax_dictionary):
 # print(test)
 
 # print(len(test[3]))
-
-
-
-
 
 
 ############## GARBAGE CODE - NO LONGER NEEDED

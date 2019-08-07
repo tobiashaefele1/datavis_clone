@@ -6,7 +6,9 @@ import numpy as np
 import math
 import pandas as pd
 from pymysql import Error
-#TODO tun the outputs of these formulae into lists of lists, rather than tuple lists
+
+
+# TODO tun the outputs of these formulae into lists of lists, rather than tuple lists
 
 def retrieve_data(var_name, var_year, ref_name, ref_year, layer):
     ''' this function returns the dataset for a chosen variable, at a chosen year at the chosen level, standardised by the 
@@ -14,12 +16,12 @@ def retrieve_data(var_name, var_year, ref_name, ref_year, layer):
     output = []
     # connect to database
     mySQLconnection = pymysql.connect(host='localhost',
-                                                 database='mydb',
-                                                 user='user',
-                                                password='password')
+                                      database='mydb',
+                                      user='user',
+                                      password='password')
 
-        # this is the old quiery that does not work for AMR20 (But curiously, for all others)
-        #  Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
+    # this is the old quiery that does not work for AMR20 (But curiously, for all others)
+    #  Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
     sql_select_Query = (""" 
                             SELECT a.`%s`, (absvalue/relvalue)
                             FROM (
@@ -48,23 +50,24 @@ def retrieve_data(var_name, var_year, ref_name, ref_year, layer):
                                   GROUP BY mapping.`%s`
                                   ORDER BY mapping.`%s` ASC
                                    ) r
-                            on a.`%s`=r.`%s` """ % (layer, layer, var_name, ref_name, var_year, ref_year, layer, layer, layer, ref_name, ref_year, layer, layer, layer, layer) )
-
+                            on a.`%s`=r.`%s` """ % (
+    layer, layer, var_name, ref_name, var_year, ref_year, layer, layer, layer, ref_name, ref_year, layer, layer, layer,
+    layer))
 
     try:
 
         # executed quiery and closes cursor
         cursor = mySQLconnection.cursor()
         cursor.execute(sql_select_Query)
-        output = cursor.fetchall()    
+        output = cursor.fetchall()
         cursor.close()
 
 
-   # error handling
-    except Error as e :
-       print ("Error while connecting to MySQL", e)
+    # error handling
+    except Error as e:
+        print("Error while connecting to MySQL", e)
     finally:
-        #closing database connection.
+        # closing database connection.
 
         mySQLconnection.close()
         print("MySQL connection is closed")
@@ -72,59 +75,59 @@ def retrieve_data(var_name, var_year, ref_name, ref_year, layer):
         return output
 
 
-
-def retrieve_fed_avg (var_name, var_year, ref_name, ref_year, layer):
+def retrieve_fed_avg(var_name, var_year, ref_name, ref_year, layer):
     ''' this function returns the federal average of a chosen variable and year, where available.
         if no federal average is available, the formula will return the arithmetic mean of the inputted variable,
         standardised over the chosen reference value and year - the formula returns a single float'''
     output = []
     fed_avg_name = var_name[:-3]
     fed_avg_name = fed_avg_name + "400"
-     # connect to database
+    # connect to database
     mySQLconnection = pymysql.connect(host='localhost',
-                                               database='mydb',
-                                               user='user',
-                                               password='password')
-    
+                                      database='mydb',
+                                      user='user',
+                                      password='password')
+
     try:
         # Returns quiery with tuple [(layer_ID, value)] for federal average at Kreise level, IF IT EXISTS.
         sql_select_Query = (""" SELECT 
                                        Kreise.KENNZIFFER, Kreise.`%s`
                                        FROM Kreise 
-                                       WHERE Kreise.YEAR = '%s' AND Kreise.Kennziffer = "01001" """ % (fed_avg_name, var_year) )
+                                       WHERE Kreise.YEAR = '%s' AND Kreise.Kennziffer = "01001" """ % (
+        fed_avg_name, var_year))
 
         # executed quiery and closes cursor
-        cursor = mySQLconnection .cursor()
+        cursor = mySQLconnection.cursor()
         cursor.execute(sql_select_Query)
-        output = cursor.fetchall()      
+        output = cursor.fetchall()
         cursor.close()
     except Error as e:
         print("Federal avg. not available - using arithmetic mean instead. See error message: ", e)
         output = retrieve_data(var_name, var_year, ref_name, ref_year, layer)
 
     finally:
-        #closing database connection.
+        # closing database connection.
         # print (output)
         output = output[0][1]
         # print (output)
         mySQLconnection.close()
         print("MySQL connection is closed")
-        
 
         return (output)
 
-def retrieve_ref_share (ref_name, ref_year, layer):
+
+def retrieve_ref_share(ref_name, ref_year, layer):
     ''' this function returns the share of a chosen reference value in a chosen year, for a chosen layer as a % of the total as a tuple list'''
     output = []
     ref_share = []
 
     # connect to database
     mySQLconnection = pymysql.connect(host='localhost',
-                                             database='mydb',
-                                             user='user',
-                                             password='password')
+                                      database='mydb',
+                                      user='user',
+                                      password='password')
 
-        # Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
+    # Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
     sql_select_Query = (""" SELECT 
                                 mapping.`%s`, (SUM(reference.`%s`)), SUM(SUM(reference.`%s`)) over () as grandtotal
                                 FROM reference 
@@ -136,9 +139,9 @@ def retrieve_ref_share (ref_name, ref_year, layer):
 
     try:
         # executed quiery and closes cursor
-        cursor = mySQLconnection .cursor()
+        cursor = mySQLconnection.cursor()
         cursor.execute(sql_select_Query)
-        output = cursor.fetchall()    
+        output = cursor.fetchall()
         cursor.close()
         # print (output)
         ref_share = []
@@ -150,36 +153,36 @@ def retrieve_ref_share (ref_name, ref_year, layer):
         # for i in range (0, len(ref_share)):
         #     a += ref_share[i]
         # print (a)
-        
-   # error handling
+
+    # error handling
     except Error as e:
-       print("Error while connecting to MySQL", e)
+        print("Error while connecting to MySQL", e)
     finally:
-        #closing database connection.
+        # closing database connection.
         mySQLconnection.close()
         print("MySQL connection is closed")
         return ref_share
 
 
-def retrieve_sd (var_name, var_year, ref_name, ref_year, layer):
+def retrieve_sd(var_name, var_year, ref_name, ref_year, layer):
     """ this function returns the standard deviation for a chosen variable and year, standardised by a chosen ref value
         and year as a single float value  """
     data = retrieve_data(var_name, var_year, ref_name, ref_year, layer)
     fed_avg = retrieve_fed_avg(var_name, var_year, ref_name, ref_year, layer)
-    ref_share = retrieve_ref_share (ref_name, ref_year, layer)
+    ref_share = retrieve_ref_share(ref_name, ref_year, layer)
     # print(type(data[0][1]))
     Standard_deviation = 0
     for i in range(0, len(data)):
         # print(ref_share)
         # print (((data[i][1])-(fed_avg))**2)
-        Standard_deviation += (((data[i][1])-(fed_avg))**2)*(ref_share[i])
+        Standard_deviation += (((data[i][1]) - (fed_avg)) ** 2) * (ref_share[i])
         # print ( (((data[i][1])-(fed_avg))**2)*(ref_share[i]))
-        
-    Standard_deviation = math.sqrt(Standard_deviation/len(data))
-    return(Standard_deviation)
+
+    Standard_deviation = math.sqrt(Standard_deviation / len(data))
+    return (Standard_deviation)
 
 
-def scale_HIB (data, fed_avg, SD):
+def scale_HIB(data, fed_avg, SD):
     ''' this function standardises and scales a dataset according to GRW methodology, where higher values
         result in a higher score, this formula currently returns a tuple list'''
     Sfactor_positive = 100
@@ -187,12 +190,12 @@ def scale_HIB (data, fed_avg, SD):
     tuple = ()
     output = []
     for i in range(0, len(data)):
-        tuple = ((data[i][0]), (((data[i][1] - fed_avg)*Sfactor_scaling/SD)+Sfactor_positive))
+        tuple = ((data[i][0]), (((data[i][1] - fed_avg) * Sfactor_scaling / SD) + Sfactor_positive))
         output.append(tuple)
     return output
 
 
-def scale_LIB (data, fed_avg, SD):
+def scale_LIB(data, fed_avg, SD):
     ''' this function standardises and scales a dataset according to GRW methodology, where lower values
         result in a higher score, this formula currently returns a tuple list'''
     Sfactor_positive = 100
@@ -201,7 +204,8 @@ def scale_LIB (data, fed_avg, SD):
     tuple = ()
     output = []
     for i in range(0, len(data)):
-        tuple = ((data[i][0]), (Sfactor_negative-(((data[i][1] - fed_avg)*Sfactor_scaling)/SD)+Sfactor_positive))
+        tuple = (
+        (data[i][0]), (Sfactor_negative - (((data[i][1] - fed_avg) * Sfactor_scaling) / SD) + Sfactor_positive))
         output.append(tuple)
     return output
 
@@ -250,13 +254,14 @@ def retrieve_col_names(table_name):
         mySQLconnection.close()
         print("MySQL connection is closed")
 
-    # for x in range (0, len(col_names)):
-    #     output.append(x)
+        # for x in range (0, len(col_names)):
+        #     output.append(x)
         temp = list(col_names)
         for (x,) in temp:
             output.append(x)
 
         return output
+
 
 def retrieve_col_years(table_name):
     output = []
@@ -292,13 +297,6 @@ def retrieve_col_years(table_name):
         return output
 
 
-
-
-
-
-
-
-
 # # TESTS FOR THIS SECTION
 #
 # col_years = retrieve_col_years("Kreise")
@@ -327,12 +325,7 @@ def retrieve_col_years(table_name):
 #
 
 
-    # retrieve_data(var_name, var_year, ref_name, ref_year, layer)
-
-
-
-
-
+# retrieve_data(var_name, var_year, ref_name, ref_year, layer)
 
 
 '''
