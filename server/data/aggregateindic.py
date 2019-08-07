@@ -29,37 +29,40 @@ def retrieve_indicator(ajax_dictionary):
     # this code scans the dictionary to ensure only complete entries are being searched for in the db
     var = []
     var = aggregate_args(ajax_dictionary)
-    # print(var)
 
-    # this code returns the database array from all valid entries and stores them in a list
-    list = []
-    for i in range(0, len(var)):
-        list.append(retrieve_sd_data(var[i][0], var[i][1], var[i][2], var[i][3], var[i][4], var[i][5]))
-    # print (list)
     result = []
-    var_name = []
+    if var == []:
+        return result
 
-    ## the following code copies the layer IDs as the first column into the results list
-    for (j, k) in list[0]:
-        var_name.append(j)
-    result.append(var_name)
-    # print (result)
+    else:
+        # this code returns the database array from all valid entries and stores them in a list
+        list = []
+        for i in range(0, len(var)):
+            list.append(retrieve_sd_data(var[i][0], var[i][1], var[i][2], var[i][3], var[i][4], var[i][5]))
+        # print (list)
+        var_name = []
 
-    ### the following code creates the multiplications of each of the variables and stores them in a list of list
-    interim = []
-    for i in range(0, len(list)):
-        multiplication = []
-        for (k, l) in list[i]:
-            multiplication.append(float(l) * float(var[i][6]))
-        interim.append(multiplication)
-    # print(interim)
-    ### the following code then sums all the individual items and returns one list
-    interim = [sum(i) for i in zip(*interim)]
+        ## the following code copies the layer IDs as the first column into the results list
+        for (j, k) in list[0]:
+            var_name.append(j)
+        result.append(var_name)
+        # print (result)
 
-    ### the following code then appends the calcualtions to the interim template
-    result.append(interim)
+        ### the following code creates the multiplications of each of the variables and stores them in a list of list
+        interim = []
+        for i in range(0, len(list)):
+            multiplication = []
+            for (k, l) in list[i]:
+                multiplication.append(float(l) * float(var[i][6]))
+            interim.append(multiplication)
+        # print(interim)
+        ### the following code then sums all the individual items and returns one list
+        interim = [sum(i) for i in zip(*interim)]
 
-    return result
+        ### the following code then appends the calcualtions to the interim template
+        result.append(interim)
+
+        return result
 
 
 def retrieve_table_data(ajax_dictionary):
@@ -70,68 +73,75 @@ def retrieve_table_data(ajax_dictionary):
 
     ## this code retrieves the indicator from the database
     aggregated_indicator = retrieve_indicator(ajax_dictionary)
-    aggregated_indicator = aggregated_indicator[1]
-    # print(aggregated_indicator)
-
-    # this code scans the dictionary to ensure only complete entries are being searched for in the db
     var = []
-    var = aggregate_args(ajax_dictionary)
 
-    # this code returns the database array from all valid entries and stores them in a list
-    list = []
-    dictionary_keys = []
-    dictionary_keys.append("Kennziffer")
-    for i in range(0, len(var)):
-        list.append(retrieve_data(var[i][0], var[i][1], var[i][2], var[i][3], var[i][4]))
-        dictionary_keys.append(var[i][0] + " " + var[i][1])
-    # print(list)
-    result = []
-    var_name = []
-    # print (dictionary_keys)
+    # this checks whether the aggreagted indicator comes back empty - if it does no valid
+    # combination has been submitted, just return empty list
+    if aggregated_indicator == []:
+        return var
+    else:
 
-    ## the following code copies the layer IDs as the first column into the results list
-    for (j, k) in list[0]:
-        var_name.append([j])
-    result = var_name
-    # print (result)
+        aggregated_indicator = aggregated_indicator[1]
+        # print(aggregated_indicator)
 
-    ## the following converts all of this into a list of lists in the right format
-    for x in list:
-        count = 0
-        for (j, k) in x:
-            result[count].append(k)
-            count += 1
+        # this code scans the dictionary to ensure only complete entries are being searched for in the db
+        var = aggregate_args(ajax_dictionary)
 
-    # the following converts this into a list of dicts
-    target_dict = []
-    aggreg_count = 0
-    for x in result:
-        count = 0
-        temp_dict = {}
-        for y in x:
-            temp_dict[dictionary_keys[count]] = round(float(y), 2)
-            count += 1
-        ### the following lines of code add the value from the aggreagted indicator
-        temp_dict["selbstersteller_Indikator"] = round(float(aggregated_indicator[aggreg_count]), 2)
-        aggreg_count += 1
-        ## and finally, the following lines of code append the dict to the summary list output
-        target_dict.append(temp_dict)
+        # this code returns the database array from all valid entries and stores them in a list
+        list = []
+        dictionary_keys = []
+        dictionary_keys.append("Kennziffer")
+        for i in range(0, len(var)):
+            list.append(retrieve_data(var[i][0], var[i][1], var[i][2], var[i][3], var[i][4]))
+            dictionary_keys.append(var[i][0] + " " + var[i][1])
+        # print(list)
+        result = []
+        var_name = []
+        # print (dictionary_keys)
 
-    print(target_dict)
-    return target_dict
+        ## the following code copies the layer IDs as the first column into the results list
+        for (j, k) in list[0]:
+            var_name.append([j])
+        result = var_name
+        # print (result)
+
+        ## the following converts all of this into a list of lists in the right format
+        for x in list:
+            count = 0
+            for (j, k) in x:
+                result[count].append(k)
+                count += 1
+
+        # the following converts this into a list of dicts
+        target_dict = []
+        aggreg_count = 0
+        for x in result:
+            count = 0
+            temp_dict = {}
+            for y in x:
+                temp_dict[dictionary_keys[count]] = round(float(y), 2)
+                count += 1
+            ### the following lines of code add the value from the aggreagted indicator
+            temp_dict["selbstersteller_Indikator"] = round(float(aggregated_indicator[aggreg_count]), 2)
+            aggreg_count += 1
+            ## and finally, the following lines of code append the dict to the summary list output
+            target_dict.append(temp_dict)
+
+        print(target_dict)
+        return target_dict
 
 #### test the code like that
 
-test_dict = {'var_1': ['Arbeitslosenquote_100', '2015', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', 'HIB', 0.05],
-             'var_2': ['Bruttoinlandsprodukt je Erwerbstätigen_100', '2014', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', 'HIB', 0.05],
+test_dict = {'var_1': ['Arbeitslosenquote_100', '2015', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', '', 0.05],
+             'var_2': ['Bruttoinlandsprodukt je Erwerbstätigen_100', '2014', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', '', 0.05],
              'var_3': ['', '1990', '0', '2011', 'KRS_15', 'HIB', ''],
              'var_4': ['', '', '', '', 'KRS_15', 'HIB', ''],
              'var_5': ['', '', '', '', 'KRS_15', 'HIB', ''],
              'var_6': ['', '', '', '', 'KRS_15', 'HIB', '']}
-# #
-# test = retrieve_table_data(test_dict)
-# print (test)
 #
+test = retrieve_table_data(test_dict)
+print (test)
+
 # # print(test)
 
 # print(len(test[3]))
