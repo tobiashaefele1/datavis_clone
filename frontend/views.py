@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
-from server.data.aggregateindic import retrieve_indicator, retrieve_table_data
+from server.data.aggregateindic import retrieve_indicator, retrieve_table_data, retrieve_var_year
 from server.data.retrieve_db_data import (retrieve_col_names,
                                           retrieve_col_years, retrieve_data)
 
@@ -24,7 +24,8 @@ def index(request):
         received_data = (dict(request.POST))
         indicator_data = retrieve_indicator(received_data)
         table_data = retrieve_table_data(received_data)
-        data = {'indicator_data': indicator_data, 'table_data': table_data}
+        var_year_data = retrieve_var_year(received_data)
+        data = {'indicator_data': indicator_data, 'table_data': table_data, 'var_year_data' : var_year_data}
         return HttpResponse(json.dumps(data), content_type="application/json")
 
     # print (col_names_var)
