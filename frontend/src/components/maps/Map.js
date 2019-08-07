@@ -1,8 +1,8 @@
 import React, {Component} from "react"
 import 'd3';
 import * as d3 from "d3";
-import { connect } from 'react-redux'
-
+import { connect } from 'react-redux';
+import { Spinner } from 'reactstrap'
 
 
 class Map extends Component {
@@ -32,7 +32,7 @@ class Map extends Component {
 
     render() {
 		if (this.props.loading) {
-			return 'Loading...'
+			return (<Spinner color="secondary"/>)
 		} 
         return (
 
