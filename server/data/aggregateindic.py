@@ -119,10 +119,10 @@ def retrieve_table_data(ajax_dictionary):
         count = 0
         temp_dict = {}
         for y in x:
-            temp_dict[dictionary_keys[count]] = y
+            temp_dict[dictionary_keys[count]] = round(y,2)
             count +=1
         ### the following lines of code add the value from the aggreagted indicator
-        temp_dict["selbstersteller_Indikator"] = aggregated_indicator[aggreg_count]
+        temp_dict["selbstersteller_Indikator"] = round(aggregated_indicator[aggreg_count],2)
         aggreg_count += 1
         ## and finally, the following lines of code append the dict to the summary list output
         target_dict.append(temp_dict)
@@ -141,19 +141,19 @@ def retrieve_table_data(ajax_dictionary):
 
 #### test the code like that
 
-# test_dict = {'var_1': ['Arbeitslosenquote_100', '2015', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', 'HIB', 0.05],
-#              'var_2': ['Bruttoinlandsprodukt je Erwerbstätigen_100', '2015', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', 'HIB', 0.05],
-#              'var_3': ['', '1990', '0', '2011', 'KRS_15', 'HIB', ''],
-#              'var_4': ['', '', '', '', 'KRS_15', 'HIB', ''],
-#              'var_5': ['', '', '', '', 'KRS_15', 'HIB', ''],
-#              'var_6': ['', '', '', '', 'KRS_15', 'HIB', '']}
-# #
-# test = retrieve_table_data(test_dict)
-# print (test)
-
-# # print(test)
+test_dict = {'var_1': ['Arbeitslosenquote_100', '2015', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', 'HIB', 0.05],
+             'var_2': ['Bruttoinlandsprodukt je Erwerbstätigen_100', '2014', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', 'HIB', 0.05],
+             'var_3': ['', '1990', '0', '2011', 'KRS_15', 'HIB', ''],
+             'var_4': ['', '', '', '', 'KRS_15', 'HIB', ''],
+             'var_5': ['', '', '', '', 'KRS_15', 'HIB', ''],
+             'var_6': ['', '', '', '', 'KRS_15', 'HIB', '']}
 #
-# print(len(test[3]))
+test = retrieve_table_data(test_dict)
+print (test)
+
+# print(test)
+
+print(len(test[3]))
 
 
 
