@@ -5,6 +5,7 @@
 	{% load static %}
 	<meta charset="UTF-8">
 	<title>BMF</title>
+	
 	<link rel='shortcut icon' type='image/png' href="{% static './bmf/resources/favicon.png' %}"/>
 	<link rel="stylesheet" href="{% static './bmf/css/normalize.css' %}">
 	<link rel="stylesheet" href="{% static './bmf/css/skeleton.css' %}">
@@ -28,10 +29,8 @@
 
 	</div>
 
-
 	<script>
 		// variables for react:
-	
 		var context = {
 			
 			col_names_var: `{{ col_names_var|safe }}`,
@@ -40,10 +39,6 @@
 			years_var: `{{ years_var|safe }}`,
 			
 		};
-
-
-
-
 	</script>
 
 	<script src="{% static 'bmf/js/jquery-3.4.1.min.js' %}"></script>
