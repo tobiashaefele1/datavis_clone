@@ -108,10 +108,10 @@ def add_tuples_new(data, data_base, data_code=100, table_name="KREISE"):
     for tuple_sql in data.sql_data:
 
         if check_if_tuple_exists(cursor, table_name, tuple_sql[0], tuple_sql[3]):
-            sql = f"""UPDATE `%s` SET %s WHERE `KENNZIFFER` = %s AND `YEAR` = '%s'"""\
+            sql = f"""UPDATE `%s` SET %s WHERE `KENNZIFFER` = %s AND `YEAR` = '%s' """\
                   % (table_name, prepare_update_sql(data.unique_labels(), tuple_sql[4:], data_code)
                      , tuple_sql[0], tuple_sql[3])
-
+            print (sql)
             cursor.execute(sql)
             data_base.commit()
         else:
