@@ -31,7 +31,9 @@
 	</div>
 
 	<script>
-		// variables for react:
+
+				var csrftoken = '{{ csrf_token }}';
+
 		var context = {
 			
 			col_names_var: `{{ col_names_var|safe }}`,
