@@ -103,7 +103,7 @@ class Map extends Component {
 
 	    <div id="map">
 
-	      <svg width="100%" height="100%" viewBox="0 0 400 450">
+	      <svg id="svg" width="100%" height="100%" viewBox="0 0 400 450">
 
 	        <g className="countries">
 	          {

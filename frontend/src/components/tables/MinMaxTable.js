@@ -25,7 +25,7 @@ import { connect } from 'react-redux';
 	}
 
  FindMinMaxAvg(arr) {
-	 console.log(arr)
+
   let min = arr[0]; // min
   let max = arr[0]; // max
   let sum = arr[0]; // sum
