@@ -11,6 +11,7 @@ import MinButton from './buttons/MinButton';
 import SettingButton from './buttons/SettingButton';
 import Settings from './modals/Settings';
 import Table from './tables/Table';
+import ViewPicker from './modals/ViewPicker';
 
 
 class App extends Component {
@@ -119,7 +120,7 @@ class App extends Component {
 
             <div>
 			{ this.mobile(window.screen.width) }
-				
+				<ViewPicker/>
                 <div className="example-grid-logo">
                     {/* Top Row */}
                     <div className="row">

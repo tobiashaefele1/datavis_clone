@@ -10,7 +10,7 @@ class PlusButton extends Component {
 
 
 	render() {
-		if (this.props.ic > 5) {
+		if (this.props.ic > 5 || !this.props.view_multiple) {
 			return (
 				<div>
 
@@ -27,7 +27,8 @@ class PlusButton extends Component {
 
 function mapStateToProps(state) {
 	return {
-		ic: state.indikator_counter
+		ic: state.indikator_counter,
+		view_multiple: state.view_multiple
 	};
 }
 
