@@ -5,13 +5,20 @@ import {connect} from 'react-redux';
 import {Spinner} from 'reactstrap';
 
 
+/**
+ *
+ *
+ * @class Map
+ * @extends {Component}
+ */
 class Map extends Component {
   constructor(props) {
-	  super(props),
-		  this.state = {
-			  germany: [10.3736325636218, 51.053178814923065]
-		  }
-  	}
+    super(props),
+    this.state = {
+			germany: [10.3736325636218, 51.053178814923065]
+	}
+	}
+	
 
   	color = (x) => {
 		if (x ==  null) {
@@ -54,7 +61,7 @@ class Map extends Component {
 
 	    <div id="map">
 
-	      <svg width="100%" height="100%" viewBox="0 0 400 450">
+	      <svg id="svg" width="100%" height="100%" viewBox="0 0 400 450">
 
 	        <g className="countries">
 	          {
