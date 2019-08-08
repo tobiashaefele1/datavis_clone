@@ -5,12 +5,19 @@ import {connect} from 'react-redux';
 import {Spinner} from 'reactstrap';
 
 
+/**
+ *
+ *
+ * @class Map
+ * @extends {Component}
+ */
 class Map extends Component {
   constructor(props) {
     super(props),
     this.state = {
-
-    }
+			germany: [10.3736325636218, 51.053178814923065]
+	}
+}
 	color = (x) => {
 		// if (this.props.indicator_data && this.props.indicator_data.length) {
 		// 	return
