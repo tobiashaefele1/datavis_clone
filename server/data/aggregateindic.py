@@ -131,24 +131,6 @@ def retrieve_table_data(ajax_dictionary):
         print(target_dict)
         return target_dict
 
-#### test the code like that
-
-test_dict = {'var_1': ['Arbeitslosenquote_100', '2015', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', '', 0.05],
-             'var_2': ['Bruttoinlandsprodukt je Erwerbstätigen_100', '2014', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', '', 0.05],
-             'var_3': ['', '1990', '0', '2011', 'KRS_15', 'HIB', ''],
-             'var_4': ['', '', '', '', 'KRS_15', 'HIB', ''],
-             'var_5': ['', '', '', '', 'KRS_15', 'HIB', ''],
-             'var_6': ['', '', '', '', 'KRS_15', 'HIB', '']}
-#
-test = retrieve_table_data(test_dict)
-print (test)
-
-# # print(test)
-
-# print(len(test[3]))
-
-
-
 def retrieve_var_year (ajax_dictionary):
     chosen_indicators = []
     for k,v in ajax_dictionary.items():
@@ -172,8 +154,49 @@ def retrieve_var_year (ajax_dictionary):
 
     return dictionary
 
+
+
+#### test the code like that
+
+test_dict = {'var_1': ['Arbeitslosenquote_100', '2015', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', '"HIB', 0.05],
+             'var_2': ['Bruttoinlandsprodukt je Erwerbstätigen_100', '2014', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', 'HIB', 0.05],
+             'var_3': ['', '1990', '0', '2011', 'KRS_15', 'HIB', ''],
+             'var_4': ['', '', '', '', 'KRS_15', 'HIB', ''],
+             'var_5': ['', '', '', '', 'KRS_15', 'HIB', ''],
+             'var_6': ['', '', '', '', 'KRS_15', 'HIB', '']}
+#
+test = retrieve_indicator(test_dict)
+print (test)
+
+# # print(test)
+
+# print(len(test[3]))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # test = retrieve_var_year(test_dict)
 # print (test)
+
+
+
+
+
+
+
+
+
 
 
 

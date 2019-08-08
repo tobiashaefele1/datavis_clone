@@ -26,9 +26,9 @@ def index(request):
         table_data = retrieve_table_data(received_data)
         var_year_data = retrieve_var_year(received_data)
         print (var_year_data)
-        data = {'indicator_data': indicator_data, 'table_data': table_data, 'var_year_data': var_year_data}
+        data = {'indicator_data': json.dumps(indicator_data), 'table_data': json.dumps(table_data), 'var_year_data': json.dumps(var_year_data)}
         print (data)
-        return HttpResponse(json.dumps(data), content_type="application/json")
+        return HttpResponse(data, content_type="application/json")
 
     # print (col_names_var)
     context ={ 
