@@ -41,7 +41,7 @@ class Indikator extends Component {
         // TODO: change hardcoded HIB or LIB
         console.log(this.props.indikator_counter)
         var data = {
-            csrf_token: $("[name=csrf_token]").val(),
+
             'var_1': [this.props.value_dic['var_name_0'],
                 this.props.value_dic['var_year_0'],
                 this.props.value_dic['ref_name_0'],
@@ -87,15 +87,17 @@ class Indikator extends Component {
 
     ajax_req() {
         $.ajax({
-            type: "POST",
+			type: "POST",
+			headers: { "X-CSRFToken": csrftoken},
             url: window.location.pathname,
             dataType: "json",
             asnyc: true,
             data: this.get_data(),
             traditional: true,
             success: function (data) {
-                console.log(data)
-                this.updateData(data)
+				console.log(data)
+				console.log('------------------')
+                this.updateData(data )
             }.bind(this)
 
 

@@ -37,7 +37,7 @@
   font-weight: 600;
   letter-spacing: .1rem; }
 
-  #var_year_0,
+#var_year_0,
 #var_year_1,
 #var_year_2,
 #var_year_3,
@@ -53,7 +53,7 @@
 }
 
 }
-
+@media only screen and  (max-width: 768px) {
 #var_year_0,
 #var_year_1,
 #var_year_2,
@@ -68,7 +68,7 @@
 #weight_5 {
 	width: 40%;
 }
-
+} 
 
 #big {
   background: #EEE;

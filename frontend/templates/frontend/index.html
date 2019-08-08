@@ -31,13 +31,15 @@
 	</div>
 
 	<script>
-		// variables for react:
+
+				var csrftoken = '{{ csrf_token }}';
+
 		var context = {
 			
 			col_names_var: `{{ col_names_var|safe }}`,
 			col_names_ref: `{{ col_names_ref|safe }}`,
 			years_ref: `{{ years_ref|safe }}`,
-			years_var: `{{ years_var|safe }}`,
+			
 			
 		};
 	</script>

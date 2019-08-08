@@ -10,7 +10,7 @@ from server.data.retrieve_db_data import (retrieve_col_names,
 
 
 # Create your views here.
-@csrf_exempt
+
 def index(request):
     received_data = {}
     indicator_data = []
@@ -25,10 +25,10 @@ def index(request):
         indicator_data = retrieve_indicator(received_data)
         table_data = retrieve_table_data(received_data)
         var_year_data = retrieve_var_year(received_data)
-        print (var_year_data)
-        data = {'indicator_data': json.dumps(indicator_data), 'table_data': json.dumps(table_data), 'var_year_data': json.dumps(var_year_data)}
-        print (data)
-        return HttpResponse(data, content_type="application/json")
+        # print (var_year_data)
+        data = {'indicator_data': indicator_data, 'table_data': table_data, 'var_year_data': var_year_data}
+        # print (data)
+        return HttpResponse(json.dumps(data), content_type="application/json")
 
     # print (col_names_var)
     context ={ 
