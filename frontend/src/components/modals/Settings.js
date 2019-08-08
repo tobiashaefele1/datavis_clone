@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-
+import ViewButton from '../buttons/ViewButton'
 class Settings extends Component {
 	closeModal = () => {
 	  this.props.dispatch({type: 'MODAL'});
@@ -15,6 +15,8 @@ class Settings extends Component {
 	          <div className="import_modal-content">
 	            <span className="close" onClick={this.closeModal.bind(this)}>&times;</span>
 	            <h2>Settings</h2>
+				<h3>View</h3>
+				<ViewButton/>
 	            <h3>Color:</h3>
 	            <label>
 
