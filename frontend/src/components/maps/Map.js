@@ -1,17 +1,14 @@
-import React, {Component} from "react"
+import React, {Component} from 'react';
 import 'd3';
-import * as d3 from "d3";
-import { connect } from 'react-redux';
-import { Spinner } from 'reactstrap'
+import * as d3 from 'd3';
+import {connect} from 'react-redux';
+import {Spinner} from 'reactstrap';
 
 
 class Map extends Component {
-    constructor(props) {
-        super(props),
-        this.state = {
-            
-            germany: [10.3736325636218, 51.053178814923065]
-        }
+  constructor(props) {
+    super(props),
+    this.state = {
 
     }
 	color = (x) => {
@@ -87,24 +84,23 @@ class Map extends Component {
 	// 	alert(`${this.props.current_map[i].properties.NAME_2}`)
 	// }
 	handleClick = (i) =>{
-
-		this.props.dispatch(changeName(i))
+	  this.props.dispatch(changeName(i));
 	}
 
 
-    render() {
-		if (this.props.loading) {
-			return (<div><Spinner color="secondary"/></div>)
-		} 
-        return (
+	render() {
+	  if (this.props.loading) {
+	    return (<div><Spinner color="secondary"/></div>);
+	  }
+	  return (
 
-            <div id="map">
+	    <div id="map">
 
-                <svg width="100%" height="100%" viewBox="0 0 400 450">
+	      <svg width="100%" height="100%" viewBox="0 0 400 450">
 
-                    <g className="countries">
-                        {
-                        this.props.current_map.map((d, i) =>
+	        <g className="countries">
+	          {
+	            this.props.current_map.map((d, i) =>
 
                             <path
                                 key={`path-${i}`}
@@ -125,23 +121,19 @@ class Map extends Component {
     }
 }
 
-function changeName(value){
-	return {
-		type: "CHANGE_NAME",
-		value
-	};
+function changeName(value) {
+  return {
+    type: 'CHANGE_NAME',
+    value,
+  };
 }
 function mapStateToProps(state) {
-	return {
-		current_map: state.current_map,
-		loading: state.loading,
-		indicator_data: state.indicator_data,
-	};
+  return {
+    current_map: state.current_map,
+    loading: state.loading,
+    indicator_data: state.indicator_data,
+  };
 }
-
-
-
-
 
 
 export default connect(mapStateToProps)(Map);

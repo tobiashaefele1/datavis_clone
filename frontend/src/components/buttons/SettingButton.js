@@ -1,23 +1,22 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
 class SettingButton extends Component {
-
 	closeModal = () => {
-		this.props.dispatch({ type: 'MODAL' })
+	  this.props.dispatch({type: 'MODAL'});
 	}
 
 	render() {
-		return (
+	  return (
 
-			<button onClick={this.closeModal.bind(this)}>Settings</button>
-		
+	    <button onClick={this.closeModal.bind(this)}>Settings</button>
 
-		)
+
+	  );
 	}
 }
 
 
-export default connect()(SettingButton) 
+export default connect()(SettingButton);
 
 

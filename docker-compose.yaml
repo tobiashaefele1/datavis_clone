@@ -1,7 +1,7 @@
 version: '3.3'
 services:
   web:
-    build: .
+    image: jacobrvl/bmf:latest
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
@@ -25,14 +25,5 @@ services:
       MYSQL_USER: user
       MYSQL_PASSWORD: password
 
-  phpmyadmin:
-    depends_on:
-      - db
-    image: phpmyadmin/phpmyadmin
-    restart: always
-    ports:
-      - 8080:80
-    environment:
-      PMA_HOST: db
 volumes:
   db_data:
