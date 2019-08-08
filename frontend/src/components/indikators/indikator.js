@@ -55,7 +55,7 @@ class Indikator extends Component {
 	      this.props.value_dic['var_year_0'],
 	      this.props.value_dic['ref_name_0'],
 	      this.props.value_dic['ref_year_0'],
-	      this.props.map_name[this.props.count_map], 'HIB', this.props.value_dic['weight_0']],
+	      this.props.map_name[this.props.count_map], 'HIB', (this.props.view_multiple ? this.props.value_dic['weight_0'] : 100)],
 
 	    'var_2': [
 	      (this.props.indikator_counter >= 1 ? this.props.value_dic['var_name_1'] : ""),
@@ -110,6 +110,16 @@ class Indikator extends Component {
 	  });
     }
 
+	weight = () =>{
+		if(this.props.view_multiple){
+			return( <div className="three columns">
+	          <label>%</label>
+	          <input className="u-80-width" id={`weight_${this.props.number}`}
+	            onChange={this.handleChange.bind(this)} type="number" placeholder="45">
+	          </input>
+	        </div>)
+		}
+	}
 
 	/**
 	 *
@@ -152,13 +162,7 @@ class Indikator extends Component {
 	          </select>
 	        </div>
 
-
-	        <div className="three columns">
-	          <label>%</label>
-	          <input className="u-80-width" id={`weight_${this.props.number}`}
-	            onChange={this.handleChange.bind(this)} type="number" placeholder="45">
-	          </input>
-	        </div>
+			{this.weight()}
 
 	        <div className="row">
 
@@ -226,7 +230,8 @@ function mapStateToProps(state) {
     count_map: state.count_map,
     current_map: state.current_map,
     map_name: state.map_name,
-    var_year_data: state.var_year_data
+	var_year_data: state.var_year_data,
+	view_multiple: state.view_multiple
   };
 }
 
