@@ -140,8 +140,8 @@ test_dict = {'var_1': ['Arbeitslosenquote_100', '2015', 'Erwerbstätige gesamt_1
              'var_5': ['', '', '', '', 'KRS_15', 'HIB', ''],
              'var_6': ['', '', '', '', 'KRS_15', 'HIB', '']}
 #
-test = retrieve_table_data(test_dict)
-print (test)
+# test = retrieve_table_data(test_dict)
+# print (test)
 
 # # print(test)
 
