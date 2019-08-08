@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-	{% load static %}
-	<meta charset="UTF-8">
-	<title>BMF</title>
-	
-	<link rel='shortcut icon' type='image/png' href="{% static './bmf/resources/favicon.png' %}"/>
-	<link rel="stylesheet" href="{% static './bmf/css/normalize.css' %}">
-	<link rel="stylesheet" href="{% static './bmf/css/skeleton.css' %}">
-	<link rel="stylesheet" href="{% static './bmf/css/custom.css' %}">
-	<link rel="stylesheet" href="{% static './bmf/css/map.css' %}">
-
-	<!-- <script>
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <title>BMF</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="{% static './bmf/resources/favicon.png' %}"
+    />
+    <link rel="stylesheet" href="{% static './bmf/css/normalize.css' %}" />
+    <link rel="stylesheet" href="{% static './bmf/css/skeleton.css' %}" />
+    <link rel="stylesheet" href="{% static './bmf/css/custom.css' %}" />
+    <link rel="stylesheet" href="{% static './bmf/css/map.css' %}" />
+    <script
+      async
+      src="https://app.appzi.io/bootstrap/bundle.js?token=KiRHM"
+    ></script>
+    <!-- <script>
 		(function (h, o, t, j, a, r) {
 			h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
 			h._hjSettings = { hjid: 1433324, hjsv: 6 };
@@ -22,32 +28,22 @@
 			a.appendChild(r);
 		})(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
 	</script> -->
-</head>
+  </head>
 
-<body>
+  <body>
+    <div class="container" id="container"></div>
 
-	<div class="container" id="container">
+    <script>
+      var csrftoken = "{{ csrf_token }}";
 
-	</div>
+      var context = {
+        col_names_var: `{{ col_names_var|safe }}`,
+        col_names_ref: `{{ col_names_ref|safe }}`,
+        years_ref: `{{ years_ref|safe }}`
+      };
+    </script>
 
-	<script>
-
-				var csrftoken = '{{ csrf_token }}';
-
-		var context = {
-			
-			col_names_var: `{{ col_names_var|safe }}`,
-			col_names_ref: `{{ col_names_ref|safe }}`,
-			years_ref: `{{ years_ref|safe }}`,
-			
-			
-		};
-	</script>
-
-	<script src="{% static 'bmf/js/jquery-3.4.1.min.js' %}"></script>
-	<script src="{% static 'frontend/main.js' %}"></script>
-	
-
-</body>
-
+    <script src="{% static 'bmf/js/jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static 'frontend/main.js' %}"></script>
+  </body>
 </html>

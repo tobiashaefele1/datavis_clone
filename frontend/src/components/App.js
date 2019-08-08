@@ -12,6 +12,8 @@ import SettingButton from './buttons/SettingButton';
 import Settings from './modals/Settings';
 import Table from './tables/Table';
 import ViewPicker from './modals/ViewPicker';
+import MinMaxTable from './tables/MinMaxTable';
+import SVGExportButton from './buttons/SVGExportButton';
 
 
 class App extends Component {
@@ -142,24 +144,7 @@ class App extends Component {
                 <Map/>
 
 
-                <div className="row">
-                  <table className="u-80-width" id="table">
-                    <thead>
-                      <tr>
-                        <th>Min</th>
-                        <th>Max</th>
-                        <th>Average</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td id="min_value">Value 1</td>
-                        <td id="max_value">Value 2</td>
-                        <td id="avg_value">Value 3</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+                <MinMaxTable/>
 
 
               </div>
@@ -175,7 +160,7 @@ class App extends Component {
                 <div className="row"> Export / Upload</div>
 
                 <div className="row">
-
+					<SVGExportButton />
                   <button id="csv_upload">Import CSV</button>
 
 
@@ -198,5 +183,6 @@ class App extends Component {
     );
   }
 }
+
 
 export default connect()(App);
