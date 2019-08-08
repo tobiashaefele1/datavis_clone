@@ -95,7 +95,8 @@ class Indikator extends Component {
             traditional: true,
             success: function (data) {
 				console.log(data)
-                this.updateData(data)
+				console.log('------------------')
+                this.updateData(data )
             }.bind(this)
 
 
