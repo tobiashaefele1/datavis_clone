@@ -38,6 +38,8 @@ const initalState = {
 					accessor: 'selbstersteller_Indikator'}],
 	loading: true,
 	var_year_data: { 'var_year_0': [], 'var_year_1': [], 'var_year_2': [], 'var_year_3': [], 'var_year_4': [], 'var_year_5': []},
+	view_multiple: true,
+	show_viewpicker: true
 	
 }
 
@@ -47,6 +49,21 @@ function reducer(state = initalState, action) {
 	console.log('reducer', state, action);
 
 	switch (action.type) {
+
+		case 'VIEWMODAL':
+			return produce(state, draft => {
+				
+				draft.show_viewpicker = !state.show_viewpicker
+			})
+
+		case 'CHANGEVIEW':
+			return produce(state, draft =>{
+				draft.indikator_counter = 1
+				while (draft.indikators.length > 1) {
+					draft.indikators.pop()
+				}
+				draft.view_multiple = !state.view_multiple
+			})
 
 		case 'LOADINGDONE':
 			return produce(state, draft =>{
@@ -74,7 +91,7 @@ function reducer(state = initalState, action) {
 			return produce(state, draft =>{
 				draft.table_data = [...action.data.table_data],
 				draft.indicator_data = [...action.data.indicator_data]
-				// draft.var_year_data = action.data.var_year_data
+				 draft.var_year_data = action.data.var_year_data
 				console.log(draft.var_year_data)
 				console.log(draft.table_data)
 				console.log(draft.indicator_data)

@@ -8,6 +8,7 @@ class Indikators extends Component {
 		this.props.dispatch({type: 'UPDATECOLUMNS'})
 	}
 	render() {
+	
 		return (
 			<div key='indikators'>
 			{this.props.indikators.map( (d ,i) => 
@@ -20,13 +21,17 @@ class Indikators extends Component {
 			
 			
 			</div>
-		)
+		
+	)
+		
+		
 	}
 }
 
 function mapStateToProps(state) {
 	return {
-		indikators: state.indikators
+		indikators: state.indikators,
+		view_multiple: state.view_multiple
 	};
 }
 

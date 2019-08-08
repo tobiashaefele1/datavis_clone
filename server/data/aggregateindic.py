@@ -148,7 +148,7 @@ def retrieve_var_year (ajax_dictionary):
             counter += 1
 
         else:
-            dictionary[dict_keys[counter]] = ""
+            dictionary[dict_keys[counter]] = []
             counter += 1
 
 
