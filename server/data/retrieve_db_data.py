@@ -309,7 +309,7 @@ def retrieve_distinct_years (var_name):
     # Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
     sql_select_Query = (""" SELECT
                                 DISTINCT `YEAR`
-                            FROM `KREISE`
+                            FROM `Kreise`
                             WHERE `%s` IS NOT NULL; """ % (var_name))
     try:
         # executed quiery and closes cursor

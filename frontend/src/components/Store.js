@@ -52,15 +52,16 @@ function reducer(state = initalState, action) {
 
 		case 'VIEWMODAL':
 			return produce(state, draft => {
-				draft.indikator_counter = 1
-				while (draft.indikators.length > 1) {
-					draft.indikators.pop()
-				}
+				
 				draft.show_viewpicker = !state.show_viewpicker
 			})
 
 		case 'CHANGEVIEW':
 			return produce(state, draft =>{
+				draft.indikator_counter = 1
+				while (draft.indikators.length > 1) {
+					draft.indikators.pop()
+				}
 				draft.view_multiple = !state.view_multiple
 			})
 
@@ -90,7 +91,7 @@ function reducer(state = initalState, action) {
 			return produce(state, draft =>{
 				draft.table_data = [...action.data.table_data],
 				draft.indicator_data = [...action.data.indicator_data]
-				// draft.var_year_data = action.data.var_year_data
+				 draft.var_year_data = action.data.var_year_data
 				console.log(draft.var_year_data)
 				console.log(draft.table_data)
 				console.log(draft.indicator_data)
