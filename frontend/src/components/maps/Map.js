@@ -14,12 +14,48 @@ class Map extends Component {
         }
 
     }
+	color = (x) => {
+		// if (this.props.indicator_data && this.props.indicator_data.length) {
+		// 	return
+		// 	'#e6e6e6'}
+		// else {
+		// array and array.length are truthy
+		// ⇒ probably OK to process array
+
+		if (x ==  null) {
+			return '#e6e6e6'
+		} else {
+			// console.log (d3.scaleLinear(x)
+			// 	.domain([Math.min(...this.props.indicator_data[1]), Math.max(...this.props.indicator_data[1])])
+			// 	// .rangeRound(['#f7fbff', '#deebf7', '#c6dbef', '#9ecae1', '#6baed6', '#4292c6', '#2171b5', '#084594']));
+			// 	.range(['blue', 'white']));
+
+			// var linear =  d3.scaleLinear()
+			// 	.domain([Math.min(...this.props.indicator_data[1]), Math.max(...this.props.indicator_data[1])])
+			// 	.range(['#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c']);
+			// 	// .range(['blue', 'white']);
+			// // console.log(hello(x));
+			// return linear(x)
+
+
+			var quantileScale = d3.scaleQuantile()
+  				.domain(this.props.indicator_data[1])
+				.range(['#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c']);
+
+			return quantileScale(x)
+
+
+		}
+
+	};
+
 	projection() {
 		return d3.geoMercator()
 			.scale(2000)
 			.center(this.state.germany)
 			.translate([200, 240])
 	}
+
 
 	// color = (x) => {
 	// 	if (this.props.indicator_data == [[]]) {
@@ -31,12 +67,21 @@ class Map extends Component {
 	// 			.range(["#f7fbff", "#deebf7", "#c6dbef", "#9ecae1", "#6baed6", "#4292c6", "#2171b5", "#084594"])
 	// 	}
 	// }
-
-	 color = (x) => {d3.scaleLinear()
-				.domain([Math.min(this.props.indicator_data[1]), Math.max(this.props.indicator_data[1])])
-				.range(["brown", "steelblue"])}
-
-
+	//
+	//  color = (x) => {
+	// 	 // console.log(this.props.indicator_data)
+	// 	 // console.log(this.props.indicator_data && this.props.indicator_data.length)
+	// 	 if (this.props.indicator_data && this.props.indicator_data.length) {
+	//
+	// 	 	"#e6e6e6"}
+	// 	 	else {
+	// 		 // array and array.length are truthy
+	// 		 // ⇒ probably OK to process array
+	// 		 d3.scaleLinear(x)
+	// 			 .domain([Math.min(this.props.indicator_data[1]), Math.max(this.props.indicator_data[1])])
+	// 			 .range(["#f7fbff", "#deebf7", "#c6dbef", "#9ecae1", "#6baed6", "#4292c6", "#2171b5", "#084594"]) }
+	//
+	//  }
 
 	// handleClick(i) {
 	// 	alert(`${this.props.current_map[i].properties.NAME_2}`)
@@ -66,7 +111,7 @@ class Map extends Component {
                                 d={d3.geoPath().projection(this.projection())(d)}
                                 className={d.properties.NAME_2}
                                 // fill={`rgba(256,0,0,${(1 / d.properties.indicator )})`}
-								fill={this.color(d.properties.indicator)}
+								fill= {this.color(d.properties.indicator)}
                                 stroke="#000000"
                                 strokeWidth={0.5}
                                 onClick={this.handleClick.bind(this, i)}

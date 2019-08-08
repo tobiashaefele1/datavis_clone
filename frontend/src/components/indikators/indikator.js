@@ -32,7 +32,7 @@ class Indikator extends Component {
 
             }
         }
-        console.log(this.props.indicator_data)
+        // console.log(this.props.indicator_data)
         this.props.dispatch(changeVars(template))
 
     }
@@ -40,7 +40,7 @@ class Indikator extends Component {
 
     get_data() {
         // TODO: change hardcoded HIB or LIB
-        console.log(this.props.indikator_counter)
+        // console.log(this.props.indikator_counter)
         var data = {
 
             'var_1': [this.props.value_dic['var_name_0'],
