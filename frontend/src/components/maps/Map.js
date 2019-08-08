@@ -1,102 +1,97 @@
-import React, {Component} from "react"
+import React, {Component} from 'react';
 import 'd3';
-import * as d3 from "d3";
-import { connect } from 'react-redux';
-import { Spinner } from 'reactstrap'
+import * as d3 from 'd3';
+import {connect} from 'react-redux';
+import {Spinner} from 'reactstrap';
 
 
 class Map extends Component {
-    constructor(props) {
-        super(props),
-        this.state = {
-            
-            germany: [10.3736325636218, 51.053178814923065]
-        }
+  constructor(props) {
+    super(props),
+    this.state = {
 
-    }
-	projection() {
-		return d3.geoMercator()
-			.scale(2000)
-			.center(this.state.germany)
-			.translate([200, 240])
-	}
+      germany: [10.3736325636218, 51.053178814923065],
+    };
+  }
+  projection() {
+    return d3.geoMercator()
+        .scale(2000)
+        .center(this.state.germany)
+        .translate([200, 240]);
+  }
 
-	// color = (x) => {
-	// 	if (this.props.indicator_data == [[]]) {
-	// 		return "#e6e6e6"
-	// 	} else {
-	// 		return d3.scaleLinear(data)
-	// 			.domain([Math.min(this.props.indicator_data[1]), Math.max(this.props.indicator_data[1])])
-	// 			// .range(["brown", "steelblue"])
-	// 			.range(["#f7fbff", "#deebf7", "#c6dbef", "#9ecae1", "#6baed6", "#4292c6", "#2171b5", "#084594"])
-	// 	}
-	// }
+  // color = (x) => {
+  // 	if (this.props.indicator_data == [[]]) {
+  // 		return "#e6e6e6"
+  // 	} else {
+  // 		return d3.scaleLinear(data)
+  // 			.domain([Math.min(this.props.indicator_data[1]), Math.max(this.props.indicator_data[1])])
+  // 			// .range(["brown", "steelblue"])
+  // 			.range(["#f7fbff", "#deebf7", "#c6dbef", "#9ecae1", "#6baed6", "#4292c6", "#2171b5", "#084594"])
+  // 	}
+  // }
 
-	 color = (x) => {d3.scaleLinear()
-				.domain([Math.min(this.props.indicator_data[1]), Math.max(this.props.indicator_data[1])])
-				.range(["brown", "steelblue"])}
-
+	 color = (x) => {
+	   d3.scaleLinear()
+	     .domain([Math.min(this.props.indicator_data[1]), Math.max(this.props.indicator_data[1])])
+	     .range(['brown', 'steelblue']);
+	 }
 
 
 	// handleClick(i) {
 	// 	alert(`${this.props.current_map[i].properties.NAME_2}`)
 	// }
 	handleClick = (i) =>{
-
-		this.props.dispatch(changeName(i))
+	  this.props.dispatch(changeName(i));
 	}
 
 
-    render() {
-		if (this.props.loading) {
-			return (<div><Spinner color="secondary"/></div>)
-		} 
-        return (
+	render() {
+	  if (this.props.loading) {
+	    return (<div><Spinner color="secondary"/></div>);
+	  }
+	  return (
 
-            <div id="map">
+	    <div id="map">
 
-                <svg width="100%" height="100%" viewBox="0 0 400 450">
+	      <svg width="100%" height="100%" viewBox="0 0 400 450">
 
-                    <g className="countries">
-                        {
-                        this.props.current_map.map((d, i) =>
+	        <g className="countries">
+	          {
+	            this.props.current_map.map((d, i) =>
 
-                            <path
-                                key={`path-${i}`}
-                                d={d3.geoPath().projection(this.projection())(d)}
-                                className={d.properties.NAME_2}
-                                // fill={`rgba(256,0,0,${(1 / d.properties.indicator )})`}
-								fill={this.color(d.properties.indicator)}
-                                stroke="#000000"
-                                strokeWidth={0.5}
-                                onClick={this.handleClick.bind(this, i)}
-                            />
-                        )
-                    }
-                    </g>
-                </svg>
-            </div>
-        )
-    }
+	              <path
+	                key={`path-${i}`}
+	                d={d3.geoPath().projection(this.projection())(d)}
+	                className={d.properties.NAME_2}
+	                // fill={`rgba(256,0,0,${(1 / d.properties.indicator )})`}
+	                fill={this.color(d.properties.indicator)}
+	                stroke="#000000"
+	                strokeWidth={0.5}
+	                onClick={this.handleClick.bind(this, i)}
+	              />
+	            )
+	          }
+	        </g>
+	      </svg>
+	    </div>
+	  );
+	}
 }
 
-function changeName(value){
-	return {
-		type: "CHANGE_NAME",
-		value
-	};
+function changeName(value) {
+  return {
+    type: 'CHANGE_NAME',
+    value,
+  };
 }
 function mapStateToProps(state) {
-	return {
-		current_map: state.current_map,
-		loading: state.loading,
-		indicator_data: state.indicator_data,
-	};
+  return {
+    current_map: state.current_map,
+    loading: state.loading,
+    indicator_data: state.indicator_data,
+  };
 }
-
-
-
-
 
 
 export default connect(mapStateToProps)(Map);

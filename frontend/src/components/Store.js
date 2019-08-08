@@ -92,11 +92,12 @@ function reducer(state = initalState, action) {
           draft.table_columns.pop();
         }
         for (let i = 0; i < state.indikator_counter; i++) {
-		  const ColumnName = state.value_dic['var_name_' + 1] 
-		  + ' ' + state.value_dic['var_year_' +1];
+          const ColumnName = state.value_dic['var_name_' + i]
+          + ' ' + state.value_dic['var_year_' +i];
+
           if (ColumnName in state.table_data[0]) {
             draft.table_columns.push({
-              Header: column_name, accessor: column_name});
+              Header: ColumnName, accessor: ColumnName});
           }
         }
       });
