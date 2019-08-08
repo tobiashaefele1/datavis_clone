@@ -21,6 +21,14 @@ class Map extends Component {
 			.translate([200, 240])
 	}
 
+	color() {
+    	return d3.scaleLinear()
+			.domain([Math.min(parsefloat(this.props.indicator_data[1])), Math.max(parsefloat(this.props.indicator_data[1]))
+			.range(["brown", "steelblue"])
+			// .range("#f7fbff", "#deebf7", "#c6dbef", "#9ecae1", "#6baed6", "#4292c6", "#2171b5"", "#084594")
+	}
+
+
 	// handleClick(i) {
 	// 	alert(`${this.props.current_map[i].properties.NAME_2}`)
 	// }
@@ -48,8 +56,8 @@ class Map extends Component {
                                 key={`path-${i}`}
                                 d={d3.geoPath().projection(this.projection())(d)}
                                 className={d.properties.NAME_2}
-                                fill={`rgba(256,0,0,${(1 / d.properties.indicator )})`}
-
+                                // fill={`rgba(256,0,0,${(1 / d.properties.indicator )})`}
+								fill={this.color(d.properties.indicator)}
                                 stroke="#000000"
                                 strokeWidth={0.5}
                                 onClick={this.handleClick.bind(this, i)}
@@ -72,7 +80,8 @@ function changeName(value){
 function mapStateToProps(state) {
 	return {
 		current_map: state.current_map,
-		loading: state.loading
+		loading: state.loading,
+		indicator_data: state.indicator_data,
 	};
 }
 

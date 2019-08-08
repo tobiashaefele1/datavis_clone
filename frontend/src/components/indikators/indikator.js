@@ -41,7 +41,7 @@ class Indikator extends Component {
         // TODO: change hardcoded HIB or LIB
         console.log(this.props.indikator_counter)
         var data = {
-        
+
             'var_1': [this.props.value_dic['var_name_0'],
                 this.props.value_dic['var_year_0'],
                 this.props.value_dic['ref_name_0'],
