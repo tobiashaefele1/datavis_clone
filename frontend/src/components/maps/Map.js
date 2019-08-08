@@ -21,12 +21,21 @@ class Map extends Component {
 			.translate([200, 240])
 	}
 
-	color() {
-    	return d3.scaleLinear()
-			// .domain([Math.min(parsefloat(this.props.indicator_data[1])), Math.max(parsefloat(this.props.indicator_data[1]))])
-			.range(["brown", "steelblue"])
-			// .range("#f7fbff", "#deebf7", "#c6dbef", "#9ecae1", "#6baed6", "#4292c6", "#2171b5"", "#084594")
-	}
+	// color = (x) => {
+	// 	if (this.props.indicator_data == [[]]) {
+	// 		return "#e6e6e6"
+	// 	} else {
+	// 		return d3.scaleLinear(data)
+	// 			.domain([Math.min(this.props.indicator_data[1]), Math.max(this.props.indicator_data[1])])
+	// 			// .range(["brown", "steelblue"])
+	// 			.range(["#f7fbff", "#deebf7", "#c6dbef", "#9ecae1", "#6baed6", "#4292c6", "#2171b5", "#084594"])
+	// 	}
+	// }
+
+	 color = (x) => {d3.scaleLinear()
+				.domain([Math.min(this.props.indicator_data[1]), Math.max(this.props.indicator_data[1])])
+				.range(["brown", "steelblue"])}
+
 
 
 	// handleClick(i) {

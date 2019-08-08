@@ -32,6 +32,7 @@ class Indikator extends Component {
 
             }
         }
+        console.log(this.props.indicator_data)
         this.props.dispatch(changeVars(template))
 
     }
