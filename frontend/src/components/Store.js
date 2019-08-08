@@ -79,7 +79,7 @@ function reducer(state = initalState, action) {
 				}
 				for(let i = 0; i < state.indikator_counter; i++){
 					let column_name = state.value_dic['var_name_' + i]+ " " + state.value_dic['var_year_' + i]
-					console.log(column_name)
+
 					if (column_name in state.table_data[0]) {
 						draft.table_columns.push({ Header: column_name , accessor: column_name })
 					}
@@ -92,9 +92,7 @@ function reducer(state = initalState, action) {
 				draft.table_data = [...action.data.table_data],
 				draft.indicator_data = [...action.data.indicator_data]
 				 draft.var_year_data = action.data.var_year_data
-				console.log(draft.var_year_data)
-				console.log(draft.table_data)
-				console.log(draft.indicator_data)
+			
 			})
 
 		case 'MODAL':

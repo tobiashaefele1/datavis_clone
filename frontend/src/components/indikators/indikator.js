@@ -95,8 +95,7 @@ class Indikator extends Component {
             data: this.get_data(),
             traditional: true,
             success: function (data) {
-				console.log(data)
-				console.log('------------------')
+			
                 this.updateData(data )
             }.bind(this)
 
@@ -112,8 +111,7 @@ class Indikator extends Component {
 
 
     render() {
-		console.log('Indikator ReRender')
-		console.log(this.props.var_year_data)
+	
         return (
 			
             <div id={`in_${this.props.number}`}>
