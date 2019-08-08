@@ -92,10 +92,11 @@ function reducer(state = initalState, action) {
           draft.table_columns.pop();
         }
         for (let i = 0; i < state.indikator_counter; i++) {
-          const column_name = state.value_dic['var_name_' + i] + ' ' + state.value_dic['var_year_' + i];
-
-          if (column_name in state.table_data[0]) {
-            draft.table_columns.push({Header: column_name, accessor: column_name});
+		  const ColumnName = state.value_dic['var_name_' + 1] 
+		  + ' ' + state.value_dic['var_year_' +1];
+          if (ColumnName in state.table_data[0]) {
+            draft.table_columns.push({
+              Header: column_name, accessor: column_name});
           }
         }
       });
@@ -135,11 +136,16 @@ function reducer(state = initalState, action) {
     case 'CHANGE_NAME':
       return produce(state, (draft) => {
         console.log(state.current_map);
-        draft.smalltable[0][1] = state.current_map[action.value].properties.Name,
-        draft.smalltable[1][1] = state.current_map[action.value].properties.Kennziffer,
-        draft.smalltable[2][1] = state.current_map[action.value].properties.Einwohner_2017,
-        draft.smalltable[3][1] = state.current_map[action.value].properties.area_km2,
-        draft.smalltable[4][1] = state.current_map[action.value].properties.Bundesland;
+        draft.smalltable[0][1] = state.current_map[action.value]
+            .properties.Name,
+        draft.smalltable[1][1] = state.current_map[action.value]
+            .properties.Kennziffer,
+        draft.smalltable[2][1] = state.current_map[action.value]
+            .properties.Einwohner_2017,
+        draft.smalltable[3][1] = state.current_map[action.value]
+            .properties.area_km2,
+        draft.smalltable[4][1] = state.current_map[action.value]
+            .properties.Bundesland;
         while (draft.smalltable.length > 6) {
           draft.smalltable.pop();
         }
@@ -151,7 +157,6 @@ function reducer(state = initalState, action) {
       });
 
     case 'SETMAPINSTORE':
-
       return produce(state, (draft) => {
         switch (action.map) {
           case 0:
@@ -202,7 +207,6 @@ function reducer(state = initalState, action) {
         draft.current_map = [...action.template];
       }
       );
-
 
     default:
       return state;
