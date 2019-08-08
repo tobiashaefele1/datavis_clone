@@ -13,6 +13,19 @@ class Map extends Component {
 		  }
   	}
 
+
+  	// legned = (x) => {
+	// const colorLegendG = svg.append("g")
+	// 	.attr('transform', 'translate(185,150)')
+	// 	.
+	//
+	//
+	//
+	//
+	// 	}
+
+
+
   	color = (x) => {
 		if (x ==  null) {
 			return '#e6e6e6'
@@ -56,15 +69,14 @@ class Map extends Component {
 
 	      <svg width="100%" height="100%" viewBox="0 0 400 450">
 
-	        <g className="countries">
+	        <g className="map">
 	          {
 	            this.props.current_map.map((d, i) =>
 
                             <path
                                 key={`path-${i}`}
                                 d={d3.geoPath().projection(this.projection())(d)}
-                                className={d.properties.NAME_2}
-                                // fill={`rgba(256,0,0,${(1 / d.properties.indicator )})`}
+                                className={d.properties.Kennziffer}
 								fill= {this.color(d.properties.indicator)}
                                 stroke="#000000"
                                 strokeWidth={0.5}
@@ -72,7 +84,11 @@ class Map extends Component {
                             />
                         )
                     }
-                    </g>
+			</g>
+
+              {/*      </g>*/}
+			  {/*</g>*/}
+
                 </svg>
             </div>
         )

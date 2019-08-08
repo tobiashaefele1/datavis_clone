@@ -15,7 +15,7 @@ def retrieve_data(var_name, var_year, ref_name, ref_year, layer):
     chosen ref variable and the chosen year, CURRENTLY AS A TUPLE LIST'''
     output = []
     # connect to database
-    mySQLconnection = pymysql.connect(host='bmf_db_1',
+    mySQLconnection = pymysql.connect(host='localhost',
                                       database='mydb',
                                       user='user',
                                       password='password')
@@ -83,7 +83,7 @@ def retrieve_fed_avg(var_name, var_year, ref_name, ref_year, layer):
     fed_avg_name = var_name[:-3]
     fed_avg_name = fed_avg_name + "400"
     # connect to database
-    mySQLconnection = pymysql.connect(host='bmf_db_1',
+    mySQLconnection = pymysql.connect(host='localhost',
                                       database='mydb',
                                       user='user',
                                       password='password')
@@ -122,7 +122,7 @@ def retrieve_ref_share(ref_name, ref_year, layer):
     ref_share = []
 
     # connect to database
-    mySQLconnection = pymysql.connect(host='bmf_db_1',
+    mySQLconnection = pymysql.connect(host='localhost',
                                       database='mydb',
                                       user='user',
                                       password='password')
@@ -229,7 +229,7 @@ def retrieve_col_names(table_name):
     temp = []
     output = []
     # connect to database
-    mySQLconnection = pymysql.connect(host='bmf_db_1',
+    mySQLconnection = pymysql.connect(host='localhost',
                                       database='mydb',
                                       user='user',
                                       password='password')
@@ -268,7 +268,7 @@ def retrieve_col_years(table_name):
     col_years = []
     temp = []
     # connect to database
-    mySQLconnection = pymysql.connect(host='bmf_db_1',
+    mySQLconnection = pymysql.connect(host='localhost',
                                       database='mydb',
                                       user='user',
                                       password='password')
@@ -301,7 +301,7 @@ def retrieve_distinct_years (var_name):
     distinct_years = []
 
     # connect to database
-    mySQLconnection = pymysql.connect(host='bmf_db_1',
+    mySQLconnection = pymysql.connect(host='localhost',
                                       database='mydb',
                                       user='user',
                                       password='password')
