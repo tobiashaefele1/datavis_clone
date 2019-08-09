@@ -8,7 +8,7 @@ import Indikators from './indikators/Indikators';
 import {connect} from 'react-redux';
 import PlusButton from './buttons/PlusButton';
 import MinButton from './buttons/MinButton';
-import SettingButton from './buttons/SettingButton';
+import SettingsButton from './buttons/SettingsButton';
 import Settings from './modals/Settings';
 import Table from './tables/Table';
 import ViewPicker from './modals/ViewPicker';
@@ -120,7 +120,7 @@ class App extends Component {
               <h3>BMF - GRW - Datenvisualisierung</h3>
             </div>
             <div className="three columns">
-              <SettingButton/>
+              <SettingsButton/>
               <Settings/>
             </div>
 

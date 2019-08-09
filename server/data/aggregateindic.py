@@ -1,6 +1,5 @@
 from server.data.retrieve_db_data import retrieve_sd_data, retrieve_data, retrieve_distinct_years
 import pandas as pd
-from sklearn.decomposition import PCA
 
 
 

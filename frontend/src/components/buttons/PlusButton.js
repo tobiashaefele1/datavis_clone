@@ -1,28 +1,45 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
+/**
+ *Component class for the PlusButton that increases the number of indicators
+ *
+ * @class PlusButton
+ * @extends {Component}
+ */
 class PlusButton extends Component {
-	handleButton = () => {
-	  this.props.dispatch({type: 'INCREMENTINDIKATOR'});
-	}
+    /**
+     *Handles the button press. Increases the number of indicators
 
+     * @memberof PlusButton
+     */
+    handleButton = () => {
+      this.props.dispatch({type: 'INCREMENTINDIKATOR'});
+    }
 
-	render() {
-	  if (this.props.ic > 5 || !this.props.view_multiple) {
-	    return (
-	      <div>
-
-	      </div>
-	    );
-	  } else {
-	    return (
-
-	      <button onClick={this.handleButton.bind(this)}>+</button>
-	    );
-	  }
-	}
+    /**
+     *This function renders the button.
+     *
+     * @return {JSX}
+     * @memberof PlusButton
+     */
+    render() {
+      if (this.props.ic > 5 || !this.props.view_multiple) {
+        return ('');
+      } else {
+        return (
+          <button onClick={this.handleButton.bind(this)}>+</button>
+        );
+      }
+    }
 }
 
+/**
+ *Here the props are selected from the store
+
+ * @param {state} state current state of the store
+ * @return {props} returns the selected states as props
+ */
 function mapStateToProps(state) {
   return {
     ic: state.indikator_counter,

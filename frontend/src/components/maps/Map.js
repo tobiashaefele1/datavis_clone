@@ -6,159 +6,189 @@ import {Spinner} from 'reactstrap';
 
 
 /**
- *
+ *Component that creates the map.
  *
  * @class Map
  * @extends {Component}
  */
 class Map extends Component {
+  /**
+   *Creates an instance of Map.
+   * @param {*} props
+   * @memberof Map
+   */
   constructor(props) {
     super(props),
     this.state = {
-			germany: [10.3736325636218, 51.053178814923065]
-	}
-	}
+      germany: [10.3736325636218, 51.053178814923065],
+    };
+  }
 
 
+  // legned = (x) => {
+  // const colorLegendG = svg.append("g")
+  // 	.attr('transform', 'translate(185,150)')
+  // 	.
+  //
+  //
+  //
+  //
+  // 	}
 
-  	// legned = (x) => {
-	// const colorLegendG = svg.append("g")
-	// 	.attr('transform', 'translate(185,150)')
-	// 	.
-	//
-	//
-	//
-	//
-	// 	}
-
-    // legend = (x) => {
-    //   // put any functions and vars and consts in here: then RETURN their call!!
-    //     var height = 50;
-    //     var svg = d3.select('svg');
-    //
-    //     const colorlegend = (selection, props) =>
-    //     {const {colorScale, circleRadius, spacing, textOffset} = props;
-    //     const groups = selection.selectAll('g')
-    //         .data(colorScale.domain());
-    //         const groupsEnter = groups.enter().append('g');
-    //         groupsEnter
-    //             .merge(groups)
-    //             .attr(transform, (d,i) => `translate(0,${i * spacing}`);
-    //         groups.exit().remove();
-    //         groupsEnter.append('circle')
-    //             .merge(groups.select('circle'))
-    //             .attr('r', circleRadius)
-    //             .attr('fill', colorScale);
-    //         groupsEnter.append('text')
-    //             .merge(groups.select('text'))
-    //             .text(d => d)
-    //             .attry('y', textOffset)}
-    //
-    //
-    //      var hello = svg.append('g')
-    //             .attr('transform', `translate(100, ${height / 2})`)
-    //             .call(colorlegend,
-    //                 {
-    //                     colorScale : this.color(),
-    //                     circleRadius: 30,
-    //                     spacing: 180,
-    //                     textOffset: 120
-    //                 });
-    //
-    //     return hello(x)
-
+  // legend = (x) => {
+  //   // put any functions and vars and consts in here: then RETURN their call!!
+  //     var height = 50;
+  //     var svg = d3.select('svg');
+  //
+  //     const colorlegend = (selection, props) =>
+  //     {const {colorScale, circleRadius, spacing, textOffset} = props;
+  //     const groups = selection.selectAll('g')
+  //         .data(colorScale.domain());
+  //         const groupsEnter = groups.enter().append('g');
+  //         groupsEnter
+  //             .merge(groups)
+  //             .attr(transform, (d,i) => `translate(0,${i * spacing}`);
+  //         groups.exit().remove();
+  //         groupsEnter.append('circle')
+  //             .merge(groups.select('circle'))
+  //             .attr('r', circleRadius)
+  //             .attr('fill', colorScale);
+  //         groupsEnter.append('text')
+  //             .merge(groups.select('text'))
+  //             .text(d => d)
+  //             .attry('y', textOffset)}
+  //
+  //
+  //      var hello = svg.append('g')
+  //             .attr('transform', `translate(100, ${height / 2})`)
+  //             .call(colorlegend,
+  //                 {
+  //                     colorScale : this.color(),
+  //                     circleRadius: 30,
+  //                     spacing: 180,
+  //                     textOffset: 120
+  //                 });
+  //
+  //     return hello(x)
 
 
+    color = (x) => {
+      if (x == null) {
+        return '#e6e6e6';
+      } else {
+        const quantileScale = d3.scaleQuantile()
+            .domain(this.props.indicator_data[1])
+            .range(this.props.current_color);
+        return quantileScale(x);
+      }
+
+      // ALTERNATIVE SCALE BELOW
+      // var linearScale =  d3.scaleLinear()
+      // 	.domain([Math.min(...this.props.indicator_data[1]), Math.max(...this.props.indicator_data[1])])
+      // 	.range(['#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c']);
+      // return linearScale(x)
+    };
+
+    /**
+       *This function creates the projection of the map.
+       *
+       * @return {d3.geoMercator}
+       * @memberof Map
+       */
+    projection() {
+      return d3.geoMercator()
+          .scale(2000)
+          .center(this.state.germany)
+          .translate([200, 240]);
+    }
 
 
-  	color = (x) => {
-		if (x ==  null) {
-			return '#e6e6e6'
-		} else {
+    // handleClick(i) {
+    // 	alert(`${this.props.current_map[i].properties.NAME_2}`)
+    // }
 
-			var quantileScale = d3.scaleQuantile()
-  				.domain(this.props.indicator_data[1])
-				.range(this.props.current_color);
-			return quantileScale(x)
-			}
-
-			// ALTERNATIVE SCALE BELOW
-			// var linearScale =  d3.scaleLinear()
-			// 	.domain([Math.min(...this.props.indicator_data[1]), Math.max(...this.props.indicator_data[1])])
-			// 	.range(['#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c']);
-			// return linearScale(x)
-
-	};
-
-	projection() {
-		return d3.geoMercator()
-			.scale(2000)
-			.center(this.state.germany)
-			.translate([200, 240])
-	}
+    /**
+     *This function handles the click on the map.
+     *
+     * @param {int} i this is the number in current_map
+     * @memberof Map
+     */
+    handleClick = (i) =>{
+      this.props.dispatch(changeNameDispatch(i));
+    }
 
 
-	// handleClick(i) {
-	// 	alert(`${this.props.current_map[i].properties.NAME_2}`)
-	// }
-	handleClick = (i) =>{
-	  this.props.dispatch(changeName(i));
-	}
+    /**
+     *This renders the map.
+     *
+     * @return {JSX}
+     * @memberof Map
+     */
+    render() {
+      if (this.props.loading) {
+        return (<div><Spinner color="secondary"/></div>);
+      }
+      return (
 
+        <div id="map">
 
-	render() {
-	  if (this.props.loading) {
-	    return (<div><Spinner color="secondary"/></div>);
-	  }
-	  return (
+          <svg id="svg" width="100%" height="100%" viewBox="0 0 400 450">
 
-	    <div id="map">
+            <g className="map">
+              {
+                this.props.current_map.map((d, i) =>
 
-	      <svg id="svg" width="100%" height="100%" viewBox="0 0 400 450">
+                  <path
+                    key={`path-${i}`}
+                    d={d3.geoPath().projection(this.projection())(d)}
+                    className={d.properties.Kennziffer}
+                    fill= {this.color(d.properties.indicator)}
+                    stroke="#000000"
+                    strokeWidth={0.5}
+                    onClick={this.handleClick.bind(this, i)}
+                  />
+                )
+              }
+            </g>
+            {/* {this.legend(this.color())}*/}
+            {/*      </g>*/}
+            {/* </g>*/}
 
-	        <g className="map">
-	          {
-	            this.props.current_map.map((d, i) =>
-
-                            <path
-                                key={`path-${i}`}
-                                d={d3.geoPath().projection(this.projection())(d)}
-                                className={d.properties.Kennziffer}
-								fill= {this.color(d.properties.indicator)}
-                                stroke="#000000"
-                                strokeWidth={0.5}
-                                onClick={this.handleClick.bind(this, i)}
-                            />
-                        )
-                    }
-			</g>
-              {/*{this.legend(this.color())}*/}
-              {/*      </g>*/}
-			  {/*</g>*/}
-
-                </svg>
-            </div>
-        )
+          </svg>
+        </div>
+      );
     }
 }
 
-function changeName(value) {
+/**
+ *This function creates a dispatch ready input from the indicators.
+ *
+ * @param {int} value of the index in the current_map
+ * @return {Dict} that is send to the dispatch
+ */
+function changeNameDispatch(value) {
   return {
     type: 'CHANGE_NAME',
     value,
   };
 }
+
+/**
+ *Here the props are selected from the store.
+ *
+ * @param {state} state current state of the store
+ * @return {props} returns the selected states as props
+ */
 function mapStateToProps(state) {
   return {
     current_map: state.current_map,
     loading: state.loading,
     indicator_data: state.indicator_data,
-	  view_multiple: state.view_multiple,
-	  single_indic_data: state.single_indic_data,
-	  current_color: state.current_color,
+    view_multiple: state.view_multiple,
+    single_indic_data: state.single_indic_data,
+    current_color: state.current_color,
   };
 }
-
 
 export default connect(mapStateToProps)(Map);
 
@@ -218,7 +248,7 @@ export default connect(mapStateToProps)(Map);
 // //     // }
 // //     handleClick = (i) => {
 // //
-// //         this.props.dispatch(changeName(i))
+// //         this.props.dispatch(changeNameDispatch(i))
 // //     }
 // //
 // //
@@ -368,7 +398,7 @@ export default connect(mapStateToProps)(Map);
 //     // }
 //     handleClick = (i) => {
 //
-//         this.props.dispatch(changeName(i))
+//         this.props.dispatch(changeNameDispatch(i))
 //     }
 //
 // 	// ALL THE D3 THIS IS SO SMART
