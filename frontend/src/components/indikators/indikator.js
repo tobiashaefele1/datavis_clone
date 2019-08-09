@@ -17,7 +17,7 @@ class Indikator extends Component {
      */
     handleChange = (e) => {
       this.props.dispatch(changeValue(e.target.id, e.target.value));
-      this.changevars();
+     
     }
 
     componentDidUpdate(prevProps) {
@@ -129,6 +129,7 @@ class Indikator extends Component {
 	updateData = (data) => {
 	  this.props.dispatch({type: "UPDATEDATA", data});
 	  this.props.dispatch({type: 'UPDATECOLUMNS'});
+	   this.changevars();
 	}
 
 
