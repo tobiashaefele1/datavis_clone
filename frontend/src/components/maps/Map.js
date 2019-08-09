@@ -76,8 +76,11 @@ class Map extends Component {
       if (x == null) {
         return '#e6e6e6';
       } else {
-        const quantileScale = d3.scaleQuantile()
-            .domain(this.props.indicator_data[1])
+          // console.log(this.props.indicator_data[1]);
+        const dom_input = (this.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
+
+          const quantileScale = d3.scaleQuantile()
+            .domain(dom_input)
             .range(this.props.current_color);
         return quantileScale(x);
       }

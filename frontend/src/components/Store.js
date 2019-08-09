@@ -30,7 +30,6 @@ const initalState = {
 
   table_data: [[]],
   indicator_data: [[]],
-
   single_indic_data: [[]],
   show_modal: false,
   value_dic: {
@@ -132,6 +131,7 @@ function reducer(state = initalState, action) {
         draft.table_data = [...action.data.table_data],
         draft.indicator_data = [...action.data.indicator_data];
         draft.var_year_data = action.data.var_year_data;
+        draft.single_indic_data = [...action.data.single_indic_data];
       });
 
     case 'MODAL':

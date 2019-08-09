@@ -27,10 +27,12 @@ def index(request):
         table_data = retrieve_table_data(received_data)
         var_year_data = retrieve_var_year(received_data)
         single_indic_data = retrieve_single_indic(received_data)
+        # print(indicator_data)
         # print (single_indic_data)
         # print (var_year_data)
         data = {'indicator_data': indicator_data, 'table_data': table_data, 'var_year_data': var_year_data,
-                'single_indic_data': single_indic_data}    # print (data)
+                'single_indic_data': single_indic_data}
+        print (data)
         return HttpResponse(json.dumps(data), content_type="application/json")
 
     # print (col_names_var)
@@ -41,8 +43,7 @@ def index(request):
                 'years_var': json.dumps(years_var),
                  'table_data': json.dumps(table_data),
                   'indicator_data': json.dumps(indicator_data),
-        'single_indic_data' : json.dumps(single_indic_data)
-              }    
+              }
     
     return render(request, 'frontend/index.html', context=context)
 

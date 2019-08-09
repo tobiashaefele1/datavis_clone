@@ -40,8 +40,13 @@ class Indikator extends Component {
      */
     changeVars() {
       const template = this.props.current_map;
+      console.log(this.props.indicator_data);
+      console.log(this.props.single_indic_data);
       const value = (this.props.view_multiple ?
         this.props.indicator_data : this.props.single_indic_data);
+
+      console.log(value);
+
       let i;
       for (i = 0; i < template.length; i++) {
         let j;
@@ -158,6 +163,7 @@ class Indikator extends Component {
      * @memberof Indikator
      */
     updateData = (data) => {
+      console.log(data)
       this.props.dispatch({type: 'UPDATEDATA', data});
       this.props.dispatch({type: 'UPDATECOLUMNS'});
       this.changeVars();
