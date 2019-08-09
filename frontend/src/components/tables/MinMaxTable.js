@@ -19,8 +19,11 @@ import { connect } from 'react-redux';
 	
 
 	checkData = () => {
-	 if(this.props.indicator_data.length > 1){
-		  this.values = this.FindMinMaxAvg(this.props.indicator_data[1])
+	 if(this.props.indicator_data.length > 1)
+	 {
+	     const value = (this.props.view_multiple ? this.props.indicator_data : this.props.single_indic_data);
+
+		  this.values = this.FindMinMaxAvg(value[1])
 	 }
 	}
 
