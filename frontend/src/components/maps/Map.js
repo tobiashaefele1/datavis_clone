@@ -156,7 +156,7 @@ function mapStateToProps(state) {
     loading: state.loading,
     indicator_data: state.indicator_data,
 	  view_multiple: state.view_multiple,
-	  	single_indic_data: state.single_indic_data
+	  single_indic_data: state.single_indic_data,
 	  current_color: state.current_color,
   };
 }
