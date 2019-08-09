@@ -1,0 +1,5 @@
+FROM mysql
+
+ADD db.sql /temp/db.sql
+ADD init_db.sh /temp/init_db.sh
+RUN	chmod 644 /temp/init_db.sh && /temp/init_db.sh
