@@ -26,14 +26,9 @@ class PlusButton extends Component {
      */
     render() {
       if (this.props.ic > 5 || !this.props.view_multiple) {
-        return (
-          <div>
-
-          </div>
-        );
+        return ('');
       } else {
         return (
-
           <button onClick={this.handleButton.bind(this)}>+</button>
         );
       }
