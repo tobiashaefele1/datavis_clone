@@ -1,7 +1,19 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
+/**
+ *Component to create the area specific information.
+ *
+ * @class SmallTable
+ * @extends {Component}
+ */
 class SmallTable extends Component {
+  /**
+   *This function renders the table.
+   *
+   * @return {JSX}
+   * @memberof SmallTable
+   */
   render() {
     return (
       <table id="specInfo" className="u-80-width">
@@ -16,8 +28,6 @@ class SmallTable extends Component {
               <td key= {`td-${i}-key`}>{d[0]}</td>
               <td key={`td-${i}-value`}>{d[1]}</td>
             </tr>
-
-
           )}
         </tbody>
       </table>
@@ -25,6 +35,12 @@ class SmallTable extends Component {
   }
 }
 
+/**
+ *Here the props are selected from the store.
+ *
+ * @param {state} state current state of the store
+ * @return {props} returns the selected states as props
+ */
 function mapStateToProps(state) {
   return {
     smalltable: state.smalltable,
