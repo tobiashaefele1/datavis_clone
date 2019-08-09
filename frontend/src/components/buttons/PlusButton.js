@@ -17,7 +17,6 @@ class PlusButton extends Component {
       this.props.dispatch({type: 'INCREMENTINDIKATOR'});
     }
 
-
     /**
      *This function renders the button.
      *
