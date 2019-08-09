@@ -18,7 +18,7 @@ class Map extends Component {
 			germany: [10.3736325636218, 51.053178814923065]
 	}
 	}
-	
+
 
 
   	// legned = (x) => {
@@ -31,6 +31,44 @@ class Map extends Component {
 	//
 	// 	}
 
+    // legend = (x) => {
+    //   // put any functions and vars and consts in here: then RETURN their call!!
+    //     var height = 50;
+    //     var svg = d3.select('svg');
+    //
+    //     const colorlegend = (selection, props) =>
+    //     {const {colorScale, circleRadius, spacing, textOffset} = props;
+    //     const groups = selection.selectAll('g')
+    //         .data(colorScale.domain());
+    //         const groupsEnter = groups.enter().append('g');
+    //         groupsEnter
+    //             .merge(groups)
+    //             .attr(transform, (d,i) => `translate(0,${i * spacing}`);
+    //         groups.exit().remove();
+    //         groupsEnter.append('circle')
+    //             .merge(groups.select('circle'))
+    //             .attr('r', circleRadius)
+    //             .attr('fill', colorScale);
+    //         groupsEnter.append('text')
+    //             .merge(groups.select('text'))
+    //             .text(d => d)
+    //             .attry('y', textOffset)}
+    //
+    //
+    //      var hello = svg.append('g')
+    //             .attr('transform', `translate(100, ${height / 2})`)
+    //             .call(colorlegend,
+    //                 {
+    //                     colorScale : this.color(),
+    //                     circleRadius: 30,
+    //                     spacing: 180,
+    //                     textOffset: 120
+    //                 });
+    //
+    //     return hello(x)
+
+
+    }
 
 
   	color = (x) => {
@@ -92,7 +130,7 @@ class Map extends Component {
                         )
                     }
 			</g>
-
+              {/*{this.legend(this.color())}*/}
               {/*      </g>*/}
 			  {/*</g>*/}
 

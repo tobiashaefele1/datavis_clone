@@ -27,24 +27,35 @@ class Indikator extends Component {
     }
 
     changevars() {
-	  let i;
 
-	  const template = this.props.current_map;
-	  const value = this.props.indicator_data;
+		const template = this.props.current_map;
+
+		if (this.props.view_multiple) {
+			const value = this.props._indicator_data;
+			let i;
+			for (i = 0; i < template.length; i++) {
+				var j;
+				for (j = 0; j < value[0].length; j++) {
+					if (template[i].properties.Kennziffer == value[0][j]) {
+						template[i].properties.indicator = value[1][j];
+					}
+				}
+			}
+			console.log(this.props.indicator_data);
+
+		} else {
+				const value = this.props.table_data;
+				let i;
+				for (i = 0; i <template.length; i++) {
+					var j;
+					for (j = 0; j <value[0].length)
+				}
+
+		}
 
 
-	  for (i = 0; i < template.length; i++) {
-	    var j;
-	    for (j = 0; j < value[0].length; j++) {
-	      if (template[i].properties.Kennziffer == value[0][j]) {
-	        template[i].properties.indicator = value[1][j];
-	      }
-	    }
-	  }
-	  console.log(this.props.indicator_data);
-	  this.props.dispatch(changeVars(template));
-    }
-
+		this.props.dispatch(changeVars(template));
+	}
 
     get_data() {
 	  // TODO: change hardcoded HIB or LIB

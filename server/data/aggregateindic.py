@@ -1,4 +1,7 @@
 from server.data.retrieve_db_data import retrieve_sd_data, retrieve_data, retrieve_distinct_years
+import pandas as pd
+from sklearn.decomposition import PCA
+
 
 
 def aggregate_args(ajax_dictionary):
@@ -67,6 +70,7 @@ def retrieve_indicator(ajax_dictionary):
 
 
 def retrieve_table_data(ajax_dictionary):
+    #TODO atm the kennziffer comes back as a number, not as a string in the javascript
     ''' THIS FUNCTION THAT AN AJAX DICTIONNARY AS AN INPUT
     it returns a list of lists of the format output = [[ID1,var1, var2.],[ID2, var1, var2...],[etc
     this can be used to poplate the table
@@ -102,7 +106,8 @@ def retrieve_table_data(ajax_dictionary):
 
         ## the following code copies the layer IDs as the first column into the results list
         for (j, k) in list[0]:
-            var_name.append([j])
+            print (j)
+            var_name.append([(j)])
         result = var_name
         # print (result)
 
@@ -120,7 +125,11 @@ def retrieve_table_data(ajax_dictionary):
             count = 0
             temp_dict = {}
             for y in x:
-                temp_dict[dictionary_keys[count]] = round(float(y), 2)
+                if isinstance(y, str):
+                    temp_dict[dictionary_keys[count]] = y
+                else:
+                    temp_dict[dictionary_keys[count]] = round(float(y), 2)
+
                 count += 1
             ### the following lines of code add the value from the aggreagted indicator
             temp_dict["selbstersteller_Indikator"] = round(float(aggregated_indicator[aggreg_count]), 2)
@@ -157,7 +166,7 @@ def retrieve_var_year (ajax_dictionary):
 
 
 #### test the code like that
-
+#
 test_dict = {'var_1': ['Arbeitslosenquote_100', '2015', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', '"HIB', 0.05],
              'var_2': ['Bruttoinlandsprodukt je Erwerbstätigen_100', '2014', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', 'HIB', 0.05],
              'var_3': ['', '1990', '0', '2011', 'KRS_15', 'HIB', ''],
@@ -165,29 +174,67 @@ test_dict = {'var_1': ['Arbeitslosenquote_100', '2015', 'Erwerbstätige gesamt_1
              'var_5': ['', '', '', '', 'KRS_15', 'HIB', ''],
              'var_6': ['', '', '', '', 'KRS_15', 'HIB', '']}
 #
-test = retrieve_indicator(test_dict)
-print (test)
-
-# # print(test)
-
-# print(len(test[3]))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# test = retrieve_var_year(test_dict)
+test = retrieve_table_data(test_dict)
 # print (test)
+#
+# # # print(test)
+#
+# # print(len(test[3]))
+#
+# # test = retrieve_var_year(test_dict)
+# # print (test)
+#
+#
+# def retrieve_pca(ajax_dictionary):
+#     '''
+#     THIS FUNCTION THAT THE AJAX DICTIONANARY AS AN INPUT
+#      this function takes in the dictionary that is returned from ajax (6 entries with 7 variables in order each.
+#      The function then checks all the dict entries for comprehensiveness. If they include all required values,
+#      the database is searched and the correct value returned
+#     :param var: dictionary with (var1: [var_name, var_year, ref_name, ref_year, layer, scale, weight], var_2: [...] etc)
+#     :return: The function returns a list of the target layer ref code, as well as the aggregated indicator
+#     '''
+#
+#     # this code scans the dictionary to ensure only complete entries are being searched for in the db
+#     var = []
+#     var = aggregate_args(ajax_dictionary)
+#     empty_return = [[]]
+#
+#     result = []
+#     if var == []:
+#         return empty_return
+#
+#     else:
+#         # this code returns the database array from all valid entries and stores them in a list (of tuples)
+#         list = []
+#         for i in range(0, len(var)):
+#             list.append(retrieve_sd_data(var[i][0], var[i][1], var[i][2], var[i][3], var[i][4], var[i][5]))
+#         # print (list)
+#         var_name = []
+#
+#         ## the following code copies the layer IDs as the first column into the results list
+#         for (j, k) in list[0]:
+#             var_name.append(j)
+#         result.append(var_name)
+#         # print (result)
+#
+#         print (list)
+#
+#
+#     return result
+#
+#
+# test = retrieve_pca(test_dict)
+# print(test)
+#
+
+
+
+
+
+
+
+
 
 
 
