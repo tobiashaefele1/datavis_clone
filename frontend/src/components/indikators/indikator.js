@@ -21,7 +21,7 @@ class Indikator extends Component {
     }
 
     /**
-     *This function is automatically called when the props or state update
+     *This function is automatically called when the props or state updates
      *
      * @param {*} prevProps
      * @memberof Indikator
@@ -165,7 +165,7 @@ class Indikator extends Component {
 
 
     /**
-     *This is the function that renders the indicators.
+     *This is the function that renders the indicator.
      *
      * @return {JSX}
      * @memberof Indikator
@@ -279,8 +279,8 @@ function changeValueDispatch(value1, value2) {
 // the returned indicator data from the ajax call
 
 /**
- *Here the props are selected from the store
-
+ *Here the props are selected from the store.
+ *
  * @param {state} state current state of the store
  * @return {props} returns the selected states as props
  */
