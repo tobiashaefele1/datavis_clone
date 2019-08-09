@@ -1,6 +1,18 @@
 import React, {Component} from 'react';
 
-export default class Import extends Component {
+/**
+ *Component class to import the CSV file.
+ *
+ * @class Import
+ * @extends {Component}
+ */
+class Import extends Component {
+  /**
+   *This will render the modal.
+   *
+   * @return {JSX}
+   * @memberof Import
+   */
   render() {
     return (
       <div>
@@ -24,3 +36,4 @@ export default class Import extends Component {
     );
   }
 }
+export default Import;
