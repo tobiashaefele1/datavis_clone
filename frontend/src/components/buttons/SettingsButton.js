@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 /**
- *Component class for the SettingButton this opens the Settings modal.
+ *Component class for the SettingsButton this opens the Settings modal.
  *
- * @class SettingButton
+ * @class SettingsButton
  * @extends {Component}
  */
-class SettingButton extends Component {
+class SettingsButton extends Component {
     closeModal = () => {
       this.props.dispatch({type: 'MODAL'});
     }
@@ -16,7 +16,7 @@ class SettingButton extends Component {
      *This function renders the button.
      *
      * @return {JSX}
-     * @memberof SettingButton
+     * @memberof SettingsButton
      */
     render() {
       return (
@@ -25,6 +25,6 @@ class SettingButton extends Component {
     }
 }
 
-export default connect()(SettingButton);
+export default connect()(SettingsButton);
 
 
