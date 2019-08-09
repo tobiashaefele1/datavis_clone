@@ -17,7 +17,6 @@ class Indikator extends Component {
      */
     handleChange = (e) => {
       this.props.dispatch(changeValue(e.target.id, e.target.value));
-
     }
 
     componentDidUpdate(prevProps) {
@@ -27,21 +26,21 @@ class Indikator extends Component {
     }
 
     changevars() {
-	  let i;
 
-	  const template = this.props.current_map;
+		const template = this.props.current_map;
+		const value = (this.props.view_multiple ? this.props.indicator_data : this.props.single_indic_data);
+		let i;
+		for (i = 0; i < template.length; i++) {
+			var j;
+			for (j = 0; j < value[0].length; j++) {
+				if (template[i].properties.Kennziffer == value[0][j]) {
+					template[i].properties.indicator = value[1][j];
+					}
+				}
+			}
+		console.log(template);
+		this.props.dispatch(changeVars(template));
 
-	const value = (this.props.view_multiple ? this.props.indicator_data : this.props.single_indic_data);
-	  for (i = 0; i < template.length; i++) {
-	    var j;
-	    for (j = 0; j < value[0].length; j++) {
-	      if (template[i].properties.Kennziffer == value[0][j]) {
-	        template[i].properties.indicator = value[1][j];
-	      }
-	    }
-	  }
-	  console.log(this.props.indicator_data);
-	  this.props.dispatch(changeVars(template));
     }
 
 
@@ -231,7 +230,8 @@ function mapStateToProps(state) {
     current_map: state.current_map,
     map_name: state.map_name,
 	var_year_data: state.var_year_data,
-	view_multiple: state.view_multiple
+	view_multiple: state.view_multiple,
+	single_indic_data: state.single_indic_data
   };
 }
 

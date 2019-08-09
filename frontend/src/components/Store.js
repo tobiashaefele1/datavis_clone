@@ -30,6 +30,7 @@ const initalState = {
 
   table_data: [[]],
   indicator_data: [[]],
+  single_indic_data: [[]],
   show_modal: false,
   value_dic: {
     'var_name_0': null, 'var_name_1': null, 'var_name_2': null,
