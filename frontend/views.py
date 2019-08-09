@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
-from server.data.aggregateindic import retrieve_indicator, retrieve_table_data, retrieve_var_year
+from server.data.aggregateindic import retrieve_indicator, retrieve_table_data, retrieve_var_year, retrieve_single_indic
 from server.data.retrieve_db_data import (retrieve_col_names,
                                           retrieve_col_years, retrieve_data)
 
@@ -15,6 +15,7 @@ def index(request):
     received_data = {}
     indicator_data = []
     table_data = []
+    single_indic_data = []
     ### on load
     col_names_var = retrieve_col_names("Kreise")  # this returns all unique column names from the KREISE table
     col_names_ref = ['Einwohner 15-65_100', 'Einwohner gesamt_100', 'Erwerbspersonen gesamt_100', 'Erwerbstätige gesamt_100', 'Fläche_100']  # this returns all unique labels for standardisation drop downs
@@ -25,8 +26,9 @@ def index(request):
         indicator_data = retrieve_indicator(received_data)
         table_data = retrieve_table_data(received_data)
         var_year_data = retrieve_var_year(received_data)
+        single_indic_data = retrieve_single_indic(received_data)
         # print (var_year_data)
-        data = {'indicator_data': indicator_data, 'table_data': table_data, 'var_year_data': var_year_data}
+        data = {'indicator_data': indicator_data, 'table_data': table_data, 'var_year_data': var_year_data, 'single_indic_data': single_indic_data}
         # print (data)
         return HttpResponse(json.dumps(data), content_type="application/json")
 

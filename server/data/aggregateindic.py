@@ -57,7 +57,7 @@ def retrieve_indicator(ajax_dictionary):
         for i in range(0, len(list)):
             multiplication = []
             for (k, l) in list[i]:
-                multiplication.append(float(l) * float(var[i][6]))
+                multiplication.append(float(l) * (float(var[i][6])/100))
             interim.append(multiplication)
         # print(interim)
         ### the following code then sums all the individual items and returns one list
@@ -163,6 +163,35 @@ def retrieve_var_year (ajax_dictionary):
     return dictionary
 
 
+def retrieve_single_indic(ajax_dictionary):
+    # this code scans the dictionary to ensure only complete entries are being searched for in the db
+    var = []
+    var = aggregate_args(ajax_dictionary)
+    empty_return = [[]]
+
+    result = []
+    if var == []:
+        return empty_return
+
+    else:
+        # this code returns the database array from all valid entries and stores them in a list
+        list = []
+        for i in range(0, 1):
+            list.append(retrieve_data(var[i][0], var[i][1], var[i][2], var[i][3], var[i][4]))
+        # print (list)
+        print (len(list))
+        ## the following code copies the layer IDs as the first column into the results list
+        var_name = []
+        for (j, k) in list[0]:
+            var_name.append(j)
+        result.append(var_name)
+
+        indicator = []
+        for (j,k) in list [0]:
+            indicator.append(k)
+        result.append(indicator)
+
+        return result
 
 #### test the code like that
 #
@@ -173,9 +202,9 @@ def retrieve_var_year (ajax_dictionary):
 #              'var_5': ['', '', '', '', 'KRS_15', 'HIB', ''],
 #              'var_6': ['', '', '', '', 'KRS_15', 'HIB', '']}
 # #
-# test = retrieve_table_data(test_dict)
+# test = retrieve_single_indic(test_dict)
 # print (test)
-#
+# #
 # # # print(test)
 #
 # # print(len(test[3]))

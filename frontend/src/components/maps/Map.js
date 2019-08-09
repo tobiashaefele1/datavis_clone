@@ -68,24 +68,28 @@ class Map extends Component {
     //     return hello(x)
 
 
-    }
+
 
 
   	color = (x) => {
 		if (x ==  null) {
 			return '#e6e6e6'
 		} else {
+
+
+
 			var quantileScale = d3.scaleQuantile()
   				.domain(this.props.indicator_data[1])
 				.range(['#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c']);
 			return quantileScale(x)
+			}
 
 			// ALTERNATIVE SCALE BELOW
 			// var linearScale =  d3.scaleLinear()
 			// 	.domain([Math.min(...this.props.indicator_data[1]), Math.max(...this.props.indicator_data[1])])
 			// 	.range(['#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c']);
 			// return linearScale(x)
-		}
+
 	};
 
 	projection() {
@@ -151,6 +155,8 @@ function mapStateToProps(state) {
     current_map: state.current_map,
     loading: state.loading,
     indicator_data: state.indicator_data,
+	  view_multiple: state.view_multiple,
+	  	single_indic_data: state.single_indic_data
   };
 }
 
