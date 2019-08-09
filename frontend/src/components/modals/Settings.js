@@ -1,125 +1,160 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import ViewButton from '../buttons/ViewButton'
+import ViewButton from '../buttons/ViewButton';
+/**
+ *Component class to crete the Settings modal.
+ *
+ * @class Settings
+ * @extends {Component}
+ */
 class Settings extends Component {
-	closeModal = () => {
-	  this.props.dispatch({type: 'MODAL'});
-	}
-	colorchange = e =>{
-		this.props.dispatch(this.changecolordispatch(e.target.value))
-	};
+    /**
+     *This function closes the modal.
+     *
+     * @memberof Settings
+     */
+    closeModal = () => {
+      this.props.dispatch({type: 'MODAL'});
+    }
+    /**
+     *This Function changes the color of the map.
+     *
+     * @param {event} e this is the color that is selected.
+     * @memberof Settings
+     */
+    colorChange = (e) =>{
+      this.props.dispatch(this.changeColorDispatch(e.target.value));
+    };
 
-	changecolordispatch(value){
-		console.log(value)
-		return(
-			{
-				type: 'CHANGECOLOR',
-				value
-			}
-		)
-	};
+    /**
+     *This function creates a dispatch ready input.
+     *
+     * @param {*} value
+     * @return {Dict} ready to send to dispatch
+     * @memberof Settings
+     */
+    changeColorDispatch(value) {
+      return (
+        {
+          type: 'CHANGECOLOR',
+          value,
+        }
+      );
+    };
 
 
-	render() {
-	  if (this.props.show_modal) {
-	    return (
-	      <div>
-	        <div id="settings" className="import_modal">
-	          <div className="import_modal-content">
-	            <span className="close" onClick={this.closeModal.bind(this)}>&times;</span>
-	            <h2>Settings</h2>
-				<h3>View</h3>
-				<ViewButton/>
-	            <h3>Color:</h3>
-	            <label >
+    /**
+     *This function renders the Settings modal.
+     *
+     * @return {JSX}
+     * @memberof Settings
+     */
+    render() {
+      if (this.props.show_modal) {
+        return (
+          <div>
+            <div id="settings" className="import_modal">
+              <div className="import_modal-content">
+                <span className="close"
+                  onClick={this.closeModal.bind(this)}>&times;</span>
+                <h2>Settings</h2>
+                <h3>View</h3>
+                <ViewButton/>
+                <h3>Color:</h3>
+                <label >
 
-	              <svg width="10" height="10" className="Blues">
-	                <rect width="10" height="10" className="q0-5" />
-	              </svg>
-	              <svg width="10" height="10" className="Blues">
-	                <rect width="10" height="10" className="q1-5" />
-	              </svg>
-	              <svg width="10" height="10" className="Blues">
-	                <rect width="10" height="10" className="q2-5" />
-	              </svg>
-	              <svg width="10" height="10" className="Blues">
-	                <rect width="10" height="10" className="q3-5" />
-	              </svg>
-	              <svg width="10" height="10" className="Blues">
-	                <rect width="10" height="10" className="q4-5" />
-	              </svg>
-	              <svg width="10" height="10" className="Purples">
-	                <rect width="10" height="10" className="q5-5" />
-	              </svg>
+                  <svg width="10" height="10" className="Blues">
+                    <rect width="10" height="10" className="q0-5" />
+                  </svg>
+                  <svg width="10" height="10" className="Blues">
+                    <rect width="10" height="10" className="q1-5" />
+                  </svg>
+                  <svg width="10" height="10" className="Blues">
+                    <rect width="10" height="10" className="q2-5" />
+                  </svg>
+                  <svg width="10" height="10" className="Blues">
+                    <rect width="10" height="10" className="q3-5" />
+                  </svg>
+                  <svg width="10" height="10" className="Blues">
+                    <rect width="10" height="10" className="q4-5" />
+                  </svg>
+                  <svg width="10" height="10" className="Purples">
+                    <rect width="10" height="10" className="q5-5" />
+                  </svg>
 
-	            </label>
-				  <button value={0} onClick={this.colorchange} > Blue </button>
-	            <label>
+                </label>
+                <button value={0} onClick={this.colorChange} > Blue </button>
+                <label>
 
-	              <svg width="10" height="10" className="Reds">
-	                <rect width="10" height="10" className="q0-5" />
-	              </svg>
-	              <svg width="10" height="10" className="Reds">
-	                <rect width="10" height="10" className="q1-5" />
-	              </svg>
-	              <svg width="10" height="10" className="Reds">
-	                <rect width="10" height="10" className="q2-5" />
-	              </svg>
-	              <svg width="10" height="10" className="Reds">
-	                <rect width="10" height="10" className="q3-5" />
-	              </svg>
-	              <svg width="10" height="10" className="Reds">
-	                <rect width="10" height="10" className="q4-5" />
-	              </svg>
-	              <svg width="10" height="10" className="Reds">
-	                <rect width="10" height="10" className="q5-5" />
-	              </svg>
+                  <svg width="10" height="10" className="Reds">
+                    <rect width="10" height="10" className="q0-5" />
+                  </svg>
+                  <svg width="10" height="10" className="Reds">
+                    <rect width="10" height="10" className="q1-5" />
+                  </svg>
+                  <svg width="10" height="10" className="Reds">
+                    <rect width="10" height="10" className="q2-5" />
+                  </svg>
+                  <svg width="10" height="10" className="Reds">
+                    <rect width="10" height="10" className="q3-5" />
+                  </svg>
+                  <svg width="10" height="10" className="Reds">
+                    <rect width="10" height="10" className="q4-5" />
+                  </svg>
+                  <svg width="10" height="10" className="Reds">
+                    <rect width="10" height="10" className="q5-5" />
+                  </svg>
 
-	            </label>
-				  <button value={1} onClick={this.colorchange}> Red </button>
+                </label>
+                <button value={1} onClick={this.colorChange}> Red </button>
 
-	            <label>
+                <label>
 
-	              <svg width="10" height="10" className="Greens">
-	                <rect width="10" height="10" className="q0-5" />
-	              </svg>
-	              <svg width="10" height="10" className="Greens">
-	                <rect width="10" height="10" className="q1-5" />
-	              </svg>
-	              <svg width="10" height="10" className="Greens">
-	                <rect width="10" height="10" className="q2-5" />
-	              </svg>
-	              <svg width="10" height="10" className="Greens">
-	                <rect width="10" height="10" className="q3-5" />
-	              </svg>
-	              <svg width="10" height="10" className="Greens">
-	                <rect width="10" height="10" className="q4-5" />
-	              </svg>
-	              <svg width="10" height="10" className="Greens">
-	                <rect width="10" height="10" className="q5-5" />
-	              </svg>
+                  <svg width="10" height="10" className="Greens">
+                    <rect width="10" height="10" className="q0-5" />
+                  </svg>
+                  <svg width="10" height="10" className="Greens">
+                    <rect width="10" height="10" className="q1-5" />
+                  </svg>
+                  <svg width="10" height="10" className="Greens">
+                    <rect width="10" height="10" className="q2-5" />
+                  </svg>
+                  <svg width="10" height="10" className="Greens">
+                    <rect width="10" height="10" className="q3-5" />
+                  </svg>
+                  <svg width="10" height="10" className="Greens">
+                    <rect width="10" height="10" className="q4-5" />
+                  </svg>
+                  <svg width="10" height="10" className="Greens">
+                    <rect width="10" height="10" className="q5-5" />
+                  </svg>
 
-	            </label>
+                </label>
 
-				  <button value={2} onClick={this.colorchange}> Green </button>
-				<div>
-							STD:
-				</div>
-	          </div>
+                <button value={2} onClick={this.colorChange}> Green </button>
+                <div>
+                            STD:
+                </div>
+              </div>
 
-	        </div>
-	      </div>);
-	  } else {
-	    return ('');
-	  }
-	}
+            </div>
+          </div>);
+      } else {
+        return ('');
+      }
+    }
 }
 
+/**
+ *Here the props are selected from the store.
+ *
+ * @param {state} state current state of the store
+ * @return {props} returns the selected states as props
+ */
 function mapStateToProps(state) {
   return {
     show_modal: state.show_modal,
   };
 }
-
 
 export default connect(mapStateToProps)(Settings);
