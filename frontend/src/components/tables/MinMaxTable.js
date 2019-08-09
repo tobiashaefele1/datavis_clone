@@ -27,9 +27,10 @@ class MinMaxTable extends Component {
      * @memberof MinMaxTable
      */
     checkData = () => {
-      if (this.props.indicator_data.length > 1 || this.props.single_indic_data > 1) {
+      if (this.props.indicator_data.length > 2 || this.props.single_indic_data > 2) {
         const value = (this.props.view_multiple ?
             this.props.indicator_data : this.props.single_indic_data);
+        console.log(value);
         this.values = this.findMinMaxAvg(value);
       }
     }

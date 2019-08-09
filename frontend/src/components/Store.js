@@ -11,8 +11,8 @@ const initalState = {
     ['Rank', 'placeholder']],
   current_color: ['#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c'],
   color_options: [['#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c'],
-                  ['#fee5d9', '#fcae91', '#fb6a4a', '#de2d26', '#a50f15'],
-                  ['#edf8e9', '#bae4b3', '#74c476', '#31a354', '#006d2c']],
+    ['#fee5d9', '#fcae91', '#fb6a4a', '#de2d26', '#a50f15'],
+    ['#edf8e9', '#bae4b3', '#74c476', '#31a354', '#006d2c']],
   counter: 0,
   count_map: 0,
   current_map: [],
@@ -30,6 +30,7 @@ const initalState = {
 
   table_data: [[]],
   indicator_data: [[]],
+
   single_indic_data: [[]],
   show_modal: false,
   value_dic: {
@@ -73,20 +74,19 @@ function reducer(state = initalState, action) {
   switch (action.type) {
     case 'CHANGECOLOR':
       return produce(state, (draft) => {
-        switch (action.value){
-          case "0":
+        switch (action.value) {
+          case '0':
             draft.current_color = state.color_options[0];
             break;
-          case "1":
+          case '1':
             draft.current_color = state.color_options[1];
             break;
-          case "2":
+          case '2':
             draft.current_color = state.color_options[2];
             break;
           default:
             draft.current_color = state.color_options[0];
             break;
-
         }
       });
 
