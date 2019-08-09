@@ -17,7 +17,7 @@ class Indikator extends Component {
      */
     handleChange = (e) => {
       this.props.dispatch(changeValue(e.target.id, e.target.value));
-     
+
     }
 
     componentDidUpdate(prevProps) {
@@ -154,7 +154,7 @@ class Indikator extends Component {
 	          <label >Jahr </label>
 	          <select className="u-80-width" defaultValue="0" id={`var_year_${this.props.number}`}
 	            onChange={this.handleChange.bind(this)}>
-	            <option disabled value="0"> -- Wähle Variable --</option>
+	            <option disabled value="0"> -- Wähle Jahr --</option>
 	            {this.props.var_year_data[`var_year_${this.props.number}`].map((d, i) =>
 
 	              <option value={d} key={i}>{d}</option>
@@ -208,7 +208,7 @@ function changeData(value) {
 }
 
 function changeValue(value1, value2) {
-  return {
+	return {
     type: "CHANGEVALUE",
     value1,
     value2

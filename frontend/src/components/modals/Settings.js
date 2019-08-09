@@ -5,6 +5,19 @@ class Settings extends Component {
 	closeModal = () => {
 	  this.props.dispatch({type: 'MODAL'});
 	}
+	colorchange = e =>{
+		this.props.dispatch(this.changecolordispatch(e.target.value))
+	};
+
+	changecolordispatch(value){
+		console.log(value)
+		return(
+			{
+				type: 'CHANGECOLOR',
+				value
+			}
+		)
+	};
 
 
 	render() {
@@ -18,21 +31,21 @@ class Settings extends Component {
 				<h3>View</h3>
 				<ViewButton/>
 	            <h3>Color:</h3>
-	            <label>
+	            <label >
 
-	              <svg width="10" height="10" className="Purples">
+	              <svg width="10" height="10" className="Blues">
 	                <rect width="10" height="10" className="q0-5" />
 	              </svg>
-	              <svg width="10" height="10" className="Purples">
+	              <svg width="10" height="10" className="Blues">
 	                <rect width="10" height="10" className="q1-5" />
 	              </svg>
-	              <svg width="10" height="10" className="Purples">
+	              <svg width="10" height="10" className="Blues">
 	                <rect width="10" height="10" className="q2-5" />
 	              </svg>
-	              <svg width="10" height="10" className="Purples">
+	              <svg width="10" height="10" className="Blues">
 	                <rect width="10" height="10" className="q3-5" />
 	              </svg>
-	              <svg width="10" height="10" className="Purples">
+	              <svg width="10" height="10" className="Blues">
 	                <rect width="10" height="10" className="q4-5" />
 	              </svg>
 	              <svg width="10" height="10" className="Purples">
@@ -40,6 +53,7 @@ class Settings extends Component {
 	              </svg>
 
 	            </label>
+				  <button value={0} onClick={this.colorchange} > Blue </button>
 	            <label>
 
 	              <svg width="10" height="10" className="Reds">
@@ -62,30 +76,35 @@ class Settings extends Component {
 	              </svg>
 
 	            </label>
+				  <button value={1} onClick={this.colorchange}> Red </button>
 
 	            <label>
 
-	              <svg width="10" height="10" className="Oranges">
+	              <svg width="10" height="10" className="Greens">
 	                <rect width="10" height="10" className="q0-5" />
 	              </svg>
-	              <svg width="10" height="10" className="Oranges">
+	              <svg width="10" height="10" className="Greens">
 	                <rect width="10" height="10" className="q1-5" />
 	              </svg>
-	              <svg width="10" height="10" className="Oranges">
+	              <svg width="10" height="10" className="Greens">
 	                <rect width="10" height="10" className="q2-5" />
 	              </svg>
-	              <svg width="10" height="10" className="Oranges">
+	              <svg width="10" height="10" className="Greens">
 	                <rect width="10" height="10" className="q3-5" />
 	              </svg>
-	              <svg width="10" height="10" className="Oranges">
+	              <svg width="10" height="10" className="Greens">
 	                <rect width="10" height="10" className="q4-5" />
 	              </svg>
-	              <svg width="10" height="10" className="Oranges">
+	              <svg width="10" height="10" className="Greens">
 	                <rect width="10" height="10" className="q5-5" />
 	              </svg>
 
 	            </label>
+
+				  <button value={2} onClick={this.colorchange}> Green </button>
+				<div>
 							STD:
+				</div>
 	          </div>
 
 	        </div>

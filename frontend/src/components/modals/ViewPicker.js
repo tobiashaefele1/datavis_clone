@@ -30,10 +30,11 @@ class ViewPicker extends Component {
 	        <div id="settings" className="import_modal">
 	          <div className="import_modal-content">
 	            <span className="close" onClick={this.closeModal.bind(this)}>&times;</span>
-							Moin Moin, Please pick a view:
+							<p>Willkommen!</p>
+				  <p> Ich möchte... </p>
 	            <div className="row">
-	              <button onClick={this.changeViewMultiple.bind(this)}>Multiple Indikators</button>
-	              <button onClick={this.changeViewSingle.bind(this)}>Single Indikator</button>
+	              <button  id="aggreg.indic.button" onClick={this.changeViewMultiple.bind(this)}>einen aggregierten Indikator zusammensetzen </button>
+	              <button  id="single.indic.button" onClick={this.changeViewSingle.bind(this)}>einzelne Indikatoren ansehen</button>
 	            </div>
 	          </div>
 	        </div>

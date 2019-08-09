@@ -54,7 +54,7 @@ def retrieve_indicator(ajax_dictionary):
         for i in range(0, len(list)):
             multiplication = []
             for (k, l) in list[i]:
-                multiplication.append(float(l) * float(var[i][6]))
+                multiplication.append(float(l) * (float(var[i][6])/100))
             interim.append(multiplication)
         # print(interim)
         ### the following code then sums all the individual items and returns one list
@@ -128,7 +128,7 @@ def retrieve_table_data(ajax_dictionary):
             ## and finally, the following lines of code append the dict to the summary list output
             target_dict.append(temp_dict)
 
-        print(target_dict)
+        # print(target_dict)
         return target_dict
 
 def retrieve_var_year (ajax_dictionary):
@@ -143,7 +143,7 @@ def retrieve_var_year (ajax_dictionary):
     counter = 0
     for x in chosen_indicators:
         if x != '':
-            print (x)
+            # print (x)
             dictionary[dict_keys[counter]] = retrieve_distinct_years(x)
             counter += 1
 
@@ -157,16 +157,16 @@ def retrieve_var_year (ajax_dictionary):
 
 
 #### test the code like that
-
-test_dict = {'var_1': ['Arbeitslosenquote_100', '2015', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', '"HIB', 0.05],
-             'var_2': ['Bruttoinlandsprodukt je Erwerbstätigen_100', '2014', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', 'HIB', 0.05],
-             'var_3': ['', '1990', '0', '2011', 'KRS_15', 'HIB', ''],
-             'var_4': ['', '', '', '', 'KRS_15', 'HIB', ''],
-             'var_5': ['', '', '', '', 'KRS_15', 'HIB', ''],
-             'var_6': ['', '', '', '', 'KRS_15', 'HIB', '']}
 #
-test = retrieve_indicator(test_dict)
-print (test)
+# test_dict = {'var_1': ['Arbeitslosenquote_100', '2015', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', '"HIB', 0.05],
+#              'var_2': ['Bruttoinlandsprodukt je Erwerbstätigen_100', '2014', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', 'HIB', 0.05],
+#              'var_3': ['', '1990', '0', '2011', 'KRS_15', 'HIB', ''],
+#              'var_4': ['', '', '', '', 'KRS_15', 'HIB', ''],
+#              'var_5': ['', '', '', '', 'KRS_15', 'HIB', ''],
+#              'var_6': ['', '', '', '', 'KRS_15', 'HIB', '']}
+# #
+# test = retrieve_indicator(test_dict)
+# print (test)
 
 # # print(test)
 

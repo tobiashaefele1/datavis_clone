@@ -223,23 +223,33 @@ display: flex;
   outline: 2px solid #f00;
 }
 
-.Oranges .q0-5{fill:rgb(254,237,222)}
-.Oranges .q1-5{fill:rgb(253,190,133)}
-.Oranges .q2-5{fill:rgb(253,141,60)}
-.Oranges .q3-5{fill:rgb(230,85,13)}
-.Oranges .q4-5{fill:rgb(166,54,3)}
 
-.Purples .q0-5{fill:rgb(242,240,247)}
-.Purples .q1-5{fill:rgb(203,201,226)}
-.Purples .q2-5{fill:rgb(158,154,200)}
-.Purples .q3-5{fill:rgb(117,107,177)}
-.Purples .q4-5{fill:rgb(84,39,143)}
+
+
+
+
+
+
+.Blues .q0-5{fill:rgb(239,243,255)}
+.Blues .q1-5{fill:rgb(189,215,231)}
+.Blues .q2-5{fill:rgb(107,174,214)}
+.Blues .q3-5{fill:rgb(49,130,189)}
+.Blues .q4-5{fill:rgb(8,81,156)}
+
 
 .Reds .q0-5{fill:rgb(254,229,217)}
 .Reds .q1-5{fill:rgb(252,174,145)}
 .Reds .q2-5{fill:rgb(251,106,74)}
 .Reds .q3-5{fill:rgb(222,45,38)}
 .Reds .q4-5{fill:rgb(165,15,21)}
+
+.Greens .q0-5{fill:rgb(237,248,233)}
+.Greens .q1-5{fill:rgb(186,228,179)}
+.Greens .q2-5{fill:rgb(116,196,118)}
+.Greens .q3-5{fill:rgb(49,163,84)}
+.Greens .q4-5{fill:rgb(0,109,44)}
+
+
 
 #data_table {
   margin-left: 20px;
@@ -254,36 +264,10 @@ display: flex;
   display: block;
 }
 
-/* Tobias example table in react styling */
-#title {
-  text-align: center;
-  font-family: arial, sans-serif;
+#aggreg.indic.button {
+  width: 100%
 }
 
-#students {
-  text-align: center;
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  border: 3px solid #ddd;
-  width: 100%;
+#single.indic.button {
+  width: 100%
 }
-
-#students td, #students th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-#students tr:nth-child(even){background-color: #f2f2f2;}
-
-#students tr:hover {background-color: #ddd;}
-
-#students th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: center;
-  background-color: #000000;
-  color: white;
-}
-
-
-

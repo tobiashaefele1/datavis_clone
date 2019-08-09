@@ -26,7 +26,7 @@ class Map extends Component {
 		} else {
 			var quantileScale = d3.scaleQuantile()
   				.domain(this.props.indicator_data[1])
-				.range(['#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c']);
+				.range(this.props.current_color);
 			return quantileScale(x)
 
 			// ALTERNATIVE SCALE BELOW
@@ -97,6 +97,7 @@ function mapStateToProps(state) {
     current_map: state.current_map,
     loading: state.loading,
     indicator_data: state.indicator_data,
+	  current_color: state.current_color,
   };
 }
 

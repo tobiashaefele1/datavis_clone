@@ -8,6 +8,7 @@ class MapSelector extends Component {
 
 	handleMapChange = (e) => {
 	  this.props.dispatch(changeMap(parseInt(e.target.value)));
+
 	}
 
 
