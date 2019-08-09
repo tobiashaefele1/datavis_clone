@@ -4,7 +4,18 @@ import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import {CSVLink} from 'react-csv';
 
+/**
+ *Component to create the table.
+ *
+ * @class Table
+ * @extends {Component}
+ */
 class Table extends Component {
+  /**
+   *Creates an instance of Table and creates the CSV export.
+   * @param {*} props
+   * @memberof Table
+   */
   constructor(props) {
     super(props),
     this.download = this.download.bind(this);
@@ -12,29 +23,43 @@ class Table extends Component {
       dataToDownload: [],
     };
   }
+
+  /**
+   *This creates the CSV file from current data and offers it as a download.
+   *
+   * @param {*} event
+   * @memberof Table
+   */
   download(event) {
     const currentRecords = this.reactTable.getResolvedState().sortedData;
-    const data_to_download = [];
+    const dataToDownload = [];
     for (let index = 0; index < currentRecords.length; index++) {
-      const record_to_download = {};
-      for (let colIndex = 0; colIndex < this.props.table_columns.length; colIndex++) {
-        record_to_download[this.props.table_columns[colIndex].Header] = currentRecords[index][this.props.table_columns[colIndex].accessor];
+      const recordToDownload = {};
+      for (let colIndex = 0;
+        colIndex < this.props.table_columns.length; colIndex++) {
+        recordToDownload[this.props.table_columns[colIndex].Header]
+        = currentRecords[index][this.props.table_columns[colIndex].accessor];
       }
-      data_to_download.push(record_to_download);
+      dataToDownload.push(recordToDownload);
     }
-    this.setState({dataToDownload: data_to_download}, () => {
+    this.setState({dataToDownload: dataToDownload}, () => {
       // click the CSVLink component to trigger the CSV download
       this.csvLink.link.click();
     });
   }
 
-
+  /**
+   *This function renders the table.
+   *
+   * @return {JSX}
+   * @memberof Table
+   */
   render() {
     return (
       <div style={{marginLeft: '20px', marginRight: '20px'}}>
         <div>
           <button onClick={this.download}>
-						Download
+                        Download
           </button>
         </div>
         <div>
@@ -47,10 +72,11 @@ class Table extends Component {
 
         </div>
         <div>
-          <ReactTable ref={(r) => this.reactTable = r } data={this.props.table_data}
+          <ReactTable ref={(r) => this.reactTable = r }
+            data={this.props.table_data}
             columns={this.props.table_columns}
-					 pageSizeOptions={[10, 50, 100, 200]}
-					 />
+            pageSizeOptions={[10, 50, 100, 200]}
+          />
 
         </div>
       </div>
@@ -58,6 +84,12 @@ class Table extends Component {
   }
 }
 
+/**
+ *Here the props are selected from the store.
+ *
+ * @param {state} state current state of the store
+ * @return {props} returns the selected states as props
+ */
 function mapStateToProps(state) {
   return {
     table_data: state.table_data,
