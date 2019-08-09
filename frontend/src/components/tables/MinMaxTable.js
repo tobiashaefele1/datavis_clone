@@ -19,11 +19,13 @@ import { connect } from 'react-redux';
 	
 
 	checkData = () => {
-	 if(this.props.indicator_data.length > 1)
+	 if(this.props.indicator_data.length > 1 && this.props.single_indic_data.length > 1)
 	 {
-	     const value = (this.props.view_multiple ? this.props.indicator_data : this.props.single_indic_data);
-
-		  this.values = this.FindMinMaxAvg(value[1])
+	    console.log(this.props.single_indic_data);
+	    console.log(this.props.indicator_data);
+	     const hello  = (this.props.view_multiple ? this.props.indicator_data : this.props.single_indic_data);
+        console.log(hello);
+        this.values = this.FindMinMaxAvg(hello[1])
 	 }
 	}
 
@@ -79,6 +81,8 @@ function mapStateToProps(state) {
   return {
 
     indicator_data: state.indicator_data,
+      single_indic_data: state.single_indic_data,
+      view_multiple: state.view_multiple,
   
   };
 }

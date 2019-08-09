@@ -76,8 +76,6 @@ class Map extends Component {
 			return '#e6e6e6'
 		} else {
 
-
-
 			var quantileScale = d3.scaleQuantile()
   				.domain(this.props.indicator_data[1])
 				.range(this.props.current_color);

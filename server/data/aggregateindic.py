@@ -178,7 +178,7 @@ def retrieve_single_indic(ajax_dictionary):
         for i in range(0, 1):
             list.append(retrieve_data(var[i][0], var[i][1], var[i][2], var[i][3], var[i][4]))
         # print (list)
-        print (len(list))
+        # print (len(list))
         ## the following code copies the layer IDs as the first column into the results list
         var_name = []
         for (j, k) in list[0]:
@@ -186,7 +186,7 @@ def retrieve_single_indic(ajax_dictionary):
         result.append(var_name)
 
         indicator = []
-        for (j,k) in list [0]:
+        for (j, k) in list[0]:
             indicator.append(k)
         result.append(indicator)
 
