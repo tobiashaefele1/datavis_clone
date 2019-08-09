@@ -30,9 +30,8 @@ class Indikator extends Component {
 	  let i;
 
 	  const template = this.props.current_map;
-	  const value = this.props.indicator_data;
 
-
+	const value = (this.props.view_multiple ? this.props.indicator_data : this.props.single_indic_data);
 	  for (i = 0; i < template.length; i++) {
 	    var j;
 	    for (j = 0; j < value[0].length; j++) {
