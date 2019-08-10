@@ -15,7 +15,9 @@ def retrieve_data(var_name, var_year, ref_name, ref_year, layer):
     chosen ref variable and the chosen year, CURRENTLY AS A TUPLE LIST'''
     output = []
     # connect to database
+
     mySQLconnection = pymysql.connect(host='bmfdb.chmqlqt1tih5.us-east-2.rds.amazonaws.com',
+
                                       database='mydb',
                                       user='admin',
                                       password='NPmpMe!696rY')
@@ -83,7 +85,9 @@ def retrieve_fed_avg(var_name, var_year, ref_name, ref_year, layer):
     fed_avg_name = var_name[:-3]
     fed_avg_name = fed_avg_name + "400"
     # connect to database
+
     mySQLconnection = pymysql.connect(host='bmfdb.chmqlqt1tih5.us-east-2.rds.amazonaws.com',
+
                                       database='mydb',
                                       user='admin',
                                       password='NPmpMe!696rY')
@@ -122,7 +126,9 @@ def retrieve_ref_share(ref_name, ref_year, layer):
     ref_share = []
 
     # connect to database
+
     mySQLconnection = pymysql.connect(host='bmfdb.chmqlqt1tih5.us-east-2.rds.amazonaws.com',
+
                                       database='mydb',
                                       user='admin',
                                       password='NPmpMe!696rY')
@@ -232,7 +238,9 @@ def retrieve_col_names(table_name):
     temp = []
     output = []
     # connect to database
+
     mySQLconnection = pymysql.connect(host='bmfdb.chmqlqt1tih5.us-east-2.rds.amazonaws.com',
+
                                       database='mydb',
                                       user='admin',
                                       password='NPmpMe!696rY')
@@ -272,7 +280,9 @@ def retrieve_col_years(table_name):
     col_years = []
     temp = []
     # connect to database
+
     mySQLconnection = pymysql.connect(host='bmfdb.chmqlqt1tih5.us-east-2.rds.amazonaws.com',
+
                                       database='mydb',
                                       user='admin',
                                       password='NPmpMe!696rY')
@@ -306,6 +316,7 @@ def retrieve_distinct_years (var_name):
 
     # connect to database
     mySQLconnection = pymysql.connect(host='bmfdb.chmqlqt1tih5.us-east-2.rds.amazonaws.com',
+
                                       database='mydb',
                                       user='admin',
                                       password='NPmpMe!696rY')

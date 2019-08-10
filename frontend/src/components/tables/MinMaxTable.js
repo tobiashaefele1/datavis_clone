@@ -102,6 +102,8 @@ function mapStateToProps(state) {
   return {
     indicator_data: state.indicator_data,
     single_indic_data: state.single_indic_data,
+      view_multiple: state.view_multiple,
+
   };
 }
 
