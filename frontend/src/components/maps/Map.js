@@ -78,6 +78,7 @@ class Map extends Component {
       } else {
           // console.log(this.props.indicator_data[1]);
         const dom_input = (this.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
+        console.log(dom_input);
 
           const quantileScale = d3.scaleQuantile()
             .domain(dom_input)
@@ -134,6 +135,7 @@ class Map extends Component {
       return (
 
         <div id="map">
+          <h1 >Aggregierter Indikator  </h1>
 
           <svg id="svg" width="100%" height="100%" viewBox="0 0 400 450">
 
