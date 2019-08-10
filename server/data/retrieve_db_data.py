@@ -15,10 +15,10 @@ def retrieve_data(var_name, var_year, ref_name, ref_year, layer):
     chosen ref variable and the chosen year, CURRENTLY AS A TUPLE LIST'''
     output = []
     # connect to database
-    mySQLconnection = pymysql.connect(host='bmf_db_1',
+    mySQLconnection = pymysql.connect(host='bmfdb.chmqlqt1tih5.us-east-2.rds.amazonaws.com',
                                       database='mydb',
-                                      user='user',
-                                      password='password')
+                                      user='admin',
+                                      password='NPmpMe!696rY')
 
     # this is the old quiery that does not work for AMR20 (But curiously, for all others)
     #  Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
@@ -83,10 +83,10 @@ def retrieve_fed_avg(var_name, var_year, ref_name, ref_year, layer):
     fed_avg_name = var_name[:-3]
     fed_avg_name = fed_avg_name + "400"
     # connect to database
-    mySQLconnection = pymysql.connect(host='bmf_db_1',
+    mySQLconnection = pymysql.connect(host='bmfdb.chmqlqt1tih5.us-east-2.rds.amazonaws.com',
                                       database='mydb',
-                                      user='user',
-                                      password='password')
+                                      user='admin',
+                                      password='NPmpMe!696rY')
 
     try:
         # Returns quiery with tuple [(layer_ID, value)] for federal average at Kreise level, IF IT EXISTS.
@@ -122,10 +122,10 @@ def retrieve_ref_share(ref_name, ref_year, layer):
     ref_share = []
 
     # connect to database
-    mySQLconnection = pymysql.connect(host='bmf_db_1',
+    mySQLconnection = pymysql.connect(host='bmfdb.chmqlqt1tih5.us-east-2.rds.amazonaws.com',
                                       database='mydb',
-                                      user='user',
-                                      password='password')
+                                      user='admin',
+                                      password='NPmpMe!696rY')
 
     # Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
     sql_select_Query = (""" SELECT 
@@ -232,11 +232,10 @@ def retrieve_col_names(table_name):
     temp = []
     output = []
     # connect to database
-    mySQLconnection = pymysql.connect(host='bmf_db_1',
+    mySQLconnection = pymysql.connect(host='bmfdb.chmqlqt1tih5.us-east-2.rds.amazonaws.com',
                                       database='mydb',
-                                      user='user',
-                                      password='password')
-
+                                      user='admin',
+                                      password='NPmpMe!696rY')
     # Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
     sql_select_Query = (""" 
                                 SELECT COLUMN_NAME 
@@ -273,10 +272,10 @@ def retrieve_col_years(table_name):
     col_years = []
     temp = []
     # connect to database
-    mySQLconnection = pymysql.connect(host='bmf_db_1',
+    mySQLconnection = pymysql.connect(host='bmfdb.chmqlqt1tih5.us-east-2.rds.amazonaws.com',
                                       database='mydb',
-                                      user='user',
-                                      password='password')
+                                      user='admin',
+                                      password='NPmpMe!696rY')
 
     # Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
     sql_select_Query = (""" 
@@ -306,10 +305,10 @@ def retrieve_distinct_years (var_name):
     distinct_years = []
 
     # connect to database
-    mySQLconnection = pymysql.connect(host='bmf_db_1',
+    mySQLconnection = pymysql.connect(host='bmfdb.chmqlqt1tih5.us-east-2.rds.amazonaws.com',
                                       database='mydb',
-                                      user='user',
-                                      password='password')
+                                      user='admin',
+                                      password='NPmpMe!696rY')
 
     # Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
     sql_select_Query = (""" SELECT
