@@ -17,16 +17,19 @@ def index(request):
     table_data = []
     single_indic_data = []
     ### on load
-    col_names_var = retrieve_col_names("Kreise")  # this returns all unique column names from the KREISE table
-    col_names_ref = ['Einwohner 15-65_100', 'Einwohner gesamt_100', 'Erwerbspersonen gesamt_100', 'Erwerbstätige gesamt_100', 'Fläche_100']  # this returns all unique labels for standardisation drop downs
-    years_ref = retrieve_col_years("reference")
-    years_var = retrieve_col_years("Kreise")
+    if request.method == "GET":
+        col_names_var = retrieve_col_names("Kreise")  # this returns all unique column names from the KREISE table
+        col_names_ref = ['Einwohner 15-65_100', 'Einwohner gesamt_100', 'Erwerbspersonen gesamt_100', 'Erwerbstätige gesamt_100', 'Fläche_100']  # this returns all unique labels for standardisation drop downs
+        years_ref = retrieve_col_years("reference")
+        years_var = retrieve_col_years("Kreise")
     if request.method == 'POST':
         received_data = (dict(request.POST))
-        indicator_data = retrieve_indicator(received_data)
-        table_data = retrieve_table_data(received_data)
+
         var_year_data = retrieve_var_year(received_data)
         single_indic_data = retrieve_single_indic(received_data)
+        indicator_data = retrieve_indicator(received_data)
+        table_data = retrieve_table_data(received_data)
+
         # print(indicator_data)
         # print (single_indic_data)
         # print (var_year_data)

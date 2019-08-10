@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Indikator from './Indikator';
+import Main_selector from './Main_selector';
 import {connect} from 'react-redux';
 
 /**
@@ -28,7 +28,7 @@ class Indikators extends Component {
     return (
       <div key='indikators'>
         {this.props.indikators.map( (d, i) =>
-          <Indikator key={i} number={i} name={d} />
+          <Main_selector key={i} number={i} name={d} />
         )
         }
       </div>

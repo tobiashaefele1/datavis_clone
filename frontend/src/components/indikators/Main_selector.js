@@ -6,20 +6,66 @@ import 'jquery';
 /**
  *Component class for a single Indicator.
  *
- * @class Indikator
+ * @class Main_selector
  * @extends {Component}
  */
-class Indikator extends Component {
+export class Main_selector extends Component {
     /**
      *Handles the change of any of the dropdown menus of the indicator.
      *
      * @param {event} e this is the event where handleChange is called on.
      * @memberof Indikator
      */
-    handleChange = (e) => {
-      this.props.dispatch(changeValueDispatch(e.target.id, e.target.value));
-      // this.ajaxRequest();
+
+
+        // this function is actually being called - it calls Handlechange and - once it is complete, an ajaxRequest
+    handleChangeProm = (e) => {
+        this.handleChange(e).then(() => {
+                  this.ajaxRequest();
+          });
     }
+
+
+    handleChange = (e) => {
+      return new Promise((resolve, reject) => {
+        this.props.dispatch(changeValueDispatch(e.target.id, e.target.value));
+        if ("1" == "1") {
+          resolve(console.log("it worked"));
+        } else {
+          reject(Error(console.log("it broke")))
+        }
+      });
+    }
+
+
+    context
+    props
+    refs
+    state
+
+    updateDataProm(data){
+      // console.log(data);
+        return new Promise((resolve, reject) => {
+            this.props.dispatch({type: 'UPDATEDATA', data: data});
+      if ("1" == "1") {
+        resolve(console.log("it worked"));
+      } else {
+        reject(Error(console.log("It broke")));
+      }
+    });
+    };
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      *This function is automatically called when the props or state updates
@@ -27,8 +73,10 @@ class Indikator extends Component {
      * @param {*} prevProps
      * @memberof Indikator
      */
+
     componentDidUpdate(prevProps) {
-      if (prevProps.value_dic !== this.props.value_dic ||
+      if (
+          prevProps.view_multiple !== this.props.view_multiple ||
          prevProps.count_map !== this.props.count_map) {
         this.ajaxRequest();
       }
@@ -41,12 +89,11 @@ class Indikator extends Component {
      */
     changeVars() {
       const template = this.props.current_map;
-      console.log(this.props.indicator_data);
-      console.log(this.props.single_indic_data);
+      // console.log(this.props.indicator_data);
+      // console.log(this.props.single_indic_data);
       const value = (this.props.view_multiple ?
         this.props.indicator_data : this.props.single_indic_data);
-
-      console.log(value);
+      // console.log(value);
 
       let i;
       for (i = 0; i < template.length; i++) {
@@ -127,12 +174,32 @@ class Indikator extends Component {
         data: this.getData(),
         traditional: true,
         success: function(data) {
-          this.updateData(data);
+
+        this.updateDataProm(data).then(() => {
+                  this.props.dispatch({type: 'UPDATECOLUMNS'});
+                  this.changeVars();
+          });
+
+          // this.updateData(data);
         }.bind(this),
 
 
       });
     }
+    updateDataProm(data){
+      // console.log(data);
+        return new Promise((resolve, reject) => {
+            this.props.dispatch({type: 'UPDATEDATA', data: data});
+      if ("1" == "1") {
+        resolve(console.log("it worked"));
+      } else {
+        reject(Error(console.log("It broke")));
+      }
+    });
+    };
+
+
+
 
     /**
      * This function checks if it is in single view of multiple view.
@@ -147,7 +214,7 @@ class Indikator extends Component {
         return ( <div className="three columns">
           <label>%</label>
           <input className="u-80-width" id={`weight_${this.props.number}`}
-            onChange={this.handleChange.bind(this)}
+            onChange={this.handleChangeProm.bind(this)}
             type="number"
             placeholder="45">
           </input>
@@ -163,12 +230,45 @@ class Indikator extends Component {
      * @param {Dict} data
      * @memberof Indikator
      */
-    updateData = (data) => {
-      console.log(data)
-      this.props.dispatch({type: 'UPDATEDATA', data});
-      this.props.dispatch({type: 'UPDATECOLUMNS'});
-      this.changeVars();
-    }
+    // // THE ORIGINAL VERSION
+    // updateData = (data) => {
+    //   // console.log(data)
+    //   this.props.dispatch({type: 'UPDATEDATA', data});
+    //   this.props.dispatch({type: 'UPDATECOLUMNS'});
+    //   this.changeVars();
+    // }
+
+
+    //
+    //
+    //
+    //     // I NEED TO TURN THIS INTO A PROMISE
+    //   updateData = (data) => {
+    //   // console.log(data)
+    //   this.props.dispatch({type: 'UPDATEDATA', data});
+    //
+    //   // AND THEN DO THESE THINGS
+    //   this.props.dispatch({type: 'UPDATECOLUMNS'});
+    //   this.changeVars();
+    //   console.log("hello")
+    // }
+    //
+    // const p = new Promise((resolve, reject) => {
+    //   this.props.dispatch({type: 'UPDATEDATA'}, data);
+    //   if (1 == 1) {
+    //     resolve("success")
+    //   }
+    // });
+    //
+    // p.then(() => {
+    //               this.props.dispatch({type: 'UPDATECOLUMNS'})
+    // }).then(() => {
+    //                     this.changeVars()})
+    //
+    //
+    //
+    //
+
 
 
     /**
@@ -187,7 +287,10 @@ class Indikator extends Component {
               <select className="u-95-width"
                 defaultValue="0"
                 id={`var_name_${this.props.number}`}
-                onChange={this.handleChange.bind(this)}>
+                onChange={this.handleChangeProm
+                                  .bind(this)
+                                  }>
+
 
                 <option disabled value="0"> -- Wähle Variable --</option>
 
@@ -203,7 +306,7 @@ class Indikator extends Component {
               <select className="u-80-width"
                 defaultValue="0"
                 id={`var_year_${this.props.number}`}
-                onChange={this.handleChange.bind(this)}>
+                onChange={this.handleChangeProm.bind(this)}>
 
                 <option disabled value="0"> -- Wähle Jahr --</option>
 
@@ -223,7 +326,7 @@ class Indikator extends Component {
                 <select className="u-95-width"
                   defaultValue="0"
                   id={`ref_name_${this.props.number}`}
-                  onChange={this.handleChange.bind(this)}>
+                  onChange={this.handleChangeProm.bind(this)}>
 
                   <option disabled value="0"> standardisiert über...</option>
                   {this.props.col_names_ref.map((d, i) =>
@@ -237,7 +340,7 @@ class Indikator extends Component {
                 <select className="u-80-width"
                   defaultValue="0"
                   id={`ref_year_${this.props.number}`}
-                  onChange={this.handleChange.bind(this)}>
+                  onChange={this.handleChangeProm.bind(this)}>
 
                   <option disabled value="0"> -- Wähle Variable --</option>
 
@@ -252,6 +355,8 @@ class Indikator extends Component {
         </div>
       );
     }
+
+
 }
 
 /**
@@ -310,4 +415,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Indikator);
+export default connect(mapStateToProps)(Main_selector);

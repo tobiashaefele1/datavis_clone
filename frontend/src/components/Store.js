@@ -69,6 +69,7 @@ const initalState = {
 function reducer(state = initalState, action) {
   console.log('reducer', state, action);
   console.log(action.value);
+  console.log(action.data)
 
   switch (action.type) {
     case 'CHANGECOLOR':
@@ -128,10 +129,11 @@ function reducer(state = initalState, action) {
 
     case 'UPDATEDATA':
       return produce(state, (draft) => {
-        draft.table_data = [...action.data.table_data],
         draft.indicator_data = [...action.data.indicator_data];
         draft.var_year_data = action.data.var_year_data;
         draft.single_indic_data = [...action.data.single_indic_data];
+        draft.table_data = [...action.data.table_data];
+
       });
 
     case 'MODAL':

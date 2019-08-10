@@ -11,6 +11,7 @@ from pymysql import Error
 # TODO tun the outputs of these formulae into lists of lists, rather than tuple lists
 
 def retrieve_data(var_name, var_year, ref_name, ref_year, layer):
+    print ("retrieve_data")
     ''' this function returns the dataset for a chosen variable, at a chosen year at the chosen level, standardised by the 
     chosen ref variable and the chosen year, CURRENTLY AS A TUPLE LIST'''
     output = []
@@ -78,6 +79,7 @@ def retrieve_data(var_name, var_year, ref_name, ref_year, layer):
 
 
 def retrieve_fed_avg(var_name, var_year, ref_name, ref_year, layer):
+    print("retrieve_fed_avg")
     ''' this function returns the federal average of a chosen variable and year, where available.
         if no federal average is available, the formula will return the arithmetic mean of the inputted variable,
         standardised over the chosen reference value and year - the formula returns a single float'''
@@ -121,6 +123,7 @@ def retrieve_fed_avg(var_name, var_year, ref_name, ref_year, layer):
 
 
 def retrieve_ref_share(ref_name, ref_year, layer):
+    print("retrieve_ref_share")
     ''' this function returns the share of a chosen reference value in a chosen year, for a chosen layer as a % of the total as a tuple list'''
     output = []
     ref_share = []
@@ -171,6 +174,7 @@ def retrieve_ref_share(ref_name, ref_year, layer):
 
 
 def retrieve_sd(var_name, var_year, ref_name, ref_year, layer):
+    print("retrieve_sd")
     """ this function returns the standard deviation for a chosen variable and year, standardised by a chosen ref value
         and year as a single float value  """
     data = retrieve_data(var_name, var_year, ref_name, ref_year, layer)
@@ -192,6 +196,7 @@ def retrieve_sd(var_name, var_year, ref_name, ref_year, layer):
 
 
 def scale_HIB(data, fed_avg, SD):
+    # print("scale_HIB")
     ''' this function standardises and scales a dataset according to GRW methodology, where higher values
         result in a higher score, this formula currently returns a tuple list'''
     Sfactor_positive = 100
@@ -205,6 +210,7 @@ def scale_HIB(data, fed_avg, SD):
 
 
 def scale_LIB(data, fed_avg, SD):
+    # print("scale_LIB")
     ''' this function standardises and scales a dataset according to GRW methodology, where lower values
         result in a higher score, this formula currently returns a tuple list'''
     Sfactor_positive = 100
@@ -220,6 +226,7 @@ def scale_LIB(data, fed_avg, SD):
 
 
 def retrieve_sd_data(var_name, var_year, ref_name, ref_year, layer, scale="HIB"):
+    print("retrieve_sd_data")
     data = retrieve_data(var_name, var_year, ref_name, ref_year, layer)
     sd = retrieve_sd(var_name, var_year, ref_name, ref_year, layer)
     fed_avg = retrieve_fed_avg(var_name, var_year, ref_name, ref_year, layer)
@@ -233,6 +240,7 @@ def retrieve_sd_data(var_name, var_year, ref_name, ref_year, layer, scale="HIB")
 
 
 def retrieve_col_names(table_name):
+    print("retrieve_col_names")
     ''' this function returns a LIST of all unique column names in a selected TABLE from the database'''
     col_names = []
     temp = []
@@ -276,6 +284,7 @@ def retrieve_col_names(table_name):
 
 
 def retrieve_col_years(table_name):
+    print("retrieve_col_years")
     output = []
     col_years = []
     temp = []
@@ -312,6 +321,7 @@ def retrieve_col_years(table_name):
 
 
 def retrieve_distinct_years (var_name):
+    print("retrieve_distinct_years")
     distinct_years = []
 
     # connect to database

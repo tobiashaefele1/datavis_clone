@@ -27,7 +27,10 @@ class MinMaxTable extends Component {
      * @memberof MinMaxTable
      */
     checkData = () => {
-      if (this.props.indicator_data.length >= 1 &&  this.props.single_indic_data >= 1) {
+      console.log(this.props.indicator_data.length);
+      console.log(this.props.single_indic_data.length);
+
+      if (this.props.indicator_data.length >= 2 &&  this.props.single_indic_data.length >= 2) {
         const minmax = (this.props.view_multiple ?
             this.props.indicator_data : this.props.single_indic_data);
         console.log(minmax);

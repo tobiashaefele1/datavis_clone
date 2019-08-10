@@ -4,6 +4,7 @@ import Map from './maps/Map';
 import MapSelector from './maps/MapSelector';
 import {feature} from 'topojson';
 import SmallTable from './tables/SmallTable';
+import Main_selector from "./indikators/Main_selector";
 import Indikators from './indikators/Indikators';
 import {connect} from 'react-redux';
 import PlusButton from './buttons/PlusButton';
@@ -167,7 +168,7 @@ class App extends Component {
               </object>
             </div>
             <div className="six columns">
-              <h3>BMF - GRW - Datenvisualisierung</h3>
+              <h2>BMF - GRW - Datenvisualisierung</h2>
             </div>
             <div className="three columns">
               <SettingsButton/>
