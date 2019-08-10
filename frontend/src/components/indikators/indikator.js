@@ -18,6 +18,7 @@ class Indikator extends Component {
      */
     handleChange = (e) => {
       this.props.dispatch(changeValueDispatch(e.target.id, e.target.value));
+      // this.ajaxRequest();
     }
 
     /**
