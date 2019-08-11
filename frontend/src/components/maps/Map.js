@@ -34,8 +34,8 @@ class Map extends Component {
   }
 
   legend_labels = (x) => {
-      console.log(typeof this.props.current_map[1].properties.indicator)
-        if (typeof this.props.current_map[1].properties.indicator === 'undefined') {
+      console.log(typeof this.props.current_map[0].properties.indicator)
+        if (typeof this.props.current_map[0].properties.indicator === 'undefined') {
         return ['n/a', 'n/a']}
       else {
       const quantileScale = d3.scaleQuantile()

@@ -1,5 +1,7 @@
 from server.data.retrieve_db_data import retrieve_sd_data, retrieve_data, retrieve_distinct_years
 import pandas as pd
+import time
+
 
 
 
@@ -28,6 +30,7 @@ def retrieve_indicator(ajax_dictionary):
     :return: The function returns a list of the target layer ref code, as well as the aggregated indicator
     '''
 
+    start_time = time.clock()
     # this code scans the dictionary to ensure only complete entries are being searched for in the db
     var = []
     var = aggregate_args(ajax_dictionary)
@@ -65,6 +68,7 @@ def retrieve_indicator(ajax_dictionary):
         ### the following code then appends the calcualtions to the interim template
         result.append(interim)
 
+        print(time.clock() - start_time, "seconds")
         return result
 
 
@@ -74,6 +78,7 @@ def retrieve_table_data(ajax_dictionary):
     this can be used to poplate the table
     '''
 
+    start_time = time.clock()
     empty_return = [[]]
 
     # this code scans the dictionary to ensure only complete entries are being searched for in the db
@@ -102,7 +107,7 @@ def retrieve_table_data(ajax_dictionary):
         result = []
         var_name = []
         # print (dictionary_keys)
-
+        loop_time = time.clock()
         ## the following code copies the layer IDs as the first column into the results list
         for (j, k) in list[0]:
             var_name.append([j])
@@ -135,7 +140,9 @@ def retrieve_table_data(ajax_dictionary):
             ## and finally, the following lines of code append the dict to the summary list output
             target_dict.append(temp_dict)
 
+        print(time.clock()- loop_time, "seconds for the loop")
         # print(target_dict)
+        print(time.clock() - start_time, "seconds")
         return target_dict
 
 def retrieve_var_year (ajax_dictionary):
@@ -163,6 +170,7 @@ def retrieve_var_year (ajax_dictionary):
 
 
 def retrieve_single_indic(ajax_dictionary):
+    start_time = time.clock()
     # this code scans the dictionary to ensure only complete entries are being searched for in the db
     var = []
     var = aggregate_args(ajax_dictionary)
@@ -190,6 +198,7 @@ def retrieve_single_indic(ajax_dictionary):
             indicator.append(k)
         result.append(indicator)
 
+        print(time.clock() - start_time, "seconds")
         return result
 
 #### test the code like that

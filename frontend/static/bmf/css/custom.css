@@ -65,8 +65,20 @@
 #weight_2,
 #weight_3,
 #weight_4,
-#weight_5 {
+#weight_5,
+#aggreg.indic.button,
+#single.indic.button
+{
 	width: 40%;
+}
+
+  .import_modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  /*width: 40%; !* Could be more or less, depending on screen size *!*/
+  text-align: center;
 }
 
 
@@ -268,10 +280,19 @@ display: flex;
   display: block;
 }
 
+
 #aggreg.indic.button {
-  width: 100%
+  width: 40%
 }
 
 #single.indic.button {
-  width: 100%
+  width: 40%
+}
+
+#single_button{
+  text-align: center;
+}
+
+#multiple_button{
+  text-align: center;
 }

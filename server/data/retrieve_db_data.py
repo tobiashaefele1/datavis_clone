@@ -1,27 +1,26 @@
 # -*- coding: utf-8 -
-
-
 import pymysql
 import numpy as np
 import math
 import pandas as pd
 from pymysql import Error
+import time
 
 
 # TODO tun the outputs of these formulae into lists of lists, rather than tuple lists
 
 def retrieve_data(var_name, var_year, ref_name, ref_year, layer):
-    print ("retrieve_data")
+    print("retrieve_data")
     ''' this function returns the dataset for a chosen variable, at a chosen year at the chosen level, standardised by the 
     chosen ref variable and the chosen year, CURRENTLY AS A TUPLE LIST'''
     output = []
     # connect to database
-
-    mySQLconnection = pymysql.connect(host='bmfdb.chmqlqt1tih5.us-east-2.rds.amazonaws.com',
+    start_time = time.clock()
+    mySQLconnection = pymysql.connect(host='localhost',
 
                                       database='mydb',
-                                      user='admin',
-                                      password='NPmpMe!696rY')
+                                      user='user',
+                                      password='password')
 
     # this is the old quiery that does not work for AMR20 (But curiously, for all others)
     #  Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
@@ -42,7 +41,7 @@ def retrieve_data(var_name, var_year, ref_name, ref_year, layer):
                                   ORDER BY mapping.`%s` ASC
                                    ) a
                             LEFT JOIN (                
-                                  SELECT									
+                                  SELECT                           
                                            mapping.`%s`,
                                             sum(reference.`%s`) as relvalue
                                   FROM
@@ -54,8 +53,9 @@ def retrieve_data(var_name, var_year, ref_name, ref_year, layer):
                                   ORDER BY mapping.`%s` ASC
                                    ) r
                             on a.`%s`=r.`%s` """ % (
-    layer, layer, var_name, ref_name, var_year, ref_year, layer, layer, layer, ref_name, ref_year, layer, layer, layer,
-    layer))
+        layer, layer, var_name, ref_name, var_year, ref_year, layer, layer, layer, ref_name, ref_year, layer, layer,
+        layer,
+        layer))
 
     try:
 
@@ -74,6 +74,7 @@ def retrieve_data(var_name, var_year, ref_name, ref_year, layer):
 
         mySQLconnection.close()
         print("MySQL connection is closed")
+        print(time.clock() - start_time, "seconds to retrieve data")
 
         return output
 
@@ -88,11 +89,11 @@ def retrieve_fed_avg(var_name, var_year, ref_name, ref_year, layer):
     fed_avg_name = fed_avg_name + "400"
     # connect to database
 
-    mySQLconnection = pymysql.connect(host='bmfdb.chmqlqt1tih5.us-east-2.rds.amazonaws.com',
+    mySQLconnection = pymysql.connect(host='localhost',
 
                                       database='mydb',
-                                      user='admin',
-                                      password='NPmpMe!696rY')
+                                      user='user',
+                                      password='password')
 
     try:
         # Returns quiery with tuple [(layer_ID, value)] for federal average at Kreise level, IF IT EXISTS.
@@ -100,7 +101,7 @@ def retrieve_fed_avg(var_name, var_year, ref_name, ref_year, layer):
                                        Kreise.KENNZIFFER, Kreise.`%s`
                                        FROM Kreise 
                                        WHERE Kreise.YEAR = '%s' AND Kreise.Kennziffer = "01001" """ % (
-        fed_avg_name, var_year))
+            fed_avg_name, var_year))
 
         # executed quiery and closes cursor
         cursor = mySQLconnection.cursor()
@@ -130,11 +131,11 @@ def retrieve_ref_share(ref_name, ref_year, layer):
 
     # connect to database
 
-    mySQLconnection = pymysql.connect(host='bmfdb.chmqlqt1tih5.us-east-2.rds.amazonaws.com',
+    mySQLconnection = pymysql.connect(host='localhost',
 
                                       database='mydb',
-                                      user='admin',
-                                      password='NPmpMe!696rY')
+                                      user='user',
+                                      password='password')
 
     # Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
     sql_select_Query = (""" SELECT 
@@ -175,13 +176,14 @@ def retrieve_ref_share(ref_name, ref_year, layer):
 
 def retrieve_sd(var_name, var_year, ref_name, ref_year, layer):
     print("retrieve_sd")
+    start_time = time.clock()
+
     """ this function returns the standard deviation for a chosen variable and year, standardised by a chosen ref value
         and year as a single float value  """
     data = retrieve_data(var_name, var_year, ref_name, ref_year, layer)
     fed_avg = retrieve_fed_avg(var_name, var_year, ref_name, ref_year, layer)
     ref_share = retrieve_ref_share(ref_name, ref_year, layer)
     # print(type(data[0][1]))
-
 
     Standard_deviation = 0
     for i in range(0, len(data)):
@@ -191,6 +193,8 @@ def retrieve_sd(var_name, var_year, ref_name, ref_year, layer):
         # print ( (((data[i][1])-(fed_avg))**2)*(ref_share[i]))
 
     Standard_deviation = math.sqrt(Standard_deviation / len(data))
+
+    print(time.clock() - start_time, "seconds to retrieve only the standard deviation")
 
     return (Standard_deviation)
 
@@ -220,12 +224,13 @@ def scale_LIB(data, fed_avg, SD):
     output = []
     for i in range(0, len(data)):
         tuple = (
-        (data[i][0]), (Sfactor_negative - (((data[i][1] - fed_avg) * Sfactor_scaling) / SD) + Sfactor_positive))
+            (data[i][0]), (Sfactor_negative - (((data[i][1] - fed_avg) * Sfactor_scaling) / SD) + Sfactor_positive))
         output.append(tuple)
     return output
 
 
 def retrieve_sd_data(var_name, var_year, ref_name, ref_year, layer, scale="HIB"):
+    start_time = time.clock()
     print("retrieve_sd_data")
     data = retrieve_data(var_name, var_year, ref_name, ref_year, layer)
     sd = retrieve_sd(var_name, var_year, ref_name, ref_year, layer)
@@ -236,6 +241,7 @@ def retrieve_sd_data(var_name, var_year, ref_name, ref_year, layer, scale="HIB")
     else:
         output = scale_LIB(data, fed_avg, sd)
 
+    print(time.clock() - start_time, "seconds to retrieve the standardised data")
     return output
 
 
@@ -247,11 +253,11 @@ def retrieve_col_names(table_name):
     output = []
     # connect to database
 
-    mySQLconnection = pymysql.connect(host='bmfdb.chmqlqt1tih5.us-east-2.rds.amazonaws.com',
+    mySQLconnection = pymysql.connect(host='localhost',
 
                                       database='mydb',
-                                      user='admin',
-                                      password='NPmpMe!696rY')
+                                      user='user',
+                                      password='password')
     # Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
     sql_select_Query = (""" 
                                 SELECT COLUMN_NAME 
@@ -290,11 +296,11 @@ def retrieve_col_years(table_name):
     temp = []
     # connect to database
 
-    mySQLconnection = pymysql.connect(host='bmfdb.chmqlqt1tih5.us-east-2.rds.amazonaws.com',
+    mySQLconnection = pymysql.connect(host='localhost',
 
                                       database='mydb',
-                                      user='admin',
-                                      password='NPmpMe!696rY')
+                                      user='user',
+                                      password='password')
 
     # Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
     sql_select_Query = (""" 
@@ -320,16 +326,16 @@ def retrieve_col_years(table_name):
         return output
 
 
-def retrieve_distinct_years (var_name):
+def retrieve_distinct_years(var_name):
     print("retrieve_distinct_years")
     distinct_years = []
 
     # connect to database
-    mySQLconnection = pymysql.connect(host='bmfdb.chmqlqt1tih5.us-east-2.rds.amazonaws.com',
+    mySQLconnection = pymysql.connect(host='localhost',
 
                                       database='mydb',
-                                      user='admin',
-                                      password='NPmpMe!696rY')
+                                      user='user',
+                                      password='password')
 
     # Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
     sql_select_Query = (""" SELECT
@@ -351,13 +357,9 @@ def retrieve_distinct_years (var_name):
         print("MySQL connection is closed")
         output = []
         for (x,) in distinct_years:
-                output.append(x)
+            output.append(x)
         # print (output)
         return output
-
-
-
-
 
 
 # # TESTS FOR THIS SECTION
@@ -428,13 +430,13 @@ def retrieve_distinct_years (var_name):
                                 GROUP BY mapping.`%s` """ % (layer, ref_name, ref_name, ref_name, ref_name, ref_year, layer) )
 
 ### this quiery returns the value of the ref value aggregated at the layer chosen, for the ref type and year combination
-        sql_select_Query = (""" SELECT									
-											mapping.`%s`,
-											sum(Reference.`%s`)
+        sql_select_Query = (""" SELECT                         
+                                 mapping.`%s`,
+                                 sum(Reference.`%s`)
                                             FROM
-												REFERENCE
-											LEFT JOIN mapping
-												ON reference.Kennziffer=mapping.KRS_15
+                                    REFERENCE
+                                 LEFT JOIN mapping
+                                    ON reference.Kennziffer=mapping.KRS_15
                                             WHERE reference.year = '%s'
                                             GROUP BY mapping.`%s`
                                             ORDER BY mapping.`%s` ASC """ % (layer, ref_name, ref_year, layer, layer) )
@@ -453,15 +455,15 @@ def retrieve_distinct_years (var_name):
                                 WHERE Kreise.YEAR = '%s' AND Reference.Year = '%s'
                                 GROUP BY mapping.`%s`
                                 ORDER BY mapping.`%s` ASC""" % (layer, var_name, ref_name, var_year, ref_year, layer, layer) )
-                       
+
 
         # executed quiery and closes cursor
         cursor = mySQLconnection .cursor()
         cursor.execute(sql_select_Query)
         var_total = cursor.fetchall()    
         cursor.close()
-           
-  
+
+
         var_total = pd.DataFrame(var_total)
         ref_total = pd.DataFrame(ref_total)
         # print (var_total[0])
@@ -479,3 +481,14 @@ def retrieve_distinct_years (var_name):
 
 
      '''
+
+
+
+
+
+
+
+
+
+
+

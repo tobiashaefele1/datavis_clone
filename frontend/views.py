@@ -22,9 +22,9 @@ def index(request):
         col_names_ref = ['Einwohner 15-65_100', 'Einwohner gesamt_100', 'Erwerbspersonen gesamt_100', 'Erwerbstätige gesamt_100', 'Fläche_100']  # this returns all unique labels for standardisation drop downs
         years_ref = retrieve_col_years("reference")
         years_var = retrieve_col_years("Kreise")
+
     if request.method == 'POST':
         received_data = (dict(request.POST))
-
         var_year_data = retrieve_var_year(received_data)
         single_indic_data = retrieve_single_indic(received_data)
         indicator_data = retrieve_indicator(received_data)

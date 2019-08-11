@@ -60,16 +60,20 @@ class ViewPicker extends Component {
                   onClick={this.closeModal.bind(this)}>&times;</span>
                 <p>Willkommen!</p>
                 <p> Ich möchte... </p>
-                <div className="row">
+                <div className="row" id = "multiple_button">
                   <button id="aggreg.indic.button"
                     onClick={this.changeViewMultiple.bind(this)}>
                         einen aggregierten Indikator zusammensetzen
                   </button>
+                </div>
+
+                <div className = "row" id = "single_button">
                   <button id="single.indic.button"
                     onClick={this.changeViewSingle.bind(this)}>
                         einzelne Indikatoren ansehen
                   </button>
                 </div>
+
               </div>
             </div>
           </div>);

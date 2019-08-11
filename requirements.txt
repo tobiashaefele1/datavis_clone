@@ -6,3 +6,4 @@ pylint
 pandas
 numpy
 djangorestframework
+pymysql-pooling
