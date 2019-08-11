@@ -6,7 +6,7 @@ import pymysql
 from sqlalchemy import create_engine
 import pandas as pd
 
-from .data import Data
+from server.data.data import Data
 
 
 def loadmappingfile (link_to_mapping_file):
@@ -39,7 +39,7 @@ def readin257AMR (link_to_data, link_to_mapping_file, link_to_template_input):
      ''' this formula takes in a link to a file with 257 AMRs, and converts it to a Data object, based on 402 KReise'''
      # load in mapping file & template
      mapping_file = loadmappingfile(link_to_mapping_file)
-     template = prepare402template (link_to_template_input)
+     template = prepare402template(link_to_template_input)
 
      # read in AMR data as a Datafile
      dataset = Data(link_to_data)
@@ -48,16 +48,22 @@ def readin257AMR (link_to_data, link_to_mapping_file, link_to_template_input):
      output = copy_labels_years_onlylabels(dataset, template)
     
      # map values from AMR to Kreise and return completed dataobject
-     for i in range(0,len(output.data)):
-          for j in range(0, len(mapping_file.index)):
-               # print(output.data[i][0])
-               # print (mapping_file.iloc[j][0])
-               if output.data[i][0] == mapping_file.iloc[j][0]:
-                    index = (int(mapping_file.iloc[j][6]))-1
-                    # print(index)
-                    extension = dataset.data[index][3:]
-                    # print (extension)
-                    output.data[i].extend(extension)
+     # for i in range(0,len(output.data)):
+     #      for j in range(0, len(mapping_file.index)):
+     #           print(output.data[i][0])
+     #           print (mapping_file.iloc[j][0])
+     #           if output.data[i][0] == mapping_file.iloc[j][0]:
+     #
+
+     for i in range (0, len(output.data)):
+         for j in range(0, len(dataset.data)):
+             # print(mapping_file.iloc[i][5])
+             # print (dataset.data[j])
+             if mapping_file.iloc[i][5] == dataset.data[j][0]:
+                 extension = dataset.data[j][3:]
+                 # print (extension)
+                 output.data[i].extend(extension)
+                 break;
                     # print (AMR12_data_converted.data[i][0:4])
      return output
 
@@ -119,11 +125,11 @@ def mapping_to_db (link_to_mapping_file):
 #
 #
 # # links to all the required data files
-# link_to_mapping_file = './resources/KRS_ROR_AMR_clean_mapping.csv'
-# link_to_template_input = './resources/KRS15_template.csv'
+link_to_mapping_file = './resources/KRS_ROR_AMR_clean_mapping.csv'
+link_to_template_input = './resources/KRS15_template.csv'
 #
 # link_to_AMR12_data = './resources/AMR12_testfile.csv'
-# link_to_AMR15_data = './resources/AMR15_testfile.csv'
+link_to_AMR15_data = './resources/AMR15_testfile.csv'
 # link_to_Bund_data = './resources/Bund_testfile.csv'
 # link_to_Kreise_data = './resources/KRS15_testfile.csv'
 # link_to_reference_data = './resources/Referenzgroessen_input.csv'
@@ -131,12 +137,14 @@ def mapping_to_db (link_to_mapping_file):
 #
 # # load in all the data as data objects
 # AMR12_data = readin258AMR (link_to_AMR12_data,link_to_mapping_file, link_to_template_input)  # create AMR12 data object
-# AMR15_data = readin257AMR(link_to_AMR15_data,link_to_mapping_file, link_to_template_input)   # create AMR15 data object
-# Bund_data = readinBund(link_to_Bund_data, link_to_template_input)                            # create Bund data object
-# reference_data = Data(link_to_reference_data)  #### WORKS!!!!
-# Kreise_data = Data(link_to_Kreise_data)  # WORKS!!!
-#
-#
+# AMR15_data = readin257AMR(link_to_AMR15_data, link_to_mapping_file, link_to_template_input)   # create AMR15 data object
+# # Bund_data = readinBund(link_to_Bund_data, link_to_template_input)                            # create Bund data object
+# # reference_data = Data(link_to_reference_data)  #### WORKS!!!!
+# # Kreise_data = Data(link_to_Kreise_data)  # WORKS!!!
+# #
+# #
+# print(AMR15_data.data)
+
 # # load in all the data to DB
 # mapping_to_db(link_to_mapping_file)                                     # load in Mapping file to DB
 #
@@ -159,5 +167,5 @@ def mapping_to_db (link_to_mapping_file):
 # #
 # #
 # #
-# #
+# readinAMR257(link)
 # #
