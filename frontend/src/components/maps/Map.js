@@ -24,67 +24,55 @@ class Map extends Component {
     };
   }
 
-
-  // legned = (x) => {
-  // const colorLegendG = svg.append("g")
-  // 	.attr('transform', 'translate(185,150)')
-  // 	.
-  //
-  //
-  //
-  //
-  // 	}
-
-  // legend = (x) => {
-  //   // put any functions and vars and consts in here: then RETURN their call!!
-  //     var height = 50;
-  //     var svg = d3.select('svg');
-  //
-  //     const colorlegend = (selection, props) =>
-  //     {const {colorScale, circleRadius, spacing, textOffset} = props;
-  //     const groups = selection.selectAll('g')
-  //         .data(colorScale.domain());
-  //         const groupsEnter = groups.enter().append('g');
-  //         groupsEnter
-  //             .merge(groups)
-  //             .attr(transform, (d,i) => `translate(0,${i * spacing}`);
-  //         groups.exit().remove();
-  //         groupsEnter.append('circle')
-  //             .merge(groups.select('circle'))
-  //             .attr('r', circleRadius)
-  //             .attr('fill', colorScale);
-  //         groupsEnter.append('text')
-  //             .merge(groups.select('text'))
-  //             .text(d => d)
-  //             .attry('y', textOffset)}
-  //
-  //
-  //      var hello = svg.append('g')
-  //             .attr('transform', `translate(100, ${height / 2})`)
-  //             .call(colorlegend,
-  //                 {
-  //                     colorScale : this.color(),
-  //                     circleRadius: 30,
-  //                     spacing: 180,
-  //                     textOffset: 120
-  //                 });
-  //
-  //     return hello(x)
+  headline = () => {
+      return (this.props.view_multiple ? "Zusammengesetzter Indikator" : "Individueller Indikator")
+  }
 
 
-    color = (x) => {
+  legend_colours = (x) => {
+    return this.props.current_color[x];
+  }
+
+  legend_labels = (x) => {
+      console.log(typeof this.props.current_map[1].properties.indicator)
+        if (typeof this.props.current_map[1].properties.indicator === 'undefined') {
+        return ['n/a', 'n/a']}
+      else {
+      const quantileScale = d3.scaleQuantile()
+            .domain((this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]))
+            .range(this.props.current_color);
+      var output = quantileScale.invertExtent(this.props.current_color[x]);
+            output[0] = Math.round(output[0]);
+            output[1] = Math.round (output[1]);
+      return output}
+  }
+
+
+
+
+  scale = () => {
+      const quantileScale = d3.scaleQuantile()
+            .domain((this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]))
+            .range(this.props.current_color);
+  return quantileScale
+  }
+
+  value = (x) => {
+  const quantileScale = d3.scaleQuantile()
+            .domain((this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]))
+            .range(this.props.current_color);
+  return quantileScale(x)
+  }
+
+  color = (x) => {
       if (x == null) {
-        return '#e6e6e6';
+        return '#b3daff';
       } else {
           // console.log(this.props.indicator_data[1]);
 
-        const dom_input = (this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
         // console.log(dom_input);
 
-          const quantileScale = d3.scaleQuantile()
-            .domain(dom_input)
-            .range(this.props.current_color);
-        return quantileScale(x);
+              return this.value(x);
       }
 
       // ALTERNATIVE SCALE BELOW
@@ -136,11 +124,13 @@ class Map extends Component {
       return (
 
         <div id="map">
-          <h5 >Aggregierter Indikator  </h5>
+          <h6 >{this.headline()}  </h6>
 
-          <svg id="svg" width="100%" height="100%" viewBox="0 0 400 450">
+            <div id = "map_content">
 
-            <g className="map">
+            <svg id="svg" width="100%" height="100%" viewBox="0 0 400 450">
+
+                <g className="map">
               {
                 this.props.current_map.map((d, i) =>
 
@@ -160,7 +150,62 @@ class Map extends Component {
             {/*      </g>*/}
             {/* </g>*/}
 
-          </svg>
+              </svg>
+
+            </div>
+
+            <div id = "map_legend">
+                <div id = "map_legend_headline">
+
+                </div>
+
+                <div>
+                    <svg width="20" height="10">
+                    <rect width="10" height="10" fill={this.legend_colours(0)} />
+                    </svg>
+                    {this.legend_labels(0)[0]} - {this.legend_labels(0)[1]}
+                </div>
+
+                <div>
+                    <svg width="20" height="10">
+                    <rect width="10" height="10" fill={this.legend_colours(1)} />
+                    </svg>
+                    {this.legend_labels(1)[0]} - {this.legend_labels(1)[1]}
+                </div>
+
+                <div>
+                    <svg width="20" height="10">
+                    <rect width="10" height="10" fill={this.legend_colours(2)} />
+                   </svg>
+                    {this.legend_labels(2)[0]} - {this.legend_labels(2)[1]}
+                </div>
+
+                <div>
+                    <svg width="20" height="10">
+                    <rect width="10" height="10" fill={this.legend_colours(3)} />
+                    </svg>
+                    {this.legend_labels(3)[0]} - {this.legend_labels(3)[1]}
+                </div>
+
+                <div>
+                  <svg width="20" height="10">
+                  <rect width="10" height="10" fill={this.legend_colours(4)} />
+                  </svg>
+                  {this.legend_labels(4)[0]} - {this.legend_labels(4)[1]}
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
         </div>
       );
     }
@@ -531,4 +576,76 @@ export default connect(mapStateToProps)(Map);
 //
 //
 // export default connect(mapStateToProps)(Map);
+
+
+
+
+
+  // legned = (x) => {
+  // const colorLegendG = svg.append("g")
+  // 	.attr('transform', 'translate(185,150)')
+  // 	.
+  //
+  //
+  //
+  //
+  // 	}
+
+  // legend = (x) => {
+  //   // put any functions and vars and consts in here: then RETURN their call!!
+  //     var height = 50;
+  //     var svg = d3.select('svg');
+  //
+  //     const colorlegend = (selection, props) =>
+  //     {const {colorScale, circleRadius, spacing, textOffset} = props;
+  //     const groups = selection.selectAll('g')
+  //         .data(colorScale.domain());
+  //         const groupsEnter = groups.enter().append('g');
+  //         groupsEnter
+  //             .merge(groups)
+  //             .attr(transform, (d,i) => `translate(0,${i * spacing}`);
+  //         groups.exit().remove();
+  //         groupsEnter.append('circle')
+  //             .merge(groups.select('circle'))
+  //             .attr('r', circleRadius)
+  //             .attr('fill', colorScale);
+  //         groupsEnter.append('text')
+  //             .merge(groups.select('text'))
+  //             .text(d => d)
+  //             .attry('y', textOffset)}
+  //
+  //
+  //      var hello = svg.append('g')
+  //             .attr('transform', `translate(100, ${height / 2})`)
+  //             .call(colorlegend,
+  //                 {
+  //                     colorScale : this.color(),
+  //                     circleRadius: 30,
+  //                     spacing: 180,
+  //                     textOffset: 120
+  //                 });
+  //
+  //     return hello(x)
+
+
+// ATTEMPT ONE FOR LEGEND
 //
+//    quantileScale = (x, dom_input) => {
+//      d3.scaleQuantile(x)
+//          .domain(dom_input)
+//          .range(this.props.current_color);
+//    }
+//
+//    domain = () => {(this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1])};
+//
+//     color = (x) => {
+//       if (x == null) {
+//         return '#b3daff';
+//       } else {
+//           // console.log(this.props.indicator_data[1]);
+//
+//         const dom_input = this.domain();
+//         // console.log(dom_input);
+//
+//         return this.quantileScale(x, dom_input);
+//       }

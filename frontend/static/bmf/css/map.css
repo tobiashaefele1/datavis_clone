@@ -7,3 +7,28 @@ path {
 path:hover {
   fill: black;
 }
+
+
+#map {
+  position:relative
+}
+
+#map_legend {
+  position: absolute;
+  top: 50px;
+  left: 15px;
+  text-align: left;
+  object-position: left;
+  font-weight : 400;
+}
+
+#map_legend_headline {
+  margin-bottom: 5px;
+  font-weight : 600;
+}
+
+@media only screen and  (max-width: 768px) {
+  #map_legend {
+    top: 30px;
+  }
+}

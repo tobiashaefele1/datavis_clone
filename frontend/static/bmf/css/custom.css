@@ -32,7 +32,7 @@
   border-radius: 4px;
   min-height: 91vh;
   font-size: 1rem;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   margin-bottom: .75rem;
   font-weight: 600;
   letter-spacing: .1rem; }
@@ -68,6 +68,9 @@
 #weight_5 {
 	width: 40%;
 }
+
+
+
 } 
 
 #big {
@@ -76,7 +79,7 @@
   border-radius: 4px;
   height: none;
   font-size: 1rem;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   margin-bottom: .75rem;
   font-weight: 600;
   letter-spacing: .1rem; }
@@ -84,6 +87,7 @@
 .indicator {
 	text-align: left;
 	text-indent: 10px;
+    text-transform: uppercase;
 } 
 
 #table, #specInfo {

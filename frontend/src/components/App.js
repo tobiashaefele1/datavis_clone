@@ -168,7 +168,7 @@ class App extends Component {
               </object>
             </div>
             <div className="six columns">
-              <h2>BMF - GRW - Datenvisualisierung</h2>
+              <h4>GRW - Datenvisualisierung</h4>
             </div>
             <div className="three columns">
               <SettingsButton/>
