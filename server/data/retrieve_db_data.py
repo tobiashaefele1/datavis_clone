@@ -19,7 +19,7 @@ def retrieve_data(var_name, var_year, ref_name, ref_year, layer):
     mySQLconnection = pymysql.connect(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
 
                                       database='mydb',
-                                      user='user',
+                                      user='admin',
                                       password='NPmpMe!696rY')
 
     # this is the old quiery that does not work for AMR20 (But curiously, for all others)
@@ -92,7 +92,7 @@ def retrieve_fed_avg(var_name, var_year, ref_name, ref_year, layer):
     mySQLconnection = pymysql.connect(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
 
                                       database='mydb',
-                                      user='user',
+                                      user='admin',
                                       password='NPmpMe!696rY')
 
     try:
@@ -134,7 +134,7 @@ def retrieve_ref_share(ref_name, ref_year, layer):
     mySQLconnection = pymysql.connect(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
 
                                       database='mydb',
-                                      user='user',
+                                      user='admin',
                                       password='NPmpMe!696rY')
 
     # Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
@@ -256,7 +256,7 @@ def retrieve_col_names(table_name):
     mySQLconnection = pymysql.connect(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
 
                                       database='mydb',
-                                      user='user',
+                                      user='admin',
                                       password='NPmpMe!696rY')
     # Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
     sql_select_Query = (""" 
@@ -299,7 +299,7 @@ def retrieve_col_years(table_name):
     mySQLconnection = pymysql.connect(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
 
                                       database='mydb',
-                                      user='user',
+                                      user='admin',
                                       password='NPmpMe!696rY')
 
     # Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
@@ -334,7 +334,7 @@ def retrieve_distinct_years(var_name):
     mySQLconnection = pymysql.connect(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
 
                                       database='mydb',
-                                      user='user',
+                                      user='admin',
                                       password='NPmpMe!696rY')
 
     # Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
