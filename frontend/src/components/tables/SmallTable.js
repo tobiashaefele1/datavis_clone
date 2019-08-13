@@ -19,7 +19,7 @@ class SmallTable extends Component {
       <table id="specInfo" className="u-80-width">
         <thead>
           <tr>
-            <th colSpan="2">Area specific information</th>
+            <th colSpan="2">Informationen</th>
           </tr>
         </thead>
         <tbody>

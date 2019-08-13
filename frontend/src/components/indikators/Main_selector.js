@@ -212,11 +212,11 @@ export class Main_selector extends Component {
     weight = () =>{
       if (this.props.view_multiple) {
         return ( <div className="three columns">
-          <label>%</label>
+          <label>Gewichtung (%) </label>
           <input className="u-80-width" id={`weight_${this.props.number}`}
             onChange={this.handleChangeProm.bind(this)}
             type="number"
-            placeholder="45">
+            defaultValue={this.props.value_dic[`weight_${this.props.number}`]}>
           </input>
         </div>);
       }
@@ -285,13 +285,9 @@ export class Main_selector extends Component {
             <div className="six columns">
               <label className="indicator">{this.props.name}</label>
               <select className="u-95-width"
-                defaultValue="0"
+                defaultValue={this.props.value_dic[`var_name_${this.props.number}`]}
                 id={`var_name_${this.props.number}`}
-                onChange={this.handleChangeProm
-                                  .bind(this)
-                                  }>
-
-
+                onChange={this.handleChangeProm.bind(this)}>
                 <option disabled value="0"> -- Wähle Variable --</option>
 
                 {this.props.col_names_var.map((d, i) =>
@@ -301,17 +297,19 @@ export class Main_selector extends Component {
               </select>
             </div>
 
+                {/*#TODO: there is a problem with the default values for the year - we can display the values ONLY if
+                we have already defined an option value that allows to select the respective year. This will be solved
+                automatically once we pass through the options for the years via context//  }*!/*/}
             <div className="three columns">
               <label >Jahr </label>
               <select className="u-80-width"
-                defaultValue="0"
+                defaultValue={this.props.value_dic[`var_year_${this.props.number}`]}
                 id={`var_year_${this.props.number}`}
                 onChange={this.handleChangeProm.bind(this)}>
 
-                <option disabled value="0"> -- Wähle Jahr --</option>
-
-                {this.props.var_year_data[`var_year_${this.props.number}`]
-                    .map((d, i) =>
+                <option disabled value="0"> -- Wähle Jahr -- </option>
+                  <option>{this.props.value_dic[`var_year_${this.props.number}`]} </option>
+                {this.props.var_year_data[`var_year_${this.props.number}`].map((d, i) =>
                       <option value={d} key={i}>{d}</option>
                     )
                 }
@@ -324,11 +322,11 @@ export class Main_selector extends Component {
 
               <div className="six columns">
                 <select className="u-95-width"
-                  defaultValue="0"
+                  defaultValue={this.props.value_dic[`ref_name_${this.props.number}`]}
                   id={`ref_name_${this.props.number}`}
                   onChange={this.handleChangeProm.bind(this)}>
 
-                  <option disabled value="0"> standardisiert über...</option>
+                  <option disabled value="0"> -- Wähle Bezugsgröße -- </option>
                   {this.props.col_names_ref.map((d, i) =>
                     <option value={d} key={i}>{d}</option>
                   )
@@ -338,16 +336,16 @@ export class Main_selector extends Component {
 
               <div className="three columns">
                 <select className="u-80-width"
-                  defaultValue="0"
                   id={`ref_year_${this.props.number}`}
                   onChange={this.handleChangeProm.bind(this)}>
-
-                  <option disabled value="0"> -- Wähle Variable --</option>
+                  defaultValue={this.props.value_dic[`ref_year_${this.props.number}`]}
+                  <option disabled value="0"> -- Wähle Jahr -- </option>
 
                   {this.props.years_ref.map((d, i) =>
                     <option value={d} key={i}>{d}</option>
                   )
                   }
+
                 </select>
               </div>
             </div>

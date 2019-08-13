@@ -26,6 +26,12 @@ class Settings extends Component {
       this.props.dispatch(this.changeColorDispatch(e.target.value));
     };
 
+    scaleChange = (e) =>{
+      this.props.dispatch(this.changeScaleDispatch(e.target.value));
+    };
+
+
+
     /**
      *This function creates a dispatch ready input.
      *
@@ -37,6 +43,15 @@ class Settings extends Component {
       return (
         {
           type: 'CHANGECOLOR',
+          value,
+        }
+      );
+    };
+
+    changeScaleDispatch(value) {
+      return (
+        {
+          type: 'CHANGESCALE',
           value,
         }
       );
@@ -60,7 +75,7 @@ class Settings extends Component {
                 <h2>Settings</h2>
                 <h3>View</h3>
                 <ViewButton/>
-                <h3>Color:</h3>
+                <h3>Farbpaletten:</h3>
                 <label >
 
                   <svg width="10" height="10" className="Blues">
@@ -83,7 +98,7 @@ class Settings extends Component {
                   </svg>
 
                 </label>
-                <button value={0} onClick={this.colorChange} > Blue </button>
+                <button value={0} onClick={this.colorChange} > Blau </button>
                 <label>
 
                   <svg width="10" height="10" className="Reds">
@@ -106,7 +121,7 @@ class Settings extends Component {
                   </svg>
 
                 </label>
-                <button value={1} onClick={this.colorChange}> Red </button>
+                <button value={1} onClick={this.colorChange}> Rot </button>
 
                 <label>
 
@@ -131,10 +146,26 @@ class Settings extends Component {
 
                 </label>
 
-                <button value={2} onClick={this.colorChange}> Green </button>
+                <button value={2} onClick={this.colorChange}> Grün </button>
                 <div>
-                            STD:
+                            Skalen:
                 </div>
+                <div>
+                  <button className={"scalebutton"} value={0} onClick={this.scaleChange}
+                  style={{width:200, textAlign: "center", padding: 0}}
+                  > gleichmäßige Gruppen </button>
+                </div>
+                <div>
+
+
+                  <button className={"scalebutton"} value={1} onClick={this.scaleChange}
+                  style={{width:200, textAlign: "center", padding: 0}}> gleichmäßige Intervalle </button>
+                </div>
+                <div>
+                  <button value={2} className={"scalebutton"} onClick={this.scaleChange}
+                  style={{width:200, textAlign: "center", padding: 0}}> fließende Intervalle </button>
+                </div>
+
               </div>
 
             </div>

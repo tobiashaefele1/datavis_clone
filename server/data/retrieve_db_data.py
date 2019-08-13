@@ -213,8 +213,8 @@ def scale_HIB(data, fed_avg, SD):
     return output
 
 
-def scale_LIB(data, fed_avg, SD):
-    # print("scale_LIB")
+def scale_NIB(data, fed_avg, SD):
+    # print("scale_NIB")
     ''' this function standardises and scales a dataset according to GRW methodology, where lower values
         result in a higher score, this formula currently returns a tuple list'''
     Sfactor_positive = 100
@@ -239,7 +239,7 @@ def retrieve_sd_data(var_name, var_year, ref_name, ref_year, layer, scale="HIB")
     if scale == "HIB":
         output = scale_HIB(data, fed_avg, sd)
     else:
-        output = scale_LIB(data, fed_avg, sd)
+        output = scale_NIB(data, fed_avg, sd)
 
     print(time.clock() - start_time, "seconds to retrieve the standardised data")
     return output
@@ -290,6 +290,7 @@ def retrieve_col_names(table_name):
 
 
 def retrieve_col_years(table_name):
+    ''' this function returns a list of all the years for in the datable'''
     print("retrieve_col_years")
     output = []
     col_years = []
@@ -337,7 +338,7 @@ def retrieve_distinct_years(var_name):
                                       user='user',
                                       password='password')
 
-    # Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
+    # Returns quiery with all years for a given variable
     sql_select_Query = (""" SELECT
                                 DISTINCT `YEAR`
                             FROM `Kreise`
@@ -360,6 +361,53 @@ def retrieve_distinct_years(var_name):
             output.append(x)
         # print (output)
         return output
+
+
+
+
+def retrieve_complete_col_years():
+    ''' this function returns a list of list with all the unique variables in KREISE and the years which are not
+    null in this list. HOWEVER, the function is incredibly slow. Perhaps it should go into setup.py and be run once
+    at the beginning of creating the database'''
+    #TODO: ask Ben about whether there is a way to do this in one quiery
+    start_time = time.clock()
+    mySQLconnection = pymysql.connect(host='localhost',
+
+                                      database='mydb',
+                                      user='user',
+                                      password='password')
+    cursor = mySQLconnection.cursor()
+    ## this returns a list of all the column names we want
+    result = []
+    col_names = retrieve_col_names('Kreise')
+
+    for x in col_names:
+        distinct_years = []
+        mysql_result = []
+        distinct_years.append(x)
+        sql_select_Query = (""" SELECT
+                                DISTINCT `YEAR`
+                            FROM `Kreise`
+                            WHERE `%s` IS NOT NULL; """ % (x))
+
+        cursor.execute(sql_select_Query)
+        mysql_result = cursor.fetchall()
+        for (x,) in mysql_result:
+            distinct_years.append(x)
+        result.append(distinct_years)
+        # print(distinct_years)
+    cursor.close()
+    mySQLconnection.close()
+    print(time.clock()-start_time)
+    return result
+
+
+
+
+
+
+
+
 
 
 # # TESTS FOR THIS SECTION
@@ -391,6 +439,10 @@ def retrieve_distinct_years(var_name):
 
 
 # retrieve_data(var_name, var_year, ref_name, ref_year, layer)
+
+#
+# test = retrieve_complete_col_years()
+# print(test)
 
 
 '''

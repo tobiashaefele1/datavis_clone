@@ -24,6 +24,21 @@ class Table extends Component {
     };
   }
 
+      showTableDispatch(value) {
+      return (
+        {
+          type: 'SHOWTABLE',
+          value,
+        }
+      );
+    };
+      showTable = (e) =>{
+      this.props.dispatch(this.showTableDispatch(e.target.value));
+    };
+
+
+
+
   /**
    *This creates the CSV file from current data and offers it as a download.
    *
@@ -48,15 +63,12 @@ class Table extends Component {
     });
   }
 
-  /**
-   *This function renders the table.
-   *
-   * @return {JSX}
-   * @memberof Table
-   */
-  render() {
-    return (
-      <div style={{marginLeft: '20px', marginRight: '20px'}}>
+
+
+  renderTable = () => {
+    if(this.props.showTable){
+      return (        <div>
+
         <div>
           <button onClick={this.download}>
                         Download
@@ -79,6 +91,29 @@ class Table extends Component {
           />
 
         </div>
+        </div>
+      );
+    }
+  }
+
+
+
+  /**
+   *This function renders the table.
+   *
+   * @return {JSX}
+   * @memberof Table
+   */
+  render() {
+    return (
+
+      <div style={{marginLeft: '20px', marginRight: '20px'}}>
+        <div>
+          <button value = {this.props.showTable} onClick={this.showTable}>
+            {this.props.showTable ? `Vollständige Datentabelle verbergen` : `Vollständige Datentabelle anzeigen`} </button>
+        </div>
+        {this.renderTable()}
+
       </div>
     );
   }
@@ -95,6 +130,7 @@ function mapStateToProps(state) {
     table_data: state.table_data,
     indikators: state.indikators,
     table_columns: state.table_columns,
+    showTable: state.showTable,
 
   };
 }

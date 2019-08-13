@@ -6,43 +6,54 @@ const initalState = {
   smalltable: [['Name', 'placeholder'],
     ['ID', 'placeholder'],
     ['Einwohner (2017)', 'placeholder'],
-    ['Fläche km2', 'placeholder'],
-    ['Bund', 'placeholder'],
-    ['Rank', 'placeholder']],
+    ['Fläche (km2)', 'placeholder'],
+    ['Bundesland', 'placeholder'],
+    ['Rang', 'placeholder']],
+
+  currentScale: 0,
+  scaleOptions: [0,1,2],
+
   current_color: ['#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c'],
   color_options: [['#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c'],
     ['#fee5d9', '#fcae91', '#fb6a4a', '#de2d26', '#a50f15'],
     ['#edf8e9', '#bae4b3', '#74c476', '#31a354', '#006d2c']],
   counter: 0,
   count_map: 0,
-  current_map: [],
+  current_map: [], // what needs to be changed in here?
   kreise: [],
   amr12: [],
   amr15: [],
   amr20: [],
   bund: [],
   map_name: ['KRS_15', 'AMR_12', 'AMR_15', 'AMR_20', 'Bundesland_ID'],
-  indikator_counter: 3,
-  indikators: ['indikator1', 'indikator2', 'indikator3'],
+  indikator_counter: 4, // COMMENT TOBIAS: DOES THIS CAUSE PROBLEMS WITH FEEDBACK LOGIC?
+  indikators: ['indikator 1', 'indikator 2', 'indikator 3', 'indikator 4'],
   col_names_var: JSON.parse(context.col_names_var),
   col_names_ref: JSON.parse(context.col_names_ref),
   years_ref: JSON.parse(context.years_ref),
 
   table_data: [[]],
+  showTable: false,
   indicator_data: [[]],
   single_indic_data: [[]],
   show_modal: false,
   value_dic: {
-    'var_name_0': null, 'var_name_1': null, 'var_name_2': null,
-    'var_name_3': null, 'var_name_4': null, 'var_name_5': null,
-    'var_year_0': null, 'var_year_1': null, 'var_year_2': null,
-    'var_year_3': null, 'var_year_4': null, 'var_year_5': null,
-    'weight_0': null, 'weight_1': null, 'weight_2': null,
-    'weight_3': null, 'weight_4': null, 'weight_5': null,
-    'ref_name_0': null, 'ref_name_1': null, 'ref_name_2': null,
-    'ref_name_3': null, 'ref_name_4': null, 'ref_name_5': null,
-    'ref_year_0': null, 'ref_year_1': null, 'ref_year_2': null,
-    'ref_year_3': null, 'ref_year_4': null, 'ref_year_5': null,
+    'var_name_0': 'Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200',
+    'var_name_1': 'Lohn pro Beschäftigtem 2010 _ORIGINAL_200',
+    'var_name_2': 'Erwerbstätigenprognose _ORIGINAL_200',
+    'var_name_3': 'Infrastrukturindikator_ORIGINAL_200',
+    'var_name_4': null,
+    'var_name_5': null,
+    'var_year_0': '2009-12', 'var_year_1': '2010', 'var_year_2': '2011-18', 'var_year_3': '2012',
+    'var_year_4': null, 'var_year_5': null,
+    'weight_0': 45, 'weight_1': 40, 'weight_2': 7.5, 'weight_3': 7.5,
+    'weight_4': null, 'weight_5': null,
+    'ref_name_0': 'Erwerbspersonen gesamt_100', 'ref_name_1': 'Erwerbstätige gesamt_100',
+    'ref_name_2': 'Erwerbstätige gesamt_100',
+    'ref_name_3': 'Erwerbstätige gesamt_100',
+    'ref_name_4': null, 'ref_name_5': null,
+    'ref_year_0': '2011', 'ref_year_1': '2011', 'ref_year_2': '2012', 'ref_year_3': '2012',
+    'ref_year_4': null, 'ref_year_5': null,
   },
   table_columns: [{
     Header: 'Kennziffer',
@@ -89,6 +100,30 @@ function reducer(state = initalState, action) {
             break;
         }
       });
+
+    case 'CHANGESCALE':
+      return produce(state, (draft) => {
+        switch(action.value){
+          case '0':
+            draft.currentScale = state.scaleOptions[0];
+            break;
+          case '1':
+            draft.currentScale = state.scaleOptions[1]
+            break;
+          case '2':
+            draft.currentScale = state.scaleOptions[2];
+            break;
+          }
+
+      })
+
+    case 'SHOWTABLE':
+      return produce(state, (draft) => {
+            draft.showTable = !state.showTable;
+        }
+      );
+
+
 
     case 'VIEWMODAL':
       return produce(state, (draft) => {
@@ -144,7 +179,7 @@ function reducer(state = initalState, action) {
     case 'INCREMENTINDIKATOR':
       return produce(state, (draft) => {
         draft.indikator_counter = state.indikator_counter + 1;
-        draft.indikators.push('indikator' + draft.indikator_counter);
+        draft.indikators.push('indikator' + " " + draft.indikator_counter);
       }
       );
     case 'DECREMENTINDIKATOR':
@@ -179,7 +214,8 @@ function reducer(state = initalState, action) {
         }
         if (draft.smalltable.length < state.indikator_counter + 6) {
           state.indikators.map((d, i) =>
-            draft.smalltable.push([state.value_dic['var_name_' + i], 'place'])
+            draft.smalltable.push([state.value_dic['var_name_' + i], '-'])
+              // #TODO: Daten von Indikator in Tabelle einfügen
           );
         }
       });
@@ -245,3 +281,24 @@ function reducer(state = initalState, action) {
 export const store = createStore(reducer);
 
 
+
+
+// TOBIAS BOTTOM HARDCODED LIST OF INITIAL VALUES FOR VALUE DICT - does seem to throw an error
+//   value_dic: {
+//     'var_name_0': 'Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200',
+//     'var_name_1': 'Lohn pro Beschäftigtem 2010 _ORIGINAL_200',
+//     'var_name_2': 'Erwerbstätigenprognose _ORIGINAL_200',
+//     'var_name_3': 'Infrastrukturindikator_ORIGINAL_200',
+//     'var_name_4': null,
+//     'var_name_5': null,
+//     'var_year_0': '2009-12', 'var_year_1': '2010', 'var_year_2': '2011-18', 'var_year_3': '2012',
+//     'var_year_4': null, 'var_year_5': null,
+//     'weight_0': 45, 'weight_1': 40, 'weight_2': 7.5, 'weight_3': 7.5,
+//     'weight_4': null, 'weight_5': null,
+//     'ref_name_0': 'Erwerbspersonen gesamt_100', 'ref_name_1': 'Erwerbstätige gesamt_100',
+//     'ref_name_2': 'Erwerbstätige gesamt_100',
+//     'ref_name_3': 'Erwerbstätige gesamt_100',
+//     'ref_name_4': null, 'ref_name_5': null,
+//     'ref_year_0': '2011', 'ref_year_1': '2011', 'ref_year_2': '2012', 'ref_year_3': '2012',
+//     'ref_year_4': null, 'ref_year_5': null,
+//   },

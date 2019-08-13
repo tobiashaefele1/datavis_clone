@@ -24,55 +24,202 @@ class Map extends Component {
     };
   }
 
+
+
+
+
   headline = () => {
       return (this.props.view_multiple ? "Zusammengesetzter Indikator" : "Individueller Indikator")
   }
 
+  renderlegend = () => {
+      if(this.props.currentScale != 2) {
+          return (
+                              <div id = "map_legend">
+                <div id = "map_legend_headline">
 
-  legend_colours = (x) => {
-    return this.props.current_color[x];
+                </div>
+
+                <div>
+                <svg width="20" height="10">
+                <rect width="10" height="10" fill={this.legend_colours(0)} />
+                </svg>
+                {this.legend_labels(0)[0]} - {this.legend_labels(0)[1]}
+                </div>
+
+                <div>
+                <svg width="20" height="10">
+                <rect width="10" height="10" fill={this.legend_colours(1)} />
+                </svg>
+                {this.legend_labels(1)[0]} - {this.legend_labels(1)[1]}
+                </div>
+
+                <div>
+                <svg width="20" height="10">
+                <rect width="10" height="10" fill={this.legend_colours(2)} />
+                </svg>
+                {this.legend_labels(2)[0]} - {this.legend_labels(2)[1]}
+                </div>
+
+                <div>
+                <svg width="20" height="10">
+                <rect width="10" height="10" fill={this.legend_colours(3)} />
+                </svg>
+                {this.legend_labels(3)[0]} - {this.legend_labels(3)[1]}
+                </div>
+
+                <div>
+                <svg width="20" height="10">
+                <rect width="10" height="10" fill={this.legend_colours(4)} />
+                </svg>
+                {this.legend_labels(4)[0]} - {this.legend_labels(4)[1]}
+                </div>
+
+                </div>
+          ); }
+
+      else{
+          /// INSERT THIS STUFF IN HERE
+          return (
+              <div>
+              <div id = "svgcontainer"></div>
+
+          </div>);
+      }
+
   }
 
-  legend_labels = (x) => {
-      console.log(typeof this.props.current_map[0].properties.indicator)
-        if (typeof this.props.current_map[0].properties.indicator === 'undefined') {
-        return ['n/a', 'n/a']}
-      else {
-      const quantileScale = d3.scaleQuantile()
-            .domain((this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]))
-            .range(this.props.current_color);
-      var output = quantileScale.invertExtent(this.props.current_color[x]);
-            output[0] = Math.round(output[0]);
-            output[1] = Math.round (output[1]);
-      return output}
+
+    legendInterpolar = () => {
+
+
+
+
+
+    }
+
+
+
+
+
+
+  ///////////////// SCALES TO CREATE AS OPTIONS /////////////////////////////
+  // formulae to create scale and individual values for sequential scale
+  scaleInterpolar = () => {
+      let DomMin = Math.min(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
+      let DomMax = Math.max(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
+      const interpolarScale = d3.scaleSequential(d3.interpolateRgb("gainsboro", "navy"))
+            .domain([DomMin, DomMax])
+            // .interpolator(d3.interpolateCool);
+      return interpolarScale
+  }
+
+  valueInterpolar = (x) => {
+      let DomMin = Math.min(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
+      let DomMax = Math.max(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
+      // creates an interpolar scale with the minimum and maximum colours selected from the current color range
+      const interpolarScale = d3.scaleSequential(d3.interpolateRgb(this.props.current_color[0], this.props.current_color[4]))
+            .domain([DomMin, DomMax])
+            // .interpolator(d3.interpolateCool);
+      return interpolarScale(x)
   }
 
 
-
-
-  scale = () => {
+  // formulae to create scale and individual values for quantile scale
+  scaleQuantile = () => {
       const quantileScale = d3.scaleQuantile()
             .domain((this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]))
             .range(this.props.current_color);
   return quantileScale
   }
 
-  value = (x) => {
+  valueQuantile = (x) => {
   const quantileScale = d3.scaleQuantile()
             .domain((this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]))
             .range(this.props.current_color);
   return quantileScale(x)
   }
 
+
+    // formulae to generate scale and values for threshold scale via Quantize method
+   scaleQuantize = () => {
+            // the three dots convert the array into a list so they can be used as input for Math.min and Math.max
+      let DomMin = Math.min(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
+      let DomMax = Math.max(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
+      // let DomStep = (DomMax - DomMin) / (this.props.current_color.length);
+      // console.log(DomStep)
+      const QuantizeScale = d3.scaleQuantize()
+            .domain([DomMin, DomMax])
+            .range(this.props.current_color);
+  return QuantizeScale
+  }
+    // formula to generate values for threshold scale via Quantize method
+  valueQuantize = (x) => {
+      // the three dots convert the array into a list so they can be used as input for Math.min and Math.max
+      let DomMin = Math.min(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
+      let DomMax = Math.max(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
+      // let DomStep = (DomMax - DomMin) / (this.props.current_color.length);
+
+      const QuantizeScale = d3.scaleQuantize()
+            .domain([DomMin, DomMax])
+            .range(this.props.current_color);
+  return QuantizeScale(x)
+  }
+
+
+
+  ///////////////// SCALES TO CREATE AS OPTIONS /////////////////////////////
+
+    // formula to create the legend colours
+    //TODO: make this dynamic to scale options (currently this always shows normal scale)
+    legend_colours = (x) => {
+    return this.props.current_color[x];
+  }
+
+  // formulae to create the legend labels
+  legend_labels = (x) => {
+      console.log(typeof this.props.current_map[0].properties.indicator)
+        if (typeof this.props.current_map[0].properties.indicator === 'undefined') {
+        return ['n/a', 'n/a']}
+      else {
+          if (this.props.currentScale == 0) {
+
+              var output = this.scaleQuantize().invertExtent(this.props.current_color[x]);
+                output[0] = Math.round(output[0]);
+                output[1] = Math.round (output[1]);
+                return output}
+
+          else if(this.props.currentScale ==1) {
+              var output = this.scaleQuantile().invertExtent(this.props.current_color[x]);
+                output[0] = Math.round(output[0]);
+                output[1] = Math.round (output[1]);
+                return output}
+          else {
+              //TODO: ADD IN HERE WHATEVER THE LEGEND LABELS SHOULD BE IN CASE OF INTERPOLAR SCALE; PROBABLY JUST MIN MAX?
+              return ['n/a', 'n/a']
+          }
+
+          }
+          }
+
+
+  // formula to create the values for the color on the map
   color = (x) => {
       if (x == null) {
         return '#b3daff';
       } else {
+          if(this.props.currentScale == 0)
+                {
           // console.log(this.props.indicator_data[1]);
-
         // console.log(dom_input);
+              return this.valueQuantize(x);
+                }
 
-              return this.value(x);
+           else if(this.props.currentScale == 1)
+          { return this.valueQuantile(x)}
+
+           else{
+             return this.valueInterpolar(x)   }
       }
 
       // ALTERNATIVE SCALE BELOW
@@ -141,64 +288,23 @@ class Map extends Component {
                     fill= {this.color(d.properties.indicator)}
                     stroke="#000000"
                     strokeWidth={0.5}
-                    onClick={this.handleClick.bind(this, i)}
+                    onMouseOver={this.handleClick.bind(this, i)}
                   />
                 )
               }
             </g>
-            {/* {this.legend(this.color())}*/}
-            {/*      </g>*/}
-            {/* </g>*/}
+
 
               </svg>
 
             </div>
 
-            <div id = "map_legend">
-                <div id = "map_legend_headline">
+            <div>
+                {this.renderlegend()}
 
-                </div>
 
-                <div>
-                    <svg width="20" height="10">
-                    <rect width="10" height="10" fill={this.legend_colours(0)} />
-                    </svg>
-                    {this.legend_labels(0)[0]} - {this.legend_labels(0)[1]}
-                </div>
-
-                <div>
-                    <svg width="20" height="10">
-                    <rect width="10" height="10" fill={this.legend_colours(1)} />
-                    </svg>
-                    {this.legend_labels(1)[0]} - {this.legend_labels(1)[1]}
-                </div>
-
-                <div>
-                    <svg width="20" height="10">
-                    <rect width="10" height="10" fill={this.legend_colours(2)} />
-                   </svg>
-                    {this.legend_labels(2)[0]} - {this.legend_labels(2)[1]}
-                </div>
-
-                <div>
-                    <svg width="20" height="10">
-                    <rect width="10" height="10" fill={this.legend_colours(3)} />
-                    </svg>
-                    {this.legend_labels(3)[0]} - {this.legend_labels(3)[1]}
-                </div>
-
-                <div>
-                  <svg width="20" height="10">
-                  <rect width="10" height="10" fill={this.legend_colours(4)} />
-                  </svg>
-                  {this.legend_labels(4)[0]} - {this.legend_labels(4)[1]}
-                </div>
 
             </div>
-
-
-
-
 
 
 
@@ -238,6 +344,7 @@ function mapStateToProps(state) {
     view_multiple: state.view_multiple,
     single_indic_data: state.single_indic_data,
     current_color: state.current_color,
+      currentScale: state.currentScale,
   };
 }
 
@@ -649,3 +756,78 @@ export default connect(mapStateToProps)(Map);
 //
 //         return this.quantileScale(x, dom_input);
 //       }
+
+
+
+  // THIS THRESHOLD SCALE FORMULATION WORKS. HOWEVER, THE OTHER VERSION VIA QUANTIZE IS MORE ELEGANT; HENCE DISCARDED HERE
+  // // formulae to generate scale and values for threshold scale
+  //  scaleThres = () => {
+  //           // the three dots convert the array into a list so they can be used as input for Math.min and Math.max
+  //     let DomMin = Math.min(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
+  //     let DomMax = Math.max(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
+  //     let DomStep = (DomMax - DomMin) / (this.props.current_color.length);
+  //     // console.log(DomStep)
+  //     const ThresScale = d3.scaleThreshold()
+  //           .domain([DomMin+(DomStep), DomMin+(2*DomStep), DomMin+(3*DomStep), DomMin+(4*DomStep)])
+  //           .range(this.props.current_color);
+  // return ThresScale
+  // }
+  //
+  // valueThres = (x) => {
+  //     // the three dots convert the array into a list so they can be used as input for Math.min and Math.max
+  //     let DomMin = Math.min(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
+  //     let DomMax = Math.max(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
+  //     let DomStep = (DomMax - DomMin) / (this.props.current_color.length);
+  //
+  //     const ThresScale = d3.scaleThreshold()
+  //           .domain([DomMin+(DomStep), DomMin+(2*DomStep), DomMin+(3*DomStep), DomMin+(4*DomStep)])
+  //           .range(this.props.current_color);
+  // return ThresScale(x)
+  // }
+
+
+
+
+/// THIS IS THE WORKING STATIC VERSION OF THE LEGEND (without the INTERPOLAR SCALE LEGEND)
+//
+//                 <div id = "map_legend">
+//                 <div id = "map_legend_headline">
+//
+//                 </div>
+//
+//                 <div>
+//                 <svg width="20" height="10">
+//                 <rect width="10" height="10" fill={this.legend_colours(0)} />
+//                 </svg>
+//                 {this.legend_labels(0)[0]} - {this.legend_labels(0)[1]}
+//                 </div>
+//
+//                 <div>
+//                 <svg width="20" height="10">
+//                 <rect width="10" height="10" fill={this.legend_colours(1)} />
+//                 </svg>
+//                 {this.legend_labels(1)[0]} - {this.legend_labels(1)[1]}
+//                 </div>
+//
+//                 <div>
+//                 <svg width="20" height="10">
+//                 <rect width="10" height="10" fill={this.legend_colours(2)} />
+//                 </svg>
+//                 {this.legend_labels(2)[0]} - {this.legend_labels(2)[1]}
+//                 </div>
+//
+//                 <div>
+//                 <svg width="20" height="10">
+//                 <rect width="10" height="10" fill={this.legend_colours(3)} />
+//                 </svg>
+//                 {this.legend_labels(3)[0]} - {this.legend_labels(3)[1]}
+//                 </div>
+//
+//                 <div>
+//                 <svg width="20" height="10">
+//                 <rect width="10" height="10" fill={this.legend_colours(4)} />
+//                 </svg>
+//                 {this.legend_labels(4)[0]} - {this.legend_labels(4)[1]}
+//                 </div>
+//
+//                 </div>
