@@ -122,18 +122,78 @@ def mapping_to_db (link_to_mapping_file):
      conn = create_engine('mysql+pymysql://' + user + ':' + passw + '@' + host + '/' + database , echo=False)
      mapping_file.to_sql(name="mapping", con=conn, if_exists = 'replace', index=False)
 
+
+
+
+
+def load_metadata(link_to_data, data_code="100"):
+    data = pd.read_csv(link_to_data, dtype=str, encoding ='utf8', nrows=8, header=None)
+
+    # print(data)
+    # drop first two columns I dont need
+    data.drop(data.columns[[0, 1]], axis=1, inplace=True)
+    # transform dataset, reset index and delete stray row
+    data = data.T
+    data.reset_index(inplace=True)
+    data.drop(data.columns[0], axis=1, inplace=True)
+    data[8] = data[7]
+    print(data)
+    ## this is all great but I should try one more time to replace index with header - the below doesnt work
+    # header = data.iloc[0]
+    # print(header)
+    # data = data[1:]
+    # data.rename(columns = header)
+    # print(data)
+
+
+    # loop through the dataframe and create the names as they are used in the database
+    counter = 0
+    for i in data[7]:
+        if len(i) >= 50:
+            new_label = i[:50] + '_' + str(data_code)
+        else:
+            new_label = i + '_' + str(data_code)
+            # print(new_label)
+        data[8][counter] = new_label
+        counter +=1
+    # print(data)
+
+    # now drop all duplicaes:
+    data = data.drop_duplicates()
+    print(data[7])
+    print(len(data[7]))
+
+
+load_metadata('./resources/including metadata/KRS15_testfile_updated.csv',100)
+
+
+    # code lines to get names in the same shape as others
+    # for i in data.unique_labels():
+    #     if len(i) >= 50:
+    #         print(i)
+    #         new_label = i[:50] + '_' + str(data_code)
+    #         cursor.execute("ALTER TABLE `%s` ADD COLUMN `%s` DOUBLE" % (table_name, new_label))
+    #     else:
+    #         new_label = i + '_' + str(data_code)
+    #         cursor.execute("ALTER TABLE `%s` ADD COLUMN `%s` DOUBLE" % (table_name, new_label))
+
+
+
+
+
+
 #
-#
-# # links to all the required data files
-link_to_mapping_file = './resources/KRS_ROR_AMR_clean_mapping.csv'
-link_to_template_input = './resources/KRS15_template.csv'
-#
-# link_to_AMR12_data = './resources/AMR12_testfile.csv'
-link_to_AMR15_data = './resources/AMR15_testfile.csv'
-# link_to_Bund_data = './resources/Bund_testfile.csv'
-# link_to_Kreise_data = './resources/KRS15_testfile.csv'
-# link_to_reference_data = './resources/Referenzgroessen_input.csv'
-#
+# #
+# # # links to all the required data files
+# link_to_mapping_file = './resources/KRS_ROR_AMR_clean_mapping.csv'
+# link_to_template_input = './resources/KRS15_template.csv'
+# #
+# # link_to_AMR12_data = './resources/AMR12_testfile.csv'
+# link_to_AMR15_data = './resources/AMR15_testfile.csv'
+# # link_to_Bund_data = './resources/Bund_testfile.csv'
+# # link_to_Kreise_data = './resources/KRS15_testfile.csv'
+# # link_to_reference_data = './resources/Referenzgroessen_input.csv'
+# #
 #
 # # load in all the data as data objects
 # AMR12_data = readin258AMR (link_to_AMR12_data,link_to_mapping_file, link_to_template_input)  # create AMR12 data object
