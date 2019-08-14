@@ -1,6 +1,7 @@
 import {createStore} from 'redux';
 import produce from 'immer';
 
+console.log(context);
 
 const initalState = {
   smalltable: [['Name', 'placeholder'],
@@ -31,11 +32,11 @@ const initalState = {
   col_names_var: JSON.parse(context.col_names_var),
   col_names_ref: JSON.parse(context.col_names_ref),
   years_ref: JSON.parse(context.years_ref),
-
-  table_data: [[]],
   showTable: false,
-  indicator_data: [[]],
-  single_indic_data: [[]],
+  indicator_data: JSON.parse(context.indicator_data),
+  single_indic_data: JSON.parse(context.single_indic_data),
+  table_data: JSON.parse(context.table_data),
+
   show_modal: false,
   value_dic: {
     'var_name_0': 'Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200',
@@ -62,10 +63,31 @@ const initalState = {
   {
     Header: 'Aggregated',
     accessor: 'selbstersteller_Indikator',
-  }],
+  },
+  {
+    Header: 'Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200 2009-12',
+    accessor: 'Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200 2009-12',
+  },
+{
+    Header: 'Lohn pro Beschäftigtem 2010 _ORIGINAL_200 2010',
+    accessor: 'Lohn pro Beschäftigtem 2010 _ORIGINAL_200 2010',
+  },
+{
+    Header: 'Erwerbstätigenprognose _ORIGINAL_200 2011-18',
+    accessor: 'Erwerbstätigenprognose _ORIGINAL_200 2011-18',
+  },
+{
+    Header: 'Infrastrukturindikator_ORIGINAL_200 2012',
+    accessor: 'Infrastrukturindikator_ORIGINAL_200 2012',
+  },
+
+  ],
   loading: true,
-  var_year_data: {'var_year_0': [], 'var_year_1': [], 'var_year_2': [],
-    'var_year_3': [], 'var_year_4': [], 'var_year_5': []},
+  var_year_data: JSON.parse(context.var_year_data),
+
+    // THIS IS THE ORIGINAL THAT USED TO WORK STATICALLY; ABOVE IS DERIVING THESE VALUES FROM CONTEXT; TOO
+  // var_year_data: {'var_year_0': [], 'var_year_1': [], 'var_year_2': [],
+  //   'var_year_3': [], 'var_year_4': [], 'var_year_5': []},
   view_multiple: true,
   show_viewpicker: true,
 

@@ -32,6 +32,23 @@ class Map extends Component {
       return (this.props.view_multiple ? "Zusammengesetzter Indikator" : "Individueller Indikator")
   }
 
+  renderlogo = () => {
+      return(
+
+          <div id = "map_logo">
+          <object type="image/svg+xml"
+                data="static/bmf/resources/BMF.svg" >Your browser does not support SVG
+              </object>
+
+      <div id = "map_copyright"> ©gadm.org
+       </div>
+               </div>
+      )
+
+  };
+
+
+
   renderlegend = () => {
       if(this.props.currentScale != 2) {
           return (
@@ -301,12 +318,11 @@ class Map extends Component {
 
             <div>
                 {this.renderlegend()}
-
-
-
             </div>
 
-
+            <div>
+                {this.renderlogo()}
+            </div>
 
 
 

@@ -39,7 +39,12 @@
       var context = {
         col_names_var: `{{ col_names_var|safe }}`,
         col_names_ref: `{{ col_names_ref|safe }}`,
-        years_ref: `{{ years_ref|safe }}`
+        years_ref: `{{ years_ref|safe }}`,
+          indicator_data: `{{ indicator_data|safe }}`,
+          single_indic_data: `{{ single_indic_data|safe }}`,
+          var_year_data: `{{ var_year_data|safe }}`,
+          table_data: `{{ table_data|safe }}`,
+
       };
     </script>
 

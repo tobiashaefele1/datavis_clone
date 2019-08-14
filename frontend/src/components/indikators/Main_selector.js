@@ -104,7 +104,7 @@ export class Main_selector extends Component {
           }
         }
       }
-      console.log(template);
+      // console.log(template);
       this.props.dispatch(changeVarsDispatch(template));
     }
 
@@ -212,7 +212,7 @@ export class Main_selector extends Component {
     weight = () =>{
       if (this.props.view_multiple) {
         return ( <div className="three columns">
-          <label>Gewichtung (%) </label>
+          <label>Gewicht (%) </label>
           <input className="u-80-width" id={`weight_${this.props.number}`}
             onChange={this.handleChangeProm.bind(this)}
             type="number"
@@ -297,9 +297,6 @@ export class Main_selector extends Component {
               </select>
             </div>
 
-                {/*#TODO: there is a problem with the default values for the year - we can display the values ONLY if
-                we have already defined an option value that allows to select the respective year. This will be solved
-                automatically once we pass through the options for the years via context//  }*!/*/}
             <div className="three columns">
               <label >Jahr </label>
               <select className="u-80-width"
@@ -308,7 +305,6 @@ export class Main_selector extends Component {
                 onChange={this.handleChangeProm.bind(this)}>
 
                 <option disabled value="0"> -- Wähle Jahr -- </option>
-                  <option>{this.props.value_dic[`var_year_${this.props.number}`]} </option>
                 {this.props.var_year_data[`var_year_${this.props.number}`].map((d, i) =>
                       <option value={d} key={i}>{d}</option>
                     )

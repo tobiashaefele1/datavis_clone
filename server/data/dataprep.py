@@ -124,12 +124,29 @@ def mapping_to_db (link_to_mapping_file):
 
 
 
+def remove_metadata(link_to_data, data_code="100"):
+    '''this function takes a .csv file containing metadata and returns back the datafile in original format,
+    without the metadata included as a dataframe object'''
+    ### load in all the data as string
+    data = pd.read_csv(link_to_data, dtype=str, encoding ='utf8', header=None)
+    data = data.drop(data.index[[0,1,2,3,4,5,6]])
+    data.reset_index(inplace=True)
+    data.drop(data.columns[0], axis=1, inplace=True)
+    print(data)
+
+
+    return (data)
+
+
+
+
+
 
 
 def load_metadata(link_to_data, data_code="100"):
     data = pd.read_csv(link_to_data, dtype=str, encoding ='utf8', nrows=8, header=None)
 
-    # print(data)
+    print(data)
     # drop first two columns I dont need
     data.drop(data.columns[[0, 1]], axis=1, inplace=True)
     # transform dataset, reset index and delete stray row
@@ -138,13 +155,6 @@ def load_metadata(link_to_data, data_code="100"):
     data.drop(data.columns[0], axis=1, inplace=True)
     data[8] = data[7]
     print(data)
-    ## this is all great but I should try one more time to replace index with header - the below doesnt work
-    # header = data.iloc[0]
-    # print(header)
-    # data = data[1:]
-    # data.rename(columns = header)
-    # print(data)
-
 
     # loop through the dataframe and create the names as they are used in the database
     counter = 0
@@ -160,22 +170,27 @@ def load_metadata(link_to_data, data_code="100"):
 
     # now drop all duplicaes:
     data = data.drop_duplicates()
-    print(data[7])
-    print(len(data[7]))
+    # print(data[7])
+    # print(len(data[7]))
+    return (data)
 
 
-load_metadata('./resources/including metadata/KRS15_testfile_updated.csv',100)
+
+# code for testing!!!
+#
+# test = load_metadata('./resources/including metadata/KRS15_testfile_updated.csv',100)
+# print(test)
+# print(test[8])
+
+# test = remove_metadata('./resources/including metadata/KRS15_testfile_updated.csv')
 
 
-    # code lines to get names in the same shape as others
-    # for i in data.unique_labels():
-    #     if len(i) >= 50:
-    #         print(i)
-    #         new_label = i[:50] + '_' + str(data_code)
-    #         cursor.execute("ALTER TABLE `%s` ADD COLUMN `%s` DOUBLE" % (table_name, new_label))
-    #     else:
-    #         new_label = i + '_' + str(data_code)
-    #         cursor.execute("ALTER TABLE `%s` ADD COLUMN `%s` DOUBLE" % (table_name, new_label))
+
+
+
+
+
+
 
 
 

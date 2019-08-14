@@ -66,6 +66,7 @@ class Table extends Component {
 
 
   renderTable = () => {
+    console.log(this.props.table_data)
     if(this.props.showTable){
       return (        <div>
 
@@ -87,7 +88,7 @@ class Table extends Component {
           <ReactTable ref={(r) => this.reactTable = r }
             data={this.props.table_data}
             columns={this.props.table_columns}
-            pageSizeOptions={[10, 50, 100, 200]}
+            pageSizeOptions={[10, 50, 100, 200, `${this.props.single_indic_data[0].length}`]}
           />
 
         </div>
@@ -131,6 +132,7 @@ function mapStateToProps(state) {
     indikators: state.indikators,
     table_columns: state.table_columns,
     showTable: state.showTable,
+    single_indic_data: state.single_indic_data,
 
   };
 }
