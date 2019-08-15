@@ -32,7 +32,7 @@ class SVGExportButton extends Component {
      */
     render() {
       return (
-        <button onClick={this.exportsvg.bind(this)}>Export Map</button>
+        <button onClick={this.exportsvg.bind(this)}>Karte exportieren</button>
       );
     }
 }

@@ -20,7 +20,7 @@ class SettingsButton extends Component {
      */
     render() {
       return (
-        <button onClick={this.closeModal.bind(this)}>Settings</button>
+        <button onClick={this.closeModal.bind(this)}>Einstellungen</button>
       );
     }
 }

@@ -40,8 +40,10 @@ class Map extends Component {
                 data="static/bmf/resources/BMF.svg" >Your browser does not support SVG
               </object>
 
-      <div id = "map_copyright"> ©gadm.org
+      <div className = "map_copyright"> © gadm.org
        </div>
+              {/*<div className ="map_copyright"> © Bundesministerium der Finanzen </div>*/}
+
                </div>
       )
 

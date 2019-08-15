@@ -72,8 +72,7 @@ class Settings extends Component {
               <div className="import_modal-content">
                 <span className="close"
                   onClick={this.closeModal.bind(this)}>&times;</span>
-                <h2>Settings</h2>
-                <h3>View</h3>
+                <h3>Darstellung</h3>
                 <ViewButton/>
                 <h3>Farbpaletten:</h3>
                 <label >
@@ -148,7 +147,7 @@ class Settings extends Component {
 
                 <button value={2} onClick={this.colorChange}> Grün </button>
                 <div>
-                            Skalen:
+                  <h3>  Skalen: </h3>
                 </div>
                 <div>
                   <button className={"scalebutton"} value={0} onClick={this.scaleChange}

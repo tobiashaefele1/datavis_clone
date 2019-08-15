@@ -21,7 +21,7 @@ class ViewButton extends Component {
      */
     render() {
       return (
-        <button onClick={this.closeModal.bind(this)}>Change View</button>
+        <button onClick={this.closeModal.bind(this)}>Ansicht wechseln</button>
       );
     }
 }
