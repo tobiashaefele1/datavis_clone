@@ -9,7 +9,7 @@ const initalState = {
     ['Einwohner (2017)', 'placeholder'],
     ['Fläche (km2)', 'placeholder'],
     ['Bundesland', 'placeholder'],
-    ['Rang', 'placeholder']],
+    ['MapValue', 'placeholder']],
 
   currentScale: 0,
   scaleOptions: [0,1,2],
@@ -152,14 +152,73 @@ function reducer(state = initalState, action) {
     case 'VIEWMODAL':
       return produce(state, (draft) => {
         draft.show_viewpicker = !state.show_viewpicker;
-      });
+	  });
+	case 'RESET':
+		return produce(state, (draft)=>{
+			draft.indikator_counter = 4;
+			draft.indikators = ['indikator 1', 'indikator 2', 'indikator 3', 'indikator 4'];
+			draft.current_map = state.kreise;
+			draft.count_map = 0;
+			draft.view_multiple = true;
+			draft.table_data = JSON.parse(context.table_data)
+			draft.value_dic = {
+								'var_name_0': 'Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200',
+								'var_name_1': 'Lohn pro Beschäftigtem 2010 _ORIGINAL_200',
+								'var_name_2': 'Erwerbstätigenprognose _ORIGINAL_200',
+								'var_name_3': 'Infrastrukturindikator_ORIGINAL_200',
+								'var_name_4': null,
+								'var_name_5': null,
+								'var_year_0': '2009-12', 'var_year_1': '2010', 'var_year_2': '2011-18', 'var_year_3': '2012',
+								'var_year_4': null, 'var_year_5': null,
+								'weight_0': 45, 'weight_1': 40, 'weight_2': 7.5, 'weight_3': 7.5,
+								'weight_4': null, 'weight_5': null,
+								'ref_name_0': 'Erwerbspersonen gesamt_100', 'ref_name_1': 'Erwerbstätige gesamt_100',
+								'ref_name_2': 'Erwerbstätige gesamt_100',
+								'ref_name_3': 'Erwerbstätige gesamt_100',
+								'ref_name_4': null, 'ref_name_5': null,
+								'ref_year_0': '2011', 'ref_year_1': '2011', 'ref_year_2': '2012', 'ref_year_3': '2012',
+								'ref_year_4': null, 'ref_year_5': null,
+								 }
+			draft.table_columns = [{
+									Header: 'Kennziffer',
+									accessor: 'Kennziffer',
+								},
+								{
+									Header: 'Aggregated',
+									accessor: 'selbstersteller_Indikator',
+								},
+								{
+									Header: 'Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200 2009-12',
+									accessor: 'Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200 2009-12',
+								},
+								{
+									Header: 'Lohn pro Beschäftigtem 2010 _ORIGINAL_200 2010',
+									accessor: 'Lohn pro Beschäftigtem 2010 _ORIGINAL_200 2010',
+								},
+								{
+									Header: 'Erwerbstätigenprognose _ORIGINAL_200 2011-18',
+									accessor: 'Erwerbstätigenprognose _ORIGINAL_200 2011-18',
+								},
+								{
+									Header: 'Infrastrukturindikator_ORIGINAL_200 2012',
+									accessor: 'Infrastrukturindikator_ORIGINAL_200 2012',
+								},
+
+								]
+		})  
+
 
     case 'CHANGEVIEW':
       return produce(state, (draft) => {
-        draft.indikator_counter = 1;
-        while (draft.indikators.length > 1) {
-          draft.indikators.pop();
-        }
+		  if(state.view_multiple){
+			draft.indikator_counter = 1;
+			while (draft.indikators.length > 1) {
+			draft.indikators.pop();
+			}
+		}else{
+			draft.indikator_counter = 4;
+			draft.indikators = ['indikator 1', 'indikator 2', 'indikator 3', 'indikator 4'];
+		}
         draft.view_multiple = !state.view_multiple;
       });
 
@@ -232,7 +291,8 @@ function reducer(state = initalState, action) {
         draft.smalltable[3][1] = state.current_map[action.value]
             .properties.area_km2,
         draft.smalltable[4][1] = state.current_map[action.value]
-            .properties.Bundesland;
+			.properties.Bundesland;
+		draft.smalltable[5][1] = state.current_map[action.value].properties.indicator	
         while (draft.smalltable.length > 6) {
           draft.smalltable.pop();
         }

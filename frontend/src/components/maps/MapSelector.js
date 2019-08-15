@@ -67,7 +67,8 @@ class MapSelector extends Component {
           <label>Maps</label>
           <select className="u-80-width"
             id="map_selector"
-            onChange={this.handleMapChange.bind(this)}>
+            onChange={this.handleMapChange.bind(this)}
+			defaultValue='0'>
             <option value="0">Kreise</option>
             <option value="1">AMR12</option>
             <option value="2">AMR15</option>
@@ -94,4 +95,16 @@ function changeMapDispatch(value) {
   };
 }
 
-export default connect()(MapSelector);
+/**
+ *Here the props are selected from the store.
+ *
+ * @param {state} state current state of the store
+ * @return {props} returns the selected states as props
+ */
+function mapStateToProps(state) {
+  return {
+   count_map: state.count_map,
+  };
+}
+
+export default connect(mapStateToProps)(MapSelector);

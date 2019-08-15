@@ -15,6 +15,7 @@ import Table from './tables/Table';
 import ViewPicker from './modals/ViewPicker';
 import MinMaxTable from './tables/MinMaxTable';
 import SVGExportButton from './buttons/SVGExportButton';
+import ResetButton from './buttons/ResetButton';
 
 
 /**
@@ -210,6 +211,7 @@ class App extends Component {
                 <div className="row"> Export / Upload</div>
                 <div className="row">
                   <SVGExportButton />
+				  <ResetButton/>
                   <button id="csv_upload">Import CSV</button>
                 </div>
               </div>

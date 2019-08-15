@@ -36,10 +36,7 @@ class ViewPicker extends Component {
      */
     changeViewMultiple = () => {
       if (!this.props.view_multiple) {
-        this.props.dispatch({type: 'CHANGEVIEW'});
-        this.props.dispatch({type: 'INCREMENTINDIKATOR'});
-		this.props.dispatch({type: 'INCREMENTINDIKATOR'});
-		this.props.dispatch({type: 'INCREMENTINDIKATOR'});
+		this.props.dispatch({type: 'CHANGEVIEW'}); 
       }
       this.props.dispatch({type: 'VIEWMODAL'});
     }
