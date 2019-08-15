@@ -25,8 +25,8 @@ class SmallTable extends Component {
         <tbody>
           {this.props.smalltable.map((d, i) =>
             <tr key= {`tr-${i}`}>
-              <td key= {`td-${i}-key`}>{d[0]}</td>
-              <td key={`td-${i}-value`}>{d[1]}</td>
+              <td className='st-left' key= {`td-${i}-key`}>{d[0]}</td>
+              <td className='st-right' key={`td-${i}-value`}>{d[1]}</td>
             </tr>
           )}
         </tbody>

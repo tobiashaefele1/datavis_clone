@@ -296,3 +296,22 @@ display: flex;
 #multiple_button{
   text-align: center;
 }
+
+.st-right{
+	text-align: left;
+
+	height: 20px;
+	width: 30px;
+
+}
+
+.st-left{
+	text-align: left;
+	width: 50px;
+	height: 20px;
+
+}
+#specInfo{
+	table-layout: fixed;
+	overflow: hidden;
+}
