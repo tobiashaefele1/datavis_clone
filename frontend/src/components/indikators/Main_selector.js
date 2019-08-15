@@ -104,7 +104,7 @@ export class Main_selector extends Component {
           }
         }
       }
-      console.log(template);
+      // console.log(template);
       this.props.dispatch(changeVarsDispatch(template));
     }
 
@@ -125,35 +125,35 @@ export class Main_selector extends Component {
           this.props.map_name[this.props.count_map], 'HIB', (this.props.view_multiple ? this.props.value_dic['weight_0'] : 100)],
 
         'var_2': [
-          (this.props.indikator_counter >= 1 ? this.props.value_dic['var_name_1'] : ''),
-          (this.props.indikator_counter >= 1 ? this.props.value_dic['var_year_1'] : ''),
-          (this.props.indikator_counter >= 1 ? this.props.value_dic['ref_name_1'] : ''),
-          (this.props.indikator_counter >= 1 ? this.props.value_dic['ref_year_1'] : ''),
-          this.props.map_name[this.props.count_map], 'HIB', (this.props.indikator_counter >= 1 ? this.props.value_dic['weight_1'] : '')],
+          (this.props.indikator_counter > 1 ? this.props.value_dic['var_name_1'] : ''),
+          (this.props.indikator_counter > 1 ? this.props.value_dic['var_year_1'] : ''),
+          (this.props.indikator_counter > 1 ? this.props.value_dic['ref_name_1'] : ''),
+          (this.props.indikator_counter > 1 ? this.props.value_dic['ref_year_1'] : ''),
+          this.props.map_name[this.props.count_map], 'HIB', (this.props.indikator_counter > 1 ? this.props.value_dic['weight_1'] : '')],
         'var_3': [
-          (this.props.indikator_counter >= 2 ? this.props.value_dic['var_name_2'] : ''),
-          (this.props.indikator_counter >= 2 ? this.props.value_dic['var_year_2'] : ''),
-          (this.props.indikator_counter >= 2 ? this.props.value_dic['ref_name_2'] : ''),
-          (this.props.indikator_counter >= 2 ? this.props.value_dic['ref_year_2'] : ''),
-          this.props.map_name[this.props.count_map], 'HIB', (this.props.indikator_counter >= 2 ? this.props.value_dic['weight_2'] : '')],
+          (this.props.indikator_counter > 2 ? this.props.value_dic['var_name_2'] : ''),
+          (this.props.indikator_counter > 2 ? this.props.value_dic['var_year_2'] : ''),
+          (this.props.indikator_counter > 2 ? this.props.value_dic['ref_name_2'] : ''),
+          (this.props.indikator_counter > 2 ? this.props.value_dic['ref_year_2'] : ''),
+          this.props.map_name[this.props.count_map], 'HIB', (this.props.indikator_counter > 2 ? this.props.value_dic['weight_2'] : '')],
         'var_4': [
-          (this.props.indikator_counter >= 3 ? this.props.value_dic['var_name_3'] : ''),
-          (this.props.indikator_counter >= 3 ? this.props.value_dic['var_year_3'] : ''),
-          (this.props.indikator_counter >= 3 ? this.props.value_dic['ref_name_3'] : ''),
-          (this.props.indikator_counter >= 3 ? this.props.value_dic['ref_year_3'] : ''),
-          this.props.map_name[this.props.count_map], 'HIB', (this.props.indikator_counter >= 3 ? this.props.value_dic['weight_3'] : '')],
+          (this.props.indikator_counter > 3 ? this.props.value_dic['var_name_3'] : ''),
+          (this.props.indikator_counter > 3 ? this.props.value_dic['var_year_3'] : ''),
+          (this.props.indikator_counter > 3 ? this.props.value_dic['ref_name_3'] : ''),
+          (this.props.indikator_counter > 3 ? this.props.value_dic['ref_year_3'] : ''),
+          this.props.map_name[this.props.count_map], 'HIB', (this.props.indikator_counter > 3 ? this.props.value_dic['weight_3'] : '')],
         'var_5': [
-          (this.props.indikator_counter >= 4 ? this.props.value_dic['var_name_4'] : ''),
-          (this.props.indikator_counter >= 4 ? this.props.value_dic['var_year_4'] : ''),
-          (this.props.indikator_counter >= 4 ? this.props.value_dic['ref_name_4'] : ''),
-          (this.props.indikator_counter >= 4 ? this.props.value_dic['ref_year_4'] : ''),
-          this.props.map_name[this.props.count_map], 'HIB', (this.props.indikator_counter >= 4 ? this.props.value_dic['weight_4'] : '')],
+          (this.props.indikator_counter > 4 ? this.props.value_dic['var_name_4'] : ''),
+          (this.props.indikator_counter > 4 ? this.props.value_dic['var_year_4'] : ''),
+          (this.props.indikator_counter > 4 ? this.props.value_dic['ref_name_4'] : ''),
+          (this.props.indikator_counter > 4 ? this.props.value_dic['ref_year_4'] : ''),
+          this.props.map_name[this.props.count_map], 'HIB', (this.props.indikator_counter > 4 ? this.props.value_dic['weight_4'] : '')],
         'var_6': [
-          (this.props.indikator_counter >= 5 ? this.props.value_dic['var_name_5'] : ''),
-          (this.props.indikator_counter >= 5 ? this.props.value_dic['var_year_5'] : ''),
-          (this.props.indikator_counter >= 5 ? this.props.value_dic['ref_name_5'] : ''),
-          (this.props.indikator_counter >= 5 ? this.props.value_dic['ref_year_5'] : ''),
-          this.props.map_name[this.props.count_map], 'HIB', (this.props.indikator_counter >= 5 ? this.props.value_dic['weight_5'] : '')],
+          (this.props.indikator_counter > 5 ? this.props.value_dic['var_name_5'] : ''),
+          (this.props.indikator_counter > 5 ? this.props.value_dic['var_year_5'] : ''),
+          (this.props.indikator_counter > 5 ? this.props.value_dic['ref_name_5'] : ''),
+          (this.props.indikator_counter > 5 ? this.props.value_dic['ref_year_5'] : ''),
+          this.props.map_name[this.props.count_map], 'HIB', (this.props.indikator_counter > 5 ? this.props.value_dic['weight_5'] : '')],
       };
       return data;
     }
@@ -212,11 +212,11 @@ export class Main_selector extends Component {
     weight = () =>{
       if (this.props.view_multiple) {
         return ( <div className="three columns">
-          <label>%</label>
+          <label>Gewicht (%) </label>
           <input className="u-80-width" id={`weight_${this.props.number}`}
             onChange={this.handleChangeProm.bind(this)}
             type="number"
-            placeholder="45">
+            defaultValue={this.props.value_dic[`weight_${this.props.number}`]}>
           </input>
         </div>);
       }
@@ -285,13 +285,9 @@ export class Main_selector extends Component {
             <div className="six columns">
               <label className="indicator">{this.props.name}</label>
               <select className="u-95-width"
-                defaultValue="0"
+                defaultValue={this.props.value_dic[`var_name_${this.props.number}`]}
                 id={`var_name_${this.props.number}`}
-                onChange={this.handleChangeProm
-                                  .bind(this)
-                                  }>
-
-
+                onChange={this.handleChangeProm.bind(this)}>
                 <option disabled value="0"> -- Wähle Variable --</option>
 
                 {this.props.col_names_var.map((d, i) =>
@@ -304,14 +300,12 @@ export class Main_selector extends Component {
             <div className="three columns">
               <label >Jahr </label>
               <select className="u-80-width"
-                defaultValue="0"
+                defaultValue={this.props.value_dic[`var_year_${this.props.number}`]}
                 id={`var_year_${this.props.number}`}
                 onChange={this.handleChangeProm.bind(this)}>
 
-                <option disabled value="0"> -- Wähle Jahr --</option>
-
-                {this.props.var_year_data[`var_year_${this.props.number}`]
-                    .map((d, i) =>
+                <option disabled value="0"> -- Wähle Jahr -- </option>
+                {this.props.var_year_data[`var_year_${this.props.number}`].map((d, i) =>
                       <option value={d} key={i}>{d}</option>
                     )
                 }
@@ -324,11 +318,11 @@ export class Main_selector extends Component {
 
               <div className="six columns">
                 <select className="u-95-width"
-                  defaultValue="0"
+                  defaultValue={this.props.value_dic[`ref_name_${this.props.number}`]}
                   id={`ref_name_${this.props.number}`}
                   onChange={this.handleChangeProm.bind(this)}>
 
-                  <option disabled value="0"> standardisiert über...</option>
+                  <option disabled value="0"> -- Wähle Bezugsgröße -- </option>
                   {this.props.col_names_ref.map((d, i) =>
                     <option value={d} key={i}>{d}</option>
                   )
@@ -338,16 +332,16 @@ export class Main_selector extends Component {
 
               <div className="three columns">
                 <select className="u-80-width"
-                  defaultValue="0"
                   id={`ref_year_${this.props.number}`}
                   onChange={this.handleChangeProm.bind(this)}>
-
-                  <option disabled value="0"> -- Wähle Variable --</option>
+                  defaultValue={this.props.value_dic[`ref_year_${this.props.number}`]}
+                  <option disabled value="0"> -- Wähle Jahr -- </option>
 
                   {this.props.years_ref.map((d, i) =>
                     <option value={d} key={i}>{d}</option>
                   )
                   }
+
                 </select>
               </div>
             </div>

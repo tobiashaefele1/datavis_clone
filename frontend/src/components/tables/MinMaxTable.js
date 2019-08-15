@@ -80,7 +80,7 @@ class MinMaxTable extends Component {
               <tr>
                 <th>Min</th>
                 <th>Max</th>
-                <th>Average</th>
+                <th>Durchschnitt</th>
               </tr>
             </thead>
             <tbody>

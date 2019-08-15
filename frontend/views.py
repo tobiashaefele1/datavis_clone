@@ -6,25 +6,37 @@ from django.views.decorators.csrf import csrf_exempt
 
 from server.data.aggregateindic import retrieve_indicator, retrieve_table_data, retrieve_var_year, retrieve_single_indic
 from server.data.retrieve_db_data import (retrieve_col_names,
-                                          retrieve_col_years, retrieve_data)
+                                          retrieve_col_years, retrieve_data, retrieve_metadata)
 
 
 # Create your views here.
 
 def index(request):
-    received_data = {}
-    indicator_data = []
-    table_data = []
-    single_indic_data = []
+    # received_data = {}
+    # indicator_data = []
+    # table_data = []
+    # single_indic_data = []
     ### on load
     if request.method == "GET":
-        col_names_var = retrieve_col_names("Kreise")  # this returns all unique column names from the KREISE table
+        # metadata = retrieve_metadata()
         col_names_ref = ['Einwohner 15-65_100', 'Einwohner gesamt_100', 'Erwerbspersonen gesamt_100', 'Erwerbstätige gesamt_100', 'Fläche_100']  # this returns all unique labels for standardisation drop downs
         years_ref = retrieve_col_years("reference")
-        years_var = retrieve_col_years("Kreise")
+        # years_var = retrieve_col_years("Kreise")
+        setup_dict = {'var_1': ['Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200', '2009-12', 'Erwerbspersonen gesamt_100', '2011', 'KRS_15', 'NIB', '45'],
+        'var_2': ['Lohn pro Beschäftigtem 2010 _ORIGINAL_200', '2010', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', 'HIB', '40'],
+        'var_3': ['Erwerbstätigenprognose _ORIGINAL_200', '2011-18', 'Erwerbstätige gesamt_100', '2012', 'KRS_15', 'HIB', '7.5'],
+        'var_4': ['Infrastrukturindikator_ORIGINAL_200', '2012', 'Erwerbstätige gesamt_100', '2012', 'KRS_15', 'HIB', '7.5'],
+        'var_5': ['', '', '', '', 'KRS_15', 'HIB', ''], 'var_6': ['', '', '', '', 'KRS_15', 'HIB', '']}
+        table_data = retrieve_table_data(setup_dict)
+        var_year_data = retrieve_var_year(setup_dict)
+        single_indic_data = retrieve_single_indic(setup_dict)
+        indicator_data = retrieve_indicator(setup_dict)
+        col_names_var = retrieve_col_names("Kreise")  # this returns all unique column names from the KREISE table
+        print(table_data)
 
     if request.method == 'POST':
         received_data = (dict(request.POST))
+        print(received_data)
         var_year_data = retrieve_var_year(received_data)
         single_indic_data = retrieve_single_indic(received_data)
         indicator_data = retrieve_indicator(received_data)
@@ -38,16 +50,17 @@ def index(request):
         # print (data)
         return HttpResponse(json.dumps(data), content_type="application/json")
 
-    # print (col_names_var)
-    context ={ 
+    context = {
+        # 'metadata': json.dumps(metadata),
               'col_names_var': json.dumps(col_names_var),
               'col_names_ref': json.dumps(col_names_ref),
-               'years_ref': json.dumps(years_ref),
-                'years_var': json.dumps(years_var),
-                 'table_data': json.dumps(table_data),
-                  'indicator_data': json.dumps(indicator_data),
+              'years_ref': json.dumps(years_ref),
+              'indicator_data': json.dumps(indicator_data),
+              'single_indic_data': json.dumps(single_indic_data),
+              'var_year_data': json.dumps(var_year_data),
+              'table_data': json.dumps(table_data),
               }
-    
+    # print(context)
     return render(request, 'frontend/index.html', context=context)
 
 

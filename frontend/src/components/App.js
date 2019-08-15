@@ -42,7 +42,7 @@ class App extends Component {
    * @memberof App
    */
   setMapinStoreDispatch(value, map) {
-    return {
+      return {
       type: 'SETMAPINSTORE',
       value,
       map,
@@ -168,7 +168,8 @@ class App extends Component {
               </object>
             </div>
             <div className="six columns">
-              <h4>GRW - Datenvisualisierung</h4>
+              <h3>Lebensverhältnisse in Deutschland </h3>
+                <h1>Visualisierung von Indikatoren</h1>
             </div>
             <div className="three columns">
               <SettingsButton/>

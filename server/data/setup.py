@@ -32,7 +32,7 @@ mapping_to_db(link_to_mapping_file)                                     # load i
 
 create_table_and_load_data(Kreise_data)                                 # load in Kreise data
 
-data_base = pymysql.connect("bmfdb.chmqlqt1tih5.us-east-2.rds.amazonaws.com", "admin", "NPmpMe!696rY", "mydb")
+data_base = pymysql.connect("localhost", "user", "password", "mydb")
 cursor = data_base.cursor()
 #
 add_columns(AMR12_data, cursor, data_code=200)                          # load in AMR12 data
