@@ -208,7 +208,7 @@ def load_meta_data_to_db(link_to_KRS_metadata, KRS_datacode,
     # combined_meta = eval(combined_meta)
 
     combined_meta = combined_meta.replace(r'\\n', ' ', regex=True)
-    combined_meta = combined_meta.replace(r'\"', ' ', regex=True)
+    combined_meta = combined_meta.replace(r'\c"', ' ', regex=True)
     combined_meta = combined_meta.replace (r'\\', ' ', regex=True)
 
 
@@ -224,22 +224,22 @@ def load_meta_data_to_db(link_to_KRS_metadata, KRS_datacode,
 
 # code for testing!!!
 # #TODO: move all these items to setup.py once we are clear that this is actually valuable and the data is validated
-link_to_KRS_metadata = './resources/including metadata/KRS15_testfile_updated.csv'
-KRS_datacode = 100
-
-link_to_AMR12_metadata = './resources/including metadata/AMR12_testfile_updated.csv'
-AMR12_datacode = 200
-
-link_to_AMR15_metadata = './resources/including metadata/AMR15_testfile_updated.csv'
-AMR15_datacode = 300
-
-link_to_bund_metadata = './resources/including metadata/bund_testfile_updated.csv'
-bund_datacode = 400
-
-load_meta_data_to_db(link_to_KRS_metadata, KRS_datacode,
-                     link_to_AMR12_metadata, AMR12_datacode,
-                     link_to_AMR15_metadata, AMR15_datacode,
-                     link_to_bund_metadata, bund_datacode)
+# link_to_KRS_metadata = './resources/including metadata/KRS15_testfile_updated.csv'
+# KRS_datacode = 100
+#
+# link_to_AMR12_metadata = './resources/including metadata/AMR12_testfile_updated.csv'
+# AMR12_datacode = 200
+#
+# link_to_AMR15_metadata = './resources/including metadata/AMR15_testfile_updated.csv'
+# AMR15_datacode = 300
+#
+# link_to_bund_metadata = './resources/including metadata/bund_testfile_updated.csv'
+# bund_datacode = 400
+#
+# load_meta_data_to_db(link_to_KRS_metadata, KRS_datacode,
+#                      link_to_AMR12_metadata, AMR12_datacode,
+#                      link_to_AMR15_metadata, AMR15_datacode,
+#                      link_to_bund_metadata, bund_datacode)
 # #
 #
 #
