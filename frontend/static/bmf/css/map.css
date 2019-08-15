@@ -13,7 +13,7 @@ path:hover {
   position:relative
 }
 
-#map_legend {
+.map_legend {
   position: absolute;
   top: 50px;
   left: 15px;
@@ -43,8 +43,21 @@ bottom: 15px;
   font-weight : 600;
 }
 
+#bottom_label_fliessend{
+  text-align: right;
+  width: 30px;
+
+
+}
+
+#top_label_fliessend{
+  position: absolute;
+  text-align: right;
+  width: 30px;
+}
+
 @media only screen and  (max-width: 768px) {
-  #map_legend {
+  .map_legend {
     top: 30px;
   }
   #map_logo{
@@ -59,5 +72,15 @@ bottom: 15px;
     text-align: right;
     font-size: 5px;
   }
-
+  #legend_bar_fliessend {
+    width: 10px;
+    height: 60px;
+  }
+  #legend_svg_fliessend{
+    width: 10px;
+    height: 60px;
+  }
+  #legend_div_fliessend{
+    height: 60px;
+  }
 }
