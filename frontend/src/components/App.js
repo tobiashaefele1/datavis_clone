@@ -163,7 +163,7 @@ class App extends Component {
           <div className="row">
             <div className="three columns">
               <object type="image/svg+xml"
-                data="static/bmf/resources/BMF.svg" width="100%"
+                data="static/bmf/resources/BMF_official_svg_logo.svg" width="100%"
                 height="100%">Your browser does not support SVG
               </object>
             </div>

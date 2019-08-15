@@ -224,7 +224,9 @@ export class Main_selector extends Component {
     weight = () =>{
       if (this.props.view_multiple) {
         return ( <div className="three columns">
+            <div>
           <label>Gewicht (%) </label>
+            </div>
           <input className="u-80-width" id={`weight_${this.props.number}`}
             onChange={this.handleChangeProm.bind(this)}
             type="number"
@@ -295,8 +297,16 @@ export class Main_selector extends Component {
         <div id={`in_${this.props.number}`}>
           <div className="row">
             <div className="six columns">
-              <label className="indicator">{this.props.name}</label>
-              <select className="u-95-width"
+                 <div className="indicator_tooltip">
+                <span className="tooltiptext">
+                     Langname: {(this.props.value_dic[`var_name_${this.props.number}`] ?
+                     this.props.metadata[this.props.value_dic[`var_name_${this.props.number}`]].Langname : '')}
+                      Quelle: {(this.props.value_dic[`var_name_${this.props.number}`] ?
+                     this.props.metadata[this.props.value_dic[`var_name_${this.props.number}`]].Quelle : '')}
+                    </span>
+                <label className="indicator">{this.props.name}</label>
+
+                <select className="u-95-width"
                 defaultValue={this.props.value_dic[`var_name_${this.props.number}`]}
                 id={`var_name_${this.props.number}`}
                 onChange={this.handleChangeProm.bind(this)}>
@@ -308,9 +318,13 @@ export class Main_selector extends Component {
                 }
               </select>
             </div>
+            </div>
+
 
             <div className="three columns">
+                <div>
               <label >Jahr </label>
+                </div>
               <select className="u-80-width"
                 defaultValue={this.props.value_dic[`var_year_${this.props.number}`]}
                 id={`var_year_${this.props.number}`}

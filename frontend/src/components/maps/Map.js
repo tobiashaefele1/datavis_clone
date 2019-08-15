@@ -37,7 +37,7 @@ class Map extends Component {
 
           <div id = "map_logo">
           <object type="image/svg+xml"
-                data="static/bmf/resources/BMF.svg" >Your browser does not support SVG
+                data="static/bmf/resources/BMF_official_svg_logo.svg" >Your browser does not support SVG
               </object>
 
       <div className = "map_copyright"> © gadm.org

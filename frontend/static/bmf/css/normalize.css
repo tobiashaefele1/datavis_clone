@@ -6,6 +6,16 @@
  *    user zoom.
  */
 
+@font-face {
+  #TODO: how to properly import the font into css?
+  font-family: 'BundesSerifWeb';
+   src:  url('./bmf/resources/BundesSchriften_Web/BundesSerifWeb-Regular.ttf'),
+        url('./bmf/resources/BundesSchriften_Web/BundesSerifWeb-Bold.ttf'),
+        url('./bmf/resources/BundesSchriften_Web/BundesSerifWeb-BoldITalic.ttf'),
+        url('./bmf/resources/BundesSchriften_Web/BundesSerifWeb-Italic.ttf');
+}
+
+
 html {
   font-family: sans-serif; /* 1 */
   -ms-text-size-adjust: 100%; /* 2 */
