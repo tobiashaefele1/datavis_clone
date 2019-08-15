@@ -5,7 +5,7 @@
 import pymysql
 
 from server.data.data import Data
-from server.data.dataprep import readin258AMR, readin257AMR, readinBund, mapping_to_db
+from server.data.dataprep import readin258AMR, readin257AMR, readinBund, mapping_to_db, load_meta_data_to_db
 from server.data.reader import create_table_and_load_data, add_columns, add_tuples_new
 
 # links to all the required data files
@@ -47,3 +47,24 @@ add_tuples_new(Bund_data, data_base=data_base, data_code=400)
 create_table_and_load_data(reference_data,table_name="reference")       # load in reference data
 #
 #
+
+# @Jacob: ONLY THESE LINES NEED TO BE RUN
+link_to_KRS_metadata = './resources/including metadata/KRS15_testfile_updated.csv'
+KRS_datacode = 100
+
+link_to_AMR12_metadata = './resources/including metadata/AMR12_testfile_updated.csv'
+AMR12_datacode = 200
+
+link_to_AMR15_metadata = './resources/including metadata/AMR15_testfile_updated.csv'
+AMR15_datacode = 300
+
+link_to_bund_metadata = './resources/including metadata/bund_testfile_updated.csv'
+bund_datacode = 400
+
+load_meta_data_to_db(link_to_KRS_metadata, KRS_datacode,
+                     link_to_AMR12_metadata, AMR12_datacode,
+                     link_to_AMR15_metadata, AMR15_datacode,
+                     link_to_bund_metadata, bund_datacode)
+
+
+

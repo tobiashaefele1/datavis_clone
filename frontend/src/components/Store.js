@@ -37,6 +37,8 @@ const initalState = {
   single_indic_data: JSON.parse(context.single_indic_data),
   table_data: JSON.parse(context.table_data),
   // metadata: JSON.parse(context.metadata.replace(/'/g, '"')),
+  metadata: JSON.parse((context.metadata.replace(/(\r\n|\n|\r)/gm,""))),
+
 
   show_modal: false,
   value_dic: {

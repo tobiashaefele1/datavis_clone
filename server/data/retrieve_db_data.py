@@ -411,8 +411,8 @@ def retrieve_metadata():
                                       database='mydb',
                                       user='user',
                                       password='password')
-    # cursor = mySQLconnection.cursor(pymysql.cursors.DictCursor)
-    cursor = mySQLconnection.cursor()
+    cursor = mySQLconnection.cursor(pymysql.cursors.DictCursor)
+    # cursor = mySQLconnection.cursor()
 
     ## this returns the entire metadatatable
     result = []
@@ -425,18 +425,19 @@ def retrieve_metadata():
     cursor.close()
     mySQLconnection.close()
 
-    # target_dict = {}
-    # for x in result:
-    #     for y in x:
-    #         if y == 'databasename':
-    #             target_dict[x[y]] = x
-    # # print (target_dict)
-    #             ### add this as a new dictionary
+    target_dict = {}
+    for x in result:
+        for y in x:
+            if y == 'databasename':
+                target_dict[x[y]] = x
+    # print (target_dict)
+                ### add this as a new dictionary
     # output = []
-    # output.append(target_dict)
+    # output.append(result)
+    # output.replace(result, "result")
 
     print(time.clock() - start_time)
-    return result
+    return target_dict
 
 
 #

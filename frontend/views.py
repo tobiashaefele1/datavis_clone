@@ -18,7 +18,7 @@ def index(request):
     # single_indic_data = []
     ### on load
     if request.method == "GET":
-        # metadata = retrieve_metadata()
+        metadata = retrieve_metadata()
         col_names_ref = ['Einwohner 15-65_100', 'Einwohner gesamt_100', 'Erwerbspersonen gesamt_100', 'Erwerbstätige gesamt_100', 'Fläche_100']  # this returns all unique labels for standardisation drop downs
         years_ref = retrieve_col_years("reference")
         # years_var = retrieve_col_years("Kreise")
@@ -32,7 +32,7 @@ def index(request):
         single_indic_data = retrieve_single_indic(setup_dict)
         indicator_data = retrieve_indicator(setup_dict)
         col_names_var = retrieve_col_names("Kreise")  # this returns all unique column names from the KREISE table
-        print(table_data)
+        # print(metadata)
 
     if request.method == 'POST':
         received_data = (dict(request.POST))
@@ -51,7 +51,7 @@ def index(request):
         return HttpResponse(json.dumps(data), content_type="application/json")
 
     context = {
-        # 'metadata': json.dumps(metadata),
+        'metadata': json.dumps(metadata),
               'col_names_var': json.dumps(col_names_var),
               'col_names_ref': json.dumps(col_names_ref),
               'years_ref': json.dumps(years_ref),

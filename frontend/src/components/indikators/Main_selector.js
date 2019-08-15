@@ -122,38 +122,50 @@ export class Main_selector extends Component {
           this.props.value_dic['var_year_0'],
           this.props.value_dic['ref_name_0'],
           this.props.value_dic['ref_year_0'],
-          this.props.map_name[this.props.count_map], 'HIB', (this.props.view_multiple ? this.props.value_dic['weight_0'] : 100)],
+          this.props.map_name[this.props.count_map],
+          this.props.metadata[this.props.value_dic['var_name_0']].Standardisierung,
+          (this.props.view_multiple ? this.props.value_dic['weight_0'] : 100)],
 
         'var_2': [
           (this.props.indikator_counter > 1 ? this.props.value_dic['var_name_1'] : ''),
           (this.props.indikator_counter > 1 ? this.props.value_dic['var_year_1'] : ''),
           (this.props.indikator_counter > 1 ? this.props.value_dic['ref_name_1'] : ''),
           (this.props.indikator_counter > 1 ? this.props.value_dic['ref_year_1'] : ''),
-          this.props.map_name[this.props.count_map], 'HIB', (this.props.indikator_counter > 1 ? this.props.value_dic['weight_1'] : '')],
+          this.props.map_name[this.props.count_map],
+          (this.props.indikator_counter > 1 ? this.props.metadata[this.props.value_dic['var_name_1']].Standardisierung : ''),
+          (this.props.indikator_counter > 1 ? this.props.value_dic['weight_1'] : '')],
         'var_3': [
           (this.props.indikator_counter > 2 ? this.props.value_dic['var_name_2'] : ''),
           (this.props.indikator_counter > 2 ? this.props.value_dic['var_year_2'] : ''),
           (this.props.indikator_counter > 2 ? this.props.value_dic['ref_name_2'] : ''),
           (this.props.indikator_counter > 2 ? this.props.value_dic['ref_year_2'] : ''),
-          this.props.map_name[this.props.count_map], 'HIB', (this.props.indikator_counter > 2 ? this.props.value_dic['weight_2'] : '')],
+          this.props.map_name[this.props.count_map],
+          (this.props.indikator_counter > 2 ? this.props.metadata[this.props.value_dic['var_name_2']].Standardisierung : ''),
+            (this.props.indikator_counter > 2 ? this.props.value_dic['weight_2'] : '')],
         'var_4': [
           (this.props.indikator_counter > 3 ? this.props.value_dic['var_name_3'] : ''),
           (this.props.indikator_counter > 3 ? this.props.value_dic['var_year_3'] : ''),
           (this.props.indikator_counter > 3 ? this.props.value_dic['ref_name_3'] : ''),
           (this.props.indikator_counter > 3 ? this.props.value_dic['ref_year_3'] : ''),
-          this.props.map_name[this.props.count_map], 'HIB', (this.props.indikator_counter > 3 ? this.props.value_dic['weight_3'] : '')],
+          this.props.map_name[this.props.count_map],
+          (this.props.indikator_counter > 3 ? this.props.metadata[this.props.value_dic['var_name_3']].Standardisierung : ''),
+            (this.props.indikator_counter > 3 ? this.props.value_dic['weight_3'] : '')],
         'var_5': [
           (this.props.indikator_counter > 4 ? this.props.value_dic['var_name_4'] : ''),
           (this.props.indikator_counter > 4 ? this.props.value_dic['var_year_4'] : ''),
           (this.props.indikator_counter > 4 ? this.props.value_dic['ref_name_4'] : ''),
           (this.props.indikator_counter > 4 ? this.props.value_dic['ref_year_4'] : ''),
-          this.props.map_name[this.props.count_map], 'HIB', (this.props.indikator_counter > 4 ? this.props.value_dic['weight_4'] : '')],
+          this.props.map_name[this.props.count_map],
+          (this.props.indikator_counter > 4 ? this.props.metadata[this.props.value_dic['var_name_4']].Standardisierung : ''),
+            (this.props.indikator_counter > 4 ? this.props.value_dic['weight_4'] : '')],
         'var_6': [
           (this.props.indikator_counter > 5 ? this.props.value_dic['var_name_5'] : ''),
           (this.props.indikator_counter > 5 ? this.props.value_dic['var_year_5'] : ''),
           (this.props.indikator_counter > 5 ? this.props.value_dic['ref_name_5'] : ''),
           (this.props.indikator_counter > 5 ? this.props.value_dic['ref_year_5'] : ''),
-          this.props.map_name[this.props.count_map], 'HIB', (this.props.indikator_counter > 5 ? this.props.value_dic['weight_5'] : '')],
+          this.props.map_name[this.props.count_map],
+          (this.props.indikator_counter > 5 ? this.props.metadata[this.props.value_dic['var_name_5']].Standardisierung : ''),
+            (this.props.indikator_counter > 5 ? this.props.value_dic['weight_5'] : '')],
       };
       return data;
     }
@@ -406,6 +418,7 @@ function mapStateToProps(state) {
     var_year_data: state.var_year_data,
     view_multiple: state.view_multiple,
     single_indic_data: state.single_indic_data,
+    metadata: state.metadata,
   };
 }
 
