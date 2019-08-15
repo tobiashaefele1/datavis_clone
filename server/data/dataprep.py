@@ -124,7 +124,7 @@ def mapping_to_db (link_to_mapping_file):
 
 
 
-def remove_metadata(link_to_data, data_code="100"):
+def remove_metadata(link_to_data):
     '''this function takes a .csv file containing metadata and returns back the datafile in original format,
     without the metadata included as a dataframe object'''
     ### load in all the data as string
@@ -133,20 +133,14 @@ def remove_metadata(link_to_data, data_code="100"):
     data.reset_index(inplace=True)
     data.drop(data.columns[0], axis=1, inplace=True)
     print(data)
-
-
     return (data)
 
 
-
-
-
-
-
-def load_metadata(link_to_data, data_code="100"):
+def extract_metadata(link_to_data, data_code="100"):
+    ''' this function that an input file that includes the metadata and returns an dataframe object
+    with columns for all the types of metadata incl. the "database name, i.e. the same labels as we use in db'''
     data = pd.read_csv(link_to_data, dtype=str, encoding ='utf8', nrows=8, header=None)
 
-    print(data)
     # drop first two columns I dont need
     data.drop(data.columns[[0, 1]], axis=1, inplace=True)
     # transform dataset, reset index and delete stray row
@@ -154,7 +148,7 @@ def load_metadata(link_to_data, data_code="100"):
     data.reset_index(inplace=True)
     data.drop(data.columns[0], axis=1, inplace=True)
     data[8] = data[7]
-    print(data)
+    # print(data)
 
     # loop through the dataframe and create the names as they are used in the database
     counter = 0
@@ -163,28 +157,92 @@ def load_metadata(link_to_data, data_code="100"):
             new_label = i[:50] + '_' + str(data_code)
         else:
             new_label = i + '_' + str(data_code)
-            # print(new_label)
         data[8][counter] = new_label
         counter +=1
-    # print(data)
 
     # now drop all duplicaes:
     data = data.drop_duplicates()
-    # print(data[7])
-    # print(len(data[7]))
+    # reorder the data
+    data = data[[8,7,0,1,2,3,4,5,6]]
+
+    # turn first column into headers / indices
+    headers = data.iloc[0]
+    data = pd.DataFrame(data.values[1:], columns=headers)
+
+    ## and rename to make cleaner:
+    data.rename(columns={'Aggregat_{}'.format(data_code): 'databasename', 'Aggregat': 'csvname'}, inplace=True)
+
     return (data)
 
 
 
+def load_meta_data_to_db(link_to_KRS_metadata, KRS_datacode,
+                         link_to_AMR12_metadata, AMR12_datacode,
+                         link_to_AMR15_metadata, AMR15_datacode,
+                         link_to_bund_metadata, bund_datacode):
+    ''' this function takes in links to 4 metadata sets, extracts the metadata, merges them into one metadatafile and
+    stores them in the database in a separate table called "metadata"'''
+    # load the for types of metadata into separate dataframes
+    KRS_meta = extract_metadata(link_to_KRS_metadata, KRS_datacode)
+    AMR12_meta = extract_metadata(link_to_AMR12_metadata, AMR12_datacode)
+    AMR15_meta = extract_metadata(link_to_AMR15_metadata, AMR15_datacode)
+    bund_meta = extract_metadata(link_to_bund_metadata, bund_datacode)
+
+    # now combine the dataframes
+    combined_meta = KRS_meta.append(AMR12_meta)
+    combined_meta = combined_meta.append(AMR15_meta)
+    combined_meta = combined_meta.append(bund_meta)
+
+    # print (combined_meta)
+
+    ## the following threw lines of code replace all " characters with ' characters so they do not cause trouble
+    ## in json.parse - looks like it is not necessary, so commented out for now
+    # old = """ " """
+    # new = """ """
+    # combined_meta.replace(old, new)
+    # #
+    # old = """ \ """
+    # new = """  """
+    # combined_meta.replace(old, new)
+    # combined_meta = combined_meta.replace('"', '')
+    # combined_meta = eval(combined_meta)
+
+    combined_meta = combined_meta.replace(r'\\n', ' ', regex=True)
+    combined_meta = combined_meta.replace(r'\"', ' ', regex=True)
+    combined_meta = combined_meta.replace (r'\\', ' ', regex=True)
+
+
+    print(combined_meta)
+
+    user = "user"
+    passw = "password"
+    host = "localhost"
+    database = "mydb"
+    conn = create_engine('mysql+pymysql://' + user + ':' + passw + '@' + host + '/' + database, echo=False)
+    combined_meta.to_sql(name="metadata", con=conn, if_exists='replace', index=False)
+
+
 # code for testing!!!
+# #TODO: move all these items to setup.py once we are clear that this is actually valuable and the data is validated
+link_to_KRS_metadata = './resources/including metadata/KRS15_testfile_updated.csv'
+KRS_datacode = 100
+
+link_to_AMR12_metadata = './resources/including metadata/AMR12_testfile_updated.csv'
+AMR12_datacode = 200
+
+link_to_AMR15_metadata = './resources/including metadata/AMR15_testfile_updated.csv'
+AMR15_datacode = 300
+
+link_to_bund_metadata = './resources/including metadata/bund_testfile_updated.csv'
+bund_datacode = 400
+
+load_meta_data_to_db(link_to_KRS_metadata, KRS_datacode,
+                     link_to_AMR12_metadata, AMR12_datacode,
+                     link_to_AMR15_metadata, AMR15_datacode,
+                     link_to_bund_metadata, bund_datacode)
+# #
 #
-# test = load_metadata('./resources/including metadata/KRS15_testfile_updated.csv',100)
-# print(test)
-# print(test[8])
-
-# test = remove_metadata('./resources/including metadata/KRS15_testfile_updated.csv')
-
-
+#
 
 
 

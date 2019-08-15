@@ -16,6 +16,9 @@ class Indikators extends Component {
    */
   componentDidUpdate() {
     this.props.dispatch({type: 'UPDATECOLUMNS'});
+    console.log(this.props.metadata);
+    console.log(Object.keys(this.props.metadata));
+    // console.log(this.props.metadata.getKeys());
   }
 
   /**
@@ -47,6 +50,7 @@ function mapStateToProps(state) {
   return {
     indikators: state.indikators,
     view_multiple: state.view_multiple,
+    metadata: state.metadata,
   };
 }
 

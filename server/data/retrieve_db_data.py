@@ -399,8 +399,51 @@ def retrieve_complete_col_years():
     cursor.close()
     mySQLconnection.close()
     print(time.clock()-start_time)
+    return distinct_years
+
+
+def retrieve_metadata():
+    ''' this function returns the entire set of metadata available as a ..... '''
+    #TODO: specify datatype here - currenlty this is a dict of dictionarries
+    start_time = time.clock()
+    mySQLconnection = pymysql.connect(host='localhost',
+
+                                      database='mydb',
+                                      user='user',
+                                      password='password')
+    # cursor = mySQLconnection.cursor(pymysql.cursors.DictCursor)
+    cursor = mySQLconnection.cursor()
+
+    ## this returns the entire metadatatable
+    result = []
+
+    sql_select_Query = (""" SELECT * FROM `metadata`; """)
+    cursor.execute(sql_select_Query)
+    result = cursor.fetchall()
+
+    # print(distinct_years)
+    cursor.close()
+    mySQLconnection.close()
+
+    # target_dict = {}
+    # for x in result:
+    #     for y in x:
+    #         if y == 'databasename':
+    #             target_dict[x[y]] = x
+    # # print (target_dict)
+    #             ### add this as a new dictionary
+    # output = []
+    # output.append(target_dict)
+
+    print(time.clock() - start_time)
     return result
 
+
+#
+# test = retrieve_metadata()
+# print(test)
+# print(test[0].keys)
+#
 
 
 
