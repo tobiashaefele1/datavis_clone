@@ -122,7 +122,19 @@ class App extends Component {
           }
           response.json().then((mapdata) => {
             this.props.dispatch(this.setMapinStoreDispatch(
-                feature(mapdata, mapdata.objects.bundeslandmap).features, 4));
+                feature(mapdata, mapdata.objects.bundeslandmap).features, 5));
+          });
+		});
+
+	fetch('static/bmf/resources/ROR11map.json')
+        .then((response) => {
+          if (response.status !== 200) {
+            console.log('There was a problem: ${response.status}');
+            return;
+          }
+          response.json().then((mapdata) => {
+            this.props.dispatch(this.setMapinStoreDispatch(
+                feature(mapdata, mapdata.objects.ROR11map).features, 4));
           });
         });
   }

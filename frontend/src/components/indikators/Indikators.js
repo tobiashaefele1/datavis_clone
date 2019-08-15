@@ -16,8 +16,8 @@ class Indikators extends Component {
    */
   componentDidUpdate() {
     this.props.dispatch({type: 'UPDATECOLUMNS'});
-    console.log(this.props.metadata);
-    console.log(Object.keys(this.props.metadata));
+    // console.log(this.props.metadata);
+    // console.log(Object.keys(this.props.metadata));
     // console.log(this.props.metadata.getKeys());
   }
 

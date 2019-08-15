@@ -25,8 +25,9 @@ const initalState = {
   amr12: [],
   amr15: [],
   amr20: [],
+  ror: [],
   bund: [],
-  map_name: ['KRS_15', 'AMR_12', 'AMR_15', 'AMR_20', 'Bundesland_ID'],
+  map_name: ['KRS_15', 'AMR_12', 'AMR_15', 'AMR_20', 'ROR', 'Bundesland_ID'],
   indikator_counter: 4, // COMMENT TOBIAS: DOES THIS CAUSE PROBLEMS WITH FEEDBACK LOGIC?
   indikators: ['indikator 1', 'indikator 2', 'indikator 3', 'indikator 4'],
   col_names_var: JSON.parse(context.col_names_var),
@@ -260,6 +261,9 @@ function reducer(state = initalState, action) {
             draft.amr20 = [...action.value];
             break;
           case 4:
+            draft.ror = [...action.value];
+			break;
+		  case 5:
             draft.bund = [...action.value];
             break;
         }
@@ -282,8 +286,11 @@ function reducer(state = initalState, action) {
             draft.current_map = state.amr20;
             break;
           case 4:
+            draft.current_map = state.ror;
+			break;
+		  case 5:
             draft.current_map = state.bund;
-            break;
+			break;
         }
       }
       );

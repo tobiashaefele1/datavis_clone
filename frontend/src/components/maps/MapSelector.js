@@ -72,7 +72,8 @@ class MapSelector extends Component {
             <option value="1">AMR12</option>
             <option value="2">AMR15</option>
             <option value="3">AMR20</option>
-            <option value="4">Bund</option>
+			<option value="4">ROR</option>
+            <option value="5">Bund</option>
           </select>
 
         </div>
