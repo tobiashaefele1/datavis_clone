@@ -296,8 +296,8 @@ export class Main_selector extends Component {
                       Quelle: {(this.props.value_dic[`var_name_${this.props.number}`] ?
                      this.props.metadata[this.props.value_dic[`var_name_${this.props.number}`]].Quelle : '')}
                     </span>
-                <label className="indicator">{this.props.name}</label>
-
+                <label className="indicator">{this.props.name} <a id="info_icon">&#9432; </a>  </label>
+				</div>
                 <select className="u-95-width"
                 defaultValue={this.props.value_dic[`var_name_${this.props.number}`]}
                 id={`var_name_${this.props.number}`}
@@ -309,7 +309,7 @@ export class Main_selector extends Component {
                 )
                 }
               </select>
-            </div>
+            
             </div>
 
 

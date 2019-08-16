@@ -37,13 +37,13 @@ class Map extends Component {
 
           <div id = "map_logo">
           <object type="image/svg+xml"
-                data="static/bmf/resources/BMF_official_svg_logo.svg" >Your browser does not support SVG
+                data="static/bmf/resources/BMF_2017_WebSVG_de.svg" width="100%"
+                height="100%">Your browser does not support SVG
               </object>
 
-      <div className = "map_copyright"> © gadm.org
-       </div>
-              {/*<div className ="map_copyright"> © Bundesministerium der Finanzen </div>*/}
-
+    
+              <div className ="map_copyright">©Bundesministerium der Finanzen</div>
+			<div className ="map_copyright">© gadm.com</div>
                </div>
       )
 
@@ -336,16 +336,16 @@ class Map extends Component {
 
 
               </svg>
-
+			  
+                {this.renderlogo()}
+            
             </div>
 
             <div>
                 {this.renderlegend()}
             </div>
 
-            <div>
-                {this.renderlogo()}
-            </div>
+            
 
 
 

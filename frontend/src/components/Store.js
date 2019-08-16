@@ -19,7 +19,7 @@ const initalState = {
     ['#fee5d9', '#fcae91', '#fb6a4a', '#de2d26', '#a50f15'],
     ['#edf8e9', '#bae4b3', '#74c476', '#31a354', '#006d2c']],
   counter: 0,
-  count_map: 0,
+  count_map: 1,
   current_map: [], // what needs to be changed in here?
   kreise: [],
   amr12: [],
@@ -310,11 +310,11 @@ function reducer(state = initalState, action) {
       return produce(state, (draft) => {
         switch (action.map) {
           case 0:
-            draft.kreise = [...action.value],
-            draft.current_map = [...action.value];
+            draft.kreise = [...action.value]
             break;
           case 1:
-            draft.amr12 = [...action.value];
+			draft.amr12 = [...action.value];
+			draft.current_map = [...action.value];
             break;
           case 2:
             draft.amr15 = [...action.value];

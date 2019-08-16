@@ -68,7 +68,7 @@ class MapSelector extends Component {
           <select className="u-80-width"
             id="map_selector"
             onChange={this.handleMapChange.bind(this)}
-			defaultValue='0'>
+			defaultValue='1'>
             <option value="0">Kreise</option>
             <option value="1">Arbeitsmarktregionen (Stand 2012)</option>
             <option value="2">Arbeitsmarktregionen (Stand 2015)</option>

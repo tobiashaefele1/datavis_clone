@@ -412,4 +412,6 @@ display: flex;
 	overflow: hidden;
 }
 
-
+#info_icon{
+	text-transform: lowercase;
+}
