@@ -9,8 +9,9 @@ import {connect} from 'react-redux';
  */
 class ResetButton extends Component {
 	
-	handleButton = () => {
+	handleButtonReset = () => {
 		this.props.dispatch({type: 'RESET'})
+		this.props.dispatch({type: 'CHANGEVARS'})
     }
 
     /**
@@ -22,7 +23,8 @@ class ResetButton extends Component {
     render() {
       
         return (
-          <button onClick={this.handleButton.bind(this)}>RESET!</button>
+			<button onClick={this.handleButtonReset.bind(this)}>Rücksetzen</button>
+		 
         );
       }
     

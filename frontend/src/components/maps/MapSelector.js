@@ -52,7 +52,8 @@ class MapSelector extends Component {
 
 // TH the old original - see my code above that has replaced it
   handleMapChange = (e) => {
-      this.props.dispatch(changeMapDispatch(parseInt(e.target.value)));
+	  this.props.dispatch(changeMapDispatch(parseInt(e.target.value)));
+	  this.props.dispatch({type: 'LOADINGCHANGE'})
          }
 
     /**

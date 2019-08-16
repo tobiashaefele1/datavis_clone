@@ -71,6 +71,7 @@ export class Main_selector extends Component {
       if (
           prevProps.view_multiple !== this.props.view_multiple ||
          prevProps.count_map !== this.props.count_map) {
+		this.props.dispatch({type: 'LOADINGCHANGE'})	 
         this.ajaxRequest();
 	  }
 	  if(this.props.view_multiple){
@@ -371,18 +372,7 @@ export class Main_selector extends Component {
 
 }
 
-/**
- *This function creates a dispatch ready input.
- *
- * @param {Array} template
- * @return {Dict} that is send to the dispatch
- */
-function changeVarsDispatch(template) {
-  return {
-    type: 'CHANGEVARS',
-    template,
-  };
-}
+
 
 /**
  *This function creates a dispatch ready input from the indicators.

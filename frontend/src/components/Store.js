@@ -224,9 +224,9 @@ function reducer(state = initalState, action) {
         draft.view_multiple = !state.view_multiple;
       });
 
-    case 'LOADINGDONE':
+    case 'LOADINGCHANGE':
       return produce(state, (draft) => {
-        draft.loading = false;
+        draft.loading = !state.loading;
       }
 
       );
@@ -298,12 +298,12 @@ function reducer(state = initalState, action) {
         while (draft.smalltable.length > 6) {
           draft.smalltable.pop();
         }
-        if (draft.smalltable.length < state.indikator_counter + 6) {
-          state.indikators.map((d, i) =>
-            draft.smalltable.push([state.value_dic['var_name_' + i], '-'])
-              // #TODO: Daten von Indikator in Tabelle einfügen
-          );
-        }
+        // if (draft.smalltable.length < state.indikator_counter + 6) {
+        //   state.indikators.map((d, i) =>
+        //     draft.smalltable.push([state.value_dic['var_name_' + i], '-'])
+        //       // #TODO: Daten von Indikator in Tabelle einfügen
+        //   );
+        // }
       });
 
     case 'SETMAPINSTORE':
@@ -377,7 +377,8 @@ function reducer(state = initalState, action) {
         }
       }
 
-        draft.current_map = [...template];
+		draft.current_map = [...template];
+		draft.loading = false;
       }
       );
 
