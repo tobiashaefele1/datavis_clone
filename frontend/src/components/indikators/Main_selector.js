@@ -73,21 +73,22 @@ export class Main_selector extends Component {
          prevProps.count_map !== this.props.count_map) {
         this.ajaxRequest();
 	  }
-	  var percentage = 0;
-	  for (var i in this.props.indikators){
-		percentage += parseFloat(document.getElementById(`weight_${i}`).value);
-	  }
+	  if(this.props.view_multiple){
+		var percentage = 0;
+		for (var i in this.props.indikators){
+			percentage += parseFloat(document.getElementById(`weight_${i}`).value);
+		}
 
-	  if(percentage > 100){
-		  for(i in this.props.indikators){
-			  document.getElementById(`weight_${i}`).style.background = 'red';
-		  }
-	  }else{
-		  for(i in this.props.indikators){
-			  document.getElementById(`weight_${i}`).style.background = '';
-		  }
-	  }
-
+		if(percentage > 100){
+			for(i in this.props.indikators){
+				document.getElementById(`weight_${i}`).style.background = 'red';
+			}
+		}else{
+			for(i in this.props.indikators){
+				document.getElementById(`weight_${i}`).style.background = '';
+			}
+		}
+	}
     }
 
     /**

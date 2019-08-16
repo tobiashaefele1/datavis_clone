@@ -16,6 +16,7 @@ import ViewPicker from './modals/ViewPicker';
 import MinMaxTable from './tables/MinMaxTable';
 import SVGExportButton from './buttons/SVGExportButton';
 import ResetButton from './buttons/ResetButton';
+import TableButton from './buttons/TableButton';
 
 
 /**
@@ -199,30 +200,30 @@ class App extends Component {
             <div className="box">
               <div className="three columns" id="big">
                 <MapSelector/>
-                <SmallTable/>
+				 <Indikators/>
+                <PlusButton/>
+                <MinButton/>
+                
               </div>
               <div className="six columns" id="big">
                 <Map/>
                 <MinMaxTable/>
               </div>
               <div className="three columns" id="big">
-                Indikatoren
-                <Indikators/>
-                <PlusButton/>
-                <MinButton/>
+				<SmallTable/>
+               
                 <div className="row"> Export / Upload</div>
                 <div className="row">
                   <SVGExportButton />
+				  <TableButton />
 				  <ResetButton/>
-                  <button id="csv_upload">Import CSV</button>
+
                 </div>
               </div>
             </div>
           </div>
           <div className="row">
-            <div className="twelve columns" id="big">
-              <Table/>
-            </div>
+            <Table />
           </div>
         </div>
       </div>

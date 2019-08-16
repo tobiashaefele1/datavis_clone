@@ -70,11 +70,11 @@ class MapSelector extends Component {
             onChange={this.handleMapChange.bind(this)}
 			defaultValue='0'>
             <option value="0">Kreise</option>
-            <option value="1">AMR12</option>
-            <option value="2">AMR15</option>
-            <option value="3">AMR20</option>
-			<option value="4">ROR</option>
-            <option value="5">Bund</option>
+            <option value="1">Arbeitsmarktregionen (Stand 2012)</option>
+            <option value="2">Arbeitsmarktregionen (Stand 2015)</option>
+            <option value="3">Arbeitsmarktregionen (Stand 2020)</option>
+			<option value="4">Raumordnungsregionen</option>
+            <option value="5">Bundesländer</option>
           </select>
 
         </div>

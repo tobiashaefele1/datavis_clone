@@ -24,17 +24,7 @@ class Table extends Component {
     };
   }
 
-      showTableDispatch(value) {
-      return (
-        {
-          type: 'SHOWTABLE',
-          value,
-        }
-      );
-    };
-      showTable = (e) =>{
-      this.props.dispatch(this.showTableDispatch(e.target.value));
-    };
+     
 
 
 
@@ -68,7 +58,10 @@ class Table extends Component {
   renderTable = () => {
     console.log(this.props.table_data)
     if(this.props.showTable){
-      return (        <div>
+      return (    
+		 <div className="twelve columns" id="big">
+            <div style={{marginLeft: '20px', marginRight: '20px'}}> 
+		  <div>
 
         <div>
           <button onClick={this.download}>
@@ -93,6 +86,8 @@ class Table extends Component {
 
         </div>
         </div>
+		</div>
+            </div>
       );
     }
   }
@@ -107,15 +102,11 @@ class Table extends Component {
    */
   render() {
     return (
+			
+			<div>  {this.renderTable()}</div>
+       		
 
-      <div style={{marginLeft: '20px', marginRight: '20px'}}>
-        <div>
-          <button value = {this.props.showTable} onClick={this.showTable}>
-            {this.props.showTable ? `Vollständige Datentabelle verbergen` : `Vollständige Datentabelle anzeigen`} </button>
-        </div>
-        {this.renderTable()}
-
-      </div>
+      
     );
   }
 }
