@@ -8,12 +8,14 @@
     <link
       rel="shortcut icon"
       type="image/png"
-      href="{% static './bmf/resources/favicon.png' %}"
+      href="{% static './bmf/resources/BMF_official_png_logo.png' %}"
     />
     <link rel="stylesheet" href="{% static './bmf/css/normalize.css' %}" />
     <link rel="stylesheet" href="{% static './bmf/css/skeleton.css' %}" />
     <link rel="stylesheet" href="{% static './bmf/css/custom.css' %}" />
     <link rel="stylesheet" href="{% static './bmf/css/map.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <script
       async
       src="https://app.appzi.io/bootstrap/bundle.js?token=KiRHM"
@@ -44,7 +46,7 @@
           single_indic_data: `{{ single_indic_data|safe }}`,
           var_year_data: `{{ var_year_data|safe }}`,
           table_data: `{{ table_data|safe }}`,
-          {#metadata: `{{ metadata|safe }}`,#}
+          metadata: `{{ metadata|safe }}`,
 
       };
 

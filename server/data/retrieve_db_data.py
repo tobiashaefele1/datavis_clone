@@ -16,7 +16,7 @@ def retrieve_data(var_name, var_year, ref_name, ref_year, layer):
     output = []
     # connect to database
     start_time = time.clock()
-    mySQLconnection = pymysql.connect(host='bmf_db_1',
+    mySQLconnection = pymysql.connect(host='localhost',
 
                                       database='mydb',
                                       user='user',
@@ -89,7 +89,7 @@ def retrieve_fed_avg(var_name, var_year, ref_name, ref_year, layer):
     fed_avg_name = fed_avg_name + "400"
     # connect to database
 
-    mySQLconnection = pymysql.connect(host='bmf_db_1',
+    mySQLconnection = pymysql.connect(host='localhost',
 
                                       database='mydb',
                                       user='user',
@@ -131,7 +131,7 @@ def retrieve_ref_share(ref_name, ref_year, layer):
 
     # connect to database
 
-    mySQLconnection = pymysql.connect(host='bmf_db_1',
+    mySQLconnection = pymysql.connect(host='localhost',
 
                                       database='mydb',
                                       user='user',
@@ -253,7 +253,7 @@ def retrieve_col_names(table_name):
     output = []
     # connect to database
 
-    mySQLconnection = pymysql.connect(host='bmf_db_1',
+    mySQLconnection = pymysql.connect(host='localhost',
 
                                       database='mydb',
                                       user='user',
@@ -297,7 +297,7 @@ def retrieve_col_years(table_name):
     temp = []
     # connect to database
 
-    mySQLconnection = pymysql.connect(host='bmf_db_1',
+    mySQLconnection = pymysql.connect(host='localhost',
 
                                       database='mydb',
                                       user='user',
@@ -332,7 +332,7 @@ def retrieve_distinct_years(var_name):
     distinct_years = []
 
     # connect to database
-    mySQLconnection = pymysql.connect(host='bmf_db_1',
+    mySQLconnection = pymysql.connect(host='localhost',
 
                                       database='mydb',
                                       user='user',
@@ -411,8 +411,8 @@ def retrieve_metadata():
                                       database='mydb',
                                       user='user',
                                       password='password')
-    # cursor = mySQLconnection.cursor(pymysql.cursors.DictCursor)
-    cursor = mySQLconnection.cursor()
+    cursor = mySQLconnection.cursor(pymysql.cursors.DictCursor)
+    # cursor = mySQLconnection.cursor()
 
     ## this returns the entire metadatatable
     result = []
@@ -425,18 +425,19 @@ def retrieve_metadata():
     cursor.close()
     mySQLconnection.close()
 
-    # target_dict = {}
-    # for x in result:
-    #     for y in x:
-    #         if y == 'databasename':
-    #             target_dict[x[y]] = x
-    # # print (target_dict)
-    #             ### add this as a new dictionary
+    target_dict = {}
+    for x in result:
+        for y in x:
+            if y == 'databasename':
+                target_dict[x[y]] = x
+    # print (target_dict)
+                ### add this as a new dictionary
     # output = []
-    # output.append(target_dict)
+    # output.append(result)
+    # output.replace(result, "result")
 
     print(time.clock() - start_time)
-    return result
+    return target_dict
 
 
 #

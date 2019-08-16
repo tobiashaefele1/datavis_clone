@@ -267,6 +267,102 @@ display: flex;
 
 
 
+.fa fa-question-circle{
+  position: absolute;
+
+}
+
+
+/* THIS IS ALL MY HOVER TOOLTIP TOBIAS TOBIAS TOBIAS */
+
+.indicator_tooltip {
+  position: relative;
+  display: inline-block;
+  /*border-bottom: 1px dotted black;*/
+}
+
+
+/* Tooltip text */
+.indicator_tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  font-weight: 300;
+  font-size: 9px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 90%;
+  left: 120%;
+  margin-left: -60px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.indicator_tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 10%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.indicator_tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+/* THIS IS ALL MY HOVER TOOLTIP TOBIAS TOBIAS TOBIAS */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #data_table {
   margin-left: 20px;
 }
@@ -315,3 +411,5 @@ display: flex;
 	table-layout: fixed;
 	overflow: hidden;
 }
+
+

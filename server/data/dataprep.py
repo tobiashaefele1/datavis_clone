@@ -147,6 +147,13 @@ def extract_metadata(link_to_data, data_code="100"):
     data = data.T
     data.reset_index(inplace=True)
     data.drop(data.columns[0], axis=1, inplace=True)
+
+    strip_counter = 0
+    for x in data[7]:
+        data[7][strip_counter] = x.rstrip()
+        strip_counter +=1
+
+
     data[8] = data[7]
     # print(data)
 
@@ -171,6 +178,9 @@ def extract_metadata(link_to_data, data_code="100"):
 
     ## and rename to make cleaner:
     data.rename(columns={'Aggregat_{}'.format(data_code): 'databasename', 'Aggregat': 'csvname'}, inplace=True)
+
+
+
 
     return (data)
 
@@ -206,12 +216,10 @@ def load_meta_data_to_db(link_to_KRS_metadata, KRS_datacode,
     # combined_meta.replace(old, new)
     # combined_meta = combined_meta.replace('"', '')
     # combined_meta = eval(combined_meta)
-
+    #
     combined_meta = combined_meta.replace(r'\\n', ' ', regex=True)
-    combined_meta = combined_meta.replace(r'\c"', ' ', regex=True)
+    combined_meta = combined_meta.replace(r'\"', ' ', regex=True)
     combined_meta = combined_meta.replace (r'\\', ' ', regex=True)
-
-
     print(combined_meta)
 
     user = "user"
@@ -224,6 +232,7 @@ def load_meta_data_to_db(link_to_KRS_metadata, KRS_datacode,
 
 # code for testing!!!
 # #TODO: move all these items to setup.py once we are clear that this is actually valuable and the data is validated
+
 # link_to_KRS_metadata = './resources/including metadata/KRS15_testfile_updated.csv'
 # KRS_datacode = 100
 #
@@ -241,8 +250,7 @@ def load_meta_data_to_db(link_to_KRS_metadata, KRS_datacode,
 #                      link_to_AMR15_metadata, AMR15_datacode,
 #                      link_to_bund_metadata, bund_datacode)
 # #
-#
-#
+
 
 
 

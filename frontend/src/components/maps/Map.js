@@ -37,11 +37,13 @@ class Map extends Component {
 
           <div id = "map_logo">
           <object type="image/svg+xml"
-                data="static/bmf/resources/BMF.svg" >Your browser does not support SVG
+                data="static/bmf/resources/BMF_official_svg_logo.svg" >Your browser does not support SVG
               </object>
 
-      <div id = "map_copyright"> ©gadm.org
+      <div className = "map_copyright"> © gadm.org
        </div>
+              {/*<div className ="map_copyright"> © Bundesministerium der Finanzen </div>*/}
+
                </div>
       )
 
@@ -52,7 +54,7 @@ class Map extends Component {
   renderlegend = () => {
       if(this.props.currentScale != 2) {
           return (
-                              <div id = "map_legend">
+              <div className = "map_legend">
                 <div id = "map_legend_headline">
 
                 </div>
@@ -98,8 +100,29 @@ class Map extends Component {
       else{
           /// INSERT THIS STUFF IN HERE
           return (
-              <div>
-              <div id = "svgcontainer"></div>
+              <div className = "map_legend">
+                <div id = "map_legend_headline"></div>
+
+
+                  <div  id = "legend_div_fliessend">
+
+                      <svg id = "legend_svg_fliessend" height="75" width="15">
+                        <defs>
+                            <linearGradient id="grad1" x1="0%" y1="100%" x2="0%" y2="0%">
+                                <stop offset="0%" stopColor={this.props.current_color[0]} stopOpacity="1" />
+                                <stop offset="100%" stopColor={this.props.current_color[4]} stopOpacity="1" />
+                            </linearGradient>
+                        </defs>
+                      <rect id = "legend_bar_fliessend" width="15" height="75" fill="url(#grad1)" />
+                        </svg>
+                       <text id = "top_label_fliessend"> {Math.round(Math.max(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]))} </text>
+                      <text id = "bottom_label_fliessend"> {Math.round(Math.min(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]))} </text>
+
+
+
+                  </div>
+
+
 
           </div>);
       }

@@ -122,38 +122,50 @@ export class Main_selector extends Component {
           this.props.value_dic['var_year_0'],
           this.props.value_dic['ref_name_0'],
           this.props.value_dic['ref_year_0'],
-          this.props.map_name[this.props.count_map], 'HIB', (this.props.view_multiple ? this.props.value_dic['weight_0'] : 100)],
+          this.props.map_name[this.props.count_map],
+          this.props.metadata[this.props.value_dic['var_name_0']].Standardisierung,
+          (this.props.view_multiple ? this.props.value_dic['weight_0'] : 100)],
 
         'var_2': [
           (this.props.indikator_counter > 1 ? this.props.value_dic['var_name_1'] : ''),
           (this.props.indikator_counter > 1 ? this.props.value_dic['var_year_1'] : ''),
           (this.props.indikator_counter > 1 ? this.props.value_dic['ref_name_1'] : ''),
           (this.props.indikator_counter > 1 ? this.props.value_dic['ref_year_1'] : ''),
-          this.props.map_name[this.props.count_map], 'HIB', (this.props.indikator_counter > 1 ? this.props.value_dic['weight_1'] : '')],
+          this.props.map_name[this.props.count_map],
+          (this.props.indikator_counter > 1 ? this.props.metadata[this.props.value_dic['var_name_1']].Standardisierung : ''),
+          (this.props.indikator_counter > 1 ? this.props.value_dic['weight_1'] : '')],
         'var_3': [
           (this.props.indikator_counter > 2 ? this.props.value_dic['var_name_2'] : ''),
           (this.props.indikator_counter > 2 ? this.props.value_dic['var_year_2'] : ''),
           (this.props.indikator_counter > 2 ? this.props.value_dic['ref_name_2'] : ''),
           (this.props.indikator_counter > 2 ? this.props.value_dic['ref_year_2'] : ''),
-          this.props.map_name[this.props.count_map], 'HIB', (this.props.indikator_counter > 2 ? this.props.value_dic['weight_2'] : '')],
+          this.props.map_name[this.props.count_map],
+          (this.props.indikator_counter > 2 ? this.props.metadata[this.props.value_dic['var_name_2']].Standardisierung : ''),
+            (this.props.indikator_counter > 2 ? this.props.value_dic['weight_2'] : '')],
         'var_4': [
           (this.props.indikator_counter > 3 ? this.props.value_dic['var_name_3'] : ''),
           (this.props.indikator_counter > 3 ? this.props.value_dic['var_year_3'] : ''),
           (this.props.indikator_counter > 3 ? this.props.value_dic['ref_name_3'] : ''),
           (this.props.indikator_counter > 3 ? this.props.value_dic['ref_year_3'] : ''),
-          this.props.map_name[this.props.count_map], 'HIB', (this.props.indikator_counter > 3 ? this.props.value_dic['weight_3'] : '')],
+          this.props.map_name[this.props.count_map],
+          (this.props.indikator_counter > 3 ? this.props.metadata[this.props.value_dic['var_name_3']].Standardisierung : ''),
+            (this.props.indikator_counter > 3 ? this.props.value_dic['weight_3'] : '')],
         'var_5': [
           (this.props.indikator_counter > 4 ? this.props.value_dic['var_name_4'] : ''),
           (this.props.indikator_counter > 4 ? this.props.value_dic['var_year_4'] : ''),
           (this.props.indikator_counter > 4 ? this.props.value_dic['ref_name_4'] : ''),
           (this.props.indikator_counter > 4 ? this.props.value_dic['ref_year_4'] : ''),
-          this.props.map_name[this.props.count_map], 'HIB', (this.props.indikator_counter > 4 ? this.props.value_dic['weight_4'] : '')],
+          this.props.map_name[this.props.count_map],
+          (this.props.indikator_counter > 4 ? this.props.metadata[this.props.value_dic['var_name_4']].Standardisierung : ''),
+            (this.props.indikator_counter > 4 ? this.props.value_dic['weight_4'] : '')],
         'var_6': [
           (this.props.indikator_counter > 5 ? this.props.value_dic['var_name_5'] : ''),
           (this.props.indikator_counter > 5 ? this.props.value_dic['var_year_5'] : ''),
           (this.props.indikator_counter > 5 ? this.props.value_dic['ref_name_5'] : ''),
           (this.props.indikator_counter > 5 ? this.props.value_dic['ref_year_5'] : ''),
-          this.props.map_name[this.props.count_map], 'HIB', (this.props.indikator_counter > 5 ? this.props.value_dic['weight_5'] : '')],
+          this.props.map_name[this.props.count_map],
+          (this.props.indikator_counter > 5 ? this.props.metadata[this.props.value_dic['var_name_5']].Standardisierung : ''),
+            (this.props.indikator_counter > 5 ? this.props.value_dic['weight_5'] : '')],
       };
       return data;
     }
@@ -212,7 +224,9 @@ export class Main_selector extends Component {
     weight = () =>{
       if (this.props.view_multiple) {
         return ( <div className="three columns">
+            <div>
           <label>Gewicht (%) </label>
+            </div>
           <input className="u-80-width" id={`weight_${this.props.number}`}
             onChange={this.handleChangeProm.bind(this)}
             type="number"
@@ -283,8 +297,16 @@ export class Main_selector extends Component {
         <div id={`in_${this.props.number}`}>
           <div className="row">
             <div className="six columns">
-              <label className="indicator">{this.props.name}</label>
-              <select className="u-95-width"
+                 <div className="indicator_tooltip">
+                <span className="tooltiptext">
+                     Langname: {(this.props.value_dic[`var_name_${this.props.number}`] ?
+                     this.props.metadata[this.props.value_dic[`var_name_${this.props.number}`]].Langname : '')}
+                      Quelle: {(this.props.value_dic[`var_name_${this.props.number}`] ?
+                     this.props.metadata[this.props.value_dic[`var_name_${this.props.number}`]].Quelle : '')}
+                    </span>
+                <label className="indicator">{this.props.name}</label>
+
+                <select className="u-95-width"
                 defaultValue={this.props.value_dic[`var_name_${this.props.number}`]}
                 id={`var_name_${this.props.number}`}
                 onChange={this.handleChangeProm.bind(this)}>
@@ -296,9 +318,13 @@ export class Main_selector extends Component {
                 }
               </select>
             </div>
+            </div>
+
 
             <div className="three columns">
+                <div>
               <label >Jahr </label>
+                </div>
               <select className="u-80-width"
                 defaultValue={this.props.value_dic[`var_year_${this.props.number}`]}
                 id={`var_year_${this.props.number}`}
@@ -406,6 +432,7 @@ function mapStateToProps(state) {
     var_year_data: state.var_year_data,
     view_multiple: state.view_multiple,
     single_indic_data: state.single_indic_data,
+    metadata: state.metadata,
   };
 }
 
