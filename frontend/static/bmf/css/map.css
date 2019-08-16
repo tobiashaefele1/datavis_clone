@@ -52,6 +52,7 @@ top: 15px;
   text-align: right;
   font-size: 7px;
   letter-spacing: 0rem;
+  overflow: scroll;
 
 }
 

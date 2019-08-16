@@ -10,6 +10,7 @@ import {connect} from 'react-redux';
 class ResetButton extends Component {
 	
 	handleButtonReset = () => {
+		this.props.dispatch({type: 'LOADINGCHANGE'})
 		this.props.dispatch({type: 'RESET'})
 		this.props.dispatch({type: 'CHANGEVARS'})
     }
