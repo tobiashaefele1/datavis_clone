@@ -66,7 +66,8 @@ class App extends Component {
           response.json().then((mapdata) => {
             this.props.dispatch(this.setMapinStoreDispatch(
                 feature(mapdata, mapdata.objects.Kreise15map).features, 0));
-            this.props.dispatch({type: 'LOADINGDONE'});
+			this.props.dispatch({type: 'LOADINGDONE'});
+			this.props.dispatch({type: 'CHANGEVARS'});  
           });
         });
   }
@@ -79,6 +80,7 @@ class App extends Component {
    * @memberof App
    */
   componentDidMount() {
+  
     fetch('static/bmf/resources/AMR12map.json')
         .then((response) => {
           if (response.status !== 200) {

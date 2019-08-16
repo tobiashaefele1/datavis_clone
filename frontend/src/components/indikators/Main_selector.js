@@ -4,6 +4,7 @@ import 'jquery';
 import { strict } from 'assert';
 
 
+
 /**
  *Component class for a single Indicator.
  *
@@ -24,7 +25,14 @@ export class Main_selector extends Component {
         this.handleChange(e).then(() => {
                   this.ajaxRequest();
           });
-    }
+	
+
+	// componentWillMount(){
+	// 	if(!this.props.loading){
+	// 		this.changeVars();
+	// 	}
+	
+	}
 
 
     handleChange = (e) => {
@@ -52,18 +60,6 @@ export class Main_selector extends Component {
     });
     };
 
-
-
-
-
-
-
-
-
-
-
-
-
     /**
      *This function is automatically called when the props or state updates
      *
@@ -81,7 +77,7 @@ export class Main_selector extends Component {
 	  for (var i in this.props.indikators){
 		percentage += parseFloat(document.getElementById(`weight_${i}`).value);
 	  }
-	  console.log('this is the current percentage: ' + percentage)
+
 	  if(percentage > 100){
 		  for(i in this.props.indikators){
 			  document.getElementById(`weight_${i}`).style.background = 'red';
@@ -100,24 +96,8 @@ export class Main_selector extends Component {
      * @memberof Indikator
      */
     changeVars() {
-      const template = this.props.current_map;
-      // console.log(this.props.indicator_data);
-      // console.log(this.props.single_indic_data);
-      const value = (this.props.view_multiple ?
-        this.props.indicator_data : this.props.single_indic_data);
-      // console.log(value);
-
-      let i;
-      for (i = 0; i < template.length; i++) {
-        let j;
-        for (j = 0; j < value[0].length; j++) {
-          if (template[i].properties.Kennziffer == value[0][j]) {
-            template[i].properties.indicator = value[1][j];
-          }
-        }
-      }
-      // console.log(template);
-      this.props.dispatch(changeVarsDispatch(template));
+		
+      this.props.dispatch({type: 'CHANGEVARS'});
     }
 
     /**
@@ -445,6 +425,7 @@ function mapStateToProps(state) {
     single_indic_data: state.single_indic_data,
 	metadata: state.metadata,
 	indikators: state.indikators,
+	loading: state.loading,
   };
 }
 

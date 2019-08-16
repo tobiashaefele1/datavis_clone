@@ -307,9 +307,9 @@ class Map extends Component {
     render() {
       if (this.props.loading) {
         return (<div><Spinner color="secondary"/></div>);
-      }
+	  }
       return (
-
+		
         <div id="map">
           <h6 >{this.headline()}  </h6>
 

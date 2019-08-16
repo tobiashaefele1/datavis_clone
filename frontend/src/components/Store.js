@@ -359,8 +359,25 @@ function reducer(state = initalState, action) {
 
       // insertion Tobias: load map here with indicators
     case 'CHANGEVARS':
+		console.log('CHANGEVARS HEREEE')
       return produce(state, (draft) => {
-        draft.current_map = [...action.template];
+		 const template = state.current_map;
+       
+      const value = (state.view_multiple ?
+        state.indicator_data : state.single_indic_data);
+      // console.log(value);
+
+      let i;
+      for (i = 0; i < template.length; i++) {
+        let j;
+        for (j = 0; j < value[0].length; j++) {
+          if (template[i].properties.Kennziffer == value[0][j]) {
+            template[i].properties.indicator = value[1][j];
+          }
+        }
+      }
+
+        draft.current_map = [...template];
       }
       );
 
