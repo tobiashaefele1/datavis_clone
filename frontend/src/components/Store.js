@@ -86,7 +86,8 @@ const initalState = {
   },
 
   ],
-  loading: true,
+  loading: false,
+  firstload: true,
   var_year_data: JSON.parse(context.var_year_data),
 
     // THIS IS THE ORIGINAL THAT USED TO WORK STATICALLY; ABOVE IS DERIVING THESE VALUES FROM CONTEXT; TOO
@@ -227,6 +228,12 @@ function reducer(state = initalState, action) {
     case 'LOADINGCHANGE':
       return produce(state, (draft) => {
         draft.loading = !state.loading;
+      }
+
+	  );
+	case 'FIRSTLOADDONE':
+      return produce(state, (draft) => {
+        draft.firstload = false;
       }
 
       );

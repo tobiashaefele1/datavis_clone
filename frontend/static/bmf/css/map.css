@@ -21,6 +21,15 @@ path:hover {
   object-position: left;
   font-weight : 400;
 }
+.map_loader {
+  position: absolute;
+  
+  
+  left: 50%;
+	margin-left: -50px;
+  top: 50%;
+  margin-top: -50px;
+}
 
 #map_logo {
   position: absolute;

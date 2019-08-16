@@ -417,8 +417,12 @@ display: flex;
 }
 
 .lds-roller {
-  display: inline-block;
-  position: relative;
+  position: absolute;
+
+  left: 50%;
+	margin-left: -50px;
+  top: 50%;
+  margin-top: -50px;
   width: 64px;
   height: 64px;
 }

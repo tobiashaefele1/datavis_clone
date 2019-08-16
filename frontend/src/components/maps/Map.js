@@ -303,7 +303,18 @@ class Map extends Component {
      */
     handleClick = (i) =>{
       this.props.dispatch(changeNameDispatch(i));
-    }
+	}
+	
+	loadingCirkle = () =>{
+		if(this.props.loading){
+			return(
+			<div className="lds-roller" id="map_loader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+		
+			)}
+			else{
+				return ''
+			}
+	}
 
 
     /**
@@ -313,16 +324,17 @@ class Map extends Component {
      * @memberof Map
      */
     render() {
-      if (this.props.loading) {
-        return (<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>);
+      if (this.props.firstload) {
+        return (<div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>);
 	  }
       return (
-		
+	
         <div id="map">
+
           <h6 >{this.headline()}  </h6>
 
             <div id = "map_content">
-
+			{this.loadingCirkle()}
             <svg id="svg" width="100%" height="100%" viewBox="0 0 400 450">
 
                 <g className="map">
@@ -364,6 +376,7 @@ class Map extends Component {
 
 
         </div>
+	
       );
     }
 }
@@ -397,6 +410,7 @@ function mapStateToProps(state) {
     current_color: state.current_color,
 	  currentScale: state.currentScale,
 	  loading: state.loading,
+	  firstload: state.firstload,
   };
 }
 

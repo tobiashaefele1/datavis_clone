@@ -67,7 +67,7 @@ class App extends Component {
           response.json().then((mapdata) => {
             this.props.dispatch(this.setMapinStoreDispatch(
                 feature(mapdata, mapdata.objects.AMR12map).features, 1));
-			this.props.dispatch({type: 'LOADINGCHANGE'});
+			this.props.dispatch({type: 'FIRSTLOADDONE'});
 			this.props.dispatch({type: 'CHANGEVARS'});  
           });
         });
