@@ -71,6 +71,7 @@ export class Main_selector extends Component {
       if (
           prevProps.view_multiple !== this.props.view_multiple ||
          prevProps.count_map !== this.props.count_map) {
+			 console.log('from main_selector')
 		this.props.dispatch({type: 'LOADINGCHANGE'})	 
         this.ajaxRequest();
 	  }

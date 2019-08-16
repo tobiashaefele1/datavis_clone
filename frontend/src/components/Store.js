@@ -160,8 +160,8 @@ function reducer(state = initalState, action) {
 		return produce(state, (draft)=>{
 			draft.indikator_counter = 4;
 			draft.indikators = ['indikator 1', 'indikator 2', 'indikator 3', 'indikator 4'];
-			draft.current_map = state.kreise;
-			draft.count_map = 0;
+			draft.current_map = state.amr12;
+			draft.count_map = 1;
 			draft.view_multiple = true;
 			draft.table_data = JSON.parse(context.table_data)
 			draft.value_dic = {
@@ -227,7 +227,8 @@ function reducer(state = initalState, action) {
 
     case 'LOADINGCHANGE':
       return produce(state, (draft) => {
-        draft.loading = !state.loading;
+		draft.loading = !state.loading;
+		console.log(draft.loading)
       }
 
 	  );
