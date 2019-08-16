@@ -28,8 +28,11 @@ class Data:
             return []
         data = []
 
+        counter = 0
         for row in csv.reader(file):
-
+            if counter < 7:
+                counter = counter + 1
+                continue
             if self.__matchamr(row):
                 data.append(row)
             else:

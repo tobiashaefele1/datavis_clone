@@ -27,7 +27,7 @@ const initalState = {
   amr20: [],
   ror: [],
   bund: [],
-  map_name: ['KRS_15', 'AMR_12', 'AMR_15', 'AMR_20', 'ROR', 'Bundesland_ID'],
+  map_name: ['KRS_15', 'AMR_12', 'AMR_15', 'AMR_20', 'ROR11', 'Bundesland_ID'],
   indikator_counter: 4, // COMMENT TOBIAS: DOES THIS CAUSE PROBLEMS WITH FEEDBACK LOGIC?
   indikators: ['indikator 1', 'indikator 2', 'indikator 3', 'indikator 4'],
   col_names_var: JSON.parse(context.col_names_var),
