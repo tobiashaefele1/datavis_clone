@@ -222,9 +222,9 @@ def load_meta_data_to_db(link_to_KRS_metadata, KRS_datacode,
     combined_meta = combined_meta.replace (r'\\', ' ', regex=True)
     print(combined_meta)
 
-    user = "user"
-    passw = "password"
-    host = "localhost"
+    user = "admin"
+    passw = "NPmpMe!696rY"
+    host = "bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com"
     database = "mydb"
     conn = create_engine('mysql+pymysql://' + user + ':' + passw + '@' + host + '/' + database, echo=False)
     combined_meta.to_sql(name="metadata", con=conn, if_exists='replace', index=False)

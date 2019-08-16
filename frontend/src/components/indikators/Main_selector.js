@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import 'jquery';
+import { strict } from 'assert';
 
 
 /**
@@ -38,10 +39,6 @@ export class Main_selector extends Component {
     }
 
 
-    context
-    props
-    refs
-    state
 
     updateDataProm(data){
       // console.log(data);
@@ -79,7 +76,22 @@ export class Main_selector extends Component {
           prevProps.view_multiple !== this.props.view_multiple ||
          prevProps.count_map !== this.props.count_map) {
         this.ajaxRequest();
-      }
+	  }
+	  var percentage = 0;
+	  for (var i in this.props.indikators){
+		percentage += parseFloat(document.getElementById(`weight_${i}`).value);
+	  }
+	  console.log('this is the current percentage: ' + percentage)
+	  if(percentage > 100){
+		  for(i in this.props.indikators){
+			  document.getElementById(`weight_${i}`).style.background = 'red';
+		  }
+	  }else{
+		  for(i in this.props.indikators){
+			  document.getElementById(`weight_${i}`).style.background = '';
+		  }
+	  }
+
     }
 
     /**
@@ -115,7 +127,6 @@ export class Main_selector extends Component {
      * @memberof Indikator
      */
     getData() {
-      //    TODO: change hardcoded HIB or LIB
       const data = {
 
         'var_1': [this.props.value_dic['var_name_0'],
@@ -432,7 +443,8 @@ function mapStateToProps(state) {
     var_year_data: state.var_year_data,
     view_multiple: state.view_multiple,
     single_indic_data: state.single_indic_data,
-    metadata: state.metadata,
+	metadata: state.metadata,
+	indikators: state.indikators,
   };
 }
 
