@@ -441,7 +441,6 @@ def retrieve_metadata():
 
 
 def insert_all_years_into_db():
-    #TODO: finish writing this. ATm I get an error @line 486
     # retrieve all the data that we have for th respective variables from Kreise
     data = retrieve_complete_col_years()
 
@@ -489,7 +488,6 @@ def insert_all_years_into_db():
         print(col_value_statement)
 
         ## now insert all of these into mysql table:
-        #TODO: I NEED BACKTICKS AROUND ALL THE COLUMN NAMES; NOW THERE IS A TICK AROUND ' ' THE BACKTICK THAT NEEDS TO GO
         sql = (""" INSERT INTO `%s`
                     (%s)
                     VALUES %s; """ % (table_name, col_name_statement, col_value_statement))
@@ -500,11 +498,7 @@ def insert_all_years_into_db():
 
     data_base.close()
 
-    return "all values added to database"
-
-
-# insert_all_years_into_db()
-
+    return ("all values added to database")
 
 
 

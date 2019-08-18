@@ -49,6 +49,8 @@ from server.data.reader import create_table_and_load_data, add_columns, add_tupl
 # #
 
 # @Jacob: ONLY THESE LINES NEED TO BE RUN
+from server.data.retrieve_db_data import insert_all_years_into_db
+
 link_to_KRS_metadata = './resources/including metadata/KRS15_testfile_updated.csv'
 KRS_datacode = 100
 
@@ -65,6 +67,10 @@ load_meta_data_to_db(link_to_KRS_metadata, KRS_datacode,
                      link_to_AMR12_metadata, AMR12_datacode,
                      link_to_AMR15_metadata, AMR15_datacode,
                      link_to_bund_metadata, bund_datacode)
+
+
+### this loads all the years data into a separate table in the database so that we can retrieve it from context
+insert_all_years_into_db()
 
 
 
