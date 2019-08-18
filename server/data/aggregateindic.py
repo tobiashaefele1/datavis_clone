@@ -13,10 +13,9 @@ def aggregate_args(ajax_dictionary):
         for y in x:
             if y == "":
                 check += 1
-        if check > 0:
-            break                # print("not all required values provided - omit")
-        else:
+        if check == 0:
             var.append(x)
+    print (var)
     return var
 
 

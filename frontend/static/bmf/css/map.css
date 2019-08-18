@@ -21,11 +21,28 @@ path:hover {
   object-position: left;
   font-weight : 400;
 }
+.map_loader {
+  position: absolute;
+  
+  
+  left: 50%;
+	margin-left: -50px;
+  top: 50%;
+  margin-top: -50px;
+}
 
 #map_logo {
   position: absolute;
-bottom: 15px;
+bottom: 50px;
   right: 30px;
+  object-position: right;
+  width: 40px;
+  height: 40px;
+}
+#map_reset {
+  position: absolute;
+top: 15px;
+  right: 120px;
   object-position: right;
   width: 40px;
   height: 40px;
@@ -35,6 +52,7 @@ bottom: 15px;
   text-align: right;
   font-size: 7px;
   letter-spacing: 0rem;
+  overflow: scroll;
 
 }
 
@@ -84,3 +102,5 @@ bottom: 15px;
     height: 60px;
   }
 }
+.fa-question-circle:before {
+  content: "\f059"; }

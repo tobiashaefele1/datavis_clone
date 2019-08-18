@@ -19,7 +19,7 @@ const initalState = {
     ['#fee5d9', '#fcae91', '#fb6a4a', '#de2d26', '#a50f15'],
     ['#edf8e9', '#bae4b3', '#74c476', '#31a354', '#006d2c']],
   counter: 0,
-  count_map: 0,
+  count_map: 1,
   current_map: [], // what needs to be changed in here?
   kreise: [],
   amr12: [],
@@ -53,7 +53,7 @@ const initalState = {
     'var_year_0': '2009-12', 'var_year_1': '2010', 'var_year_2': '2011-18', 'var_year_3': '2012',
     'var_year_4': null, 'var_year_5': null,
     'weight_0': 45, 'weight_1': 40, 'weight_2': 7.5, 'weight_3': 7.5,
-    'weight_4': null, 'weight_5': null,
+    'weight_4': 0, 'weight_5': 0,
     'ref_name_0': 'Erwerbspersonen gesamt_100', 'ref_name_1': 'Erwerbstätige gesamt_100',
     'ref_name_2': 'Erwerbstätige gesamt_100',
     'ref_name_3': 'Erwerbstätige gesamt_100',
@@ -87,7 +87,8 @@ const initalState = {
   },
 
   ],
-  loading: true,
+  loading: false,
+  firstload: true,
   var_year_data: JSON.parse(context.var_year_data),
 
     // THIS IS THE ORIGINAL THAT USED TO WORK STATICALLY; ABOVE IS DERIVING THESE VALUES FROM CONTEXT; TOO
@@ -160,8 +161,8 @@ function reducer(state = initalState, action) {
 		return produce(state, (draft)=>{
 			draft.indikator_counter = 4;
 			draft.indikators = ['indikator 1', 'indikator 2', 'indikator 3', 'indikator 4'];
-			draft.current_map = state.kreise;
-			draft.count_map = 0;
+			draft.current_map = state.amr12;
+			draft.count_map = 1;
 			draft.view_multiple = true;
 			draft.table_data = JSON.parse(context.table_data)
 			draft.value_dic = {
@@ -225,9 +226,16 @@ function reducer(state = initalState, action) {
         draft.view_multiple = !state.view_multiple;
       });
 
-    case 'LOADINGDONE':
+    case 'LOADINGCHANGE':
       return produce(state, (draft) => {
-        draft.loading = false;
+		draft.loading = !state.loading;
+		console.log(draft.loading)
+      }
+
+	  );
+	case 'FIRSTLOADDONE':
+      return produce(state, (draft) => {
+        draft.firstload = false;
       }
 
       );
@@ -299,23 +307,23 @@ function reducer(state = initalState, action) {
         while (draft.smalltable.length > 6) {
           draft.smalltable.pop();
         }
-        if (draft.smalltable.length < state.indikator_counter + 6) {
-          state.indikators.map((d, i) =>
-            draft.smalltable.push([state.value_dic['var_name_' + i], '-'])
-              // #TODO: Daten von Indikator in Tabelle einfügen
-          );
-        }
+        // if (draft.smalltable.length < state.indikator_counter + 6) {
+        //   state.indikators.map((d, i) =>
+        //     draft.smalltable.push([state.value_dic['var_name_' + i], '-'])
+        //       // #TODO: Daten von Indikator in Tabelle einfügen
+        //   );
+        // }
       });
 
     case 'SETMAPINSTORE':
       return produce(state, (draft) => {
         switch (action.map) {
           case 0:
-            draft.kreise = [...action.value],
-            draft.current_map = [...action.value];
+            draft.kreise = [...action.value]
             break;
           case 1:
-            draft.amr12 = [...action.value];
+			draft.amr12 = [...action.value];
+			draft.current_map = [...action.value];
             break;
           case 2:
             draft.amr15 = [...action.value];
@@ -378,7 +386,8 @@ function reducer(state = initalState, action) {
         }
       }
 
-        draft.current_map = [...template];
+		draft.current_map = [...template];
+		draft.loading = false;
       }
       );
 

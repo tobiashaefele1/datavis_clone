@@ -24,17 +24,18 @@ def index(request):
         col_names_ref = ['Einwohner 15-65_100', 'Einwohner gesamt_100', 'Erwerbspersonen gesamt_100', 'Erwerbstätige gesamt_100', 'Fläche_100']  # this returns all unique labels for standardisation drop downs
         years_ref = retrieve_col_years("reference")
         # years_var = retrieve_col_years("Kreise")
-        setup_dict = {'var_1': ['Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200', '2009-12', 'Erwerbspersonen gesamt_100', '2011', 'KRS_15', 'NIB', '45'],
-        'var_2': ['Lohn pro Beschäftigtem 2010 _ORIGINAL_200', '2010', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', 'HIB', '40'],
-        'var_3': ['Erwerbstätigenprognose _ORIGINAL_200', '2011-18', 'Erwerbstätige gesamt_100', '2012', 'KRS_15', 'HIB', '7.5'],
-        'var_4': ['Infrastrukturindikator_ORIGINAL_200', '2012', 'Erwerbstätige gesamt_100', '2012', 'KRS_15', 'HIB', '7.5'],
+        setup_dict = {'var_1': ['Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200', '2009-12', 'Erwerbspersonen gesamt_100', '2011', 'AMR_12', 'NIB', '45'],
+        'var_2': ['Lohn pro Beschäftigtem 2010 _ORIGINAL_200', '2010', 'Erwerbstätige gesamt_100', '2011', 'AMR_12', 'HIB', '40'],
+        'var_3': ['Erwerbstätigenprognose _ORIGINAL_200', '2011-18', 'Erwerbstätige gesamt_100', '2012', 'AMR_12', 'HIB', '7.5'],
+        'var_4': ['Infrastrukturindikator_ORIGINAL_200', '2012', 'Erwerbstätige gesamt_100', '2012', 'AMR_12', 'HIB', '7.5'],
         'var_5': ['', '', '', '', 'KRS_15', 'HIB', ''], 'var_6': ['', '', '', '', 'KRS_15', 'HIB', '']}
         table_data = retrieve_table_data(setup_dict)
         var_year_data = retrieve_var_year(setup_dict)
         single_indic_data = retrieve_single_indic(setup_dict)
         indicator_data = retrieve_indicator(setup_dict)
         col_names_var = retrieve_col_names("Kreise")  # this returns all unique column names from the KREISE table
-        # print(var_year_data)
+        print(indicator_data)
+        # print (single_indic_data)
 
     if request.method == 'POST':
         received_data = (dict(request.POST))
@@ -44,7 +45,7 @@ def index(request):
         indicator_data = retrieve_indicator(received_data)
         table_data = retrieve_table_data(received_data)
 
-        # print(indicator_data)
+        print(indicator_data)
         # print (single_indic_data)
         # print (var_year_data)
         data = {'indicator_data': indicator_data, 'table_data': table_data, 'var_year_data': var_year_data,

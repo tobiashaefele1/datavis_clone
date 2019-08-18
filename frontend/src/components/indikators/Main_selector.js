@@ -71,23 +71,26 @@ export class Main_selector extends Component {
       if (
           prevProps.view_multiple !== this.props.view_multiple ||
          prevProps.count_map !== this.props.count_map) {
+			 console.log('from main_selector')
+		this.props.dispatch({type: 'LOADINGCHANGE'})	 
         this.ajaxRequest();
 	  }
-	  var percentage = 0;
-	  for (var i in this.props.indikators){
-		percentage += parseFloat(document.getElementById(`weight_${i}`).value);
-	  }
+	  if(this.props.view_multiple){
+		var percentage = 0;
+		for (var i in this.props.indikators){
+			percentage += parseFloat(document.getElementById(`weight_${i}`).value);
+		}
 
-	  if(percentage > 100){
-		  for(i in this.props.indikators){
-			  document.getElementById(`weight_${i}`).style.background = 'red';
-		  }
-	  }else{
-		  for(i in this.props.indikators){
-			  document.getElementById(`weight_${i}`).style.background = '';
-		  }
-	  }
-
+		if(percentage > 100){
+			for(i in this.props.indikators){
+				document.getElementById(`weight_${i}`).style.background = 'red';
+			}
+		}else{
+			for(i in this.props.indikators){
+				document.getElementById(`weight_${i}`).style.background = '';
+			}
+		}
+	}
     }
 
     /**
@@ -295,8 +298,8 @@ export class Main_selector extends Component {
                       Quelle: {(this.props.value_dic[`var_name_${this.props.number}`] ?
                      this.props.metadata[this.props.value_dic[`var_name_${this.props.number}`]].Quelle : '')}
                     </span>
-                <label className="indicator">{this.props.name}</label>
-
+                <label className="indicator">{this.props.name} <a id="info_icon">&#9432; </a>  </label>
+				</div>
                 <select className="u-95-width"
                 defaultValue={this.props.value_dic[`var_name_${this.props.number}`]}
                 id={`var_name_${this.props.number}`}
@@ -308,7 +311,7 @@ export class Main_selector extends Component {
                 )
                 }
               </select>
-            </div>
+            
             </div>
 
 
@@ -322,9 +325,11 @@ export class Main_selector extends Component {
                 onChange={this.handleChangeProm.bind(this)}>
 
                 <option disabled value="0"> -- Wähle Jahr -- </option>
-                {this.props.all_years[`${this.props.value_dic[`var_name_${this.props.number}`]}`].map((d, i) =>
-                      <option value={d} key={i}>{d}</option>
-                    )
+
+                {this.props.value_dic[`var_name_${this.props.number}`] ? (
+                    this.props.all_years[`${this.props.value_dic[`var_name_${this.props.number}`]}`].map((d, i) =>
+                      <option value={d} key={i}>{d}</option>)) : ""
+
                 }
               </select>
             </div>
@@ -370,18 +375,7 @@ export class Main_selector extends Component {
 
 }
 
-/**
- *This function creates a dispatch ready input.
- *
- * @param {Array} template
- * @return {Dict} that is send to the dispatch
- */
-function changeVarsDispatch(template) {
-  return {
-    type: 'CHANGEVARS',
-    template,
-  };
-}
+
 
 /**
  *This function creates a dispatch ready input from the indicators.

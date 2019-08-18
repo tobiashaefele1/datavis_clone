@@ -3,6 +3,7 @@ import 'd3';
 import * as d3 from 'd3';
 import {connect} from 'react-redux';
 import {Spinner} from 'reactstrap';
+import ResetButton from '../buttons/ResetButton';
 
 
 /**
@@ -37,95 +38,102 @@ class Map extends Component {
 
           <div id = "map_logo">
           <object type="image/svg+xml"
-                data="static/bmf/resources/BMF_official_svg_logo.svg" >Your browser does not support SVG
+                data="static/bmf/resources/BMF_2017_WebSVG_de.svg" width="100%"
+                height="100%">Your browser does not support SVG
               </object>
 
-      <div className = "map_copyright"> © gadm.org
-       </div>
-              {/*<div className ="map_copyright"> © Bundesministerium der Finanzen </div>*/}
-
+    
+              <div className ="map_copyright"> &#9400;Bundesministerium der Finanzen</div>
+			<div className ="map_copyright">&#9400;gadm.com</div>
                </div>
       )
 
   };
 
+  
+
 
 
   renderlegend = () => {
-      if(this.props.currentScale != 2) {
-          return (
-              <div className = "map_legend">
-                <div id = "map_legend_headline">
+	  if(!this.props.loading){
+		if(this.props.currentScale != 2) {
+			return (
+				<div className = "map_legend">
+					<div id = "map_legend_headline">
 
-                </div>
+					</div>
 
-                <div>
-                <svg width="20" height="10">
-                <rect width="10" height="10" fill={this.legend_colours(0)} />
-                </svg>
-                {this.legend_labels(0)[0]} - {this.legend_labels(0)[1]}
-                </div>
+					<div>
+					<svg width="20" height="10">
+					<rect width="10" height="10" fill={this.legend_colours(0)} />
+					</svg>
+					{this.legend_labels(0)[0]} - {this.legend_labels(0)[1]}
+					</div>
 
-                <div>
-                <svg width="20" height="10">
-                <rect width="10" height="10" fill={this.legend_colours(1)} />
-                </svg>
-                {this.legend_labels(1)[0]} - {this.legend_labels(1)[1]}
-                </div>
+					<div>
+					<svg width="20" height="10">
+					<rect width="10" height="10" fill={this.legend_colours(1)} />
+					</svg>
+					{this.legend_labels(1)[0]} - {this.legend_labels(1)[1]}
+					</div>
 
-                <div>
-                <svg width="20" height="10">
-                <rect width="10" height="10" fill={this.legend_colours(2)} />
-                </svg>
-                {this.legend_labels(2)[0]} - {this.legend_labels(2)[1]}
-                </div>
+					<div>
+					<svg width="20" height="10">
+					<rect width="10" height="10" fill={this.legend_colours(2)} />
+					</svg>
+					{this.legend_labels(2)[0]} - {this.legend_labels(2)[1]}
+					</div>
 
-                <div>
-                <svg width="20" height="10">
-                <rect width="10" height="10" fill={this.legend_colours(3)} />
-                </svg>
-                {this.legend_labels(3)[0]} - {this.legend_labels(3)[1]}
-                </div>
+					<div>
+					<svg width="20" height="10">
+					<rect width="10" height="10" fill={this.legend_colours(3)} />
+					</svg>
+					{this.legend_labels(3)[0]} - {this.legend_labels(3)[1]}
+					</div>
 
-                <div>
-                <svg width="20" height="10">
-                <rect width="10" height="10" fill={this.legend_colours(4)} />
-                </svg>
-                {this.legend_labels(4)[0]} - {this.legend_labels(4)[1]}
-                </div>
+					<div>
+					<svg width="20" height="10">
+					<rect width="10" height="10" fill={this.legend_colours(4)} />
+					</svg>
+					{this.legend_labels(4)[0]} - {this.legend_labels(4)[1]}
+					</div>
 
-                </div>
-          ); }
+					</div>
+			); }
 
-      else{
-          /// INSERT THIS STUFF IN HERE
-          return (
-              <div className = "map_legend">
-                <div id = "map_legend_headline"></div>
-
-
-                  <div  id = "legend_div_fliessend">
-
-                      <svg id = "legend_svg_fliessend" height="75" width="15">
-                        <defs>
-                            <linearGradient id="grad1" x1="0%" y1="100%" x2="0%" y2="0%">
-                                <stop offset="0%" stopColor={this.props.current_color[0]} stopOpacity="1" />
-                                <stop offset="100%" stopColor={this.props.current_color[4]} stopOpacity="1" />
-                            </linearGradient>
-                        </defs>
-                      <rect id = "legend_bar_fliessend" width="15" height="75" fill="url(#grad1)" />
-                        </svg>
-                       <text id = "top_label_fliessend"> {Math.round(Math.max(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]))} </text>
-                      <text id = "bottom_label_fliessend"> {Math.round(Math.min(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]))} </text>
+		else{
+			/// INSERT THIS STUFF IN HERE
+			return (
+				<div className = "map_legend">
+					<div id = "map_legend_headline"></div>
 
 
+					<div  id = "legend_div_fliessend">
 
-                  </div>
+						<svg id = "legend_svg_fliessend" height="75" width="15">
+							<defs>
+								<linearGradient id="grad1" x1="0%" y1="100%" x2="0%" y2="0%">
+									<stop offset="0%" stopColor={this.props.current_color[0]} stopOpacity="1" />
+									<stop offset="100%" stopColor={this.props.current_color[4]} stopOpacity="1" />
+								</linearGradient>
+							</defs>
+						<rect id = "legend_bar_fliessend" width="15" height="75" fill="url(#grad1)" />
+							</svg>
+						<text id = "top_label_fliessend"> {Math.round(Math.max(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]))} </text>
+						<text id = "bottom_label_fliessend"> {Math.round(Math.min(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]))} </text>
 
 
 
-          </div>);
-      }
+					</div>
+
+
+
+		</div>)
+	  }
+	  
+      }else{
+		  return (" ")
+	  }
 
   }
 
@@ -196,9 +204,12 @@ class Map extends Component {
     // formula to generate values for threshold scale via Quantize method
   valueQuantize = (x) => {
       // the three dots convert the array into a list so they can be used as input for Math.min and Math.max
-      let DomMin = Math.min(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
-      let DomMax = Math.max(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
+      console.log(x)
+      let DomMin = Math.min(...(this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]));
+      let DomMax = Math.max(...(this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]));
       // let DomStep = (DomMax - DomMin) / (this.props.current_color.length);
+      console.log(DomMin)
+      console.log(DomMax)
 
       const QuantizeScale = d3.scaleQuantize()
             .domain([DomMin, DomMax])
@@ -245,7 +256,8 @@ class Map extends Component {
 
   // formula to create the values for the color on the map
   color = (x) => {
-      if (x == null) {
+      console.log(x)
+      if (x == null || x === undefined) {
         return '#b3daff';
       } else {
           if(this.props.currentScale == 0)
@@ -295,7 +307,18 @@ class Map extends Component {
      */
     handleClick = (i) =>{
       this.props.dispatch(changeNameDispatch(i));
-    }
+	}
+	
+	loadingCirkle = () =>{
+		if(this.props.loading){
+			return(
+			<div className="lds-roller" id="map_loader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+		
+			)}
+			else{
+				return ''
+			}
+	}
 
 
     /**
@@ -305,16 +328,17 @@ class Map extends Component {
      * @memberof Map
      */
     render() {
-      if (this.props.loading) {
-        return (<div><Spinner color="secondary"/></div>);
+      if (this.props.firstload) {
+        return (<div className="lds-roller1"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>);
 	  }
       return (
-		
+	
         <div id="map">
+
           <h6 >{this.headline()}  </h6>
 
             <div id = "map_content">
-
+			{this.loadingCirkle()}
             <svg id="svg" width="100%" height="100%" viewBox="0 0 400 450">
 
                 <g className="map">
@@ -336,22 +360,27 @@ class Map extends Component {
 
 
               </svg>
+			  <div id="map_reset">
+			  <ResetButton/>
+			  </div>
+			  <div>
+                {this.renderlogo()}
+            
+           
 
-            </div>
+           
 
-            <div>
                 {this.renderlegend()}
             </div>
-
-            <div>
-                {this.renderlogo()}
-            </div>
+			  </div>
+            
 
 
 
 
 
         </div>
+	
       );
     }
 }
@@ -383,7 +412,9 @@ function mapStateToProps(state) {
     view_multiple: state.view_multiple,
     single_indic_data: state.single_indic_data,
     current_color: state.current_color,
-      currentScale: state.currentScale,
+	  currentScale: state.currentScale,
+	  loading: state.loading,
+	  firstload: state.firstload,
   };
 }
 

@@ -16,6 +16,7 @@ import ViewPicker from './modals/ViewPicker';
 import MinMaxTable from './tables/MinMaxTable';
 import SVGExportButton from './buttons/SVGExportButton';
 import ResetButton from './buttons/ResetButton';
+import TableButton from './buttons/TableButton';
 
 
 /**
@@ -57,7 +58,7 @@ class App extends Component {
    * @memberof App
    */
   componentWillMount() {
-    fetch('static/bmf/resources/Kreise15map.json')
+    fetch('static/bmf/resources/AMR12map.json')
         .then((response) => {
           if (response.status !== 200) {
             console.log('There was a problem: ${response.status}');
@@ -65,8 +66,8 @@ class App extends Component {
           }
           response.json().then((mapdata) => {
             this.props.dispatch(this.setMapinStoreDispatch(
-                feature(mapdata, mapdata.objects.Kreise15map).features, 0));
-			this.props.dispatch({type: 'LOADINGDONE'});
+                feature(mapdata, mapdata.objects.AMR12map).features, 1));
+			this.props.dispatch({type: 'FIRSTLOADDONE'});
 			this.props.dispatch({type: 'CHANGEVARS'});  
           });
         });
@@ -81,7 +82,7 @@ class App extends Component {
    */
   componentDidMount() {
   
-    fetch('static/bmf/resources/AMR12map.json')
+      fetch('static/bmf/resources/Kreise15map.json')
         .then((response) => {
           if (response.status !== 200) {
             console.log('There was a problem: ${response.status}');
@@ -89,7 +90,7 @@ class App extends Component {
           }
           response.json().then((mapdata) => {
             this.props.dispatch(this.setMapinStoreDispatch(
-                feature(mapdata, mapdata.objects.AMR12map).features, 1));
+                feature(mapdata, mapdata.objects.Kreise15map).features, 0));
           });
         });
 
@@ -178,7 +179,7 @@ class App extends Component {
           <div className="row">
             <div className="three columns">
               <object type="image/svg+xml"
-                data="static/bmf/resources/BMF_official_svg_logo.svg" width="100%"
+                data="static/bmf/resources/BMF_2017_WebSVG_de.svg" width="100%"
                 height="100%">Your browser does not support SVG
               </object>
             </div>
@@ -199,32 +200,30 @@ class App extends Component {
             <div className="box">
               <div className="three columns" id="big">
                 <MapSelector/>
-                <Indikators/>
+				 <Indikators/>
+                <PlusButton/>
+                <MinButton/>
+                
               </div>
               <div className="six columns" id="big">
                 <Map/>
                 <MinMaxTable/>
               </div>
               <div className="three columns" id="big">
-                Indikatoren
+				<SmallTable/>
+               
 
-                <SmallTable/>
-
-                <PlusButton/>
-                <MinButton/>
-                <div className="row"> Export / Upload</div>
                 <div className="row">
                   <SVGExportButton />
-				  <ResetButton/>
-                  <button id="csv_upload">Import CSV</button>
+				  <TableButton />
+
+
                 </div>
               </div>
             </div>
           </div>
           <div className="row">
-            <div className="twelve columns" id="big">
-              <Table/>
-            </div>
+            <Table />
           </div>
         </div>
       </div>
