@@ -199,7 +199,7 @@ class App extends Component {
             <div className="box">
               <div className="three columns" id="big">
                 <MapSelector/>
-                <SmallTable/>
+                <Indikators/>
               </div>
               <div className="six columns" id="big">
                 <Map/>
@@ -207,7 +207,9 @@ class App extends Component {
               </div>
               <div className="three columns" id="big">
                 Indikatoren
-                <Indikators/>
+
+                <SmallTable/>
+
                 <PlusButton/>
                 <MinButton/>
                 <div className="row"> Export / Upload</div>

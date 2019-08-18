@@ -39,6 +39,7 @@
       var csrftoken = "{{ csrf_token }}";
 
       var context = {
+          all_years: `{{ all_years|safe }}`,
         col_names_var: `{{ col_names_var|safe }}`,
         col_names_ref: `{{ col_names_ref|safe }}`,
         years_ref: `{{ years_ref|safe }}`,

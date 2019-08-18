@@ -322,7 +322,7 @@ export class Main_selector extends Component {
                 onChange={this.handleChangeProm.bind(this)}>
 
                 <option disabled value="0"> -- Wähle Jahr -- </option>
-                {this.props.var_year_data[`var_year_${this.props.number}`].map((d, i) =>
+                {this.props.all_years[`${this.props.value_dic[`var_name_${this.props.number}`]}`].map((d, i) =>
                       <option value={d} key={i}>{d}</option>
                     )
                 }
@@ -426,6 +426,7 @@ function mapStateToProps(state) {
 	metadata: state.metadata,
 	indikators: state.indikators,
 	loading: state.loading,
+      all_years: state.all_years,
   };
 }
 

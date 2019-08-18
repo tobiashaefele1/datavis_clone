@@ -39,6 +39,7 @@ const initalState = {
   table_data: JSON.parse(context.table_data),
   // metadata: JSON.parse(context.metadata.replace(/'/g, '"')),
   metadata: JSON.parse((context.metadata.replace(/(\r\n|\n|\r)/gm,""))),
+    all_years: JSON.parse(context.all_years),
 
 
   show_modal: false,

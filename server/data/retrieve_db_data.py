@@ -16,11 +16,11 @@ def retrieve_data(var_name, var_year, ref_name, ref_year, layer):
     output = []
     # connect to database
     start_time = time.clock()
-    mySQLconnection = pymysql.connect(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
+    mySQLconnection = pymysql.connect(host='localhost',
 
                                       database='mydb',
-                                      user='admin',
-                                      password='NPmpMe!696rY')
+                                      user='user',
+                                      password='password')
 
     # this is the old quiery that does not work for AMR20 (But curiously, for all others)
     #  Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
@@ -89,11 +89,11 @@ def retrieve_fed_avg(var_name, var_year, ref_name, ref_year, layer):
     fed_avg_name = fed_avg_name + "400"
     # connect to database
 
-    mySQLconnection = pymysql.connect(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
+    mySQLconnection = pymysql.connect(host='localhost',
 
                                       database='mydb',
-                                      user='admin',
-                                      password='NPmpMe!696rY')
+                                      user='user',
+                                      password='password')
 
     try:
         # Returns quiery with tuple [(layer_ID, value)] for federal average at Kreise level, IF IT EXISTS.
@@ -131,11 +131,11 @@ def retrieve_ref_share(ref_name, ref_year, layer):
 
     # connect to database
 
-    mySQLconnection = pymysql.connect(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
+    mySQLconnection = pymysql.connect(host='localhost',
 
                                       database='mydb',
-                                      user='admin',
-                                      password='NPmpMe!696rY')
+                                      user='user',
+                                      password='password')
 
     # Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
     sql_select_Query = (""" SELECT 
@@ -253,11 +253,11 @@ def retrieve_col_names(table_name):
     output = []
     # connect to database
 
-    mySQLconnection = pymysql.connect(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
+    mySQLconnection = pymysql.connect(host='localhost',
 
                                       database='mydb',
-                                      user='admin',
-                                      password='NPmpMe!696rY')
+                                      user='user',
+                                      password='password')
     # Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
     sql_select_Query = (""" 
                                 SELECT COLUMN_NAME 
@@ -297,11 +297,11 @@ def retrieve_col_years(table_name):
     temp = []
     # connect to database
 
-    mySQLconnection = pymysql.connect(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
+    mySQLconnection = pymysql.connect(host='localhost',
 
                                       database='mydb',
-                                      user='admin',
-                                      password='NPmpMe!696rY')
+                                      user='user',
+                                      password='password')
 
     # Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
     sql_select_Query = (""" 
@@ -332,11 +332,11 @@ def retrieve_distinct_years(var_name):
     distinct_years = []
 
     # connect to database
-    mySQLconnection = pymysql.connect(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
+    mySQLconnection = pymysql.connect(host='localhost',
 
                                       database='mydb',
-                                      user='admin',
-                                      password='NPmpMe!696rY')
+                                      user='user',
+                                      password='password')
 
     # Returns quiery with all years for a given variable
     sql_select_Query = (""" SELECT
@@ -371,11 +371,11 @@ def retrieve_complete_col_years():
     at the beginning of creating the database'''
     #TODO: ask Ben about whether there is a way to do this in one quiery
     start_time = time.clock()
-    mySQLconnection = pymysql.connect(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
+    mySQLconnection = pymysql.connect(host='localhost',
 
                                       database='mydb',
-                                      user='admin',
-                                      password='NPmpMe!696rY')
+                                      user='user',
+                                      password='password')
     cursor = mySQLconnection.cursor()
     ## this returns a list of all the column names we want
     result = []
@@ -399,18 +399,18 @@ def retrieve_complete_col_years():
     cursor.close()
     mySQLconnection.close()
     print(time.clock()-start_time)
-    return distinct_years
+    return result
 
 
 def retrieve_metadata():
     ''' this function returns the entire set of metadata available as a ..... '''
     #TODO: specify datatype here - currenlty this is a dict of dictionarries
     start_time = time.clock()
-    mySQLconnection = pymysql.connect(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
+    mySQLconnection = pymysql.connect(host='localhost',
 
                                       database='mydb',
-                                      user='admin',
-                                      password='NPmpMe!696rY')
+                                      user='user',
+                                      password='password')
     cursor = mySQLconnection.cursor(pymysql.cursors.DictCursor)
     # cursor = mySQLconnection.cursor()
 
@@ -440,18 +440,152 @@ def retrieve_metadata():
     return target_dict
 
 
-#
+def insert_all_years_into_db():
+    #TODO: finish writing this. ATm I get an error @line 486
+    # retrieve all the data that we have for th respective variables from Kreise
+    data = retrieve_complete_col_years()
+
+
+    # define name for new db table
+    table_name = "all_years"
+
+    ## create databaselogin etc.
+    data_base_name = "mydb"
+    data_base = pymysql.connect("localhost", "user", "password", data_base_name)
+    cursor = data_base.cursor()
+
+    #create the empty table
+    cursor.execute("DROP TABLE IF EXISTS `%s`" % (table_name))
+    sql = ("CREATE TABLE `%s` (DATABASENAME VARCHAR(70) NOT NULL);" % (table_name))
+    cursor.execute(sql)
+    data_base.commit()
+
+    ## add all the columns
+    ## retrieve list of all the required columns
+    col_years = retrieve_col_years("Kreise")
+
+    ## and drop them into the database as columns
+    for x in col_years:
+        sql = (""" ALTER TABLE `%s`
+                   ADD COLUMN `%s` VARCHAR(20)  """ % (table_name, x))
+        cursor.execute(sql)
+        data_base.commit()
+
+
+    ## create the col_name statement: (name, col_1, col_2): we already have that
+    for x in data:
+        col_value_statement = tuple(x)
+        col_name_statement = x
+        col_name_statement[0] = "DATABASENAME"
+        counter = 0
+        for x in col_name_statement:
+            col_name_statement[counter] = (""" `%s` """ % (x))
+            counter +=1
+
+        # convert list into string
+        col_name_statement = ', '.join(map(str, col_name_statement))
+
+        print(col_name_statement)
+        print(col_value_statement)
+
+        ## now insert all of these into mysql table:
+        #TODO: I NEED BACKTICKS AROUND ALL THE COLUMN NAMES; NOW THERE IS A TICK AROUND ' ' THE BACKTICK THAT NEEDS TO GO
+        sql = (""" INSERT INTO `%s`
+                    (%s)
+                    VALUES %s; """ % (table_name, col_name_statement, col_value_statement))
+        print (sql)
+        cursor.execute(sql)
+        data_base.commit()
+
+
+    data_base.close()
+
+    return "all values added to database"
+
+
+# insert_all_years_into_db()
+
+
+
+
+
+def retrieve_year_dict_from_db():
+
+    filtered_dict = {}
+
+    mySQLconnection = pymysql.connect(host='localhost',
+
+                                      database='mydb',
+                                      user='user',
+                                      password='password')
+
+    # quiery
+    sql_select_Query = (""" SELECT * FROM `all_years` """)
+
+    try:
+
+        # executed quiery and closes cursor
+        cursor = mySQLconnection.cursor()
+        cursor.execute(sql_select_Query)
+        output = cursor.fetchall()
+        cursor.close()
+
+
+
+    # error handling
+    except Error as e:
+        print("Error while connecting to MySQL", e)
+    finally:
+        # closing database connection.
+
+        mySQLconnection.close()
+        print("MySQL connection is closed")
+        # print(output)
+
+        list = []
+
+        for x in output:
+            # print (x)
+            temp = []
+            for y in x:
+                if y is not None:
+                    temp.append(y)
+            list.append(temp)
+
+        ## now convert into dictionary:
+
+        for x in list:
+            temp = []
+            counter = 0
+            for y in x:
+                if counter != 0:
+                    temp.append(y)
+                counter += 1
+            filtered_dict[x[0]] = temp
+
+
+
+
+
+        #     print(record)
+        #     filtered_dict.append(record)
+
+        #     record = {k: v for k, v in x.items() if v is not None}
+
+        return filtered_dict
+
+
+# test = retrieve_year_dict_from_db()
+# print(test)
+
+
+
+    #### THIS IS ALL ONLY TESTS
+
 # test = retrieve_metadata()
 # print(test)
 # print(test[0].keys)
 #
-
-
-
-
-
-
-
 
 
 # # TESTS FOR THIS SECTION
