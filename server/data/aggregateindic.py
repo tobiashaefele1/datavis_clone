@@ -1,204 +1,208 @@
-from server.data.retrieve_db_data import retrieve_sd_data, retrieve_data, retrieve_distinct_years
 import pandas as pd
 import time
 
+from server.data.retrieve_db_data import retrieve_db_data
 
 
+class aggregateindic:
+    def __init__(self, pool):
+        self.pool = pool
 
-def aggregate_args(ajax_dictionary):
-    """ this function groups a dynamic number of args into a list of args and returns this list """
-    var = []
-    for x in ajax_dictionary.values():
-        check = 0
-        for y in x:
-            if y == "":
-                check += 1
-        if check == 0:
-            var.append(x)
-    print (var)
-    return var
-
-
-def retrieve_indicator(ajax_dictionary):
-    '''
-    THIS FUNCTION THAT THE AJAX DICTIONANARY AS AN INPUT
-     this function takes in the dictionary that is returned from ajax (6 entries with 7 variables in order each.
-     The function then checks all the dict entries for comprehensiveness. If they include all required values,
-     the database is searched and the correct value returned
-    :param var: dictionary with (var1: [var_name, var_year, ref_name, ref_year, layer, scale, weight], var_2: [...] etc)
-    :return: The function returns a list of the target layer ref code, as well as the aggregated indicator
-    '''
-
-    start_time = time.clock()
-    # this code scans the dictionary to ensure only complete entries are being searched for in the db
-    var = []
-    var = aggregate_args(ajax_dictionary)
-    empty_return = [[]]
-
-    result = []
-    if var == []:
-        return empty_return
-
-    else:
-        # this code returns the database array from all valid entries and stores them in a list
-        list = []
-        for i in range(0, len(var)):
-            list.append(retrieve_sd_data(var[i][0], var[i][1], var[i][2], var[i][3], var[i][4], var[i][5]))
-        # print (list)
-        var_name = []
-
-        ## the following code copies the layer IDs as the first column into the results list
-        for (j, k) in list[0]:
-            var_name.append(j)
-        result.append(var_name)
-        # print (result)
-
-        ### the following code creates the multiplications of each of the variables and stores them in a list of list
-        interim = []
-        for i in range(0, len(list)):
-            multiplication = []
-            for (k, l) in list[i]:
-                multiplication.append(float(l) * (float(var[i][6])/100))
-            interim.append(multiplication)
-        # print(interim)
-        ### the following code then sums all the individual items and returns one list
-        interim = [sum(i) for i in zip(*interim)]
-
-        ### the following code then appends the calcualtions to the interim template
-        result.append(interim)
-
-        print(time.clock() - start_time, "seconds")
-        return result
-
-
-def retrieve_table_data(ajax_dictionary):
-    ''' THIS FUNCTION THAT AN AJAX DICTIONNARY AS AN INPUT
-    it returns a list of lists of the format output = [[ID1,var1, var2.],[ID2, var1, var2...],[etc
-    this can be used to poplate the table
-    '''
-
-    start_time = time.clock()
-    empty_return = [[]]
-
-    # this code scans the dictionary to ensure only complete entries are being searched for in the db
-    var = []
-    var = aggregate_args(ajax_dictionary)
-
-    # this checks whether the aggreagted indicator comes back empty - if it does no valid
-    # combination has been submitted, just return empty list
-    if var == []:
-        return empty_return
-    else:
-        ## this code returns the aggregated indicator from the database
-        aggregated_indicator = retrieve_indicator(ajax_dictionary)
-        aggregated_indicator = aggregated_indicator[1]
-        # print(aggregated_indicator)
-
-
-        # this code returns the database array from all valid entries and stores them in a list
-        list = []
-        dictionary_keys = []
-        dictionary_keys.append("Kennziffer")
-        for i in range(0, len(var)):
-            list.append(retrieve_data(var[i][0], var[i][1], var[i][2], var[i][3], var[i][4]))
-            dictionary_keys.append(var[i][0] + " " + var[i][1])
-        # print(list)
-        result = []
-        var_name = []
-        # print (dictionary_keys)
-        loop_time = time.clock()
-        ## the following code copies the layer IDs as the first column into the results list
-        for (j, k) in list[0]:
-            var_name.append([j])
-        result = var_name
-        # print (result)
-
-        ## the following converts all of this into a list of lists in the right format
-        for x in list:
-            count = 0
-            for (j, k) in x:
-                result[count].append(k)
-                count += 1
-
-        # the following converts this into a list of dicts
-        target_dict = []
-        aggreg_count = 0
-        for x in result:
-            count = 0
-            temp_dict = {}
+    def aggregate_args(self, ajax_dictionary):
+        """ this function groups a dynamic number of args into a list of args and returns this list """
+        var = []
+        for x in ajax_dictionary.values():
+            check = 0
             for y in x:
-                if isinstance(y, str):
-                    temp_dict[dictionary_keys[count]] = y
-                else:
-                    temp_dict[dictionary_keys[count]] = round(float(y), 2)
+                if y == "":
+                    check += 1
+            if check == 0:
+                var.append(x)
+                                # print("not all required values provided - omit")
 
-                count += 1
-            ### the following lines of code add the value from the aggreagted indicator
-            temp_dict["selbstersteller_Indikator"] = round(float(aggregated_indicator[aggreg_count]), 2)
-            aggreg_count += 1
-            ## and finally, the following lines of code append the dict to the summary list output
-            target_dict.append(temp_dict)
+        return var
 
-        print(time.clock()- loop_time, "seconds for the loop")
-        # print(target_dict)
-        print(time.clock() - start_time, "seconds")
-        return target_dict
 
-def retrieve_var_year (ajax_dictionary):
-    chosen_indicators = []
-    for k,v in ajax_dictionary.items():
-        chosen_indicators.append(v[0])
+    def retrieve_indicator(self, ajax_dictionary):
+        '''
+        THIS FUNCTION THAT THE AJAX DICTIONANARY AS AN INPUT
+         this function takes in the dictionary that is returned from ajax (6 entries with 7 variables in order each.
+         The function then checks all the dict entries for comprehensiveness. If they include all required values,
+         the database is searched and the correct value returned
+        :param var: dictionary with (var1: [var_name, var_year, ref_name, ref_year, layer, scale, weight], var_2: [...] etc)
+        :return: The function returns a list of the target layer ref code, as well as the aggregated indicator
+        '''
 
-    dict_keys = ["var_year_0", "var_year_1", "var_year_2", "var_year_3", "var_year_4", "var_year_5"]
-    dictionary = {}
+        start_time = time.clock()
+        # this code scans the dictionary to ensure only complete entries are being searched for in the db
+        var = []
+        var = self.aggregate_args(ajax_dictionary)
+        empty_return = [[]]
 
-    output = {"var_year_0"}
-    counter = 0
-    for x in chosen_indicators:
-        if x != '':
-            # print (x)
-            dictionary[dict_keys[counter]] = retrieve_distinct_years(x)
-            counter += 1
+        result = []
+        if var == []:
+            return empty_return
 
         else:
-            dictionary[dict_keys[counter]] = []
-            counter += 1
+            # this code returns the database array from all valid entries and stores them in a list
+            list = []
+            for i in range(0, len(var)):
+                list.append(retrieve_db_data(self.pool).retrieve_sd_data(var[i][0], var[i][1], var[i][2], var[i][3], var[i][4], var[i][5]))
+            # print (list)
+            var_name = []
+
+            ## the following code copies the layer IDs as the first column into the results list
+            for (j, k) in list[0]:
+                var_name.append(j)
+            result.append(var_name)
+            # print (result)
+
+            ### the following code creates the multiplications of each of the variables and stores them in a list of list
+            interim = []
+            for i in range(0, len(list)):
+                multiplication = []
+                for (k, l) in list[i]:
+                    multiplication.append(float(l) * (float(var[i][6])/100))
+                interim.append(multiplication)
+            # print(interim)
+            ### the following code then sums all the individual items and returns one list
+            interim = [sum(i) for i in zip(*interim)]
+
+            ### the following code then appends the calcualtions to the interim template
+            result.append(interim)
+
+            print(time.clock() - start_time, "seconds")
+            return result
 
 
-    return dictionary
+    def retrieve_table_data(self, ajax_dictionary):
+        ''' THIS FUNCTION THAT AN AJAX DICTIONNARY AS AN INPUT
+        it returns a list of lists of the format output = [[ID1,var1, var2.],[ID2, var1, var2...],[etc
+        this can be used to poplate the table
+        '''
+
+        start_time = time.clock()
+        empty_return = [[]]
+
+        # this code scans the dictionary to ensure only complete entries are being searched for in the db
+        var = []
+        var = self.aggregate_args(ajax_dictionary)
+
+        # this checks whether the aggreagted indicator comes back empty - if it does no valid
+        # combination has been submitted, just return empty list
+        if var == []:
+            return empty_return
+        else:
+            ## this code returns the aggregated indicator from the database
+            aggregated_indicator = self.retrieve_indicator(ajax_dictionary)
+            aggregated_indicator = aggregated_indicator[1]
+            # print(aggregated_indicator)
 
 
-def retrieve_single_indic(ajax_dictionary):
-    start_time = time.clock()
-    # this code scans the dictionary to ensure only complete entries are being searched for in the db
-    var = []
-    var = aggregate_args(ajax_dictionary)
-    empty_return = [[]]
+            # this code returns the database array from all valid entries and stores them in a list
+            list = []
+            dictionary_keys = []
+            dictionary_keys.append("Kennziffer")
+            for i in range(0, len(var)):
+                list.append(retrieve_db_data(self.pool).retrieve_data(var[i][0], var[i][1], var[i][2], var[i][3], var[i][4]))
+                dictionary_keys.append(var[i][0] + " " + var[i][1])
+            # print(list)
+            result = []
+            var_name = []
+            # print (dictionary_keys)
+            loop_time = time.clock()
+            ## the following code copies the layer IDs as the first column into the results list
+            for (j, k) in list[0]:
+                var_name.append([j])
+            result = var_name
+            # print (result)
 
-    result = []
-    if var == []:
-        return empty_return
+            ## the following converts all of this into a list of lists in the right format
+            for x in list:
+                count = 0
+                for (j, k) in x:
+                    result[count].append(k)
+                    count += 1
 
-    else:
-        # this code returns the database array from all valid entries and stores them in a list
-        list = []
-        for i in range(0, 1):
-            list.append(retrieve_data(var[i][0], var[i][1], var[i][2], var[i][3], var[i][4]))
-        # print (list)
-        # print (len(list))
-        ## the following code copies the layer IDs as the first column into the results list
-        var_name = []
-        for (j, k) in list[0]:
-            var_name.append(j)
-        result.append(var_name)
+            # the following converts this into a list of dicts
+            target_dict = []
+            aggreg_count = 0
+            for x in result:
+                count = 0
+                temp_dict = {}
+                for y in x:
+                    if isinstance(y, str):
+                        temp_dict[dictionary_keys[count]] = y
+                    else:
+                        temp_dict[dictionary_keys[count]] = round(float(y), 2)
 
-        indicator = []
-        for (j, k) in list[0]:
-            indicator.append(k)
-        result.append(indicator)
+                    count += 1
+                ### the following lines of code add the value from the aggreagted indicator
+                temp_dict["selbstersteller_Indikator"] = round(float(aggregated_indicator[aggreg_count]), 2)
+                aggreg_count += 1
+                ## and finally, the following lines of code append the dict to the summary list output
+                target_dict.append(temp_dict)
 
-        print(time.clock() - start_time, "seconds")
-        return result
+            print(time.clock()- loop_time, "seconds for the loop")
+            # print(target_dict)
+            print(time.clock() - start_time, "seconds")
+            return target_dict
+
+    def retrieve_var_year (self, ajax_dictionary):
+        chosen_indicators = []
+        for k,v in ajax_dictionary.items():
+            chosen_indicators.append(v[0])
+
+        dict_keys = ["var_year_0", "var_year_1", "var_year_2", "var_year_3", "var_year_4", "var_year_5"]
+        dictionary = {}
+
+        output = {"var_year_0"}
+        counter = 0
+        for x in chosen_indicators:
+            if x != '':
+                # print (x)
+                dictionary[dict_keys[counter]] = retrieve_db_data(self.pool).retrieve_distinct_years(x)
+                counter += 1
+
+            else:
+                dictionary[dict_keys[counter]] = []
+                counter += 1
+
+
+        return dictionary
+
+
+    def retrieve_single_indic(self, ajax_dictionary):
+        start_time = time.clock()
+        # this code scans the dictionary to ensure only complete entries are being searched for in the db
+        var = []
+        var = self.aggregate_args(ajax_dictionary)
+        empty_return = [[]]
+
+        result = []
+        if var == []:
+            return empty_return
+
+        else:
+            # this code returns the database array from all valid entries and stores them in a list
+            list = []
+            for i in range(0, 1):
+                list.append(retrieve_db_data(self.pool).retrieve_data(var[i][0], var[i][1], var[i][2], var[i][3], var[i][4]))
+            # print (list)
+            # print (len(list))
+            ## the following code copies the layer IDs as the first column into the results list
+            var_name = []
+            for (j, k) in list[0]:
+                var_name.append(j)
+            result.append(var_name)
+
+            indicator = []
+            for (j, k) in list[0]:
+                indicator.append(k)
+            result.append(indicator)
+
+            print(time.clock() - start_time, "seconds")
+            return result
 
 #### test the code like that
 #

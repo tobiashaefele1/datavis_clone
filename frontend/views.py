@@ -2,15 +2,20 @@ import json
 
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.views.decorators.csrf import csrf_exempt
 
-from server.data.aggregateindic import retrieve_indicator, retrieve_table_data, retrieve_var_year, retrieve_single_indic
-from server.data.retrieve_db_data import (retrieve_col_names,
-                                          retrieve_col_years, retrieve_data, retrieve_metadata,
-                                          retrieve_year_dict_from_db)
+from server.data.aggregateindic import aggregateindic
+from server.data.retrieve_db_data import retrieve_db_data
+from pymysqlpool.pool import Pool
+import pymysql
 
 
 # Create your views here.
+pool = Pool(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
+
+                                      db='mydb',
+                                      user='admin',
+                                      password='NPmpMe!696rY',
+                                        cursorclass=pymysql.cursors.Cursor)
 
 def index(request):
     # received_data = {}
@@ -18,32 +23,34 @@ def index(request):
     # table_data = []
     # single_indic_data = []
     ### on load
+
+
     if request.method == "GET":
-        all_years = retrieve_year_dict_from_db()
-        metadata = retrieve_metadata()
+        all_years = retrieve_db_data(pool).retrieve_year_dict_from_db()
+        metadata = retrieve_db_data(pool).retrieve_metadata()
+        metadata = retrieve_db_data(pool).retrieve_metadata()
         col_names_ref = ['Einwohner 15-65_100', 'Einwohner gesamt_100', 'Erwerbspersonen gesamt_100', 'Erwerbstätige gesamt_100', 'Fläche_100']  # this returns all unique labels for standardisation drop downs
-        years_ref = retrieve_col_years("reference")
+        years_ref = retrieve_db_data(pool).retrieve_col_years("reference")
         # years_var = retrieve_col_years("Kreise")
         setup_dict = {'var_1': ['Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200', '2009-12', 'Erwerbspersonen gesamt_100', '2011', 'AMR_12', 'NIB', '45'],
         'var_2': ['Lohn pro Beschäftigtem 2010 _ORIGINAL_200', '2010', 'Erwerbstätige gesamt_100', '2011', 'AMR_12', 'HIB', '40'],
         'var_3': ['Erwerbstätigenprognose _ORIGINAL_200', '2011-18', 'Erwerbstätige gesamt_100', '2012', 'AMR_12', 'HIB', '7.5'],
         'var_4': ['Infrastrukturindikator_ORIGINAL_200', '2012', 'Erwerbstätige gesamt_100', '2012', 'AMR_12', 'HIB', '7.5'],
         'var_5': ['', '', '', '', 'KRS_15', 'HIB', ''], 'var_6': ['', '', '', '', 'KRS_15', 'HIB', '']}
-        table_data = retrieve_table_data(setup_dict)
-        var_year_data = retrieve_var_year(setup_dict)
-        single_indic_data = retrieve_single_indic(setup_dict)
-        indicator_data = retrieve_indicator(setup_dict)
-        col_names_var = retrieve_col_names("Kreise")  # this returns all unique column names from the KREISE table
-        # print(indicator_data)
-        # print (single_indic_data)
+        table_data = aggregateindic(pool).retrieve_table_data(setup_dict)
+        var_year_data = aggregateindic(pool).retrieve_var_year(setup_dict)
+        single_indic_data = aggregateindic(pool).retrieve_single_indic(setup_dict)
+        indicator_data = aggregateindic(pool).retrieve_indicator(setup_dict)
+        col_names_var = retrieve_db_data(pool).retrieve_col_names("Kreise")  # this returns all unique column names from the KREISE table
+        # print(metadata)
 
     if request.method == 'POST':
         received_data = (dict(request.POST))
         print(received_data)
-        var_year_data = retrieve_var_year(received_data)
-        single_indic_data = retrieve_single_indic(received_data)
-        indicator_data = retrieve_indicator(received_data)
-        table_data = retrieve_table_data(received_data)
+        var_year_data = aggregateindic(pool).retrieve_var_year(received_data)
+        single_indic_data = aggregateindic(pool).retrieve_single_indic(received_data)
+        indicator_data = aggregateindic(pool).retrieve_indicator(received_data)
+        table_data = aggregateindic(pool).retrieve_table_data(received_data)
 
         # print(indicator_data)
         # print (single_indic_data)
