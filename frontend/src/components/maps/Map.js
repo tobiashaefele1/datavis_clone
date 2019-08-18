@@ -204,12 +204,13 @@ class Map extends Component {
     // formula to generate values for threshold scale via Quantize method
   valueQuantize = (x) => {
       // the three dots convert the array into a list so they can be used as input for Math.min and Math.max
-      console.log(x)
+      // console.log(x)
+      // console.log(this.props.indicator_data[1])
       let DomMin = Math.min(...(this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]));
       let DomMax = Math.max(...(this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]));
       // let DomStep = (DomMax - DomMin) / (this.props.current_color.length);
-      console.log(DomMin)
-      console.log(DomMax)
+      // console.log(DomMin)
+      // console.log(DomMax)
 
       const QuantizeScale = d3.scaleQuantize()
             .domain([DomMin, DomMax])
@@ -229,8 +230,8 @@ class Map extends Component {
 
   // formulae to create the legend labels
   legend_labels = (x) => {
-      console.log(typeof this.props.current_map[0].properties.indicator)
-        if (typeof this.props.current_map[0].properties.indicator === 'undefined') {
+      // console.log(typeof this.props.current_map[0].properties.indicator)
+        if (typeof this.props.current_map[0].properties.indicator === 'undefined' || this.props.indicator_data[1] === undefined) {
         return ['n/a', 'n/a']}
       else {
           if (this.props.currentScale == 0) {
@@ -256,9 +257,9 @@ class Map extends Component {
 
   // formula to create the values for the color on the map
   color = (x) => {
-      console.log(x)
-      if (x == null || x === undefined) {
-        return '#b3daff';
+      // console.log(x)
+      if (x == null || x === undefined || this.props.indicator_data[1] === undefined) {
+        return '#6C7B8B';
       } else {
           if(this.props.currentScale == 0)
                 {

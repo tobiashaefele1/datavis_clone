@@ -34,7 +34,7 @@ def index(request):
         single_indic_data = retrieve_single_indic(setup_dict)
         indicator_data = retrieve_indicator(setup_dict)
         col_names_var = retrieve_col_names("Kreise")  # this returns all unique column names from the KREISE table
-        print(indicator_data)
+        # print(indicator_data)
         # print (single_indic_data)
 
     if request.method == 'POST':
@@ -45,7 +45,7 @@ def index(request):
         indicator_data = retrieve_indicator(received_data)
         table_data = retrieve_table_data(received_data)
 
-        print(indicator_data)
+        # print(indicator_data)
         # print (single_indic_data)
         # print (var_year_data)
         data = {'indicator_data': indicator_data, 'table_data': table_data, 'var_year_data': var_year_data,
