@@ -111,8 +111,10 @@ class retrieve_db_data:
             output = self.retrieve_data(var_name, var_year, ref_name, ref_year, layer)
 
         finally:
+            # print(output)
             # closing database connection.
             output = output[0][1]
+            # print(output)
             # print (output)
             self.pool.release(mySQLconnection)
             print("MySQL connection is closed")
@@ -191,7 +193,7 @@ class retrieve_db_data:
         return (Standard_deviation)
 
 
-    def scale_HIB(data, fed_avg, SD):
+    def scale_HIB(self, data, fed_avg, SD):
         # print("scale_HIB")
         ''' this function standardises and scales a dataset according to GRW methodology, where higher values
             result in a higher score, this formula currently returns a tuple list'''
@@ -227,6 +229,9 @@ class retrieve_db_data:
         data = self.retrieve_data(var_name, var_year, ref_name, ref_year, layer)
         sd = self.retrieve_sd(var_name, var_year, ref_name, ref_year, layer)
         fed_avg = self.retrieve_fed_avg(var_name, var_year, ref_name, ref_year, layer)
+        # print(data)
+        # print(sd)
+        # print(fed_avg)
 
         if scale == "HIB":
             output = self.scale_HIB(data, fed_avg, sd)
