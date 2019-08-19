@@ -187,8 +187,11 @@ class retrieve_db_data:
         for i in range(0, len(data)):
             # print(ref_share)
             # print (((data[i][1])-(fed_avg))**2)
-            Standard_deviation += (((data[i][1]) - (fed_avg)) ** 2) * (ref_share[i])
-            # print ( (((data[i][1])-(fed_avg))**2)*(ref_share[i]))
+            try:
+                Standard_deviation += (((data[i][1]) - (fed_avg)) ** 2) * (ref_share[i])
+                # print ( (((data[i][1])-(fed_avg))**2)*(ref_share[i]))
+            except:
+                Standard_deviation = 0
 
         Standard_deviation = math.sqrt(Standard_deviation / len(data))
 
