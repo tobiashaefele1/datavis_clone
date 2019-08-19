@@ -10,9 +10,12 @@ import {connect} from 'react-redux';
  */
 class SVGExportButton extends Component {
     exportsvg = () => {
-      let svgData = $('#map')[0];
+      let svgData = $('#svg')[0];
       const serial = new XMLSerializer();
-      svgData = serial.serializeToString(svgData);
+	  svgData = serial.serializeToString(svgData);
+	  let mapLogo = $('#map_logo')[0];
+	  mapLogo = serial.serializeToString(mapLogo);
+	  svgData += mapLogo
       const svgBlob = new Blob([svgData],
           {type: 'image/svg+xml;charset=utf-8'});
       const svgUrl = URL.createObjectURL(svgBlob);

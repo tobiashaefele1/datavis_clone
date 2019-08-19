@@ -115,7 +115,7 @@ export class Main_selector extends Component {
       const data = {
 
         'var_1': [this.props.value_dic['var_name_0'],
-          this.props.value_dic['var_year_0'],
+          (this.props.value_dic['var_year_0'] == 0 ? this.props.all_years['var_name_0'][0] : this.props.value_dic['var_year_0']),
           this.props.value_dic['ref_name_0'],
           this.props.value_dic['ref_year_0'],
           this.props.map_name[this.props.count_map],
