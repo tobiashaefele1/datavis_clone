@@ -30,7 +30,7 @@ class Map extends Component {
 
 
   headline = () => {
-      return (this.props.view_multiple ? "Zusammengesetzter Indikator" : `${this.props.metadata[this.props.value_dic['var_name_0']].csvname}, ${this.props.value_dic['var_year_0']} ` )
+      return (this.props.view_multiple ? "Zusammengesetzter Indikator" : `${this.props.metadata[`${this.props.value_dic['var_name_0']}`].csvname}, ${this.props.value_dic['var_year_0']} ` )
   }
 
   renderlogo = () => {
@@ -414,8 +414,9 @@ function mapStateToProps(state) {
     single_indic_data: state.single_indic_data,
     current_color: state.current_color,
 	  currentScale: state.currentScale,
-	  loading: state.loading,
 	  firstload: state.firstload,
+      value_dic: state.value_dic,
+      metadata: state.metadata,
   };
 }
 
