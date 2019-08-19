@@ -23,6 +23,7 @@ export class Main_selector extends Component {
         // this function is actually being called - it calls Handlechange and - once it is complete, an ajaxRequest
     handleChangeProm = (e) => {
         this.handleChange(e).then(() => {
+					this.props.dispatch({type: 'LOADINGCHANGE'})	
                   this.ajaxRequest();
           });
 	
@@ -72,9 +73,10 @@ export class Main_selector extends Component {
           prevProps.view_multiple !== this.props.view_multiple ||
          prevProps.count_map !== this.props.count_map) {
 			 console.log('from main_selector')
-		this.props.dispatch({type: 'LOADINGCHANGE'})	 
+			this.props.dispatch({type: 'LOADINGCHANGE'})	
         this.ajaxRequest();
 	  }
+
 	  if(this.props.view_multiple){
 		var percentage = 0;
 		for (var i in this.props.indikators){
