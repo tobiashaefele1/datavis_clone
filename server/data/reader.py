@@ -23,7 +23,7 @@ def index_column(column, cursor, table_name):
     cursor.execute(sql)
 
 
-def create_table_and_load_data(data, data_code=100, data_base_name="mydb", table_name="KREISE"):
+def create_table_and_load_data(data, data_code=100, data_base_name="mydb", table_name="kreise"):
     """
     Function to create a table and load data into the DB for a given data object
     :param data: The data object that contains the labels and tuple data
@@ -33,7 +33,7 @@ def create_table_and_load_data(data, data_code=100, data_base_name="mydb", table
     :return:
     """
     data.convert_to_array_sql()
-    data_base = pymysql.connect("localhost", "user", "password", data_base_name)
+    data_base = pymysql.connect("bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com", "admin", "NPmpMe!696rY", data_base_name)
     cursor = data_base.cursor()
     with warnings.catch_warnings():
         warnings.simplefilter('ignore')
@@ -53,7 +53,7 @@ def create_table_and_load_data(data, data_code=100, data_base_name="mydb", table
     data_base.close()
 
 
-def add_columns(data, cursor, data_code=100, table_name='KREISE'):
+def add_columns(data, cursor, data_code=100, table_name='kreise'):
     """
     This function adds the data's unique labels as columns to a db table.
     :param data: the data object that contains the columns
@@ -74,7 +74,7 @@ def add_columns(data, cursor, data_code=100, table_name='KREISE'):
             cursor.execute("ALTER TABLE `%s` ADD COLUMN `%s` DOUBLE" % (table_name, new_label))
 
 
-def add_tuples(data, cursor, table_name="KREISE"):
+def add_tuples(data, cursor, table_name="kreise"):
     """
     This function adds the sql_data of the data object to a table in the DB.
     :param data: the data object that contains the sql_data
@@ -93,7 +93,7 @@ def add_tuples(data, cursor, table_name="KREISE"):
     cursor.executemany(sql, data.sql_data)
 
 
-def add_tuples_new(data, data_base, data_code=100, table_name="KREISE"):
+def add_tuples_new(data, data_base, data_code=100, table_name="kreise"):
     """
     This function adds the sql_data of the data object to a table in the DB.
     It also checks if the tuple already exists.
@@ -202,9 +202,9 @@ def prepare_update_sql(list_columns, list_values, data_code=100):
         if list_values[i[0]] is not None:
             if len(i[1]) >= 50:
                 new_label = i[1][:50] + '_' + str(data_code)
-                string = string + '`' + new_label + '`' + '= ' + str(list_values[i[0]]) + ', '
+                string = string + '`' + new_label + '`' + '= ' + '\'' + str(list_values[i[0]]) + '\'' + ', '
             else:
                 string = string + '`' + i[1] \
-                         + '_' + str(data_code) + '`' + '= ' + str(list_values[i[0]]) + ', '
+                         + '_' + str(data_code) + '`' + '= ' + '\'' + str(list_values[i[0]]) + '\'' + ', '
     string = string.replace(" None", " Null")
     return string[:-2]
