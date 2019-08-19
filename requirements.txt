@@ -1,3 +1,4 @@
+pymysqlpool
 sqlalchemy
 django
 django-heroku

@@ -9,7 +9,7 @@ const initalState = {
     ['Einwohner (2017)', 'placeholder'],
     ['Fläche (km2)', 'placeholder'],
     ['Bundesland', 'placeholder'],
-    ['MapValue', 'placeholder']],
+    ['Angezeigter Wert', 'placeholder']],
 
   currentScale: 0,
   scaleOptions: [0,1,2],

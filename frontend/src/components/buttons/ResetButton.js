@@ -10,7 +10,7 @@ import {connect} from 'react-redux';
 class ResetButton extends Component {
 	
 	handleButtonReset = () => {
-	    #TODO: this news a promise function, otherwis the order isnt right
+	    // # TODO: this news a promise function, otherwis the order isnt right
 		this.props.dispatch({type: 'LOADINGCHANGE'})
 		this.props.dispatch({type: 'RESET'})
 		this.props.dispatch({type: 'CHANGEVARS'})
@@ -25,7 +25,7 @@ class ResetButton extends Component {
     render() {
       
         return (
-			<button onClick={this.handleButtonReset.bind(this)}>Zurücksetzen</button>
+			<button onClick={this.handleButtonReset.bind(this)}>Zurücksetzen auf GRW 12</button>
 		 
         );
       }
