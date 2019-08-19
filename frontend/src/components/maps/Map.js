@@ -30,7 +30,7 @@ class Map extends Component {
 
 
   headline = () => {
-      return (this.props.view_multiple ? "Zusammengesetzter Indikator" : "Individueller Indikator")
+      return (this.props.view_multiple ? "Zusammengesetzter Indikator" : `${this.props.metadata[this.props.value_dic['var_name_0']].csvname}, ${this.props.value_dic['var_year_0']} ` )
   }
 
   renderlogo = () => {

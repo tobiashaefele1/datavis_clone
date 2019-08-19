@@ -16,6 +16,27 @@ class ResetButton extends Component {
 		this.props.dispatch({type: 'CHANGEVARS'})
     }
 
+    handleResetButton(data){
+      // console.log(data);
+        return new Promise((resolve, reject) => {
+            this.props.dispatch({type: 'UPDATEDATA', data: data});
+      if ("1" == "1") {
+        resolve(console.log("it worked"));
+      } else {
+        reject(Error(console.log("It broke")));
+      }
+    });
+    };
+
+
+
+
+
+
+
+
+
+
     /**
      *Render fucntion for the ResetButton class.
      *
