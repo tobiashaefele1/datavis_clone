@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import 'd3';
 import * as d3 from 'd3';
 import {connect} from 'react-redux';
-import {Spinner} from 'reactstrap';
+
 import ResetButton from '../buttons/ResetButton';
 
 

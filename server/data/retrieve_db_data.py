@@ -34,14 +34,14 @@ class retrieve_db_data:
                                 FROM (
                                       SELECT 
                                              mapping.`%s`, 
-                                             SUM(Kreise.`%s` * reference.`%s`) as absvalue
+                                             SUM(kreise.`%s` * reference.`%s`) as absvalue
                                       FROM 
-                                              Kreise 
+                                              kreise 
                                       LEFT JOIN mapping
-                                            ON Kreise.Kennziffer=mapping.KRS_15
+                                            ON kreise.Kennziffer=mapping.KRS_15
                                       LEFT JOIN reference
-                                             ON Kreise.Kennziffer=reference.Kennziffer 
-                                      WHERE Kreise.YEAR = '%s' AND reference.Year = '%s'
+                                             ON kreise.Kennziffer=reference.Kennziffer 
+                                      WHERE kreise.YEAR = '%s' AND reference.Year = '%s'
                                       GROUP BY mapping.`%s`
                                       ORDER BY mapping.`%s` ASC
                                        ) a
@@ -97,11 +97,11 @@ class retrieve_db_data:
         mySQLconnection = self.pool.get_conn()
 
         try:
-            # Returns quiery with tuple [(layer_ID, value)] for federal average at Kreise level, IF IT EXISTS.
+            # Returns quiery with tuple [(layer_ID, value)] for federal average at kreise level, IF IT EXISTS.
             sql_select_Query = (""" SELECT 
-                                           Kreise.KENNZIFFER, Kreise.`%s`
-                                           FROM Kreise 
-                                           WHERE Kreise.YEAR = '%s' AND Kreise.Kennziffer = "01001" """ % (
+                                           kreise.KENNZIFFER, kreise.`%s`
+                                           FROM kreise 
+                                           WHERE kreise.YEAR = '%s' AND kreise.Kennziffer = "01001" """ % (
                 fed_avg_name, var_year))
 
             # executed quiery and closes cursor
@@ -330,7 +330,7 @@ class retrieve_db_data:
         # Returns quiery with all years for a given variable
         sql_select_Query = (""" SELECT
                                     DISTINCT `YEAR`
-                                FROM `Kreise`
+                                FROM `kreise`
                                 WHERE `%s` IS NOT NULL; """ % (var_name))
         try:
             # executed quiery and closes cursor
@@ -355,7 +355,7 @@ class retrieve_db_data:
 
 
     def retrieve_complete_col_years(self):
-        ''' this function returns a list of list with all the unique variables in KREISE and the years which are not
+        ''' this function returns a list of list with all the unique variables in kreise and the years which are not
         null in this list. HOWEVER, the function is incredibly slow. Perhaps it should go into setup.py and be run once
         at the beginning of creating the database'''
         #TODO: ask Ben about whether there is a way to do this in one quiery
@@ -422,7 +422,7 @@ class retrieve_db_data:
 
 
     def insert_all_years_into_db(self):
-        # retrieve all the data that we have for th respective variables from Kreise
+        # retrieve all the data that we have for th respective variables from kreise
         data = self.retrieve_complete_col_years()
 
         # define name for new db table
@@ -577,7 +577,7 @@ class retrieve_db_data:
 
 # # TESTS FOR THIS SECTION
 #
-# col_years = retrieve_col_years("Kreise")
+# col_years = retrieve_col_years("kreise")
 # print (col_years)
 #
 
@@ -613,27 +613,27 @@ class retrieve_db_data:
 '''
 # throw away code:
 
-    # this selects any variable for any year from Kreise and returns array with tuples [(Kennziffer, value),()...]
-    sql_select_Query = (""" SELECT Kennziffer, `%s` from Kreise where YEAR = '%s' """ % (var_name, var_year))
+    # this selects any variable for any year from kreise and returns array with tuples [(Kennziffer, value),()...]
+    sql_select_Query = (""" SELECT Kennziffer, `%s` from kreise where YEAR = '%s' """ % (var_name, var_year))
 
    # this selects any variable for any year from Reference and returns array with tuples [(Kennziffer, value),()...]
     sql_select_Query = (""" SELECT Kennziffer, `%s` from REFERENCE where YEAR = '%s' """ % (ref_name, ref_year))
 
     # this quiery selects any variable at any layer and builds the SIMPLE average
-    sql_select_Query = (""" SELECT mapping.AMR_15, Kreise.`Einwohner Gesamt_100`
-                        FROM Kreise 
+    sql_select_Query = (""" SELECT mapping.AMR_15, kreise.`Einwohner Gesamt_100`
+                        FROM kreise 
                         LEFT JOIN mapping 
-                        ON Kreise.Kennziffer=mapping.KRS_15 
+                        ON kreise.Kennziffer=mapping.KRS_15 
                         WHERE YEAR = 2015
                         GROUP BY mapping.AMR_15
                         """)
-    sql_select_Query = (""" SELECT mapping.AMR_12, Kreise.`Arbeitslosenquote_100`, Reference.`Einwohner gesamt`
-                        FROM Kreise 
+    sql_select_Query = (""" SELECT mapping.AMR_12, kreise.`Arbeitslosenquote_100`, Reference.`Einwohner gesamt`
+                        FROM kreise 
                             LEFT JOIN mapping
-                                ON Kreise.Kennziffer=mapping.KRS_15
+                                ON kreise.Kennziffer=mapping.KRS_15
                             LEFT JOIN REFERENCE
-                                ON Kreise.Kennziffer=Reference.Kennziffer 
-                        WHERE Kreise.YEAR = 2014 AND Reference.Year = 2015
+                                ON kreise.Kennziffer=Reference.Kennziffer 
+                        WHERE kreise.YEAR = 2014 AND Reference.Year = 2015
                         GROUP BY mapping.AMR_12
                         """)
 
@@ -662,14 +662,14 @@ class retrieve_db_data:
         sql_select_Query = (""" 
                                 SELECT 
                                     mapping.`%s`, 
-                                    SUM(Kreise.`%s` * Reference.`%s`)
+                                    SUM(kreise.`%s` * Reference.`%s`)
                                 FROM 
-                                Kreise 
+                                kreise 
                                 LEFT JOIN mapping
-                                    ON Kreise.Kennziffer=mapping.KRS_15
+                                    ON kreise.Kennziffer=mapping.KRS_15
                                 LEFT JOIN REFERENCE
-                                    ON Kreise.Kennziffer=Reference.Kennziffer 
-                                WHERE Kreise.YEAR = '%s' AND Reference.Year = '%s'
+                                    ON kreise.Kennziffer=Reference.Kennziffer 
+                                WHERE kreise.YEAR = '%s' AND Reference.Year = '%s'
                                 GROUP BY mapping.`%s`
                                 ORDER BY mapping.`%s` ASC""" % (layer, var_name, ref_name, var_year, ref_year, layer, layer) )
 
