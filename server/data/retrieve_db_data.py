@@ -5,7 +5,7 @@ import math
 import pandas as pd
 from pymysql import Error
 import time
-from pymysqlpool.pool import Pool
+import pymysql
 
 
 
@@ -440,7 +440,7 @@ class retrieve_db_data:
 
         ## add all the columns
         ## retrieve list of all the required columns
-        col_years = self.retrieve_col_years("Kreise")
+        col_years = self.retrieve_col_years("kreise")
 
         ## and drop them into the database as columns
         for x in col_years:

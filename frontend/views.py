@@ -11,7 +11,6 @@ import pymysql
 
 # Create your views here.
 pool = Pool(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
-
                                       db='mydb',
                                       user='admin',
                                       password='NPmpMe!696rY',
@@ -41,7 +40,7 @@ def index(request):
         var_year_data = aggregateindic(pool).retrieve_var_year(setup_dict)
         single_indic_data = aggregateindic(pool).retrieve_single_indic(setup_dict)
         indicator_data = aggregateindic(pool).retrieve_indicator(setup_dict)
-        col_names_var = retrieve_db_data(pool).retrieve_col_names("Kreise")  # this returns all unique column names from the KREISE table
+        col_names_var = retrieve_db_data(pool).retrieve_col_names("kreise")  # this returns all unique column names from the KREISE table
         # print(metadata)
 
     if request.method == 'POST':
