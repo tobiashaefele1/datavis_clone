@@ -34,16 +34,16 @@ Kreise_data = Data(link_to_Kreise_data)  # WORKS!!!
 
 
 # load in all the data to DB
-mapping_to_db(link_to_mapping_file)                                     # load in Mapping file to DB
-
-create_table_and_load_data(Kreise_data)                                 # load in Kreise data
-
-
-data_base = pymysql.connect("bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com", "admin", "NPmpMe!696rY", "mydb")
-cursor = data_base.cursor()
+# mapping_to_db(link_to_mapping_file)                                     # load in Mapping file to DB
 #
-add_columns(AMR12_data, cursor, data_code=200)                          # load in AMR12 data
-add_tuples_new(AMR12_data, data_base=data_base, data_code=200)
+# create_table_and_load_data(Kreise_data)                                 # load in Kreise data
+#
+#
+# data_base = pymysql.connect("bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com", "admin", "NPmpMe!696rY", "mydb")
+# cursor = data_base.cursor()
+# #
+# add_columns(AMR12_data, cursor, data_code=200)                          # load in AMR12 data
+# add_tuples_new(AMR12_data, data_base=data_base, data_code=200)
 
 add_columns(AMR15_data, cursor, data_code=300)                           # load in AMR15 data
 add_tuples_new(AMR15_data, data_base=data_base, data_code=300)
