@@ -11,15 +11,25 @@ class ResetButton extends Component {
 	
 	handleButtonReset = () => {
 	    // # TODO: this news a promise function, otherwis the order isnt right
+        this.handleButtonResetProm().then(() => {
+                  this.props.dispatch({type: 'RESET'})
+
+
+                  this.changeVars();
+          });
+
+
+
 		this.props.dispatch({type: 'LOADINGCHANGE'})
 		this.props.dispatch({type: 'RESET'})
 		this.props.dispatch({type: 'CHANGEVARS'})
     }
 
-    handleResetButton(data){
+    handleButtonResetProm(){
       // console.log(data);
         return new Promise((resolve, reject) => {
-            this.props.dispatch({type: 'UPDATEDATA', data: data});
+            this.props.dispatch({type: 'LOADINGCHANGE'});
+            this.props.dispatch({type: 'RESET'});
       if ("1" == "1") {
         resolve(console.log("it worked"));
       } else {
