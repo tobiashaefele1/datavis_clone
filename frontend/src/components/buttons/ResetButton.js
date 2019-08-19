@@ -22,9 +22,9 @@ class ResetButton extends Component {
             this.props.dispatch({type: 'LOADINGCHANGE'});
             this.props.dispatch({type: 'RESET'});
       if ("1" == "1") {
-        resolve(console.log("it worked"));
+        resolve(console.log("reset worked"));
       } else {
-        reject(Error(console.log("It didn't work")));
+        reject(Error(console.log("reset didn't work")));
       }
     });
     };
