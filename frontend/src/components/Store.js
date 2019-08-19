@@ -160,6 +160,8 @@ function reducer(state = initalState, action) {
 	  });
 	case 'RESET':
 		return produce(state, (draft)=>{
+            draft.indicator_data = JSON.parse(context.indicator_data);
+            draft.single_indic_data = JSON.parse(context.single_indic_data);
 			draft.indikator_counter = 4;
 			draft.indikators = ['indikator 1', 'indikator 2', 'indikator 3', 'indikator 4'];
 			draft.current_map = state.amr12;

@@ -12,7 +12,9 @@ class ResetButton extends Component {
 	handleButtonReset = () => {
         this.handleButtonResetProm().then(() => {
                   this.props.dispatch({type: 'CHANGEVARS'});
-                  console.log(this.props.indicator_data)
+                  this.props.dispatch({type:'UPDATECOLUMNS'})
+                  // console.log(this.props.indicator_data[1])
+
           });
 
     }

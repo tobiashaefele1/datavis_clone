@@ -51,7 +51,7 @@ def index(request):
         indicator_data = aggregateindic(pool).retrieve_indicator(received_data)
         table_data = aggregateindic(pool).retrieve_table_data(received_data)
 
-        print(indicator_data)
+        # print(indicator_data)
         # print (single_indic_data)
         # print (var_year_data)
         data = {'indicator_data': indicator_data, 'table_data': table_data, 'var_year_data': var_year_data,
