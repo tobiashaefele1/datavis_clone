@@ -70,15 +70,19 @@ class Info extends Component {
           <div>
             <div id="settings" className="import_modal">
               <div className="import_modal-content">
-
-                // #TODO: fix the button and the info.js modal so that I can write text into it.
                 <span className="close"
                   onClick={this.closeInfo.bind(this)}>&times;</span>
-                <h3>Darstellung</h3>
-                <h3>Farbpaletten:</h3>
+                    <h3>Infos</h3>
+                  <text>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac aliquam ipsum, quis egestas libero. Proin tempus felis a erat vestibulum consequat. Mauris non massa nisl. Maecenas gravida dui et tortor ultricies, vel dapibus lectus convallis. Vestibulum tempus laoreet malesuada. Sed fringilla ultrices urna, at commodo lacus finibus facilisis. Duis aliquet lacus sollicitudin molestie ultrices. Aenean et urna auctor, faucibus ex vel, euismod tortor. Aenean finibus dolor vitae erat mollis laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+
+Pellentesque neque tellus, suscipit sed risus at, condimentum suscipit quam. Sed tempor, sapien quis vestibulum sodales, turpis neque imperdiet libero, ac iaculis diam ante in urna. Nullam maximus rhoncus metus rhoncus tincidunt. Etiam eget ultrices massa, ut molestie magna. Pellentesque laoreet nisl ut tortor consectetur, eu convallis ipsum mattis. Vivamus pellentesque augue ut dignissim placerat. In lacinia porta ornare.
+
+Nulla ultricies nisi et nulla efficitur interdum vitae eget arcu. Aenean eu massa quis nisl egestas lobortis sed nec arcu. Donec dui ante, tincidunt a suscipit non, imperdiet ut leo. Proin fringilla mi eget risus auctor, quis vestibulum leo molestie. Nam nec enim sit amet sem ornare iaculis. Phasellus volutpat vitae turpis ac fermentum. Sed a blandit est. Quisque lacinia consectetur augue maximus laoreet. Pellentesque tellus nibh, auctor et ultricies quis, faucibus non metus. Sed quis velit quis metus iaculis tempus. Vestibulum nunc nibh, pretium eu imperdiet sed, dignissim nec sem. In non ornare risus. Vivamus id tempor velit. Duis ornare nunc et lorem finibus, sit amet tristique nulla mattis.
+
+                  </text>
 
                 <div>
-                  <h3>  Skalen: </h3>
                 </div>
 
               </div>

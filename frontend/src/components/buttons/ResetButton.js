@@ -47,7 +47,7 @@ class ResetButton extends Component {
     render() {
       
         return (
-			<button onClick={this.handleButtonReset.bind(this)}>Zurücksetzen auf GRW 12</button>
+			<button onClick={this.handleButtonReset.bind(this)}>GRW 12</button>
 		 
         );
       }

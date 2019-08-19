@@ -116,7 +116,7 @@ export class Main_selector extends Component {
 
         'var_1': [this.props.value_dic['var_name_0'],
           (
-              this.props.value_dic['var_year_0'] in this.props.all_years[this.props.value_dic['var_name_0']] ? this.props.value_dic['var_year_0'] : this.props.all_years[this.props.value_dic['var_name_0'][0]] ),
+              this.props.value_dic['var_year_0'] in this.props.all_years[this.props.value_dic['var_name_0']] ? this.props.value_dic['var_year_0'] : this.props.all_years[this.props.value_dic['var_name_0']][0] ),
           this.props.value_dic['ref_name_0'],
           this.props.value_dic['ref_year_0'],
           this.props.map_name[this.props.count_map],
@@ -125,7 +125,8 @@ export class Main_selector extends Component {
 
         'var_2': [
           (this.props.indikator_counter > 1 ? this.props.value_dic['var_name_1'] : ''),
-          (this.props.indikator_counter > 1 ? this.props.value_dic['var_year_1'] : ''),
+          (this.props.indikator_counter > 1 ? (
+              this.props.value_dic['var_year_0'] in this.props.all_years[this.props.value_dic['var_name_1']] ? this.props.value_dic['var_year_1'] : this.props.all_years[this.props.value_dic['var_name_1']][0] ) : ''),
           (this.props.indikator_counter > 1 ? this.props.value_dic['ref_name_1'] : ''),
           (this.props.indikator_counter > 1 ? this.props.value_dic['ref_year_1'] : ''),
           this.props.map_name[this.props.count_map],
@@ -133,7 +134,8 @@ export class Main_selector extends Component {
           (this.props.indikator_counter > 1 ? this.props.value_dic['weight_1'] : '')],
         'var_3': [
           (this.props.indikator_counter > 2 ? this.props.value_dic['var_name_2'] : ''),
-          (this.props.indikator_counter > 2 ? this.props.value_dic['var_year_2'] : ''),
+          (this.props.indikator_counter > 2 ? (
+              this.props.value_dic['var_year_1'] in this.props.all_years[this.props.value_dic['var_name_2']] ? this.props.value_dic['var_year_2'] : this.props.all_years[this.props.value_dic['var_name_2'][0]] ) : ''),
           (this.props.indikator_counter > 2 ? this.props.value_dic['ref_name_2'] : ''),
           (this.props.indikator_counter > 2 ? this.props.value_dic['ref_year_2'] : ''),
           this.props.map_name[this.props.count_map],
@@ -141,7 +143,8 @@ export class Main_selector extends Component {
             (this.props.indikator_counter > 2 ? this.props.value_dic['weight_2'] : '')],
         'var_4': [
           (this.props.indikator_counter > 3 ? this.props.value_dic['var_name_3'] : ''),
-          (this.props.indikator_counter > 3 ? this.props.value_dic['var_year_3'] : ''),
+          (this.props.indikator_counter > 3 ? (
+              this.props.value_dic['var_year_0'] in this.props.all_years[this.props.value_dic['var_name_3']] ? this.props.value_dic['var_year_3'] : this.props.all_years[this.props.value_dic['var_name_3']][0] ) : ''),
           (this.props.indikator_counter > 3 ? this.props.value_dic['ref_name_3'] : ''),
           (this.props.indikator_counter > 3 ? this.props.value_dic['ref_year_3'] : ''),
           this.props.map_name[this.props.count_map],
@@ -149,7 +152,8 @@ export class Main_selector extends Component {
             (this.props.indikator_counter > 3 ? this.props.value_dic['weight_3'] : '')],
         'var_5': [
           (this.props.indikator_counter > 4 ? this.props.value_dic['var_name_4'] : ''),
-          (this.props.indikator_counter > 4 ? this.props.value_dic['var_year_4'] : ''),
+          (this.props.indikator_counter > 4 ? (
+              this.props.value_dic['var_year_0'] in this.props.all_years[this.props.value_dic['var_name_4']] ? this.props.value_dic['var_year_4'] : this.props.all_years[this.props.value_dic['var_name_4']][0] ) : ''),
           (this.props.indikator_counter > 4 ? this.props.value_dic['ref_name_4'] : ''),
           (this.props.indikator_counter > 4 ? this.props.value_dic['ref_year_4'] : ''),
           this.props.map_name[this.props.count_map],
@@ -157,7 +161,8 @@ export class Main_selector extends Component {
             (this.props.indikator_counter > 4 ? this.props.value_dic['weight_4'] : '')],
         'var_6': [
           (this.props.indikator_counter > 5 ? this.props.value_dic['var_name_5'] : ''),
-          (this.props.indikator_counter > 5 ? this.props.value_dic['var_year_5'] : ''),
+          (this.props.indikator_counter > 5 ? (
+              this.props.value_dic['var_year_0'] in this.props.all_years[this.props.value_dic['var_name_5']] ? this.props.value_dic['var_year_5'] : this.props.all_years[this.props.value_dic['var_name_5']][0] ) : ''),
           (this.props.indikator_counter > 5 ? this.props.value_dic['ref_name_5'] : ''),
           (this.props.indikator_counter > 5 ? this.props.value_dic['ref_year_5'] : ''),
           this.props.map_name[this.props.count_map],

@@ -414,8 +414,9 @@ function mapStateToProps(state) {
     single_indic_data: state.single_indic_data,
     current_color: state.current_color,
 	  currentScale: state.currentScale,
-	  loading: state.loading,
 	  firstload: state.firstload,
+      value_dic: state.value_dic,
+      metadata: state.metadata,
   };
 }
 
