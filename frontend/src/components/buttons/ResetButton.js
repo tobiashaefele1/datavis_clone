@@ -10,19 +10,10 @@ import {connect} from 'react-redux';
 class ResetButton extends Component {
 	
 	handleButtonReset = () => {
-	    // # TODO: this news a promise function, otherwis the order isnt right
         this.handleButtonResetProm().then(() => {
-                  this.props.dispatch({type: 'RESET'})
-
-
-                  this.changeVars();
+                  this.props.dispatch({type: 'CHANGEVARS'})
           });
 
-
-
-		this.props.dispatch({type: 'LOADINGCHANGE'})
-		this.props.dispatch({type: 'RESET'})
-		this.props.dispatch({type: 'CHANGEVARS'})
     }
 
     handleButtonResetProm(){
@@ -33,7 +24,7 @@ class ResetButton extends Component {
       if ("1" == "1") {
         resolve(console.log("it worked"));
       } else {
-        reject(Error(console.log("It broke")));
+        reject(Error(console.log("It didn't work")));
       }
     });
     };

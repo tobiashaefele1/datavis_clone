@@ -43,6 +43,7 @@ const initalState = {
 
 
   show_modal: false,
+  showInfo: false,
   value_dic: {
     'var_name_0': 'Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200',
     'var_name_1': 'Lohn pro Beschäftigtem 2010 _ORIGINAL_200',
@@ -268,6 +269,12 @@ function reducer(state = initalState, action) {
     case 'MODAL':
       return produce(state, (draft) => {
         draft.show_modal = !state.show_modal;
+      });
+
+
+      case 'INFO':
+          return produce(state, (draft) => {
+              draft.showInfo  = !state.showInfo;
       });
 
     case 'INCREMENTINDIKATOR':
