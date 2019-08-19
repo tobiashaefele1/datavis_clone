@@ -206,8 +206,8 @@ class Map extends Component {
       // the three dots convert the array into a list so they can be used as input for Math.min and Math.max
       // console.log(x)
       // console.log(this.props.indicator_data[1])
-      let DomMin = Math.min(...(this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]));
-      let DomMax = Math.max(...(this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]));
+      let DomMin = Math.min(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
+      let DomMax = Math.max(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
       // let DomStep = (DomMax - DomMin) / (this.props.current_color.length);
       // console.log(DomMin)
       // console.log(DomMax)
@@ -236,13 +236,13 @@ class Map extends Component {
       else {
           if (this.props.currentScale == 0) {
 
-              var output = this.scaleQuantize().invertExtent(this.props.current_color[x]);
+              var output = this.scaleQuantile().invertExtent(this.props.current_color[x]);
                 output[0] = Math.round(output[0]);
                 output[1] = Math.round (output[1]);
                 return output}
 
           else if(this.props.currentScale ==1) {
-              var output = this.scaleQuantile().invertExtent(this.props.current_color[x]);
+              var output = this.scaleQuantize().invertExtent(this.props.current_color[x]);
                 output[0] = Math.round(output[0]);
                 output[1] = Math.round (output[1]);
                 return output}
@@ -265,11 +265,11 @@ class Map extends Component {
                 {
           // console.log(this.props.indicator_data[1]);
         // console.log(dom_input);
-              return this.valueQuantize(x);
+              return this.valueQuantile(x);
                 }
 
            else if(this.props.currentScale == 1)
-          { return this.valueQuantile(x)}
+          { return this.valueQuantize(x)}
 
            else{
              return this.valueInterpolar(x)   }

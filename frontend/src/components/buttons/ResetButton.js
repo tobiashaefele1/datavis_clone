@@ -11,7 +11,8 @@ class ResetButton extends Component {
 	
 	handleButtonReset = () => {
         this.handleButtonResetProm().then(() => {
-                  this.props.dispatch({type: 'CHANGEVARS'})
+                  this.props.dispatch({type: 'CHANGEVARS'});
+                  console.log(this.props.indicator_data)
           });
 
     }
@@ -53,6 +54,12 @@ class ResetButton extends Component {
       }
     
 }
+function mapStateToProps(state) {
+  return {
+    indicator_data: state.indicator_data,
+  };
+}
+
 
 
 export default connect()(ResetButton);

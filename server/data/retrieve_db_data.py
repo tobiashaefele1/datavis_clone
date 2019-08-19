@@ -80,7 +80,6 @@ class retrieve_db_data:
             self.pool.release(mySQLconnection)
             print("MySQL connection is closed")
             print(time.clock() - start_time, "seconds to retrieve data")
-
             return output
 
 
