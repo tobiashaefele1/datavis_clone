@@ -9,7 +9,7 @@ import {connect} from 'react-redux';
  */
 class InfoButton extends Component {
     closeInfo = () => {
-      this.props.dispatch({type: 'MODAL'});
+      this.props.dispatch({type: 'INFO'});
     }
 
     /**

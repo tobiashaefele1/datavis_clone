@@ -73,7 +73,7 @@ class Info extends Component {
 
                 // #TODO: fix the button and the info.js modal so that I can write text into it.
                 <span className="close"
-                  onClick={this.closeModal.bind(this)}>&times;</span>
+                  onClick={this.closeInfo.bind(this)}>&times;</span>
                 <h3>Darstellung</h3>
                 <h3>Farbpaletten:</h3>
 

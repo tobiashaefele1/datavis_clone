@@ -17,6 +17,9 @@ import MinMaxTable from './tables/MinMaxTable';
 import SVGExportButton from './buttons/SVGExportButton';
 import ResetButton from './buttons/ResetButton';
 import TableButton from './buttons/TableButton';
+import InfoButton from "./buttons/InfoButton";
+import Info from "./modals/Info";
+
 
 
 /**
@@ -189,7 +192,9 @@ class App extends Component {
             </div>
             <div className="three columns">
               <SettingsButton/>
+              <InfoButton/>
               <Settings/>
+              <Info/>
             </div>
 
           </div>
