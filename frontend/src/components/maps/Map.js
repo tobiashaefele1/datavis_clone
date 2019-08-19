@@ -336,7 +336,7 @@ class Map extends Component {
 	
         <div id="map">
 
-          <h6 >{this.headline()}  </h6>
+          <h6>{this.headline()}</h6>
 
             <div id = "map_content">
 			{this.loadingCirkle()}
