@@ -14,7 +14,7 @@ pool = Pool(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
                                       db='mydb',
                                       user='admin',
                                       password='NPmpMe!696rY',
-                                        cursorclass=pymysql.cursors.Cursor)
+                                        cursorclass=pymysql.cursors.Cursor, timeout=20.0)
 
 def index(request):
     # received_data = {}
