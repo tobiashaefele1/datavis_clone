@@ -6,6 +6,8 @@ import pandas as pd
 from pymysql import Error
 import time
 import pymysql
+from pymysqlpool.pool import Pool
+
 
 
 
@@ -362,7 +364,7 @@ class retrieve_db_data:
         cursor = mySQLconnection.cursor()
         ## this returns a list of all the column names we want
         result = []
-        col_names = self.retrieve_col_names('Kreise')
+        col_names = self.retrieve_col_names('kreise')
 
         for x in col_names:
             distinct_years = []
@@ -370,7 +372,7 @@ class retrieve_db_data:
             distinct_years.append(x)
             sql_select_Query = (""" SELECT
                                     DISTINCT `YEAR`
-                                FROM `Kreise`
+                                FROM `kreise`
                                 WHERE `%s` IS NOT NULL; """ % (x))
 
             cursor.execute(sql_select_Query)
@@ -378,7 +380,7 @@ class retrieve_db_data:
             for (x,) in mysql_result:
                 distinct_years.append(x)
             result.append(distinct_years)
-            # print(distinct_years)
+            print(distinct_years)
         cursor.close()
         self.pool.release(mySQLconnection)
         print(time.clock()-start_time)
@@ -459,7 +461,7 @@ class retrieve_db_data:
                 col_name_statement[counter] = (""" `%s` """ % (x))
                 counter +=1
 
-            # convert list into string
+         # convert list into string
             col_name_statement = ', '.join(map(str, col_name_statement))
 
             print(col_name_statement)
@@ -469,7 +471,7 @@ class retrieve_db_data:
             sql = (""" INSERT INTO `%s`
                         (%s)
                         VALUES %s; """ % (table_name, col_name_statement, col_value_statement))
-            print (sql)
+            print(sql)
             cursor.execute(sql)
             mySQLconnection.commit()
 
@@ -544,18 +546,18 @@ class retrieve_db_data:
             return filtered_dict
 
 #
-# #TODO: we should think about whether the setup.py should also go in here or not or rather, whether it should also use a pool (I'd say. yes. its much faster)
+# # #TODO: we should think about whether the setup.py should also go in here or not or rather, whether it should also use a pool (I'd say. yes. its much faster)
 # pool = Pool(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
 #
 #                                       db='mydb',
 #                                       user='admin',
 #                                       password='NPmpMe!696rY',
 #                                         cursorclass=pymysql.cursors.Cursor)
-
-
-# test = retrieve_year_dict_from_db(pool).
-
-
+#
+#
+# # test = retrieve_year_dict_from_db(pool).
+#
+#
 # retrieve_db_data(pool).insert_all_years_into_db()
 
 
