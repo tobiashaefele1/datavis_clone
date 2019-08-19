@@ -57,6 +57,7 @@ def index(request):
         data = {'indicator_data': indicator_data, 'table_data': table_data, 'var_year_data': var_year_data,
                 'single_indic_data': single_indic_data}
         # print (data)
+        pool.destroy()
         return HttpResponse(json.dumps(data), content_type="application/json")
 
     context = {
@@ -71,6 +72,7 @@ def index(request):
               'table_data': json.dumps(table_data),
               }
     # print(context)
+    pool.destroy()
     return render(request, 'frontend/index.html', context=context)
 
 

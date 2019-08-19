@@ -466,10 +466,7 @@ function mapStateToProps(state) {
     single_indic_data: state.single_indic_data,
     current_color: state.current_color,
 	  currentScale: state.currentScale,
-<<<<<<< HEAD
 
-=======
->>>>>>> a0435c6585cc5486dc1e224baa3ce31f1be4d11b
 	  firstload: state.firstload,
       value_dic: state.value_dic,
       metadata: state.metadata,
