@@ -73,6 +73,7 @@ def index(request):
               }
     # print(context)
     pool.destroy()
+    print(all_years)
     return render(request, 'frontend/index.html', context=context)
 
 
