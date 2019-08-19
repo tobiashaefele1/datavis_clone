@@ -22,6 +22,7 @@ export class Main_selector extends Component {
 
         // this function is actually being called - it calls Handlechange and - once it is complete, an ajaxRequest
     handleChangeProm = (e) => {
+        console.log("changed has been HANDLED FROM MAIN SELECTOR")
         this.handleChange(e).then(() => {
 					this.props.dispatch({type: 'LOADINGCHANGE'})	
                   this.ajaxRequest();
