@@ -42,6 +42,7 @@ def index(request):
         indicator_data = aggregateindic(pool).retrieve_indicator(setup_dict)
         col_names_var = retrieve_db_data(pool).retrieve_col_names("kreise")  # this returns all unique column names from the KREISE table
         # print(metadata)
+        pool.destroy()
 
     if request.method == 'POST':
         received_data = (dict(request.POST))
@@ -72,7 +73,7 @@ def index(request):
               'table_data': json.dumps(table_data),
               }
     # print(context)
-    pool.destroy()
+
     print(all_years)
     return render(request, 'frontend/index.html', context=context)
 
