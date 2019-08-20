@@ -26,7 +26,7 @@ link_to_reference_data = './resources/Referenzgroessen_input.csv'
 
 #
 # # load in all the data as data objects
-# AMR12_data = readin258AMR(link_to_AMR12_data, link_to_mapping_file, link_to_template_input)  # create AMR12 data object
+AMR12_data = readin258AMR(link_to_AMR12_data, link_to_mapping_file, link_to_template_input)  # create AMR12 data object
 # AMR15_data = readin257AMR(link_to_AMR15_data, link_to_mapping_file, link_to_template_input)   # create AMR15 data object
 # Bund_data = readinBund(link_to_Bund_data, link_to_template_input)                            # create Bund data object
 # reference_data = Data(link_to_reference_data)  #### WORKS!!!!
@@ -43,7 +43,7 @@ data_base = pymysql.connect("bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com", "
 cursor = data_base.cursor()
 # #
 # add_columns(AMR12_data, cursor, data_code=200)                          # load in AMR12 data
-# add_tuples_new(AMR12_data, data_base=data_base, data_code=200)
+add_tuples_new(AMR12_data, data_base=data_base, data_code=200)
 #
 # add_columns(AMR15_data, cursor, data_code=300)                           # load in AMR15 data
 # add_tuples_new(AMR15_data, data_base=data_base, data_code=300)
@@ -75,17 +75,17 @@ cursor = data_base.cursor()
 #
 
 
-pool = Pool(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
-
-                                      db='mydb',
-                                      user='admin',
-                                      password='NPmpMe!696rY',
-                                        cursorclass=pymysql.cursors.Cursor)
+# pool = Pool(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
+#
+#                                       db='mydb',
+#                                       user='admin',
+#                                       password='NPmpMe!696rY',
+#                                         cursorclass=pymysql.cursors.Cursor)
 
 
 
 
 ### this loads all the years data into a separate table in the database so that we can retrieve it from context
-retrieve_db_data(pool).insert_all_years_into_db()
+# retrieve_db_data(pool).insert_all_years_into_db()
 
 

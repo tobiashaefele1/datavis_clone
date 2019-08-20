@@ -178,13 +178,13 @@ function reducer(state = initalState, action) {
 								'var_year_0': '2009-12', 'var_year_1': '2010', 'var_year_2': '2011-18', 'var_year_3': '2012',
 								'var_year_4': null, 'var_year_5': null,
 								'weight_0': 45, 'weight_1': 40, 'weight_2': 7.5, 'weight_3': 7.5,
-								'weight_4': null, 'weight_5': null,
+								'weight_4': 0, 'weight_5': 0,
 								'ref_name_0': 'Erwerbspersonen gesamt_100', 'ref_name_1': 'Erwerbstätige gesamt_100',
 								'ref_name_2': 'Erwerbstätige gesamt_100',
 								'ref_name_3': 'Erwerbstätige gesamt_100',
-								'ref_name_4': null, 'ref_name_5': null,
+								'ref_name_4': 'Erwerbstätige gesamt_100', 'ref_name_5': 'Erwerbstätige gesamt_100',
 								'ref_year_0': '2011', 'ref_year_1': '2011', 'ref_year_2': '2012', 'ref_year_3': '2012',
-								'ref_year_4': null, 'ref_year_5': null,
+								'ref_year_4': 2012, 'ref_year_5': 2012,
 								 }
 			draft.table_columns = [{
 									Header: 'Kennziffer',
