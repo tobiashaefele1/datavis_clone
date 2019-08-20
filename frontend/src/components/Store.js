@@ -28,7 +28,7 @@ const initalState = {
   ror: [],
   bund: [],
   map_name: ['KRS_15', 'AMR_12', 'AMR_15', 'AMR_20', 'ROR11', 'Bundesland_ID'],
-  indikator_counter: 4, // COMMENT TOBIAS: DOES THIS CAUSE PROBLEMS WITH FEEDBACK LOGIC?
+  indikator_counter: 4,
   indikators: ['indikator 1', 'indikator 2', 'indikator 3', 'indikator 4'],
   col_names_var: JSON.parse(context.col_names_var),
   col_names_ref: JSON.parse(context.col_names_ref),
@@ -58,9 +58,9 @@ const initalState = {
     'ref_name_0': 'Erwerbspersonen gesamt_100', 'ref_name_1': 'Erwerbstätige gesamt_100',
     'ref_name_2': 'Erwerbstätige gesamt_100',
     'ref_name_3': 'Erwerbstätige gesamt_100',
-    'ref_name_4': null, 'ref_name_5': null,
+    'ref_name_4': 'Erwerbstätige gesamt_100', 'ref_name_5': 'Erwerbstätige gesamt_100',
     'ref_year_0': '2011', 'ref_year_1': '2011', 'ref_year_2': '2012', 'ref_year_3': '2012',
-    'ref_year_4': null, 'ref_year_5': null,
+    'ref_year_4': 2012, 'ref_year_5': 2012,
   },
   table_columns: [{
     Header: 'Kennziffer',
@@ -249,10 +249,10 @@ function reducer(state = initalState, action) {
         while (draft.table_columns.length > 2) {
           draft.table_columns.pop();
         }
-        for (let i = 0; i < state.indikator_counter; i++) {
+        for (let i = 0; i <= state.indikator_counter; i++) {
           const ColumnName = state.value_dic['var_name_' + i]
           + ' ' + state.value_dic['var_year_' +i];
-
+          console.log(ColumnName)
           if (ColumnName in state.table_data[0]) {
             draft.table_columns.push({
               Header: ColumnName, accessor: ColumnName});

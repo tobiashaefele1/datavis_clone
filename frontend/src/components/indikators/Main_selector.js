@@ -50,11 +50,17 @@ export class Main_selector extends Component {
 
 		if(percentage > 100){
 			for(i in this.props.indikators){
-				document.getElementById(`weight_${i}`).style.background = 'red';
-			}
-		}else{
+				document.getElementById(`weight_${i}`).style.background = 'lightcoral';
+			}}
+		else if(percentage < 100){
+		    for(i in this.props.indikators){
+				document.getElementById(`weight_${i}`).style.background = 'lightsalmon';
+        }}
+
+
+		else{
 			for(i in this.props.indikators){
-				document.getElementById(`weight_${i}`).style.background = '';
+				document.getElementById(`weight_${i}`).style.background = 'palegreen';
 			}
 		}
 	}
