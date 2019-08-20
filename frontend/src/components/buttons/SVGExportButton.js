@@ -38,7 +38,7 @@ class SVGExportButton extends Component {
       const svgUrl = URL.createObjectURL(svgBlob);
       const downloadLink = document.createElement('a');
       downloadLink.href = svgUrl;
-      downloadLink.download = 'map.svg';
+      downloadLink.download = `Karte_BMF_${this.props.view_multiple ? "Zusammengesetzter Indikator" : (this.props.metadata[this.props.value_dic['var_name_0']].csvname + '_' + this.props.value_dic['var_year_0'])}.svg`;
       document.body.appendChild(downloadLink);
       downloadLink.click();
       document.body.removeChild(downloadLink);
