@@ -61,14 +61,14 @@ class ViewPicker extends Component {
                 <div className="row" id = "multiple_button">
                   <button id="aggreg.indic.button"
                     onClick={this.changeViewMultiple.bind(this)}>
-                        einen aggregierten Indikator zusammensetzen
+                        aggregierter Indikator
                   </button>
                 </div>
 
                 <div className = "row" id = "single_button">
                   <button id="single.indic.button"
                     onClick={this.changeViewSingle.bind(this)}>
-                        einzelne Indikatoren ansehen
+                        einzelner Indikator
                   </button>
                 </div>
 

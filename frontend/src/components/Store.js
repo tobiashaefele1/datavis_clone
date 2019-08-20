@@ -1,5 +1,6 @@
 import {createStore} from 'redux';
 import produce from 'immer';
+import Col from "reactstrap/es/Col";
 
 console.log(context);
 
@@ -67,8 +68,8 @@ const initalState = {
     accessor: 'Kennziffer',
   },
   {
-    Header: 'Aggregated',
-    accessor: 'selbstersteller_Indikator',
+    Header: 'aggregierter Indikator',
+    accessor: 'aggregierter Indikator',
   },
   {
     Header: 'Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200 2009-12',
@@ -191,8 +192,8 @@ function reducer(state = initalState, action) {
 									accessor: 'Kennziffer',
 								},
 								{
-									Header: 'Aggregated',
-									accessor: 'selbstersteller_Indikator',
+									Header: 'aggregierter Indikator',
+									accessor: 'aggregierter Indikator',
 								},
 								{
 									Header: 'Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200 2009-12',
@@ -252,8 +253,12 @@ function reducer(state = initalState, action) {
         for (let i = 0; i <= state.indikator_counter; i++) {
           const ColumnName = state.value_dic['var_name_' + i]
           + ' ' + state.value_dic['var_year_' +i];
-          console.log(ColumnName)
+          // console.log(ColumnName);
+          // console.log(state.metadata);
+          // console.log(state.metadata[state.value_dic['var_name_' + i]].csvname);
+
           if (ColumnName in state.table_data[0]) {
+             // const cleanColumnName = state.metadata[state.value_dic['var_name_' + i]].csvname  + ', ' + state.value_dic['var_year_' +i];
             draft.table_columns.push({
               Header: ColumnName, accessor: ColumnName});
           }
@@ -397,7 +402,7 @@ function reducer(state = initalState, action) {
 
       // insertion Tobias: load map here with indicators
     case 'CHANGEVARS':
-		console.log('CHANGEVARS HEREEE')
+		// console.log('CHANGEVARS HEREEE')
       return produce(state, (draft) => {
 		 const template = state.current_map;
        

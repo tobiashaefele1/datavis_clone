@@ -139,7 +139,7 @@ class aggregateindic:
 
                     count += 1
                 ### the following lines of code add the value from the aggreagted indicator
-                temp_dict["selbstersteller_Indikator"] = round(float(aggregated_indicator[aggreg_count]), 2)
+                temp_dict["aggregierter Indikator"] = round(float(aggregated_indicator[aggreg_count]), 2)
                 aggreg_count += 1
                 ## and finally, the following lines of code append the dict to the summary list output
                 target_dict.append(temp_dict)

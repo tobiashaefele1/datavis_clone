@@ -84,6 +84,13 @@ class Table extends Component {
 			pageSizeOptions={[10, 50, 100, 200, `${this.props.single_indic_data[0].length}`]}
 			previousText={'Zurück'}
    			nextText={'Nächste'}
+            loadingText={'Lädt...'}
+            noDataText={'Keine Daten verfügbar'}
+            pageText={'Seite'}
+            ofText={'von'}
+            rowsText={'Zeilen'}
+            pageJumpText={'Springe zu Seite'}
+            rowsSelectorText={'Zeilen pro Seite'}
           />
 
         </div>
