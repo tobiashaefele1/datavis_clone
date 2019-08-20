@@ -25,7 +25,7 @@ def index(request):
 
     if request.method == "GET":
         all_years = retrieve_db_data(pool).retrieve_year_dict_from_db()
-        metadata = retrieve_db_data(pool).retrieve_metadata()
+        # metadata = retrieve_db_data(pool).retrieve_metadata()
         metadata = retrieve_db_data(pool).retrieve_metadata()
         col_names_ref = ['Einwohner 15-65_100', 'Einwohner gesamt_100', 'Erwerbspersonen gesamt_100', 'Erwerbstätige gesamt_100', 'Fläche_100']  # this returns all unique labels for standardisation drop downs
         years_ref = retrieve_db_data(pool).retrieve_col_years("reference")
@@ -36,7 +36,7 @@ def index(request):
         'var_4': ['Infrastrukturindikator_ORIGINAL_200', '2012', 'Erwerbstätige gesamt_100', '2012', 'AMR_12', 'HIB', '7.5'],
         'var_5': ['', '', 'Erwerbstätige gesamt_100', '2012', 'AMR_12', 'HIB', '0'], 'var_6': ['', '', 'Erwerbstätige gesamt_100', '2012', 'AMR_12', 'HIB', '0']}
         table_data = aggregateindic(pool).retrieve_table_data(setup_dict)
-        var_year_data = aggregateindic(pool).retrieve_var_year(setup_dict)
+        # var_year_data = aggregateindic(pool).retrieve_var_year(setup_dict)
         single_indic_data = aggregateindic(pool).retrieve_single_indic(setup_dict)
         indicator_data = aggregateindic(pool).retrieve_indicator(setup_dict)
         col_names_var = retrieve_db_data(pool).retrieve_col_names("kreise")  # this returns all unique column names from the KREISE table
@@ -46,7 +46,7 @@ def index(request):
     if request.method == 'POST':
         recieved_data = (dict(request.POST))
         print(recieved_data)
-        var_year_data = aggregateindic(pool).retrieve_var_year(recieved_data)
+        # var_year_data = aggregateindic(pool).retrieve_var_year(recieved_data)
         single_indic_data = aggregateindic(pool).retrieve_single_indic(recieved_data)
         indicator_data = aggregateindic(pool).retrieve_indicator(recieved_data)
         table_data = aggregateindic(pool).retrieve_table_data(recieved_data)
@@ -55,7 +55,7 @@ def index(request):
         # print(indicator_data)
         # print (single_indic_data)
         # print (var_year_data)
-        data = {'indicator_data': indicator_data, 'table_data': table_data, 'var_year_data': var_year_data,
+        data = {'indicator_data': indicator_data, 'table_data': table_data,
                 'single_indic_data': single_indic_data}
         # print (data)
         pool.destroy()
@@ -69,7 +69,7 @@ def index(request):
               'years_ref': json.dumps(years_ref),
               'indicator_data': json.dumps(indicator_data),
               'single_indic_data': json.dumps(single_indic_data),
-              'var_year_data': json.dumps(var_year_data),
+              # 'var_year_data': json.dumps(var_year_data),
               'table_data': json.dumps(table_data),
               }
     # print(context)

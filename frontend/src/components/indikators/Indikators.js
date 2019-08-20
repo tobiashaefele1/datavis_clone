@@ -198,7 +198,7 @@ function mapStateToProps(state) {
     count_map: state.count_map,
     current_map: state.current_map,
     map_name: state.map_name,
-    var_year_data: state.var_year_data,
+    // var_year_data: state.var_year_data,
     single_indic_data: state.single_indic_data,
 	loading: state.loading,
       all_years: state.all_years,

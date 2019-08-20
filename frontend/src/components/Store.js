@@ -90,7 +90,7 @@ const initalState = {
   ],
   loading: false,
   firstload: true,
-  var_year_data: JSON.parse(context.var_year_data),
+  // var_year_data: JSON.parse(context.var_year_data),
 
     // THIS IS THE ORIGINAL THAT USED TO WORK STATICALLY; ABOVE IS DERIVING THESE VALUES FROM CONTEXT; TOO
   // var_year_data: {'var_year_0': [], 'var_year_1': [], 'var_year_2': [],
@@ -265,7 +265,7 @@ function reducer(state = initalState, action) {
       return produce(state, (draft) => {
           // console.log(action.data.recieved_data)
         draft.indicator_data = [...action.data.indicator_data];
-        draft.var_year_data = action.data.var_year_data;
+        // draft.var_year_data = action.data.var_year_data;
         draft.single_indic_data = [...action.data.single_indic_data];
         draft.table_data = [...action.data.table_data];
         // draft.value_dic = [...action.data.recieved_data];
