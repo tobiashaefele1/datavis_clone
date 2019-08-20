@@ -60,7 +60,7 @@ class Map extends Component {
 			return (
 
 				<div className = "map_legend">
-					<div id = "map_legend_headline">
+				
 				
 
 
@@ -85,7 +85,7 @@ class Map extends Component {
 					</div>
 
 				
-					</div>
+
 
 
 

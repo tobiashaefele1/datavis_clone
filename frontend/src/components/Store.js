@@ -332,7 +332,7 @@ function reducer(state = initalState, action) {
             .properties.area_km2,
         draft.smalltable[4][1] = state.current_map[action.value]
 			.properties.Bundesland;
-		draft.smalltable[5][1] = state.current_map[action.value].properties.indicator	
+		draft.smalltable[5][1] = Math.round(state.current_map[action.value].properties.indicator)	
         while (draft.smalltable.length > 6) {
           draft.smalltable.pop();
         }
