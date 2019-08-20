@@ -187,8 +187,8 @@ class App extends Component {
               </object>
             </div>
             <div className="six columns">
-              <h3>Lebensverhältnisse in Deutschland </h3>
-                <h1>Visualisierung von Indikatoren</h1>
+              Lebensverhältnisse in Deutschland. 
+            	Visualisierung von Indikatoren
             </div>
             <div className="three columns">
               <SettingsButton/>
