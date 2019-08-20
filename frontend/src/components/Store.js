@@ -261,11 +261,15 @@ function reducer(state = initalState, action) {
       });
 
     case 'UPDATEDATA':
+
       return produce(state, (draft) => {
+          // console.log(action.data.recieved_data)
         draft.indicator_data = [...action.data.indicator_data];
         draft.var_year_data = action.data.var_year_data;
         draft.single_indic_data = [...action.data.single_indic_data];
         draft.table_data = [...action.data.table_data];
+        // draft.value_dic = [...action.data.recieved_data];
+
 
       });
 
@@ -293,9 +297,24 @@ function reducer(state = initalState, action) {
       }
       );
 
+      case 'UPDATE_VAL_DIC_YEARS':
+          return (produce(state, (draft) => {
+            draft.value_dic['var_year_0'] = action.current_years[0];
+            draft.value_dic['var_year_1'] = action.current_years[1];
+            draft.value_dic['var_year_2'] = action.current_years[2];
+            draft.value_dic['var_year_3'] = action.current_years[3];
+            draft.value_dic['var_year_4'] = action.current_years[4];
+            draft.value_dic['var_year_5'] = action.current_years[5];
+
+          })
+          );
+
     case 'CHANGEVALUE':
       return produce(state, (draft) => {
         console.log(state.value_dic);
+        console.log(action.value1);
+        console.log(action.value2);
+        console.log("CHANGE VALUE HERE");
         draft.value_dic[action.value1] = action.value2;
       });
 

@@ -44,13 +44,13 @@ def index(request):
         pool.destroy()
 
     if request.method == 'POST':
-        received_data = (dict(request.POST))
-        print(received_data)
-        var_year_data = aggregateindic(pool).retrieve_var_year(received_data)
-        single_indic_data = aggregateindic(pool).retrieve_single_indic(received_data)
-        indicator_data = aggregateindic(pool).retrieve_indicator(received_data)
-        table_data = aggregateindic(pool).retrieve_table_data(received_data)
-        print(table_data)
+        recieved_data = (dict(request.POST))
+        print(recieved_data)
+        var_year_data = aggregateindic(pool).retrieve_var_year(recieved_data)
+        single_indic_data = aggregateindic(pool).retrieve_single_indic(recieved_data)
+        indicator_data = aggregateindic(pool).retrieve_indicator(recieved_data)
+        table_data = aggregateindic(pool).retrieve_table_data(recieved_data)
+        # print(table_data)
 
         # print(indicator_data)
         # print (single_indic_data)
