@@ -48,7 +48,7 @@ export class Main_selector extends Component {
 			percentage += parseFloat(document.getElementById(`weight_${i}`).value);
 		}
 
-		if(percentage > 100){
+		if(percentage != 100){
 			for(i in this.props.indikators){
 				document.getElementById(`weight_${i}`).style.background = 'red';
 			}
