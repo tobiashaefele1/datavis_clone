@@ -13,7 +13,26 @@ class ResetButton extends Component {
         this.handleButtonResetProm().then(() => {
                   this.props.dispatch({type: 'CHANGEVARS'});
                   this.props.dispatch({type:'UPDATECOLUMNS'})
-                  // console.log(this.props.indicator_data[1])
+				document.getElementById('var_name_0').value='Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200'
+				document.getElementById('var_name_1').value='Lohn pro Beschäftigtem 2010 _ORIGINAL_200'
+				document.getElementById('var_name_2').value='Erwerbstätigenprognose _ORIGINAL_200'
+				document.getElementById('var_name_3').value='Infrastrukturindikator_ORIGINAL_200'
+				document.getElementById('var_year_0').value='2009-12'
+				document.getElementById('var_year_1').value='2010'
+				document.getElementById('var_year_2').value='2011-18'
+				document.getElementById('var_year_3').value='2012'
+				document.getElementById('ref_name_0').value='Erwerbspersonen gesamt_100'
+				document.getElementById('ref_name_1').value='Erwerbstätige gesamt_100'
+				document.getElementById('ref_name_2').value='Erwerbstätige gesamt_100'
+				document.getElementById('ref_name_3').value='Erwerbstätige gesamt_100'
+				document.getElementById('ref_year_0').value='2011'
+				document.getElementById('ref_year_1').value='2011'
+				document.getElementById('ref_year_2').value='2012'
+				document.getElementById('ref_year_3').value='2012'
+				document.getElementById('weight_0').value= 45;
+				document.getElementById('weight_1').value= 40;
+				document.getElementById('weight_2').value= 7.5;
+				document.getElementById('weight_3').value= 7.5;
 
           });
 
