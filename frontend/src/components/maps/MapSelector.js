@@ -65,7 +65,7 @@ class MapSelector extends Component {
     render() {
       return (
         <div>
-          <label>Maps</label>
+          <label>Karte</label>
           <select className="u-80-width"
             id="map_selector"
             onChange={this.handleMapChange.bind(this)}
