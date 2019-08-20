@@ -69,6 +69,8 @@ class retrieve_db_data:
             cursor.execute(sql_select_Query)
             output = cursor.fetchall()
             cursor.close()
+            self.pool.release(mySQLconnection)
+
 
 
         # error handling
@@ -77,7 +79,6 @@ class retrieve_db_data:
         finally:
             # closing database connection.
 
-            self.pool.release(mySQLconnection)
             print("MySQL connection is closed")
             print(time.clock() - start_time, "seconds to retrieve data")
             return output
@@ -160,13 +161,14 @@ class retrieve_db_data:
             # for i in range (0, len(ref_share)):
             #     a += ref_share[i]
             # print (a)
+            self.pool.release(mySQLconnection)
+
 
         # error handling
         except Error as e:
             print("Error while connecting to MySQL", e)
         finally:
             # closing database connection.
-            self.pool.release(mySQLconnection)
             print("MySQL connection is closed")
             return ref_share
 
@@ -337,12 +339,13 @@ class retrieve_db_data:
             cursor.execute(sql_select_Query)
             distinct_years = cursor.fetchall()
             cursor.close()
+            self.pool.release(mySQLconnection)
+
             # error handling
         except Error as e:
             print("Error while connecting to MySQL", e)
         finally:
             # closing database connection.
-            self.pool.release(mySQLconnection)
             print("MySQL connection is closed")
             output = []
             for (x,) in distinct_years:

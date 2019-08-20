@@ -22,62 +22,27 @@ export class Main_selector extends Component {
 
         // this function is actually being called - it calls Handlechange and - once it is complete, an ajaxRequest
     handleChangeProm = (e) => {
+        console.log("AJAX REQUEST FROM MAIN BUTTON CLICK")
         this.handleChange(e).then(() => {
-					this.props.dispatch({type: 'LOADINGCHANGE'})	
-                  this.ajaxRequest();
-          });
-	
+            this.props.dispatch({type: 'LOADINGCHANGE'})
+            this.props.ajaxRequest();
+        });
 
-	// componentWillMount(){
-	// 	if(!this.props.loading){
-	// 		this.changeVars();
-	// 	}
-	
-	}
-
-
-    handleChange = (e) => {
-      return new Promise((resolve, reject) => {
-        this.props.dispatch(changeValueDispatch(e.target.id, e.target.value));
-        if ("1" == "1") {
-          resolve(console.log("it worked"));
-        } else {
-          reject(Error(console.log("it broke")))
-        }
-      });
     }
 
+        componentDidUpdate(prevProps) {
+        // if (
+        //     prevProps.view_multiple !== this.props.view_multiple ||
+        //     prevProps.count_map !== this.props.count_map
+        // ) {
+        //     console.log(this.props.number)
+        //     console.log('AJAX REQUEST FROM VIEW CHANGE OR PREV MAP CHANGE')
+        //     this.props.dispatch({type: 'LOADINGCHANGE'})
+        //     this.props.ajaxRequest();
+        // }
 
 
-    updateDataProm(data){
-      // console.log(data);
-        return new Promise((resolve, reject) => {
-            this.props.dispatch({type: 'UPDATEDATA', data: data});
-      if ("1" == "1") {
-        resolve(console.log("it worked"));
-      } else {
-        reject(Error(console.log("It broke")));
-      }
-    });
-    };
-
-    /**
-     *This function is automatically called when the props or state updates
-     *
-     * @param {*} prevProps
-     * @memberof Indikator
-     */
-
-    componentDidUpdate(prevProps) {
-      if (
-          prevProps.view_multiple !== this.props.view_multiple ||
-         prevProps.count_map !== this.props.count_map) {
-			 console.log('from main_selector')
-			this.props.dispatch({type: 'LOADINGCHANGE'})	
-        this.ajaxRequest();
-	  }
-
-	  if(this.props.view_multiple){
+	  if (this.props.view_multiple){
 		var percentage = 0;
 		for (var i in this.props.indikators){
 			percentage += parseFloat(document.getElementById(`weight_${i}`).value);
@@ -95,6 +60,34 @@ export class Main_selector extends Component {
 	}
     }
 
+
+	// componentWillMount(){
+	// 	if(!this.props.loading){
+	// 		this.changeVars();
+	// 	}
+
+    handleChange = (e) => {
+      return new Promise((resolve, reject) => {
+        this.props.dispatch(changeValueDispatch(e.target.id, e.target.value));
+        if ("1" == "1") {
+          resolve(console.log("it worked"));
+        } else {
+          reject(Error(console.log("it broke")))
+        }
+      });
+    }
+
+
+
+    /**
+     *This function is automatically called when the props or state updates
+     *
+     * @param {*} prevProps
+     * @memberof Indikator
+     */
+
+
+
     /**
      *This function picks the right data and changes the map for coloring.
      *
@@ -105,112 +98,6 @@ export class Main_selector extends Component {
       this.props.dispatch({type: 'CHANGEVARS'});
     }
 
-    /**
-     *This function collects all the data from the indicators shown.
-     *
-     * @return {Dict} the data ready to send to the server
-     * @memberof Indikator
-     */
-    getData() {
-      const data = {
-
-        'var_1': [this.props.value_dic['var_name_0'],
-          (
-              this.props.value_dic['var_year_0'] in this.props.all_years[this.props.value_dic['var_name_0']] ? this.props.value_dic['var_year_0'] : this.props.all_years[this.props.value_dic['var_name_0']][0] ),
-          this.props.value_dic['ref_name_0'],
-          this.props.value_dic['ref_year_0'],
-          this.props.map_name[this.props.count_map],
-          this.props.metadata[this.props.value_dic['var_name_0']].Standardisierung,
-          (this.props.view_multiple ? this.props.value_dic['weight_0'] : 100)],
-
-        'var_2': [
-          (this.props.indikator_counter > 1 ? this.props.value_dic['var_name_1'] : ''),
-          (this.props.indikator_counter > 1 ? (
-              this.props.value_dic['var_year_0'] in this.props.all_years[this.props.value_dic['var_name_1']] ? this.props.value_dic['var_year_1'] : this.props.all_years[this.props.value_dic['var_name_1']][0] ) : ''),
-          (this.props.indikator_counter > 1 ? this.props.value_dic['ref_name_1'] : ''),
-          (this.props.indikator_counter > 1 ? this.props.value_dic['ref_year_1'] : ''),
-          this.props.map_name[this.props.count_map],
-          (this.props.indikator_counter > 1 ? this.props.metadata[this.props.value_dic['var_name_1']].Standardisierung : ''),
-          (this.props.indikator_counter > 1 ? this.props.value_dic['weight_1'] : '')],
-        'var_3': [
-          (this.props.indikator_counter > 2 ? this.props.value_dic['var_name_2'] : ''),
-          (this.props.indikator_counter > 2 ? (
-              this.props.value_dic['var_year_1'] in this.props.all_years[this.props.value_dic['var_name_2']] ? this.props.value_dic['var_year_2'] : this.props.all_years[this.props.value_dic['var_name_2'][0]] ) : ''),
-          (this.props.indikator_counter > 2 ? this.props.value_dic['ref_name_2'] : ''),
-          (this.props.indikator_counter > 2 ? this.props.value_dic['ref_year_2'] : ''),
-          this.props.map_name[this.props.count_map],
-          (this.props.indikator_counter > 2 ? this.props.metadata[this.props.value_dic['var_name_2']].Standardisierung : ''),
-            (this.props.indikator_counter > 2 ? this.props.value_dic['weight_2'] : '')],
-        'var_4': [
-          (this.props.indikator_counter > 3 ? this.props.value_dic['var_name_3'] : ''),
-          (this.props.indikator_counter > 3 ? (
-              this.props.value_dic['var_year_0'] in this.props.all_years[this.props.value_dic['var_name_3']] ? this.props.value_dic['var_year_3'] : this.props.all_years[this.props.value_dic['var_name_3']][0] ) : ''),
-          (this.props.indikator_counter > 3 ? this.props.value_dic['ref_name_3'] : ''),
-          (this.props.indikator_counter > 3 ? this.props.value_dic['ref_year_3'] : ''),
-          this.props.map_name[this.props.count_map],
-          (this.props.indikator_counter > 3 ? this.props.metadata[this.props.value_dic['var_name_3']].Standardisierung : ''),
-            (this.props.indikator_counter > 3 ? this.props.value_dic['weight_3'] : '')],
-        'var_5': [
-          (this.props.indikator_counter > 4 ? this.props.value_dic['var_name_4'] : ''),
-          (this.props.indikator_counter > 4 ? (
-              this.props.value_dic['var_year_0'] in this.props.all_years[this.props.value_dic['var_name_4']] ? this.props.value_dic['var_year_4'] : this.props.all_years[this.props.value_dic['var_name_4']][0] ) : ''),
-          (this.props.indikator_counter > 4 ? this.props.value_dic['ref_name_4'] : ''),
-          (this.props.indikator_counter > 4 ? this.props.value_dic['ref_year_4'] : ''),
-          this.props.map_name[this.props.count_map],
-          (this.props.indikator_counter > 4 ? this.props.metadata[this.props.value_dic['var_name_4']].Standardisierung : ''),
-            (this.props.indikator_counter > 4 ? this.props.value_dic['weight_4'] : '')],
-        'var_6': [
-          (this.props.indikator_counter > 5 ? this.props.value_dic['var_name_5'] : ''),
-          (this.props.indikator_counter > 5 ? (
-              this.props.value_dic['var_year_0'] in this.props.all_years[this.props.value_dic['var_name_5']] ? this.props.value_dic['var_year_5'] : this.props.all_years[this.props.value_dic['var_name_5']][0] ) : ''),
-          (this.props.indikator_counter > 5 ? this.props.value_dic['ref_name_5'] : ''),
-          (this.props.indikator_counter > 5 ? this.props.value_dic['ref_year_5'] : ''),
-          this.props.map_name[this.props.count_map],
-          (this.props.indikator_counter > 5 ? this.props.metadata[this.props.value_dic['var_name_5']].Standardisierung : ''),
-            (this.props.indikator_counter > 5 ? this.props.value_dic['weight_5'] : '')],
-      };
-      return data;
-    }
-
-    /**
-     *This function sends a POST request to the server
-     * and handles the incoming data.
-     *
-     * @memberof Indikator
-     */
-    ajaxRequest() {
-      $.ajax({
-        type: 'POST',
-        headers: {'X-CSRFToken': csrftoken},
-        url: window.location.pathname,
-        dataType: 'json',
-        asnyc: true,
-        data: this.getData(),
-        traditional: true,
-        success: function(data) {
-
-        this.updateDataProm(data).then(() => {
-                  this.props.dispatch({type: 'UPDATECOLUMNS'});
-                  this.changeVars();
-          });
-
-          // this.updateData(data);
-        }.bind(this),
-
-
-      });
-    }
-    updateDataProm(data){
-      // console.log(data);
-        return new Promise((resolve, reject) => {
-            this.props.dispatch({type: 'UPDATEDATA', data: data});
-      if ("1" == "1") {
-        resolve(console.log("it worked"));
-      } else {
-        reject(Error(console.log("It broke")));
-      }
-    });
-    };
 
 
 

@@ -245,6 +245,7 @@ function reducer(state = initalState, action) {
 
     case 'UPDATECOLUMNS':
       return produce(state, (draft) => {
+          console.log(state.table_data);
         while (draft.table_columns.length > 2) {
           draft.table_columns.pop();
         }
