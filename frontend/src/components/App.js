@@ -146,24 +146,7 @@ class App extends Component {
         });
   }
 
-  /**
-   *This function checks if the screen width is less than 1000px,
-   * if this is the case it decrements the indicators to one.
-   * This is to imporve layout on mobile devices.
-   *
-   * @param {*} value screen width
-   * @memberof App
-   */
-  mobile(value) {
-    if (value < 1000) {
-      this.props.dispatch({
-        type: 'DECREMENTINDIKATOR',
-      });
-      this.props.dispatch({
-        type: 'DECREMENTINDIKATOR',
-      });
-    }
-  }
+ 
 
   /**
    *This function renders the whole app.
@@ -175,7 +158,7 @@ class App extends Component {
     return (
 
       <div>
-        { this.mobile(window.screen.width) }
+      
         <ViewPicker/>
         <div className="example-grid-logo">
           {/* Top Row */}
