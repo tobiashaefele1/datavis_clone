@@ -87,6 +87,7 @@ class aggregateindic:
         # this code scans the dictionary to ensure only complete entries are being searched for in the db
         var = []
         var = self.aggregate_args(ajax_dictionary)
+        print (var)
 
         # this checks whether the aggreagted indicator comes back empty - if it does no valid
         # combination has been submitted, just return empty list
@@ -143,9 +144,10 @@ class aggregateindic:
                 ## and finally, the following lines of code append the dict to the summary list output
                 target_dict.append(temp_dict)
 
-            print(time.clock()- loop_time, "seconds for the loop")
+            # print(time.clock()- loop_time, "seconds for the loop")
             # print(target_dict)
-            print(time.clock() - start_time, "seconds")
+            print(time.clock() - start_time, "seconds for table ata")
+            print(target_dict)
             return target_dict
 
     def retrieve_var_year (self, ajax_dictionary):
