@@ -34,7 +34,7 @@ def index(request):
         'var_2': ['Lohn pro Beschäftigtem 2010 _ORIGINAL_200', '2010', 'Erwerbstätige gesamt_100', '2011', 'AMR_12', 'HIB', '40'],
         'var_3': ['Erwerbstätigenprognose _ORIGINAL_200', '2011-18', 'Erwerbstätige gesamt_100', '2012', 'AMR_12', 'HIB', '7.5'],
         'var_4': ['Infrastrukturindikator_ORIGINAL_200', '2012', 'Erwerbstätige gesamt_100', '2012', 'AMR_12', 'HIB', '7.5'],
-        'var_5': ['', '', '', '', 'KRS_15', 'HIB', ''], 'var_6': ['', '', '', '', 'KRS_15', 'HIB', '']}
+        'var_5': ['', '', 'Erwerbstätige gesamt_100', '2012', 'AMR_12', 'HIB', '0'], 'var_6': ['', '', 'Erwerbstätige gesamt_100', '2012', 'AMR_12', 'HIB', '0']}
         table_data = aggregateindic(pool).retrieve_table_data(setup_dict)
         var_year_data = aggregateindic(pool).retrieve_var_year(setup_dict)
         single_indic_data = aggregateindic(pool).retrieve_single_indic(setup_dict)

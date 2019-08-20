@@ -24,7 +24,7 @@ class retrieve_db_data:
         chosen ref variable and the chosen year, CURRENTLY AS A TUPLE LIST'''
         output = []
         # connect to database
-        start_time = time.clock()
+        # start_time = time.clock()
         mySQLconnection = self.pool.get_conn()
 
         # this is the old quiery that does not work for AMR20 (But curiously, for all others)
@@ -80,7 +80,7 @@ class retrieve_db_data:
             # closing database connection.
 
             print("MySQL connection is closed")
-            print(time.clock() - start_time, "seconds to retrieve data")
+            # print(time.clock() - start_time, "seconds to retrieve data")
             return output
 
 
@@ -175,7 +175,7 @@ class retrieve_db_data:
 
     def retrieve_sd(self, var_name, var_year, ref_name, ref_year, layer):
         print("retrieve_sd")
-        start_time = time.clock()
+        # start_time = time.clock()
 
         """ this function returns the standard deviation for a chosen variable and year, standardised by a chosen ref value
             and year as a single float value  """
@@ -193,7 +193,7 @@ class retrieve_db_data:
 
         Standard_deviation = math.sqrt(Standard_deviation / len(data))
 
-        print(time.clock() - start_time, "seconds to retrieve only the standard deviation")
+        # print(time.clock() - start_time, "seconds to retrieve only the standard deviation")
 
         return (Standard_deviation)
 
@@ -229,7 +229,7 @@ class retrieve_db_data:
 
 
     def retrieve_sd_data(self, var_name, var_year, ref_name, ref_year, layer, scale="HIB"):
-        start_time = time.clock()
+        # start_time = time.clock()
         print("retrieve_sd_data")
         data = self.retrieve_data(var_name, var_year, ref_name, ref_year, layer)
         sd = self.retrieve_sd(var_name, var_year, ref_name, ref_year, layer)
@@ -243,7 +243,7 @@ class retrieve_db_data:
         else:
             output = self.scale_NIB(data, fed_avg, sd)
 
-        print(time.clock() - start_time, "seconds to retrieve the standardised data")
+        # print(time.clock() - start_time, "seconds to retrieve the standardised data")
         return output
 
 
@@ -361,7 +361,7 @@ class retrieve_db_data:
         null in this list. HOWEVER, the function is incredibly slow. Perhaps it should go into setup.py and be run once
         at the beginning of creating the database'''
         #TODO: ask Ben about whether there is a way to do this in one quiery
-        start_time = time.clock()
+        # start_time = time.clock()
         mySQLconnection = self.pool.get_conn()
         cursor = mySQLconnection.cursor()
         ## this returns a list of all the column names we want
@@ -385,14 +385,14 @@ class retrieve_db_data:
             print(distinct_years)
         cursor.close()
         self.pool.release(mySQLconnection)
-        print(time.clock()-start_time)
+        # print(time.clock()-start_time)
         return result
 
 
     def retrieve_metadata(self):
         ''' this function returns the entire set of metadata available as a ..... '''
         #TODO: specify datatype here - currenlty this is a dict of dictionarries
-        start_time = time.clock()
+        # start_time = time.clock()
         mySQLconnection = self.pool.get_conn()
         cursor = mySQLconnection.cursor(pymysql.cursors.DictCursor)
         # cursor = mySQLconnection.cursor()
@@ -419,7 +419,7 @@ class retrieve_db_data:
         # output.append(result)
         # output.replace(result, "result")
 
-        print(time.clock() - start_time)
+        # print(time.clock() - start_time)
         return target_dict
 
 

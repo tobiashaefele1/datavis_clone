@@ -36,8 +36,10 @@ class Indikators extends Component {
      * @memberof Indikator
      */
     getData() {
-      console.log(this.props.value_dic['var_year_0']);
-      console.log(this.props.all_years[this.props.value_dic['var_name_0']]);
+      console.log(this.props.value_dic['var_year_4']);
+      console.log(this.props.all_years[this.props.value_dic['var_name_4']]);
+      console.log(this.props.value_dic['var_year_5']);
+      console.log(this.props.all_years[this.props.value_dic['var_name_5']]);
       const data = {
 
         'var_1': [this.props.value_dic['var_name_0'],
