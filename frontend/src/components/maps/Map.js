@@ -337,6 +337,21 @@ class Map extends Component {
             <svg id="svg" width="100%" height="100%" viewBox="0 0 400 450">
 
                 <g className="map">
+                    {this.props.current_map.map((d, i) =>
+                    <text
+                        key={`path-${i}`}
+                        xy={d3.geoPath().projection(this.projection())(d)}
+                        fontSize="14px"
+
+                        >
+                        {d.properties.name}
+
+                    </text>
+
+                    )
+
+                    }
+
               {
                 this.props.current_map.map((d, i) =>
 

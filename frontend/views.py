@@ -39,7 +39,7 @@ def index(request):
         # var_year_data = aggregateindic(pool).retrieve_var_year(setup_dict)
         single_indic_data = aggregateindic(pool).retrieve_single_indic(setup_dict)
         indicator_data = aggregateindic(pool).retrieve_indicator(setup_dict)
-        col_names_var = retrieve_db_data(pool).retrieve_col_names("kreise")  # this returns all unique column names from the KREISE table
+        col_names_var = retrieve_db_data(pool).clean_col_names(retrieve_db_data(pool).retrieve_col_names("kreise"))  # this returns all unique column names from the KREISE table
         # print(metadata)
         pool.destroy()
 

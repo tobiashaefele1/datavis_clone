@@ -287,6 +287,21 @@ class retrieve_db_data:
             return output
 
 
+    def clean_col_names(self, data):
+        '''
+        this functions "cleans" a list of variables and removes all _400 years (this function is used by views.py to
+        to make sure _400 years do not appear as an option in the selector)
+        :param data: takes a list of all column names as an input
+        :return: returns the same list after removing all items in the list that have a parameter of _400
+        '''
+            output =[]
+            for x in data:
+                if x[-4:] != "_400":
+                    output.append(x)
+            return output
+
+
+
     def retrieve_col_years(self, table_name):
         ''' this function returns a list of all the years for in the datable'''
         print("retrieve_col_years")
