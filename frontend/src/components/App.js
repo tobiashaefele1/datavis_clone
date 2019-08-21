@@ -263,20 +263,34 @@ class App extends Component {
 				{this.mapSet(window.screen.width)}
 
 			<div className="column is-one-quarter has-text-centered   ">
-				<div id="optionbox" className="box has-background-white-ter has-text-black ">
-				Regio Tabelle
-				<SmallTable/>
-				<p>
-					Export
-				<SVGExportButton />
-				Vollstandige Datentabelle
-				  <TableButton />
-				</p>
 				
-		</div>
+				<div id="optionbox" className="box has-background-white-ter has-text-black ">
+				
+					<div>Regio Tabelle</div>
+				<SmallTable/>
+					
+					<div className="columns">
+						<div className="column full-width">
+						<div className="buttons is-centered">
+							<SVGExportButton />
+							<TableButton />	
+						
+						</div>
+						</div>
+
+				</div>
+				
+				</div>
+				
+				
+				
+				
+				
+	
 			</div>
 
 		</div>
+		
 		<div className="columns">
 			<div className="column is-full">
 				<Table />

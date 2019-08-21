@@ -114,7 +114,7 @@ class Settings extends Component {
 									</div>
 									<div className="column">
 										<h3>Farbpaletten</h3>
-                
+										<div className="buttons">
 										<a class="button is-dark is-outlined" value={0} onClick={this.colorChange.bind(this)}>
     			<span>
 					<svg width="10" height="10" className="Blues">
@@ -183,13 +183,13 @@ class Settings extends Component {
 											</span>
   			</a>						
                 							
-            
+            </div>
                  </div>
 
 									<div className="column">
 										<h3>  Skalen </h3>
 
-
+									<div className="buttons">
 									<a class="button is-dark is-outlined" value={0} onClick={this.scaleChange}>
     									
 										<span>gleichmäßige Gruppen</span>
@@ -206,7 +206,7 @@ class Settings extends Component {
 								
 								</div>
 										
-								
+								</div>
 							   </div>
                 </div>
 				</div>
