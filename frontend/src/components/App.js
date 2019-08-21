@@ -154,24 +154,24 @@ class App extends Component {
    * @memberof App
    */
   mobile(value) {
-    if (value < 1000) {
+    if (value < 1000 && this.props.view_multiple) {
       this.props.dispatch({
         type: 'CHANGEVIEW',
       });
      
-    }else{
+    }else if(value >1000){
 		return( <ViewPicker />)
 	}
   }
 
   indikatorSet(value){
 	  if(value < 1000) {
-		  return (<div className="column is-three-fifth is-mobile is-centered is-vcentered has-text-centered h"><Map/>
+		  return (<div className="column is-half is-mobile is-centered is-vcentered has-text-centered h"><Map/>
                 <MinMaxTable/></div>)
 	  }else{
-		  return (<div className="column is-one-fifth "><MapSelector/>
+		  return (<div className="column is-one-quarter has-background-white-ter "><MapSelector/>
 				<Indikators/>
-                <div className=" buttons field is-grouped has-text-centered">
+                <div className=" buttons is-centered">
                 <PlusButton/>
 				<MinButton/></div></div>	
 				)
@@ -179,14 +179,14 @@ class App extends Component {
   }
   mapSet(value){
 	  if(value < 1000) {
-		  return (<div className="column is-one-fifth "><MapSelector/>
+		  return (<div className="column is-one-quarter  has-background-white-ter "><MapSelector/>
 				<Indikators/>
-				<div className=" buttons field is-grouped has-text-centered">
+				<div className=" buttons  is-centered">
                 <PlusButton/>
 				<MinButton/></div></div>)
 	  }else{
 		  return (
-			  <div className="column is-mobile is-three-fifth is-centered is-vcentered has-text-centered ">
+			  <div className="column is-mobile is-half is-centered is-vcentered has-text-centered ">
 				<Map/>
                 <MinMaxTable/>
 		  </div>	
@@ -194,7 +194,9 @@ class App extends Component {
 	  }
   }
 
-
+  headline = () => {
+      return (this.props.view_multiple ? "Zusammengesetzter Indikator" : `${this.props.metadata[this.props.value_dic['var_name_0']].csvname}, ${this.props.value_dic['var_year_0']} ` )
+  }
  
 
   /**
@@ -237,7 +239,18 @@ class App extends Component {
               <Info/>
 			</div>			  
 		</div>
-		<div className="columns is-marginless ">
+		<div className="columns is-marginless">
+			<div className="column is-hidden-mobile is-paddingless ">
+				<div className="subtitle has-text-centered">Auswahlen</div>
+			</div>
+			<div className="column is-half is-paddingless ">
+				<div className="subtitle has-text-centered">{this.headline()}</div>
+			</div>
+			<div className="column is-hidden-mobile is-paddingless">
+				<div className="subtitle has-text-centered">Information</div>
+			</div>
+		</div>
+		<div className="columns is-marginless">
 			
 				{this.indikatorSet(window.screen.width)}
 			
@@ -245,7 +258,7 @@ class App extends Component {
 			
 				{this.mapSet(window.screen.width)}
 
-			<div className="column is-one-fifth ">
+			<div className="column is-one-quarter ">
 				<SmallTable/>
 				<SVGExportButton />
 				  <TableButton />
@@ -265,5 +278,19 @@ class App extends Component {
     );
   }
 }
-
-export default connect()(App);
+/**
+ *Here the props are selected from the store.
+ *
+ * @param {state} state current state of the store
+ * @return {props} returns the selected states as props
+ */
+function mapStateToProps(state) {
+  return {
+    
+    view_multiple: state.view_multiple,
+    
+      value_dic: state.value_dic,
+      metadata: state.metadata,
+  };
+}
+export default connect(mapStateToProps)(App);

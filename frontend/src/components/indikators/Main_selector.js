@@ -202,7 +202,7 @@ export class Main_selector extends Component {
                     </span>
                 <label className="indicator">{this.props.name} <a id="info_icon">&#9432; </a>  </label>
 				</div>
-				  <div className="select is-small ">
+				  <div className="select is-dark is-small ">
                 <select 
                 defaultValue={this.props.value_dic[`var_name_${this.props.number}`]}
                 id={`var_name_${this.props.number}`}
@@ -218,7 +218,7 @@ export class Main_selector extends Component {
 			  </div>
 			  <div className="column is-4">
 				  Jahr
-				<div className="select is-small">
+				<div className="select is-dark is-small">
               <select 
                 defaultValue={this.props.value_dic[`var_year_${this.props.number}`]}
                 id={`var_year_${this.props.number}`}
@@ -244,7 +244,7 @@ export class Main_selector extends Component {
 					<div>
 
             </div>
-				  <div className="select is-small">
+				  <div className="select is-dark is-small">
                 <select 
                   defaultValue={this.props.value_dic[`ref_name_${this.props.number}`]}
                   id={`ref_name_${this.props.number}`}
@@ -262,7 +262,7 @@ export class Main_selector extends Component {
 				  <div>
 
             </div>
-				  <div className="select is-small">
+				  <div className="select is-dark is-small">
                 <select
                   id={`ref_year_${this.props.number}`}
                   onChange={this.handleChangeProm.bind(this)}>

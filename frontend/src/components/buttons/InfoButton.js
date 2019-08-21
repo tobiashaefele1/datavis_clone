@@ -20,7 +20,7 @@ class InfoButton extends Component {
      */
     render() {
       return (
-		  <a class="button is-link is-outlined" onClick={this.closeInfo.bind(this)}>
+		  <a class="button is-dark is-outlined" onClick={this.closeInfo.bind(this)}>
     			<span class="icon">
      				 <i class="far fa-question-circle"></i>
     					</span>

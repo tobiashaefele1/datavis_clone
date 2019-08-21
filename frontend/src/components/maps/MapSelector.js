@@ -65,8 +65,9 @@ class MapSelector extends Component {
     render() {
       return (
 		<div>
-
-		Karte
+		<div>Karte</div>
+		
+		
         <div className="select is-small " style={{marginBottom: '10px'}}>
           <select 
             id="map_selector"

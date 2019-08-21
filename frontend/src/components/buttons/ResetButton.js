@@ -69,7 +69,7 @@ class ResetButton extends Component {
     render() {
       
         return (
-				<a class="button is-link is-outlined" onClick={this.handleButtonReset.bind(this)}>
+				<a class="button is-dark is-outlined" onClick={this.handleButtonReset.bind(this)}>
     			<span class="icon">
      				 <i class="fas fa-undo"></i>
     					</span>

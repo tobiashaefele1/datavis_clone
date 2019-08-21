@@ -163,7 +163,7 @@ function reducer(state = initalState, action) {
             draft.indicator_data = JSON.parse(context.indicator_data);
             draft.single_indic_data = JSON.parse(context.single_indic_data);
 			draft.indikator_counter = 4;
-			draft.indikators = ['indikator 1', 'indikator 2', 'indikator 3', 'indikator 4'];
+			draft.indikators = ['Indikator 1', 'Indikator 2', 'Indikator 3', 'Indikator 4'];
 			draft.current_map = state.amr12;
 			draft.count_map = 1;
 			draft.view_multiple = true;
@@ -224,7 +224,7 @@ function reducer(state = initalState, action) {
 			}
 		}else{
 			draft.indikator_counter = 4;
-			draft.indikators = ['indikator 1', 'indikator 2', 'indikator 3', 'indikator 4'];
+			draft.indikators = ['Indikator 1', 'Indikator 2', 'Indikator 3', 'Indikator 4'];
 		}
         draft.view_multiple = !state.view_multiple;
       });
@@ -283,7 +283,7 @@ function reducer(state = initalState, action) {
     case 'INCREMENTINDIKATOR':
       return produce(state, (draft) => {
         draft.indikator_counter = state.indikator_counter + 1;
-        draft.indikators.push('indikator' + " " + draft.indikator_counter);
+        draft.indikators.push('Indikator' + " " + draft.indikator_counter);
       }
       );
     case 'DECREMENTINDIKATOR':

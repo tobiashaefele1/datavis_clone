@@ -329,8 +329,6 @@ class Map extends Component {
 		
         <div id="map" style={{display: 'inline-block'}}>
 
-          <h6 className="subtitle has-text-centered is-marginless">{this.headline()}</h6>
-			<br></br>
             <div id = "map_content">
 				{this.renderlegend()}
 			{this.loadingCirkle()}

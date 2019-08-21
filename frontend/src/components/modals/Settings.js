@@ -70,7 +70,7 @@ class Settings extends Component {
 		if(this.props.view_multiple){
 			return( 
 				
-				<a class="button is-link is-outlined" onClick={this.changeView}>
+				<a class="button is-dark is-outlined" onClick={this.changeView}>
     									
 										<span>einzelne Indikator ansehen</span>
 															</a>
@@ -81,7 +81,7 @@ class Settings extends Component {
 			
 					
 
-				<a class="button is-link is-outlined" onClick={this.changeView}>
+				<a class="button is-dark is-outlined" onClick={this.changeView}>
     									
 										<span>Aggregierten Indikator</span>
 										
@@ -115,7 +115,7 @@ class Settings extends Component {
 									<div className="column">
 										<h3>Farbpaletten</h3>
                 
-										<a class="button is-link is-outlined" value={0} onClick={this.colorChange.bind(this)}>
+										<a class="button is-dark is-outlined" value={0} onClick={this.colorChange.bind(this)}>
     			<span>
 					<svg width="10" height="10" className="Blues">
 												<rect width="10" height="10" className="q0-5" />
@@ -138,7 +138,7 @@ class Settings extends Component {
 											</span>
   			</a>
 											
-			<a class="button is-link  is-outlined" value={1} onClick={this.colorChange.bind(this)}>
+			<a class="button is-dark  is-outlined" value={1} onClick={this.colorChange.bind(this)}>
     			<span>
 					<svg width="10" height="10" className="Reds">
                     <rect width="10" height="10" className="q0-5" />
@@ -160,7 +160,7 @@ class Settings extends Component {
                   </svg>	
 											</span>
   			</a>
-					<a class="button is-link is-outlined" value={2} onClick={this.colorChange.bind(this)}>
+					<a class="button is-dark is-outlined" value={2} onClick={this.colorChange.bind(this)}>
     			<span>
 					 <svg width="10" height="10" className="Greens">
                     <rect width="10" height="10" className="q0-5" />
@@ -190,16 +190,16 @@ class Settings extends Component {
 										<h3>  Skalen </h3>
 
 
-									<a class="button is-link is-outlined" value={0} onClick={this.scaleChange}>
+									<a class="button is-dark is-outlined" value={0} onClick={this.scaleChange}>
     									
 										<span>gleichmäßige Gruppen</span>
 															</a>
-									<a class="button is-link is-outlined" value={1} onClick={this.scaleChange}>
+									<a class="button is-dark is-outlined" value={1} onClick={this.scaleChange}>
     									
 										<span>gleichmäßige Intervalle</span>
 															</a>
 
-															<a class="button is-link is-outlined" value={2} onClick={this.scaleChange}>
+															<a class="button is-dark is-outlined" value={2} onClick={this.scaleChange}>
     									
 										<span>fließende Intervalle</span>
 															</a>

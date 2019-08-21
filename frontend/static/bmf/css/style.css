@@ -1,12 +1,4 @@
 /*! bulma.io v0.7.5 | MIT License | github.com/jgthms/bulma */
-
-@font-face {
-font-family: "BMF";
-src: url("./fonts/BundesSansWeb-Regular.ttf") format("ttf"),
-
-}
-
-
 @keyframes spinAround {
   from {
     transform: rotate(0deg); }
@@ -299,7 +291,7 @@ button,
 input,
 select,
 textarea {
-  font-family: "BMF"; }
+  font-family: "BMF" }
 
 code,
 pre {
@@ -308,9 +300,9 @@ pre {
   font-family: monospace; }
 
 body {
-  color: #4a4a4a;
+  color: #000000;
   font-size: 1em;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.5; }
 
 a {

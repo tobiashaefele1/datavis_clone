@@ -90,6 +90,7 @@
 
 	height: 20px;
 	width: 30px;
+	overflow: scroll;
 white-space: nowrap;
 }
 
