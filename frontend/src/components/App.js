@@ -160,7 +160,7 @@ class App extends Component {
       });
      
     }else{
-		retun( <ViewPicker />)
+		return( <ViewPicker />)
 	}
   }
 
@@ -184,7 +184,7 @@ class App extends Component {
 				<MinButton/></div>)
 	  }else{
 		  return (<div>
-<Map/>
+				<Map/>
                 <MinMaxTable/>
 		  </div>	
 				)
@@ -206,7 +206,7 @@ class App extends Component {
       <div>
       { this.mobile(window.screen.width) }
         
-		<div className="columns is-marginless ">
+		<div className="columns">
 
 		<div className="column is-one-fifth">
  			
@@ -234,14 +234,13 @@ class App extends Component {
               <Info/>
 			</div>			  
 		</div>
-		<div className="columns is-gapless is-marginless">
+		<div className="columns is-gapless ">
 			<div className="column is-one-fifth ">
 				{this.indikatorSet(window.screen.width)}
 			
 			</div>
 			<div className="column is-three-fifth">
-				<Map/>
-                <MinMaxTable/>
+				{this.mapSet(window.screen.width)}
 
 			</div>
 			<div className="column is-one-fifth ">
