@@ -155,8 +155,8 @@ class aggregateindic:
 
             # print(time.clock()- loop_time, "seconds for the loop")
             # print(target_dict)
-            # print(time.clock() - start_time, "seconds for table data")
-            print(target_dict)
+            print(time.clock() - start_time, "seconds for retrieving table data")
+            # print(target_dict)
             return target_dict
 
     def retrieve_var_year (self, ajax_dictionary):

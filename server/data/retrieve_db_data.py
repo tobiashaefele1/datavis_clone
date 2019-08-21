@@ -582,7 +582,7 @@ class retrieve_db_data:
         cursor.close()
         self.pool.release(mySQLconnection)
 
-        print (result)
+        # print (result)
         output =[]
         temp = []
         for (x,y) in result:
