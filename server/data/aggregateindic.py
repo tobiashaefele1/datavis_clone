@@ -2,7 +2,8 @@ import pandas as pd
 import time
 
 from server.data.retrieve_db_data import retrieve_db_data
-
+from pymysqlpool.pool import Pool
+import pymysql
 
 class aggregateindic:
     def __init__(self, pool):
@@ -144,9 +145,17 @@ class aggregateindic:
                 ## and finally, the following lines of code append the dict to the summary list output
                 target_dict.append(temp_dict)
 
+            ## this retrieves the names for the chosen layer and adds them as a dictionary key/value pair into the output dictionary
+            names = retrieve_db_data(pool).retrieve_names_from_db(var[0][4])
+            counter = 0
+            for x in target_dict:
+                x.update({'Name': names[counter]})
+                counter +=1
+
+
             # print(time.clock()- loop_time, "seconds for the loop")
             # print(target_dict)
-            print(time.clock() - start_time, "seconds for table ata")
+            # print(time.clock() - start_time, "seconds for table data")
             print(target_dict)
             return target_dict
 
@@ -208,16 +217,28 @@ class aggregateindic:
 
 #### test the code like that
 #
-# test_dict = {'var_1': ['Arbeitslosenquote_100', '2015', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', '"HIB', 0.05],
-#              'var_2': ['Bruttoinlandsprodukt je Erwerbstätigen_100', '2014', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', 'HIB', 0.05],
-#              'var_3': ['', '1990', '0', '2011', 'KRS_15', 'HIB', ''],
-#              'var_4': ['', '', '', '', 'KRS_15', 'HIB', ''],
-#              'var_5': ['', '', '', '', 'KRS_15', 'HIB', ''],
-#              'var_6': ['', '', '', '', 'KRS_15', 'HIB', '']}
+test_dict = {'var_1': ['Arbeitslosenquote_100', '2015', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', '"HIB', 0.05],
+             'var_2': ['Bruttoinlandsprodukt je Erwerbstätigen_100', '2014', 'Erwerbstätige gesamt_100', '2011', 'KRS_15', 'HIB', 0.05],
+             'var_3': ['', '1990', '0', '2011', 'KRS_15', 'HIB', ''],
+             'var_4': ['', '', '', '', 'KRS_15', 'HIB', ''],
+             'var_5': ['', '', '', '', 'KRS_15', 'HIB', ''],
+             'var_6': ['', '', '', '', 'KRS_15', 'HIB', '']}
+
+
+
+pool = Pool(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
+            db='mydb',
+            user='admin',
+            password='NPmpMe!696rY',
+            cursorclass=pymysql.cursors.Cursor, timeout=20.0)
+
+
+
+
 # #
-# test = retrieve_single_indic(test_dict)
-# print (test)
-# #
+test = aggregateindic(pool).retrieve_table_data(test_dict)
+print(test)
+#
 # # # print(test)
 #
 # # print(len(test[3]))

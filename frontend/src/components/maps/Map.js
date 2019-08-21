@@ -26,7 +26,19 @@ class Map extends Component {
   }
 
 
-
+    // getpositionX = (p) => {
+    //   var bbox = p.node().getBBox();
+    //   var x = Math.floor(bbox.x + bbox.width/2.0);
+    //   var y = Math.floor(bbox.y + bbox.height/2.0);
+    //   return (x)
+    // }
+    //
+    // getpositionY = (p) => {
+    //   var bbox = p.node().getBBox();
+    //   var x = Math.floor(bbox.x + bbox.width/2.0);
+    //   var y = Math.floor(bbox.y + bbox.height/2.0);
+    //   return (y)
+    // }
 
 
   headline = () => {
@@ -67,19 +79,19 @@ class Map extends Component {
 					<svg id="legend" width="90" height="90">
 						
 					<rect width="15" height="15" fill={this.legend_colours(0)} />
-					<text font-size="12" x="20" y="15" className="body" >	{this.legend_labels(0)[0]} - {this.legend_labels(0)[1]}</text>
+					<text fontSize="12" x="20" y="15" className="body" >	{this.legend_labels(0)[0]} - {this.legend_labels(0)[1]}</text>
 
 					<rect y="17" width="15" height="15" fill={this.legend_colours(1)} />
-					<text font-size="12" x="20" y="32" className="body" >	{this.legend_labels(1)[0]} - {this.legend_labels(1)[1]}</text>
+					<text fontSize="12" x="20" y="32" className="body" >	{this.legend_labels(1)[0]} - {this.legend_labels(1)[1]}</text>
 
 					<rect y="34" width="15" height="15" fill={this.legend_colours(2)} />
-					<text font-size="12" x="20" y="49" className="body" >	{this.legend_labels(2)[0]} - {this.legend_labels(2)[1]}</text>
+					<text fontSize="12" x="20" y="49" className="body" >	{this.legend_labels(2)[0]} - {this.legend_labels(2)[1]}</text>
 
 					<rect y="51" width="15" height="15" fill={this.legend_colours(3)} />
-					<text font-size="12" x="20" y="66" className="body" >	{this.legend_labels(3)[0]} - {this.legend_labels(3)[1]}</text>
+					<text fontSize="12" x="20" y="66" className="body" >	{this.legend_labels(3)[0]} - {this.legend_labels(3)[1]}</text>
 
 					<rect y="68" width="15" height="15" fill={this.legend_colours(4)} />
-					<text font-size="12" x="20" y="83" className="body" >	{this.legend_labels(4)[0]} - {this.legend_labels(4)[1]}</text>
+					<text fontSize="12" x="20" y="83" className="body" >	{this.legend_labels(4)[0]} - {this.legend_labels(4)[1]}</text>
 					</svg>
 
 					</div>
@@ -102,14 +114,14 @@ class Map extends Component {
 					<div  id = "legend_div_fliessend">
 
 						<svg id = "legend"  height="75" width="45">
-							<text font-size="12" x="20" y="10" > {Math.round(Math.max(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]))} </text>
+							<text fontSize="12" x="20" y="10" > {Math.round(Math.max(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]))} </text>
 							<defs>
 								<linearGradient id="grad1" x1="0%" y1="100%" x2="0%" y2="0%">
 									<stop offset="0%" stopColor={this.props.current_color[0]} stopOpacity="1" />
 									<stop offset="100%" stopColor={this.props.current_color[4]} stopOpacity="1" />
 								</linearGradient>
 							</defs>
-							<text font-size="12" x="20" y="75" > {Math.round(Math.min(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]))} </text>
+							<text fontSize="12" x="20" y="75" > {Math.round(Math.min(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]))} </text>
 						<rect id = "legend_bar_fliessend" width="15" height="75" fill="url(#grad1)" />
 							</svg>
 						
@@ -337,35 +349,52 @@ class Map extends Component {
             <svg id="svg" width="100%" height="100%" viewBox="0 0 400 450">
 
                 <g className="map">
-                    {this.props.current_map.map((d, i) =>
-                    <text
-                        key={`path-${i}`}
-                        xy={d3.geoPath().projection(this.projection())(d)}
-                        fontSize="14px"
 
-                        >
-                        {d.properties.name}
-
-                    </text>
-
-                    )
-
-                    }
 
               {
                 this.props.current_map.map((d, i) =>
 
                   <path
                     key={`path-${i}`}
+                    id={d.properties.Kennziffer}
                     d={d3.geoPath().projection(this.projection())(d)}
                     className={d.properties.Kennziffer}
                     fill= {this.color(d.properties.indicator)}
+                    text="HELLO TEST"
                     stroke="#000000"
                     strokeWidth={0.5}
                     onMouseOver={this.handleClick.bind(this, i)}
                   />
                 )
               }
+
+              {/*{this.props.current_map.map((d, i) =>*/}
+
+              {/*  <text fontSize ="24"*/}
+              {/*       x={d.properties.Kennziffer.d3.centroid(d)[0]}*/}
+              {/*       y={d.properties.Kennziffer.d3.centroid(d)[1]}*/}
+
+              {/*        >1test text*/}
+              {/*    </text>)*/}
+
+              {/*      }*/}
+
+                    {/*              {this.props.current_map.map((d, i) =>*/}
+                    {/*<text*/}
+                    {/*    key={`path-${i}`}*/}
+                    {/*    x={d3.geoPath().projection(this.projection())(d)[0]}*/}
+                    {/*    y={d3.geoPath().projection(this.projection())(d)[1]}*/}
+                    {/*    fontSize="14px"*/}
+                    {/*    >*/}
+                    {/*    {d.properties.name} Hello Hello*/}
+
+                    {/*</text>*/}
+
+                    {/*)*/}
+
+                    {/*}*/}
+
+
             </g>
 
 
