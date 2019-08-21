@@ -216,7 +216,7 @@ export class Main_selector extends Component {
               </select>
 				</div>
 			  </div>
-			  <div className="column is-4">
+			  <div className="column is-3">
 				  Jahr
 				<div className="select is-dark is-small">
               <select 
@@ -258,7 +258,7 @@ export class Main_selector extends Component {
                 </select>
 				</div>
 			  </div>
-			  <div className="column is-4">
+			  <div className="column is-3">
 				  <div>
 
             </div>

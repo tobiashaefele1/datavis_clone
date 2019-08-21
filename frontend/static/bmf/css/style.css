@@ -2427,11 +2427,11 @@ a.box:active {
     background-position: -200% 0; } }
 
 .table {
-  background-color: white;
-  color: #363636; }
+  background-color: whitesmoke;
+  color: #000000; }
   .table td,
   .table th {
-    border: 1px solid #dbdbdb;
+    border: 1px solid black;
     border-width: 0 0 1px;
     padding: 0.5em 0.75em;
     vertical-align: top; }
@@ -3001,7 +3001,7 @@ a.tag:hover {
   .select.is-dark:not(:hover)::after {
     border-color: #363636; }
   .select.is-dark select {
-    border-color: #363636; }
+    border-color: none; }
     .select.is-dark select:hover, .select.is-dark select.is-hovered {
       border-color: #292929; }
     .select.is-dark select:focus, .select.is-dark select.is-focused, .select.is-dark select:active, .select.is-dark select.is-active {

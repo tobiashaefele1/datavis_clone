@@ -29,7 +29,7 @@ const initalState = {
   bund: [],
   map_name: ['KRS_15', 'AMR_12', 'AMR_15', 'AMR_20', 'ROR11', 'Bundesland_ID'],
   indikator_counter: 4,
-  indikators: ['indikator 1', 'indikator 2', 'indikator 3', 'indikator 4'],
+  indikators: ['Indikator 1', 'Indikator 2', 'Indikator 3', 'Indikator 4'],
   col_names_var: JSON.parse(context.col_names_var),
   col_names_ref: JSON.parse(context.col_names_ref),
   years_ref: JSON.parse(context.years_ref),

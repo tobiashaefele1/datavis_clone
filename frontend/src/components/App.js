@@ -166,10 +166,12 @@ class App extends Component {
 
   indikatorSet(value){
 	  if(value < 1000) {
-		  return (<div className="column is-half is-mobile is-centered is-vcentered has-text-centered h"><Map/>
-                <MinMaxTable/></div>)
+		  return (<div className="column is-half is-mobile is-centered is-vcentered has-text-centered "><Map/>
+                <div className="columns is-centered has-background-white-ter">
+                <MinMaxTable/>
+				</div></div>)
 	  }else{
-		  return (<div className="column is-one-quarter has-background-white-ter "><MapSelector/>
+		  return (<div className="column is-one-quarter has-text-centered  has-background-white-ter "><MapSelector/>
 				<Indikators/>
                 <div className=" buttons is-centered">
                 <PlusButton/>
@@ -179,7 +181,7 @@ class App extends Component {
   }
   mapSet(value){
 	  if(value < 1000) {
-		  return (<div className="column is-one-quarter  has-background-white-ter "><MapSelector/>
+		  return (<div className="column is-one-quarter has-text-centered   has-background-white-ter "><MapSelector/>
 				<Indikators/>
 				<div className=" buttons  is-centered">
                 <PlusButton/>
@@ -188,7 +190,9 @@ class App extends Component {
 		  return (
 			  <div className="column is-mobile is-half is-centered is-vcentered has-text-centered ">
 				<Map/>
+				<div className="columns is-centered has-background-white-ter">
                 <MinMaxTable/>
+				</div>
 		  </div>	
 				)
 	  }
@@ -258,10 +262,16 @@ class App extends Component {
 			
 				{this.mapSet(window.screen.width)}
 
-			<div className="column is-one-quarter ">
+			<div className="column is-one-quarter has-text-centered has-background-white-ter  ">
+				Regio Tabelle
 				<SmallTable/>
+				<p>
+					Export
 				<SVGExportButton />
+				Vollstandige Datentabelle
 				  <TableButton />
+				</p>
+				
 
 			</div>
 

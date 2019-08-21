@@ -64,7 +64,7 @@ class MapSelector extends Component {
      */
     render() {
       return (
-		<div>
+		<div className="is-centered">
 		<div>Karte</div>
 		
 		
