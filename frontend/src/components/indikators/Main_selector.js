@@ -191,7 +191,7 @@ export class Main_selector extends Component {
     render() {
       return (
 		  <div >
-		  <div className="columns is-gapless field is-grouped">
+		  <div className="columns is-gapless field is-grouped is-mobile">
 			  <div className="column is-6">
 				  <div className="indicator_tooltip">
                 <span className="tooltiptext">
@@ -239,7 +239,7 @@ export class Main_selector extends Component {
 			  </div>
 
 			</div>
-			<div className="columns is-gapless field is-grouped">  
+			<div className="columns is-gapless field is-grouped is-mobile">  
 				<div className="column is-6">
 					<div>
 					<br></br>

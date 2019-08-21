@@ -160,7 +160,7 @@ class App extends Component {
       <div>
       
         {/* <ViewPicker/> */}
-		<div className="columns is-marginless">
+		<div className="columns is-marginless ">
 
 		<div className="column is-one-fifth">
  			
