@@ -209,7 +209,7 @@ class App extends Component {
       <div>
       { this.mobile(window.screen.width) }
         
-		<div className="columns is-marginless is-mobile has-background-grey-lighter">
+		<div className="columns is-marginless is-mobile has-background-white-ter">
 
 		<div className="column is-one-fifth">
  			
@@ -237,7 +237,7 @@ class App extends Component {
               <Info/>
 			</div>			  
 		</div>
-		<div className="columns is-marginless has-background-white-ter">
+		<div className="columns is-marginless ">
 			
 				{this.indikatorSet(window.screen.width)}
 			

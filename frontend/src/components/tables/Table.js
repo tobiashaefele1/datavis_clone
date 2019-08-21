@@ -59,7 +59,7 @@ class Table extends Component {
     console.log(this.props.table_data)
     if(this.props.showTable){
       return (    
-		 <div className="twelve columns" id="big">
+		 <div >
             <div style={{marginLeft: '20px', marginRight: '20px'}}> 
 		  <div>
 

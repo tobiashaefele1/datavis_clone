@@ -56,24 +56,22 @@ class ViewPicker extends Component {
   				<div className="modal-background" onClick={this.closeModal.bind(this)}></div>
   					<div className="modal-content">
    						<div className="box">
-            
+				<div className="buttons is-centered">
+				<a class="button is-link is-outlined" onClick={this.changeViewMultiple.bind(this)}>
+    									
+										<span>einen aggregierten Indikator zusammensetzen</span>
+															</a>
+															<a class="button is-link is-outlined" onClick={this.changeViewSingle.bind(this)}>
+    									
+										<span>einzelne Indikatoren ansehen</span>
+															</a>
+
         
                 
                 
-                <p> Ich möchte... </p>
-                <div className="row" id = "multiple_button">
-                  <button id="aggreg.indic.button"
-                    onClick={this.changeViewMultiple.bind(this)}>
-                        einen aggregierten Indikator zusammensetzen
-                  </button>
-                </div>
-
-                <div className = "row" id = "single_button">
-                  <button id="single.indic.button"
-                    onClick={this.changeViewSingle.bind(this)}>
-                        einzelne Indikatoren ansehen
-                  </button>
-                </div>
+               
+</div>
+                
 				</div>
               </div>
 			  <button class="modal-close is-large" onClick={this.closeModal.bind(this)} aria-label="close"></button>
