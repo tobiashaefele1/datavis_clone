@@ -209,7 +209,7 @@ class App extends Component {
       <div>
       { this.mobile(window.screen.width) }
         
-		<div className="columns is-marginless">
+		<div className="columns is-marginless is-mobile">
 
 		<div className="column is-one-fifth">
  			

@@ -329,7 +329,7 @@ class Map extends Component {
 		
         <div id="map" style={{display: 'inline-block'}}>
 
-          <h6 className="subtitle has-text-centered">{this.headline()}</h6>
+          <h6 className="subtitle has-text-centered is-mobile">{this.headline()}</h6>
 
             <div id = "map_content">
 				{this.renderlegend()}
