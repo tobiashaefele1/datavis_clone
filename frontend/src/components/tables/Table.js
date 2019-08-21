@@ -65,7 +65,7 @@ class Table extends Component {
 
         <div>
           <button onClick={this.download}>
-                        Download
+                        Datentabelle als .csv Datei exportieren
           </button>
         </div>
         <div>
