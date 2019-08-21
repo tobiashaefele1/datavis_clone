@@ -571,22 +571,25 @@ class retrieve_db_data:
 
         ## this returns the name by layer
         result = []
-        layer = layer + '_Name'
-        print(layer)
+        layer_name = layer + '_Name'
+        # print(layer)
 
 
-        sql_select_Query = (""" SELECT `%s` FROM `mapping`; """ % (layer))
+        sql_select_Query = (""" SELECT DISTINCT `%s`, `%s` FROM `mapping`; """ % (layer_name, layer))
         cursor.execute(sql_select_Query)
         result = cursor.fetchall()
 
         cursor.close()
         self.pool.release(mySQLconnection)
 
+        print (result)
         output =[]
-        for (x,) in result:
-            output.append(x)
-
-
+        temp = []
+        for (x,y) in result:
+            temp.append(x)
+            temp.append(y)
+            output.append(temp)
+            temp = []
         return output
 
 

@@ -67,6 +67,11 @@ const initalState = {
     Header: 'Kennziffer',
     accessor: 'Kennziffer',
   },
+      {
+    Header: 'Name',
+    accessor: 'Name',
+  },
+
   {
     Header: 'aggregierter Indikator',
     accessor: 'aggregierter Indikator',
@@ -191,10 +196,16 @@ function reducer(state = initalState, action) {
 									Header: 'Kennziffer',
 									accessor: 'Kennziffer',
 								},
+                                {
+									Header: 'Name',
+									accessor: 'Name',
+								},
+
 								{
 									Header: 'aggregierter Indikator',
 									accessor: 'aggregierter Indikator',
 								},
+
 								{
 									Header: 'Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200 2009-12',
 									accessor: 'Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200 2009-12',
@@ -247,7 +258,7 @@ function reducer(state = initalState, action) {
     case 'UPDATECOLUMNS':
       return produce(state, (draft) => {
           console.log(state.table_data);
-        while (draft.table_columns.length > 2) {
+        while (draft.table_columns.length > 3) {
           draft.table_columns.pop();
         }
         for (let i = 0; i <= state.indikator_counter; i++) {
