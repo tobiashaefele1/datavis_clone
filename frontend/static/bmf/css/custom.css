@@ -71,3 +71,17 @@
 
 
 /* THIS IS ALL MY HOVER TOOLTIP TOBIAS TOBIAS TOBIAS */
+
+.columns {
+	margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+
+	.columns {
+	    margin-left: -0.75rem;
+	    margin-right: -0.75rem;
+	    margin-top: -0.75rem;
+	}
+
+}
