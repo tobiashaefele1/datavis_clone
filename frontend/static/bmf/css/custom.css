@@ -85,6 +85,12 @@
 	}
 
 } */
+@media screen and (min-width: 780px){
+	#optionbox{
+	min-height: 810px;
+}
+}
+
 .st-right{
 	text-align: left;
 

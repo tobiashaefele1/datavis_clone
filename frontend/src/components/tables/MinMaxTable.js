@@ -75,7 +75,7 @@ class MinMaxTable extends Component {
     render() {
       return (
 
-          <table className="table" id="table" style={{display: 'inline-block'}}>
+          <table className="table" id="table" style={{backgroundColor: 'white'}}>
             <thead>
               <tr>
                 <th>Min</th>

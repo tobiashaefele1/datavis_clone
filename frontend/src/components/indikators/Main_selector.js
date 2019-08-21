@@ -191,7 +191,7 @@ export class Main_selector extends Component {
     render() {
       return (
 		  <div >
-		  <div className="columns is-gapless field is-grouped is-mobile" style={{marginBottom: '0px'}}>
+		  <div className="columns is-gapless field is-grouped is-mobile" style={{marginBottom: '10px'}}>
 			  <div className="column is-6">
 				  <div className="indicator_tooltip">
                 <span className="tooltiptext">

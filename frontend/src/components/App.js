@@ -154,7 +154,7 @@ class App extends Component {
    * @memberof App
    */
   mobile(value) {
-    if (value < 1000 && this.props.view_multiple) {
+    if (value < 1000 && this.props.view_multiple && this.props.firstload) {
       this.props.dispatch({
         type: 'CHANGEVIEW',
       });
@@ -167,30 +167,30 @@ class App extends Component {
   indikatorSet(value){
 	  if(value < 1000) {
 		  return (<div className="column is-half is-mobile is-centered is-vcentered has-text-centered "><Map/>
-                <div className="columns is-centered has-background-white-ter">
+                <div className="columns is-centered ">
                 <MinMaxTable/>
 				</div></div>)
 	  }else{
-		  return (<div className="column is-one-quarter has-text-centered  has-background-white-ter "><MapSelector/>
+		  return (<div className="column is-one-quarter has-text-centered"><div id="optionbox" className="box   has-background-white-ter has-text-black "><MapSelector/>
 				<Indikators/>
                 <div className=" buttons is-centered">
                 <PlusButton/>
-				<MinButton/></div></div>	
+				<MinButton/></div></div></div>	
 				)
 	  }
   }
   mapSet(value){
 	  if(value < 1000) {
-		  return (<div className="column is-one-quarter has-text-centered   has-background-white-ter "><MapSelector/>
+		  return (<div className="column is-one-quarter has-text-centered   has-background-white-ter "><div id="optionbox" className="box   has-background-white-ter has-text-black "><MapSelector/>
 				<Indikators/>
 				<div className=" buttons  is-centered">
                 <PlusButton/>
-				<MinButton/></div></div>)
+				<MinButton/></div></div></div>)
 	  }else{
 		  return (
 			  <div className="column is-mobile is-half is-centered is-vcentered has-text-centered ">
 				<Map/>
-				<div className="columns is-centered has-background-white-ter">
+				<div className="columns is-centered ">
                 <MinMaxTable/>
 				</div>
 		  </div>	
@@ -243,7 +243,7 @@ class App extends Component {
               <Info/>
 			</div>			  
 		</div>
-		<div className="columns is-marginless">
+		<div className="columns is-marginless has-text-black">
 			<div className="column is-hidden-mobile is-paddingless ">
 				<div className="subtitle has-text-centered">Auswahlen</div>
 			</div>
@@ -262,7 +262,8 @@ class App extends Component {
 			
 				{this.mapSet(window.screen.width)}
 
-			<div className="column is-one-quarter has-text-centered has-background-white-ter  ">
+			<div className="column is-one-quarter has-text-centered   ">
+				<div id="optionbox" className="box has-background-white-ter has-text-black ">
 				Regio Tabelle
 				<SmallTable/>
 				<p>
@@ -272,7 +273,7 @@ class App extends Component {
 				  <TableButton />
 				</p>
 				
-
+		</div>
 			</div>
 
 		</div>
@@ -300,7 +301,8 @@ function mapStateToProps(state) {
     view_multiple: state.view_multiple,
     
       value_dic: state.value_dic,
-      metadata: state.metadata,
+	  metadata: state.metadata,
+	   firstload: state.firstload,
   };
 }
 export default connect(mapStateToProps)(App);
