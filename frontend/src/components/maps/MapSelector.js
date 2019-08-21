@@ -64,9 +64,10 @@ class MapSelector extends Component {
      */
     render() {
       return (
+		<div>
 
-        <div className="select is-small">
-
+		Karte
+        <div className="select is-small " style={{marginBottom: '10px'}}>
           <select 
             id="map_selector"
             onChange={this.handleMapChange.bind(this)}
@@ -80,6 +81,7 @@ class MapSelector extends Component {
           </select>
 
         </div>
+		</div>
       );
     }
 }

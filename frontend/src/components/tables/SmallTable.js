@@ -16,7 +16,7 @@ class SmallTable extends Component {
    */
   render() {
     return (
-      <table id="specInfo" className="u-80-width">
+      <table id="specInfo" className="table is-fullwidth">
         <thead>
           <tr>
             <th colSpan="2">Informationen</th>

@@ -10,7 +10,8 @@ path:hover {
 
 
 #map {
-  position:relative
+  position:relative;
+  max-width: 600px;
 }
 
 .map_legend {
@@ -41,8 +42,8 @@ bottom: 50px;
 }
 #map_reset {
   position: absolute;
-top: 15px;
-  right: 120px;
+top: 45px;
+  right: 20px;
   object-position: right;
   width: 40px;
   height: 40px;

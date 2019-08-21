@@ -191,7 +191,7 @@ export class Main_selector extends Component {
     render() {
       return (
 		  <div >
-		  <div className="columns is-gapless field is-grouped is-mobile">
+		  <div className="columns is-gapless field is-grouped is-mobile" style={{marginBottom: '0px'}}>
 			  <div className="column is-6">
 				  <div className="indicator_tooltip">
                 <span className="tooltiptext">
@@ -216,7 +216,7 @@ export class Main_selector extends Component {
               </select>
 				</div>
 			  </div>
-			  <div className="column is-3">
+			  <div className="column is-4">
 				  Jahr
 				<div className="select is-small">
               <select 
@@ -242,7 +242,7 @@ export class Main_selector extends Component {
 			<div className="columns is-gapless field is-grouped is-mobile">  
 				<div className="column is-6">
 					<div>
-					<br></br>
+
             </div>
 				  <div className="select is-small">
                 <select 
@@ -260,7 +260,7 @@ export class Main_selector extends Component {
 			  </div>
 			  <div className="column is-4">
 				  <div>
-          <br></br>
+
             </div>
 				  <div className="select is-small">
                 <select

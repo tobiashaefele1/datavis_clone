@@ -327,9 +327,9 @@ class Map extends Component {
 	  }
       return (
 		
-        <div id="map">
+        <div id="map" style={{display: 'inline-block'}}>
 
-          <h6>{this.headline()}</h6>
+          <h6 className="subtitle has-text-centered">{this.headline()}</h6>
 
             <div id = "map_content">
 				{this.renderlegend()}
@@ -347,8 +347,9 @@ class Map extends Component {
                     fill= {this.color(d.properties.indicator)}
                     stroke="#000000"
                     strokeWidth={0.5}
-                    onMouseOver={this.handleClick.bind(this, i)}
-                  />
+					onMouseOver={this.handleClick.bind(this, i)}
+					/>
+
                 )
               }
             </g>

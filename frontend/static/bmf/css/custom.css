@@ -72,7 +72,7 @@
 
 /* THIS IS ALL MY HOVER TOOLTIP TOBIAS TOBIAS TOBIAS */
 
-.columns {
+/* .columns {
 	margin: 0;
 }
 
@@ -84,4 +84,23 @@
 	    margin-top: -0.75rem;
 	}
 
+} */
+.st-right{
+	text-align: left;
+
+	height: 20px;
+	width: 30px;
+white-space: nowrap;
+}
+
+.st-left{
+	text-align: left;
+	width: 50px;
+	height: 20px;
+
+}
+#specInfo{
+	table-layout: fixed;
+	overflow: hidden;
+	
 }

@@ -166,24 +166,27 @@ class App extends Component {
 
   indikatorSet(value){
 	  if(value < 1000) {
-		  return (<div><Map/>
+		  return (<div className="column is-three-fifth is-centered is-vcentered has-text-centered"><Map/>
                 <MinMaxTable/></div>)
 	  }else{
-		  return (<div><MapSelector/>
+		  return (<div className="column is-one-fifth "><MapSelector/>
 				<Indikators/>
+                <div className=" buttons field is-grouped has-text-centered">
                 <PlusButton/>
-				<MinButton/></div>	
+				<MinButton/></div></div>	
 				)
 	  }
   }
   mapSet(value){
 	  if(value < 1000) {
-		  return (<div><MapSelector/>
+		  return (<div className="column is-one-fifth "><MapSelector/>
 				<Indikators/>
+				<div className=" buttons field is-grouped has-text-centered">
                 <PlusButton/>
-				<MinButton/></div>)
+				<MinButton/></div></div>)
 	  }else{
-		  return (<div>
+		  return (
+			  <div className="column is-three-fifth is-centered is-vcentered has-text-centered">
 				<Map/>
                 <MinMaxTable/>
 		  </div>	
@@ -206,7 +209,7 @@ class App extends Component {
       <div>
       { this.mobile(window.screen.width) }
         
-		<div className="columns">
+		<div className="columns is-marginless">
 
 		<div className="column is-one-fifth">
  			
@@ -234,18 +237,16 @@ class App extends Component {
               <Info/>
 			</div>			  
 		</div>
-		<div className="columns is-gapless ">
-			<div className="column is-one-fifth ">
+		<div className="columns is-marginless">
+			
 				{this.indikatorSet(window.screen.width)}
 			
-			</div>
-			<div className="column is-three-fifth">
+		
+			
 				{this.mapSet(window.screen.width)}
 
-			</div>
 			<div className="column is-one-fifth ">
 				<SmallTable/>
-
 				<SVGExportButton />
 				  <TableButton />
 
@@ -253,7 +254,7 @@ class App extends Component {
 
 		</div>
 		<div className="columns">
-			<div className="column">
+			<div className="column is-full">
 				<Table />
 			</div>
 		</div>
