@@ -51,12 +51,15 @@ class ViewPicker extends Component {
     render() {
       if (this.props.show_viewpicker) {
         return (
-          <div>
-            <div id="settings" className="import_modal">
-              <div className="import_modal-content">
-                <span className="close"
-                  onClick={this.closeModal.bind(this)}>&times;</span>
-                <p>Willkommen!</p>
+          
+			   <div className="modal is-active">
+  				<div className="modal-background" onClick={this.closeModal.bind(this)}></div>
+  					<div className="modal-content">
+   						<div className="box">
+            
+        
+                
+                
                 <p> Ich möchte... </p>
                 <div className="row" id = "multiple_button">
                   <button id="aggreg.indic.button"
@@ -71,10 +74,12 @@ class ViewPicker extends Component {
                         einzelne Indikatoren ansehen
                   </button>
                 </div>
-
+				</div>
               </div>
+			  <button class="modal-close is-large" onClick={this.closeModal.bind(this)} aria-label="close"></button>
             </div>
-          </div>);
+
+       );
       } else {
         return ('');
       }
