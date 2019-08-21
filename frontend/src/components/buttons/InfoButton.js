@@ -20,7 +20,13 @@ class InfoButton extends Component {
      */
     render() {
       return (
-        <button onClick={this.closeInfo.bind(this)}>Infos</button>
+		  <a class="button is-link is-outlined" onClick={this.closeInfo.bind(this)}>
+    			<span class="icon">
+     				 <i class="far fa-question-circle"></i>
+    					</span>
+   					 {/* <span>Info</span> */}
+  			</a>
+
       );
     }
 }

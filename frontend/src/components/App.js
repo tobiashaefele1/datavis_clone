@@ -159,62 +159,65 @@ class App extends Component {
 
       <div>
       
-        <ViewPicker/>
-        <div className="example-grid-logo">
-          {/* Top Row */}
-          <div className="row">
-            <div className="three columns">
-              <object type="image/svg+xml"
-                data="static/bmf/resources/BMF_2017_WebSVG_de.svg" width="100%"
-                height="100%">Your browser does not support SVG
+        {/* <ViewPicker/> */}
+		<div className="columns is-marginless">
+
+		<div className="column is-one-fifth">
+ 			
+   				 
+     		<object className="is-pulled-left" type="image/svg+xml" 
+                data="static/bmf/resources/BMF_2017_WebSVG_de.svg" >Your browser does not support SVG
               </object>
-            </div>
-            <div className="six columns">
-              Lebensverhältnisse in Deutschland. 
-            	Visualisierung von Indikatoren
-            </div>
-            <div className="three columns">
-              <SettingsButton/>
+     				 
+		</div>
+		<div className="column"><h2 class="title has-text-centered">
+      				    Lebensverhältnisse in Deutschland
+            			<h2 class="subtitle">Visualisierung von Indikatoren</h2>
+     				 </h2></div>
+					  
+
+		<div className="column is-one-fifth">
+
+			<div className=" buttons field is-grouped is-pulled-right">
+			<SettingsButton/>
               <InfoButton/>
+			</div>
+
+			{/* TODO: find someway to show these nicel */}
               <Settings/>
               <Info/>
-            </div>
-
-          </div>
-        </div>
-        <div className="example-grid-body">
-          {/* main content */}
-          <div className="row">
-            <div className="box">
-              <div className="three columns" id="big">
-                <MapSelector/>
-				 <Indikators/>
+			</div>			  
+		</div>
+		<div className="columns is-gapless is-marginless">
+			<div className="column is-one-fifth has-background-black-ter">
+				<MapSelector/>
+				<Indikators/>
                 <PlusButton/>
                 <MinButton/>
-                
-              </div>
-              <div className="six columns" id="big">
-                <Map/>
+			</div>
+			<div className="column is-three-fifth">
+				<Map/>
                 <MinMaxTable/>
-              </div>
-              <div className="three columns" id="big">
-				<SmallTable/>
-               
 
-                <div className="row">
-                  <SVGExportButton />
+			</div>
+			<div className="column is-one-fifth ">
+				<SmallTable/>
+
+				<SVGExportButton />
 				  <TableButton />
 
+			</div>
 
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            <Table />
-          </div>
-        </div>
-      </div>
+		</div>
+		<div className="columns">
+			<div className="column">
+				<Table />
+			</div>
+		</div>
+
+
+
+    </div>
     );
   }
 }

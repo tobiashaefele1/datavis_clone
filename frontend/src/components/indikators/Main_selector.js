@@ -118,16 +118,18 @@ export class Main_selector extends Component {
      */
     weight = () =>{
       if (this.props.view_multiple) {
-        return ( <div className="three columns">
+        return ( 
+			<div>
             <div>
-          <label>Gewicht (%) </label>
+          Gewicht(%) 
             </div>
-          <input className="u-80-width" id={`weight_${this.props.number}`}
+          <input className="input is-small" id={`weight_${this.props.number}`}
             onChange={this.handleChangeProm.bind(this)}
             type="number"
             defaultValue={this.props.value_dic[`weight_${this.props.number}`]}>
           </input>
-        </div>);
+		  </div>
+        );
       }
     }
 
@@ -188,11 +190,10 @@ export class Main_selector extends Component {
      */
     render() {
       return (
-
-        <div id={`in_${this.props.number}`}>
-          <div className="row">
-            <div className="six columns">
-                 <div className="indicator_tooltip">
+		  <div >
+		  <div className="columns is-gapless field is-grouped">
+			  <div className="column is-6">
+				  <div className="indicator_tooltip">
                 <span className="tooltiptext">
                      Langname: {(this.props.value_dic[`var_name_${this.props.number}`] ?
                      this.props.metadata[this.props.value_dic[`var_name_${this.props.number}`]].Langname : '')}
@@ -201,7 +202,8 @@ export class Main_selector extends Component {
                     </span>
                 <label className="indicator">{this.props.name} <a id="info_icon">&#9432; </a>  </label>
 				</div>
-                <select className="u-95-width"
+				  <div className="select is-small ">
+                <select 
                 defaultValue={this.props.value_dic[`var_name_${this.props.number}`]}
                 id={`var_name_${this.props.number}`}
                 onChange={this.handleChangeProm.bind(this)}>
@@ -212,15 +214,12 @@ export class Main_selector extends Component {
                 )
                 }
               </select>
-            
-            </div>
-
-
-            <div className="three columns">
-                <div>
-              <label >Jahr </label>
-                </div>
-              <select className="u-80-width"
+				</div>
+			  </div>
+			  <div className="column is-3">
+				  Jahr
+				<div className="select is-small">
+              <select 
                 defaultValue={this.props.value_dic[`var_year_${this.props.number}`]}
                 id={`var_year_${this.props.number}`}
                 onChange={this.handleChangeProm.bind(this)}>
@@ -233,14 +232,20 @@ export class Main_selector extends Component {
 
                 }
               </select>
+			  </div>
+			  </div>
+			  <div className="column is-3">
+				   {this.weight()}
+			  </div>
+
+			</div>
+			<div className="columns is-gapless field is-grouped">  
+				<div className="column is-6">
+					<div>
+					<br></br>
             </div>
-
-            {this.weight()}
-
-            <div className="row">
-
-              <div className="six columns">
-                <select className="u-95-width"
+				  <div className="select is-small">
+                <select 
                   defaultValue={this.props.value_dic[`ref_name_${this.props.number}`]}
                   id={`ref_name_${this.props.number}`}
                   onChange={this.handleChangeProm.bind(this)}>
@@ -251,10 +256,14 @@ export class Main_selector extends Component {
                   )
                   }
                 </select>
-              </div>
-
-              <div className="three columns">
-                <select className="u-80-width"
+				</div>
+			  </div>
+			  <div className="column is-4">
+				  <div>
+          <br></br>
+            </div>
+				  <div className="select is-small">
+                <select
                   id={`ref_year_${this.props.number}`}
                   onChange={this.handleChangeProm.bind(this)}>
                   defaultValue={this.props.value_dic[`ref_year_${this.props.number}`]}
@@ -266,10 +275,39 @@ export class Main_selector extends Component {
                   }
 
                 </select>
-              </div>
-            </div>
-          </div>
-        </div>
+				</div>
+			  </div>
+			  
+			</div>
+
+
+        <div id={`in_${this.props.number}`} class="field is-grouped-multiline" >
+       
+		 
+         
+
+
+           
+               
+        
+
+        
+			</div>
+            
+
+           
+				  
+            
+
+            
+				  
+				 
+           
+			
+        
+	
+</div>
+       
       );
     }
 

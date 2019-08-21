@@ -158,13 +158,17 @@ class Indikators extends Component {
    */
   render() {
     return (
-      <div key='indikators'>
+      <div  >
+
+	  
+		  
         {this.props.indikators.map( (d, i) =>
           <Main_selector key={i} number={i} name={d} ajaxRequest={this.ajaxRequest.bind(this)} getData = {this.getData} />
 
         )
-        }
-      </div>
+		}
+	</div>
+      
 
     );
   }

@@ -25,7 +25,13 @@ class MinButton extends Component {
         );
       } else {
         return (
-          <button onClick={this.handleButton.bind(this)}>-</button>
+			<a class="button is-link is-outlined" onClick={this.handleButton.bind(this)}>
+    			<span class="icon">
+     				 <i class="fas fa-minus"></i>
+    					</span>
+   					 {/* <span>Einstellungen</span> */}
+  			</a>
+          
         );
       }
     }

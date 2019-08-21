@@ -67,37 +67,43 @@ class Settings extends Component {
     render() {
       if (this.props.show_modal) {
         return (
-          <div>
-            <div id="settings" className="import_modal">
-              <div className="import_modal-content">
-                <span className="close"
-                  onClick={this.closeModal.bind(this)}>&times;</span>
-                <h3>Darstellung</h3>
-                <ViewButton/>
-                <h3>Farbpaletten:</h3>
-                <label >
 
-                  <svg width="10" height="10" className="Blues">
-                    <rect width="10" height="10" className="q0-5" />
-                  </svg>
-                  <svg width="10" height="10" className="Blues">
-                    <rect width="10" height="10" className="q1-5" />
-                  </svg>
-                  <svg width="10" height="10" className="Blues">
-                    <rect width="10" height="10" className="q2-5" />
-                  </svg>
-                  <svg width="10" height="10" className="Blues">
-                    <rect width="10" height="10" className="q3-5" />
-                  </svg>
-                  <svg width="10" height="10" className="Blues">
-                    <rect width="10" height="10" className="q4-5" />
-                  </svg>
-                  <svg width="10" height="10" className="Purples">
-                    <rect width="10" height="10" className="q5-5" />
-                  </svg>
+			  <div className="modal is-active">
+  				<div className="modal-background" onClick={this.closeModal.bind(this)}></div>
+  					<div className="modal-content">
+   						<div className="box">
+							   <h2 className=" title has-text-centered">Einstellungen</h2>
+							   <div className="columns">
+									<div className="column">
+										 <h3>Darstellung</h3>
+                							<ViewButton/>
+											Direct the buttons for single or multiple here 
+									</div>
+									<div className="column">
+										<h3>Farbpaletten</h3>
+                
 
-                </label>
-                <button value={0} onClick={this.colorChange} > Blau </button>
+											<svg width="10" height="10" className="Blues">
+												<rect width="10" height="10" className="q0-5" />
+											</svg>
+											<svg width="10" height="10" className="Blues">
+												<rect width="10" height="10" className="q1-5" />
+											</svg>
+											<svg width="10" height="10" className="Blues">
+												<rect width="10" height="10" className="q2-5" />
+											</svg>
+											<svg width="10" height="10" className="Blues">
+												<rect width="10" height="10" className="q3-5" />
+											</svg>
+											<svg width="10" height="10" className="Blues">
+												<rect width="10" height="10" className="q4-5" />
+											</svg>
+											<svg width="10" height="10" className="Purples">
+												<rect width="10" height="10" className="q5-5" />
+											</svg>
+
+											
+                							<button value={0} onClick={this.colorChange} > Blau </button>
                 <label>
 
                   <svg width="10" height="10" className="Reds">
@@ -146,29 +152,39 @@ class Settings extends Component {
                 </label>
 
                 <button value={2} onClick={this.colorChange}> Grün </button>
-                <div>
-                  <h3>  Skalen: </h3>
-                </div>
-                <div>
-                  <button className={"scalebutton"} value={0} onClick={this.scaleChange}
-                  style={{width:200, textAlign: "center", padding: 0}}
-                  > gleichmäßige Gruppen </button>
-                </div>
-                <div>
+									</div>
+
+									<div className="column">
+										<h3>  Skalen </h3>
 
 
-                  <button className={"scalebutton"} value={1} onClick={this.scaleChange}
-                  style={{width:200, textAlign: "center", padding: 0}}> gleichmäßige Intervalle </button>
-                </div>
-                <div>
-                  <button value={2} className={"scalebutton"} onClick={this.scaleChange}
-                  style={{width:200, textAlign: "center", padding: 0}}> fließende Intervalle </button>
-                </div>
+									<button className={"scalebutton"} value={0} onClick={this.scaleChange}
+									style={{width:200, textAlign: "center", padding: 0}}
+									> gleichmäßige Gruppen </button>
+									
 
-              </div>
 
-            </div>
-          </div>);
+
+									<button className={"scalebutton"} value={1} onClick={this.scaleChange}
+									style={{width:200, textAlign: "center", padding: 0}}> gleichmäßige Intervalle </button>
+
+
+									<button value={2} className={"scalebutton"} onClick={this.scaleChange}
+									style={{width:200, textAlign: "center", padding: 0}}> fließende Intervalle </button>
+								</div>
+										
+								
+							   </div>
+                </div>
+				</div>
+                  
+  				<button class="modal-close is-large" onClick={this.closeModal.bind(this)} aria-label="close"></button>
+			</div>
+           
+                
+
+            
+          );
       } else {
         return ('');
       }
