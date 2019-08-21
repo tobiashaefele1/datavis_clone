@@ -189,7 +189,7 @@ class App extends Component {
 			</div>			  
 		</div>
 		<div className="columns is-gapless is-marginless">
-			<div className="column is-one-fifth has-background-black-ter">
+			<div className="column is-one-fifth ">
 				<MapSelector/>
 				<Indikators/>
                 <PlusButton/>
