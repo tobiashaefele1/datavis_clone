@@ -330,11 +330,11 @@ class Map extends Component {
         <div id="map" style={{display: 'inline-block'}}>
 
           <h6 className="subtitle has-text-centered is-marginless">{this.headline()}</h6>
-
+			<br></br>
             <div id = "map_content">
 				{this.renderlegend()}
 			{this.loadingCirkle()}
-            <svg id="svg" width="100%" height="100%" viewBox="0 0 400 450" background="white">
+            <svg id="svg" width="100%" height="100%" viewBox="0 0 400 450">
 
                 <g className="map">
               {
