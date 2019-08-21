@@ -145,6 +145,52 @@ class App extends Component {
           });
         });
   }
+  /**
+   *This function checks if the screen width is less than 1000px,
+   * if this is the case it decrements the indicators to one.
+   * This is to imporve layout on mobile devices.
+   *
+   * @param {*} value screen width
+   * @memberof App
+   */
+  mobile(value) {
+    if (value < 1000) {
+      this.props.dispatch({
+        type: 'CHANGEVIEW',
+      });
+     
+    }else{
+		retun( <ViewPicker />)
+	}
+  }
+
+  indikatorSet(value){
+	  if(value < 1000) {
+		  return (<div><Map/>
+                <MinMaxTable/></div>)
+	  }else{
+		  return (<div><MapSelector/>
+				<Indikators/>
+                <PlusButton/>
+				<MinButton/></div>	
+				)
+	  }
+  }
+  mapSet(value){
+	  if(value < 1000) {
+		  return (<div><MapSelector/>
+				<Indikators/>
+                <PlusButton/>
+				<MinButton/></div>)
+	  }else{
+		  return (<div>
+<Map/>
+                <MinMaxTable/>
+		  </div>	
+				)
+	  }
+  }
+
 
  
 
@@ -156,10 +202,10 @@ class App extends Component {
    */
   render() {
     return (
-
+		
       <div>
-      
-        {/* <ViewPicker/> */}
+      { this.mobile(window.screen.width) }
+        
 		<div className="columns is-marginless ">
 
 		<div className="column is-one-fifth">
@@ -190,10 +236,8 @@ class App extends Component {
 		</div>
 		<div className="columns is-gapless is-marginless">
 			<div className="column is-one-fifth ">
-				<MapSelector/>
-				<Indikators/>
-                <PlusButton/>
-                <MinButton/>
+				{this.indikatorSet(window.screen.width)}
+			
 			</div>
 			<div className="column is-three-fifth">
 				<Map/>
