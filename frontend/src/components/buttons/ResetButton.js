@@ -69,7 +69,13 @@ class ResetButton extends Component {
     render() {
       
         return (
-			<button onClick={this.handleButtonReset.bind(this)}>GRW 2012</button>
+				<a class="button is-dark is-outlined" onClick={this.handleButtonReset.bind(this)}>
+    			<span class="icon">
+     				 <i class="fas fa-undo"></i>
+    					</span>
+   					 {/* <span>Einstellungen</span> */}
+  			</a>
+
 		 
         );
       }

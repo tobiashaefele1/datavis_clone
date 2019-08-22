@@ -341,8 +341,6 @@ class Map extends Component {
 		
         <div id="map">
 
-          <h6>{this.headline()}</h6>
-
             <div id = "map_content">
 				{this.renderlegend()}
 			{this.loadingCirkle()}
@@ -363,8 +361,10 @@ class Map extends Component {
                     text="HELLO TEST"
                     stroke="#000000"
                     strokeWidth={0.5}
-                    onMouseOver={this.handleClick.bind(this, i)}
-                  />
+					onMouseOver={this.handleClick.bind(this, i)}
+					onClick={this.handleClick.bind(this, i)}
+					/>
+
                 )
               }
 

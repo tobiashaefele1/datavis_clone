@@ -64,9 +64,12 @@ class MapSelector extends Component {
      */
     render() {
       return (
-        <div>
-          <label>Ebenenauswahl</label>
-          <select className="u-80-width"
+		<div className="is-centered">
+		<div>Karte</div>
+		
+		
+        <div className="select is-small " style={{marginBottom: '10px'}}>
+          <select 
             id="map_selector"
             onChange={this.handleMapChange.bind(this)}
 			defaultValue='1'>
@@ -79,6 +82,7 @@ class MapSelector extends Component {
           </select>
 
         </div>
+		</div>
       );
     }
 }

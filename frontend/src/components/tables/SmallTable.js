@@ -16,12 +16,8 @@ class SmallTable extends Component {
    */
   render() {
     return (
-      <table id="specInfo" className="u-80-width">
-        <thead>
-          <tr>
-            <th colSpan="2">Informationen</th>
-          </tr>
-        </thead>
+      <table id="specInfo" className="table  is-fullwidth">
+        
         <tbody>
           {this.props.smalltable.map((d, i) =>
             <tr key= {`tr-${i}`}>

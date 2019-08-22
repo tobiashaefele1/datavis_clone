@@ -33,7 +33,7 @@ SECRET_KEY = '19nhjo(g3b=2x68wr7&7y$w1vxvr31v#n9xt3c7mnjifzlu*ia'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '0.0.0.0', '127.0.0.1', 'bmfserver.herokuapp.com'
+    '0.0.0.0', '127.0.0.1', 'bmfserver.herokuapp.com', 'arcane-reaches-11621.herokuapp.com'
 ]
 
 

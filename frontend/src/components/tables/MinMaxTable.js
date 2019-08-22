@@ -74,8 +74,8 @@ class MinMaxTable extends Component {
      */
     render() {
       return (
-        <div className="row">
-          <table className="u-80-width" id="table">
+
+          <table className="table" id="table" style={{backgroundColor: 'white'}}>
             <thead>
               <tr>
                 <th>Min</th>
@@ -91,7 +91,7 @@ class MinMaxTable extends Component {
               </tr>
             </tbody>
           </table>
-        </div>
+
       );
     }
 }
