@@ -20,6 +20,12 @@
 
 /* THIS IS ALL MY HOVER TOOLTIP TOBIAS TOBIAS TOBIAS */
 
+
+.indicator{
+  text-align: left
+}
+
+
 .indicator_tooltip {
   position: relative;
   display: inline-block;

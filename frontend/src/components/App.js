@@ -169,7 +169,7 @@ class App extends Component {
   indikatorSet(value){
 	  if(value < 1000) {
 		  return (<div className="column is-half is-mobile is-centered is-vcentered has-text-centered ">
-			  	<div className="is-centered has-text-centered" ><Map/></div>
+			  	<div><Map/></div>
                 <div className="columns is-centered ">
                 <MinMaxTable/>
 				</div></div>)
@@ -192,7 +192,7 @@ class App extends Component {
 	  }else{
 		  return (
 			  <div className="column is-mobile is-half is-centered is-vcentered has-text-centered ">
-				<div className="is-centered has-text-centered"><Map/></div>
+				<div><Map/></div>
 				<div className="columns is-centered ">
                 <MinMaxTable/>
 				</div>

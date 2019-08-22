@@ -62,7 +62,7 @@ export class Main_selector extends Component {
 
 		else{
 			for(i in this.props.indikators){
-				document.getElementById(`weight_${i}`).style.background = 'palegreen';
+				document.getElementById(`weight_${i}`).style.background = '#e6ffe6';
 			}
 		}
 	}
@@ -128,7 +128,7 @@ export class Main_selector extends Component {
           <input className="input is-small" id={`weight_${this.props.number}`}
             onChange={this.handleChangeProm.bind(this)}
             type="number"
-            defaultValue={this.props.value_dic[`weight_${this.props.number}`]}>
+            defaultValue={this.props.value_dic[`weight_${this.props.number}`]} style={{textAlign: 'right'}} >
           </input>
 		  </div>
         );
@@ -194,7 +194,7 @@ export class Main_selector extends Component {
       return (
 		  <div >
 		  <div className="columns is-gapless field is-grouped is-mobile" style={{marginBottom: '10px'}}>
-			  <div className="column is-6">
+			  <div className="column is-6" style={{textAlign: 'left'}}>
 				  <div className="indicator_tooltip">
                 <span className="tooltiptext">
                      Langname: {(this.props.value_dic[`var_name_${this.props.number}`] ?
@@ -202,7 +202,8 @@ export class Main_selector extends Component {
                       Quelle: {(this.props.value_dic[`var_name_${this.props.number}`] ?
                      this.props.metadata[this.props.value_dic[`var_name_${this.props.number}`]].Quelle : '')}
                     </span>
-                <label className="indicator">{this.props.name} <a id="info_icon">&#9432; </a>  </label>
+                    <label className="indicator">&nbsp; {this.props.name} <i
+                        className="far fa-question-circle" id="info_icon"></i> </label>
 				</div>
 				  <div className="select is-dark is-small ">
                 <select 
@@ -218,8 +219,8 @@ export class Main_selector extends Component {
               </select>
 				</div>
 			  </div>
-			  <div className="column is-3">
-				  Jahr
+			  <div className="column is-3" style={{textAlign: 'left'}}>
+				  &nbsp; Jahr
 				<div className="select is-dark is-small">
               <select 
                 defaultValue={this.props.value_dic[`var_year_${this.props.number}`]}

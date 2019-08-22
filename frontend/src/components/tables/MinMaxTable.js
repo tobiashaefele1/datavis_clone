@@ -75,19 +75,19 @@ class MinMaxTable extends Component {
     render() {
       return (
 
-          <table className="table" id="table" style={{backgroundColor: 'white'}}>
+          <table className="table" id="table" style={{backgroundColor: 'white', textAlign: 'center'}}>
             <thead>
               <tr>
-                <th>Min</th>
-                <th>Max</th>
-                <th>Durchschnitt</th>
+                <th style={{textAlign: 'center'}}>Min</th>
+                <th style={{textAlign: 'center'}}>Max</th>
+                <th style={{textAlign: 'center'}}>Durchschnitt</th>
               </tr>
             </thead>
             <tbody>
               <tr>{this.checkData()}
-                <td id="min_value">{this.values[0]}</td>
-                <td id="max_value">{this.values[1]}</td>
-                <td id="avg_value">{this.values[2]}</td>
+                <td id="min_value" style={{textAlign: 'center'}}>{this.values[0]}</td>
+                <td id="max_value" style={{textAlign: 'center'}}>{this.values[1]}</td>
+                <td id="avg_value" style={{textAlign: 'center'}}>{this.values[2]}</td>
               </tr>
             </tbody>
           </table>
