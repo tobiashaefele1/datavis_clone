@@ -8,7 +8,8 @@ import {connect} from 'react-redux';
  * @extends {Component}
  */
 class InfoButton extends Component {
-    closeInfo = () => {
+   
+	closeInfo = () => {
       this.props.dispatch({type: 'INFO'});
     }
 

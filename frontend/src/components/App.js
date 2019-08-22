@@ -230,7 +230,7 @@ class App extends Component {
 		</div>
 		<div className="column"><h2 className="title has-text-centered">
             Lebensverhältnisse in Deutschland </h2>
-            			<h2 className="subtitle">Visualisierung von Indikatoren</h2>
+            			<h2 className="subtitle has-text-centered">Visualisierung von Indikatoren</h2>
      				 </div>
 					  
 
@@ -240,10 +240,10 @@ class App extends Component {
 			<SettingsButton/>
               <InfoButton/>
 			</div>
-
+			<Info/>
 			{/* TODO: find someway to show these nicel */}
               <Settings/>
-              <Info/>
+            
 			</div>			  
 		</div>
 		<div className="columns is-marginless has-text-black">
