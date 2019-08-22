@@ -17,7 +17,9 @@ class TableButton extends Component {
       );
     };
       showTable = (e) =>{
-      this.props.dispatch(this.showTableDispatch(e.target.value));
+	  this.props.dispatch(this.showTableDispatch(e.target.value));
+	  var table = document.getElementById('table')
+	  table.scrollIntoView()
     };
 
     /**
