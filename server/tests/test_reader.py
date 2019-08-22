@@ -5,7 +5,7 @@ from unittest import TestCase
 
 import pymysql
 
-from bmf.server.data import reader, data
+from server.data import data, reader
 
 
 class TestData(TestCase):
@@ -18,7 +18,7 @@ class TestData(TestCase):
         self.data = data.Data(file)
         self.data_base = pymysql.connect("localhost", "user", "password", "mydb")
         self.cursor = self.data_base.cursor()
-        reader.create_table_and_load_data(self.data, 100, "mydb", "test")
+        reader.create_table_and_load_data(self.data_base, self.data, 100, "mydb", "test")
 
     def tearDown(self):
         """Clears the created table in the database"""
@@ -67,9 +67,11 @@ class TestData(TestCase):
         file = os.path.join(self.my_path, 'resources/test_columns.csv')
         extra_data = data.Data(file)
         extra_data.convert_to_array_sql()
-        reader.add_columns(extra_data, self.cursor, 100, 'test')
-        reader.add_tuples_new(extra_data, self.data_base, 100, 'test')
+        print(extra_data.sql_data)
+        reader.add_columns(extra_data, self.cursor, 100, table_name='test')
+        reader.add_tuples_new(extra_data, self.data_base, 100, table_name='test')
         self.cursor.execute("""SELECT * FROM test WHERE Money_100=1790""")
+
         result = self.cursor.fetchall()
         self.assertEqual(1, len(result))
 

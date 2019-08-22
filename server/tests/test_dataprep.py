@@ -2,7 +2,7 @@
 import os
 from unittest import TestCase
 
-from bmf.server.data.dataprep import readinBund
+
 
 
 class TestData(TestCase):

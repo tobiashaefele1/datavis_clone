@@ -5,7 +5,7 @@ from unittest import TestCase
 
 import pymysql
 
-from bmf.server.data import reader, data
+from server.data import data, reader
 
 
 class TestData(TestCase):
