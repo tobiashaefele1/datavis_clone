@@ -34,7 +34,7 @@ link_to_reference_data = './resources/Referenzgroessen_input.csv'
 
 
 # load in all the data to DB
-# mapping_to_db(link_to_mapping_file)                                     # load in Mapping file to DB
+mapping_to_db(link_to_mapping_file)                                     # load in Mapping file to DB
 #
 # create_table_and_load_data(Kreise_data)                                 # load in Kreise data
 #
@@ -75,17 +75,17 @@ cursor = data_base.cursor()
 #
 
 
-pool = Pool(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
-
-                                      db='mydb',
-                                      user='admin',
-                                      password='NPmpMe!696rY',
-                                        cursorclass=pymysql.cursors.Cursor)
+# pool = Pool(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
+#
+#                                       db='mydb',
+#                                       user='admin',
+#                                       password='NPmpMe!696rY',
+#                                         cursorclass=pymysql.cursors.Cursor)
 
 
 
 
 ### this loads all the years data into a separate table in the database so that we can retrieve it from context
-retrieve_db_data(pool).insert_all_years_into_db()
+# retrieve_db_data(pool).insert_all_years_into_db()
 
 

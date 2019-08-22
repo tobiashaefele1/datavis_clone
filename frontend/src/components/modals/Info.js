@@ -72,15 +72,58 @@ class Info extends Component {
               <div className="import_modal-content">
                 <span className="close"
                   onClick={this.closeInfo.bind(this)}>&times;</span>
-                    <h3>Infos</h3>
-                  <text>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac aliquam ipsum, quis egestas libero. Proin tempus felis a erat vestibulum consequat. Mauris non massa nisl. Maecenas gravida dui et tortor ultricies, vel dapibus lectus convallis. Vestibulum tempus laoreet malesuada. Sed fringilla ultrices urna, at commodo lacus finibus facilisis. Duis aliquet lacus sollicitudin molestie ultrices. Aenean et urna auctor, faucibus ex vel, euismod tortor. Aenean finibus dolor vitae erat mollis laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                    <h6>Allgemeine Informationen</h6>
+                  <p> Diese Website ermöglicht das Nachbauen von GRW-Indikatorik sowie das Anzeigen und Visualiseren einzelner Indikatoren, die die Gleichwertigkeit von Lebensverhältnissen in Deutschland abbilden.
+Bei Fragen zu Funktionen, Methodologie oder Umsetzung, wenden Sie sich bitte an Tobias Haefele oder Jakob Roeters van Lennep. </p>
 
-Pellentesque neque tellus, suscipit sed risus at, condimentum suscipit quam. Sed tempor, sapien quis vestibulum sodales, turpis neque imperdiet libero, ac iaculis diam ante in urna. Nullam maximus rhoncus metus rhoncus tincidunt. Etiam eget ultrices massa, ut molestie magna. Pellentesque laoreet nisl ut tortor consectetur, eu convallis ipsum mattis. Vivamus pellentesque augue ut dignissim placerat. In lacinia porta ornare.
+                  <h6>Indikatorencodierung</h6>
+                  <p> Die Suffixe hinter den individuellen Indikatoren geben, den Ursprung der eingespeisten Daten an.
+100: Indikator liegt auf Kreisebene vor.
+200: Indikator liegt auf Arbeitsmarktregioneneneben (2012) vor.
+300: Indikator liegt auf Arbeitsmarktregioneneben (2015) vor.
+400: Indikator liegt auf Bundesebene (d.h. als Bundesdurchschnitt) vor.
 
-Nulla ultricies nisi et nulla efficitur interdum vitae eget arcu. Aenean eu massa quis nisl egestas lobortis sed nec arcu. Donec dui ante, tincidunt a suscipit non, imperdiet ut leo. Proin fringilla mi eget risus auctor, quis vestibulum leo molestie. Nam nec enim sit amet sem ornare iaculis. Phasellus volutpat vitae turpis ac fermentum. Sed a blandit est. Quisque lacinia consectetur augue maximus laoreet. Pellentesque tellus nibh, auctor et ultricies quis, faucibus non metus. Sed quis velit quis metus iaculis tempus. Vestibulum nunc nibh, pretium eu imperdiet sed, dignissim nec sem. In non ornare risus. Vivamus id tempor velit. Duis ornare nunc et lorem finibus, sit amet tristique nulla mattis.
+„Arbeitslosenquote_100“ zeigt demnach auf Kreiseben vorliegende Daten an, das bedeutet es liegen 402 Datenpunkte vor. Wird dieser Indikator auf einer anderen („höheren“) Ebene angezeigt (z.B. auf Bundesländerebene), werden die Daten entsprechend der gewählten Referenzgröße gewichtet aufaggregiert.
+„Arbeitslosenquote_300“ zeigt demnach auf Arbeitsmarktregionenebene (2015) an. Das bedeutet es liegen 257 Datenpunkte vor. Wird dieser Indikator auf einer höheren Ebene (z.B. auf Kreiseebene) angezeigt, wird allen der jeweiligen Arbeitsmarktregion zugehörigen Kreise der Wert ebendieser Arbeitsmarktregion zugeordnet.
+Werden Indikatoren auf dem Level angezeigt auf dem die Daten vorliegen (bswp. ein Indikator mit Suffix _100 auf Kreisebene, ist die als Referenzgröße gewählte Variable nicht von Belang).
+ </p>
+                   <h6>Ansicht einzelne Indikatoren</h6>
+                  <p>In der Ansicht für einzelne Indikatoren können einzelne Indikatoren wie oben beschrieben angezeigt werden. Abgesehen von der für die Aggregierung notwendigen Aggregierungen findet keine weitere Transformation von Indikatoren statt.
+                  </p>
 
-                  </text>git
+                    <h6>Ansicht zusammengesetzte Indikatoren</h6>
+                  <p> In der Ansicht für aggregierte Indikatoren können standardisierte Indikatoren angezeigt werden, sowie dynmaisch zu Indikatornekombination nach GRW Methodik verbunden werden.
+In dieser Ansicht werden alle Indikatoren nach GRW Methodik gewichtet, standardisiert und skaliert.
+Dazu werden die folgenden Rechnungsschritte durchgeführt:
+1)	Aggregierung der Indikatoren auf entsprechender Ebene (wie oben beschrieben)
+2)	Berechnung der Standardabweichung. Dabei werden (wo verfügbar), die „tatsächlichen“ Bundesmittelwerte als Mittelwert herangezogen. Wo verfügbar haben diese denselben Indikatornamen mit Suffix _400. Ist ein enstprechender Mittelwert nicht verfügbar, wird die Standardabweichung anhand des arithmetischen Mittels gebildet und mit Hilfe der Bezugsgröße gewichtet. Die für die Berechnung der Standardabweichung verwendete Formel ist:
+
+
+
+
+3)	Transformation. Nach Berechnung der Standardabweichung werden die Skalen transformiert. Dazu werden zwei verschiedene mathematische Methoden angewandt, je nachdem ob für den Indikator ein höherer oder ein niedriger Wert Strukturschwäche abbildet. (bswp: Bruttoverdienst: ein höher Indikatorwert gibt einen niedrigeren Strukturschwächewert an; bswp. Arbeitslosenquote: ein höherer Wert gibt einen höheren Strukturschwächewert an).
+
+Formel „höher ist besser“ (d.h. ein höherer Indikatorwert geht mit verringerter Strukturschwäche einher)
+
+
+
+Formel: „niedriger ist besser“ (d.h. ein höherer Indikatorwert geht mit erhöher Strukturschwäche einher):
+
+
+
+
+
+
+4)	Multikative Verknüpfung. Die so erhaltenen Werte werden anhand des gewählten Gewichtungsfaktors multipliziert:
+
+Angezeigter Indikator = (x1 * Var1) + (x2 * Var2) + (x3 * Var3) + (x4 * Var4)
+
+                  </p>
+                  
+                    <h6> Leere Überschrift </h6>
+                  <p>
+                  </p>
+
 
                 <div>
                 </div>

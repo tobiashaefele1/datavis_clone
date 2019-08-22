@@ -1,5 +1,6 @@
 import {createStore} from 'redux';
 import produce from 'immer';
+import Col from "reactstrap/es/Col";
 
 console.log(context);
 
@@ -66,9 +67,14 @@ const initalState = {
     Header: 'Kennziffer',
     accessor: 'Kennziffer',
   },
+      {
+    Header: 'Name',
+    accessor: 'Name',
+  },
+
   {
-    Header: 'Aggregated',
-    accessor: 'selbstersteller_Indikator',
+    Header: 'aggregierter Indikator',
+    accessor: 'aggregierter Indikator',
   },
   {
     Header: 'Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200 2009-12',
@@ -90,7 +96,7 @@ const initalState = {
   ],
   loading: false,
   firstload: true,
-  var_year_data: JSON.parse(context.var_year_data),
+  // var_year_data: JSON.parse(context.var_year_data),
 
     // THIS IS THE ORIGINAL THAT USED TO WORK STATICALLY; ABOVE IS DERIVING THESE VALUES FROM CONTEXT; TOO
   // var_year_data: {'var_year_0': [], 'var_year_1': [], 'var_year_2': [],
@@ -178,22 +184,28 @@ function reducer(state = initalState, action) {
 								'var_year_0': '2009-12', 'var_year_1': '2010', 'var_year_2': '2011-18', 'var_year_3': '2012',
 								'var_year_4': null, 'var_year_5': null,
 								'weight_0': 45, 'weight_1': 40, 'weight_2': 7.5, 'weight_3': 7.5,
-								'weight_4': null, 'weight_5': null,
+								'weight_4': 0, 'weight_5': 0,
 								'ref_name_0': 'Erwerbspersonen gesamt_100', 'ref_name_1': 'Erwerbstätige gesamt_100',
 								'ref_name_2': 'Erwerbstätige gesamt_100',
 								'ref_name_3': 'Erwerbstätige gesamt_100',
-								'ref_name_4': null, 'ref_name_5': null,
+								'ref_name_4': 'Erwerbstätige gesamt_100', 'ref_name_5': 'Erwerbstätige gesamt_100',
 								'ref_year_0': '2011', 'ref_year_1': '2011', 'ref_year_2': '2012', 'ref_year_3': '2012',
-								'ref_year_4': null, 'ref_year_5': null,
+								'ref_year_4': 2012, 'ref_year_5': 2012,
 								 }
 			draft.table_columns = [{
 									Header: 'Kennziffer',
 									accessor: 'Kennziffer',
 								},
-								{
-									Header: 'Aggregated',
-									accessor: 'selbstersteller_Indikator',
+                                {
+									Header: 'Name',
+									accessor: 'Name',
 								},
+
+								{
+									Header: 'aggregierter Indikator',
+									accessor: 'aggregierter Indikator',
+								},
+
 								{
 									Header: 'Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200 2009-12',
 									accessor: 'Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200 2009-12',
@@ -246,14 +258,18 @@ function reducer(state = initalState, action) {
     case 'UPDATECOLUMNS':
       return produce(state, (draft) => {
           console.log(state.table_data);
-        while (draft.table_columns.length > 2) {
+        while (draft.table_columns.length > 3) {
           draft.table_columns.pop();
         }
         for (let i = 0; i <= state.indikator_counter; i++) {
           const ColumnName = state.value_dic['var_name_' + i]
           + ' ' + state.value_dic['var_year_' +i];
-          console.log(ColumnName)
+          // console.log(ColumnName);
+          // console.log(state.metadata);
+          // console.log(state.metadata[state.value_dic['var_name_' + i]].csvname);
+
           if (ColumnName in state.table_data[0]) {
+             // const cleanColumnName = state.metadata[state.value_dic['var_name_' + i]].csvname  + ', ' + state.value_dic['var_year_' +i];
             draft.table_columns.push({
               Header: ColumnName, accessor: ColumnName});
           }
@@ -261,11 +277,15 @@ function reducer(state = initalState, action) {
       });
 
     case 'UPDATEDATA':
+
       return produce(state, (draft) => {
+          // console.log(action.data.recieved_data)
         draft.indicator_data = [...action.data.indicator_data];
-        draft.var_year_data = action.data.var_year_data;
+        // draft.var_year_data = action.data.var_year_data;
         draft.single_indic_data = [...action.data.single_indic_data];
         draft.table_data = [...action.data.table_data];
+        // draft.value_dic = [...action.data.recieved_data];
+
 
       });
 
@@ -293,9 +313,24 @@ function reducer(state = initalState, action) {
       }
       );
 
+      case 'UPDATE_VAL_DIC_YEARS':
+          return (produce(state, (draft) => {
+            draft.value_dic['var_year_0'] = action.current_years[0];
+            draft.value_dic['var_year_1'] = action.current_years[1];
+            draft.value_dic['var_year_2'] = action.current_years[2];
+            draft.value_dic['var_year_3'] = action.current_years[3];
+            draft.value_dic['var_year_4'] = action.current_years[4];
+            draft.value_dic['var_year_5'] = action.current_years[5];
+
+          })
+          );
+
     case 'CHANGEVALUE':
       return produce(state, (draft) => {
         console.log(state.value_dic);
+        console.log(action.value1);
+        console.log(action.value2);
+        console.log("CHANGE VALUE HERE");
         draft.value_dic[action.value1] = action.value2;
       });
 
@@ -308,12 +343,12 @@ function reducer(state = initalState, action) {
         draft.smalltable[1][1] = state.current_map[action.value]
             .properties.Kennziffer,
         draft.smalltable[2][1] = state.current_map[action.value]
-            .properties.Einwohner_2017,
+            .properties.Einwohner_2017.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
         draft.smalltable[3][1] = state.current_map[action.value]
-            .properties.area_km2,
+            .properties.area_km2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
         draft.smalltable[4][1] = state.current_map[action.value]
 			.properties.Bundesland;
-		draft.smalltable[5][1] = Math.round(state.current_map[action.value].properties.indicator)	
+		draft.smalltable[5][1] = Math.round(state.current_map[action.value].properties.indicator *10) / 10
         while (draft.smalltable.length > 6) {
           draft.smalltable.pop();
         }
@@ -378,7 +413,7 @@ function reducer(state = initalState, action) {
 
       // insertion Tobias: load map here with indicators
     case 'CHANGEVARS':
-		console.log('CHANGEVARS HEREEE')
+		// console.log('CHANGEVARS HEREEE')
       return produce(state, (draft) => {
 		 const template = state.current_map;
        

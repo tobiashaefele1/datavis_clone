@@ -45,10 +45,12 @@ export class Main_selector extends Component {
 	  if (this.props.view_multiple){
 		var percentage = 0;
 		for (var i in this.props.indikators){
-			percentage += parseFloat(document.getElementById(`weight_${i}`).value);
-		}
+		    if (document.getElementById(`weight_${i}`).value != ''){
 
-		if(percentage != 100){
+			percentage += parseFloat(document.getElementById(`weight_${i}`).value)
+		}}
+
+		if(percentage > 100){
 			for(i in this.props.indikators){
 				document.getElementById(`weight_${i}`).style.background = 'lightcoral';
 			}}
@@ -353,7 +355,7 @@ function mapStateToProps(state) {
     count_map: state.count_map,
     current_map: state.current_map,
     map_name: state.map_name,
-    var_year_data: state.var_year_data,
+    // var_year_data: state.var_year_data,
     view_multiple: state.view_multiple,
     single_indic_data: state.single_indic_data,
 	metadata: state.metadata,

@@ -2,7 +2,8 @@ import pandas as pd
 import time
 
 from server.data.retrieve_db_data import retrieve_db_data
-
+from pymysqlpool.pool import Pool
+import pymysql
 
 class aggregateindic:
     def __init__(self, pool):
@@ -139,14 +140,22 @@ class aggregateindic:
 
                     count += 1
                 ### the following lines of code add the value from the aggreagted indicator
-                temp_dict["selbstersteller_Indikator"] = round(float(aggregated_indicator[aggreg_count]), 2)
+                temp_dict["aggregierter Indikator"] = round(float(aggregated_indicator[aggreg_count]), 2)
                 aggreg_count += 1
                 ## and finally, the following lines of code append the dict to the summary list output
                 target_dict.append(temp_dict)
 
+            ## this retrieves the names for the chosen layer and adds them as a dictionary key/value pair into the output dictionary
+            names = retrieve_db_data(self.pool).retrieve_names_from_db(var[0][4])
+            for x in target_dict:
+                for y in names:
+                    if x['Kennziffer'] == y[1]:
+                         x.update({'Name': y[0]})
+
+
             # print(time.clock()- loop_time, "seconds for the loop")
             # print(target_dict)
-            print(time.clock() - start_time, "seconds for table ata")
+            # print(time.clock() - start_time, "seconds for table data")
             print(target_dict)
             return target_dict
 
@@ -214,10 +223,22 @@ class aggregateindic:
 #              'var_4': ['', '', '', '', 'KRS_15', 'HIB', ''],
 #              'var_5': ['', '', '', '', 'KRS_15', 'HIB', ''],
 #              'var_6': ['', '', '', '', 'KRS_15', 'HIB', '']}
-# #
-# test = retrieve_single_indic(test_dict)
-# print (test)
-# #
+#
+#
+#
+# pool = Pool(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
+#             db='mydb',
+#             user='admin',
+#             password='NPmpMe!696rY',
+#             cursorclass=pymysql.cursors.Cursor, timeout=20.0)
+#
+#
+#
+#
+# # #
+# test = aggregateindic(pool).retrieve_table_data(test_dict)
+# print(test)
+#
 # # # print(test)
 #
 # # print(len(test[3]))

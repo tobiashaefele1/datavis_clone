@@ -73,7 +73,7 @@ class MapSelector extends Component {
             id="map_selector"
             onChange={this.handleMapChange.bind(this)}
 			defaultValue='1'>
-            <option value="0">Kreise</option>
+            <option value="0">Kreise (Stand 2015)</option>
             <option value="1">Arbeitsmarktregionen (Stand 2012)</option>
             <option value="2">Arbeitsmarktregionen (Stand 2015)</option>
             <option value="3">Arbeitsmarktregionen (Stand 2020)</option>
