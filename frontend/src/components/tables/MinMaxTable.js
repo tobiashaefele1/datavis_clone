@@ -78,16 +78,18 @@ class MinMaxTable extends Component {
           <table className="table" id="table" style={{backgroundColor: 'white', textAlign: 'center'}}>
             <thead>
               <tr>
-                <th style={{textAlign: 'center'}}>Min</th>
-                <th style={{textAlign: 'center'}}>Max</th>
+                <th style={{textAlign: 'center'}}>Minimum</th>
                 <th style={{textAlign: 'center'}}>Durchschnitt</th>
+                <th style={{textAlign: 'center'}}>Maximum</th>
+
               </tr>
             </thead>
             <tbody>
               <tr>{this.checkData()}
                 <td id="min_value" style={{textAlign: 'center'}}>{this.values[0]}</td>
-                <td id="max_value" style={{textAlign: 'center'}}>{this.values[1]}</td>
                 <td id="avg_value" style={{textAlign: 'center'}}>{this.values[2]}</td>
+                <td id="max_value" style={{textAlign: 'center'}}>{this.values[1]}</td>
+
               </tr>
             </tbody>
           </table>
