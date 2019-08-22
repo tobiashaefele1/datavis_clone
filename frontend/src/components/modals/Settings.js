@@ -92,9 +92,14 @@ class Settings extends Component {
 
 			  <div className="modal is-active">
   				<div className="modal-background" onClick={this.closeModal.bind(this)}></div>
-  					<div className="modal-content">
-   						<div className="box">
-							   <h2 className=" title has-text-centered">Einstellungen</h2>
+				  <div className="modal-card">
+				  <header className="modal-card-head">
+					  <p className="modal-card-title">Einstellungen</p>
+				  </header>
+              		<section className="modal-card-body">
+  				
+   						
+
 							   <div className="columns">
 									<div className="column">
 										 <h3>Darstellung</h3>
@@ -196,8 +201,11 @@ class Settings extends Component {
 								</div>
 										
 								</div>
-							   </div>
-                </div>
+								</div>
+								</section>
+
+							   
+
 				</div>
                   
   				<button className="modal-close is-large" onClick={this.closeModal.bind(this)} aria-label="close"></button>
