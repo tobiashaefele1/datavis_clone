@@ -346,7 +346,7 @@ class Map extends Component {
                     stroke="#000000"
                     strokeWidth={0.5}
 					onMouseOver={this.handleClick.bind(this, i)}
-					onClick=""
+					onClick={this.handleClick.bind(this, i)}
 					/>
 
                 )
