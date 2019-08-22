@@ -26,8 +26,6 @@ path:hover {
 }
 .map_loader {
   position: absolute;
-  
-  
   left: 50%;
 	margin-left: -50px;
   top: 50%;
@@ -37,9 +35,9 @@ path:hover {
 #map_logo {
   position: absolute;
 bottom: 50px;
-  right: 30px;
+  right: 20px;
   object-position: right;
-  width: 40px;
+  width: 100px;
   height: 40px;
 }
 #map_reset {
@@ -52,9 +50,13 @@ top: 45px;
 }
 
 .map_copyright{
+	position: absolute;
+
+bottom: 5px;
   text-align: right;
-  font-size: 7px;
+  font-size: 10px;
   letter-spacing: 0rem;
+  right: 20px;
   /*overflow: scroll;*/
 
 }

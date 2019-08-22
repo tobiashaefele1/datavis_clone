@@ -92,12 +92,15 @@ class Settings extends Component {
 
 			  <div className="modal is-active">
   				<div className="modal-background" onClick={this.closeModal.bind(this)}></div>
-  					<div className="modal-card">
-   						<div className="box">
+				  <div className="modal-card">
 				  <header className="modal-card-head">
-					  <p className="modal-card-title">Eintellungen</p>
+					  <p className="modal-card-title">Einstellungen</p>
 				  </header>
-                            <div className="columns">
+              		<section className="modal-card-body">
+
+
+
+							   <div className="columns">
 									<div className="column">
 										 <h3>Darstellung</h3>
                 							<ChangeViewButton/>
@@ -198,8 +201,11 @@ class Settings extends Component {
 								</div>
 										
 								</div>
-							   </div>
-                </div>
+								</div>
+								</section>
+
+
+
 				</div>
                   
   				<button className="modal-close is-large" onClick={this.closeModal.bind(this)} aria-label="close"></button>

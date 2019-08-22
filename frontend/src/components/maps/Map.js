@@ -47,17 +47,18 @@ class Map extends Component {
 
   renderlogo = () => {
       return(
-
+		<div>
           <div id = "map_logo">
           <object type="image/svg+xml"
                 data="static/bmf/resources/BMF_2017_WebSVG_de.svg" width="100%"
                 height="100%">Your browser does not support SVG
               </object>
-
+		</div>
     
-              <div className ="map_copyright"> &#9400;Bundesministerium der Finanzen</div>
-			<div className ="map_copyright">&#9400;gadm.com</div>
-               </div>
+              <div className ="map_copyright"> &#9400; Bundesministerium der Finanzen
+			  &#9400; gadm.com</div>
+			
+          </div>
       )
 
   };

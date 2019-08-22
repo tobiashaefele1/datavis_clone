@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, createRef} from 'react';
 import {connect} from 'react-redux';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
@@ -21,7 +21,8 @@ class Table extends Component {
     this.download = this.download.bind(this);
     this.state ={
       dataToDownload: [],
-    };
+	};
+	this.ref = createRef();
   }
 
      
@@ -52,16 +53,19 @@ class Table extends Component {
       this.csvLink.link.click();
     });
   }
+  
+ 
 
 
 
   renderTable = () => {
-    console.log(this.props.table_data)
+
     if(this.props.showTable){
       return (    
 		<div>
-			<div className="columns is-marginless has-text-black">
 			
+			<div id='table' className="columns is-marginless has-text-black"  >
+				
 				<div className="column  is-paddingless ">
 					<div className="subtitle has-text-centered">Datentabelle</div>
 				</div>
@@ -109,6 +113,7 @@ class Table extends Component {
         </div>
 		</div>
          </div>
+		
 	</div>
 
 
