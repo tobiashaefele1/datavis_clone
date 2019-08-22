@@ -61,9 +61,9 @@ class MinMaxTable extends Component {
         }
         sum = sum + arr[i];
       }
-      return [Math.round(min* 100)/100,
-        Math.round(max* 100)/100,
-        Math.round((sum / arr.length)*100)/100];
+      return [Math.round(min* 10)/10,
+        Math.round(max* 10)/10,
+        Math.round((sum / arr.length)*10)/10];
     }
 
     /**

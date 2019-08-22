@@ -287,6 +287,21 @@ class retrieve_db_data:
             return output
 
 
+    def clean_col_names(self, data):
+        '''
+        this functions "cleans" a list of variables and removes all _400 years (this function is used by views.py to
+        to make sure _400 years do not appear as an option in the selector)
+        :param data: takes a list of all column names as an input
+        :return: returns the same list after removing all items in the list that have a parameter of _400
+        '''
+        output =[]
+        for x in data:
+            if x[-4:] != "_400":
+                output.append(x)
+        return output
+
+
+
     def retrieve_col_years(self, table_name):
         ''' this function returns a list of all the years for in the datable'''
         print("retrieve_col_years")
@@ -547,6 +562,38 @@ class retrieve_db_data:
 
             return filtered_dict
 
+
+
+
+    def retrieve_names_from_db(self, layer):
+        mySQLconnection = self.pool.get_conn()
+        cursor = mySQLconnection.cursor()
+
+        ## this returns the name by layer
+        result = []
+        layer_name = layer + '_Name'
+        # print(layer)
+
+
+        sql_select_Query = (""" SELECT DISTINCT `%s`, `%s` FROM `mapping`; """ % (layer_name, layer))
+        cursor.execute(sql_select_Query)
+        result = cursor.fetchall()
+
+        cursor.close()
+        self.pool.release(mySQLconnection)
+
+        print (result)
+        output =[]
+        temp = []
+        for (x,y) in result:
+            temp.append(x)
+            temp.append(y)
+            output.append(temp)
+            temp = []
+        return output
+
+
+
 #
 # # #TODO: we should think about whether the setup.py should also go in here or not or rather, whether it should also use a pool (I'd say. yes. its much faster)
 # pool = Pool(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
@@ -557,7 +604,8 @@ class retrieve_db_data:
 #                                         cursorclass=pymysql.cursors.Cursor)
 #
 #
-# # test = retrieve_year_dict_from_db(pool).
+# test = retrieve_db_data(pool).retrieve_names_from_db("ROR11")
+# print(test)
 #
 #
 # retrieve_db_data(pool).insert_all_years_into_db()
