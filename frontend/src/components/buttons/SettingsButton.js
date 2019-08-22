@@ -20,7 +20,7 @@ class SettingsButton extends Component {
      */
     render() {
       return (
-		  	<a className="button is-dark is-outlined" onClick={this.closeModal.bind(this)}>
+		  	<a className="button is-dark is-outlined is-large" onClick={this.closeModal.bind(this)}>
     			<span className="icon">
      				 <i className="fas fa-cogs"></i>
     					</span>

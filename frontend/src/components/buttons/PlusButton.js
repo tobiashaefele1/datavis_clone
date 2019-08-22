@@ -28,7 +28,7 @@ class PlusButton extends Component {
         return ('');
       } else {
         return (
-          <a class="button is-dark is-outlined" onClick={this.handleButton.bind(this)}>
+          <a class="button is-dark is-outlined is-large" onClick={this.handleButton.bind(this)}>
     			<span class="icon">
      				 <i class="fas fa-plus"></i>
     					</span>
