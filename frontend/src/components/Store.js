@@ -1,8 +1,8 @@
-import {createStore} from 'redux';
+import {createStore, combineReducers, compose, applyMiddleware} from 'redux';
 import produce from 'immer';
 import Col from "reactstrap/es/Col";
 
-console.log(context);
+// console.log(context);
 
 const initalState = {
   smalltable: [['Name', 'placeholder'],
@@ -113,9 +113,9 @@ const initalState = {
  * @return {*}
  */
 function reducer(state = initalState, action) {
-  console.log('reducer', state, action);
-  console.log(action.value);
-  console.log(action.data)
+  // console.log('reducer', state, action);
+  // console.log(action.value);
+  // console.log(action.data)
 
   switch (action.type) {
     case 'CHANGECOLOR':
@@ -244,7 +244,7 @@ function reducer(state = initalState, action) {
     case 'LOADINGCHANGE':
       return produce(state, (draft) => {
 		draft.loading = !state.loading;
-		console.log(draft.loading)
+		// console.log(draft.loading)
       }
 
 	  );
@@ -257,7 +257,7 @@ function reducer(state = initalState, action) {
 
     case 'UPDATECOLUMNS':
       return produce(state, (draft) => {
-          console.log(state.table_data);
+          // console.log(state.table_data);
         while (draft.table_columns.length > 3) {
           draft.table_columns.pop();
         }
@@ -327,17 +327,17 @@ function reducer(state = initalState, action) {
 
     case 'CHANGEVALUE':
       return produce(state, (draft) => {
-        console.log(state.value_dic);
-        console.log(action.value1);
-        console.log(action.value2);
-        console.log("CHANGE VALUE HERE");
+        // console.log(state.value_dic);
+        // console.log(action.value1);
+        // console.log(action.value2);
+        // console.log("CHANGE VALUE HERE");
         draft.value_dic[action.value1] = action.value2;
       });
 
 
     case 'CHANGE_NAME':
       return produce(state, (draft) => {
-        console.log(state.current_map);
+        // console.log(state.current_map);
         draft.smalltable[0][1] = state.current_map[action.value]
             .properties.Name,
         draft.smalltable[1][1] = state.current_map[action.value]

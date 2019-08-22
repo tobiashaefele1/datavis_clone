@@ -57,11 +57,11 @@ class ViewPicker extends Component {
   					<div className="modal-content">
    						<div className="box">
 				<div className="buttons is-centered">
-				<a class="button is-dark is-outlined" onClick={this.changeViewMultiple.bind(this)}>
+				<a className="button is-dark is-outlined" onClick={this.changeViewMultiple.bind(this)}>
     									
 										<span>einen aggregierten Indikator zusammensetzen</span>
 															</a>
-															<a class="button is-dark is-outlined" onClick={this.changeViewSingle.bind(this)}>
+															<a className="button is-dark is-outlined" onClick={this.changeViewSingle.bind(this)}>
     									
 										<span>einzelne Indikatoren ansehen</span>
 															</a>
@@ -74,7 +74,7 @@ class ViewPicker extends Component {
                 
 				</div>
               </div>
-			  <button class="modal-close is-large" onClick={this.closeModal.bind(this)} aria-label="close"></button>
+			  <button className="modal-close is-large" onClick={this.closeModal.bind(this)} aria-label="close"></button>
             </div>
 
        );

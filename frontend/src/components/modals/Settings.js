@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import ViewButton from '../buttons/ViewButton';
+import 'jquery';
+
+
 /**
  *Component class to crete the Settings modal.
  *
@@ -40,7 +43,8 @@ class Settings extends Component {
      * @memberof Settings
      */
     changeColorDispatch(value) {
-      return (
+      console.log(value);
+    	return (
         {
           type: 'CHANGECOLOR',
           value,
@@ -49,7 +53,8 @@ class Settings extends Component {
     };
 
     changeScaleDispatch(value) {
-      return (
+           console.log(value);
+    	return (
         {
           type: 'CHANGESCALE',
           value,
@@ -70,9 +75,9 @@ class Settings extends Component {
 		if(this.props.view_multiple){
 			return( 
 				
-				<a class="button is-dark is-outlined" onClick={this.changeView}>
+				<a className="button is-dark is-outlined" onClick={this.changeView}>
     									
-										<span>einzelne Indikator ansehen</span>
+										<span>einzelnen Indikator ansehen</span>
 															</a>
 
 			)
@@ -81,9 +86,9 @@ class Settings extends Component {
 			
 					
 
-				<a class="button is-dark is-outlined" onClick={this.changeView}>
+				<a className="button is-dark is-outlined" onClick={this.changeView}>
     									
-										<span>Aggregierten Indikator</span>
+										<span>aggregierten Indikator zusammensetzten</span>
 										
 															</a>
 
@@ -115,7 +120,8 @@ class Settings extends Component {
 									<div className="column">
 										<h3>Farbpaletten</h3>
 										<div className="buttons">
-										<a class="button is-dark is-outlined" value={0} onClick={this.colorChange.bind(this)}>
+										<button className="button is-dark is-outlined" value={0} onClick={this.colorChange}>
+
     			<span>
 					<svg width="10" height="10" className="Blues">
 												<rect width="10" height="10" className="q0-5" />
@@ -136,31 +142,31 @@ class Settings extends Component {
 												<rect width="10" height="10" className="q5-5" />
 											</svg>		
 											</span>
-  			</a>
+</button>
 											
-			<a class="button is-dark  is-outlined" value={1} onClick={this.colorChange.bind(this)}>
+			<button className="button is-dark  is-outlined" value={1} onClick={this.colorChange}>
     			<span>
-					<svg width="10" height="10" className="Reds">
+					<svg width="10" height="10" className="Reds" value ={1} onClick={this.colorChange}>
                     <rect width="10" height="10" className="q0-5" />
                   </svg>
-                  <svg width="10" height="10" className="Reds">
+                  <svg width="10" height="10" className="Reds"value ={1} onClick={this.colorChange}>
                     <rect width="10" height="10" className="q1-5" />
                   </svg>
-                  <svg width="10" height="10" className="Reds">
+                  <svg width="10" height="10" className="Reds"value ={1} onClick={this.colorChange}>
                     <rect width="10" height="10" className="q2-5" />
                   </svg>
-                  <svg width="10" height="10" className="Reds">
+                  <svg width="10" height="10" className="Reds"value ={1} onClick={this.colorChange}>
                     <rect width="10" height="10" className="q3-5" />
                   </svg>
-                  <svg width="10" height="10" className="Reds">
+                  <svg width="10" height="10" className="Reds"value ={1} onClick={this.colorChange}>
                     <rect width="10" height="10" className="q4-5" />
                   </svg>
-                  <svg width="10" height="10" className="Reds">
+                  <svg width="10" height="10" className="Reds"value ={1} onClick={this.colorChange}>
                     <rect width="10" height="10" className="q5-5" />
                   </svg>	
 											</span>
-  			</a>
-					<a class="button is-dark is-outlined" value={2} onClick={this.colorChange.bind(this)}>
+  			</button>
+					<button className="button is-dark is-outlined" value={2} onClick={this.colorChange}>
     			<span>
 					 <svg width="10" height="10" className="Greens">
                     <rect width="10" height="10" className="q0-5" />
@@ -181,7 +187,7 @@ class Settings extends Component {
                     <rect width="10" height="10" className="q5-5" />
                   </svg>	
 											</span>
-  			</a>						
+  			</button>
                 							
             </div>
                  </div>
@@ -190,19 +196,19 @@ class Settings extends Component {
 										<h3>  Skalen </h3>
 
 									<div className="buttons">
-									<a class="button is-dark is-outlined" value={0} onClick={this.scaleChange}>
+									<button className="button is-dark is-outlined" value={0} onClick={this.scaleChange}>
     									
-										<span>gleichmäßige Gruppen</span>
-															</a>
-									<a class="button is-dark is-outlined" value={1} onClick={this.scaleChange}>
+										gleichmäßige Gruppen
+															</button>
+									<button className="button is-dark is-outlined" value={1} onClick={this.scaleChange}>
     									
-										<span>gleichmäßige Intervalle</span>
-															</a>
+										gleichmäßige Intervalle
+															</button>
 
-															<a class="button is-dark is-outlined" value={2} onClick={this.scaleChange}>
+										<button className="button is-dark is-outlined" value={2} onClick={this.scaleChange}>
     									
-										<span>fließende Intervalle</span>
-															</a>
+										fließende Intervalle
+															</button>
 								
 								</div>
 										
@@ -211,7 +217,7 @@ class Settings extends Component {
                 </div>
 				</div>
                   
-  				<button class="modal-close is-large" onClick={this.closeModal.bind(this)} aria-label="close"></button>
+  				<button className="modal-close is-large" onClick={this.closeModal.bind(this)} aria-label="close"></button>
 			</div>
            
                 

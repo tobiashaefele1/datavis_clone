@@ -1,9 +1,9 @@
 
-.Blues .q0-5{fill:rgb(239,243,255)}
-.Blues .q1-5{fill:rgb(189,215,231)}
-.Blues .q2-5{fill:rgb(107,174,214)}
-.Blues .q3-5{fill:rgb(49,130,189)}
-.Blues .q4-5{fill:rgb(8,81,156)}
+.Blues .q0-5{fill:rgb(239,243,255); pointer-events: None}
+.Blues .q1-5{fill:rgb(189,215,231); pointer-events: None}
+.Blues .q2-5{fill:rgb(107,174,214); pointer-events: None}
+.Blues .q3-5{fill:rgb(49,130,189); pointer-events: None}
+.Blues .q4-5{fill:rgb(8,81,156); pointer-events: None}
 
 
 .Reds .q0-5{fill:rgb(254,229,217)}
@@ -12,11 +12,11 @@
 .Reds .q3-5{fill:rgb(222,45,38)}
 .Reds .q4-5{fill:rgb(165,15,21)}
 
-.Greens .q0-5{fill:rgb(237,248,233)}
-.Greens .q1-5{fill:rgb(186,228,179)}
-.Greens .q2-5{fill:rgb(116,196,118)}
-.Greens .q3-5{fill:rgb(49,163,84)}
-.Greens .q4-5{fill:rgb(0,109,44)}
+.Greens .q0-5{fill:rgb(237,248,233); pointer-events: None}
+.Greens .q1-5{fill:rgb(186,228,179); pointer-events: None}
+.Greens .q2-5{fill:rgb(116,196,118); pointer-events: None}
+.Greens .q3-5{fill:rgb(49,163,84); pointer-events: None}
+.Greens .q4-5{fill:rgb(0,109,44); pointer-events: None}
 
 /* THIS IS ALL MY HOVER TOOLTIP TOBIAS TOBIAS TOBIAS */
 

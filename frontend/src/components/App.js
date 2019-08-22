@@ -226,10 +226,10 @@ class App extends Component {
               </object>
      				 
 		</div>
-		<div className="column"><h2 class="title has-text-centered">
-      				    Lebensverhältnisse in Deutschland
-            			<h2 class="subtitle">Visualisierung von Indikatoren</h2>
-     				 </h2></div>
+		<div className="column"><h2 className="title has-text-centered">
+            Lebensverhältnisse in Deutschland </h2>
+            			<h2 className="subtitle">Visualisierung von Indikatoren</h2>
+     				 </div>
 					  
 
 		<div className="column is-one-fifth">
@@ -246,13 +246,13 @@ class App extends Component {
 		</div>
 		<div className="columns is-marginless has-text-black">
 			<div className="column is-hidden-mobile is-paddingless ">
-				<div className="subtitle has-text-centered">Auswahlen</div>
+				<div className="subtitle has-text-centered">Einstellungen</div>
 			</div>
 			<div className="column is-half is-paddingless ">
 				<div className="subtitle has-text-centered">{this.headline()}</div>
 			</div>
 			<div className="column is-hidden-mobile is-paddingless">
-				<div className="subtitle has-text-centered">Information</div>
+				<div className="subtitle has-text-centered">Übersicht</div>
 			</div>
 		</div>
 		<div className="columns is-marginless">
@@ -267,7 +267,7 @@ class App extends Component {
 				
 				<div id="optionbox" className="box has-background-white-ter has-text-black ">
 				
-					<div>Regio Tabelle</div>
+					<div> </div>
 				<SmallTable/>
 					
 					<div className="columns">
