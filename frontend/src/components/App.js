@@ -236,7 +236,7 @@ class App extends Component {
 
 		<div className="column is-one-fifth">
 
-			<div className=" buttons field is-grouped is-pulled-right">
+			<div className=" buttons field is-grouped ">
 			<SettingsButton/>
               <InfoButton/>
 			</div>

@@ -21,9 +21,9 @@ class InfoButton extends Component {
      */
     render() {
       return (
-		  <a class="button is-dark is-outlined" onClick={this.closeInfo.bind(this)}>
-    			<span class="icon">
-     				 <i class="far fa-question-circle"></i>
+		  <a className="button is-dark is-outlined is-large" onClick={this.closeInfo.bind(this)}>
+    			<span className="icon">
+     				 <i className="far fa-question-circle"></i>
     					</span>
    					 {/* <span>Info</span> */}
   			</a>
