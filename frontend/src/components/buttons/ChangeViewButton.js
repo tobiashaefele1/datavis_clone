@@ -52,7 +52,8 @@ class ChangeViewButton extends Component {
       return (
 		<div>{this.viewButton()}</div>
       );
-    }
+	}
+	
 }
 /**
  *Here the props are selected from the store.
