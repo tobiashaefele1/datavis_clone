@@ -19,6 +19,8 @@ import ResetButton from './buttons/ResetButton';
 import TableButton from './buttons/TableButton';
 import InfoButton from "./buttons/InfoButton";
 import Info from "./modals/Info";
+import MetaExportButton from './buttons/MetaExportButton';
+import ChangeViewButton from './buttons/ChangeViewButton';
 
 
 
@@ -167,7 +169,7 @@ class App extends Component {
   indikatorSet(value){
 	  if(value < 1000) {
 		  return (<div className="column is-half is-mobile is-centered is-vcentered has-text-centered ">
-			  	<div><Map/></div>
+			  	<div style={{display: 'inline-flex'}}><Map/></div>
                 <div className="columns is-centered ">
                 <MinMaxTable/>
 				</div></div>)
@@ -182,7 +184,7 @@ class App extends Component {
   }
   mapSet(value){
 	  if(value < 1000) {
-		  return (<div className="column is-one-quarter has-text-centered   has-background-white-ter "><div id="optionbox" className="box   has-background-white-ter has-text-black "><MapSelector/>
+		  return (<div className="column is-one-quarter has-text-centered    "><div id="optionbox" className="box   has-background-white-ter has-text-black "><MapSelector/>
 				<Indikators/>
 				<div className=" buttons  is-centered">
                 <PlusButton/>
@@ -190,7 +192,7 @@ class App extends Component {
 	  }else{
 		  return (
 			  <div className="column is-mobile is-half is-centered is-vcentered has-text-centered ">
-				<div><Map/></div>
+				<div style={{display: 'inline-flex'}}><Map/></div>
 				<div className="columns is-centered ">
                 <MinMaxTable/>
 				</div>
@@ -272,11 +274,22 @@ class App extends Component {
 					
 					<div className="columns">
 						<div className="column full-width">
-						<div className="buttons is-centered">
-							<SVGExportButton />
-							<TableButton />	
 						
-						</div>
+							<div>Darstellung</div>
+								<div className="buttons is-centered">
+									<ChangeViewButton/>
+							</div>
+							
+							<div>Exportieren</div>
+							<div className="buttons is-centered">
+							<SVGExportButton />
+							<MetaExportButton/>
+							</div>
+							<div>Tabelle</div>
+							<div className="buttons is-centered">
+							<TableButton />	
+							</div>
+				
 						</div>
 
 				</div>
@@ -291,13 +304,7 @@ class App extends Component {
 			</div>
 
 		</div>
-		
-		<div className="columns">
-			<div className="column is-full">
-				<Table />
-			</div>
-		</div>
-
+		<Table/>
 
 
     </div>

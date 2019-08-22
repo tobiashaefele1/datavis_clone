@@ -73,8 +73,8 @@ const initalState = {
   },
 
   {
-    Header: 'aggregierter Indikator',
-    accessor: 'aggregierter Indikator',
+    Header: 'Aggregierter Indikator',
+    accessor: 'Aggregierter Indikator',
   },
   {
     Header: 'Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200 2009-12',

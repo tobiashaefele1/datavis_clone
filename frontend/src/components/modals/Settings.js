@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import ViewButton from '../buttons/ViewButton';
+import ChangeViewButton from '../buttons/ChangeViewButton';
 import 'jquery';
 
 
@@ -62,39 +63,6 @@ class Settings extends Component {
       );
 	};
 
-	 /**
-     *This function changes the view.
-     *
-     * @memberof Settings
-     */
-    changeView = () => {
-        this.props.dispatch({type: 'CHANGEVIEW'});  
-    }
-	
-	viewButton(){
-		if(this.props.view_multiple){
-			return( 
-				
-				<a className="button is-dark is-outlined" onClick={this.changeView}>
-    									
-										<span>einzelnen Indikator ansehen</span>
-															</a>
-
-			)
-		}else{
-			return(
-			
-					
-
-				<a className="button is-dark is-outlined" onClick={this.changeView}>
-    									
-										<span>aggregierten Indikator zusammensetzten</span>
-										
-															</a>
-
-			)
-		}
-	}
 
 
     /**
@@ -115,7 +83,7 @@ class Settings extends Component {
 							   <div className="columns">
 									<div className="column">
 										 <h3>Darstellung</h3>
-                							{this.viewButton()}
+                							<ChangeViewButton/>
 									</div>
 									<div className="column">
 										<h3>Farbpaletten</h3>
