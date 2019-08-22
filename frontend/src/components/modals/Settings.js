@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import ViewButton from '../buttons/ViewButton';
+import ChangeViewButton from '../buttons/ChangeViewButton';
 /**
  *Component class to crete the Settings modal.
  *
@@ -57,39 +58,6 @@ class Settings extends Component {
       );
 	};
 
-	 /**
-     *This function changes the view.
-     *
-     * @memberof Settings
-     */
-    changeView = () => {
-        this.props.dispatch({type: 'CHANGEVIEW'});  
-    }
-	
-	viewButton(){
-		if(this.props.view_multiple){
-			return( 
-				
-				<a class="button is-dark is-outlined" onClick={this.changeView}>
-    									
-										<span>einzelne Indikator ansehen</span>
-															</a>
-
-			)
-		}else{
-			return(
-			
-					
-
-				<a class="button is-dark is-outlined" onClick={this.changeView}>
-    									
-										<span>Aggregierten Indikator</span>
-										
-															</a>
-
-			)
-		}
-	}
 
 
     /**
@@ -110,7 +78,7 @@ class Settings extends Component {
 							   <div className="columns">
 									<div className="column">
 										 <h3>Darstellung</h3>
-                							{this.viewButton()}
+                							<ChangeViewButton/>
 									</div>
 									<div className="column">
 										<h3>Farbpaletten</h3>

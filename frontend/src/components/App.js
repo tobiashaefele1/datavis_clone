@@ -20,6 +20,7 @@ import TableButton from './buttons/TableButton';
 import InfoButton from "./buttons/InfoButton";
 import Info from "./modals/Info";
 import MetaExportButton from './buttons/MetaExportButton';
+import ChangeViewButton from './buttons/ChangeViewButton';
 
 
 
@@ -273,13 +274,22 @@ class App extends Component {
 					
 					<div className="columns">
 						<div className="column full-width">
-						<div className="buttons is-centered">
+						
+							<div>Darstellung</div>
+								<div className="buttons is-centered">
+									<ChangeViewButton/>
+							</div>
+							
+							<div>Exportieren</div>
+							<div className="buttons is-centered">
 							<SVGExportButton />
 							<MetaExportButton/>
+							</div>
+							<div>Tabelle</div>
+							<div className="buttons is-centered">
 							<TableButton />	
-
-						
-						</div>
+							</div>
+				
 						</div>
 
 				</div>
