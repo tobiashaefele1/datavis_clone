@@ -366,6 +366,7 @@ class Map extends Component {
 					onClick={this.handleClick.bind(this, i)}
 					/>
 
+
                 )
               }
 

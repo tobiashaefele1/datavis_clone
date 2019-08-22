@@ -122,8 +122,15 @@ export class Main_selector extends Component {
       if (this.props.view_multiple) {
         return ( 
 			<div>
-            <div>
-          Gewicht(%) 
+            <div className="weight_tooltip">
+
+                          <span className="weight_tooltiptext">
+                     Der hier eingebene Wert legt die prozentuale Gewichtung des gewählten Indikators fest. Die Summe
+                              aller individuellen Gewichtungen sollte 100% ergeben.
+                    </span>
+
+                % &nbsp;<i className="far fa-question-circle" id="info_icon"></i>
+
             </div>
           <input className="input is-small" id={`weight_${this.props.number}`}
             onChange={this.handleChangeProm.bind(this)}
@@ -198,7 +205,7 @@ export class Main_selector extends Component {
 				  <div className="indicator_tooltip">
                 <span className="tooltiptext">
                      Langname: {(this.props.value_dic[`var_name_${this.props.number}`] ?
-                     this.props.metadata[this.props.value_dic[`var_name_${this.props.number}`]].Langname : '')}
+                    this.props.metadata[this.props.value_dic[`var_name_${this.props.number}`]].Langname : '')}
                       Quelle: {(this.props.value_dic[`var_name_${this.props.number}`] ?
                      this.props.metadata[this.props.value_dic[`var_name_${this.props.number}`]].Quelle : '')}
                     </span>
@@ -237,7 +244,7 @@ export class Main_selector extends Component {
               </select>
 			  </div>
 			  </div>
-			  <div className="column is-3">
+			  <div className="column is-3" style={{textAlign: 'center'}}>
 				   {this.weight()}
 			  </div>
 
@@ -284,7 +291,7 @@ export class Main_selector extends Component {
 			</div>
 
 
-        <div id={`in_${this.props.number}`} class="field is-grouped-multiline" >
+        <div id={`in_${this.props.number}`} className="field is-grouped-multiline" >
        
 		 
          

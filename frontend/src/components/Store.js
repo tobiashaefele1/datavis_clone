@@ -66,31 +66,39 @@ const initalState = {
   table_columns: [{
     Header: 'Kennziffer',
     accessor: 'Kennziffer',
+      style: {textAlign: 'right'}
   },
       {
     Header: 'Name',
     accessor: 'Name',
+     style: {textAlign: 'left'}
   },
 
   {
-    Header: 'Aggregierter Indikator',
-    accessor: 'Aggregierter Indikator',
+    Header: 'aggregierter Indikator',
+    accessor: 'aggregierter Indikator',
+      style: {textAlign: 'right'}
   },
   {
     Header: 'Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200 2009-12',
     accessor: 'Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200 2009-12',
+      style: {textAlign: 'right'}
   },
 {
     Header: 'Lohn pro Beschäftigtem 2010 _ORIGINAL_200 2010',
     accessor: 'Lohn pro Beschäftigtem 2010 _ORIGINAL_200 2010',
+    style: {textAlign: 'right'},
+        Cell: props => props.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
   },
 {
     Header: 'Erwerbstätigenprognose _ORIGINAL_200 2011-18',
     accessor: 'Erwerbstätigenprognose _ORIGINAL_200 2011-18',
+    style: {textAlign: 'right'}
   },
 {
     Header: 'Infrastrukturindikator_ORIGINAL_200 2012',
     accessor: 'Infrastrukturindikator_ORIGINAL_200 2012',
+    style: {textAlign: 'right'}
   },
 
   ],
@@ -195,32 +203,40 @@ function reducer(state = initalState, action) {
 			draft.table_columns = [{
 									Header: 'Kennziffer',
 									accessor: 'Kennziffer',
+                                      style: {textAlign: 'right'}
 								},
                                 {
 									Header: 'Name',
 									accessor: 'Name',
+                                     style: {textAlign: 'left'}
 								},
 
 								{
 									Header: 'aggregierter Indikator',
 									accessor: 'aggregierter Indikator',
+                                     style: {textAlign: 'right'}
 								},
 
 								{
 									Header: 'Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200 2009-12',
 									accessor: 'Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200 2009-12',
+                                     style: {textAlign: 'right'}
 								},
 								{
 									Header: 'Lohn pro Beschäftigtem 2010 _ORIGINAL_200 2010',
 									accessor: 'Lohn pro Beschäftigtem 2010 _ORIGINAL_200 2010',
+                                     style: {textAlign: 'right'},
+                                        Cell: props => props.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 								},
 								{
 									Header: 'Erwerbstätigenprognose _ORIGINAL_200 2011-18',
 									accessor: 'Erwerbstätigenprognose _ORIGINAL_200 2011-18',
+                                     style: {textAlign: 'right'}
 								},
 								{
 									Header: 'Infrastrukturindikator_ORIGINAL_200 2012',
 									accessor: 'Infrastrukturindikator_ORIGINAL_200 2012',
+                                     style: {textAlign: 'right'}
 								},
 
 								]
@@ -271,7 +287,9 @@ function reducer(state = initalState, action) {
           if (ColumnName in state.table_data[0]) {
              // const cleanColumnName = state.metadata[state.value_dic['var_name_' + i]].csvname  + ', ' + state.value_dic['var_year_' +i];
             draft.table_columns.push({
-              Header: ColumnName, accessor: ColumnName});
+              Header: ColumnName, accessor: ColumnName,  style: {textAlign: 'right'},
+            Cell: props => props.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            });
           }
         }
       });

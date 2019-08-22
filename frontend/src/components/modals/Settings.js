@@ -97,8 +97,8 @@ class Settings extends Component {
 					  <p className="modal-card-title">Einstellungen</p>
 				  </header>
               		<section className="modal-card-body">
-  				
-   						
+
+
 
 							   <div className="columns">
 									<div className="column">
@@ -204,7 +204,7 @@ class Settings extends Component {
 								</div>
 								</section>
 
-							   
+
 
 				</div>
                   
