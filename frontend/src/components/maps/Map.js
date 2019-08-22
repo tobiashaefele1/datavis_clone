@@ -327,7 +327,7 @@ class Map extends Component {
 	  }
       return (
 		
-        <div id="map" style={{display: 'inline-block'}}>
+        <div id="map">
 
             <div id = "map_content">
 				{this.renderlegend()}
