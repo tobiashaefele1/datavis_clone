@@ -205,7 +205,7 @@ export class Main_selector extends Component {
 				  <div className="indicator_tooltip">
                 <span className="tooltiptext">
                      Langname: {(this.props.value_dic[`var_name_${this.props.number}`] ?
-                     this.props.metadata[this.props.value_dic[`var_name_${this.props.number}`]].Langname : '')}
+                    this.props.metadata[this.props.value_dic[`var_name_${this.props.number}`]].Langname : '')}
                       Quelle: {(this.props.value_dic[`var_name_${this.props.number}`] ?
                      this.props.metadata[this.props.value_dic[`var_name_${this.props.number}`]].Quelle : '')}
                     </span>
@@ -291,7 +291,7 @@ export class Main_selector extends Component {
 			</div>
 
 
-        <div id={`in_${this.props.number}`} class="field is-grouped-multiline" >
+        <div id={`in_${this.props.number}`} className="field is-grouped-multiline" >
        
 		 
          

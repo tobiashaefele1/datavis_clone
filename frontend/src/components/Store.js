@@ -71,12 +71,12 @@ const initalState = {
       {
     Header: 'Name',
     accessor: 'Name',
-     style: {textAlign: 'right'}
+     style: {textAlign: 'left'}
   },
 
   {
-    Header: 'Aggregierter Indikator',
-    accessor: 'Aggregierter Indikator',
+    Header: 'aggregierter Indikator',
+    accessor: 'aggregierter Indikator',
       style: {textAlign: 'right'}
   },
   {
@@ -208,7 +208,7 @@ function reducer(state = initalState, action) {
                                 {
 									Header: 'Name',
 									accessor: 'Name',
-                                     style: {textAlign: 'right'}
+                                     style: {textAlign: 'left'}
 								},
 
 								{

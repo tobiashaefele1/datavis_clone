@@ -92,10 +92,12 @@ class Settings extends Component {
 
 			  <div className="modal is-active">
   				<div className="modal-background" onClick={this.closeModal.bind(this)}></div>
-  					<div className="modal-content">
+  					<div className="modal-card">
    						<div className="box">
-							   <h2 className=" title has-text-centered">Einstellungen</h2>
-							   <div className="columns">
+				  <header className="modal-card-head">
+					  <p className="modal-card-title">Eintellungen</p>
+				  </header>
+                            <div className="columns">
 									<div className="column">
 										 <h3>Darstellung</h3>
                 							<ChangeViewButton/>
