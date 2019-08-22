@@ -169,7 +169,7 @@ class App extends Component {
   indikatorSet(value){
 	  if(value < 1000) {
 		  return (<div className="column is-half is-mobile is-centered is-vcentered has-text-centered ">
-			  	<div style={{display: 'inline-flex'}}><Map/></div>
+			  	<div className="is-centered has-text-centered" ><Map/></div>
                 <div className="columns is-centered ">
                 <MinMaxTable/>
 				</div></div>)
@@ -192,7 +192,7 @@ class App extends Component {
 	  }else{
 		  return (
 			  <div className="column is-mobile is-half is-centered is-vcentered has-text-centered ">
-				<div style={{display: 'inline-flex'}}><Map/></div>
+				<div className="is-centered has-text-centered"><Map/></div>
 				<div className="columns is-centered ">
                 <MinMaxTable/>
 				</div>
@@ -230,7 +230,7 @@ class App extends Component {
 		</div>
 		<div className="column"><h2 className="title has-text-centered">
             Lebensverhältnisse in Deutschland </h2>
-            			<h2 className="subtitle">Visualisierung von Indikatoren</h2>
+            			<h2 className="subtitle has-text-centered">Visualisierung von Indikatoren</h2>
      				 </div>
 					  
 
@@ -240,10 +240,10 @@ class App extends Component {
 			<SettingsButton/>
               <InfoButton/>
 			</div>
-
+			<Info/>
 			{/* TODO: find someway to show these nicel */}
               <Settings/>
-              <Info/>
+            
 			</div>			  
 		</div>
 		<div className="columns is-marginless has-text-black">

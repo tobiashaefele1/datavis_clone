@@ -67,14 +67,15 @@ class Info extends Component {
     render() {
       if (this.props.showInfo) {
         return (
-          <div>
-            <div id="settings" className="import_modal">
-              <div className="import_modal-content">
-                <span className="close"
-                  onClick={this.closeInfo.bind(this)}>&times;</span>
-                    <h6>Allgemeine Informationen</h6>
+          <div className="modal is-active">
+            <div className="modal-background" onClick={this.closeInfo.bind(this)}></div>
+              <div className="modal-card">
+				  <header className="modal-card-head">
+					  <p className="modal-card-title">Allgemeine Informationen</p>
+				  </header>
+              <section className="modal-card-body">
                   <p> Diese Website ermöglicht das Nachbauen von GRW-Indikatorik sowie das Anzeigen und Visualiseren einzelner Indikatoren, die die Gleichwertigkeit von Lebensverhältnissen in Deutschland abbilden.
-Bei Fragen zu Funktionen, Methodologie oder Umsetzung, wenden Sie sich bitte an Tobias Haefele oder Jakob Roeters van Lennep. </p>
+Bei Fragen zu Funktionen, Methodologie oder Umsetzung, wenden Sie sich bitte an Tobias Haefele oder Jacob Roeters van Lennep. </p>
 
                   <h6>Indikatorencodierung</h6>
                   <p> Die Suffixe hinter den individuellen Indikatoren geben, den Ursprung der eingespeisten Daten an.
@@ -95,28 +96,28 @@ Werden Indikatoren auf dem Level angezeigt auf dem die Daten vorliegen (bswp. ei
                   <p> In der Ansicht für aggregierte Indikatoren können standardisierte Indikatoren angezeigt werden, sowie dynmaisch zu Indikatornekombination nach GRW Methodik verbunden werden.
 In dieser Ansicht werden alle Indikatoren nach GRW Methodik gewichtet, standardisiert und skaliert.
 Dazu werden die folgenden Rechnungsschritte durchgeführt:
-1)	Aggregierung der Indikatoren auf entsprechender Ebene (wie oben beschrieben)
-2)	Berechnung der Standardabweichung. Dabei werden (wo verfügbar), die „tatsächlichen“ Bundesmittelwerte als Mittelwert herangezogen. Wo verfügbar haben diese denselben Indikatornamen mit Suffix _400. Ist ein enstprechender Mittelwert nicht verfügbar, wird die Standardabweichung anhand des arithmetischen Mittels gebildet und mit Hilfe der Bezugsgröße gewichtet. Die für die Berechnung der Standardabweichung verwendete Formel ist:
+'1)	Aggregierung der Indikatoren auf entsprechender Ebene (wie oben beschrieben)'
+'2)	Berechnung der Standardabweichung. Dabei werden (wo verfügbar)', die „tatsächlichen“ Bundesmittelwerte als Mittelwert herangezogen. Wo verfügbar haben diese denselben Indikatornamen mit Suffix _400. Ist ein enstprechender Mittelwert nicht verfügbar, wird die Standardabweichung anhand des arithmetischen Mittels gebildet und mit Hilfe der Bezugsgröße gewichtet. Die für die Berechnung der Standardabweichung verwendete Formel ist:
 
 
 
 
-3)	Transformation. Nach Berechnung der Standardabweichung werden die Skalen transformiert. Dazu werden zwei verschiedene mathematische Methoden angewandt, je nachdem ob für den Indikator ein höherer oder ein niedriger Wert Strukturschwäche abbildet. (bswp: Bruttoverdienst: ein höher Indikatorwert gibt einen niedrigeren Strukturschwächewert an; bswp. Arbeitslosenquote: ein höherer Wert gibt einen höheren Strukturschwächewert an).
+'3)	Transformation. Nach Berechnung der Standardabweichung werden die Skalen transformiert. Dazu werden zwei verschiedene mathematische Methoden angewandt, je nachdem ob für den Indikator ein höherer oder ein niedriger Wert Strukturschwäche abbildet. (bswp: Bruttoverdienst: ein höher Indikatorwert gibt einen niedrigeren Strukturschwächewert an; bswp. Arbeitslosenquote: ein höherer Wert gibt einen höheren Strukturschwächewert an)'.
 
-Formel „höher ist besser“ (d.h. ein höherer Indikatorwert geht mit verringerter Strukturschwäche einher)
-
-
-
-Formel: „niedriger ist besser“ (d.h. ein höherer Indikatorwert geht mit erhöher Strukturschwäche einher):
+Formel „höher ist besser“ '(d.h. ein höherer Indikatorwert geht mit verringerter Strukturschwäche einher)'
 
 
+
+Formel: „niedriger ist besser“ '(d.h. ein höherer Indikatorwert geht mit erhöher Strukturschwäche einher)':
 
 
 
 
-4)	Multikative Verknüpfung. Die so erhaltenen Werte werden anhand des gewählten Gewichtungsfaktors multipliziert:
 
-Angezeigter Indikator = (x1 * Var1) + (x2 * Var2) + (x3 * Var3) + (x4 * Var4)
+
+'4)	Multikative Verknüpfung. Die so erhaltenen Werte werden anhand des gewählten Gewichtungsfaktors multipliziert':
+
+Angezeigter Indikator = '(x1 * Var1) + (x2 * Var2) + (x3 * Var3) + (x4 * Var4)'
 
                   </p>
                   
@@ -124,17 +125,20 @@ Angezeigter Indikator = (x1 * Var1) + (x2 * Var2) + (x3 * Var3) + (x4 * Var4)
                   <p>
                   </p>
 
+			</section>
+			<footer className="modal-card-foot">
+				<div className="buttons is-centered">
+					<button className="button is-dark is-outlined">Contact</button>
+				</div>
+			
+			</footer>
 
                 <div>
                 </div>
 
               </div>
-
-            </div>
-                    <button onClick={this.closeInfo.bind(this)}>zurück</button>
-
-
-          </div>);
+				<button className="modal-close is-large" onClick={this.closeInfo.bind(this)} aria-label="close"></button>
+            </div>)
       } else {
         return ('');
       }

@@ -35,6 +35,21 @@ class Settings extends Component {
     };
 
 
+    colorChangeBlue = () => {
+	
+      this.props.dispatch(this.changeColorDispatch('0'));
+	};
+
+    colorChangeRed = () => {
+	
+      this.props.dispatch(this.changeColorDispatch('1'));
+	};
+	
+    colorChangeGreen = () => {
+	
+      this.props.dispatch(this.changeColorDispatch('2'));
+	};
+
 
     /**
      *This function creates a dispatch ready input.
@@ -88,9 +103,9 @@ class Settings extends Component {
 									<div className="column">
 										<h3>Farbpaletten</h3>
 										<div className="buttons">
-										<button className="button is-dark is-outlined" value={0} onClick={this.colorChange}>
+										<a className="button is-dark is-outlined" onClick={this.colorChangeBlue.bind(this)}>
 
-    			<span>
+    			<span >
 					<svg width="10" height="10" className="Blues">
 												<rect width="10" height="10" className="q0-5" />
 											</svg>
@@ -110,32 +125,32 @@ class Settings extends Component {
 												<rect width="10" height="10" className="q5-5" />
 											</svg>		
 											</span>
-</button>
+</a>
 											
-			<button className="button is-dark  is-outlined" value={1} onClick={this.colorChange}>
-    			<span>
-					<svg width="10" height="10" className="Reds" value ={1} onClick={this.colorChange}>
+			<a className="button is-dark  is-outlined"  onClick={this.colorChangeRed.bind(this)}>
+    			<span >
+					<svg width="10" height="10" className="Reds" >
                     <rect width="10" height="10" className="q0-5" />
                   </svg>
-                  <svg width="10" height="10" className="Reds"value ={1} onClick={this.colorChange}>
+                  <svg width="10" height="10" className="Reds">
                     <rect width="10" height="10" className="q1-5" />
                   </svg>
-                  <svg width="10" height="10" className="Reds"value ={1} onClick={this.colorChange}>
+                  <svg width="10" height="10" className="Reds">
                     <rect width="10" height="10" className="q2-5" />
                   </svg>
-                  <svg width="10" height="10" className="Reds"value ={1} onClick={this.colorChange}>
+                  <svg width="10" height="10" className="Reds">
                     <rect width="10" height="10" className="q3-5" />
                   </svg>
-                  <svg width="10" height="10" className="Reds"value ={1} onClick={this.colorChange}>
+                  <svg width="10" height="10" className="Reds">
                     <rect width="10" height="10" className="q4-5" />
                   </svg>
-                  <svg width="10" height="10" className="Reds"value ={1} onClick={this.colorChange}>
+                  <svg width="10" height="10" className="Reds">
                     <rect width="10" height="10" className="q5-5" />
                   </svg>	
 											</span>
-  			</button>
-					<button className="button is-dark is-outlined" value={2} onClick={this.colorChange}>
-    			<span>
+  			</a>
+					<a className="button is-dark is-outlined" onClick={this.colorChangeGreen.bind(this)}>
+    			<span >
 					 <svg width="10" height="10" className="Greens">
                     <rect width="10" height="10" className="q0-5" />
                   </svg>
@@ -155,7 +170,7 @@ class Settings extends Component {
                     <rect width="10" height="10" className="q5-5" />
                   </svg>	
 											</span>
-  			</button>
+  			</a>
                 							
             </div>
                  </div>
