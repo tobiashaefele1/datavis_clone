@@ -294,13 +294,7 @@ class App extends Component {
 			</div>
 
 		</div>
-		
-		<div className="columns">
-			<div className="column is-full">
-				<Table />
-			</div>
-		</div>
-
+		<Table/>
 
 
     </div>

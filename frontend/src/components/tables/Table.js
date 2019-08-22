@@ -59,15 +59,27 @@ class Table extends Component {
     console.log(this.props.table_data)
     if(this.props.showTable){
       return (    
-		 <div className="box has-background-white-ter has-text-black" >
-            <div style={{marginLeft: '20px', marginRight: '20px'}}> 
-		  <div>
-
-        <div>
-          <button onClick={this.download}>
-                        Datentabelle als .csv Datei exportieren
-          </button>
-        </div>
+		<div>
+			<div className="columns is-marginless has-text-black">
+			
+				<div className="column  is-paddingless ">
+					<div className="subtitle has-text-centered">Datentabelle</div>
+				</div>
+		
+			</div>
+			<div className="columns is-marginless">
+			<div className="column ">
+		 		<div className="box has-background-white-ter has-text-black has-text-centered" >
+					 <div className="buttons is-centered">
+					<a className="button is-dark is-outlined" onClick={this.download}>
+    			
+   					 <span>Datentabelle als .csv Datei exportieren</span>
+  					</a>
+					  </div>
+					
+		  
+     
+    
         <div>
           <CSVLink
             data={this.state.dataToDownload}
@@ -96,7 +108,11 @@ class Table extends Component {
         </div>
         </div>
 		</div>
-            </div>
+         </div>
+	</div>
+
+
+
       );
     }
   }
@@ -111,8 +127,10 @@ class Table extends Component {
    */
   render() {
     return (
-			
-			<div>  {this.renderTable()}</div>
+		<div>
+			{this.renderTable()}
+
+		</div>
        		
 
       
