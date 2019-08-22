@@ -339,7 +339,7 @@ class Map extends Component {
 	  }
       return (
 		
-        <div id="map">
+        <div className="is-centered has-text-centered" id="map">
 
             <div id = "map_content">
 				{this.renderlegend()}
