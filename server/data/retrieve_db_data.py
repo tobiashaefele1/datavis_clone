@@ -145,7 +145,7 @@ class retrieve_db_data:
                                     GROUP BY mapping.`%s` 
                                     ORDER BY mapping.`%s` ASC """ % (layer, ref_name, ref_name, ref_year, layer, layer))
 
-        print(sql_select_Query)
+        # print(sql_select_Query)
         try:
             # executed quiery and closes cursor
             cursor = mySQLconnection.cursor()
@@ -180,11 +180,11 @@ class retrieve_db_data:
 
         """ this function returns the standard deviation for a chosen variable and year, standardised by a chosen ref value
             and year as a single float value  """
-        print(var_name)
-        print(var_year)
-        print(ref_name)
-        print(ref_year)
-        print(layer)
+        # print(var_name)
+        # print(var_year)
+        # print(ref_name)
+        # print(ref_year)
+        # print(layer)
         data = self.retrieve_data(var_name, var_year, ref_name, ref_year, layer)
         # print(data)
         fed_avg = self.retrieve_fed_avg(var_name, var_year, ref_name, ref_year, layer)
@@ -195,10 +195,10 @@ class retrieve_db_data:
 
         Standard_deviation = 0
         for i in range(0, len(data)):
-            print (len(data))
-            print(i)
+            # print (len(data))
+            # print(i)
             # print(ref_share)
-            print (data[i][1])
+            # print (data[i][1])
             Standard_deviation += (((float(data[i][1])) - (float(fed_avg))) ** 2) * float((ref_share[i]))
                 # print ( (((data[i][1])-(fed_avg))**2)*(ref_share[i]))
 
@@ -492,14 +492,14 @@ class retrieve_db_data:
          # convert list into string
             col_name_statement = ', '.join(map(str, col_name_statement))
 
-            print(col_name_statement)
-            print(col_value_statement)
+            # print(col_name_statement)
+            # print(col_value_statement)
 
             ## now insert all of these into mysql table:
             sql = (""" INSERT INTO `%s`
                         (%s)
                         VALUES %s; """ % (table_name, col_name_statement, col_value_statement))
-            print(sql)
+            # print(sql)
             cursor.execute(sql)
             mySQLconnection.commit()
 

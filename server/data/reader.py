@@ -92,7 +92,7 @@ def add_tuples(data, cursor, table_name="kreise"):
              VALUES
                 (%s)
         """ % (table_name, quests)
-    print(data.sql_data)
+    # print(data.sql_data)
     cursor.executemany(sql, data.sql_data)
 
 
