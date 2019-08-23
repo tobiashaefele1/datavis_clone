@@ -38,6 +38,7 @@ class aggregateindic:
         # this code scans the dictionary to ensure only complete entries are being searched for in the db
         var = []
         var = self.aggregate_args(ajax_dictionary)
+        print(var)
         empty_return = [[]]
 
         result = []

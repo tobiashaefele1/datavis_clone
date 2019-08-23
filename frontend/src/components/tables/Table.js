@@ -75,12 +75,22 @@ class Table extends Component {
 					<div className="subtitle has-text-centered" style={{fontWeight: "bold"}}>vollständige Datentabelle</div>
 
 					 <div className="buttons is-centered">
-					<a className="button is-dark is-outlined" onClick={this.download}>
+
+
+
+        	            <div className="download_tooltip">
+
+                          <span className="download_tooltiptext">
+                   Lädt die in der Tabelle angezeigten Daten herunter. Um alle Daten herunterzuladen, zuerst die entsprechende Zeilenanzahl in der Tabelle auswählen.
+                        </span>
+
+                         <a className="button is-dark is-outlined" onClick={this.download}>
     			
-   					 <span>Datentabelle als .csv Datei exportieren</span>
-  					</a>
+   					            <span>Datentabelle als .csv Datei exportieren</span>
+  					    </a>
+
 					  </div>
-					
+						</div>
 		  
      
     

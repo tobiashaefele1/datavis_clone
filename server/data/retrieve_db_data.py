@@ -145,6 +145,7 @@ class retrieve_db_data:
                                     GROUP BY mapping.`%s` 
                                     ORDER BY mapping.`%s` ASC """ % (layer, ref_name, ref_name, ref_year, layer, layer))
 
+        print(sql_select_Query)
         try:
             # executed quiery and closes cursor
             cursor = mySQLconnection.cursor()
@@ -179,16 +180,26 @@ class retrieve_db_data:
 
         """ this function returns the standard deviation for a chosen variable and year, standardised by a chosen ref value
             and year as a single float value  """
+        print(var_name)
+        print(var_year)
+        print(ref_name)
+        print(ref_year)
+        print(layer)
         data = self.retrieve_data(var_name, var_year, ref_name, ref_year, layer)
+        # print(data)
         fed_avg = self.retrieve_fed_avg(var_name, var_year, ref_name, ref_year, layer)
         ref_share = self.retrieve_ref_share(ref_name, ref_year, layer)
         # print(type(data[0][1]))
+        # print (fed_avg)
+        # print(ref_share)
 
         Standard_deviation = 0
         for i in range(0, len(data)):
+            print (len(data))
+            print(i)
             # print(ref_share)
-            # print (((data[i][1])-(fed_avg))**2)
-            Standard_deviation += (((data[i][1]) - (fed_avg)) ** 2) * (ref_share[i])
+            print (data[i][1])
+            Standard_deviation += (((float(data[i][1])) - (float(fed_avg))) ** 2) * float((ref_share[i]))
                 # print ( (((data[i][1])-(fed_avg))**2)*(ref_share[i]))
 
         Standard_deviation = math.sqrt(Standard_deviation / len(data))

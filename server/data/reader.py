@@ -34,7 +34,8 @@ def create_table_and_load_data(data_base, data, data_code=100, data_base_name="m
     :return:
     """
     data.convert_to_array_sql()
-
+    # print(data.data)
+    # print(data.labels)
     cursor = data_base.cursor()
     with warnings.catch_warnings():
         warnings.simplefilter('ignore')
@@ -91,6 +92,7 @@ def add_tuples(data, cursor, table_name="kreise"):
              VALUES
                 (%s)
         """ % (table_name, quests)
+    print(data.sql_data)
     cursor.executemany(sql, data.sql_data)
 
 

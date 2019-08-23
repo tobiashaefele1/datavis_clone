@@ -22,19 +22,19 @@ link_to_AMR12_data = './resources/including metadata/AMR12_testfile_updated.csv'
 link_to_AMR15_data = './resources/including metadata/AMR15_testfile_updated.csv'
 link_to_Bund_data = './resources/including metadata/Bund_testfile_updated.csv'
 link_to_Kreise_data = './resources/including metadata/KRS15_testfile_updated.csv'
-link_to_reference_data = './resources/Referenzgroessen_input.csv'
+link_to_reference_data = './resources/Referenzgroessen_input_updated_ERSETZT.csv'
 
 #
 # # load in all the data as data objects
 # AMR12_data = readin258AMR(link_to_AMR12_data, link_to_mapping_file, link_to_template_input)  # create AMR12 data object
 # AMR15_data = readin257AMR(link_to_AMR15_data, link_to_mapping_file, link_to_template_input)   # create AMR15 data object
 # Bund_data = readinBund(link_to_Bund_data, link_to_template_input)                            # create Bund data object
-# reference_data = Data(link_to_reference_data)  #### WORKS!!!!
+reference_data = Data(link_to_reference_data)  #### WORKS!!!!
 # Kreise_data = Data(link_to_Kreise_data)  # WORKS!!!
 
 data_base = pymysql.connect("bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com", "admin", "NPmpMe!696rY", "mydb")
 # load in all the data to DB
-mapping_to_db(link_to_mapping_file)                                     # load in Mapping file to DB
+# mapping_to_db(link_to_mapping_file)                                     # load in Mapping file to DB
 #
 # create_table_and_load_data(data_base, Kreise_data)                                 # load in Kreise data
 #
@@ -51,7 +51,7 @@ cursor = data_base.cursor()
 # add_columns(Bund_data, cursor, data_code=400)                           # load in Bund data
 # add_tuples_new(Bund_data, data_base=data_base, data_code=400)
 #
-# create_table_and_load_data(data_base, reference_data, table_name="reference")       # load in reference data
+create_table_and_load_data(data_base, reference_data, table_name="reference")       # load in reference data
 # #
 # #
 #
