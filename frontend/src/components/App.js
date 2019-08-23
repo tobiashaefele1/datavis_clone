@@ -273,7 +273,7 @@ class App extends Component {
 				<SmallTable/>
 					
 					<div className="columns">
-						<div className="column full-width">
+						<div className="column">
 						
 							<div>Darstellung</div>
 								<div className="buttons is-centered">
