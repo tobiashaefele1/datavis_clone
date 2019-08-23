@@ -30,7 +30,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '19nhjo(g3b=2x68wr7&7y$w1vxvr31v#n9xt3c7mnjifzlu*ia'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '0.0.0.0', '127.0.0.1', 'bmfserver.herokuapp.com', 'arcane-reaches-11621.herokuapp.com'
