@@ -137,7 +137,7 @@ export class Main_selector extends Component {
           <input className="input is-small" id={`weight_${this.props.number}`}
             onChange={this.handleChangeProm.bind(this)}
             type="number"
-            defaultValue={this.props.value_dic[`weight_${this.props.number}`]} style={{textAlign: 'right'}} >
+            defaultValue={this.props.value_dic[`weight_${this.props.number}`]} style={{textAlign: 'center'}} >
           </input>
 		  </div>
         );
