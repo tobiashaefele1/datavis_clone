@@ -68,7 +68,7 @@ class MapSelector extends Component {
 		<div style={{paddingBottom: "5px"}}>Karte</div>
 		
 		
-        <div className="select is-small " style={{marginBottom: '10px'}}>
+        <div className="select is-small is-dark " style={{marginBottom: '10px'}}>
           <select 
             id="map_selector"
             onChange={this.handleMapChange.bind(this)}
