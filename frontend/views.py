@@ -7,7 +7,6 @@ from server.data.aggregateindic import aggregateindic
 from server.data.retrieve_db_data import retrieve_db_data
 from pymysqlpool.pool import Pool
 import pymysql
-
 pool = Pool(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
             db='mydb',
             user='admin',

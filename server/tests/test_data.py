@@ -2,7 +2,8 @@
 import os
 
 from unittest import TestCase
-from bmf.server.data import data
+
+from server.data import data
 
 
 class TestData(TestCase):

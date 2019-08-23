@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import ViewButton from '../buttons/ViewButton';
+
 import ChangeViewButton from '../buttons/ChangeViewButton';
 import 'jquery';
 

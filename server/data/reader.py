@@ -23,9 +23,10 @@ def index_column(column, cursor, table_name):
     cursor.execute(sql)
 
 
-def create_table_and_load_data(data, data_code=100, data_base_name="mydb", table_name="kreise"):
+def create_table_and_load_data(data_base, data, data_code=100, data_base_name="mydb", table_name="kreise"):
     """
     Function to create a table and load data into the DB for a given data object
+    :param data_base: the database where it should be loaded in.
     :param data: The data object that contains the labels and tuple data
     :param data_code: the data code of which level of data the data object contains, default: 100
     :param data_base_name: the name of the database that it is loaded into, default: mydb
@@ -33,7 +34,7 @@ def create_table_and_load_data(data, data_code=100, data_base_name="mydb", table
     :return:
     """
     data.convert_to_array_sql()
-    data_base = pymysql.connect("bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com", "admin", "NPmpMe!696rY", data_base_name)
+
     cursor = data_base.cursor()
     with warnings.catch_warnings():
         warnings.simplefilter('ignore')
@@ -50,7 +51,7 @@ def create_table_and_load_data(data, data_code=100, data_base_name="mydb", table
     index_column('KENNZIFFER', cursor, table_name)
     index_column('YEAR', cursor, table_name)
     data_base.commit()
-    data_base.close()
+
 
 
 def add_columns(data, cursor, data_code=100, table_name='kreise'):

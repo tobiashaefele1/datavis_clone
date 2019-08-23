@@ -52,7 +52,8 @@ class ChangeViewButton extends Component {
       return (
 		<button className="button is-dark is-outlined is-fullwidth" onClick={this.changeView}>{this.viewButton()}</button>
       );
-    }
+	}
+	
 }
 /**
  *Here the props are selected from the store.

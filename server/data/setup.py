@@ -32,11 +32,11 @@ link_to_reference_data = './resources/Referenzgroessen_input.csv'
 # reference_data = Data(link_to_reference_data)  #### WORKS!!!!
 # Kreise_data = Data(link_to_Kreise_data)  # WORKS!!!
 
-
+data_base = pymysql.connect("bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com", "admin", "NPmpMe!696rY", "mydb")
 # load in all the data to DB
 mapping_to_db(link_to_mapping_file)                                     # load in Mapping file to DB
 #
-# create_table_and_load_data(Kreise_data)                                 # load in Kreise data
+# create_table_and_load_data(data_base, Kreise_data)                                 # load in Kreise data
 #
 #
 data_base = pymysql.connect("bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com", "admin", "NPmpMe!696rY", "mydb")
@@ -51,7 +51,7 @@ cursor = data_base.cursor()
 # add_columns(Bund_data, cursor, data_code=400)                           # load in Bund data
 # add_tuples_new(Bund_data, data_base=data_base, data_code=400)
 #
-# create_table_and_load_data(reference_data, table_name="reference")       # load in reference data
+# create_table_and_load_data(data_base, reference_data, table_name="reference")       # load in reference data
 # #
 # #
 #
