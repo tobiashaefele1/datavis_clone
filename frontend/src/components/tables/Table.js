@@ -66,14 +66,14 @@ class Table extends Component {
 			
 			<div id='table' className="columns is-marginless has-text-black"  >
 				
-				<div className="column  is-paddingless ">
-					<div className="subtitle has-text-centered">Datentabelle</div>
-				</div>
+
 		
 			</div>
 			<div className="columns is-marginless">
 			<div className="column ">
 		 		<div className="box has-background-white-ter has-text-black has-text-centered" >
+					<div className="subtitle has-text-centered" style={{fontWeight: "bold"}}>vollständige Datentabelle</div>
+
 					 <div className="buttons is-centered">
 					<a className="button is-dark is-outlined" onClick={this.download}>
     			

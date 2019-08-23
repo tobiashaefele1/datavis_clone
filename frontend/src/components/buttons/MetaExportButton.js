@@ -73,10 +73,10 @@ class MetaExportButton extends Component {
      */
     render() {
       return (
-		    <a className="button is-dark is-outlined" onClick={this.download.bind(this)}>
+		    <button className="button is-dark is-outlined" onClick={this.download.bind(this)}>
     			
-   					 <span>Meta Data exportieren</span>
-  			</a>
+   					 <span>Metadaten</span>
+  			</button>
        
       );
     }

@@ -30,10 +30,10 @@ class TableButton extends Component {
      */
     render() {
       return (
-		   <a class="button is-dark is-outlined" value = {this.props.showTable} onClick={this.showTable}>
+		   <button class="button is-dark is-outlined is-fullwidth" value = {this.props.showTable} onClick={this.showTable}>
     			
    					 <span>{this.props.showTable ? `Vollständige Datentabelle verbergen` : `Vollständige Datentabelle anzeigen`}</span>
-  			</a>
+  			</button>
       
       );
     }

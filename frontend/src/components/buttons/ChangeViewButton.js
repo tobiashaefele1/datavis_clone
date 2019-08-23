@@ -22,10 +22,10 @@ class ChangeViewButton extends Component {
 		if(this.props.view_multiple){
 			return( 
 				
-				<a className="button is-dark is-outlined" onClick={this.changeView}>
+
     									
 										<span>einzelnen Indikator ansehen</span>
-															</a>
+
 
 			)
 		}else{
@@ -33,11 +33,11 @@ class ChangeViewButton extends Component {
 			
 					
 
-				<a className="button is-dark is-outlined" onClick={this.changeView}>
+
     									
 										<span>aggregierten Indikator zusammenstellen</span>
 										
-															</a>
+
 
 			)
 		}
@@ -50,7 +50,7 @@ class ChangeViewButton extends Component {
      */
     render() {
       return (
-		<div>{this.viewButton()}</div>
+		<button className="button is-dark is-outlined is-fullwidth" onClick={this.changeView}>{this.viewButton()}</button>
       );
     }
 }

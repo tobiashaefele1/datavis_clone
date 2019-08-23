@@ -55,8 +55,8 @@ class Map extends Component {
               </object>
 		</div>
     
-              <div className ="map_copyright"> &#9400; Bundesministerium der Finanzen
-			  &#9400; gadm.com</div>
+              <div className ="map_copyright"> &#9400; gadm.com  <br/>
+			  &#9400; Bundesministerium der Finanzen</div>
 			
           </div>
       )

@@ -125,7 +125,9 @@ export class Main_selector extends Component {
             <div className="weight_tooltip">
 
                           <span className="weight_tooltiptext">
-                     Der hier eingebene Wert legt die prozentuale Gewichtung des gewählten Indikators fest. Die Summe
+                     Der hier eingebene Wert legt die prozentuale Gewichtung des gewählten Indikators fest.
+                              <br/>
+                              Die Summe
                               aller individuellen Gewichtungen sollte 100% ergeben.
                     </span>
 
@@ -205,7 +207,7 @@ export class Main_selector extends Component {
 				  <div className="indicator_tooltip">
                 <span className="tooltiptext">
                      Langname: {(this.props.value_dic[`var_name_${this.props.number}`] ?
-                    this.props.metadata[this.props.value_dic[`var_name_${this.props.number}`]].Langname : '')}
+                    this.props.metadata[this.props.value_dic[`var_name_${this.props.number}`]].Langname : '')} <br/>
                       Quelle: {(this.props.value_dic[`var_name_${this.props.number}`] ?
                      this.props.metadata[this.props.value_dic[`var_name_${this.props.number}`]].Quelle : '')}
                     </span>

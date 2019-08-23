@@ -204,12 +204,19 @@ class Settings extends Component {
 								</div>
 								</section>
 
+                      	<footer className="modal-card-foot">
+
+
+			</footer>
+
 
 
 				</div>
                   
   				<button className="modal-close is-large" onClick={this.closeModal.bind(this)} aria-label="close"></button>
 			</div>
+
+
            
                 
 

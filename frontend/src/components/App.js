@@ -218,9 +218,9 @@ class App extends Component {
       <div>
       { this.mobile(window.screen.width) }
         
-		<div className="columns is-marginless is-mobile has-background-white-ter">
+		<div className="columns is-marginless is-mobile">
 
-		<div className="column is-one-fifth">
+		<div className="column is-one-quarter">
  			
    				 
      		<object className="is-pulled-left" type="image/svg+xml" 
@@ -234,9 +234,9 @@ class App extends Component {
      				 </div>
 					  
 
-		<div className="column is-one-fifth">
+		<div className="column is-one-quarter">
 
-			<div className=" buttons field is-grouped ">
+			<div className=" buttons is-centered " >
 			<SettingsButton/>
               <InfoButton/>
 			</div>
@@ -248,13 +248,13 @@ class App extends Component {
 		</div>
 		<div className="columns is-marginless has-text-black">
 			<div className="column is-hidden-mobile is-paddingless ">
-				<div className="subtitle has-text-centered">Einstellungen</div>
+				<div className="subtitle has-text-centered" style={{fontWeight : "bold"}}>Einstellungen</div>
 			</div>
 			<div className="column is-half is-paddingless ">
-				<div className="subtitle has-text-centered">{this.headline()}</div>
+				<div className="subtitle has-text-centered" style={{fontWeight : "bold"}}>{this.headline()}</div>
 			</div>
 			<div className="column is-hidden-mobile is-paddingless">
-				<div className="subtitle has-text-centered">Übersicht</div>
+				<div className="subtitle has-text-centered" style={{fontWeight : "bold"}} >Übersicht</div>
 			</div>
 		</div>
 		<div className="columns is-marginless">
@@ -280,7 +280,7 @@ class App extends Component {
 									<ChangeViewButton/>
 							</div>
 							
-							<div>Exportieren</div>
+							<div>Export</div>
 							<div className="buttons is-centered">
 							<SVGExportButton />
 							<MetaExportButton/>

@@ -69,14 +69,23 @@ class ResetButton extends Component {
     render() {
       
         return (
-				<a class="button is-dark is-outlined is-large" onClick={this.handleButtonReset.bind(this)}>
-    			<span class="icon">
-     				 <i class="fas fa-undo"></i>
-    					</span>
-   					 {/* <span>Einstellungen</span> */}
-  			</a>
 
-		 
+
+        	            <div className="reset_tooltip">
+
+                          <span className="reset_tooltiptext">
+                   setzt alle Parameter auf den "originalen" GRW Indikator von 2012 zurück
+                    </span>
+							<a className="button is-dark is-outlined is-large"
+							   onClick={this.handleButtonReset.bind(this)}>
+    			<span className="icon">
+     				 <i className="fas fa-undo"></i>
+    					</span>
+								{/* <span>Einstellungen</span> */}
+							</a>
+
+						</div>
+
         );
       }
     

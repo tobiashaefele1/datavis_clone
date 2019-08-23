@@ -64,8 +64,8 @@ class MapSelector extends Component {
      */
     render() {
       return (
-		<div className="is-centered">
-		<div>Karte</div>
+		<div className="is-centered" style={{paddingBottom: "25px"}}>
+		<div style={{paddingBottom: "5px"}}>Karte</div>
 		
 		
         <div className="select is-small " style={{marginBottom: '10px'}}>

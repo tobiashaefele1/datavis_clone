@@ -370,7 +370,7 @@ table th {
   vertical-align: top; }
   table td:not([align]),
   table th:not([align]) {
-    text-align: left; }
+    text-align: center; }
 
 table th {
   color: #363636; }
@@ -2885,7 +2885,7 @@ a.tag:hover {
   .is-small.input, .is-small.textarea {
     color: black;
     border-radius: 4px;
-    font-size: 0.75rem; }
+    font-size: 16px; }
   .is-medium.input, .is-medium.textarea {
     font-size: 1.25rem; }
   .is-large.input, .is-large.textarea {
@@ -2958,7 +2958,7 @@ a.tag:hover {
   .select select {
     cursor: pointer;
     display: block;
-    font-size: 1em;
+    font-size: 16px;
     max-width: 100%;
     outline: none; }
     .select select::-ms-expand {
