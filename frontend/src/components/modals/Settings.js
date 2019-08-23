@@ -101,13 +101,13 @@ class Settings extends Component {
 
 
 							   <div className="columns">
-									<div className="column">
+									<div className="column has-text-centered">
 										 <h3>Darstellung</h3>
                 							<ChangeViewButton/>
 									</div>
-									<div className="column">
+									<div className="column has-text-centered">
 										<h3>Farbpaletten</h3>
-										<div className="buttons">
+										<div className="buttons is-centered">
 										<a className="button is-dark is-outlined" onClick={this.colorChangeBlue.bind(this)}>
 
     			<span >
@@ -180,20 +180,20 @@ class Settings extends Component {
             </div>
                  </div>
 
-									<div className="column">
+									<div className="column has-text-centered">
 										<h3>  Skalen </h3>
 
-									<div className="buttons">
-									<button className="button is-dark is-outlined" value={0} onClick={this.scaleChange}>
+									<div className="buttons is-centered">
+									<button className="button is-dark is-outlined is-fullwidth" value={0} onClick={this.scaleChange}>
     									
 										gleichmäßige Gruppen
 															</button>
-									<button className="button is-dark is-outlined" value={1} onClick={this.scaleChange}>
+									<button className="button is-dark is-outlined is-fullwidth" value={1} onClick={this.scaleChange}>
     									
 										gleichmäßige Intervalle
 															</button>
 
-										<button className="button is-dark is-outlined" value={2} onClick={this.scaleChange}>
+										<button className="button is-dark is-outlined is-fullwidth" value={2} onClick={this.scaleChange}>
     									
 										fließende Intervalle
 															</button>

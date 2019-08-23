@@ -57,6 +57,15 @@ class Info extends Component {
     //   );
     // };
 
+	formula1 = () =>{
+		return("$$S = \sqrt{{1 \over n}*\sum_{n=1}^{\infty}g_i (x_i-\bar{x})^2}.$$")
+	}
+	formula2 = () =>{
+		return("$$z = \left({(x_i-\bar{x}) * 15\over S}\right) +100$$")
+	}
+	formula3 = () => {
+		return("$$z = 200-\left({(x_i-\bar{x}) * 15\over S} +100\right)$$")
+	}
 
     /**
      *This function renders the Settings modal.
@@ -122,7 +131,9 @@ Formel „höher ist besser“ '(d.h. ein höherer Indikatorwert geht mit verrin
 </p>
                   <p>
 Formel: „niedriger ist besser“ '(d.h. ein höherer Indikatorwert geht mit erhöher Strukturschwäche einher)':
-
+				{this.formula1}
+				{this.formula2}
+				{this.formula3}
                   </p>
 
 <p>
@@ -137,7 +148,7 @@ Angezeigter Indikator = '(x1 * Var1) + (x2 * Var2) + (x3 * Var3) + (x4 * Var4)'
 			</section>
 			<footer className="modal-card-foot">
 				<div className="buttons is-centered">
-					<button className="button is-dark is-outlined">Kontakt</button>
+					<a href="mailto:jacob@roetersvanlennep.com,tobias@haefele-home.de?subject=BMF Visualization" className="button is-dark is-outlined">Kontakt</a>
 				</div>
 			
 			</footer>

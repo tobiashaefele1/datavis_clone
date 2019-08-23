@@ -52,7 +52,7 @@ class SVGExportButton extends Component {
      */
     render() {
       return (
-		    <button class="button is-dark is-outlined" onClick={this.exportsvg.bind(this)}>
+		    <button className="button is-dark is-outlined is-fullwidth" onClick={this.exportsvg.bind(this)}>
     			
    					 <span>Karte</span>
   			</button>

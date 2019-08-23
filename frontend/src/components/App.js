@@ -170,7 +170,7 @@ class App extends Component {
 	  if(value < 1000) {
 		  return (<div className="column is-half is-mobile is-centered is-vcentered has-text-centered ">
 			  	<div><Map/></div>
-                <div className="columns is-centered ">
+                <div className="columns is-centered is-mobile ">
                 <MinMaxTable/>
 				</div></div>)
 	  }else{
@@ -281,10 +281,15 @@ class App extends Component {
 							</div>
 							
 							<div>Export</div>
-							<div className="buttons is-centered">
-							<SVGExportButton />
-							<MetaExportButton/>
+							<div className="columns">
+								<div className="column">
+										<SVGExportButton />
+								</div>
+								<div className="column">
+									<MetaExportButton/>
+								</div>
 							</div>
+							
 							<div>Tabelle</div>
 							<div className="buttons is-centered">
 							<TableButton />	
