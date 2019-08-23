@@ -28,9 +28,9 @@ class PlusButton extends Component {
         return ('');
       } else {
         return (
-          <a class="button is-dark is-outlined is-large" onClick={this.handleButton.bind(this)}>
-    			<span class="icon">
-     				 <i class="fas fa-plus"></i>
+          <a className="button is-dark is-outlined is-large" onClick={this.handleButton.bind(this)}>
+    			<span className="icon">
+     				 <i className="fas fa-plus"></i>
     					</span>
    					 {/* <span>Einstellungen</span> */}
   			</a>

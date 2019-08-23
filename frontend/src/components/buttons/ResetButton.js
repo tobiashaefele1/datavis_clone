@@ -90,11 +90,7 @@ class ResetButton extends Component {
       }
     
 }
-function mapStateToProps(state) {
-  return {
-    indicator_data: state.indicator_data,
-  };
-}
+
 
 
 
