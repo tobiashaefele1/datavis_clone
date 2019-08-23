@@ -281,10 +281,15 @@ class App extends Component {
 							</div>
 							
 							<div>Export</div>
-							<div className="buttons is-centered">
-							<SVGExportButton />
-							<MetaExportButton/>
+							<div className="columns">
+								<div className="column">
+										<SVGExportButton />
+								</div>
+								<div className="column">
+									<MetaExportButton/>
+								</div>
 							</div>
+							
 							<div>Tabelle</div>
 							<div className="buttons is-centered">
 							<TableButton />	
