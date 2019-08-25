@@ -61,9 +61,9 @@ class MinMaxTable extends Component {
         }
         sum = sum + arr[i];
       }
-      return [Math.round(min* 10)/10,
-        Math.round(max* 10)/10,
-        Math.round((sum / arr.length)*10)/10];
+      return [(Math.round(min* 10)/10).toString().replace(/\B(?=(\d{3})+(?!\d))/g,
+          (Math.round(max* 10)/10).toString().replace(/\B(?=(\d{3})+(?!\d))/g,
+              (Math.round((sum / arr.length)*10)/10).toString().replace(/\B(?=(\d{3})+(?!\d))/g]
     }
 
     /**
