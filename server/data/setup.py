@@ -44,37 +44,42 @@ Kreise_data = Data(link_to_Kreise_data)  # WORKS!!!
 print("done making data objects")
 
 
-data_base = pymysql.connect('bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com', 'admin', 'NPmpMe!696rY', "mydb", autocommit=True)
+# data_base = pymysql.connect("localhost", "user", "password", "mydb")
+data_base = pymysql.connect("bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com", "admin", "NPmpMe!696rY", "mydb")
 
 print("connected to db")
 
 # load in all the data to DB
-mapping_to_db(link_to_mapping_file)                                     # load in Mapping file to DB
+# mapping_to_db(link_to_mapping_file)                                     # load in Mapping file to DB
 #
 
 create_table_and_load_data(data_base, Kreise_data) # load in Kreise data
+data_base.commit()
 data_base.close()
 
 #
 print("1/5")
 #
-# data_base = pymysql.connect("localhost", "user", "password", "mydb")s
-data_base = pymysql.connect('bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com', 'admin', 'NPmpMe!696rY', "mydb", autocommit=True)
+data_base = pymysql.connect('bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com', 'admin', 'NPmpMe!696rY', "mydb")
 cursor = data_base.cursor()
 # #
 add_columns(AMR12_data, cursor, data_code=200)                          # load in AMR12 data
 add_tuples_new(AMR12_data, data_base=data_base, data_code=200)
+data_base.commit()
 print("2/5")
 
 add_columns(AMR15_data, cursor, data_code=300)                           # load in AMR15 data
 add_tuples_new(AMR15_data, data_base=data_base, data_code=300)
+data_base.commit()
 print("3/5")
 
 add_columns(Bund_data, cursor, data_code=400)                           # load in Bund data
 add_tuples_new(Bund_data, data_base=data_base, data_code=400)
+data_base.commit()
 print("4/5")
 #
 create_table_and_load_data(data_base, reference_data, table_name="reference") # load in reference data
+data_base.commit()
 data_base.close()
 print("5/5")
 
@@ -101,14 +106,6 @@ load_meta_data_to_db(link_to_KRS_metadata, KRS_datacode,
 #
 
 
-
-#
-# pool = Pool(host='localhost',
-#
-#                                       db='mydb',
-#                                       user='user',
-#                                       password='password',
-#                                         cursorclass=pymysql.cursors.Cursor)
 
 
 
