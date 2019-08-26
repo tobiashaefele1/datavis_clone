@@ -72,21 +72,22 @@ class Map extends Component {
 
 
             <svg id="legend" width="90" height="90">
+			
+				
+              <rect y="5" width="15" height="15" fill={this.legend_colours(0)} />
+              <text fontSize="10" x="20" y="18" className="body" >	{this.legend_labels(0)[0]} bis {this.legend_labels(0)[1]}</text>
 
-              <rect width="15" height="15" fill={this.legend_colours(0)} />
-              <text fontSize="12" x="20" y="15" className="body" >	{this.legend_labels(0)[0]} bis {this.legend_labels(0)[1]}</text>
+              <rect y="22" width="15" height="15" fill={this.legend_colours(1)} />
+              <text fontSize="10" x="20" y="35" className="body" >	{this.legend_labels(1)[0]} bis {this.legend_labels(1)[1]}</text>
 
-              <rect y="17" width="15" height="15" fill={this.legend_colours(1)} />
-              <text fontSize="12" x="20" y="32" className="body" >	{this.legend_labels(1)[0]} bis {this.legend_labels(1)[1]}</text>
+              <rect y="39" width="15" height="15" fill={this.legend_colours(2)} />
+              <text fontSize="10" x="20" y="52" className="body" >	{this.legend_labels(2)[0]} bis {this.legend_labels(2)[1]}</text>
 
-              <rect y="34" width="15" height="15" fill={this.legend_colours(2)} />
-              <text fontSize="12" x="20" y="49" className="body" >	{this.legend_labels(2)[0]} bis {this.legend_labels(2)[1]}</text>
+              <rect y="56" width="15" height="15" fill={this.legend_colours(3)} />
+              <text fontSize="10" x="20" y="69" className="body" >	{this.legend_labels(3)[0]} bis {this.legend_labels(3)[1]}</text>
 
-              <rect y="51" width="15" height="15" fill={this.legend_colours(3)} />
-              <text fontSize="12" x="20" y="66" className="body" >	{this.legend_labels(3)[0]} bis {this.legend_labels(3)[1]}</text>
-
-              <rect y="68" width="15" height="15" fill={this.legend_colours(4)} />
-              <text fontSize="12" x="20" y="83" className="body" >	{this.legend_labels(4)[0]} bis {this.legend_labels(4)[1]}</text>
+              <rect y="73" width="15" height="15" fill={this.legend_colours(4)} />
+              <text fontSize="10" x="20" y="86" className="body" >	{this.legend_labels(4)[0]} bis {this.legend_labels(4)[1]}</text>
             </svg>
 
           </div>
@@ -266,7 +267,7 @@ class Map extends Component {
     return d3.geoMercator()
         .scale(2000)
         .center(this.state.germany)
-        .translate([200, 240]);
+        .translate([200, 250]);
   }
 
 
@@ -313,7 +314,7 @@ class Map extends Component {
 	      <div id = "map_content">
 	        {this.renderlegend()}
 	        {this.loadingCirkle()}
-	        <svg id="svg" width="100%" height="100%" viewBox="0 0 400 450">
+	        <svg id="svg" width="100%" height="100%" viewBox="0 0 400 460">
 
 	          <g className="map">
 
