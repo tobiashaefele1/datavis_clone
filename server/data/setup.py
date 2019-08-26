@@ -7,7 +7,6 @@ from pymysqlpool.pool import Pool
 
 from server.data.data import Data
 from server.data.dataprep import readin258AMR, readin257AMR, readinBund, mapping_to_db, load_meta_data_to_db
-from server.data.reader import create_table_and_load_data, add_columns, add_tuples_new
 
 
 

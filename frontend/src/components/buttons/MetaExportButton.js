@@ -44,8 +44,7 @@ class MetaExportButton extends Component {
       ctr = 0;
       keys.forEach(function(key) {
         if (ctr > 0) result += columnDelimiter;
-
-        result += data[item][key];
+        result += ( '"'+ data[item][key] + '"');
         ctr++;
       });
       result += lineDelimiter;
