@@ -110,8 +110,9 @@ load_meta_data_to_db(link_to_KRS_metadata, KRS_datacode,
 
 
 ## this loads all the years data into a separate table in the database so that we can retrieve it from context
-retrieve_db_data(pool).insert_all_years_into_db()
-
+ret_db_dat = retrieve_db_data(pool)
+ret_db_dat.insert_all_years_into_db()
+print("done loading in all data")
 
 
 

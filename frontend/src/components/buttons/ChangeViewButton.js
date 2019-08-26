@@ -38,7 +38,7 @@ class ChangeViewButton extends Component {
     }
 
     /**
-     *This function renders the button.
+     * This function renders the button.
      *
      * @return {JSX}
      * @memberof ChangeViewButton
@@ -52,7 +52,7 @@ class ChangeViewButton extends Component {
 }
 
 /**
- *Here the props are selected from the store.
+ * Here the props are selected from the store.
  *
  * @param {state} state current state of the store
  * @return {props} returns the selected states as props
