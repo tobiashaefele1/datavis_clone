@@ -98,17 +98,25 @@ class retrieve_db_data:
 
         try:
             # Returns quiery with tuple [(layer_ID, value)] for federal average at kreise level, IF IT EXISTS.
+
             sql_select_Query = (""" SELECT 
                                            kreise.KENNZIFFER, kreise.`%s`
                                            FROM kreise 
                                            WHERE kreise.YEAR = '%s' AND kreise.Kennziffer = "01001" """ % (
                 fed_avg_name, var_year))
 
+            print(sql_select_Query)
             # executed quiery and closes cursor
             cursor = mySQLconnection.cursor()
 
             cursor.execute(sql_select_Query)
             output = cursor.fetchall()
+                ## this checks for an none type
+            if output[0][1] == None:
+                output = self.retrieve_data(var_name, var_year, ref_name, ref_year, layer)
+                print(output)
+
+
 
         except Error as e:
             print("Federal avg. not available - using arithmetic mean instead. See error message: ", e)
@@ -121,6 +129,8 @@ class retrieve_db_data:
             # print(output)
             # print (output)
             self.pool.release(mySQLconnection)
+            print (output)
+            print ("THE ABOVE IS RETURNED FROM THE FORMULA")
             print("MySQL connection is closed")
 
             return (output)
