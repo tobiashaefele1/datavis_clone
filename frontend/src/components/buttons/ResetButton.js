@@ -74,7 +74,7 @@ class ResetButton extends Component {
         	            <div className="reset_tooltip">
 
                           <span className="reset_tooltiptext">
-                   setzt alle Parameter auf den "originalen" GRW Indikator von 2012 zurück
+                   setzt alle Parameter auf den "originalen" GRW-Indikator von 2012 zurück
                     </span>
 							<a className="button is-dark is-outlined is-large"
 							   onClick={this.handleButtonReset.bind(this)}>
