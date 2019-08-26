@@ -360,8 +360,8 @@ function reducer(state = initalState, action) {
             .properties.Name,
         draft.smalltable[1][1] = state.current_map[action.value]
             .properties.Kennziffer,
-        draft.smalltable[2][1] = state.current_map[action.value]
-            .properties.Einwohner_2017.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+        draft.smalltable[2][1] = Math.round(state.current_map[action.value]
+            .properties.Einwohner_2017).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
         draft.smalltable[3][1] = state.current_map[action.value]
             .properties.area_km2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
         draft.smalltable[4][1] = state.current_map[action.value]
