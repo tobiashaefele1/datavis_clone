@@ -138,7 +138,7 @@ class Info extends Component {
                         </p>
 
                    <div id = "HIB_image" style={{textAlign: "center"}}>
-          <img src ="static/bmf/resources/scale_hib.png" width="30%"
+          <img src ="static/bmf/resources/Scale_HIB.png" width="30%"
                 height="30%" align="middle">
               </img>
 		            </div>
@@ -151,7 +151,7 @@ class Info extends Component {
                                           </p>
 
                                      <div id = "LIB_image" style={{textAlign: "center"}}>
-          <img src ="static/bmf/resources/scale_lib.png" width="30%" align="middle"
+          <img src ="static/bmf/resources/SCALE_LIB.png" width="30%" align="middle"
                 height="30%">
               </img>
 		            </div>
