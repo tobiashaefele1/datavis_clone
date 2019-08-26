@@ -31,6 +31,7 @@ def index(request):
 
     if request.method == "GET":
         all_years = retrieve_db_data(pool).retrieve_year_dict_from_db()
+        print(all_years)
         # metadata = retrieve_db_data(pool).retrieve_metadata()
         metadata = retrieve_db_data(pool).retrieve_metadata()
         col_names_ref = ['Einwohner 15 - 64_100', 'Zivile Erwerbspersonen_100',
