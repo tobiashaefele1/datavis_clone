@@ -281,16 +281,19 @@ legendColours = (x) => {
     }
   }
 
-
-  // formula to create the values for the color on the map
+  /**
+   *This function creates the values for the colors on the map.
+   *
+   * @param {number} x is the current selected color for the map.
+   * @return {*} the value for the color of the scale currently selected.
+   * @memberof Map
+   */
   color = (x) => {
-    // console.log(x)
-    if (x == null || x === undefined || this.props.indicator_data[1] === undefined) {
+    if (x == null || x === undefined
+        || this.props.indicator_data[1] === undefined) {
       return '#6C7B8B';
     } else {
       if (this.props.currentScale == 0) {
-        // console.log(this.props.indicator_data[1]);
-        // console.log(dom_input);
         return this.valueQuantile(x);
       } else if (this.props.currentScale == 1) {
         return this.valueQuantize(x);
@@ -298,31 +301,20 @@ legendColours = (x) => {
         return this.valueInterpolar(x);
       }
     }
-
-    // ALTERNATIVE SCALE BELOW
-    // var linearScale =  d3.scaleLinear()
-    // 	.domain([Math.min(...this.props.indicator_data[1]), Math.max(...this.props.indicator_data[1])])
-    // 	.range(['#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c']);
-    // return linearScale(x)
   };
 
   /**
-       *This function creates the projection of the map.
-       *
-       * @return {d3.geoMercator}
-       * @memberof Map
-       */
+    *This function creates the projection of the map.
+    *
+    * @return {d3.geoMercator}
+    * @memberof Map
+    */
   projection() {
     return d3.geoMercator()
         .scale(2000)
         .center(this.state.germany)
         .translate([200, 250]);
   }
-
-
-  // handleClick(i) {
-  // 	alert(`${this.props.current_map[i].properties.NAME_2}`)
-  // }
 
     /**
      *This function handles the click on the map.
@@ -334,11 +326,25 @@ legendColours = (x) => {
       this.props.dispatch(changeNameDispatch(i));
     }
 
+    /**
+     *This function creates the loading crikle when needed.
+     *
+     * @return {JSX} returns nothing or the loading cirkle.
+     * @memberof Map
+     */
     loadingCirkle = () =>{
       if (this.props.loading) {
         return (
-          <div className="lds-roller" id="map_loader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-
+          <div className="lds-roller" id="map_loader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
         );
       } else {
         return '';
@@ -354,57 +360,44 @@ legendColours = (x) => {
      */
     render() {
       if (this.props.firstload) {
-        return (<div className="lds-roller1"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>);
+        return (<div className="lds-roller1">
+          <div></div><div></div>
+          <div></div><div></div>
+          <div></div><div></div>
+          <div></div><div></div>
+        </div>);
       }
       return (
-
         <div className="is-centered has-text-centered" id="map">
-
           <div id = "map_content">
             {this.renderLegend()}
             {this.loadingCirkle()}
             <svg id="svg" width="100%" height="100%" viewBox="0 0 400 460">
-
               <g className="map">
-
-
-                {
-                  this.props.current_map.map((d, i) =>
-
-                    <path
-                      key={`path-${i}`}
-                      id={d.properties.Kennziffer}
-                      d={d3.geoPath().projection(this.projection())(d)}
-                      className={d.properties.Kennziffer}
-                      fill= {this.color(d.properties.indicator)}
-                      text="HELLO TEST"
-                      stroke="#000000"
-                      strokeWidth={0.5}
-                      onMouseOver={this.handleClick.bind(this, i)}
-                      onClick={this.handleClick.bind(this, i)}
-                    />
-
-
-                  )
-                }
-
-
+                {this.props.current_map.map((d, i) =>
+                  <path
+                    key={`path-${i}`}
+                    id={d.properties.Kennziffer}
+                    d={d3.geoPath().projection(this.projection())(d)}
+                    className={d.properties.Kennziffer}
+                    fill= {this.color(d.properties.indicator)}
+                    text="HELLO TEST"
+                    stroke="#000000"
+                    strokeWidth={0.5}
+                    onMouseOver={this.handleClick.bind(this, i)}
+                    onClick={this.handleClick.bind(this, i)}
+                  />
+                )}
               </g>
-
-
             </svg>
             <div id="map_reset">
               <ResetButton/>
             </div>
             <div>
               {this.renderLogo()}
-
             </div>
           </div>
-
-
         </div>
-
       );
     }
 }
@@ -444,4 +437,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(Map);
-
