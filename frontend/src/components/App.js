@@ -151,6 +151,7 @@ class App extends Component {
    * This is to imporve layout on mobile devices.
    *
    * @param {*} value screen width
+   * @return {ViewPicker} 
    * @memberof App
    */
   mobile(value) {
