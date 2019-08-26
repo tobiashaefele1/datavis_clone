@@ -42,6 +42,13 @@ const initalState = {
   metadata: JSON.parse((context.metadata.replace(/(\r\n|\n|\r)/gm, ''))),
   all_years: JSON.parse(context.all_years),
 
+  ref_dic: {'Einwohner 15-64_100': {'Langname': "Einwohner 15-64", 'Quelle': "Zensus Fortschreibung"},
+            'Einwohner gesamt_100': {'Langname': "Einwohner gesamt", 'Quelle':"Fortschreibung des Bevölkerungsstandes 2011" },
+            'Fläche_100': {'Langname': "Fläche", 'Quelle': "Inkar Datenbank, immer Gebietsstand 2015" },
+            'SV-pflichtig Beschäftigte am Wohnort_100': {'Langname': "SV-pflichtig Beschäftigte am Wohnort", 'Quelle': "Statistik der Bundesagentur für Arbeit" },
+            'Zivile Erwerbspersonen_100': {'Langname': "Zivile Erwerbspersonen", 'Quelle': "Statistik der Bundesagentur für Arbeit, rückerrechnet aus Arbeitslosenzahlen und Arbeitslosenquoten"}
+  },
+
 
   show_modal: false,
   showInfo: false,

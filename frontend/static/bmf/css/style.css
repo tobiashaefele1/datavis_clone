@@ -6087,7 +6087,7 @@ label.panel-block {
       margin: 0;
       padding: 0 !important; }
     .columns.is-gapless:not(:last-child) {
-      margin-bottom: 1.5rem; }
+      margin-bottom: 2.25rem; }
     .columns.is-gapless:last-child {
       margin-bottom: 0; }
   .columns.is-mobile {
