@@ -250,7 +250,16 @@ export class Main_selector extends Component {
 				   {this.weight()}
 			  </div>
 
-			</div>
+			</div> <div className="indicator_tooltip">
+                <span className="tooltiptext">
+                     Langname: {(this.props.value_dic[`var_name_${this.props.number}`] ?
+                    this.props.metadata[this.props.value_dic[`var_name_${this.props.number}`]].Langname : '')} <br/>
+                      Quelle: {(this.props.value_dic[`var_name_${this.props.number}`] ?
+                     this.props.metadata[this.props.value_dic[`var_name_${this.props.number}`]].Quelle : '')}
+                    </span>
+                    <label className="indicator">&nbsp; bezugKreuze <i
+                        className="far fa-question-circle" id="info_icon"></i> </label>
+				</div>
 			<div className="columns is-gapless field is-grouped is-mobile">  
 				<div className="column is-6">
 					<div>

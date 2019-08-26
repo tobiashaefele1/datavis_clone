@@ -51,7 +51,6 @@ def create_table_and_load_data(data_base, data, data_code=100, data_base_name="m
     add_tuples(data, cursor, table_name)
     index_column('KENNZIFFER', cursor, table_name)
     index_column('YEAR', cursor, table_name)
-    data_base.commit()
 
 
 
@@ -116,14 +115,12 @@ def add_tuples_new(data, data_base, data_code=100, table_name="kreise"):
                      , tuple_sql[0], tuple_sql[3])
             # print (sql)
             cursor.execute(sql)
-            data_base.commit()
         else:
             sql = f"""INSERT INTO `%s` (%s) VALUES (%s)""" \
                   % (table_name, prepare_columns_for_sql(data.unique_labels(), data_code),
                      prepare_value_list_for_sql(tuple_sql))
 
             cursor.execute(sql)
-            data_base.commit()
 
 
 
