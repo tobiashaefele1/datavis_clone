@@ -255,7 +255,6 @@ function changeValueDispatch(value1, value2) {
   };
 }
 
-
 /**
  *Here the props are selected from the store.
  *

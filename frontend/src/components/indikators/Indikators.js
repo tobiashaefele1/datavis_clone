@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, {Component} from 'react';
 import MainSelector from './MainSelector';
 import {connect} from 'react-redux';
