@@ -167,7 +167,7 @@ class App extends Component {
   }
 
   indikatorSet(value){
-	  if(value < 1000) {
+	  if(value < 600) {
 		  return (<div className="column is-half is-mobile is-centered is-vcentered has-text-centered ">
 			  	<div><Map/></div>
                 <div className="columns is-centered is-mobile ">
@@ -183,7 +183,7 @@ class App extends Component {
 	  }
   }
   mapSet(value){
-	  if(value < 1000) {
+	  if(value < 600) {
 		  return (<div className="column is-one-quarter has-text-centered    "><div id="optionbox" className="box   has-background-white-ter has-text-black "><MapSelector/>
 				<Indikators/>
 				<div className=" buttons  is-centered">
@@ -193,7 +193,7 @@ class App extends Component {
 		  return (
 			  <div className="column is-mobile is-half is-centered is-vcentered has-text-centered ">
 				<div><Map/></div>
-				<div className="columns is-centered ">
+				<div className="columns is-centered is-mobile">
                 <MinMaxTable/>
 				</div>
 		  </div>	
@@ -265,14 +265,14 @@ class App extends Component {
 			
 				{this.mapSet(window.screen.width)}
 
-			<div className="column is-one-quarter has-text-centered   ">
+			<div className="column is-one-quarter has-text-centered    ">
 				
-				<div id="optionbox" className="box has-background-white-ter has-text-black ">
+				<div id="optionbox" className="box has-background-white-ter has-text-black">
 				
 					<div> </div>
 				<SmallTable/>
 					
-					<div className="columns">
+					<div className="columns is-centered is-mobile">
 						<div className="column">
 						
 							<div>Darstellung</div>

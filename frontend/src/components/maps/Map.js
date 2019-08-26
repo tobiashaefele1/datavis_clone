@@ -55,7 +55,7 @@ class Map extends Component {
               </object>
 		</div>
     
-              <div className ="map_copyright"> &#9400; gadm.com  <br/>
+              <div className ="map_copyright"> &#9400; Karte von gadm.com  <br/>
 			  &#9400; Bundesministerium der Finanzen</div>
 			
           </div>
@@ -80,19 +80,19 @@ class Map extends Component {
 					<svg id="legend" width="90" height="90">
 						
 					<rect width="15" height="15" fill={this.legend_colours(0)} />
-					<text fontSize="12" x="20" y="15" className="body" >	{this.legend_labels(0)[0]} - {this.legend_labels(0)[1]}</text>
+					<text fontSize="12" x="20" y="15" className="body" >	{this.legend_labels(0)[0]} bis {this.legend_labels(0)[1]}</text>
 
 					<rect y="17" width="15" height="15" fill={this.legend_colours(1)} />
-					<text fontSize="12" x="20" y="32" className="body" >	{this.legend_labels(1)[0]} - {this.legend_labels(1)[1]}</text>
+					<text fontSize="12" x="20" y="32" className="body" >	{this.legend_labels(1)[0]} bis {this.legend_labels(1)[1]}</text>
 
 					<rect y="34" width="15" height="15" fill={this.legend_colours(2)} />
-					<text fontSize="12" x="20" y="49" className="body" >	{this.legend_labels(2)[0]} - {this.legend_labels(2)[1]}</text>
+					<text fontSize="12" x="20" y="49" className="body" >	{this.legend_labels(2)[0]} bis {this.legend_labels(2)[1]}</text>
 
 					<rect y="51" width="15" height="15" fill={this.legend_colours(3)} />
-					<text fontSize="12" x="20" y="66" className="body" >	{this.legend_labels(3)[0]} - {this.legend_labels(3)[1]}</text>
+					<text fontSize="12" x="20" y="66" className="body" >	{this.legend_labels(3)[0]} bis {this.legend_labels(3)[1]}</text>
 
 					<rect y="68" width="15" height="15" fill={this.legend_colours(4)} />
-					<text fontSize="12" x="20" y="83" className="body" >	{this.legend_labels(4)[0]} - {this.legend_labels(4)[1]}</text>
+					<text fontSize="12" x="20" y="83" className="body" >	{this.legend_labels(4)[0]} bis {this.legend_labels(4)[1]}</text>
 					</svg>
 
 					</div>
