@@ -4,7 +4,7 @@ import Map from './maps/Map';
 import MapSelector from './maps/MapSelector';
 import {feature} from 'topojson';
 import SmallTable from './tables/SmallTable';
-import Main_selector from "./indikators/Main_selector";
+import Main_selector from './indikators/Main_selector';
 import Indikators from './indikators/Indikators';
 import {connect} from 'react-redux';
 import PlusButton from './buttons/PlusButton';
@@ -17,11 +17,10 @@ import MinMaxTable from './tables/MinMaxTable';
 import SVGExportButton from './buttons/SVGExportButton';
 import ResetButton from './buttons/ResetButton';
 import TableButton from './buttons/TableButton';
-import InfoButton from "./buttons/InfoButton";
-import Info from "./modals/Info";
+import InfoButton from './buttons/InfoButton';
+import Info from './modals/Info';
 import MetaExportButton from './buttons/MetaExportButton';
 import ChangeViewButton from './buttons/ChangeViewButton';
-
 
 
 /**
@@ -49,7 +48,7 @@ class App extends Component {
    * @memberof App
    */
   setMapinStoreDispatch(value, map) {
-      return {
+    return {
       type: 'SETMAPINSTORE',
       value,
       map,
@@ -72,8 +71,8 @@ class App extends Component {
           response.json().then((mapdata) => {
             this.props.dispatch(this.setMapinStoreDispatch(
                 feature(mapdata, mapdata.objects.AMR12map).features, 1));
-			this.props.dispatch({type: 'FIRSTLOADDONE'});
-			this.props.dispatch({type: 'CHANGEVARS'});  
+            this.props.dispatch({type: 'FIRSTLOADDONE'});
+            this.props.dispatch({type: 'CHANGEVARS'});
           });
         });
   }
@@ -86,8 +85,7 @@ class App extends Component {
    * @memberof App
    */
   componentDidMount() {
-  
-      fetch('static/bmf/resources/Kreise15map.json')
+    fetch('static/bmf/resources/Kreise15map.json')
         .then((response) => {
           if (response.status !== 200) {
             console.log('There was a problem: ${response.status}');
@@ -133,9 +131,9 @@ class App extends Component {
             this.props.dispatch(this.setMapinStoreDispatch(
                 feature(mapdata, mapdata.objects.bundeslandmap).features, 5));
           });
-		});
+        });
 
-	fetch('static/bmf/resources/ROR11map.json')
+    fetch('static/bmf/resources/ROR11map.json')
         .then((response) => {
           if (response.status !== 200) {
             console.log('There was a problem: ${response.status}');
@@ -160,49 +158,48 @@ class App extends Component {
       this.props.dispatch({
         type: 'CHANGEVIEW',
       });
-     
-    }else if(value >1000){
-		return( <ViewPicker />)
-	}
+    } else if (value >1000) {
+      return ( <ViewPicker />);
+    }
   }
 
-  indikatorSet(value){
-	  if(value < 600) {
+  indikatorSet(value) {
+	  if (value < 600) {
 		  return (<div className="column is-half is-mobile is-centered is-vcentered has-text-centered ">
 			  	<div><Map/></div>
-                <div className="columns is-centered is-mobile ">
-                <MinMaxTable/>
-				</div></div>)
-	  }else{
+        <div className="columns is-centered is-mobile ">
+          <MinMaxTable/>
+        </div></div>);
+	  } else {
 		  return (<div className="column is-one-quarter has-text-centered"><div id="optionbox" className="box   has-background-white-ter has-text-black "><MapSelector/>
-				<Indikators/>
-                <div className=" buttons is-centered">
-                <PlusButton/>
-				<MinButton/></div></div></div>	
-				)
+        <Indikators/>
+        <div className=" buttons is-centered">
+          <PlusButton/>
+          <MinButton/></div></div></div>
+      );
 	  }
   }
-  mapSet(value){
-	  if(value < 600) {
+  mapSet(value) {
+	  if (value < 600) {
 		  return (<div className="column is-one-quarter has-text-centered    "><div id="optionbox" className="box   has-background-white-ter has-text-black "><MapSelector/>
-				<Indikators/>
-				<div className=" buttons  is-centered">
-                <PlusButton/>
-				<MinButton/></div></div></div>)
-	  }else{
+        <Indikators/>
+        <div className=" buttons  is-centered">
+          <PlusButton/>
+          <MinButton/></div></div></div>);
+	  } else {
 		  return (
 			  <div className="column is-mobile is-half is-centered is-vcentered has-text-centered ">
-				<div><Map/></div>
-				<div className="columns is-centered is-mobile">
-                <MinMaxTable/>
-				</div>
-		  </div>	
-				)
+          <div><Map/></div>
+          <div className="columns is-centered is-mobile">
+            <MinMaxTable/>
+          </div>
+		  </div>
+      );
 	  }
   }
 
   headline = () => {
-      return (this.props.view_multiple ? "Zusammengesetzter Indikator" : `${this.props.metadata[this.props.value_dic['var_name_0']].csvname}, ${this.props.value_dic['var_year_0']} ` )
+    return (this.props.view_multiple ? 'Zusammengesetzter Indikator' : `${this.props.metadata[this.props.value_dic['var_name_0']].csvname}, ${this.props.value_dic['var_year_0']} ` );
   }
 
 
@@ -214,105 +211,100 @@ class App extends Component {
    */
   render() {
     return (
-		
-      <div>
-      { this.mobile(window.screen.width) }
-        
-		<div className="columns is-marginless is-mobile">
 
-		<div className="column is-one-quarter">
- 			
-   				 
-     		<object className="is-pulled-left" type="image/svg+xml" 
-                data="static/bmf/resources/BMF_2017_WebSVG_de.svg" >Your browser does not support SVG
-              </object>
-     				 
-		</div>
-		<div className="column"><h2 className="title has-text-centered">
+      <div>
+        { this.mobile(window.screen.width) }
+
+        <div className="columns is-marginless is-mobile">
+
+          <div className="column is-one-quarter">
+
+
+     		<object className="is-pulled-left" type="image/svg+xml"
+              data="static/bmf/resources/BMF_2017_WebSVG_de.svg" >Your browser does not support SVG
+            </object>
+
+          </div>
+          <div className="column"><h2 className="title has-text-centered">
             Lebensverhältnisse in Deutschland </h2>
             			<h2 className="subtitle has-text-centered">Visualisierung von Indikatoren</h2>
      				 </div>
-					  
 
-		<div className="column is-one-quarter">
 
-			<div className=" buttons is-centered " >
-			<SettingsButton/>
+          <div className="column is-one-quarter">
+
+            <div className=" buttons is-centered " >
+              <SettingsButton/>
               <InfoButton/>
-			</div>
-			<Info/>
-			{/* TODO: find someway to show these nicel */}
-              <Settings/>
-            
-			</div>			  
-		</div>
-		<div className="columns is-marginless has-text-black">
-			<div className="column is-hidden-mobile is-paddingless ">
-				<div className="subtitle has-text-centered" style={{fontWeight : "bold"}}>Einstellungen</div>
-			</div>
-			<div className="column is-half is-paddingless ">
-				<div className="subtitle has-text-centered" style={{fontWeight : "bold"}}>{this.headline()}</div>
-			</div>
-			<div className="column is-hidden-mobile is-paddingless">
-				<div className="subtitle has-text-centered" style={{fontWeight : "bold"}} >Übersicht</div>
-			</div>
-		</div>
-		<div className="columns is-marginless">
-			
-				{this.indikatorSet(window.screen.width)}
-			
-		
-			
-				{this.mapSet(window.screen.width)}
+            </div>
+            <Info/>
+            {/* TODO: find someway to show these nicel */}
+            <Settings/>
 
-			<div className="column is-one-quarter has-text-centered    ">
-				
-				<div id="optionbox" className="box has-background-white-ter has-text-black">
-				
-					<div> </div>
-				<SmallTable/>
-					
-					<div className="columns is-centered is-mobile">
-						<div className="column">
-						
-							<div>Darstellung</div>
-								<div className="buttons is-centered">
-									<ChangeViewButton/>
-							</div>
-							
-							<div>Export</div>
-							<div className="columns">
-								<div className="column">
-										<SVGExportButton />
-								</div>
-								<div className="column">
-									<MetaExportButton/>
-								</div>
-							</div>
-							
-							<div>Tabelle</div>
-							<div className="buttons is-centered">
-							<TableButton />	
-							</div>
-				
-						</div>
+          </div>
+        </div>
+        <div className="columns is-marginless has-text-black">
+          <div className="column is-hidden-mobile is-paddingless ">
+            <div className="subtitle has-text-centered" style={{fontWeight: 'bold'}}>Einstellungen</div>
+          </div>
+          <div className="column is-half is-paddingless ">
+            <div className="subtitle has-text-centered" style={{fontWeight: 'bold'}}>{this.headline()}</div>
+          </div>
+          <div className="column is-hidden-mobile is-paddingless">
+            <div className="subtitle has-text-centered" style={{fontWeight: 'bold'}} >Übersicht</div>
+          </div>
+        </div>
+        <div className="columns is-marginless">
 
-				</div>
-				
-				</div>
-				
-				
-				
-				
-				
-	
-			</div>
-
-		</div>
-		<Table/>
+          {this.indikatorSet(window.screen.width)}
 
 
-    </div>
+          {this.mapSet(window.screen.width)}
+
+          <div className="column is-one-quarter has-text-centered    ">
+
+            <div id="optionbox" className="box has-background-white-ter has-text-black">
+
+              <div> </div>
+              <SmallTable/>
+
+              <div className="columns is-centered is-mobile">
+                <div className="column">
+
+                  <div>Darstellung</div>
+                  <div className="buttons is-centered">
+                    <ChangeViewButton/>
+                  </div>
+
+                  <div>Export</div>
+                  <div className="columns">
+                    <div className="column">
+                      <SVGExportButton />
+                    </div>
+                    <div className="column">
+                      <MetaExportButton/>
+                    </div>
+                  </div>
+
+                  <div>Tabelle</div>
+                  <div className="buttons is-centered">
+                    <TableButton />
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+          </div>
+
+        </div>
+        <Table/>
+
+
+      </div>
     );
   }
 }
@@ -324,10 +316,10 @@ class App extends Component {
  */
 function mapStateToProps(state) {
   return {
-    
+
     view_multiple: state.view_multiple,
-    
-      value_dic: state.value_dic,
+
+    value_dic: state.value_dic,
 	  metadata: state.metadata,
 	   firstload: state.firstload,
   };

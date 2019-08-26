@@ -8,35 +8,35 @@ import {connect} from 'react-redux';
  * @extends {Component}
  */
 class TableButton extends Component {
-   showTableDispatch(value) {
-      return (
-        {
-          type: 'SHOWTABLE',
-          value,
-        }
-      );
-    };
+  showTableDispatch(value) {
+    return (
+      {
+        type: 'SHOWTABLE',
+        value,
+      }
+    );
+  };
       showTable = (e) =>{
 	  this.props.dispatch(this.showTableDispatch(e.target.value));
-	  var table = document.getElementById('table')
-	  table.scrollIntoView()
-    };
+	  const table = document.getElementById('table');
+	  table.scrollIntoView();
+      };
 
-    /**
+      /**
      *This function renders the button.
      *
      * @return {JSX}
      * @memberof TableButton
      */
-    render() {
-      return (
+      render() {
+        return (
 		   <button className="button is-dark is-outlined is-fullwidth" value = {this.props.showTable} onClick={this.showTable}>
-    			
+
    					 <span>{this.props.showTable ? `Vollständige Datentabelle verbergen` : `Vollständige Datentabelle anzeigen`}</span>
   			</button>
-      
-      );
-    }
+
+        );
+      }
 }
 
 /**
@@ -47,7 +47,7 @@ class TableButton extends Component {
  */
 function mapStateToProps(state) {
   return {
-    
+
     showTable: state.showTable,
 
 

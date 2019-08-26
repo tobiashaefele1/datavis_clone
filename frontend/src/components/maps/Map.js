@@ -26,285 +26,253 @@ class Map extends Component {
   }
 
 
-    // getpositionX = (p) => {
-    //   var bbox = p.node().getBBox();
-    //   var x = Math.floor(bbox.x + bbox.width/2.0);
-    //   var y = Math.floor(bbox.y + bbox.height/2.0);
-    //   return (x)
-    // }
-    //
-    // getpositionY = (p) => {
-    //   var bbox = p.node().getBBox();
-    //   var x = Math.floor(bbox.x + bbox.width/2.0);
-    //   var y = Math.floor(bbox.y + bbox.height/2.0);
-    //   return (y)
-    // }
+  // getpositionX = (p) => {
+  //   var bbox = p.node().getBBox();
+  //   var x = Math.floor(bbox.x + bbox.width/2.0);
+  //   var y = Math.floor(bbox.y + bbox.height/2.0);
+  //   return (x)
+  // }
+  //
+  // getpositionY = (p) => {
+  //   var bbox = p.node().getBBox();
+  //   var x = Math.floor(bbox.x + bbox.width/2.0);
+  //   var y = Math.floor(bbox.y + bbox.height/2.0);
+  //   return (y)
+  // }
 
 
   headline = () => {
-      return (this.props.view_multiple ? "Aggregierter Indikator" : `${this.props.metadata[this.props.value_dic['var_name_0']].csvname},  ${this.props.value_dic['var_year_0']} ` )
+    return (this.props.view_multiple ? 'Aggregierter Indikator' : `${this.props.metadata[this.props.value_dic['var_name_0']].csvname},  ${this.props.value_dic['var_year_0']} ` );
   }
 
   renderlogo = () => {
-      return(
-		<div>
-          <div id = "map_logo">
+    return (
+      <div>
+        <div id = "map_logo">
           <object type="image/svg+xml"
-                data="static/bmf/resources/BMF_2017_WebSVG_de.svg" width="100%"
-                height="100%">Your browser does not support SVG
-              </object>
-		</div>
-    
-              <div className ="map_copyright"> &#9400; Karte von gadm.com  <br/>
+            data="static/bmf/resources/BMF_2017_WebSVG_de.svg" width="100%"
+            height="100%">Your browser does not support SVG
+          </object>
+        </div>
+
+        <div className ="map_copyright"> &#9400; Karte von gadm.com  <br/>
 			  &#9400; Bundesministerium der Finanzen</div>
-			
-          </div>
-      )
 
+      </div>
+    );
   };
-
-  
-
 
 
   renderlegend = () => {
-	  if(!this.props.loading){
-		if(this.props.currentScale != 2) {
-			return (
+	  if (!this.props.loading) {
+      if (this.props.currentScale != 2) {
+        return (
 
-				<div className = "map_legend">
-				
-				
+          <div className = "map_legend">
 
 
-					<svg id="legend" width="90" height="90">
-						
-					<rect width="15" height="15" fill={this.legend_colours(0)} />
-					<text fontSize="12" x="20" y="15" className="body" >	{this.legend_labels(0)[0]} bis {this.legend_labels(0)[1]}</text>
+            <svg id="legend" width="90" height="90">
 
-					<rect y="17" width="15" height="15" fill={this.legend_colours(1)} />
-					<text fontSize="12" x="20" y="32" className="body" >	{this.legend_labels(1)[0]} bis {this.legend_labels(1)[1]}</text>
+              <rect width="15" height="15" fill={this.legend_colours(0)} />
+              <text fontSize="12" x="20" y="15" className="body" >	{this.legend_labels(0)[0]} bis {this.legend_labels(0)[1]}</text>
 
-					<rect y="34" width="15" height="15" fill={this.legend_colours(2)} />
-					<text fontSize="12" x="20" y="49" className="body" >	{this.legend_labels(2)[0]} bis {this.legend_labels(2)[1]}</text>
+              <rect y="17" width="15" height="15" fill={this.legend_colours(1)} />
+              <text fontSize="12" x="20" y="32" className="body" >	{this.legend_labels(1)[0]} bis {this.legend_labels(1)[1]}</text>
 
-					<rect y="51" width="15" height="15" fill={this.legend_colours(3)} />
-					<text fontSize="12" x="20" y="66" className="body" >	{this.legend_labels(3)[0]} bis {this.legend_labels(3)[1]}</text>
+              <rect y="34" width="15" height="15" fill={this.legend_colours(2)} />
+              <text fontSize="12" x="20" y="49" className="body" >	{this.legend_labels(2)[0]} bis {this.legend_labels(2)[1]}</text>
 
-					<rect y="68" width="15" height="15" fill={this.legend_colours(4)} />
-					<text fontSize="12" x="20" y="83" className="body" >	{this.legend_labels(4)[0]} bis {this.legend_labels(4)[1]}</text>
-					</svg>
+              <rect y="51" width="15" height="15" fill={this.legend_colours(3)} />
+              <text fontSize="12" x="20" y="66" className="body" >	{this.legend_labels(3)[0]} bis {this.legend_labels(3)[1]}</text>
 
-					</div>
+              <rect y="68" width="15" height="15" fill={this.legend_colours(4)} />
+              <text fontSize="12" x="20" y="83" className="body" >	{this.legend_labels(4)[0]} bis {this.legend_labels(4)[1]}</text>
+            </svg>
 
-				
+          </div>
 
 
+        );
+      } else {
+        // / INSERT THIS STUFF IN HERE
+        return (
+          <div className = "map_legend">
+            <div id = "map_legend_headline"></div>
 
 
-					
-			); }
+            <div id = "legend_div_fliessend">
 
-		else{
-			/// INSERT THIS STUFF IN HERE
-			return (
-				<div className = "map_legend">
-					<div id = "map_legend_headline"></div>
-
-
-					<div  id = "legend_div_fliessend">
-
-						<svg id = "legend"  height="75" width="45">
-							<text fontSize="12" x="20" y="10" > {Math.round(Math.max(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]))} </text>
-							<defs>
-								<linearGradient id="grad1" x1="0%" y1="100%" x2="0%" y2="0%">
-									<stop offset="0%" stopColor={this.props.current_color[0]} stopOpacity="1" />
-									<stop offset="100%" stopColor={this.props.current_color[4]} stopOpacity="1" />
-								</linearGradient>
-							</defs>
-							<text fontSize="12" x="20" y="75" > {Math.round(Math.min(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]))} </text>
-						<rect id = "legend_bar_fliessend" width="15" height="75" fill="url(#grad1)" />
-							</svg>
-						
-					
+              <svg id = "legend" height="75" width="45">
+                <text fontSize="12" x="20" y="10" > {Math.round(Math.max(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]))} </text>
+                <defs>
+                  <linearGradient id="grad1" x1="0%" y1="100%" x2="0%" y2="0%">
+                    <stop offset="0%" stopColor={this.props.current_color[0]} stopOpacity="1" />
+                    <stop offset="100%" stopColor={this.props.current_color[4]} stopOpacity="1" />
+                  </linearGradient>
+                </defs>
+                <text fontSize="12" x="20" y="75" > {Math.round(Math.min(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]))} </text>
+                <rect id = "legend_bar_fliessend" width="15" height="75" fill="url(#grad1)" />
+              </svg>
 
 
-
-					</div>
-
+            </div>
 
 
-		</div>)
+          </div>);
 	  }
-	  
-      }else{
-		  return (" ")
+    } else {
+		  return (' ');
 	  }
-
   }
 
 
     legendInterpolar = () => {
 
 
-
-
-
     }
 
 
-
-
-
-
-  ///////////////// SCALES TO CREATE AS OPTIONS /////////////////////////////
+  // /////////////// SCALES TO CREATE AS OPTIONS /////////////////////////////
   // formulae to create scale and individual values for sequential scale
   scaleInterpolar = () => {
-      let DomMin = Math.min(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
-      let DomMax = Math.max(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
-      const interpolarScale = d3.scaleSequential(d3.interpolateRgb("gainsboro", "navy"))
-            .domain([DomMin, DomMax])
-            // .interpolator(d3.interpolateCool);
-      return interpolarScale
+    const DomMin = Math.min(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
+    const DomMax = Math.max(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
+    const interpolarScale = d3.scaleSequential(d3.interpolateRgb('gainsboro', 'navy'))
+        .domain([DomMin, DomMax]);
+    // .interpolator(d3.interpolateCool);
+    return interpolarScale;
   }
 
   valueInterpolar = (x) => {
-      let DomMin = Math.min(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
-      let DomMax = Math.max(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
-      // creates an interpolar scale with the minimum and maximum colours selected from the current color range
-      const interpolarScale = d3.scaleSequential(d3.interpolateRgb(this.props.current_color[0], this.props.current_color[4]))
-            .domain([DomMin, DomMax])
-            // .interpolator(d3.interpolateCool);
-      return interpolarScale(x)
+    const DomMin = Math.min(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
+    const DomMax = Math.max(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
+    // creates an interpolar scale with the minimum and maximum colours selected from the current color range
+    const interpolarScale = d3.scaleSequential(d3.interpolateRgb(this.props.current_color[0], this.props.current_color[4]))
+        .domain([DomMin, DomMax]);
+    // .interpolator(d3.interpolateCool);
+    return interpolarScale(x);
   }
 
 
   // formulae to create scale and individual values for quantile scale
   scaleQuantile = () => {
-      const quantileScale = d3.scaleQuantile()
-            .domain((this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]))
-            .range(this.props.current_color);
-  return quantileScale
+    const quantileScale = d3.scaleQuantile()
+        .domain((this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]))
+        .range(this.props.current_color);
+    return quantileScale;
   }
 
   valueQuantile = (x) => {
-  const quantileScale = d3.scaleQuantile()
-            .domain((this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]))
-            .range(this.props.current_color);
-  return quantileScale(x)
+    const quantileScale = d3.scaleQuantile()
+        .domain((this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]))
+        .range(this.props.current_color);
+    return quantileScale(x);
   }
 
 
-    // formulae to generate scale and values for threshold scale via Quantize method
+  // formulae to generate scale and values for threshold scale via Quantize method
    scaleQuantize = () => {
-            // the three dots convert the array into a list so they can be used as input for Math.min and Math.max
-      let DomMin = Math.min(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
-      let DomMax = Math.max(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
-      // let DomStep = (DomMax - DomMin) / (this.props.current_color.length);
-      // console.log(DomStep)
-      const QuantizeScale = d3.scaleQuantize()
-            .domain([DomMin, DomMax])
-            .range(this.props.current_color);
-  return QuantizeScale
-  }
-    // formula to generate values for threshold scale via Quantize method
+     // the three dots convert the array into a list so they can be used as input for Math.min and Math.max
+     const DomMin = Math.min(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
+     const DomMax = Math.max(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
+     // let DomStep = (DomMax - DomMin) / (this.props.current_color.length);
+     // console.log(DomStep)
+     const QuantizeScale = d3.scaleQuantize()
+         .domain([DomMin, DomMax])
+         .range(this.props.current_color);
+     return QuantizeScale;
+   }
+   // formula to generate values for threshold scale via Quantize method
   valueQuantize = (x) => {
-      // the three dots convert the array into a list so they can be used as input for Math.min and Math.max
-      // console.log(x)
-      // console.log(this.props.indicator_data[1])
-      let DomMin = Math.min(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
-      let DomMax = Math.max(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
-      // let DomStep = (DomMax - DomMin) / (this.props.current_color.length);
-      // console.log(DomMin)
-      // console.log(DomMax)
+    // the three dots convert the array into a list so they can be used as input for Math.min and Math.max
+    // console.log(x)
+    // console.log(this.props.indicator_data[1])
+    const DomMin = Math.min(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
+    const DomMax = Math.max(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
+    // let DomStep = (DomMax - DomMin) / (this.props.current_color.length);
+    // console.log(DomMin)
+    // console.log(DomMax)
 
-      const QuantizeScale = d3.scaleQuantize()
-            .domain([DomMin, DomMax])
-            .range(this.props.current_color);
-  return QuantizeScale(x)
+    const QuantizeScale = d3.scaleQuantize()
+        .domain([DomMin, DomMax])
+        .range(this.props.current_color);
+    return QuantizeScale(x);
   }
 
 
-
-  ///////////////// SCALES TO CREATE AS OPTIONS /////////////////////////////
+  // /////////////// SCALES TO CREATE AS OPTIONS /////////////////////////////
 
     // formula to create the legend colours
-    //TODO: make this dynamic to scale options (currently this always shows normal scale)
+    // TODO: make this dynamic to scale options (currently this always shows normal scale)
     legend_colours = (x) => {
-    return this.props.current_color[x];
-  }
+      return this.props.current_color[x];
+    }
 
   // formulae to create the legend labels
   legend_labels = (x) => {
-      // console.log(typeof this.props.current_map[0].properties.indicator)
-        if (typeof this.props.current_map[0].properties.indicator === 'undefined' || this.props.indicator_data[1] === undefined) {
-        return ['n/a', 'n/a']}
-      else {
-          if (this.props.currentScale == 0) {
-
-              var output = this.scaleQuantile().invertExtent(this.props.current_color[x]);
-                output[0] = Math.round(output[0]);
-                output[1] = Math.round (output[1]);
-                return output}
-
-          else if(this.props.currentScale ==1) {
-              var output = this.scaleQuantize().invertExtent(this.props.current_color[x]);
-                output[0] = Math.round(output[0]);
-                output[1] = Math.round (output[1]);
-                return output}
-          else {
-              //TODO: ADD IN HERE WHATEVER THE LEGEND LABELS SHOULD BE IN CASE OF INTERPOLAR SCALE; PROBABLY JUST MIN MAX?
-              return ['n/a', 'n/a']
-          }
-
-          }
-          }
+    // console.log(typeof this.props.current_map[0].properties.indicator)
+    if (typeof this.props.current_map[0].properties.indicator === 'undefined' || this.props.indicator_data[1] === undefined) {
+      return ['n/a', 'n/a'];
+    } else {
+      if (this.props.currentScale == 0) {
+        var output = this.scaleQuantile().invertExtent(this.props.current_color[x]);
+        output[0] = Math.round(output[0]);
+        output[1] = Math.round(output[1]);
+        return output;
+      } else if (this.props.currentScale ==1) {
+        var output = this.scaleQuantize().invertExtent(this.props.current_color[x]);
+        output[0] = Math.round(output[0]);
+        output[1] = Math.round(output[1]);
+        return output;
+      } else {
+        // TODO: ADD IN HERE WHATEVER THE LEGEND LABELS SHOULD BE IN CASE OF INTERPOLAR SCALE; PROBABLY JUST MIN MAX?
+        return ['n/a', 'n/a'];
+      }
+    }
+  }
 
 
   // formula to create the values for the color on the map
   color = (x) => {
-      // console.log(x)
-      if (x == null || x === undefined || this.props.indicator_data[1] === undefined) {
-        return '#6C7B8B';
-      } else {
-          if(this.props.currentScale == 0)
-                {
-          // console.log(this.props.indicator_data[1]);
+    // console.log(x)
+    if (x == null || x === undefined || this.props.indicator_data[1] === undefined) {
+      return '#6C7B8B';
+    } else {
+      if (this.props.currentScale == 0) {
+        // console.log(this.props.indicator_data[1]);
         // console.log(dom_input);
-              return this.valueQuantile(x);
-                }
-
-           else if(this.props.currentScale == 1)
-          { return this.valueQuantize(x)}
-
-           else{
-             return this.valueInterpolar(x)   }
+        return this.valueQuantile(x);
+      } else if (this.props.currentScale == 1) {
+        return this.valueQuantize(x);
+      } else {
+        return this.valueInterpolar(x);
       }
+    }
 
-      // ALTERNATIVE SCALE BELOW
-      // var linearScale =  d3.scaleLinear()
-      // 	.domain([Math.min(...this.props.indicator_data[1]), Math.max(...this.props.indicator_data[1])])
-      // 	.range(['#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c']);
-      // return linearScale(x)
-    };
+    // ALTERNATIVE SCALE BELOW
+    // var linearScale =  d3.scaleLinear()
+    // 	.domain([Math.min(...this.props.indicator_data[1]), Math.max(...this.props.indicator_data[1])])
+    // 	.range(['#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c']);
+    // return linearScale(x)
+  };
 
-    /**
+  /**
        *This function creates the projection of the map.
        *
        * @return {d3.geoMercator}
        * @memberof Map
        */
-    projection() {
-      return d3.geoMercator()
-          .scale(2000)
-          .center(this.state.germany)
-          .translate([200, 240]);
-    }
+  projection() {
+    return d3.geoMercator()
+        .scale(2000)
+        .center(this.state.germany)
+        .translate([200, 240]);
+  }
 
 
-    // handleClick(i) {
-    // 	alert(`${this.props.current_map[i].properties.NAME_2}`)
-    // }
+  // handleClick(i) {
+  // 	alert(`${this.props.current_map[i].properties.NAME_2}`)
+  // }
 
     /**
      *This function handles the click on the map.
@@ -314,111 +282,107 @@ class Map extends Component {
      */
     handleClick = (i) =>{
       this.props.dispatch(changeNameDispatch(i));
-	}
-	
+    }
+
 	loadingCirkle = () =>{
-		if(this.props.loading){
-			return(
-			<div className="lds-roller" id="map_loader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-		
-			)}
-			else{
-				return ''
-			}
+	  if (this.props.loading) {
+	    return (
+	      <div className="lds-roller" id="map_loader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
+	    );
+	  } else {
+	    return '';
+	  }
 	}
 
 
-    /**
+	/**
      *This renders the map.
      *
      * @return {JSX}
      * @memberof Map
      */
-    render() {
-      if (this.props.firstload) {
-        return (<div className="lds-roller1"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>);
+	render() {
+	  if (this.props.firstload) {
+	    return (<div className="lds-roller1"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>);
 	  }
-      return (
-		
-        <div className="is-centered has-text-centered" id="map">
+	  return (
 
-            <div id = "map_content">
-				{this.renderlegend()}
-			{this.loadingCirkle()}
-            <svg id="svg" width="100%" height="100%" viewBox="0 0 400 450">
+	    <div className="is-centered has-text-centered" id="map">
 
-                <g className="map">
+	      <div id = "map_content">
+	        {this.renderlegend()}
+	        {this.loadingCirkle()}
+	        <svg id="svg" width="100%" height="100%" viewBox="0 0 400 450">
 
-
-              {
-                this.props.current_map.map((d, i) =>
-
-                  <path
-                    key={`path-${i}`}
-                    id={d.properties.Kennziffer}
-                    d={d3.geoPath().projection(this.projection())(d)}
-                    className={d.properties.Kennziffer}
-                    fill= {this.color(d.properties.indicator)}
-                    text="HELLO TEST"
-                    stroke="#000000"
-                    strokeWidth={0.5}
-					onMouseOver={this.handleClick.bind(this, i)}
-					onClick={this.handleClick.bind(this, i)}
-					/>
+	          <g className="map">
 
 
-                )
-              }
+	            {
+	              this.props.current_map.map((d, i) =>
 
-              {/*{this.props.current_map.map((d, i) =>*/}
-
-              {/*  <text fontSize ="24"*/}
-              {/*       x={d.properties.Kennziffer.d3.centroid(d)[0]}*/}
-              {/*       y={d.properties.Kennziffer.d3.centroid(d)[1]}*/}
-
-              {/*        >1test text*/}
-              {/*    </text>)*/}
-
-              {/*      }*/}
-
-                    {/*              {this.props.current_map.map((d, i) =>*/}
-                    {/*<text*/}
-                    {/*    key={`path-${i}`}*/}
-                    {/*    x={d3.geoPath().projection(this.projection())(d)[0]}*/}
-                    {/*    y={d3.geoPath().projection(this.projection())(d)[1]}*/}
-                    {/*    fontSize="14px"*/}
-                    {/*    >*/}
-                    {/*    {d.properties.name} Hello Hello*/}
-
-                    {/*</text>*/}
-
-                    {/*)*/}
-
-                    {/*}*/}
+	                <path
+	                  key={`path-${i}`}
+	                  id={d.properties.Kennziffer}
+	                  d={d3.geoPath().projection(this.projection())(d)}
+	                  className={d.properties.Kennziffer}
+	                  fill= {this.color(d.properties.indicator)}
+	                  text="HELLO TEST"
+	                  stroke="#000000"
+	                  strokeWidth={0.5}
+	                  onMouseOver={this.handleClick.bind(this, i)}
+	                  onClick={this.handleClick.bind(this, i)}
+	                />
 
 
-            </g>
+	              )
+	            }
+
+	            {/* {this.props.current_map.map((d, i) =>*/}
+
+	            {/*  <text fontSize ="24"*/}
+	            {/*       x={d.properties.Kennziffer.d3.centroid(d)[0]}*/}
+	            {/*       y={d.properties.Kennziffer.d3.centroid(d)[1]}*/}
+
+	            {/*        >1test text*/}
+	            {/*    </text>)*/}
+
+	            {/*      }*/}
+
+	            {/*              {this.props.current_map.map((d, i) =>*/}
+	            {/* <text*/}
+	            {/*    key={`path-${i}`}*/}
+	            {/*    x={d3.geoPath().projection(this.projection())(d)[0]}*/}
+	            {/*    y={d3.geoPath().projection(this.projection())(d)[1]}*/}
+	            {/*    fontSize="14px"*/}
+	            {/*    >*/}
+	            {/*    {d.properties.name} Hello Hello*/}
+
+	            {/* </text>*/}
+
+	            {/* )*/}
+
+	            {/* }*/}
 
 
-              </svg>
+	          </g>
+
+
+	        </svg>
 			  <div id="map_reset">
 			  <ResetButton/>
 			  </div>
 			  <div>
-                {this.renderlogo()}
+	          {this.renderlogo()}
 
-            </div>
+	        </div>
 			  </div>
-            
 
 
+	    </div>
 
-
-
-        </div>
-	
-      );
-    }
+	  );
+	}
 }
 
 /**
@@ -450,8 +414,8 @@ function mapStateToProps(state) {
     current_color: state.current_color,
 	  currentScale: state.currentScale,
 	  firstload: state.firstload,
-      value_dic: state.value_dic,
-      metadata: state.metadata,
+    value_dic: state.value_dic,
+    metadata: state.metadata,
   };
 }
 
@@ -792,54 +756,51 @@ export default connect(mapStateToProps)(Map);
 // export default connect(mapStateToProps)(Map);
 
 
+// legned = (x) => {
+// const colorLegendG = svg.append("g")
+// 	.attr('transform', 'translate(185,150)')
+// 	.
+//
+//
+//
+//
+// 	}
 
-
-
-  // legned = (x) => {
-  // const colorLegendG = svg.append("g")
-  // 	.attr('transform', 'translate(185,150)')
-  // 	.
-  //
-  //
-  //
-  //
-  // 	}
-
-  // legend = (x) => {
-  //   // put any functions and vars and consts in here: then RETURN their call!!
-  //     var height = 50;
-  //     var svg = d3.select('svg');
-  //
-  //     const colorlegend = (selection, props) =>
-  //     {const {colorScale, circleRadius, spacing, textOffset} = props;
-  //     const groups = selection.selectAll('g')
-  //         .data(colorScale.domain());
-  //         const groupsEnter = groups.enter().append('g');
-  //         groupsEnter
-  //             .merge(groups)
-  //             .attr(transform, (d,i) => `translate(0,${i * spacing}`);
-  //         groups.exit().remove();
-  //         groupsEnter.append('circle')
-  //             .merge(groups.select('circle'))
-  //             .attr('r', circleRadius)
-  //             .attr('fill', colorScale);
-  //         groupsEnter.append('text')
-  //             .merge(groups.select('text'))
-  //             .text(d => d)
-  //             .attry('y', textOffset)}
-  //
-  //
-  //      var hello = svg.append('g')
-  //             .attr('transform', `translate(100, ${height / 2})`)
-  //             .call(colorlegend,
-  //                 {
-  //                     colorScale : this.color(),
-  //                     circleRadius: 30,
-  //                     spacing: 180,
-  //                     textOffset: 120
-  //                 });
-  //
-  //     return hello(x)
+// legend = (x) => {
+//   // put any functions and vars and consts in here: then RETURN their call!!
+//     var height = 50;
+//     var svg = d3.select('svg');
+//
+//     const colorlegend = (selection, props) =>
+//     {const {colorScale, circleRadius, spacing, textOffset} = props;
+//     const groups = selection.selectAll('g')
+//         .data(colorScale.domain());
+//         const groupsEnter = groups.enter().append('g');
+//         groupsEnter
+//             .merge(groups)
+//             .attr(transform, (d,i) => `translate(0,${i * spacing}`);
+//         groups.exit().remove();
+//         groupsEnter.append('circle')
+//             .merge(groups.select('circle'))
+//             .attr('r', circleRadius)
+//             .attr('fill', colorScale);
+//         groupsEnter.append('text')
+//             .merge(groups.select('text'))
+//             .text(d => d)
+//             .attry('y', textOffset)}
+//
+//
+//      var hello = svg.append('g')
+//             .attr('transform', `translate(100, ${height / 2})`)
+//             .call(colorlegend,
+//                 {
+//                     colorScale : this.color(),
+//                     circleRadius: 30,
+//                     spacing: 180,
+//                     textOffset: 120
+//                 });
+//
+//     return hello(x)
 
 
 // ATTEMPT ONE FOR LEGEND
@@ -865,37 +826,34 @@ export default connect(mapStateToProps)(Map);
 //       }
 
 
-
-  // THIS THRESHOLD SCALE FORMULATION WORKS. HOWEVER, THE OTHER VERSION VIA QUANTIZE IS MORE ELEGANT; HENCE DISCARDED HERE
-  // // formulae to generate scale and values for threshold scale
-  //  scaleThres = () => {
-  //           // the three dots convert the array into a list so they can be used as input for Math.min and Math.max
-  //     let DomMin = Math.min(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
-  //     let DomMax = Math.max(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
-  //     let DomStep = (DomMax - DomMin) / (this.props.current_color.length);
-  //     // console.log(DomStep)
-  //     const ThresScale = d3.scaleThreshold()
-  //           .domain([DomMin+(DomStep), DomMin+(2*DomStep), DomMin+(3*DomStep), DomMin+(4*DomStep)])
-  //           .range(this.props.current_color);
-  // return ThresScale
-  // }
-  //
-  // valueThres = (x) => {
-  //     // the three dots convert the array into a list so they can be used as input for Math.min and Math.max
-  //     let DomMin = Math.min(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
-  //     let DomMax = Math.max(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
-  //     let DomStep = (DomMax - DomMin) / (this.props.current_color.length);
-  //
-  //     const ThresScale = d3.scaleThreshold()
-  //           .domain([DomMin+(DomStep), DomMin+(2*DomStep), DomMin+(3*DomStep), DomMin+(4*DomStep)])
-  //           .range(this.props.current_color);
-  // return ThresScale(x)
-  // }
-
+// THIS THRESHOLD SCALE FORMULATION WORKS. HOWEVER, THE OTHER VERSION VIA QUANTIZE IS MORE ELEGANT; HENCE DISCARDED HERE
+// // formulae to generate scale and values for threshold scale
+//  scaleThres = () => {
+//           // the three dots convert the array into a list so they can be used as input for Math.min and Math.max
+//     let DomMin = Math.min(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
+//     let DomMax = Math.max(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
+//     let DomStep = (DomMax - DomMin) / (this.props.current_color.length);
+//     // console.log(DomStep)
+//     const ThresScale = d3.scaleThreshold()
+//           .domain([DomMin+(DomStep), DomMin+(2*DomStep), DomMin+(3*DomStep), DomMin+(4*DomStep)])
+//           .range(this.props.current_color);
+// return ThresScale
+// }
+//
+// valueThres = (x) => {
+//     // the three dots convert the array into a list so they can be used as input for Math.min and Math.max
+//     let DomMin = Math.min(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
+//     let DomMax = Math.max(...this.props.view_multiple ? this.props.indicator_data[1] : this.props.single_indic_data[1]);
+//     let DomStep = (DomMax - DomMin) / (this.props.current_color.length);
+//
+//     const ThresScale = d3.scaleThreshold()
+//           .domain([DomMin+(DomStep), DomMin+(2*DomStep), DomMin+(3*DomStep), DomMin+(4*DomStep)])
+//           .range(this.props.current_color);
+// return ThresScale(x)
+// }
 
 
-
-/// THIS IS THE WORKING STATIC VERSION OF THE LEGEND (without the INTERPOLAR SCALE LEGEND)
+// / THIS IS THE WORKING STATIC VERSION OF THE LEGEND (without the INTERPOLAR SCALE LEGEND)
 //
 //                 <div id = "map_legend">
 //                 <div id = "map_legend_headline">

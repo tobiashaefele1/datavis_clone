@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import 'jquery';
-import { strict } from 'assert';
-
+import {strict} from 'assert';
 
 
 /**
@@ -12,7 +11,7 @@ import { strict } from 'assert';
  * @extends {Component}
  */
 export class Main_selector extends Component {
-    /**
+  /**
      *Handles the change of any of the dropdown menus of the indicator.
      *
      * @param {event} e this is the event where handleChange is called on.
@@ -20,71 +19,67 @@ export class Main_selector extends Component {
      */
 
 
-        // this function is actually being called - it calls Handlechange and - once it is complete, an ajaxRequest
+  // this function is actually being called - it calls Handlechange and - once it is complete, an ajaxRequest
     handleChangeProm = (e) => {
-        console.log("AJAX REQUEST FROM MAIN BUTTON CLICK")
-        this.handleChange(e).then(() => {
-            this.props.dispatch({type: 'LOADINGCHANGE'})
-            this.props.ajaxRequest();
-        });
-
+      console.log('AJAX REQUEST FROM MAIN BUTTON CLICK');
+      this.handleChange(e).then(() => {
+        this.props.dispatch({type: 'LOADINGCHANGE'});
+        this.props.ajaxRequest();
+      });
     }
 
-        componentDidUpdate(prevProps) {
-        // if (
-        //     prevProps.view_multiple !== this.props.view_multiple ||
-        //     prevProps.count_map !== this.props.count_map
-        // ) {
-        //     console.log(this.props.number)
-        //     console.log('AJAX REQUEST FROM VIEW CHANGE OR PREV MAP CHANGE')
-        //     this.props.dispatch({type: 'LOADINGCHANGE'})
-        //     this.props.ajaxRequest();
-        // }
+    componentDidUpdate(prevProps) {
+      // if (
+      //     prevProps.view_multiple !== this.props.view_multiple ||
+      //     prevProps.count_map !== this.props.count_map
+      // ) {
+      //     console.log(this.props.number)
+      //     console.log('AJAX REQUEST FROM VIEW CHANGE OR PREV MAP CHANGE')
+      //     this.props.dispatch({type: 'LOADINGCHANGE'})
+      //     this.props.ajaxRequest();
+      // }
 
 
-	  if (this.props.view_multiple){
-		var percentage = 0;
-		for (var i in this.props.indikators){
-		    if (document.getElementById(`weight_${i}`).value != ''){
+	  if (this.props.view_multiple) {
+        let percentage = 0;
+        for (var i in this.props.indikators) {
+		    if (document.getElementById(`weight_${i}`).value != '') {
+            percentage += parseFloat(document.getElementById(`weight_${i}`).value);
+          }
+        }
 
-			percentage += parseFloat(document.getElementById(`weight_${i}`).value)
-		}}
-
-		if(percentage > 100){
-			for(i in this.props.indikators){
-				document.getElementById(`weight_${i}`).style.background = 'lightcoral';
-			}}
-		else if(percentage < 100){
-		    for(i in this.props.indikators){
-				document.getElementById(`weight_${i}`).style.background = 'lightsalmon';
-        }}
-
-
-		else{
-			for(i in this.props.indikators){
-				document.getElementById(`weight_${i}`).style.background = '#e6ffe6';
-			}
-		}
-	}
+        if (percentage > 100) {
+          for (i in this.props.indikators) {
+            document.getElementById(`weight_${i}`).style.background = 'lightcoral';
+          }
+        } else if (percentage < 100) {
+		    for (i in this.props.indikators) {
+            document.getElementById(`weight_${i}`).style.background = 'lightsalmon';
+          }
+        } else {
+          for (i in this.props.indikators) {
+            document.getElementById(`weight_${i}`).style.background = '#e6ffe6';
+          }
+        }
+      }
     }
 
 
-	// componentWillMount(){
-	// 	if(!this.props.loading){
-	// 		this.changeVars();
-	// 	}
+    // componentWillMount(){
+    // 	if(!this.props.loading){
+    // 		this.changeVars();
+    // 	}
 
     handleChange = (e) => {
       return new Promise((resolve, reject) => {
         this.props.dispatch(changeValueDispatch(e.target.id, e.target.value));
-        if ("1" == "1") {
-          resolve(console.log("it worked"));
+        if ('1' == '1') {
+          resolve(console.log('it worked'));
         } else {
-          reject(Error(console.log("it broke")))
+          reject(Error(console.log('it broke')));
         }
       });
     }
-
 
 
     /**
@@ -95,19 +90,14 @@ export class Main_selector extends Component {
      */
 
 
-
     /**
      *This function picks the right data and changes the map for coloring.
      *
      * @memberof Indikator
      */
     changeVars() {
-		
       this.props.dispatch({type: 'CHANGEVARS'});
     }
-
-
-
 
 
     /**
@@ -120,25 +110,25 @@ export class Main_selector extends Component {
      */
     weight = () =>{
       if (this.props.view_multiple) {
-        return ( 
-			<div>
+        return (
+          <div>
             <div className="weight_tooltip">
 
-                          <span className="weight_tooltiptext">
+              <span className="weight_tooltiptext">
                      Der hier eingebene Wert legt die prozentuale Gewichtung des gewählten Indikators fest.
-                              <br/>
+                <br/>
                               Die Summe
                               aller individuellen Gewichtungen sollte 100% ergeben.
-                    </span>
+              </span>
 
                 % &nbsp;<i className="far fa-question-circle" id="info_icon"></i>
 
             </div>
-          <input className="input is-small" id={`weight_${this.props.number}`}
-            onChange={this.handleChangeProm.bind(this)}
-            type="number"
-            defaultValue={this.props.value_dic[`weight_${this.props.number}`]} style={{textAlign: 'center'}} >
-          </input>
+            <input className="input is-small" id={`weight_${this.props.number}`}
+              onChange={this.handleChangeProm.bind(this)}
+              type="number"
+              defaultValue={this.props.value_dic[`weight_${this.props.number}`]} style={{textAlign: 'center'}} >
+            </input>
 		  </div>
         );
       }
@@ -192,7 +182,6 @@ export class Main_selector extends Component {
     //
 
 
-
     /**
      *This is the function that renders the indicator.
      *
@@ -210,63 +199,63 @@ export class Main_selector extends Component {
                     this.props.metadata[this.props.value_dic[`var_name_${this.props.number}`]].Langname : '')} <br/>
                       Quelle: {(this.props.value_dic[`var_name_${this.props.number}`] ?
                      this.props.metadata[this.props.value_dic[`var_name_${this.props.number}`]].Quelle : '')}
-                    </span>
-                    <label className="indicator">&nbsp; {this.props.name} <i
-                        className="far fa-question-circle" id="info_icon"></i> </label>
-				</div>
+                </span>
+                <label className="indicator">&nbsp; {this.props.name} <i
+                  className="far fa-question-circle" id="info_icon"></i> </label>
+              </div>
 				  <div className="select is-dark is-small ">
-                <select 
-                defaultValue={this.props.value_dic[`var_name_${this.props.number}`]}
-                id={`var_name_${this.props.number}`}
-                onChange={this.handleChangeProm.bind(this)}>
-                <option disabled value="0"> -- Wähle Variable --</option>
+                <select
+                  defaultValue={this.props.value_dic[`var_name_${this.props.number}`]}
+                  id={`var_name_${this.props.number}`}
+                  onChange={this.handleChangeProm.bind(this)}>
+                  <option disabled value="0"> -- Wähle Variable --</option>
 
-                {this.props.col_names_var.map((d, i) =>
-                  <option value={d} key={i}>{d}</option>
-                )
-                }
-              </select>
-				</div>
+                  {this.props.col_names_var.map((d, i) =>
+                    <option value={d} key={i}>{d}</option>
+                  )
+                  }
+                </select>
+              </div>
 			  </div>
 			  <div className="column is-3" style={{textAlign: 'left'}}>
 				  &nbsp; Jahr
-				<div className="select is-dark is-small">
-              <select 
-                defaultValue={this.props.value_dic[`var_year_${this.props.number}`]}
-                id={`var_year_${this.props.number}`}
-                onChange={this.handleChangeProm.bind(this)}>
+              <div className="select is-dark is-small">
+                <select
+                  defaultValue={this.props.value_dic[`var_year_${this.props.number}`]}
+                  id={`var_year_${this.props.number}`}
+                  onChange={this.handleChangeProm.bind(this)}>
 
-                <option disabled value="0"> -- Wähle Jahr -- </option>
+                  <option disabled value="0"> -- Wähle Jahr -- </option>
 
-                {this.props.value_dic[`var_name_${this.props.number}`] ? (
+                  {this.props.value_dic[`var_name_${this.props.number}`] ? (
                     this.props.all_years[`${this.props.value_dic[`var_name_${this.props.number}`]}`].map((d, i) =>
-                      <option value={d} key={i}>{d}</option>)) : ""
+                      <option value={d} key={i}>{d}</option>)) : ''
 
-                }
-              </select>
+                  }
+                </select>
 			  </div>
 			  </div>
 			  <div className="column is-3" style={{textAlign: 'center'}}>
 				   {this.weight()}
 			  </div>
 
-			</div> <div className="indicator_tooltip">
-                <span className="tooltiptext">
+          </div> <div className="indicator_tooltip">
+            <span className="tooltiptext">
                      Langname: {(this.props.value_dic[`var_name_${this.props.number}`] ?
                     this.props.metadata[this.props.value_dic[`var_name_${this.props.number}`]].Langname : '')} <br/>
                       Quelle: {(this.props.value_dic[`var_name_${this.props.number}`] ?
                      this.props.metadata[this.props.value_dic[`var_name_${this.props.number}`]].Quelle : '')}
-                    </span>
-                    <label className="indicator">&nbsp; bezugKreuze <i
-                        className="far fa-question-circle" id="info_icon"></i> </label>
-				</div>
-			<div className="columns is-gapless field is-grouped is-mobile">  
-				<div className="column is-6">
-					<div>
+            </span>
+            <label className="indicator">&nbsp; bezugKreuze <i
+              className="far fa-question-circle" id="info_icon"></i> </label>
+          </div>
+          <div className="columns is-gapless field is-grouped is-mobile">
+            <div className="column is-6">
+              <div>
 
-            </div>
+              </div>
 				  <div className="select is-dark is-small">
-                <select 
+                <select
                   defaultValue={this.props.value_dic[`ref_name_${this.props.number}`]}
                   id={`ref_name_${this.props.number}`}
                   onChange={this.handleChangeProm.bind(this)}>
@@ -277,12 +266,12 @@ export class Main_selector extends Component {
                   )
                   }
                 </select>
-				</div>
+              </div>
 			  </div>
 			  <div className="column is-3">
 				  <div>
 
-            </div>
+              </div>
 				  <div className="select is-dark is-small">
                 <select
                   id={`ref_year_${this.props.number}`}
@@ -296,45 +285,23 @@ export class Main_selector extends Component {
                   }
 
                 </select>
-				</div>
+              </div>
 			  </div>
-			  
-			</div>
+
+          </div>
 
 
-        <div id={`in_${this.props.number}`} className="field is-grouped-multiline" >
-       
-		 
-         
+          <div id={`in_${this.props.number}`} className="field is-grouped-multiline" >
 
 
-           
-               
-        
+          </div>
 
-        
-			</div>
-            
 
-           
-				  
-            
+        </div>
 
-            
-				  
-				 
-           
-			
-        
-	
-</div>
-       
       );
     }
-
-
 }
-
 
 
 /**
@@ -377,10 +344,10 @@ function mapStateToProps(state) {
     // var_year_data: state.var_year_data,
     view_multiple: state.view_multiple,
     single_indic_data: state.single_indic_data,
-	metadata: state.metadata,
-	indikators: state.indikators,
-	loading: state.loading,
-      all_years: state.all_years,
+    metadata: state.metadata,
+    indikators: state.indikators,
+    loading: state.loading,
+    all_years: state.all_years,
   };
 }
 

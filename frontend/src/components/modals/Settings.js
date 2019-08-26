@@ -36,19 +36,16 @@ class Settings extends Component {
 
 
     colorChangeBlue = () => {
-	
       this.props.dispatch(this.changeColorDispatch('0'));
-	};
+    };
 
     colorChangeRed = () => {
-	
       this.props.dispatch(this.changeColorDispatch('1'));
-	};
-	
+    };
+
     colorChangeGreen = () => {
-	
       this.props.dispatch(this.changeColorDispatch('2'));
-	};
+    };
 
 
     /**
@@ -69,15 +66,14 @@ class Settings extends Component {
     };
 
     changeScaleDispatch(value) {
-           console.log(value);
+      console.log(value);
     	return (
         {
           type: 'CHANGESCALE',
           value,
         }
       );
-	};
-
+    };
 
 
     /**
@@ -99,129 +95,123 @@ class Settings extends Component {
               		<section className="modal-card-body">
 
 
-
 							   <div className="columns">
-									<div className="column has-text-centered">
+                  <div className="column has-text-centered">
 										 <h3>Darstellung</h3>
                 							<ChangeViewButton/>
-									</div>
-									<div className="column has-text-centered">
-										<h3>Farbpaletten</h3>
-										<div className="buttons is-centered">
-										<a className="button is-dark is-outlined" onClick={this.colorChangeBlue.bind(this)}>
+                  </div>
+                  <div className="column has-text-centered">
+                    <h3>Farbpaletten</h3>
+                    <div className="buttons is-centered">
+                      <a className="button is-dark is-outlined" onClick={this.colorChangeBlue.bind(this)}>
 
     			<span >
-					<svg width="10" height="10" className="Blues">
-												<rect width="10" height="10" className="q0-5" />
-											</svg>
-											<svg width="10" height="10" className="Blues">
-												<rect width="10" height="10" className="q1-5" />
-											</svg>
-											<svg width="10" height="10" className="Blues">
-												<rect width="10" height="10" className="q2-5" />
-											</svg>
-											<svg width="10" height="10" className="Blues">
-												<rect width="10" height="10" className="q3-5" />
-											</svg>
-											<svg width="10" height="10" className="Blues">
-												<rect width="10" height="10" className="q4-5" />
-											</svg>
-											<svg width="10" height="10" className="Purples">
-												<rect width="10" height="10" className="q5-5" />
-											</svg>		
-											</span>
-</a>
-											
-			<a className="button is-dark  is-outlined"  onClick={this.colorChangeRed.bind(this)}>
+                          <svg width="10" height="10" className="Blues">
+                            <rect width="10" height="10" className="q0-5" />
+                          </svg>
+                          <svg width="10" height="10" className="Blues">
+                            <rect width="10" height="10" className="q1-5" />
+                          </svg>
+                          <svg width="10" height="10" className="Blues">
+                            <rect width="10" height="10" className="q2-5" />
+                          </svg>
+                          <svg width="10" height="10" className="Blues">
+                            <rect width="10" height="10" className="q3-5" />
+                          </svg>
+                          <svg width="10" height="10" className="Blues">
+                            <rect width="10" height="10" className="q4-5" />
+                          </svg>
+                          <svg width="10" height="10" className="Purples">
+                            <rect width="10" height="10" className="q5-5" />
+                          </svg>
+                        </span>
+                      </a>
+
+                      <a className="button is-dark  is-outlined" onClick={this.colorChangeRed.bind(this)}>
     			<span >
-					<svg width="10" height="10" className="Reds" >
-                    <rect width="10" height="10" className="q0-5" />
-                  </svg>
-                  <svg width="10" height="10" className="Reds">
-                    <rect width="10" height="10" className="q1-5" />
-                  </svg>
-                  <svg width="10" height="10" className="Reds">
-                    <rect width="10" height="10" className="q2-5" />
-                  </svg>
-                  <svg width="10" height="10" className="Reds">
-                    <rect width="10" height="10" className="q3-5" />
-                  </svg>
-                  <svg width="10" height="10" className="Reds">
-                    <rect width="10" height="10" className="q4-5" />
-                  </svg>
-                  <svg width="10" height="10" className="Reds">
-                    <rect width="10" height="10" className="q5-5" />
-                  </svg>	
-											</span>
+                          <svg width="10" height="10" className="Reds" >
+                            <rect width="10" height="10" className="q0-5" />
+                          </svg>
+                          <svg width="10" height="10" className="Reds">
+                            <rect width="10" height="10" className="q1-5" />
+                          </svg>
+                          <svg width="10" height="10" className="Reds">
+                            <rect width="10" height="10" className="q2-5" />
+                          </svg>
+                          <svg width="10" height="10" className="Reds">
+                            <rect width="10" height="10" className="q3-5" />
+                          </svg>
+                          <svg width="10" height="10" className="Reds">
+                            <rect width="10" height="10" className="q4-5" />
+                          </svg>
+                          <svg width="10" height="10" className="Reds">
+                            <rect width="10" height="10" className="q5-5" />
+                          </svg>
+                        </span>
   			</a>
-					<a className="button is-dark is-outlined" onClick={this.colorChangeGreen.bind(this)}>
+                      <a className="button is-dark is-outlined" onClick={this.colorChangeGreen.bind(this)}>
     			<span >
 					 <svg width="10" height="10" className="Greens">
-                    <rect width="10" height="10" className="q0-5" />
-                  </svg>
-                  <svg width="10" height="10" className="Greens">
-                    <rect width="10" height="10" className="q1-5" />
-                  </svg>
-                  <svg width="10" height="10" className="Greens">
-                    <rect width="10" height="10" className="q2-5" />
-                  </svg>
-                  <svg width="10" height="10" className="Greens">
-                    <rect width="10" height="10" className="q3-5" />
-                  </svg>
-                  <svg width="10" height="10" className="Greens">
-                    <rect width="10" height="10" className="q4-5" />
-                  </svg>
-                  <svg width="10" height="10" className="Greens">
-                    <rect width="10" height="10" className="q5-5" />
-                  </svg>	
-											</span>
+                            <rect width="10" height="10" className="q0-5" />
+                          </svg>
+                          <svg width="10" height="10" className="Greens">
+                            <rect width="10" height="10" className="q1-5" />
+                          </svg>
+                          <svg width="10" height="10" className="Greens">
+                            <rect width="10" height="10" className="q2-5" />
+                          </svg>
+                          <svg width="10" height="10" className="Greens">
+                            <rect width="10" height="10" className="q3-5" />
+                          </svg>
+                          <svg width="10" height="10" className="Greens">
+                            <rect width="10" height="10" className="q4-5" />
+                          </svg>
+                          <svg width="10" height="10" className="Greens">
+                            <rect width="10" height="10" className="q5-5" />
+                          </svg>
+                        </span>
   			</a>
-                							
-            </div>
-                 </div>
 
-									<div className="column has-text-centered">
-										<h3>  Skalen </h3>
+                    </div>
+                  </div>
 
-									<div className="buttons is-centered">
-									<button className="button is-dark is-outlined is-fullwidth" value={0} onClick={this.scaleChange}>
-    									
+                  <div className="column has-text-centered">
+                    <h3>  Skalen </h3>
+
+                    <div className="buttons is-centered">
+                      <button className="button is-dark is-outlined is-fullwidth" value={0} onClick={this.scaleChange}>
+
 										gleichmäßige Gruppen
-															</button>
-									<button className="button is-dark is-outlined is-fullwidth" value={1} onClick={this.scaleChange}>
-    									
-										gleichmäßige Intervalle
-															</button>
+                      </button>
+                      <button className="button is-dark is-outlined is-fullwidth" value={1} onClick={this.scaleChange}>
 
-										<button className="button is-dark is-outlined is-fullwidth" value={2} onClick={this.scaleChange}>
-    									
+										gleichmäßige Intervalle
+                      </button>
+
+                      <button className="button is-dark is-outlined is-fullwidth" value={2} onClick={this.scaleChange}>
+
 										fließende Intervalle
-															</button>
-								
-								</div>
-										
-								</div>
-								</div>
-								</section>
+                      </button>
+
+                    </div>
+
+                  </div>
+                </div>
+              </section>
 
                       	<footer className="modal-card-foot">
 
 
-			</footer>
+              </footer>
 
 
+            </div>
 
-				</div>
-                  
   				<button className="modal-close is-large" onClick={this.closeModal.bind(this)} aria-label="close"></button>
-			</div>
+          </div>
 
 
-           
-                
-
-            
-          );
+        );
       } else {
         return ('');
       }
@@ -236,8 +226,8 @@ class Settings extends Component {
  */
 function mapStateToProps(state) {
   return {
-	show_modal: state.show_modal,
-	view_multiple: state.view_multiple,
+    show_modal: state.show_modal,
+    view_multiple: state.view_multiple,
   };
 }
 

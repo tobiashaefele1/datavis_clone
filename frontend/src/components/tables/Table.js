@@ -21,13 +21,9 @@ class Table extends Component {
     this.download = this.download.bind(this);
     this.state ={
       dataToDownload: [],
-	};
-	this.ref = createRef();
+    };
+    this.ref = createRef();
   }
-
-     
-
-
 
 
   /**
@@ -53,85 +49,76 @@ class Table extends Component {
       this.csvLink.link.click();
     });
   }
-  
- 
-
 
 
   renderTable = () => {
+    if (this.props.showTable) {
+      return (
+        <div>
 
-    if(this.props.showTable){
-      return (    
-		<div>
-			
-			<div id='table' className="columns is-marginless has-text-black"  >
-				
+          <div id='table' className="columns is-marginless has-text-black" >
 
-		
-			</div>
-			<div className="columns is-marginless">
-			<div className="column ">
+
+          </div>
+          <div className="columns is-marginless">
+            <div className="column ">
 		 		<div className="box has-background-white-ter has-text-black has-text-centered" >
-					<div className="subtitle has-text-centered" style={{fontWeight: "bold"}}>vollständige Datentabelle</div>
+                <div className="subtitle has-text-centered" style={{fontWeight: 'bold'}}>vollständige Datentabelle</div>
 
 					 <div className="buttons is-centered">
 
 
-
         	            <div className="download_tooltip">
 
-                          <span className="download_tooltiptext">
+                    <span className="download_tooltiptext">
                    Lädt die in der Tabelle angezeigten Daten herunter. Um alle Daten herunterzuladen, zuerst die entsprechende Zeilenanzahl in der Tabelle auswählen.
-                        </span>
+                    </span>
 
-                         <a className="button is-dark is-outlined" onClick={this.download}>
-    			
+                    <a className="button is-dark is-outlined" onClick={this.download}>
+
    					            <span>Datentabelle als .csv Datei exportieren</span>
   					    </a>
 
 					  </div>
-						</div>
-		  
-     
-    
-        <div>
-          <CSVLink
-            data={this.state.dataToDownload}
-            filename="data.csv"
-            className="hidden"
-            ref={(r) => this.csvLink = r}
-            target="_blank" />
+                </div>
 
-        </div>
-        <div>
-          <ReactTable ref={(r) => this.reactTable = r }
-            data={this.props.table_data}
-            columns={this.props.table_columns}
-			pageSizeOptions={[10, 50, 100, 200, `${this.props.single_indic_data[0].length}`]}
-			previousText={'Zurück'}
+
+                <div>
+                  <CSVLink
+                    data={this.state.dataToDownload}
+                    filename="data.csv"
+                    className="hidden"
+                    ref={(r) => this.csvLink = r}
+                    target="_blank" />
+
+                </div>
+                <div>
+                  <ReactTable ref={(r) => this.reactTable = r }
+                    data={this.props.table_data}
+                    columns={this.props.table_columns}
+                    pageSizeOptions={[10, 50, 100, 200, `${this.props.single_indic_data[0].length}`]}
+                    previousText={'Zurück'}
    			nextText={'Nächste'}
-            loadingText={'Lädt...'}
-            noDataText={'Keine Daten verfügbar'}
-            pageText={'Seite'}
-            ofText={'von'}
-            rowsText={'Zeilen'}
-            pageJumpText={'Springe zu Seite'}
-            rowsSelectorText={'Zeilen pro Seite'}
-          />
+                    loadingText={'Lädt...'}
+                    noDataText={'Keine Daten verfügbar'}
+                    pageText={'Seite'}
+                    ofText={'von'}
+                    rowsText={'Zeilen'}
+                    pageJumpText={'Springe zu Seite'}
+                    rowsSelectorText={'Zeilen pro Seite'}
+                  />
+
+                </div>
+              </div>
+            </div>
+          </div>
 
         </div>
-        </div>
-		</div>
-         </div>
-		
-	</div>
-
 
 
       );
     }
   }
-
 
 
   /**
@@ -142,13 +129,12 @@ class Table extends Component {
    */
   render() {
     return (
-		<div>
-			{this.renderTable()}
+      <div>
+        {this.renderTable()}
 
-		</div>
-       		
+      </div>
 
-      
+
     );
   }
 }
