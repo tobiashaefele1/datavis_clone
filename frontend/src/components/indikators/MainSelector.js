@@ -191,7 +191,7 @@ export class MainSelector extends Component {
     render() {
       return (
 		  <div >
-		  <div className="columns is-gapless field is-grouped is-mobile" style={{marginBottom: '10px'}}>
+		  <div className="columns is-gapless field is-grouped is-mobile" style={{marginBottom: '5px'}}>
 			  <div className="column is-6" style={{textAlign: 'left'}}>
 				  <div className="indicator_tooltip">
                 <span className="tooltiptext">
@@ -239,21 +239,25 @@ export class MainSelector extends Component {
 				   {this.weight()}
 			  </div>
 
-          </div> <div className="indicator_tooltip">
+          </div>
+
+
+          <div className="columns is-gapless field is-grouped is-mobile">
+            <div className="column is-6" style={{textAlign: 'left'}}>
+
+                              <div className="indicator_tooltip">
             <span className="tooltiptext">
-                     Langname: {(this.props.value_dic[`var_name_${this.props.number}`] ?
-                    this.props.metadata[this.props.value_dic[`var_name_${this.props.number}`]].Langname : '')} <br/>
-                      Quelle: {(this.props.value_dic[`var_name_${this.props.number}`] ?
-                     this.props.metadata[this.props.value_dic[`var_name_${this.props.number}`]].Quelle : '')}
+
+                 Langname: {(this.props.value_dic[`ref_name_${this.props.number}`] ?
+                    this.props.ref_dic[this.props.value_dic[`ref_name_${this.props.number}`]].Langname : '')} <br/>
+                      Quelle: {(this.props.value_dic[`ref_name_${this.props.number}`] ?
+                     this.props.ref_dic[this.props.value_dic[`ref_name_${this.props.number}`]].Quelle : '')}
+
             </span>
-            <label className="indicator">&nbsp; bezugKreuze <i
+            <label className="indicator" >&nbsp; Bezugsgröße <i
               className="far fa-question-circle" id="info_icon"></i> </label>
           </div>
-          <div className="columns is-gapless field is-grouped is-mobile">
-            <div className="column is-6">
-              <div>
 
-              </div>
 				  <div className="select is-dark is-small">
                 <select
                   defaultValue={this.props.value_dic[`ref_name_${this.props.number}`]}
@@ -268,10 +272,13 @@ export class MainSelector extends Component {
                 </select>
               </div>
 			  </div>
-			  <div className="column is-3">
+			  <div className="column is-3" style={{textAlign: 'left'}}>
+                  &nbsp; Jahr
 				  <div>
 
               </div>
+
+
 				  <div className="select is-dark is-small">
                 <select
                   id={`ref_year_${this.props.number}`}
@@ -348,6 +355,7 @@ function mapStateToProps(state) {
     indikators: state.indikators,
     loading: state.loading,
     all_years: state.all_years,
+      ref_dic: state.ref_dic,
   };
 }
 

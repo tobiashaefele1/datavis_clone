@@ -34,7 +34,7 @@ def index(request):
         print(all_years)
         # metadata = retrieve_db_data(pool).retrieve_metadata()
         metadata = retrieve_db_data(pool).retrieve_metadata()
-        col_names_ref = ['Einwohner 15 - 64_100', 'Zivile Erwerbspersonen_100',
+        col_names_ref = ['Einwohner 15-64_100', 'Zivile Erwerbspersonen_100',
                          'SV-pflichtig Beschäftigte am Wohnort_100',
                         'Einwohner gesamt_100', 'Fläche_100']  # this returns all unique labels for standardisation drop downs
 
