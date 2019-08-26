@@ -8,6 +8,12 @@ import {connect} from 'react-redux';
  * @extends {Component}
  */
 class SettingsButton extends Component {
+    /**
+     *This function is called when clicking the close button
+     * or outside the modal.
+     *
+     * @memberof SettingsButton
+     */
     closeModal = () => {
       this.props.dispatch({type: 'MODAL'});
     }
@@ -20,17 +26,15 @@ class SettingsButton extends Component {
      */
     render() {
       return (
-		  	<a className="button is-dark is-outlined is-large" onClick={this.closeModal.bind(this)}>
-    			<span className="icon">
-     				 <i className="fas fa-cogs"></i>
-    					</span>
-   					 {/* <span>Einstellungen</span> */}
-  			</a>
+        <a className="button is-dark is-outlined is-large"
+          onClick={this.closeModal.bind(this)}>
+          <span className="icon">
+            <i className="fas fa-cogs"></i>
+          </span>
+        </a>
 
       );
     }
 }
 
 export default connect()(SettingsButton);
-
-
