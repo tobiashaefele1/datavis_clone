@@ -24,6 +24,16 @@ link_to_Bund_data = './resources/including metadata/Bund_testfile_updated.csv'
 link_to_Kreise_data = './resources/including metadata/KRS15_testfile_updated_ersetzt.csv'
 link_to_reference_data = './resources/Referenzgroessen_input_updated_ERSETZT.csv'
 
+pool = Pool(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
+
+                                      db='mydb',
+                                      user='admin',
+                                      password='NPmpMe!696rY',
+                                        cursorclass=pymysql.cursors.Cursor, autocommit=True)
+
+
+
+
 #
 # load in all the data as data objects
 AMR12_data = readin258AMR(link_to_AMR12_data, link_to_mapping_file, link_to_template_input)  # create AMR12 data object
@@ -31,31 +41,43 @@ AMR15_data = readin257AMR(link_to_AMR15_data, link_to_mapping_file, link_to_temp
 Bund_data = readinBund(link_to_Bund_data, link_to_template_input)                            # create Bund data object
 reference_data = Data(link_to_reference_data)  #### WORKS!!!!
 Kreise_data = Data(link_to_Kreise_data)  # WORKS!!!
+print("done making data objects")
 
-data_base = pymysql.connect("bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com", "admin", "NPmpMe!696rY", "mydb")
-# data_base = pymysql.connect("localhost", "user", "password", "mydb")
+
+data_base = pymysql.connect('bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com', 'admin', 'NPmpMe!696rY', "mydb", autocommit=True)
+
+print("connected to db")
 
 # load in all the data to DB
 mapping_to_db(link_to_mapping_file)                                     # load in Mapping file to DB
 #
-create_table_and_load_data(data_base, Kreise_data)                                 # load in Kreise data
-#
-#
-data_base = pymysql.connect("bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com", "admin", "NPmpMe!696rY", "mydb")
-# data_base = pymysql.connect("localhost", "user", "password", "mydb")
 
+create_table_and_load_data(data_base, Kreise_data) # load in Kreise data
+data_base.close()
+
+#
+print("1/5")
+#
+# data_base = pymysql.connect("localhost", "user", "password", "mydb")s
+data_base = pymysql.connect('bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com', 'admin', 'NPmpMe!696rY', "mydb", autocommit=True)
 cursor = data_base.cursor()
 # #
 add_columns(AMR12_data, cursor, data_code=200)                          # load in AMR12 data
 add_tuples_new(AMR12_data, data_base=data_base, data_code=200)
+print("2/5")
 
 add_columns(AMR15_data, cursor, data_code=300)                           # load in AMR15 data
 add_tuples_new(AMR15_data, data_base=data_base, data_code=300)
+print("3/5")
 
 add_columns(Bund_data, cursor, data_code=400)                           # load in Bund data
 add_tuples_new(Bund_data, data_base=data_base, data_code=400)
+print("4/5")
 #
-create_table_and_load_data(data_base, reference_data, table_name="reference")       # load in reference data
+create_table_and_load_data(data_base, reference_data, table_name="reference") # load in reference data
+data_base.close()
+print("5/5")
+
 # #
 # #
 #
@@ -78,13 +100,6 @@ load_meta_data_to_db(link_to_KRS_metadata, KRS_datacode,
                      link_to_bund_metadata, bund_datacode)
 #
 
-
-pool = Pool(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
-
-                                      db='mydb',
-                                      user='admin',
-                                      password='NPmpMe!696rY',
-                                        cursorclass=pymysql.cursors.Cursor)
 
 
 #

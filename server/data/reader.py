@@ -47,10 +47,10 @@ def create_table_and_load_data(data_base, data, data_code=100, data_base_name="m
            "           YEAR VARCHAR(20))" % table_name)
 
     cursor.execute(sql)
-    add_columns(data, cursor, data_code, table_name)
-    add_tuples(data, cursor, table_name)
     index_column('KENNZIFFER', cursor, table_name)
     index_column('YEAR', cursor, table_name)
+    add_columns(data, cursor, data_code, table_name)
+    add_tuples(data, cursor, table_name)
 
 
 

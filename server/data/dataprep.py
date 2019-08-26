@@ -133,8 +133,9 @@ def mapping_to_db (link_to_mapping_file):
      passw = "NPmpMe!696rY"
      host = "bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com"
      database = "mydb"
-     conn = create_engine('mysql+pymysql://' + user + ':' + passw + '@' + host + '/' + database , echo=False)
+     conn = create_engine('mysql+pymysql://' + user + ':' + passw + '@' + host + '/' + database, echo=False)
      mapping_file.to_sql(name="mapping", con=conn, if_exists = 'replace', index=False)
+
 
 
 
