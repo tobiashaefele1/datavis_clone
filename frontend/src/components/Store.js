@@ -327,14 +327,14 @@ function reducer(state = initalState, action) {
       }
       );
 
-    case 'UPDATE_VAL_DIC_YEARS':
+    case 'UPDATEVALDICYEARS':
       return (produce(state, (draft) => {
-        draft.value_dic['var_year_0'] = action.current_years[0];
-        draft.value_dic['var_year_1'] = action.current_years[1];
-        draft.value_dic['var_year_2'] = action.current_years[2];
-        draft.value_dic['var_year_3'] = action.current_years[3];
-        draft.value_dic['var_year_4'] = action.current_years[4];
-        draft.value_dic['var_year_5'] = action.current_years[5];
+        draft.value_dic['var_year_0'] = action.currentYears[0];
+        draft.value_dic['var_year_1'] = action.currentYears[1];
+        draft.value_dic['var_year_2'] = action.currentYears[2];
+        draft.value_dic['var_year_3'] = action.currentYears[3];
+        draft.value_dic['var_year_4'] = action.currentYears[4];
+        draft.value_dic['var_year_5'] = action.currentYears[5];
       })
       );
 

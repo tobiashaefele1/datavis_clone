@@ -7,10 +7,10 @@ import {strict} from 'assert';
 /**
  *Component class for a single Indicator.
  *
- * @class Main_selector
+ * @class MainSelector
  * @extends {Component}
  */
-export class Main_selector extends Component {
+export class MainSelector extends Component {
   /**
      *Handles the change of any of the dropdown menus of the indicator.
      *
@@ -351,4 +351,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Main_selector);
+export default connect(mapStateToProps)(MainSelector);
