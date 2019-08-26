@@ -203,7 +203,8 @@ class retrieve_db_data:
                 # print ( (((data[i][1])-(fed_avg))**2)*(ref_share[i]))
 
         Standard_deviation = math.sqrt(Standard_deviation / len(data))
-
+        # print (Standard_deviation)
+        # print ("THIS IS THE STANDARD DEVIATION")
         # print(time.clock() - start_time, "seconds to retrieve only the standard deviation")
 
         return (Standard_deviation)
@@ -213,6 +214,10 @@ class retrieve_db_data:
         # print("scale_HIB")
         ''' this function standardises and scales a dataset according to GRW methodology, where higher values
             result in a higher score, this formula currently returns a tuple list'''
+
+        # print(fed_avg)
+        # print(data)
+        # print(SD)
         Sfactor_positive = 100
         Sfactor_scaling = 15
         tuple = ()
@@ -227,6 +232,10 @@ class retrieve_db_data:
         # print("scale_NIB")
         ''' this function standardises and scales a dataset according to GRW methodology, where lower values
             result in a higher score, this formula currently returns a tuple list'''
+        # print(data)
+        # print(fed_avg)
+        # print(SD)
+
         Sfactor_positive = 100
         Sfactor_negative = 200
         Sfactor_scaling = 15
@@ -408,7 +417,7 @@ class retrieve_db_data:
             for (x,) in mysql_result:
                 distinct_years.append(x)
             result.append(distinct_years)
-            print(distinct_years)
+            # print(distinct_years)
         cursor.close()
         self.pool.release(mySQLconnection)
         # print(time.clock()-start_time)

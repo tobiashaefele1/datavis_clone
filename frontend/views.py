@@ -38,29 +38,36 @@ def index(request):
         'var_3': ['Erwerbstätigenprognose _ORIGINAL_200', '2011-18', 'SV-pflichtig Beschäftigte am Wohnort_100', '2012', 'AMR_12', 'HIB', '7.5'],
         'var_4': ['Infrastrukturindikator_ORIGINAL_200', '2012', 'SV-pflichtig Beschäftigte am Wohnort_100', '2012', 'AMR_12', 'HIB', '7.5'],
         'var_5': ['', '', 'SV-pflichtig Beschäftigte am Wohnort_100', '2012', 'AMR_12', 'HIB', '0'], 'var_6': ['', '', 'SV-pflichtig Beschäftigte am Wohnort_100', '2012', 'AMR_12', 'HIB', '0']}
-        table_data = aggregateindic(pool).retrieve_table_data(setup_dict)
+        # table_data = aggregateindic(pool).retrieve_table_data(setup_dict)
         # var_year_data = aggregateindic(pool).retrieve_var_year(setup_dict)
-        single_indic_data = aggregateindic(pool).retrieve_single_indic(setup_dict)
-        indicator_data = aggregateindic(pool).retrieve_indicator(setup_dict)
+        # single_indic_data = aggregateindic(pool).retrieve_single_indic(setup_dict)
+        # indicator_data = aggregateindic(pool).retrieve_indicator(setup_dict)
         col_names_var = retrieve_db_data(pool).clean_col_names(retrieve_db_data(pool).retrieve_col_names("kreise"))  # this returns all unique column names from the KREISE table
         # print(metadata)
+
+        data = aggregateindic(pool).retrieve_everything(setup_dict)
+        indicator_data = data['indicator_data']
+        single_indic_data = data['single_indic_data']
+        table_data = data['table_data']
+
         pool.destroy()
 
     if request.method == 'POST':
         recieved_data = (dict(request.POST))
         print(recieved_data)
         # var_year_data = aggregateindic(pool).retrieve_var_year(recieved_data)
-        single_indic_data = aggregateindic(pool).retrieve_single_indic(recieved_data)
-        indicator_data = aggregateindic(pool).retrieve_indicator(recieved_data)
-        table_data = aggregateindic(pool).retrieve_table_data(recieved_data)
+        # single_indic_data = aggregateindic(pool).retrieve_single_indic(recieved_data)
+        # indicator_data = aggregateindic(pool).retrieve_indicator(recieved_data)
+        # table_data = aggregateindic(pool).retrieve_table_data(recieved_data)
         # print(table_data)
-
+        # print(test_data['indicator_data'])
         # print(indicator_data)
-        # print (single_indic_data)
-        # print (var_year_data)
-        data = {'indicator_data': indicator_data, 'table_data': table_data,
-                'single_indic_data': single_indic_data}
-        # print (data)
+        # # print (single_indic_data)
+        # # print (var_year_data)
+        # data = {'indicator_data': indicator_data, 'table_data': table_data,
+        #         'single_indic_data': single_indic_data}
+        data = aggregateindic(pool).retrieve_everything(recieved_data)
+        # print (table_data)
         pool.destroy()
         return HttpResponse(json.dumps(data), content_type="application/json")
 

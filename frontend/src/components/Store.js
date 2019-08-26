@@ -88,7 +88,7 @@ const initalState = {
     Header: 'Lohn pro Beschäftigtem 2010 _ORIGINAL_200 2010',
     accessor: 'Lohn pro Beschäftigtem 2010 _ORIGINAL_200 2010',
     style: {textAlign: 'right'},
-        Cell: props => props.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        Cell: props => ((props.value !== null || props.value != "" )  ? props.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "-")
   },
 {
     Header: 'Erwerbstätigenprognose _ORIGINAL_200 2011-18',
@@ -226,7 +226,7 @@ function reducer(state = initalState, action) {
 									Header: 'Lohn pro Beschäftigtem 2010 _ORIGINAL_200 2010',
 									accessor: 'Lohn pro Beschäftigtem 2010 _ORIGINAL_200 2010',
                                      style: {textAlign: 'right'},
-                                        Cell: props => props.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                                        Cell: props => ((props.value !== null || props.value != "" )  ? props.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "-")
 								},
 								{
 									Header: 'Erwerbstätigenprognose _ORIGINAL_200 2011-18',
@@ -288,7 +288,7 @@ function reducer(state = initalState, action) {
              // const cleanColumnName = state.metadata[state.value_dic['var_name_' + i]].csvname  + ', ' + state.value_dic['var_year_' +i];
             draft.table_columns.push({
               Header: ColumnName, accessor: ColumnName,  style: {textAlign: 'right'},
-            Cell: props => props.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            Cell: props => ((props.value !== undefined )  ? (props.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")) : "-")
             });
           }
         }
@@ -366,7 +366,7 @@ function reducer(state = initalState, action) {
             .properties.area_km2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
         draft.smalltable[4][1] = state.current_map[action.value]
 			.properties.Bundesland;
-		draft.smalltable[5][1] = Math.round(state.current_map[action.value].properties.indicator *10) / 10
+		draft.smalltable[5][1] =((state.current_map[action.value].properties.indicator !== null || state.current_map[action.value].properties.indicator != "" ) ? (Math.round(state.current_map[action.value].properties.indicator *10) / 10).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "-")
         while (draft.smalltable.length > 6) {
           draft.smalltable.pop();
         }
