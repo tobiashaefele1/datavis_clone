@@ -9,7 +9,7 @@ import {connect} from 'react-redux';
  * @extends {Component}
  */
 class MetaExportButton extends Component {
-	 /**
+  /**
    *Creates an instance of Table and creates the CSV export.
    * @param {*} props
    * @memberof MetaExportButton
@@ -22,7 +22,6 @@ class MetaExportButton extends Component {
     };
   }
 
-
   /**
    *This creates the CSV file from current meta data.
    *
@@ -30,12 +29,12 @@ class MetaExportButton extends Component {
    * @memberof MetaExportButton
    */
   download(event) {
-    let result; let ctr; let keys; let columnDelimiter; let lineDelimiter; let data; let names;
-    data = this.props.metadata;
-    columnDelimiter = ',';
-    lineDelimiter = '\n';
-    names = Object.keys(data);
-    keys = Object.keys(data['Bruttoverdienst_100']);
+    let result; let ctr;
+    const data = this.props.metadata;
+    const columnDelimiter = ',';
+    const lineDelimiter = '\n';
+    const names = Object.keys(data);
+    const keys = Object.keys(data['Bruttoverdienst_100']);
     console.log(keys);
     result = '';
     result += keys.join(columnDelimiter);
@@ -63,6 +62,7 @@ class MetaExportButton extends Component {
     downloadLink.click();
     document.body.removeChild(downloadLink);
   }
+
   /**
      *This function renders the button.
      *
@@ -71,14 +71,15 @@ class MetaExportButton extends Component {
      */
   render() {
     return (
-		    <button className="button is-dark is-outlined is-fullwidth" onClick={this.download.bind(this)}>
-
-   					 <span>Metadaten</span>
-  			</button>
+      <button className="button is-dark is-outlined is-fullwidth"
+        onClick={this.download.bind(this)}>
+        <span>Metadaten</span>
+      </button>
 
     );
   }
 }
+
 /**
  *Here the props are selected from the store.
  *
@@ -97,5 +98,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(MetaExportButton);
-
-
