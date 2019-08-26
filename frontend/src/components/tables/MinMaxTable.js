@@ -61,9 +61,9 @@ class MinMaxTable extends Component {
         }
         sum = sum + arr[i];
       }
-      return [Math.round(min* 100)/100,
-        Math.round(max* 100)/100,
-        Math.round((sum / arr.length)*100)/100];
+      return [((Math.round(min * 10)/10).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")),
+          ((Math.round(max * 10)/10).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")),
+        ((Math.round((sum / arr.length)*10)/10).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))]
     }
 
     /**
@@ -74,24 +74,26 @@ class MinMaxTable extends Component {
      */
     render() {
       return (
-        <div className="row">
-          <table className="u-80-width" id="table">
+
+          <table className="table" id="table" style={{backgroundColor: 'white', textAlign: 'center'}}>
             <thead>
               <tr>
-                <th>Min</th>
-                <th>Max</th>
-                <th>Durchschnitt</th>
+                <th style={{textAlign: 'center'}}>Minimum</th>
+                <th style={{textAlign: 'center'}}>Durchschnitt</th>
+                <th style={{textAlign: 'center'}}>Maximum</th>
+
               </tr>
             </thead>
             <tbody>
               <tr>{this.checkData()}
-                <td id="min_value">{this.values[0]}</td>
-                <td id="max_value">{this.values[1]}</td>
-                <td id="avg_value">{this.values[2]}</td>
+                <td id="min_value" style={{textAlign: 'center'}}>{this.values[0]}</td>
+                <td id="avg_value" style={{textAlign: 'center'}}>{this.values[2]}</td>
+                <td id="max_value" style={{textAlign: 'center'}}>{this.values[1]}</td>
+
               </tr>
             </tbody>
           </table>
-        </div>
+
       );
     }
 }

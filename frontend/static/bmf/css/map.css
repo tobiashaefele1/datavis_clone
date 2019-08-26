@@ -1,16 +1,19 @@
 path {
   /*fill: #ccc;*/
-  stroke: #fff;
-  stroke-width: .5px;
+  stroke: #ffffff;
+  stroke-width: .25px;
 }
 
 path:hover {
   fill: black;
+  stroke-width: 1px;
+  stroke: #ffffff; 
 }
 
 
 #map {
-  position:relative
+  position:relative;
+
 }
 
 .map_legend {
@@ -23,8 +26,6 @@ path:hover {
 }
 .map_loader {
   position: absolute;
-  
-  
   left: 50%;
 	margin-left: -50px;
   top: 50%;
@@ -34,24 +35,28 @@ path:hover {
 #map_logo {
   position: absolute;
 bottom: 50px;
-  right: 30px;
+  right: 20px;
   object-position: right;
-  width: 40px;
+  width: 100px;
   height: 40px;
 }
 #map_reset {
   position: absolute;
-top: 15px;
-  right: 120px;
+top: 45px;
+  right: 20px;
   object-position: right;
   width: 40px;
   height: 40px;
 }
 
 .map_copyright{
+	position: absolute;
+
+bottom: 5px;
   text-align: right;
-  font-size: 7px;
+  font-size: 10px;
   letter-spacing: 0rem;
+  right: 20px;
   /*overflow: scroll;*/
 
 }
@@ -76,7 +81,8 @@ top: 15px;
 
 @media only screen and  (max-width: 768px) {
   .map_legend {
-    top: 30px;
+	top: 0px;
+	left: 0px;
   }
   #map_logo{
     bottom: 10px;
@@ -85,6 +91,12 @@ top: 15px;
     height: 30px;
 
   }
+  #map_reset {
+
+top: 0px;
+  right: 22.5px;
+
+}
   .map_copyright
   {
     text-align: right;

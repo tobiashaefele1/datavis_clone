@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, createRef} from 'react';
 import {connect} from 'react-redux';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
@@ -21,7 +21,8 @@ class Table extends Component {
     this.download = this.download.bind(this);
     this.state ={
       dataToDownload: [],
-    };
+	};
+	this.ref = createRef();
   }
 
      
@@ -52,22 +53,47 @@ class Table extends Component {
       this.csvLink.link.click();
     });
   }
+  
+ 
 
 
 
   renderTable = () => {
-    console.log(this.props.table_data)
+
     if(this.props.showTable){
       return (    
-		 <div className="twelve columns" id="big">
-            <div style={{marginLeft: '20px', marginRight: '20px'}}> 
-		  <div>
+		<div>
+			
+			<div id='table' className="columns is-marginless has-text-black"  >
+				
 
-        <div>
-          <button onClick={this.download}>
-                        Download
-          </button>
-        </div>
+		
+			</div>
+			<div className="columns is-marginless">
+			<div className="column ">
+		 		<div className="box has-background-white-ter has-text-black has-text-centered" >
+					<div className="subtitle has-text-centered" style={{fontWeight: "bold"}}>vollständige Datentabelle</div>
+
+					 <div className="buttons is-centered">
+
+
+
+        	            <div className="download_tooltip">
+
+                          <span className="download_tooltiptext">
+                   Lädt die in der Tabelle angezeigten Daten herunter. Um alle Daten herunterzuladen, zuerst die entsprechende Zeilenanzahl in der Tabelle auswählen.
+                        </span>
+
+                         <a className="button is-dark is-outlined" onClick={this.download}>
+    			
+   					            <span>Datentabelle als .csv Datei exportieren</span>
+  					    </a>
+
+					  </div>
+						</div>
+		  
+     
+    
         <div>
           <CSVLink
             data={this.state.dataToDownload}
@@ -84,12 +110,24 @@ class Table extends Component {
 			pageSizeOptions={[10, 50, 100, 200, `${this.props.single_indic_data[0].length}`]}
 			previousText={'Zurück'}
    			nextText={'Nächste'}
+            loadingText={'Lädt...'}
+            noDataText={'Keine Daten verfügbar'}
+            pageText={'Seite'}
+            ofText={'von'}
+            rowsText={'Zeilen'}
+            pageJumpText={'Springe zu Seite'}
+            rowsSelectorText={'Zeilen pro Seite'}
           />
 
         </div>
         </div>
 		</div>
-            </div>
+         </div>
+		
+	</div>
+
+
+
       );
     }
   }
@@ -104,8 +142,10 @@ class Table extends Component {
    */
   render() {
     return (
-			
-			<div>  {this.renderTable()}</div>
+		<div>
+			{this.renderTable()}
+
+		</div>
        		
 
       

@@ -19,6 +19,8 @@ import ResetButton from './buttons/ResetButton';
 import TableButton from './buttons/TableButton';
 import InfoButton from "./buttons/InfoButton";
 import Info from "./modals/Info";
+import MetaExportButton from './buttons/MetaExportButton';
+import ChangeViewButton from './buttons/ChangeViewButton';
 
 
 
@@ -145,8 +147,64 @@ class App extends Component {
           });
         });
   }
+  /**
+   *This function checks if the screen width is less than 1000px,
+   * if this is the case it decrements the indicators to one.
+   * This is to imporve layout on mobile devices.
+   *
+   * @param {*} value screen width
+   * @memberof App
+   */
+  mobile(value) {
+    if (value < 1000 && this.props.view_multiple && this.props.firstload) {
+      this.props.dispatch({
+        type: 'CHANGEVIEW',
+      });
+     
+    }else if(value >1000){
+		return( <ViewPicker />)
+	}
+  }
 
- 
+  indikatorSet(value){
+	  if(value < 600) {
+		  return (<div className="column is-half is-mobile is-centered is-vcentered has-text-centered ">
+			  	<div><Map/></div>
+                <div className="columns is-centered is-mobile ">
+                <MinMaxTable/>
+				</div></div>)
+	  }else{
+		  return (<div className="column is-one-quarter has-text-centered"><div id="optionbox" className="box   has-background-white-ter has-text-black "><MapSelector/>
+				<Indikators/>
+                <div className=" buttons is-centered">
+                <PlusButton/>
+				<MinButton/></div></div></div>	
+				)
+	  }
+  }
+  mapSet(value){
+	  if(value < 600) {
+		  return (<div className="column is-one-quarter has-text-centered    "><div id="optionbox" className="box   has-background-white-ter has-text-black "><MapSelector/>
+				<Indikators/>
+				<div className=" buttons  is-centered">
+                <PlusButton/>
+				<MinButton/></div></div></div>)
+	  }else{
+		  return (
+			  <div className="column is-mobile is-half is-centered is-vcentered has-text-centered ">
+				<div><Map/></div>
+				<div className="columns is-centered is-mobile">
+                <MinMaxTable/>
+				</div>
+		  </div>	
+				)
+	  }
+  }
+
+  headline = () => {
+      return (this.props.view_multiple ? "Zusammengesetzter Indikator" : `${this.props.metadata[this.props.value_dic['var_name_0']].csvname}, ${this.props.value_dic['var_year_0']} ` )
+  }
+
 
   /**
    *This function renders the whole app.
@@ -156,67 +214,122 @@ class App extends Component {
    */
   render() {
     return (
-
+		
       <div>
-      
-        <ViewPicker/>
-        <div className="example-grid-logo">
-          {/* Top Row */}
-          <div className="row">
-            <div className="three columns">
-              <object type="image/svg+xml"
-                data="static/bmf/resources/BMF_2017_WebSVG_de.svg" width="100%"
-                height="100%">Your browser does not support SVG
+      { this.mobile(window.screen.width) }
+        
+		<div className="columns is-marginless is-mobile">
+
+		<div className="column is-one-quarter">
+ 			
+   				 
+     		<object className="is-pulled-left" type="image/svg+xml" 
+                data="static/bmf/resources/BMF_2017_WebSVG_de.svg" >Your browser does not support SVG
               </object>
-            </div>
-            <div className="six columns">
-              Lebensverhältnisse in Deutschland. 
-            	Visualisierung von Indikatoren
-            </div>
-            <div className="three columns">
-              <SettingsButton/>
+     				 
+		</div>
+		<div className="column"><h2 className="title has-text-centered">
+            Lebensverhältnisse in Deutschland </h2>
+            			<h2 className="subtitle has-text-centered">Visualisierung von Indikatoren</h2>
+     				 </div>
+					  
+
+		<div className="column is-one-quarter">
+
+			<div className=" buttons is-centered " >
+			<SettingsButton/>
               <InfoButton/>
+			</div>
+			<Info/>
+			{/* TODO: find someway to show these nicel */}
               <Settings/>
-              <Info/>
-            </div>
+            
+			</div>			  
+		</div>
+		<div className="columns is-marginless has-text-black">
+			<div className="column is-hidden-mobile is-paddingless ">
+				<div className="subtitle has-text-centered" style={{fontWeight : "bold"}}>Einstellungen</div>
+			</div>
+			<div className="column is-half is-paddingless ">
+				<div className="subtitle has-text-centered" style={{fontWeight : "bold"}}>{this.headline()}</div>
+			</div>
+			<div className="column is-hidden-mobile is-paddingless">
+				<div className="subtitle has-text-centered" style={{fontWeight : "bold"}} >Übersicht</div>
+			</div>
+		</div>
+		<div className="columns is-marginless">
+			
+				{this.indikatorSet(window.screen.width)}
+			
+		
+			
+				{this.mapSet(window.screen.width)}
 
-          </div>
-        </div>
-        <div className="example-grid-body">
-          {/* main content */}
-          <div className="row">
-            <div className="box">
-              <div className="three columns" id="big">
-                <MapSelector/>
-				 <Indikators/>
-                <PlusButton/>
-                <MinButton/>
-                
-              </div>
-              <div className="six columns" id="big">
-                <Map/>
-                <MinMaxTable/>
-              </div>
-              <div className="three columns" id="big">
+			<div className="column is-one-quarter has-text-centered    ">
+				
+				<div id="optionbox" className="box has-background-white-ter has-text-black">
+				
+					<div> </div>
 				<SmallTable/>
-               
+					
+					<div className="columns is-centered is-mobile">
+						<div className="column">
+						
+							<div>Darstellung</div>
+								<div className="buttons is-centered">
+									<ChangeViewButton/>
+							</div>
+							
+							<div>Export</div>
+							<div className="columns">
+								<div className="column">
+										<SVGExportButton />
+								</div>
+								<div className="column">
+									<MetaExportButton/>
+								</div>
+							</div>
+							
+							<div>Tabelle</div>
+							<div className="buttons is-centered">
+							<TableButton />	
+							</div>
+				
+						</div>
 
-                <div className="row">
-                  <SVGExportButton />
-				  <TableButton />
+				</div>
+				
+				</div>
+				
+				
+				
+				
+				
+	
+			</div>
+
+		</div>
+		<Table/>
 
 
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            <Table />
-          </div>
-        </div>
-      </div>
+    </div>
     );
   }
 }
-
-export default connect()(App);
+/**
+ *Here the props are selected from the store.
+ *
+ * @param {state} state current state of the store
+ * @return {props} returns the selected states as props
+ */
+function mapStateToProps(state) {
+  return {
+    
+    view_multiple: state.view_multiple,
+    
+      value_dic: state.value_dic,
+	  metadata: state.metadata,
+	   firstload: state.firstload,
+  };
+}
+export default connect(mapStateToProps)(App);

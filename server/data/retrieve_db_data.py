@@ -98,17 +98,25 @@ class retrieve_db_data:
 
         try:
             # Returns quiery with tuple [(layer_ID, value)] for federal average at kreise level, IF IT EXISTS.
+
             sql_select_Query = (""" SELECT 
                                            kreise.KENNZIFFER, kreise.`%s`
                                            FROM kreise 
                                            WHERE kreise.YEAR = '%s' AND kreise.Kennziffer = "01001" """ % (
                 fed_avg_name, var_year))
 
+            print(sql_select_Query)
             # executed quiery and closes cursor
             cursor = mySQLconnection.cursor()
 
             cursor.execute(sql_select_Query)
             output = cursor.fetchall()
+                ## this checks for an none type
+            if output[0][1] == None:
+                output = self.retrieve_data(var_name, var_year, ref_name, ref_year, layer)
+                print(output)
+
+
 
         except Error as e:
             print("Federal avg. not available - using arithmetic mean instead. See error message: ", e)
@@ -121,6 +129,8 @@ class retrieve_db_data:
             # print(output)
             # print (output)
             self.pool.release(mySQLconnection)
+            print (output)
+            print ("THE ABOVE IS RETURNED FROM THE FORMULA")
             print("MySQL connection is closed")
 
             return (output)
@@ -145,6 +155,7 @@ class retrieve_db_data:
                                     GROUP BY mapping.`%s` 
                                     ORDER BY mapping.`%s` ASC """ % (layer, ref_name, ref_name, ref_year, layer, layer))
 
+        # print(sql_select_Query)
         try:
             # executed quiery and closes cursor
             cursor = mySQLconnection.cursor()
@@ -179,20 +190,31 @@ class retrieve_db_data:
 
         """ this function returns the standard deviation for a chosen variable and year, standardised by a chosen ref value
             and year as a single float value  """
+        # print(var_name)
+        # print(var_year)
+        # print(ref_name)
+        # print(ref_year)
+        # print(layer)
         data = self.retrieve_data(var_name, var_year, ref_name, ref_year, layer)
+        # print(data)
         fed_avg = self.retrieve_fed_avg(var_name, var_year, ref_name, ref_year, layer)
         ref_share = self.retrieve_ref_share(ref_name, ref_year, layer)
         # print(type(data[0][1]))
+        # print (fed_avg)
+        # print(ref_share)
 
         Standard_deviation = 0
         for i in range(0, len(data)):
+            # print (len(data))
+            # print(i)
             # print(ref_share)
-            # print (((data[i][1])-(fed_avg))**2)
-            Standard_deviation += (((data[i][1]) - (fed_avg)) ** 2) * (ref_share[i])
+            # print (data[i][1])
+            Standard_deviation += (((float(data[i][1])) - (float(fed_avg))) ** 2) * float((ref_share[i]))
                 # print ( (((data[i][1])-(fed_avg))**2)*(ref_share[i]))
 
         Standard_deviation = math.sqrt(Standard_deviation / len(data))
-
+        # print (Standard_deviation)
+        # print ("THIS IS THE STANDARD DEVIATION")
         # print(time.clock() - start_time, "seconds to retrieve only the standard deviation")
 
         return (Standard_deviation)
@@ -202,6 +224,10 @@ class retrieve_db_data:
         # print("scale_HIB")
         ''' this function standardises and scales a dataset according to GRW methodology, where higher values
             result in a higher score, this formula currently returns a tuple list'''
+
+        # print(fed_avg)
+        # print(data)
+        # print(SD)
         Sfactor_positive = 100
         Sfactor_scaling = 15
         tuple = ()
@@ -216,6 +242,10 @@ class retrieve_db_data:
         # print("scale_NIB")
         ''' this function standardises and scales a dataset according to GRW methodology, where lower values
             result in a higher score, this formula currently returns a tuple list'''
+        # print(data)
+        # print(fed_avg)
+        # print(SD)
+
         Sfactor_positive = 100
         Sfactor_negative = 200
         Sfactor_scaling = 15
@@ -261,7 +291,8 @@ class retrieve_db_data:
                                     SELECT COLUMN_NAME 
                                         FROM information_schema.columns 
                                         WHERE table_schema = "mydb" 
-                                        AND table_name = '%s';""" % (table_name))
+                                        AND table_name = '%s'
+                                        SORT BY COLUMN_NAME ASC;""" % (table_name))
         try:
             # executed quiery and closes cursor
             cursor = mySQLconnection.cursor()
@@ -285,6 +316,21 @@ class retrieve_db_data:
             output = [e for e in output if e not in ('KENNZIFFER', 'RAUMEINHEIT', 'AGGREGAT', 'YEAR')]
 
             return output
+
+
+    def clean_col_names(self, data):
+        '''
+        this functions "cleans" a list of variables and removes all _400 years (this function is used by views.py to
+        to make sure _400 years do not appear as an option in the selector)
+        :param data: takes a list of all column names as an input
+        :return: returns the same list after removing all items in the list that have a parameter of _400
+        '''
+        output =[]
+        for x in data:
+            if x[-4:] != "_400":
+                output.append(x)
+        return output
+
 
 
     def retrieve_col_years(self, table_name):
@@ -382,7 +428,7 @@ class retrieve_db_data:
             for (x,) in mysql_result:
                 distinct_years.append(x)
             result.append(distinct_years)
-            print(distinct_years)
+            # print(distinct_years)
         cursor.close()
         self.pool.release(mySQLconnection)
         # print(time.clock()-start_time)
@@ -466,14 +512,14 @@ class retrieve_db_data:
          # convert list into string
             col_name_statement = ', '.join(map(str, col_name_statement))
 
-            print(col_name_statement)
-            print(col_value_statement)
+            # print(col_name_statement)
+            # print(col_value_statement)
 
             ## now insert all of these into mysql table:
             sql = (""" INSERT INTO `%s`
                         (%s)
                         VALUES %s; """ % (table_name, col_name_statement, col_value_statement))
-            print(sql)
+            # print(sql)
             cursor.execute(sql)
             mySQLconnection.commit()
 
@@ -481,7 +527,7 @@ class retrieve_db_data:
 
         self.pool.release(mySQLconnection)
 
-        return ("all values added to database")
+        return print("Alle Werte in Datenbank geschrieben. Prozess erfolgreich abgeschlossen.")
 
 
 
@@ -534,18 +580,47 @@ class retrieve_db_data:
                     if counter != 0:
                         temp.append(y)
                     counter += 1
+                temp.reverse()
                 filtered_dict[x[0]] = temp
 
 
 
 
 
-            #     print(record)
-            #     filtered_dict.append(record)
-
-            #     record = {k: v for k, v in x.items() if v is not None}
 
             return filtered_dict
+
+
+
+
+    def retrieve_names_from_db(self, layer):
+        mySQLconnection = self.pool.get_conn()
+        cursor = mySQLconnection.cursor()
+
+        ## this returns the name by layer
+        result = []
+        layer_name = layer + '_Name'
+        # print(layer)
+
+
+        sql_select_Query = (""" SELECT DISTINCT `%s`, `%s` FROM `mapping`; """ % (layer_name, layer))
+        cursor.execute(sql_select_Query)
+        result = cursor.fetchall()
+
+        cursor.close()
+        self.pool.release(mySQLconnection)
+
+        # print (result)
+        output =[]
+        temp = []
+        for (x,y) in result:
+            temp.append(x)
+            temp.append(y)
+            output.append(temp)
+            temp = []
+        return output
+
+
 
 #
 # # #TODO: we should think about whether the setup.py should also go in here or not or rather, whether it should also use a pool (I'd say. yes. its much faster)
@@ -557,7 +632,8 @@ class retrieve_db_data:
 #                                         cursorclass=pymysql.cursors.Cursor)
 #
 #
-# # test = retrieve_year_dict_from_db(pool).
+# test = retrieve_db_data(pool).retrieve_names_from_db("ROR11")
+# print(test)
 #
 #
 # retrieve_db_data(pool).insert_all_years_into_db()

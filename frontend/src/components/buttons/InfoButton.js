@@ -8,7 +8,8 @@ import {connect} from 'react-redux';
  * @extends {Component}
  */
 class InfoButton extends Component {
-    closeInfo = () => {
+   
+	closeInfo = () => {
       this.props.dispatch({type: 'INFO'});
     }
 
@@ -20,7 +21,13 @@ class InfoButton extends Component {
      */
     render() {
       return (
-        <button onClick={this.closeInfo.bind(this)}>Infos</button>
+		  <a className="button is-dark is-outlined is-large" onClick={this.closeInfo.bind(this)}>
+    			<span className="icon">
+     				 <i className="far fa-question-circle"></i>
+    					</span>
+   					 {/* <span>Info</span> */}
+  			</a>
+
       );
     }
 }

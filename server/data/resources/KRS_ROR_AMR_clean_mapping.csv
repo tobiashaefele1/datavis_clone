@@ -1,403 +1,403 @@
-﻿KRS_15,AMR_12,AMR_20,ROR11,Bundesland_ID,AMR_15,Bund,Ost_West
-01001,004,001,0102,01,004,1,1
-01002,006,002,0101,01,006,1,1
-01003,005,003,0103,01,005,1,1
-01004,006,004,0101,01,006,1,1
-01051,002,005,0105,01,002,1,1
-01053,007,009,0104,01,007,1,1
-01054,001,006,0102,01,001,1,1
-01055,005,003,0103,01,005,1,1
-01056,008,007,0104,01,008,1,1
-01057,006,002,0101,01,006,1,1
-01058,006,002,0101,01,006,1,1
-01059,004,001,0102,01,004,1,1
-01060,008,008,0104,01,008,1,1
-01061,003,007,0105,01,003,1,1
-01062,008,009,0104,01,008,1,1
-02000,008,010,0201,02,008,1,1
-03101,009,011,0301,03,009,1,1
-03102,010,011,0301,03,010,1,1
-03103,011,011,0301,03,011,1,1
-03151,011,011,0301,03,011,1,1
-03152,012,013,0305,03,012,1,1
-03153,013,012,0301,03,013,1,1
-03154,014,011,0301,03,014,1,1
-03155,015,013,0305,03,015,1,1
-03156,016,013,0305,03,012,1,1
-03157,009,011,0301,03,009,1,1
-03158,009,011,0301,03,009,1,1
-03241,017,014,0307,03,017,1,1
-03251,018,015,0302,03,018,1,1
-03252,019,016,0308,03,019,1,1
-03254,020,014,0308,03,020,1,1
-03255,021,017,0305,03,021,1,1
-03256,022,018,0307,03,022,1,1
-03257,023,014,0307,03,023,1,1
-03351,024,014,0313,03,024,1,1
-03352,043,019,0303,03,043,1,1
-03353,008,020,0306,03,008,1,1
-03354,029,021,0309,03,029,1,1
-03355,025,022,0309,03,025,1,1
-03356,042,023,0302,03,042,1,1
-03357,026,024,0306,03,026,1,1
-03358,027,025,0313,03,027,1,1
-03359,028,026,0306,03,028,1,1
-03360,029,027,0309,03,029,1,1
-03361,030,028,0302,03,030,1,1
-03401,042,029,0302,03,042,1,1
-03402,031,030,0312,03,031,1,1
-03403,033,031,0310,03,033,1,1
-03404,034,032,0311,03,034,1,1
-03405,035,033,0312,03,035,1,1
-03451,032,031,0310,03,032,1,1
-03452,031,030,0312,03,031,1,1
-03453,036,034,0310,03,036,1,1
-03454,037,035,0304,03,037,1,1
-03455,035,033,0312,03,035,1,1
-03456,038,035,0304,03,038,1,1
-03457,039,036,0312,03,039,1,1
-03458,033,031,0310,03,033,1,1
-03459,034,032,0311,03,034,1,1
-03460,040,037,0311,03,040,1,1
-03461,041,038,0303,03,041,1,1
-03462,035,039,0312,03,035,1,1
-04011,042,040,0401,04,042,1,1
-04012,043,041,0303,04,043,1,1
-05111,045,042,0508,05,045,1,1
-05112,046,043,0507,05,046,1,1
-05113,047,044,0507,05,047,1,1
-05114,048,042,0508,05,048,1,1
-05116,050,045,0508,05,050,1,1
-05117,047,044,0507,05,047,1,1
-05119,046,043,0507,05,046,1,1
-05120,054,046,0508,05,054,1,1
-05122,052,042,0508,05,052,1,1
-05124,052,046,0508,05,052,1,1
-05154,055,047,0507,05,055,1,1
-05158,045,042,0508,05,045,1,1
-05162,045,042,0508,05,045,1,1
-05166,049,045,0508,05,049,1,1
-05170,046,043,0507,05,046,1,1
-05314,059,048,0505,05,059,1,1
-05315,057,048,0510,05,057,1,1
-05316,058,048,0510,05,058,1,1
-05334,056,049,0501,05,056,1,1
-05358,060,049,0501,05,060,1,1
-05362,057,048,0510,05,057,1,1
-05366,061,048,0501,05,061,1,1
-05370,051,049,0501,05,051,1,1
-05374,062,050,0510,05,062,1,1
-05378,057,048,0510,05,057,1,1
-05382,059,048,0505,05,059,1,1
-05512,063,044,0509,05,063,1,1
-05513,063,044,0509,05,063,1,1
-05515,064,051,0511,05,064,1,1
-05554,065,052,0511,05,065,1,1
-05558,064,051,0511,05,064,1,1
-05562,063,053,0509,05,063,1,1
-05566,066,051,0511,05,066,1,1
-05570,064,051,0511,05,064,1,1
-05711,067,054,0503,05,067,1,1
-05754,068,054,0503,05,068,1,1
-05758,067,055,0503,05,067,1,1
-05762,044,056,0512,05,044,1,1
-05766,069,054,0503,05,069,1,1
-05770,070,055,0503,05,070,1,1
-05774,071,056,0512,05,071,1,1
-05911,072,057,0504,05,072,1,1
-05913,073,058,0506,05,073,1,1
-05914,074,059,0504,05,074,1,1
-05915,073,058,0506,05,073,1,1
-05916,063,057,0504,05,063,1,1
-05954,053,059,0504,05,053,1,1
-05958,076,060,0502,05,076,1,1
-05962,075,061,0504,05,075,1,1
-05966,078,062,0513,05,078,1,1
-05970,077,063,0513,05,077,1,1
-05974,079,064,0502,05,079,1,1
-05978,073,058,0506,05,073,1,1
-06411,094,065,0605,06,094,1,1
-06412,092,065,0604,06,092,1,1
-06413,092,065,0604,06,092,1,1
-06414,091,066,0604,06,091,1,1
-06431,130,067,0605,06,130,1,1
-06432,094,065,0605,06,094,1,1
-06433,092,065,0605,06,092,1,1
-06434,092,065,0604,06,092,1,1
-06435,093,065,0604,06,093,1,1
-06436,092,065,0604,06,092,1,1
-06437,095,068,0605,06,095,1,1
-06438,092,065,0604,06,092,1,1
-06439,091,066,0604,06,091,1,1
-06440,092,065,0604,06,092,1,1
-06531,089,069,0601,06,089,1,1
-06532,088,069,0601,06,088,1,1
-06533,090,070,0601,06,090,1,1
-06534,085,071,0601,06,085,1,1
-06535,086,072,0601,06,086,1,1
-06611,081,073,0602,06,081,1,1
-06631,087,074,0603,06,087,1,1
-06632,084,075,0603,06,084,1,1
-06633,081,073,0602,06,081,1,1
-06634,083,073,0602,06,083,1,1
-06635,080,076,0602,06,080,1,1
-06636,082,077,0602,06,082,1,1
-07111,100,078,0701,07,100,1,1
-07131,099,079,0701,07,099,1,1
-07132,096,080,0701,07,096,1,1
-07133,101,091,0702,07,101,1,1
-07134,102,081,0702,07,102,1,1
-07135,103,078,0701,07,103,1,1
-07137,100,078,0701,07,100,1,1
-07138,098,082,0701,07,098,1,1
-07140,104,083,0701,07,104,1,1
-07141,100,078,0701,07,100,1,1
-07143,097,084,0701,07,097,1,1
-07211,105,085,0704,07,105,1,1
-07231,106,086,0704,07,106,1,1
-07232,108,087,0704,07,108,1,1
-07233,107,088,0704,07,107,1,1
-07235,105,085,0704,07,105,1,1
-07311,114,090,0703,07,114,1,1
-07312,109,089,0705,07,109,1,1
-07313,110,096,0703,07,110,1,1
-07314,114,090,0703,07,114,1,1
-07315,111,091,0702,07,111,1,1
-07316,114,090,0703,07,114,1,1
-07317,113,092,0705,07,113,1,1
-07318,114,090,0703,07,114,1,1
-07319,112,093,0702,07,112,1,1
-07320,113,094,0705,07,113,1,1
-07331,112,091,0702,07,112,1,1
-07332,114,090,0703,07,114,1,1
-07333,109,095,0705,07,109,1,1
-07334,115,096,0703,07,115,1,1
-07335,109,089,0705,07,109,1,1
-07336,109,089,0705,07,109,1,1
-07337,110,096,0703,07,110,1,1
-07338,114,090,0703,07,114,1,1
-07339,111,091,0702,07,111,1,1
-07340,113,092,0705,07,113,1,1
-08111,120,097,0810,08,120,1,1
-08115,120,097,0810,08,120,1,1
-08116,120,097,0810,08,120,1,1
-08117,121,097,0810,08,121,1,1
-08118,120,097,0810,08,120,1,1
-08119,120,097,0810,08,120,1,1
-08121,122,098,0803,08,122,1,1
-08125,122,098,0803,08,122,1,1
-08126,123,099,0803,08,123,1,1
-08127,123,100,0803,08,123,1,1
-08128,124,101,0803,08,124,1,1
-08135,125,102,0808,08,125,1,1
-08136,126,103,0808,08,126,1,1
-08211,127,104,0805,08,127,1,1
-08212,128,105,0805,08,128,1,1
-08215,128,105,0805,08,128,1,1
-08216,127,104,0805,08,127,1,1
-08221,129,106,0812,08,129,1,1
-08222,130,106,0812,08,130,1,1
-08225,131,098,0812,08,131,1,1
-08226,129,106,0812,08,129,1,1
-08231,132,107,0807,08,132,1,1
-08235,133,108,0807,08,133,1,1
-08236,132,107,0807,08,132,1,1
-08237,134,109,0807,08,134,1,1
-08311,135,110,0811,08,135,1,1
-08315,135,110,0811,08,135,1,1
-08316,135,110,0811,08,135,1,1
-08317,136,111,0811,08,136,1,1
-08325,137,112,0809,08,137,1,1
-08326,138,113,0809,08,138,1,1
-08327,139,114,0809,08,139,1,1
-08335,140,115,0804,08,140,1,1
-08336,141,116,0804,08,141,1,1
-08337,142,117,0804,08,142,1,1
-08415,143,118,0806,08,143,1,1
-08416,143,118,0806,08,143,1,1
-08417,144,119,0806,08,144,1,1
-08421,145,120,0802,08,145,1,1
-08425,145,120,0802,08,145,1,1
-08426,146,121,0802,08,146,1,1
-08435,147,122,0801,08,147,1,1
-08436,148,123,0801,08,148,1,1
-08437,149,124,0801,08,149,1,1
-09161,160,125,0907,09,160,1,1
-09162,159,126,0910,09,159,1,1
-09163,154,127,0916,09,154,1,1
-09171,152,128,0916,09,152,1,1
-09172,150,129,0916,09,150,1,1
-09173,155,126,0913,09,155,1,1
-09174,159,126,0910,09,159,1,1
-09175,159,130,0910,09,159,1,1
-09176,160,125,0907,09,160,1,1
-09177,159,126,0910,09,159,1,1
-09178,159,126,0910,09,159,1,1
-09179,159,126,0910,09,159,1,1
-09180,156,131,0913,09,156,1,1
-09181,158,132,0910,09,158,1,1
-09182,155,133,0913,09,155,1,1
-09183,153,134,0916,09,153,1,1
-09184,159,126,0910,09,159,1,1
-09185,160,125,0907,09,160,1,1
-09186,160,125,0907,09,160,1,1
-09187,154,127,0916,09,154,1,1
-09188,159,126,0910,09,159,1,1
-09189,151,135,0916,09,151,1,1
-09190,157,136,0913,09,157,1,1
-09261,162,137,0908,09,162,1,1
-09262,165,138,0905,09,165,1,1
-09263,169,139,0905,09,169,1,1
-09271,168,140,0905,09,168,1,1
-09272,166,138,0905,09,166,1,1
-09273,161,143,0915,09,161,1,1
-09274,162,137,0908,09,162,1,1
-09275,165,138,0905,09,165,1,1
-09276,167,140,0905,09,167,1,1
-09277,164,128,0908,09,164,1,1
-09278,169,139,0905,09,169,1,1
-09279,163,141,0908,09,163,1,1
-09361,173,142,0914,09,173,1,1
-09362,171,143,0915,09,171,1,1
-09363,175,144,0914,09,175,1,1
-09371,173,142,0914,09,173,1,1
-09372,170,145,0915,09,170,1,1
-09373,174,146,0915,09,174,1,1
-09374,175,144,0914,09,175,1,1
-09375,171,143,0915,09,171,1,1
-09376,172,143,0914,09,172,1,1
-09377,176,153,0914,09,176,1,1
-09461,179,147,0912,09,179,1,1
-09462,178,148,0911,09,178,1,1
-09463,182,149,0912,09,182,1,1
-09464,177,150,0911,09,177,1,1
-09471,179,147,0912,09,179,1,1
-09472,178,148,0911,09,178,1,1
-09473,182,149,0912,09,182,1,1
-09474,184,155,0912,09,184,1,1
-09475,177,150,0911,09,177,1,1
-09476,181,151,0912,09,181,1,1
-09477,180,148,0911,09,180,1,1
-09478,183,152,0912,09,183,1,1
-09479,176,153,0911,09,176,1,1
-09561,187,154,0917,09,187,1,1
-09562,184,155,0906,09,184,1,1
-09563,185,155,0906,09,185,1,1
-09564,185,155,0906,09,185,1,1
-09565,185,155,0906,09,185,1,1
-09571,187,154,0917,09,187,1,1
-09572,184,155,0906,09,184,1,1
-09573,185,155,0906,09,185,1,1
-09574,185,155,0906,09,185,1,1
-09575,188,156,0917,09,188,1,1
-09576,185,155,0906,09,185,1,1
-09577,186,157,0917,09,186,1,1
-09661,196,158,0903,09,196,1,1
-09662,191,159,0909,09,191,1,1
-09663,190,160,0918,09,190,1,1
-09671,196,158,0903,09,196,1,1
-09672,194,159,0909,09,194,1,1
-09673,193,161,0909,09,193,1,1
-09674,192,159,0909,09,192,1,1
-09675,189,160,0918,09,189,1,1
-09676,196,158,0903,09,196,1,1
-09677,195,160,0918,09,195,1,1
-09678,191,159,0909,09,191,1,1
-09679,190,160,0918,09,190,1,1
-09761,200,162,0902,09,200,1,1
-09762,202,163,0901,09,202,1,1
-09763,203,164,0901,09,203,1,1
-09764,201,165,0904,09,201,1,1
-09771,200,162,0902,09,200,1,1
-09772,200,162,0902,09,200,1,1
-09773,198,166,0902,09,198,1,1
-09774,199,167,0904,09,199,1,1
-09775,145,168,0904,09,145,1,1
-09776,204,169,0901,09,204,1,1
-09777,202,163,0901,09,202,1,1
-09778,201,165,0904,09,201,1,1
-09779,197,170,0902,09,197,1,1
-09780,203,164,0901,09,203,1,1
-10041,118,171,1001,10,118,1,1
-10042,116,171,1001,10,116,1,1
-10043,118,171,1001,10,118,1,1
-10044,118,171,1001,10,118,1,1
-10045,119,171,1001,10,119,1,1
-10046,117,171,1001,10,117,1,1
-11000,205,172,1101,11,205,1,2
-12051,206,173,1201,12,206,1,3
-12052,207,174,1202,12,207,1,3
-12053,208,183,1203,12,208,1,3
-12054,206,175,1201,12,206,1,3
-12060,209,176,1205,12,209,1,3
-12061,210,177,1202,12,210,1,3
-12062,211,178,1202,12,211,1,3
-12063,206,179,1201,12,206,1,3
-12064,208,180,1203,12,208,1,3
-12065,212,181,1204,12,212,1,3
-12066,207,182,1202,12,207,1,3
-12067,208,183,1203,12,208,1,3
-12068,213,184,1204,12,213,1,3
-12069,206,185,1201,12,206,1,3
-12070,214,186,1204,12,214,1,3
-12071,207,174,1202,12,207,1,3
-12072,210,187,1201,12,210,1,3
-12073,215,188,1205,12,215,1,3
-13003,216,189,1302,13,216,1,3
-13004,217,190,1304,13,217,1,3
-13071,218,191,1301,13,218,1,3
-13072,216,189,1302,13,216,1,3
-13073,219,192,1303,13,219,1,3
-13074,217,190,1304,13,217,1,3
-13075,220,193,1303,13,220,1,3
-13076,217,190,1304,13,217,1,3
-14511,221,194,1403,14,221,1,3
-14521,222,194,1403,14,222,1,3
-14522,223,194,1403,14,223,1,3
-14523,224,195,1403,14,224,1,3
-14524,225,196,1403,14,225,1,3
-14612,226,197,1401,14,226,1,3
-14625,227,197,1402,14,227,1,3
-14626,228,198,1402,14,228,1,3
-14627,229,197,1401,14,229,1,3
-14628,226,197,1401,14,226,1,3
-14713,230,199,1404,14,230,1,3
-14729,230,199,1404,14,230,1,3
-14730,230,199,1404,14,230,1,3
-15001,231,200,1502,15,231,1,3
-15002,232,201,1503,15,232,1,3
-15003,233,202,1504,15,233,1,3
-15081,234,203,1501,15,234,1,3
-15082,235,204,1502,15,235,1,3
-15083,233,202,1504,15,233,1,3
-15084,236,205,1503,15,236,1,3
-15085,237,206,1504,15,237,1,3
-15086,233,202,1504,15,233,1,3
-15087,238,207,1503,15,238,1,3
-15088,232,201,1503,15,232,1,3
-15089,239,202,1504,15,239,1,3
-15090,240,208,1501,15,240,1,3
-15091,241,209,1502,15,241,1,3
-16051,242,210,1601,16,242,1,3
-16052,243,211,1603,16,243,1,3
-16053,244,212,1603,16,244,1,3
-16054,245,218,1604,16,245,1,3
-16055,246,210,1601,16,246,1,3
-16056,247,213,1604,16,247,1,3
-16061,248,214,1602,16,248,1,3
-16062,249,215,1602,16,249,1,3
-16063,247,213,1604,16,247,1,3
-16064,250,216,1602,16,250,1,3
-16065,251,217,1602,16,251,1,3
-16066,252,218,1604,16,252,1,3
-16067,253,210,1601,16,253,1,3
-16068,242,210,1601,16,242,1,3
-16069,245,219,1604,16,245,1,3
-16070,254,210,1601,16,254,1,3
-16071,246,210,1601,16,246,1,3
-16072,255,220,1604,16,255,1,3
-16073,256,221,1603,16,256,1,3
-16074,244,212,1603,16,244,1,3
-16075,257,222,1603,16,257,1,3
-16076,243,211,1603,16,243,1,3
-16077,258,223,1603,16,258,1,3
+﻿KRS_15,AMR_12,AMR_20,ROR11,Bundesland_ID,AMR_15,Bund,Ost_West,ROR11_Name,KRS_15_Name,AMR_12_Name,Bundesland_ID_Name,AMR_20_Name,AMR_15_Name
+01001,004,001,0102,01,004,1,1,Schleswig-Holstein Nord,"Flensburg, Stadt",Flensburg,Schleswig-Holstein,n/a,Flensburg
+01002,006,002,0101,01,006,1,1,Schleswig-Holstein Mitte,"Kiel, Stadt",Kiel,Schleswig-Holstein,n/a,Kiel
+01003,005,003,0103,01,005,1,1,Schleswig-Holstein Ost,"Lübeck, Stadt",Lübeck,Schleswig-Holstein,n/a,Lübeck
+01004,006,004,0101,01,006,1,1,Schleswig-Holstein Mitte,"Neumünster, Stadt",Kiel,Schleswig-Holstein,n/a,Kiel
+01051,002,005,0105,01,002,1,1,Schleswig-Holstein Süd-West,Dithmarschen,Heide,Schleswig-Holstein,n/a,Heide
+01053,007,009,0104,01,007,1,1,Schleswig-Holstein Süd,Herzogtum Lauenburg,Ratzeburg,Schleswig-Holstein,n/a,Ratzeburg
+01054,001,006,0102,01,001,1,1,Schleswig-Holstein Nord,Nordfriesland,Husum,Schleswig-Holstein,n/a,Husum
+01055,005,003,0103,01,005,1,1,Schleswig-Holstein Ost,Ostholstein,Lübeck,Schleswig-Holstein,n/a,Lübeck
+01056,008,007,0104,01,008,1,1,Schleswig-Holstein Süd,Pinneberg,Hamburg,Schleswig-Holstein,n/a,Hamburg
+01057,006,002,0101,01,006,1,1,Schleswig-Holstein Mitte,Plön,Kiel,Schleswig-Holstein,n/a,Kiel
+01058,006,002,0101,01,006,1,1,Schleswig-Holstein Mitte,Rendsburg-Eckernförde,Kiel,Schleswig-Holstein,n/a,Kiel
+01059,004,001,0102,01,004,1,1,Schleswig-Holstein Nord,Schleswig-Flensburg,Flensburg,Schleswig-Holstein,n/a,Flensburg
+01060,008,008,0104,01,008,1,1,Schleswig-Holstein Süd,Segeberg,Hamburg,Schleswig-Holstein,n/a,Hamburg
+01061,003,007,0105,01,003,1,1,Schleswig-Holstein Süd-West,Steinburg,Itzehoe,Schleswig-Holstein,n/a,Itzehoe
+01062,008,009,0104,01,008,1,1,Schleswig-Holstein Süd,Stormarn,Hamburg,Schleswig-Holstein,n/a,Hamburg
+02000,008,010,0201,02,008,1,1,Hamburg,"Hamburg, Stadt",Hamburg,Hamburg,n/a,Hamburg
+03101,009,011,0301,03,009,1,1,Braunschweig,"Braunschweig, Stadt",Braunschweig,Niedersachsen,n/a,Braunschweig
+03102,010,011,0301,03,010,1,1,Braunschweig,"Salzgitter, Stadt",Salzgitter,Niedersachsen,n/a,Salzgitter
+03103,011,011,0301,03,011,1,1,Braunschweig,"Wolfsburg, Stadt",Wolfsburg,Niedersachsen,n/a,Wolfsburg
+03151,011,011,0301,03,011,1,1,Braunschweig,Gifhorn,Wolfsburg,Niedersachsen,n/a,Wolfsburg
+03152,012,013,0305,03,012,1,1,Göttingen,Göttingen,Göttingen,Niedersachsen,n/a,Göttingen
+03153,013,012,0301,03,013,1,1,Braunschweig,Goslar,Goslar,Niedersachsen,n/a,Goslar
+03154,014,011,0301,03,014,1,1,Braunschweig,Helmstedt,Helmstedt,Niedersachsen,n/a,Helmstedt
+03155,015,013,0305,03,015,1,1,Göttingen,Northeim,Einbeck,Niedersachsen,n/a,Einbeck
+03156,016,013,0305,03,012,1,1,Göttingen,Osterode am Harz,Osterode,Niedersachsen,n/a,Göttingen
+03157,009,011,0301,03,009,1,1,Braunschweig,Peine,Braunschweig,Niedersachsen,n/a,Braunschweig
+03158,009,011,0301,03,009,1,1,Braunschweig,Wolfenbüttel,Braunschweig,Niedersachsen,n/a,Braunschweig
+03241,017,014,0307,03,017,1,1,Hannover,Region Hannover,Hannover,Niedersachsen,n/a,Hannover
+03251,018,015,0302,03,018,1,1,Bremen-Umland,Diepholz,Sulingen,Niedersachsen,n/a,Sulingen
+03252,019,016,0308,03,019,1,1,Hildesheim,Hameln-Pyrmont,Hameln,Niedersachsen,n/a,Hameln
+03254,020,014,0308,03,020,1,1,Hildesheim,Hildesheim,Hildesheim,Niedersachsen,n/a,Hildesheim
+03255,021,017,0305,03,021,1,1,Göttingen,Holzminden,Holzminden,Niedersachsen,n/a,Holzminden
+03256,022,018,0307,03,022,1,1,Hannover,Nienburg (Weser),Nienburg,Niedersachsen,n/a,Nienburg
+03257,023,014,0307,03,023,1,1,Hannover,Schaumburg,Stadthagen,Niedersachsen,n/a,Stadthagen
+03351,024,014,0313,03,024,1,1,Südheide,Celle,Celle,Niedersachsen,n/a,Celle
+03352,043,019,0303,03,043,1,1,Bremerhaven,Cuxhaven,Bremerhaven,Niedersachsen,n/a,Bremerhaven
+03353,008,020,0306,03,008,1,1,Hamburg-Umland-Süd,Harburg,Hamburg,Niedersachsen,n/a,Hamburg
+03354,029,021,0309,03,029,1,1,Lüneburg,Lüchow-Dannenberg,Uelzen,Niedersachsen,n/a,Uelzen
+03355,025,022,0309,03,025,1,1,Lüneburg,Lüneburg,Lüneburg,Niedersachsen,n/a,Lüneburg
+03356,042,023,0302,03,042,1,1,Bremen-Umland,Osterholz,Bremen,Niedersachsen,n/a,Bremen
+03357,026,024,0306,03,026,1,1,Hamburg-Umland-Süd,Rotenburg (Wümme),Zeven,Niedersachsen,n/a,Zeven
+03358,027,025,0313,03,027,1,1,Südheide,Heidekreis,Soltau,Niedersachsen,n/a,Soltau
+03359,028,026,0306,03,028,1,1,Hamburg-Umland-Süd,Stade,Stade,Niedersachsen,n/a,Stade
+03360,029,027,0309,03,029,1,1,Lüneburg,Uelzen,Uelzen,Niedersachsen,n/a,Uelzen
+03361,030,028,0302,03,030,1,1,Bremen-Umland,Verden,Verden,Niedersachsen,n/a,Verden
+03401,042,029,0302,03,042,1,1,Bremen-Umland,"Delmenhorst, Stadt",Bremen,Niedersachsen,n/a,Bremen
+03402,031,030,0312,03,031,1,1,Ost-Friesland,"Emden, Stadt",Emden,Niedersachsen,n/a,Emden
+03403,033,031,0310,03,033,1,1,Oldenburg,"Oldenburg (Oldenburg), Stadt",Oldenburg,Niedersachsen,n/a,Oldenburg
+03404,034,032,0311,03,034,1,1,Osnabrück,"Osnabrück, Stadt",Osnabrück,Niedersachsen,n/a,Osnabrück
+03405,035,033,0312,03,035,1,1,Ost-Friesland,"Wilhelmshaven, Stadt",Wilhelmshaven,Niedersachsen,n/a,Wilhelmshaven
+03451,032,031,0310,03,032,1,1,Oldenburg,Ammerland,Westerstede,Niedersachsen,n/a,Westerstede
+03452,031,030,0312,03,031,1,1,Ost-Friesland,Aurich,Emden,Niedersachsen,n/a,Emden
+03453,036,034,0310,03,036,1,1,Oldenburg,Cloppenburg,Cloppenburg,Niedersachsen,n/a,Cloppenburg
+03454,037,035,0304,03,037,1,1,Emsland,Emsland,Lingen,Niedersachsen,n/a,Lingen
+03455,035,033,0312,03,035,1,1,Ost-Friesland,Friesland,Wilhelmshaven,Niedersachsen,n/a,Wilhelmshaven
+03456,038,035,0304,03,038,1,1,Emsland,Grafschaft Bentheim,Nordhorn,Niedersachsen,n/a,Nordhorn
+03457,039,036,0312,03,039,1,1,Ost-Friesland,Leer,Leer,Niedersachsen,n/a,Leer
+03458,033,031,0310,03,033,1,1,Oldenburg,Oldenburg,Oldenburg,Niedersachsen,n/a,Oldenburg
+03459,034,032,0311,03,034,1,1,Osnabrück,Osnabrück,Osnabrück,Niedersachsen,n/a,Osnabrück
+03460,040,037,0311,03,040,1,1,Osnabrück,Vechta,Vechta,Niedersachsen,n/a,Vechta
+03461,041,038,0303,03,041,1,1,Bremerhaven,Wesermarsch,Nordenham,Niedersachsen,n/a,Nordenham
+03462,035,039,0312,03,035,1,1,Ost-Friesland,Wittmund,Wilhelmshaven,Niedersachsen,n/a,Wilhelmshaven
+04011,042,040,0401,04,042,1,1,Bremen,"Bremen, Stadt",Bremen,Bremen,n/a,Bremen
+04012,043,041,0303,04,043,1,1,Bremerhaven,"Bremerhaven, Stadt",Bremerhaven,Bremen,n/a,Bremerhaven
+05111,045,042,0508,05,045,1,1,Düsseldorf,"Düsseldorf, Stadt",Düsseldorf,Nordrhein-Westfalen,n/a,Düsseldorf
+05112,046,043,0507,05,046,1,1,Duisburg/Essen,"Duisburg, Stadt",Duisburg,Nordrhein-Westfalen,n/a,Duisburg
+05113,047,044,0507,05,047,1,1,Duisburg/Essen,"Essen, Stadt",Essen,Nordrhein-Westfalen,n/a,Essen
+05114,048,042,0508,05,048,1,1,Düsseldorf,"Krefeld, Stadt",Krefeld,Nordrhein-Westfalen,n/a,Krefeld
+05116,050,045,0508,05,050,1,1,Düsseldorf,"Mönchengladbach, Stadt",Mönchengladbach,Nordrhein-Westfalen,n/a,Mönchengladbach
+05117,047,044,0507,05,047,1,1,Duisburg/Essen,"Mülheim an der Ruhr, Stadt",Essen,Nordrhein-Westfalen,n/a,Essen
+05119,046,043,0507,05,046,1,1,Duisburg/Essen,"Oberhausen, Stadt",Duisburg,Nordrhein-Westfalen,n/a,Duisburg
+05120,054,046,0508,05,054,1,1,Düsseldorf,"Remscheid, Stadt",Remscheid,Nordrhein-Westfalen,n/a,Remscheid
+05122,052,042,0508,05,052,1,1,Düsseldorf,"Solingen, Stadt",Wuppertal,Nordrhein-Westfalen,n/a,Wuppertal
+05124,052,046,0508,05,052,1,1,Düsseldorf,"Wuppertal, Stadt",Wuppertal,Nordrhein-Westfalen,n/a,Wuppertal
+05154,055,047,0507,05,055,1,1,Duisburg/Essen,Kleve,Kleve,Nordrhein-Westfalen,n/a,Kleve
+05158,045,042,0508,05,045,1,1,Düsseldorf,Mettmann,Düsseldorf,Nordrhein-Westfalen,n/a,Düsseldorf
+05162,045,042,0508,05,045,1,1,Düsseldorf,Rhein-Kreis Neuss,Düsseldorf,Nordrhein-Westfalen,n/a,Düsseldorf
+05166,049,045,0508,05,049,1,1,Düsseldorf,Viersen,Viersen,Nordrhein-Westfalen,n/a,Viersen
+05170,046,043,0507,05,046,1,1,Duisburg/Essen,Wesel,Duisburg,Nordrhein-Westfalen,n/a,Duisburg
+05314,059,048,0505,05,059,1,1,Bonn,"Bonn, Stadt",Bonn,Nordrhein-Westfalen,n/a,Bonn
+05315,057,048,0510,05,057,1,1,Köln,"Köln, Stadt",Köln,Nordrhein-Westfalen,n/a,Köln
+05316,058,048,0510,05,058,1,1,Köln,"Leverkusen, Stadt",Leverkusen,Nordrhein-Westfalen,n/a,Leverkusen
+05334,056,049,0501,05,056,1,1,Aachen,Städteregion Aachen,Aachen,Nordrhein-Westfalen,n/a,Aachen
+05358,060,049,0501,05,060,1,1,Aachen,Düren,Düren,Nordrhein-Westfalen,n/a,Düren
+05362,057,048,0510,05,057,1,1,Köln,Rhein-Erft-Kreis,Köln,Nordrhein-Westfalen,n/a,Köln
+05366,061,048,0501,05,061,1,1,Aachen,Euskirchen,Euskirchen,Nordrhein-Westfalen,n/a,Euskirchen
+05370,051,049,0501,05,051,1,1,Aachen,Heinsberg,Heinsberg,Nordrhein-Westfalen,n/a,Heinsberg
+05374,062,050,0510,05,062,1,1,Köln,Oberbergischer Kreis,Gummersbach,Nordrhein-Westfalen,n/a,Gummersbach
+05378,057,048,0510,05,057,1,1,Köln,Rheinisch-Bergischer Kreis,Köln,Nordrhein-Westfalen,n/a,Köln
+05382,059,048,0505,05,059,1,1,Bonn,Rhein-Sieg-Kreis,Bonn,Nordrhein-Westfalen,n/a,Bonn
+05512,063,044,0509,05,063,1,1,Emscher-Lippe,"Bottrop, Stadt",Gelsenkirchen,Nordrhein-Westfalen,n/a,Gelsenkirchen
+05513,063,044,0509,05,063,1,1,Emscher-Lippe,"Gelsenkirchen, Stadt",Gelsenkirchen,Nordrhein-Westfalen,n/a,Gelsenkirchen
+05515,064,051,0511,05,064,1,1,Münster,"Münster, Stadt",Münster,Nordrhein-Westfalen,n/a,Münster
+05554,065,052,0511,05,065,1,1,Münster,Borken,Borken,Nordrhein-Westfalen,n/a,Borken
+05558,064,051,0511,05,064,1,1,Münster,Coesfeld,Münster,Nordrhein-Westfalen,n/a,Münster
+05562,063,053,0509,05,063,1,1,Emscher-Lippe,Recklinghausen,Gelsenkirchen,Nordrhein-Westfalen,n/a,Gelsenkirchen
+05566,066,051,0511,05,066,1,1,Münster,Steinfurt,Steinfurt,Nordrhein-Westfalen,n/a,Steinfurt
+05570,064,051,0511,05,064,1,1,Münster,Warendorf,Münster,Nordrhein-Westfalen,n/a,Münster
+05711,067,054,0503,05,067,1,1,Bielefeld,"Bielefeld, Stadt",Bielefeld,Nordrhein-Westfalen,n/a,Bielefeld
+05754,068,054,0503,05,068,1,1,Bielefeld,Gütersloh,Gütersloh,Nordrhein-Westfalen,n/a,Gütersloh
+05758,067,055,0503,05,067,1,1,Bielefeld,Herford,Bielefeld,Nordrhein-Westfalen,n/a,Bielefeld
+05762,044,056,0512,05,044,1,1,Paderborn,Höxter,Höxter,Nordrhein-Westfalen,n/a,Höxter
+05766,069,054,0503,05,069,1,1,Bielefeld,Lippe,Detmold,Nordrhein-Westfalen,n/a,Detmold
+05770,070,055,0503,05,070,1,1,Bielefeld,Minden-Lübbecke,Minden,Nordrhein-Westfalen,n/a,Minden
+05774,071,056,0512,05,071,1,1,Paderborn,Paderborn,Paderborn,Nordrhein-Westfalen,n/a,Paderborn
+05911,072,057,0504,05,072,1,1,Bochum/Hagen,"Bochum, Stadt",Bochum,Nordrhein-Westfalen,n/a,Bochum
+05913,073,058,0506,05,073,1,1,Dortmund,"Dortmund, Stadt",Dortmund,Nordrhein-Westfalen,n/a,Dortmund
+05914,074,059,0504,05,074,1,1,Bochum/Hagen,"Hagen, Stadt",Hagen,Nordrhein-Westfalen,n/a,Hagen
+05915,073,058,0506,05,073,1,1,Dortmund,"Hamm, Stadt",Dortmund,Nordrhein-Westfalen,n/a,Dortmund
+05916,063,057,0504,05,063,1,1,Bochum/Hagen,"Herne, Stadt",Gelsenkirchen,Nordrhein-Westfalen,n/a,Gelsenkirchen
+05954,053,059,0504,05,053,1,1,Bochum/Hagen,Ennepe-Ruhr-Kreis,Schwelm,Nordrhein-Westfalen,n/a,Schwelm
+05958,076,060,0502,05,076,1,1,Arnsberg,Hochsauerlandkreis,Meschede,Nordrhein-Westfalen,n/a,Meschede
+05962,075,061,0504,05,075,1,1,Bochum/Hagen,Märkischer Kreis,Lüdenscheid,Nordrhein-Westfalen,n/a,Lüdenscheid
+05966,078,062,0513,05,078,1,1,Siegen,Olpe,Olpe,Nordrhein-Westfalen,n/a,Olpe
+05970,077,063,0513,05,077,1,1,Siegen,Siegen-Wittgenstein,Siegen,Nordrhein-Westfalen,n/a,Siegen
+05974,079,064,0502,05,079,1,1,Arnsberg,Soest,Soest,Nordrhein-Westfalen,n/a,Soest
+05978,073,058,0506,05,073,1,1,Dortmund,Unna,Dortmund,Nordrhein-Westfalen,n/a,Dortmund
+06411,094,065,0605,06,094,1,1,Starkenburg,"Darmstadt, Stadt",Darmstadt,Hessen,n/a,Darmstadt
+06412,092,065,0604,06,092,1,1,Rhein-Main,"Frankfurt am Main, Stadt",Frankfurt/Main,Hessen,n/a,Frankfurt/Main
+06413,092,065,0604,06,092,1,1,Rhein-Main,"Offenbach am Main, Stadt",Frankfurt/Main,Hessen,n/a,Frankfurt/Main
+06414,091,066,0604,06,091,1,1,Rhein-Main,"Wiesbaden, Stadt",Wiesbaden,Hessen,n/a,Wiesbaden
+06431,130,067,0605,06,130,1,1,Starkenburg,Bergstraße,Mannheim,Hessen,n/a,Mannheim
+06432,094,065,0605,06,094,1,1,Starkenburg,Darmstadt-Dieburg,Darmstadt,Hessen,n/a,Darmstadt
+06433,092,065,0605,06,092,1,1,Starkenburg,Groß-Gerau,Frankfurt/Main,Hessen,n/a,Frankfurt/Main
+06434,092,065,0604,06,092,1,1,Rhein-Main,Hochtaunuskreis,Frankfurt/Main,Hessen,n/a,Frankfurt/Main
+06435,093,065,0604,06,093,1,1,Rhein-Main,Main-Kinzig-Kreis,Hanau,Hessen,n/a,Hanau
+06436,092,065,0604,06,092,1,1,Rhein-Main,Main-Taunus-Kreis,Frankfurt/Main,Hessen,n/a,Frankfurt/Main
+06437,095,068,0605,06,095,1,1,Starkenburg,Odenwaldkreis,Erbach,Hessen,n/a,Erbach
+06438,092,065,0604,06,092,1,1,Rhein-Main,Offenbach,Frankfurt/Main,Hessen,n/a,Frankfurt/Main
+06439,091,066,0604,06,091,1,1,Rhein-Main,Rheingau-Taunus-Kreis,Wiesbaden,Hessen,n/a,Wiesbaden
+06440,092,065,0604,06,092,1,1,Rhein-Main,Wetteraukreis,Frankfurt/Main,Hessen,n/a,Frankfurt/Main
+06531,089,069,0601,06,089,1,1,Mittelhessen,Gießen,Gießen,Hessen,n/a,Gießen
+06532,088,069,0601,06,088,1,1,Mittelhessen,Lahn-Dill-Kreis,Wetzlar,Hessen,n/a,Wetzlar
+06533,090,070,0601,06,090,1,1,Mittelhessen,Limburg-Weilburg,Limburg,Hessen,n/a,Limburg
+06534,085,071,0601,06,085,1,1,Mittelhessen,Marburg-Biedenkopf,Marburg,Hessen,n/a,Marburg
+06535,086,072,0601,06,086,1,1,Mittelhessen,Vogelsbergkreis,Lauterbach,Hessen,n/a,Lauterbach
+06611,081,073,0602,06,081,1,1,Nordhessen,"Kassel, Stadt",Kassel,Hessen,n/a,Kassel
+06631,087,074,0603,06,087,1,1,Osthessen,Fulda,Fulda,Hessen,n/a,Fulda
+06632,084,075,0603,06,084,1,1,Osthessen,Hersfeld-Rotenburg,Hersfeld,Hessen,n/a,Hersfeld
+06633,081,073,0602,06,081,1,1,Nordhessen,Kassel,Kassel,Hessen,n/a,Kassel
+06634,083,073,0602,06,083,1,1,Nordhessen,Schwalm-Eder-Kreis,Schwalm-Eder,Hessen,n/a,Schwalm-Eder
+06635,080,076,0602,06,080,1,1,Nordhessen,Waldeck-Frankenberg,Korbach,Hessen,n/a,Korbach
+06636,082,077,0602,06,082,1,1,Nordhessen,Werra-Meißner-Kreis,Eschwege,Hessen,n/a,Eschwege
+07111,100,078,0701,07,100,1,1,Mittelrhein-Westerwald,"Koblenz, Stadt",Koblenz,Rheinland-Pfalz,n/a,Koblenz
+07131,099,079,0701,07,099,1,1,Mittelrhein-Westerwald,Ahrweiler,Ahrweiler,Rheinland-Pfalz,n/a,Ahrweiler
+07132,096,080,0701,07,096,1,1,Mittelrhein-Westerwald,Altenkirchen (Westerwald),Altenkirchen,Rheinland-Pfalz,n/a,Altenkirchen
+07133,101,091,0702,07,101,1,1,Rheinhessen-Nahe,Bad Kreuznach,Bad Kreuznach,Rheinland-Pfalz,n/a,Bad Kreuznach
+07134,102,081,0702,07,102,1,1,Rheinhessen-Nahe,Birkenfeld,Idar-Oberstein,Rheinland-Pfalz,n/a,Idar-Oberstein
+07135,103,078,0701,07,103,1,1,Mittelrhein-Westerwald,Cochem-Zell,Cochem,Rheinland-Pfalz,n/a,Cochem
+07137,100,078,0701,07,100,1,1,Mittelrhein-Westerwald,Mayen-Koblenz,Koblenz,Rheinland-Pfalz,n/a,Koblenz
+07138,098,082,0701,07,098,1,1,Mittelrhein-Westerwald,Neuwied,Neuwied,Rheinland-Pfalz,n/a,Neuwied
+07140,104,083,0701,07,104,1,1,Mittelrhein-Westerwald,Rhein-Hunsrück-Kreis,Simmern,Rheinland-Pfalz,n/a,Simmern
+07141,100,078,0701,07,100,1,1,Mittelrhein-Westerwald,Rhein-Lahn-Kreis,Koblenz,Rheinland-Pfalz,n/a,Koblenz
+07143,097,084,0701,07,097,1,1,Mittelrhein-Westerwald,Westerwaldkreis,Montabaur,Rheinland-Pfalz,n/a,Montabaur
+07211,105,085,0704,07,105,1,1,Trier,"Trier, Stadt",Trier,Rheinland-Pfalz,n/a,Trier
+07231,106,086,0704,07,106,1,1,Trier,Bernkastel-Wittlich,Bernkastel-Wittlich,Rheinland-Pfalz,n/a,Bernkastel-Wittlich
+07232,108,087,0704,07,108,1,1,Trier,Eifelkreis Bitburg-Prüm,Bitburg,Rheinland-Pfalz,n/a,Bitburg
+07233,107,088,0704,07,107,1,1,Trier,Vulkaneifel,Daun,Rheinland-Pfalz,n/a,Daun
+07235,105,085,0704,07,105,1,1,Trier,Trier-Saarburg,Trier,Rheinland-Pfalz,n/a,Trier
+07311,114,090,0703,07,114,1,1,Rheinpfalz,"Frankenthal (Pfalz), Stadt",Ludwigshafen,Rheinland-Pfalz,n/a,Ludwigshafen
+07312,109,089,0705,07,109,1,1,Westpfalz,"Kaiserslautern, Stadt",Kaiserslautern,Rheinland-Pfalz,n/a,Kaiserslautern
+07313,110,096,0703,07,110,1,1,Rheinpfalz,"Landau in der Pfalz, Stadt",Landau,Rheinland-Pfalz,n/a,Landau
+07314,114,090,0703,07,114,1,1,Rheinpfalz,"Ludwigshafen am Rhein, Stadt",Ludwigshafen,Rheinland-Pfalz,n/a,Ludwigshafen
+07315,111,091,0702,07,111,1,1,Rheinhessen-Nahe,"Mainz, kreisfreie Stadt",Mainz,Rheinland-Pfalz,n/a,Mainz
+07316,114,090,0703,07,114,1,1,Rheinpfalz,"Neustadt an der Weinstraße, Stadt",Ludwigshafen,Rheinland-Pfalz,n/a,Ludwigshafen
+07317,113,092,0705,07,113,1,1,Westpfalz,"Pirmasens, Stadt",Pirmasens,Rheinland-Pfalz,n/a,Pirmasens
+07318,114,090,0703,07,114,1,1,Rheinpfalz,"Speyer, Stadt",Ludwigshafen,Rheinland-Pfalz,n/a,Ludwigshafen
+07319,112,093,0702,07,112,1,1,Rheinhessen-Nahe,"Worms, Stadt",Alzey-Worms,Rheinland-Pfalz,n/a,Alzey-Worms
+07320,113,094,0705,07,113,1,1,Westpfalz,"Zweibrücken, Stadt",Pirmasens,Rheinland-Pfalz,n/a,Pirmasens
+07331,112,091,0702,07,112,1,1,Rheinhessen-Nahe,Alzey-Worms,Alzey-Worms,Rheinland-Pfalz,n/a,Alzey-Worms
+07332,114,090,0703,07,114,1,1,Rheinpfalz,Bad Dürkheim,Ludwigshafen,Rheinland-Pfalz,n/a,Ludwigshafen
+07333,109,095,0705,07,109,1,1,Westpfalz,Donnersbergkreis,Kaiserslautern,Rheinland-Pfalz,n/a,Kaiserslautern
+07334,115,096,0703,07,115,1,1,Rheinpfalz,Germersheim,Germersheim,Rheinland-Pfalz,n/a,Germersheim
+07335,109,089,0705,07,109,1,1,Westpfalz,Kaiserslautern,Kaiserslautern,Rheinland-Pfalz,n/a,Kaiserslautern
+07336,109,089,0705,07,109,1,1,Westpfalz,Kusel,Kaiserslautern,Rheinland-Pfalz,n/a,Kaiserslautern
+07337,110,096,0703,07,110,1,1,Rheinpfalz,Südliche Weinstraße,Landau,Rheinland-Pfalz,n/a,Landau
+07338,114,090,0703,07,114,1,1,Rheinpfalz,Rhein-Pfalz-Kreis,Ludwigshafen,Rheinland-Pfalz,n/a,Ludwigshafen
+07339,111,091,0702,07,111,1,1,Rheinhessen-Nahe,Mainz-Bingen,Mainz,Rheinland-Pfalz,n/a,Mainz
+07340,113,092,0705,07,113,1,1,Westpfalz,Südwestpfalz,Pirmasens,Rheinland-Pfalz,n/a,Pirmasens
+08111,120,097,0810,08,120,1,1,Stuttgart,Stuttgart,Stuttgart,Baden-Württemberg,n/a,Stuttgart
+08115,120,097,0810,08,120,1,1,Stuttgart,Böblingen,Stuttgart,Baden-Württemberg,n/a,Stuttgart
+08116,120,097,0810,08,120,1,1,Stuttgart,Esslingen,Stuttgart,Baden-Württemberg,n/a,Stuttgart
+08117,121,097,0810,08,121,1,1,Stuttgart,Göppingen,Göppingen,Baden-Württemberg,n/a,Göppingen
+08118,120,097,0810,08,120,1,1,Stuttgart,Ludwigsburg,Stuttgart,Baden-Württemberg,n/a,Stuttgart
+08119,120,097,0810,08,120,1,1,Stuttgart,Rems-Murr-Kreis,Stuttgart,Baden-Württemberg,n/a,Stuttgart
+08121,122,098,0803,08,122,1,1,Franken,Heilbronn,Heilbronn,Baden-Württemberg,n/a,Heilbronn
+08125,122,098,0803,08,122,1,1,Franken,Heilbronn,Heilbronn,Baden-Württemberg,n/a,Heilbronn
+08126,123,099,0803,08,123,1,1,Franken,Hohenlohekreis,Schwäbisch Hall,Baden-Württemberg,n/a,Schwäbisch Hall
+08127,123,100,0803,08,123,1,1,Franken,Schwäbisch Hall,Schwäbisch Hall,Baden-Württemberg,n/a,Schwäbisch Hall
+08128,124,101,0803,08,124,1,1,Franken,Main-Tauber-Kreis,Tauberbischofsheim,Baden-Württemberg,n/a,Tauberbischofsheim
+08135,125,102,0808,08,125,1,1,Ostwürttemberg,Heidenheim,Heidenheim,Baden-Württemberg,n/a,Heidenheim
+08136,126,103,0808,08,126,1,1,Ostwürttemberg,Ostalbkreis,Aalen,Baden-Württemberg,n/a,Aalen
+08211,127,104,0805,08,127,1,1,Mittlerer Oberrhein,Baden-Baden,Baden-Baden,Baden-Württemberg,n/a,Baden-Baden
+08212,128,105,0805,08,128,1,1,Mittlerer Oberrhein,Karlsruhe,Karlsruhe,Baden-Württemberg,n/a,Karlsruhe
+08215,128,105,0805,08,128,1,1,Mittlerer Oberrhein,Karlsruhe,Karlsruhe,Baden-Württemberg,n/a,Karlsruhe
+08216,127,104,0805,08,127,1,1,Mittlerer Oberrhein,Rastatt,Baden-Baden,Baden-Württemberg,n/a,Baden-Baden
+08221,129,106,0812,08,129,1,1,Unterer Neckar,Heidelberg,Heidelberg,Baden-Württemberg,n/a,Heidelberg
+08222,130,106,0812,08,130,1,1,Unterer Neckar,Mannheim,Mannheim,Baden-Württemberg,n/a,Mannheim
+08225,131,098,0812,08,131,1,1,Unterer Neckar,Neckar-Odenwald-Kreis,Mosbach,Baden-Württemberg,n/a,Mosbach
+08226,129,106,0812,08,129,1,1,Unterer Neckar,Rhein-Neckar-Kreis,Heidelberg,Baden-Württemberg,n/a,Heidelberg
+08231,132,107,0807,08,132,1,1,Nordschwarzwald,Pforzheim,Pforzheim,Baden-Württemberg,n/a,Pforzheim
+08235,133,108,0807,08,133,1,1,Nordschwarzwald,Calw,Calw,Baden-Württemberg,n/a,Calw
+08236,132,107,0807,08,132,1,1,Nordschwarzwald,Enzkreis,Pforzheim,Baden-Württemberg,n/a,Pforzheim
+08237,134,109,0807,08,134,1,1,Nordschwarzwald,Freudenstadt,Freudenstadt,Baden-Württemberg,n/a,Freudenstadt
+08311,135,110,0811,08,135,1,1,Südlicher Oberrhein,Freiburg im Breisgau,Freiburg,Baden-Württemberg,n/a,Freiburg
+08315,135,110,0811,08,135,1,1,Südlicher Oberrhein,Breisgau-Hochschwarzwald,Freiburg,Baden-Württemberg,n/a,Freiburg
+08316,135,110,0811,08,135,1,1,Südlicher Oberrhein,Emmendingen,Freiburg,Baden-Württemberg,n/a,Freiburg
+08317,136,111,0811,08,136,1,1,Südlicher Oberrhein,Ortenaukreis,Offenburg,Baden-Württemberg,n/a,Offenburg
+08325,137,112,0809,08,137,1,1,Schwarzwald-Baar-Heuberg,Rottweil,Rottweil,Baden-Württemberg,n/a,Rottweil
+08326,138,113,0809,08,138,1,1,Schwarzwald-Baar-Heuberg,Schwarzwald-Baar-Kreis,Villingen-Schwenningen,Baden-Württemberg,n/a,Villingen-Schwenningen
+08327,139,114,0809,08,139,1,1,Schwarzwald-Baar-Heuberg,Tuttlingen,Tuttlingen,Baden-Württemberg,n/a,Tuttlingen
+08335,140,115,0804,08,140,1,1,Hochrhein-Bodensee,Konstanz,Konstanz,Baden-Württemberg,n/a,Konstanz
+08336,141,116,0804,08,141,1,1,Hochrhein-Bodensee,Lörrach,Lörrach,Baden-Württemberg,n/a,Lörrach
+08337,142,117,0804,08,142,1,1,Hochrhein-Bodensee,Waldshut,Waldshut,Baden-Württemberg,n/a,Waldshut
+08415,143,118,0806,08,143,1,1,Neckar-Alb,Reutlingen,Reutlingen/Tübingen,Baden-Württemberg,n/a,Reutlingen/Tübingen
+08416,143,118,0806,08,143,1,1,Neckar-Alb,Tübingen,Reutlingen/Tübingen,Baden-Württemberg,n/a,Reutlingen/Tübingen
+08417,144,119,0806,08,144,1,1,Neckar-Alb,Zollernalbkreis,Balingen,Baden-Württemberg,n/a,Balingen
+08421,145,120,0802,08,145,1,1,Donau-Iller (BW),Ulm,Ulm,Baden-Württemberg,n/a,Ulm
+08425,145,120,0802,08,145,1,1,Donau-Iller (BW),Alb-Donau-Kreis,Ulm,Baden-Württemberg,n/a,Ulm
+08426,146,121,0802,08,146,1,1,Donau-Iller (BW),Biberach,Biberach,Baden-Württemberg,n/a,Biberach
+08435,147,122,0801,08,147,1,1,Bodensee-Oberschwaben,Bodenseekreis,Friedrichshafen,Baden-Württemberg,n/a,Friedrichshafen
+08436,148,123,0801,08,148,1,1,Bodensee-Oberschwaben,Ravensburg,Ravensburg,Baden-Württemberg,n/a,Ravensburg
+08437,149,124,0801,08,149,1,1,Bodensee-Oberschwaben,Sigmaringen,Sigmaringen,Baden-Württemberg,n/a,Sigmaringen
+09161,160,125,0907,09,160,1,1,Ingolstadt,"Ingolstadt, Stadt",Ingolstadt,Bayern,n/a,Ingolstadt
+09162,159,126,0910,09,159,1,1,München,"München, Stadt",München,Bayern,n/a,München
+09163,154,127,0916,09,154,1,1,Südostoberbayern,"Rosenheim, Stadt",Rosenheim,Bayern,n/a,Rosenheim
+09171,152,128,0916,09,152,1,1,Südostoberbayern,Altötting,Burghausen,Bayern,n/a,Burghausen
+09172,150,129,0916,09,150,1,1,Südostoberbayern,Berchtesgadener Land,Bad Reichenhall,Bayern,n/a,Bad Reichenhall
+09173,155,126,0913,09,155,1,1,Oberland,Bad Tölz-Wolfratshausen,Bad Tölz,Bayern,n/a,Bad Tölz
+09174,159,126,0910,09,159,1,1,München,Dachau,München,Bayern,n/a,München
+09175,159,130,0910,09,159,1,1,München,Ebersberg,München,Bayern,n/a,München
+09176,160,125,0907,09,160,1,1,Ingolstadt,Eichstätt,Ingolstadt,Bayern,n/a,Ingolstadt
+09177,159,126,0910,09,159,1,1,München,Erding,München,Bayern,n/a,München
+09178,159,126,0910,09,159,1,1,München,Freising,München,Bayern,n/a,München
+09179,159,126,0910,09,159,1,1,München,Fürstenfeldbruck,München,Bayern,n/a,München
+09180,156,131,0913,09,156,1,1,Oberland,Garmisch-Partenkirchen,Garmisch-Partenkirchen,Bayern,n/a,Garmisch-Partenkirchen
+09181,158,132,0910,09,158,1,1,München,Landsberg am Lech,Landsberg,Bayern,n/a,Landsberg
+09182,155,133,0913,09,155,1,1,Oberland,Miesbach,Bad Tölz,Bayern,n/a,Bad Tölz
+09183,153,134,0916,09,153,1,1,Südostoberbayern,Mühldorf a.Inn,Mühldorf,Bayern,n/a,Mühldorf
+09184,159,126,0910,09,159,1,1,München,München,München,Bayern,n/a,München
+09185,160,125,0907,09,160,1,1,Ingolstadt,Neuburg-Schrobenhausen,Ingolstadt,Bayern,n/a,Ingolstadt
+09186,160,125,0907,09,160,1,1,Ingolstadt,Pfaffenhofen a.d.Ilm,Ingolstadt,Bayern,n/a,Ingolstadt
+09187,154,127,0916,09,154,1,1,Südostoberbayern,Rosenheim,Rosenheim,Bayern,n/a,Rosenheim
+09188,159,126,0910,09,159,1,1,München,Starnberg,München,Bayern,n/a,München
+09189,151,135,0916,09,151,1,1,Südostoberbayern,Traunstein,Traunstein,Bayern,n/a,Traunstein
+09190,157,136,0913,09,157,1,1,Oberland,Weilheim-Schongau,Weilheim,Bayern,n/a,Weilheim
+09261,162,137,0908,09,162,1,1,Landshut,"Landshut, Stadt",Landshut,Bayern,n/a,Landshut
+09262,165,138,0905,09,165,1,1,Donau-Wald,"Passau, Stadt",Passau,Bayern,n/a,Passau
+09263,169,139,0905,09,169,1,1,Donau-Wald,"Straubing, Stadt",Straubing,Bayern,n/a,Straubing
+09271,168,140,0905,09,168,1,1,Donau-Wald,Deggendorf,Deggendorf,Bayern,n/a,Deggendorf
+09272,166,138,0905,09,166,1,1,Donau-Wald,Freyung-Grafenau,Freyung,Bayern,n/a,Freyung
+09273,161,143,0915,09,161,1,1,Regensburg,Kelheim,Kelheim-Mainburg,Bayern,n/a,Kelheim-Mainburg
+09274,162,137,0908,09,162,1,1,Landshut,Landshut,Landshut,Bayern,n/a,Landshut
+09275,165,138,0905,09,165,1,1,Donau-Wald,Passau,Passau,Bayern,n/a,Passau
+09276,167,140,0905,09,167,1,1,Donau-Wald,Regen,Regen-Zwiesel,Bayern,n/a,Regen-Zwiesel
+09277,164,128,0908,09,164,1,1,Landshut,Rottal-Inn,Eggenfelden/Pfarrkirchen,Bayern,n/a,Eggenfelden/Pfarrkirchen
+09278,169,139,0905,09,169,1,1,Donau-Wald,Straubing-Bogen,Straubing,Bayern,n/a,Straubing
+09279,163,141,0908,09,163,1,1,Landshut,Dingolfing-Landau,Dingolfing,Bayern,n/a,Dingolfing
+09361,173,142,0914,09,173,1,1,Oberpfalz-Nord,"Amberg, Stadt",Amberg,Bayern,n/a,Amberg
+09362,171,143,0915,09,171,1,1,Regensburg,"Regensburg, Stadt",Regensburg,Bayern,n/a,Regensburg
+09363,175,144,0914,09,175,1,1,Oberpfalz-Nord,"Weiden i.d.OPf., Stadt",Weiden,Bayern,n/a,Weiden
+09371,173,142,0914,09,173,1,1,Oberpfalz-Nord,Amberg-Sulzbach,Amberg,Bayern,n/a,Amberg
+09372,170,145,0915,09,170,1,1,Regensburg,Cham,Cham,Bayern,n/a,Cham
+09373,174,146,0915,09,174,1,1,Regensburg,Neumarkt i.d.OPf.,Neumarkt,Bayern,n/a,Neumarkt
+09374,175,144,0914,09,175,1,1,Oberpfalz-Nord,Neustadt a.d.Waldnaab,Weiden,Bayern,n/a,Weiden
+09375,171,143,0915,09,171,1,1,Regensburg,Regensburg,Regensburg,Bayern,n/a,Regensburg
+09376,172,143,0914,09,172,1,1,Oberpfalz-Nord,Schwandorf,Schwandorf,Bayern,n/a,Schwandorf
+09377,176,153,0914,09,176,1,1,Oberpfalz-Nord,Tirschenreuth,Marktredwitz,Bayern,n/a,Marktredwitz
+09461,179,147,0912,09,179,1,1,Oberfranken-West,"Bamberg, Stadt",Bamberg,Bayern,n/a,Bamberg
+09462,178,148,0911,09,178,1,1,Oberfranken-Ost,"Bayreuth, Stadt",Bayreuth,Bayern,n/a,Bayreuth
+09463,182,149,0912,09,182,1,1,Oberfranken-West,"Coburg, Stadt",Coburg,Bayern,n/a,Coburg
+09464,177,150,0911,09,177,1,1,Oberfranken-Ost,"Hof, Stadt",Hof,Bayern,n/a,Hof
+09471,179,147,0912,09,179,1,1,Oberfranken-West,Bamberg,Bamberg,Bayern,n/a,Bamberg
+09472,178,148,0911,09,178,1,1,Oberfranken-Ost,Bayreuth,Bayreuth,Bayern,n/a,Bayreuth
+09473,182,149,0912,09,182,1,1,Oberfranken-West,Coburg,Coburg,Bayern,n/a,Coburg
+09474,184,155,0912,09,184,1,1,Oberfranken-West,Forchheim,Erlangen,Bayern,n/a,Erlangen
+09475,177,150,0911,09,177,1,1,Oberfranken-Ost,Hof,Hof,Bayern,n/a,Hof
+09476,181,151,0912,09,181,1,1,Oberfranken-West,Kronach,Kronach,Bayern,n/a,Kronach
+09477,180,148,0911,09,180,1,1,Oberfranken-Ost,Kulmbach,Kulmbach,Bayern,n/a,Kulmbach
+09478,183,152,0912,09,183,1,1,Oberfranken-West,Lichtenfels,Lichtenfels,Bayern,n/a,Lichtenfels
+09479,176,153,0911,09,176,1,1,Oberfranken-Ost,Wunsiedel i.Fichtelgebirge,Marktredwitz,Bayern,n/a,Marktredwitz
+09561,187,154,0917,09,187,1,1,Westmittelfranken,"Ansbach, Stadt",Ansbach,Bayern,n/a,Ansbach
+09562,184,155,0906,09,184,1,1,Industrieregion Mittelfranken,"Erlangen, Stadt",Erlangen,Bayern,n/a,Erlangen
+09563,185,155,0906,09,185,1,1,Industrieregion Mittelfranken,"Fürth, Stadt",Nürnberg,Bayern,n/a,Nürnberg
+09564,185,155,0906,09,185,1,1,Industrieregion Mittelfranken,"Nürnberg, Stadt",Nürnberg,Bayern,n/a,Nürnberg
+09565,185,155,0906,09,185,1,1,Industrieregion Mittelfranken,"Schwabach, Stadt",Nürnberg,Bayern,n/a,Nürnberg
+09571,187,154,0917,09,187,1,1,Westmittelfranken,Ansbach,Ansbach,Bayern,n/a,Ansbach
+09572,184,155,0906,09,184,1,1,Industrieregion Mittelfranken,Erlangen-Höchstadt,Erlangen,Bayern,n/a,Erlangen
+09573,185,155,0906,09,185,1,1,Industrieregion Mittelfranken,Fürth,Nürnberg,Bayern,n/a,Nürnberg
+09574,185,155,0906,09,185,1,1,Industrieregion Mittelfranken,Nürnberger Land,Nürnberg,Bayern,n/a,Nürnberg
+09575,188,156,0917,09,188,1,1,Westmittelfranken,Neustadt a.d.Aisch-Bad Windsheim,Neustadt/Aisch,Bayern,n/a,Neustadt/Aisch
+09576,185,155,0906,09,185,1,1,Industrieregion Mittelfranken,Roth,Nürnberg,Bayern,n/a,Nürnberg
+09577,186,157,0917,09,186,1,1,Westmittelfranken,Weißenburg-Gunzenhausen,Weißenburg-Gunzenhausen,Bayern,n/a,Weißenburg-Gunzenhausen
+09661,196,158,0903,09,196,1,1,Bayerischer Untermain,"Aschaffenburg, Stadt",Aschaffenburg,Bayern,n/a,Aschaffenburg
+09662,191,159,0909,09,191,1,1,Main-Rhön,"Schweinfurt, Stadt",Schweinfurt,Bayern,n/a,Schweinfurt
+09663,190,160,0918,09,190,1,1,Würzburg,"Würzburg, Stadt",Würzburg,Bayern,n/a,Würzburg
+09671,196,158,0903,09,196,1,1,Bayerischer Untermain,Aschaffenburg,Aschaffenburg,Bayern,n/a,Aschaffenburg
+09672,194,159,0909,09,194,1,1,Main-Rhön,Bad Kissingen,Bad Kissingen,Bayern,n/a,Bad Kissingen
+09673,193,161,0909,09,193,1,1,Main-Rhön,Rhön-Grabfeld,Bad Neustadt/Saale,Bayern,n/a,Bad Neustadt/Saale
+09674,192,159,0909,09,192,1,1,Main-Rhön,Haßberge,Haßfurt,Bayern,n/a,Haßfurt
+09675,189,160,0918,09,189,1,1,Würzburg,Kitzingen,Kitzingen,Bayern,n/a,Kitzingen
+09676,196,158,0903,09,196,1,1,Bayerischer Untermain,Miltenberg,Aschaffenburg,Bayern,n/a,Aschaffenburg
+09677,195,160,0918,09,195,1,1,Würzburg,Main-Spessart,Lohr am Main,Bayern,n/a,Lohr am Main
+09678,191,159,0909,09,191,1,1,Main-Rhön,Schweinfurt,Schweinfurt,Bayern,n/a,Schweinfurt
+09679,190,160,0918,09,190,1,1,Würzburg,Würzburg,Würzburg,Bayern,n/a,Würzburg
+09761,200,162,0902,09,200,1,1,Augsburg,"Augsburg, Stadt",Augsburg,Bayern,n/a,Augsburg
+09762,202,163,0901,09,202,1,1,Allgäu,"Kaufbeuren, Stadt",Kaufbeuren,Bayern,n/a,Kaufbeuren
+09763,203,164,0901,09,203,1,1,Allgäu,"Kempten (Allgäu), Stadt",Kempten,Bayern,n/a,Kempten
+09764,201,165,0904,09,201,1,1,Donau-Iller (BY),"Memmingen, Stadt",Memmingen,Bayern,n/a,Memmingen
+09771,200,162,0902,09,200,1,1,Augsburg,Aichach-Friedberg,Augsburg,Bayern,n/a,Augsburg
+09772,200,162,0902,09,200,1,1,Augsburg,Augsburg,Augsburg,Bayern,n/a,Augsburg
+09773,198,166,0902,09,198,1,1,Augsburg,Dillingen a.d.Donau,Dillingen,Bayern,n/a,Dillingen
+09774,199,167,0904,09,199,1,1,Donau-Iller (BY),Günzburg,Günzburg,Bayern,n/a,Günzburg
+09775,145,168,0904,09,145,1,1,Donau-Iller (BY),Neu-Ulm,Ulm,Bayern,n/a,Ulm
+09776,204,169,0901,09,204,1,1,Allgäu,Lindau (Bodensee),Lindau,Bayern,n/a,Lindau
+09777,202,163,0901,09,202,1,1,Allgäu,Ostallgäu,Kaufbeuren,Bayern,n/a,Kaufbeuren
+09778,201,165,0904,09,201,1,1,Donau-Iller (BY),Unterallgäu,Memmingen,Bayern,n/a,Memmingen
+09779,197,170,0902,09,197,1,1,Augsburg,Donau-Ries,Donauwörth-Nördlingen,Bayern,n/a,Donauwörth-Nördlingen
+09780,203,164,0901,09,203,1,1,Allgäu,Oberallgäu,Kempten,Bayern,n/a,Kempten
+10041,118,171,1001,10,118,1,1,Saar,Regionalverband Saarbrücken,Saarbrücken,Saarland,n/a,Saarbrücken
+10042,116,171,1001,10,116,1,1,Saar,Merzig-Wadern,Merzig,Saarland,n/a,Merzig
+10043,118,171,1001,10,118,1,1,Saar,Neunkirchen,Saarbrücken,Saarland,n/a,Saarbrücken
+10044,118,171,1001,10,118,1,1,Saar,Saarlouis,Saarbrücken,Saarland,n/a,Saarbrücken
+10045,119,171,1001,10,119,1,1,Saar,Saarpfalz-Kreis,Homburg/Saar,Saarland,n/a,Homburg/Saar
+10046,117,171,1001,10,117,1,1,Saar,St. Wendel,St. Wendel,Saarland,n/a,St. Wendel
+11000,205,172,1101,11,205,1,2,Berlin,"Berlin, Stadt",Berlin,Berlin,n/a,Berlin
+12051,206,173,1201,12,206,1,3,Havelland-Fläming,"Brandenburg an der Havel, Stadt",Potsdam-Brandenburg,Brandenburg,n/a,Potsdam-Brandenburg
+12052,207,174,1202,12,207,1,3,Lausitz-Spreewald,"Cottbus, Stadt",Cottbus,Brandenburg,n/a,Cottbus
+12053,208,183,1203,12,208,1,3,Oderland-Spree,"Frankfurt (Oder), Stadt",Frankfurt/Oder,Brandenburg,n/a,Frankfurt/Oder
+12054,206,175,1201,12,206,1,3,Havelland-Fläming,"Potsdam, Stadt",Potsdam-Brandenburg,Brandenburg,n/a,Potsdam-Brandenburg
+12060,209,176,1205,12,209,1,3,Uckermark-Barnim,Barnim,Eberswalde,Brandenburg,n/a,Eberswalde
+12061,210,177,1202,12,210,1,3,Lausitz-Spreewald,Dahme-Spreewald,Luckenwalde,Brandenburg,n/a,Luckenwalde
+12062,211,178,1202,12,211,1,3,Lausitz-Spreewald,Elbe-Elster,Finsterwalde,Brandenburg,n/a,Finsterwalde
+12063,206,179,1201,12,206,1,3,Havelland-Fläming,Havelland,Potsdam-Brandenburg,Brandenburg,n/a,Potsdam-Brandenburg
+12064,208,180,1203,12,208,1,3,Oderland-Spree,Märkisch-Oderland,Frankfurt/Oder,Brandenburg,n/a,Frankfurt/Oder
+12065,212,181,1204,12,212,1,3,Prignitz-Oberhavel,Oberhavel,Oranienburg,Brandenburg,n/a,Oranienburg
+12066,207,182,1202,12,207,1,3,Lausitz-Spreewald,Oberspreewald-Lausitz,Cottbus,Brandenburg,n/a,Cottbus
+12067,208,183,1203,12,208,1,3,Oderland-Spree,Oder-Spree,Frankfurt/Oder,Brandenburg,n/a,Frankfurt/Oder
+12068,213,184,1204,12,213,1,3,Prignitz-Oberhavel,Ostprignitz-Ruppin,Neuruppin,Brandenburg,n/a,Neuruppin
+12069,206,185,1201,12,206,1,3,Havelland-Fläming,Potsdam-Mittelmark,Potsdam-Brandenburg,Brandenburg,n/a,Potsdam-Brandenburg
+12070,214,186,1204,12,214,1,3,Prignitz-Oberhavel,Prignitz,Perleberg,Brandenburg,n/a,Perleberg
+12071,207,174,1202,12,207,1,3,Lausitz-Spreewald,Spree-Neiße,Cottbus,Brandenburg,n/a,Cottbus
+12072,210,187,1201,12,210,1,3,Havelland-Fläming,Teltow-Fläming,Luckenwalde,Brandenburg,n/a,Luckenwalde
+12073,215,188,1205,12,215,1,3,Uckermark-Barnim,Uckermark,Prenzlau,Brandenburg,n/a,Prenzlau
+13003,216,189,1302,13,216,1,3,Mittleres Mecklenburg/Rostock,"Rostock, Stadt",Rostock,Mecklenburg-Vorpommern,n/a,Rostock
+13004,217,190,1304,13,217,1,3,Westmecklenburg,"Schwerin, Stadt",Schwerin,Mecklenburg-Vorpommern,n/a,Schwerin
+13071,218,191,1301,13,218,1,3,Mecklenburgische Seenplatte,Mecklenburgische Seenplatte,Mecklenburgische Seenplatte,Mecklenburg-Vorpommern,n/a,Mecklenburgische Seenplatte
+13072,216,189,1302,13,216,1,3,Mittleres Mecklenburg/Rostock,Landkreis Rostock,Rostock,Mecklenburg-Vorpommern,n/a,Rostock
+13073,219,192,1303,13,219,1,3,Vorpommern,Vorpommern-Rügen,Nordvorpommern,Mecklenburg-Vorpommern,n/a,Nordvorpommern
+13074,217,190,1304,13,217,1,3,Westmecklenburg,Nordwestmecklenburg,Schwerin,Mecklenburg-Vorpommern,n/a,Schwerin
+13075,220,193,1303,13,220,1,3,Vorpommern,Vorpommern-Greifswald,Südvorpommern,Mecklenburg-Vorpommern,n/a,Südvorpommern
+13076,217,190,1304,13,217,1,3,Westmecklenburg,Ludwigslust-Parchim,Schwerin,Mecklenburg-Vorpommern,n/a,Schwerin
+14511,221,194,1403,14,221,1,3,Südsachsen,"Chemnitz, Stadt",Chemnitz,Sachsen,n/a,Chemnitz
+14521,222,194,1403,14,222,1,3,Südsachsen,Erzgebirgskreis,Erzgebirgskreis,Sachsen,n/a,Erzgebirgskreis
+14522,223,194,1403,14,223,1,3,Südsachsen,Mittelsachsen,Mittelsachsen,Sachsen,n/a,Mittelsachsen
+14523,224,195,1403,14,224,1,3,Südsachsen,Vogtlandkreis,Vogtlandkreis,Sachsen,n/a,Vogtlandkreis
+14524,225,196,1403,14,225,1,3,Südsachsen,Zwickau,Zwickau,Sachsen,n/a,Zwickau
+14612,226,197,1401,14,226,1,3,Oberes Elbtal/Osterzgebirge,"Dresden, Stadt",Dresden,Sachsen,n/a,Dresden
+14625,227,197,1402,14,227,1,3,Oberlausitz-Niederschlesien,Bautzen,Bautzen,Sachsen,n/a,Bautzen
+14626,228,198,1402,14,228,1,3,Oberlausitz-Niederschlesien,Görlitz,Görlitz,Sachsen,n/a,Görlitz
+14627,229,197,1401,14,229,1,3,Oberes Elbtal/Osterzgebirge,Meißen,Meißen,Sachsen,n/a,Meißen
+14628,226,197,1401,14,226,1,3,Oberes Elbtal/Osterzgebirge,Sächsische Schweiz-Osterzgebirge,Dresden,Sachsen,n/a,Dresden
+14713,230,199,1404,14,230,1,3,Westsachsen,"Leipzig, Stadt",Leipzig,Sachsen,n/a,Leipzig
+14729,230,199,1404,14,230,1,3,Westsachsen,Leipzig,Leipzig,Sachsen,n/a,Leipzig
+14730,230,199,1404,14,230,1,3,Westsachsen,Nordsachsen,Leipzig,Sachsen,n/a,Leipzig
+15001,231,200,1502,15,231,1,3,Anhalt-Bitterfeld-Wittenberg,"Dessau-Roßlau, Stadt",Dessau-Roßlau,Sachsen-Anhalt,n/a,Dessau-Roßlau
+15002,232,201,1503,15,232,1,3,Halle/S.,"Halle (Saale), Stadt",Halle,Sachsen-Anhalt,n/a,Halle
+15003,233,202,1504,15,233,1,3,Magdeburg,"Magdeburg, Stadt",Magdeburg,Sachsen-Anhalt,n/a,Magdeburg
+15081,234,203,1501,15,234,1,3,Altmark,Altmarkkreis Salzwedel,Salzwedel,Sachsen-Anhalt,n/a,Salzwedel
+15082,235,204,1502,15,235,1,3,Anhalt-Bitterfeld-Wittenberg,Anhalt-Bitterfeld,Anhalt-Bitterfeld,Sachsen-Anhalt,n/a,Anhalt-Bitterfeld
+15083,233,202,1504,15,233,1,3,Magdeburg,Börde,Magdeburg,Sachsen-Anhalt,n/a,Magdeburg
+15084,236,205,1503,15,236,1,3,Halle/S.,Burgenlandkreis,Burgenlandkreis,Sachsen-Anhalt,n/a,Burgenlandkreis
+15085,237,206,1504,15,237,1,3,Magdeburg,Harz,Harz,Sachsen-Anhalt,n/a,Harz
+15086,233,202,1504,15,233,1,3,Magdeburg,Jerichower Land,Magdeburg,Sachsen-Anhalt,n/a,Magdeburg
+15087,238,207,1503,15,238,1,3,Halle/S.,Mansfeld-Südharz,Mansfeld-Südharz,Sachsen-Anhalt,n/a,Mansfeld-Südharz
+15088,232,201,1503,15,232,1,3,Halle/S.,Saalekreis,Halle,Sachsen-Anhalt,n/a,Halle
+15089,239,202,1504,15,239,1,3,Magdeburg,Salzlandkreis,Salzlandkreis,Sachsen-Anhalt,n/a,Salzlandkreis
+15090,240,208,1501,15,240,1,3,Altmark,Stendal,Stendal,Sachsen-Anhalt,n/a,Stendal
+15091,241,209,1502,15,241,1,3,Anhalt-Bitterfeld-Wittenberg,Wittenberg,Wittenberg,Sachsen-Anhalt,n/a,Wittenberg
+16051,242,210,1601,16,242,1,3,Mittelthüringen,"Erfurt, Stadt",Erfurt,Thüringen,n/a,Erfurt
+16052,243,211,1603,16,243,1,3,Ostthüringen,"Gera, Stadt",Gera,Thüringen,n/a,Gera
+16053,244,212,1603,16,244,1,3,Ostthüringen,"Jena, Stadt",Jena,Thüringen,n/a,Jena
+16054,245,218,1604,16,245,1,3,Südthüringen,"Suhl, Stadt",Suhl,Thüringen,n/a,Suhl
+16055,246,210,1601,16,246,1,3,Mittelthüringen,"Weimar, Stadt",Weimar,Thüringen,n/a,Weimar
+16056,247,213,1604,16,247,1,3,Südthüringen,"Eisenach, Stadt",Eisenach,Thüringen,n/a,Eisenach
+16061,248,214,1602,16,248,1,3,Nordthüringen,Eichsfeld,Eichsfeld,Thüringen,n/a,Eichsfeld
+16062,249,215,1602,16,249,1,3,Nordthüringen,Nordhausen,Nordhausen,Thüringen,n/a,Nordhausen
+16063,247,213,1604,16,247,1,3,Südthüringen,Wartburgkreis,Eisenach,Thüringen,n/a,Eisenach
+16064,250,216,1602,16,250,1,3,Nordthüringen,Unstrut-Hainich-Kreis,Mühlhausen,Thüringen,n/a,Mühlhausen
+16065,251,217,1602,16,251,1,3,Nordthüringen,Kyffhäuserkreis,Sondershausen,Thüringen,n/a,Sondershausen
+16066,252,218,1604,16,252,1,3,Südthüringen,Schmalkalden-Meiningen,Meiningen,Thüringen,n/a,Meiningen
+16067,253,210,1601,16,253,1,3,Mittelthüringen,Gotha,Gotha,Thüringen,n/a,Gotha
+16068,242,210,1601,16,242,1,3,Mittelthüringen,Sömmerda,Erfurt,Thüringen,n/a,Erfurt
+16069,245,219,1604,16,245,1,3,Südthüringen,Hildburghausen,Suhl,Thüringen,n/a,Suhl
+16070,254,210,1601,16,254,1,3,Mittelthüringen,Ilm-Kreis,Arnstadt,Thüringen,n/a,Arnstadt
+16071,246,210,1601,16,246,1,3,Mittelthüringen,Weimarer Land,Weimar,Thüringen,n/a,Weimar
+16072,255,220,1604,16,255,1,3,Südthüringen,Sonneberg,Sonneberg,Thüringen,n/a,Sonneberg
+16073,256,221,1603,16,256,1,3,Ostthüringen,Saalfeld-Rudolstadt,Saalfeld,Thüringen,n/a,Saalfeld
+16074,244,212,1603,16,244,1,3,Ostthüringen,Saale-Holzland-Kreis,Jena,Thüringen,n/a,Jena
+16075,257,222,1603,16,257,1,3,Ostthüringen,Saale-Orla-Kreis,Pößneck,Thüringen,n/a,Pößneck
+16076,243,211,1603,16,243,1,3,Ostthüringen,Greiz,Gera,Thüringen,n/a,Gera
+16077,258,223,1603,16,258,1,3,Ostthüringen,Altenburger Land,Altenburg,Thüringen,n/a,Altenburg

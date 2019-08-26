@@ -17,7 +17,9 @@ class TableButton extends Component {
       );
     };
       showTable = (e) =>{
-      this.props.dispatch(this.showTableDispatch(e.target.value));
+	  this.props.dispatch(this.showTableDispatch(e.target.value));
+	  var table = document.getElementById('table')
+	  table.scrollIntoView()
     };
 
     /**
@@ -28,7 +30,11 @@ class TableButton extends Component {
      */
     render() {
       return (
-       <button value = {this.props.showTable} onClick={this.showTable}> {this.props.showTable ? `Vollständige Datentabelle verbergen` : `Vollständige Datentabelle anzeigen`} </button>
+		   <button className="button is-dark is-outlined is-fullwidth" value = {this.props.showTable} onClick={this.showTable}>
+    			
+   					 <span>{this.props.showTable ? `Vollständige Datentabelle verbergen` : `Vollständige Datentabelle anzeigen`}</span>
+  			</button>
+      
       );
     }
 }

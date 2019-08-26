@@ -1,256 +1,9 @@
-{% load static %}
-.example-grid-title .columns {
-  background: #EEE;
-  text-align: center;
-  border-radius: 4px;
-  font-size: 1rem;
-  text-transform: uppercase;
-  height: 4vh;
-  min-height: 30px;
-  line-height: 30px;
-  margin-bottom: .75rem;
-  font-weight: 600;
-  letter-spacing: .1rem; }
 
-.example-grid-logo .columns {
-  background: #EEE;
-  text-align: center;
-  border-radius: 4px;
-  font-size: 1rem;
-  text-transform: uppercase;
-  height: 5vh;
-  min-height: 50px;
-  line-height: 30px;
-  margin-bottom: .75rem;
-  font-weight: 600;
-  letter-spacing: .1rem; }
-/* Larger than tablet */
-@media (min-width: 1000px) {
-#big {
-  background: #EEE;
-  text-align: center;
-  border-radius: 4px;
-  min-height: 91vh;
-  font-size: 1rem;
-  /*text-transform: uppercase;*/
-  margin-bottom: .75rem;
-  font-weight: 600;
-  letter-spacing: .1rem; }
-
-#var_year_0,
-#var_year_1,
-#var_year_2,
-#var_year_3,
-#var_year_4,
-#var_year_5,
-#weight_0,
-#weight_1,
-#weight_2,
-#weight_3,
-#weight_4,
-#weight_5  {
-	width: 80%;
-}
-
-}
-@media only screen and  (max-width: 768px) {
-#var_year_0,
-#var_year_1,
-#var_year_2,
-#var_year_3,
-#var_year_4,
-#var_year_5,
-#weight_0,
-#weight_1,
-#weight_2,
-#weight_3,
-#weight_4,
-#weight_5,
-#aggreg.indic.button,
-#single.indic.button
-{
-	width: 40%;
-}
-
-  .import_modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  /*width: 40%; !* Could be more or less, depending on screen size *!*/
-  text-align: center;
-}
-
-
-
-} 
-
-#big {
-  background: #EEE;
-  text-align: center;
-  border-radius: 4px;
-  height: none;
-  font-size: 1rem;
-  /*text-transform: uppercase;*/
-  margin-bottom: .75rem;
-  font-weight: 600;
-  letter-spacing: .1rem; }
-
-.indicator {
-	text-align: left;
-	text-indent: 10px;
-    text-transform: uppercase;
-} 
-
-#table, #specInfo {
-  margin-top: auto;
-  margin-left: auto;
-	margin-right: auto;
-  background: #EEE;
-  text-align: center;
-  border-radius: 4px;
-  min-height: none;
-  font-size: 1rem;
-  margin-bottom: auto;
-  text-transform:none;
-  font-weight: 300;
-  letter-spacing: .1rem;
-}
-
-
-#version {
-  text-align: right;
-  padding-right: 10px;
-  
-}
-#standardiser {
-  font-weight: normal;
-}
-#weight {
-  text-align: center;
-}
-#placeholder {
-  content: "";
-}
-/* The Modal (background) */
-.modal {
-  display: block; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,1); /* Black w/ opacity */
-}
-
-
-/* Larger than tablet */
-@media (min-width: 1000px) {
-
-
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  text-align: center;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 20%;
-}
-}
-.modal-content {
-  background-color: #fefefe;
-  text-align: center;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  box-sizing: border-box;
-  width:none;
-}
-
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.my-custom-scrollbar {
-position: relative;
-overflow: auto;
-height: 100%;
-max-height: 80vh;
-box-sizing: border-box;
-margin:0 auto;
-}
-.table-wrapper-scroll-y {
-display: flex;
-}
- /* The Modal (background) */
-.import_modal {
-  
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content/Box */
-.import_modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 40%; /* Could be more or less, depending on screen size */
-  text-align: center;
-}
-
-/* HIDE RADIO */
-[type=radio] {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* IMAGE STYLES */
-[type=radio] + img {
-  cursor: pointer;
-}
-
-/* CHECKED STYLES */
-[type=radio]:checked + img {
-  outline: 2px solid #f00;
-}
-
-
-
-
-
-
-
-
-.Blues .q0-5{fill:rgb(239,243,255)}
-.Blues .q1-5{fill:rgb(189,215,231)}
-.Blues .q2-5{fill:rgb(107,174,214)}
-.Blues .q3-5{fill:rgb(49,130,189)}
-.Blues .q4-5{fill:rgb(8,81,156)}
+.Blues .q0-5{fill:rgb(239,243,255); pointer-events: None}
+.Blues .q1-5{fill:rgb(189,215,231); pointer-events: None}
+.Blues .q2-5{fill:rgb(107,174,214); pointer-events: None}
+.Blues .q3-5{fill:rgb(49,130,189); pointer-events: None}
+.Blues .q4-5{fill:rgb(8,81,156); pointer-events: None}
 
 
 .Reds .q0-5{fill:rgb(254,229,217)}
@@ -259,21 +12,186 @@ display: flex;
 .Reds .q3-5{fill:rgb(222,45,38)}
 .Reds .q4-5{fill:rgb(165,15,21)}
 
-.Greens .q0-5{fill:rgb(237,248,233)}
-.Greens .q1-5{fill:rgb(186,228,179)}
-.Greens .q2-5{fill:rgb(116,196,118)}
-.Greens .q3-5{fill:rgb(49,163,84)}
-.Greens .q4-5{fill:rgb(0,109,44)}
+.Greens .q0-5{fill:rgb(237,248,233); pointer-events: None}
+.Greens .q1-5{fill:rgb(186,228,179); pointer-events: None}
+.Greens .q2-5{fill:rgb(116,196,118); pointer-events: None}
+.Greens .q3-5{fill:rgb(49,163,84); pointer-events: None}
+.Greens .q4-5{fill:rgb(0,109,44); pointer-events: None}
+
+/* THIS IS ALL MY HOVER TOOLTIP TOBIAS TOBIAS TOBIAS */
 
 
+.indicator{
+  text-align: left
+}
 
-.fa fa-question-circle{
+.weight_tooltip {
+  position: relative;
+  display: inline-block;
+  /*border-bottom: 1px dotted black;*/
+}
+/* Tooltip text */
+.weight_tooltip .weight_tooltiptext {
+  visibility: hidden;
+  width: 150px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-weight: 400;
+  font-size: 14px;
+
+  /* Position the tooltip text */
   position: absolute;
+  z-index: 1;
+  bottom: 120%;
+  left: 150%;
+  margin-left: -60px;
 
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.weight_tooltip .weight_tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 10%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.weight_tooltip:hover .weight_tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }
 
 
-/* THIS IS ALL MY HOVER TOOLTIP TOBIAS TOBIAS TOBIAS */
+.reset_tooltip {
+  position: relative;
+  display: inline-block;
+  /*border-bottom: 1px dotted black;*/
+}
+
+
+/* Tooltip text */
+.reset_tooltip .reset_tooltiptext {
+  visibility: hidden;
+  width: 150px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-weight: 400;
+  font-size: 14px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 120%;
+  left: 150%;
+  margin-left: -60px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.reset_tooltip .reset_tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 10%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.reset_tooltip:hover .reset_tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+.download_tooltip {
+  position: relative;
+  display: inline-block;
+  /*border-bottom: 1px dotted black;*/
+}
+
+
+/* Tooltip text */
+.download_tooltip .download_tooltiptext {
+  visibility: hidden;
+  width: 250px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-weight: 400;
+  font-size: 14px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 120%;
+  left: 107.5%;
+  margin-left: -60px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.download_tooltip .download_tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 10%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.download_tooltip:hover .download_tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .indicator_tooltip {
   position: relative;
@@ -285,20 +203,20 @@ display: flex;
 /* Tooltip text */
 .indicator_tooltip .tooltiptext {
   visibility: hidden;
-  width: 120px;
+  width: 150px;
   background-color: #555;
   color: #fff;
   text-align: center;
-  padding: 5px 0;
+  padding: 5px 10px;
   border-radius: 6px;
-  font-weight: 300;
-  font-size: 9px;
+  font-weight: 400;
+  font-size: 14px;
 
   /* Position the tooltip text */
   position: absolute;
   z-index: 1;
-  bottom: 90%;
-  left: 120%;
+  bottom: 120%;
+  left: 125%;
   margin-left: -60px;
 
   /* Fade in tooltip */
@@ -327,70 +245,23 @@ display: flex;
 
 /* THIS IS ALL MY HOVER TOOLTIP TOBIAS TOBIAS TOBIAS */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#data_table {
-  margin-left: 20px;
-}
-#data_table tbody{
-  overflow-y:auto;
-   height:91vh;
-   display:block;
-}
-#data_table thead{
-  overflow-y: none;
-  display: block;
+/* .columns {
+	margin: 0;
 }
 
+@media screen and (min-width: 768px) {
 
-#aggreg.indic.button {
-  width: 40%
+	.columns {
+	    margin-left: -0.75rem;
+	    margin-right: -0.75rem;
+	    margin-top: -0.75rem;
+	}
+
+} */
+@media screen and (min-width: 780px){
+	#optionbox{
+	min-height: 810px;
 }
-
-#single.indic.button {
-  width: 40%
-}
-
-#single_button{
-  text-align: center;
-}
-
-#multiple_button{
-  text-align: center;
 }
 
 .st-right{
@@ -398,22 +269,20 @@ display: flex;
 
 	height: 20px;
 	width: 30px;
+	
 
 }
 
 .st-left{
 	text-align: left;
-	width: 50px;
+	width: 20px;
 	height: 20px;
 
 }
 #specInfo{
 	table-layout: fixed;
-	overflow: hidden;
-}
-
-#info_icon{
-	text-transform: lowercase;
+	overflow: scroll;
+	
 }
 
 .lds-roller {
@@ -587,4 +456,165 @@ display: flex;
   100% {
     transform: rotate(360deg);
   }
+}
+
+
+
+
+
+@media screen and (max-width: 768px) {
+
+  .reset_tooltip {
+    position: relative;
+    display: inline-block;
+    /*border-bottom: 1px dotted black;*/
+  }
+
+
+  /* Tooltip text */
+  .reset_tooltip .reset_tooltiptext {
+    visibility: hidden;
+    width: 150px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-weight: 400;
+    font-size: 14px;
+
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    bottom: 120%;
+    left: -65%;
+    margin-left: -60px;
+
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  /* Tooltip arrow */
+  .reset_tooltip .reset_tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 75%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .reset_tooltip:hover .reset_tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .weight_tooltip {
+  position: relative;
+  display: inline-block;
+  /*border-bottom: 1px dotted black;*/
+}
+/* Tooltip text */
+.weight_tooltip .weight_tooltiptext {
+  visibility: hidden;
+  width: 150px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-weight: 400;
+  font-size: 14px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 120%;
+  left: -65%;
+  margin-left: -60px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.weight_tooltip .weight_tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 75%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.weight_tooltip:hover .weight_tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.download_tooltip {
+  position: relative;
+  display: inline-block;
+  /*border-bottom: 1px dotted black;*/
+}
+
+
+/* Tooltip text */
+.download_tooltip .download_tooltiptext {
+  visibility: hidden;
+  width: 250px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-weight: 400;
+  font-size: 14px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 120%;
+  left: -30%;
+  margin-left: -60px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.download_tooltip .download_tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 75%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.download_tooltip:hover .download_tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+
+
+
+
+
+
+
 }

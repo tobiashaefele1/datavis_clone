@@ -16,6 +16,9 @@ class Data:
         self.data = self.__reader(filename)
         self.sql_data = []
         assert self.data, "data set is empty"
+        print(self.labels)
+        print(len(self.labels))
+        print(len(self.data[0]))
         assert (len(self.labels) == len(self.data[0])), "Labels do not match the data"
 
     def __reader(self, filename):

@@ -51,30 +51,46 @@ class ViewPicker extends Component {
     render() {
       if (this.props.show_viewpicker) {
         return (
-          <div>
-            <div id="settings" className="import_modal">
-              <div className="import_modal-content">
-                <span className="close"
-                  onClick={this.closeModal.bind(this)}>&times;</span>
-                <p>Willkommen!</p>
-                <p> Ich möchte... </p>
-                <div className="row" id = "multiple_button">
-                  <button id="aggreg.indic.button"
-                    onClick={this.changeViewMultiple.bind(this)}>
-                        einen aggregierten Indikator zusammensetzen
-                  </button>
-                </div>
+          
+			   <div className="modal is-active">
+  				<div className="modal-background" onClick={this.closeModal.bind(this)}></div>
+              <div className="modal-card">
+				  <header className="modal-card-head">
+					  <p className="modal-card-title" style={{textAlign: 'center'}}>Ansicht wählen:</p>
+				  </header>
+              <section className="modal-card-body">
 
-                <div className = "row" id = "single_button">
-                  <button id="single.indic.button"
-                    onClick={this.changeViewSingle.bind(this)}>
-                        einzelne Indikatoren ansehen
-                  </button>
-                </div>
+
+
+				            <div className="btn-group-vertical is-centered" style={{padding: "10px 24px"}}>
+
+                                <div className="is-centered" style={{textAlign: 'center', paddingBottom: "20px"}}>
+				                <a className="button is-dark is-outlined is-centered" onClick={this.changeViewMultiple.bind(this)} >
+                                    aggregierten Indikator zusammensetzen
+				                </a>
+                            </div>
+
+                                <div className="is-centered" style={{textAlign: 'center', paddingBottom: "0px"}}>
+                                <a className="button is-dark is-outlined is-centered" onClick={this.changeViewSingle.bind(this)}>
+										einzelne Indikatoren ansehen
+								</a>
+                            </div>
+                            </div>
+
+                  			</section>
+			<footer className="modal-card-foot">
+
+			</footer>
+
 
               </div>
+
+
+
+			  <button className="modal-close is-large" onClick={this.closeModal.bind(this)} aria-label="close"></button>
             </div>
-          </div>);
+
+       );
       } else {
         return ('');
       }

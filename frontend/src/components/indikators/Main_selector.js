@@ -45,10 +45,12 @@ export class Main_selector extends Component {
 	  if (this.props.view_multiple){
 		var percentage = 0;
 		for (var i in this.props.indikators){
-			percentage += parseFloat(document.getElementById(`weight_${i}`).value);
-		}
+		    if (document.getElementById(`weight_${i}`).value != ''){
 
-		if(percentage != 100){
+			percentage += parseFloat(document.getElementById(`weight_${i}`).value)
+		}}
+
+		if(percentage > 100){
 			for(i in this.props.indikators){
 				document.getElementById(`weight_${i}`).style.background = 'lightcoral';
 			}}
@@ -60,7 +62,7 @@ export class Main_selector extends Component {
 
 		else{
 			for(i in this.props.indikators){
-				document.getElementById(`weight_${i}`).style.background = 'palegreen';
+				document.getElementById(`weight_${i}`).style.background = '#e6ffe6';
 			}
 		}
 	}
@@ -118,16 +120,27 @@ export class Main_selector extends Component {
      */
     weight = () =>{
       if (this.props.view_multiple) {
-        return ( <div className="three columns">
-            <div>
-          <label>Gewicht (%) </label>
+        return ( 
+			<div>
+            <div className="weight_tooltip">
+
+                          <span className="weight_tooltiptext">
+                     Der hier eingebene Wert legt die prozentuale Gewichtung des gewählten Indikators fest.
+                              <br/>
+                              Die Summe
+                              aller individuellen Gewichtungen sollte 100% ergeben.
+                    </span>
+
+                % &nbsp;<i className="far fa-question-circle" id="info_icon"></i>
+
             </div>
-          <input className="u-80-width" id={`weight_${this.props.number}`}
+          <input className="input is-small" id={`weight_${this.props.number}`}
             onChange={this.handleChangeProm.bind(this)}
             type="number"
-            defaultValue={this.props.value_dic[`weight_${this.props.number}`]}>
+            defaultValue={this.props.value_dic[`weight_${this.props.number}`]} style={{textAlign: 'center'}} >
           </input>
-        </div>);
+		  </div>
+        );
       }
     }
 
@@ -188,20 +201,21 @@ export class Main_selector extends Component {
      */
     render() {
       return (
-
-        <div id={`in_${this.props.number}`}>
-          <div className="row">
-            <div className="six columns">
-                 <div className="indicator_tooltip">
+		  <div >
+		  <div className="columns is-gapless field is-grouped is-mobile" style={{marginBottom: '10px'}}>
+			  <div className="column is-6" style={{textAlign: 'left'}}>
+				  <div className="indicator_tooltip">
                 <span className="tooltiptext">
                      Langname: {(this.props.value_dic[`var_name_${this.props.number}`] ?
-                     this.props.metadata[this.props.value_dic[`var_name_${this.props.number}`]].Langname : '')}
+                    this.props.metadata[this.props.value_dic[`var_name_${this.props.number}`]].Langname : '')} <br/>
                       Quelle: {(this.props.value_dic[`var_name_${this.props.number}`] ?
                      this.props.metadata[this.props.value_dic[`var_name_${this.props.number}`]].Quelle : '')}
                     </span>
-                <label className="indicator">{this.props.name} <a id="info_icon">&#9432; </a>  </label>
+                    <label className="indicator">&nbsp; {this.props.name} <i
+                        className="far fa-question-circle" id="info_icon"></i> </label>
 				</div>
-                <select className="u-95-width"
+				  <div className="select is-dark is-small ">
+                <select 
                 defaultValue={this.props.value_dic[`var_name_${this.props.number}`]}
                 id={`var_name_${this.props.number}`}
                 onChange={this.handleChangeProm.bind(this)}>
@@ -212,15 +226,12 @@ export class Main_selector extends Component {
                 )
                 }
               </select>
-            
-            </div>
-
-
-            <div className="three columns">
-                <div>
-              <label >Jahr </label>
-                </div>
-              <select className="u-80-width"
+				</div>
+			  </div>
+			  <div className="column is-3" style={{textAlign: 'left'}}>
+				  &nbsp; Jahr
+				<div className="select is-dark is-small">
+              <select 
                 defaultValue={this.props.value_dic[`var_year_${this.props.number}`]}
                 id={`var_year_${this.props.number}`}
                 onChange={this.handleChangeProm.bind(this)}>
@@ -233,14 +244,29 @@ export class Main_selector extends Component {
 
                 }
               </select>
+			  </div>
+			  </div>
+			  <div className="column is-3" style={{textAlign: 'center'}}>
+				   {this.weight()}
+			  </div>
+
+			</div> <div className="indicator_tooltip">
+                <span className="tooltiptext">
+                     Langname: {(this.props.value_dic[`var_name_${this.props.number}`] ?
+                    this.props.metadata[this.props.value_dic[`var_name_${this.props.number}`]].Langname : '')} <br/>
+                      Quelle: {(this.props.value_dic[`var_name_${this.props.number}`] ?
+                     this.props.metadata[this.props.value_dic[`var_name_${this.props.number}`]].Quelle : '')}
+                    </span>
+                    <label className="indicator">&nbsp; bezugKreuze <i
+                        className="far fa-question-circle" id="info_icon"></i> </label>
+				</div>
+			<div className="columns is-gapless field is-grouped is-mobile">  
+				<div className="column is-6">
+					<div>
+
             </div>
-
-            {this.weight()}
-
-            <div className="row">
-
-              <div className="six columns">
-                <select className="u-95-width"
+				  <div className="select is-dark is-small">
+                <select 
                   defaultValue={this.props.value_dic[`ref_name_${this.props.number}`]}
                   id={`ref_name_${this.props.number}`}
                   onChange={this.handleChangeProm.bind(this)}>
@@ -251,10 +277,14 @@ export class Main_selector extends Component {
                   )
                   }
                 </select>
-              </div>
+				</div>
+			  </div>
+			  <div className="column is-3">
+				  <div>
 
-              <div className="three columns">
-                <select className="u-80-width"
+            </div>
+				  <div className="select is-dark is-small">
+                <select
                   id={`ref_year_${this.props.number}`}
                   onChange={this.handleChangeProm.bind(this)}>
                   defaultValue={this.props.value_dic[`ref_year_${this.props.number}`]}
@@ -266,10 +296,39 @@ export class Main_selector extends Component {
                   }
 
                 </select>
-              </div>
-            </div>
-          </div>
-        </div>
+				</div>
+			  </div>
+			  
+			</div>
+
+
+        <div id={`in_${this.props.number}`} className="field is-grouped-multiline" >
+       
+		 
+         
+
+
+           
+               
+        
+
+        
+			</div>
+            
+
+           
+				  
+            
+
+            
+				  
+				 
+           
+			
+        
+	
+</div>
+       
       );
     }
 
@@ -315,7 +374,7 @@ function mapStateToProps(state) {
     count_map: state.count_map,
     current_map: state.current_map,
     map_name: state.map_name,
-    var_year_data: state.var_year_data,
+    // var_year_data: state.var_year_data,
     view_multiple: state.view_multiple,
     single_indic_data: state.single_indic_data,
 	metadata: state.metadata,

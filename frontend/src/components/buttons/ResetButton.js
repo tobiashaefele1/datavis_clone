@@ -21,10 +21,10 @@ class ResetButton extends Component {
 				document.getElementById('var_year_1').value='2010'
 				document.getElementById('var_year_2').value='2011-18'
 				document.getElementById('var_year_3').value='2012'
-				document.getElementById('ref_name_0').value='Erwerbspersonen gesamt_100'
-				document.getElementById('ref_name_1').value='Erwerbstätige gesamt_100'
-				document.getElementById('ref_name_2').value='Erwerbstätige gesamt_100'
-				document.getElementById('ref_name_3').value='Erwerbstätige gesamt_100'
+				document.getElementById('ref_name_0').value='Zivile Erwerbspersonen_100'
+				document.getElementById('ref_name_1').value='SV-pflichtig Beschäftigte am Wohnort_100'
+				document.getElementById('ref_name_2').value='SV-pflichtig Beschäftigte am Wohnort_100'
+				document.getElementById('ref_name_3').value='SV-pflichtig Beschäftigte am Wohnort_100'
 				document.getElementById('ref_year_0').value='2011'
 				document.getElementById('ref_year_1').value='2011'
 				document.getElementById('ref_year_2').value='2012'
@@ -69,17 +69,28 @@ class ResetButton extends Component {
     render() {
       
         return (
-			<button onClick={this.handleButtonReset.bind(this)}>GRW 2012</button>
-		 
+
+
+        	            <div className="reset_tooltip">
+
+                          <span className="reset_tooltiptext">
+                   setzt alle Parameter auf den "originalen" GRW-Indikator von 2012 zurück
+                    </span>
+							<a className="button is-dark is-outlined is-large"
+							   onClick={this.handleButtonReset.bind(this)}>
+    			<span className="icon">
+     				 <i className="fas fa-undo"></i>
+    					</span>
+								{/* <span>Einstellungen</span> */}
+							</a>
+
+						</div>
+
         );
       }
     
 }
-function mapStateToProps(state) {
-  return {
-    indicator_data: state.indicator_data,
-  };
-}
+
 
 
 

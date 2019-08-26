@@ -25,7 +25,13 @@ class MinButton extends Component {
         );
       } else {
         return (
-          <button onClick={this.handleButton.bind(this)}>-</button>
+			<a className="button is-dark is-outlined is-large" onClick={this.handleButton.bind(this)}>
+    			<span className="icon">
+     				 <i className="fas fa-minus"></i>
+    					</span>
+   					 {/* <span>Einstellungen</span> */}
+  			</a>
+          
         );
       }
     }

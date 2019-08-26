@@ -64,13 +64,16 @@ class MapSelector extends Component {
      */
     render() {
       return (
-        <div>
-          <label>Karte</label>
-          <select className="u-80-width"
+		<div className="is-centered" style={{paddingBottom: "25px"}}>
+		<div style={{paddingBottom: "5px"}}>Karte</div>
+		
+		
+        <div className="select is-small is-dark " style={{marginBottom: '10px'}}>
+          <select 
             id="map_selector"
             onChange={this.handleMapChange.bind(this)}
 			defaultValue='1'>
-            <option value="0">Kreise</option>
+            <option value="0">Kreise (Stand 2015)</option>
             <option value="1">Arbeitsmarktregionen (Stand 2012)</option>
             <option value="2">Arbeitsmarktregionen (Stand 2015)</option>
             <option value="3">Arbeitsmarktregionen (Stand 2020)</option>
@@ -79,6 +82,7 @@ class MapSelector extends Component {
           </select>
 
         </div>
+		</div>
       );
     }
 }

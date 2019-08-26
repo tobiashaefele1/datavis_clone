@@ -23,9 +23,10 @@ def index_column(column, cursor, table_name):
     cursor.execute(sql)
 
 
-def create_table_and_load_data(data, data_code=100, data_base_name="mydb", table_name="kreise"):
+def create_table_and_load_data(data_base, data, data_code=100, data_base_name="mydb", table_name="kreise"):
     """
     Function to create a table and load data into the DB for a given data object
+    :param data_base: the database where it should be loaded in.
     :param data: The data object that contains the labels and tuple data
     :param data_code: the data code of which level of data the data object contains, default: 100
     :param data_base_name: the name of the database that it is loaded into, default: mydb
@@ -33,7 +34,8 @@ def create_table_and_load_data(data, data_code=100, data_base_name="mydb", table
     :return:
     """
     data.convert_to_array_sql()
-    data_base = pymysql.connect("bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com", "admin", "NPmpMe!696rY", data_base_name)
+    # print(data.data)
+    # print(data.labels)
     cursor = data_base.cursor()
     with warnings.catch_warnings():
         warnings.simplefilter('ignore')
@@ -45,12 +47,13 @@ def create_table_and_load_data(data, data_code=100, data_base_name="mydb", table
            "           YEAR VARCHAR(20))" % table_name)
 
     cursor.execute(sql)
-    add_columns(data, cursor, data_code, table_name)
-    add_tuples(data, cursor, table_name)
     index_column('KENNZIFFER', cursor, table_name)
     index_column('YEAR', cursor, table_name)
-    data_base.commit()
-    data_base.close()
+    add_columns(data, cursor, data_code, table_name)
+    add_tuples(data, cursor, table_name)
+
+
+
 
 
 def add_columns(data, cursor, data_code=100, table_name='kreise'):
@@ -90,6 +93,7 @@ def add_tuples(data, cursor, table_name="kreise"):
              VALUES
                 (%s)
         """ % (table_name, quests)
+    # print(data.sql_data)
     cursor.executemany(sql, data.sql_data)
 
 
@@ -106,21 +110,19 @@ def add_tuples_new(data, data_base, data_code=100, table_name="kreise"):
     data.convert_to_array_sql()
     cursor = data_base.cursor()
     for tuple_sql in data.sql_data:
-
+        print(tuple_sql)
         if check_if_tuple_exists(cursor, table_name, tuple_sql[0], tuple_sql[3]):
             sql = f"""UPDATE `%s` SET %s WHERE `KENNZIFFER` = %s AND `YEAR` = '%s' """\
                   % (table_name, prepare_update_sql(data.unique_labels(), tuple_sql[4:], data_code)
                      , tuple_sql[0], tuple_sql[3])
             # print (sql)
             cursor.execute(sql)
-            data_base.commit()
         else:
             sql = f"""INSERT INTO `%s` (%s) VALUES (%s)""" \
                   % (table_name, prepare_columns_for_sql(data.unique_labels(), data_code),
                      prepare_value_list_for_sql(tuple_sql))
 
             cursor.execute(sql)
-            data_base.commit()
 
 
 
