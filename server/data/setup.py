@@ -32,8 +32,8 @@ Bund_data = readinBund(link_to_Bund_data, link_to_template_input)               
 reference_data = Data(link_to_reference_data)  #### WORKS!!!!
 Kreise_data = Data(link_to_Kreise_data)  # WORKS!!!
 
-# data_base = pymysql.connect("bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com", "admin", "NPmpMe!696rY", "mydb")
-data_base = pymysql.connect("localhost", "user", "password", "mydb")
+data_base = pymysql.connect("bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com", "admin", "NPmpMe!696rY", "mydb")
+# data_base = pymysql.connect("localhost", "user", "password", "mydb")
 
 # load in all the data to DB
 mapping_to_db(link_to_mapping_file)                                     # load in Mapping file to DB
@@ -41,8 +41,8 @@ mapping_to_db(link_to_mapping_file)                                     # load i
 create_table_and_load_data(data_base, Kreise_data)                                 # load in Kreise data
 #
 #
-# data_base = pymysql.connect("bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com", "admin", "NPmpMe!696rY", "mydb")
-data_base = pymysql.connect("localhost", "user", "password", "mydb")
+data_base = pymysql.connect("bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com", "admin", "NPmpMe!696rY", "mydb")
+# data_base = pymysql.connect("localhost", "user", "password", "mydb")
 
 cursor = data_base.cursor()
 # #
@@ -79,25 +79,27 @@ load_meta_data_to_db(link_to_KRS_metadata, KRS_datacode,
 #
 
 
-# pool = Pool(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
-#
-#                                       db='mydb',
-#                                       user='admin',
-#                                       password='NPmpMe!696rY',
-#                                         cursorclass=pymysql.cursors.Cursor)
-
-
-
-pool = Pool(host='localhost',
+pool = Pool(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
 
                                       db='mydb',
-                                      user='user',
-                                      password='password',
+                                      user='admin',
+                                      password='NPmpMe!696rY',
                                         cursorclass=pymysql.cursors.Cursor)
+
+
+#
+# pool = Pool(host='localhost',
+#
+#                                       db='mydb',
+#                                       user='user',
+#                                       password='password',
+#                                         cursorclass=pymysql.cursors.Cursor)
 
 
 
 ## this loads all the years data into a separate table in the database so that we can retrieve it from context
 retrieve_db_data(pool).insert_all_years_into_db()
+
+
 
 

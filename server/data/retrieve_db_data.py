@@ -291,7 +291,8 @@ class retrieve_db_data:
                                     SELECT COLUMN_NAME 
                                         FROM information_schema.columns 
                                         WHERE table_schema = "mydb" 
-                                        AND table_name = '%s';""" % (table_name))
+                                        AND table_name = '%s'
+                                        SORT BY COLUMN_NAME ASC;""" % (table_name))
         try:
             # executed quiery and closes cursor
             cursor = mySQLconnection.cursor()
@@ -526,7 +527,7 @@ class retrieve_db_data:
 
         self.pool.release(mySQLconnection)
 
-        return ("all values added to database")
+        return print("Alle Werte in Datenbank geschrieben. Prozess erfolgreich abgeschlossen.")
 
 
 
@@ -579,16 +580,13 @@ class retrieve_db_data:
                     if counter != 0:
                         temp.append(y)
                     counter += 1
+                temp.reverse()
                 filtered_dict[x[0]] = temp
 
 
 
 
 
-            #     print(record)
-            #     filtered_dict.append(record)
-
-            #     record = {k: v for k, v in x.items() if v is not None}
 
             return filtered_dict
 
