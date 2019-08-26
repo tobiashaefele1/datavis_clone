@@ -33,7 +33,7 @@
 /* Tooltip text */
 .weight_tooltip .weight_tooltiptext {
   visibility: hidden;
-  width: 150px;
+  width: 250px;
   background-color: #555;
   color: #fff;
   text-align: center;
@@ -203,7 +203,7 @@
 /* Tooltip text */
 .indicator_tooltip .tooltiptext {
   visibility: hidden;
-  width: 150px;
+  width: 250px;
   background-color: #555;
   color: #fff;
   text-align: center;
@@ -474,7 +474,7 @@
   /* Tooltip text */
   .reset_tooltip .reset_tooltiptext {
     visibility: hidden;
-    width: 150px;
+    width: 250px;
     background-color: #555;
     color: #fff;
     text-align: center;
@@ -521,7 +521,7 @@
 /* Tooltip text */
 .weight_tooltip .weight_tooltiptext {
   visibility: hidden;
-  width: 150px;
+  width: 250px;
   background-color: #555;
   color: #fff;
   text-align: center;
