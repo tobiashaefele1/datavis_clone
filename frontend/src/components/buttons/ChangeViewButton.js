@@ -2,46 +2,41 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 /**
- *Component class for the ChangeViewButton this opens the modal to change the view.
+ * Component class for the ChangeViewButton
+ * this opens the modal to change the view.
  *
  * @class ChangeViewButton
  * @extends {Component}
  */
 class ChangeViewButton extends Component {
-
-	 /**
+  /**
      *This function changes the view.
      *
      * @memberof ChangeViewButton
      */
     changeView = () => {
-        this.props.dispatch({type: 'CHANGEVIEW'});  
+      this.props.dispatch({type: 'CHANGEVIEW'});
     }
- 
-	viewButton(){
-		if(this.props.view_multiple){
-			return( 
-				
 
-    									
-										<span>einzelnen Indikator ansehen</span>
+    /**
+     * This method decides if which text
+     *  needs to be shown in the button to switch views.
+     *
+     * @return {JSX} the text shown in the button
+     * @memberof ChangeViewButton
+     */
+    viewButton() {
+      if (this.props.view_multiple) {
+        return (
+          <span>einzelnen Indikator ansehen</span>
+        );
+      } else {
+        return (
+          <span>aggregierten Indikator zusammenstellen</span>
+        );
+      }
+    }
 
-
-			)
-		}else{
-			return(
-			
-					
-
-
-    									
-										<span>aggregierten Indikator zusammenstellen</span>
-										
-
-
-			)
-		}
-	}
     /**
      *This function renders the button.
      *
@@ -50,11 +45,12 @@ class ChangeViewButton extends Component {
      */
     render() {
       return (
-		<button className="button is-dark is-outlined is-fullwidth" onClick={this.changeView}>{this.viewButton()}</button>
+        <button className="button is-dark is-outlined is-fullwidth"
+          onClick={this.changeView}>{this.viewButton()}</button>
       );
-	}
-	
+    }
 }
+
 /**
  *Here the props are selected from the store.
  *
@@ -63,10 +59,8 @@ class ChangeViewButton extends Component {
  */
 function mapStateToProps(state) {
   return {
-	view_multiple: state.view_multiple,
+    view_multiple: state.view_multiple,
   };
 }
 
 export default connect(mapStateToProps)(ChangeViewButton);
-
-

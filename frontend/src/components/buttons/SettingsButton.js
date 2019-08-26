@@ -26,7 +26,7 @@ class SettingsButton extends Component {
     					</span>
    					 {/* <span>Einstellungen</span> */}
   			</a>
-        
+
       );
     }
 }

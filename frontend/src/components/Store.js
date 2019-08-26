@@ -1,6 +1,6 @@
 import {createStore, combineReducers, compose, applyMiddleware} from 'redux';
 import produce from 'immer';
-import Col from "reactstrap/es/Col";
+import Col from 'reactstrap/es/Col';
 
 // console.log(context);
 
@@ -13,7 +13,7 @@ const initalState = {
     ['Angezeigter Wert', 'placeholder']],
 
   currentScale: 0,
-  scaleOptions: [0,1,2],
+  scaleOptions: [0, 1, 2],
 
   current_color: ['#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c'],
   color_options: [['#eff3ff', '#bdd7e7', '#6baed6', '#3182bd', '#08519c'],
@@ -39,8 +39,8 @@ const initalState = {
   single_indic_data: JSON.parse(context.single_indic_data),
   table_data: JSON.parse(context.table_data),
   // metadata: JSON.parse(context.metadata.replace(/'/g, '"')),
-  metadata: JSON.parse((context.metadata.replace(/(\r\n|\n|\r)/gm,""))),
-    all_years: JSON.parse(context.all_years),
+  metadata: JSON.parse((context.metadata.replace(/(\r\n|\n|\r)/gm, ''))),
+  all_years: JSON.parse(context.all_years),
 
 
   show_modal: false,
@@ -66,39 +66,39 @@ const initalState = {
   table_columns: [{
     Header: 'Kennziffer',
     accessor: 'Kennziffer',
-      style: {textAlign: 'right'}
+    style: {textAlign: 'right'},
   },
-      {
+  {
     Header: 'Name',
     accessor: 'Name',
-     style: {textAlign: 'left'}
+    style: {textAlign: 'left'},
   },
 
   {
     Header: 'aggregierter Indikator',
     accessor: 'aggregierter Indikator',
-      style: {textAlign: 'right'}
+    style: {textAlign: 'right'},
   },
   {
     Header: 'Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200 2009-12',
     accessor: 'Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200 2009-12',
-      style: {textAlign: 'right'}
+    style: {textAlign: 'right'},
   },
-{
+  {
     Header: 'Lohn pro Beschäftigtem 2010 _ORIGINAL_200 2010',
     accessor: 'Lohn pro Beschäftigtem 2010 _ORIGINAL_200 2010',
     style: {textAlign: 'right'},
-        Cell: props => ((props.value !== null || props.value != "" )  ? props.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "-")
+    Cell: (props) => ((props.value !== null || props.value != '' ) ? props.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '-'),
   },
-{
+  {
     Header: 'Erwerbstätigenprognose _ORIGINAL_200 2011-18',
     accessor: 'Erwerbstätigenprognose _ORIGINAL_200 2011-18',
-    style: {textAlign: 'right'}
+    style: {textAlign: 'right'},
   },
-{
+  {
     Header: 'Infrastrukturindikator_ORIGINAL_200 2012',
     accessor: 'Infrastrukturindikator_ORIGINAL_200 2012',
-    style: {textAlign: 'right'}
+    style: {textAlign: 'right'},
   },
 
   ],
@@ -106,7 +106,7 @@ const initalState = {
   firstload: true,
   // var_year_data: JSON.parse(context.var_year_data),
 
-    // THIS IS THE ORIGINAL THAT USED TO WORK STATICALLY; ABOVE IS DERIVING THESE VALUES FROM CONTEXT; TOO
+  // THIS IS THE ORIGINAL THAT USED TO WORK STATICALLY; ABOVE IS DERIVING THESE VALUES FROM CONTEXT; TOO
   // var_year_data: {'var_year_0': [], 'var_year_1': [], 'var_year_2': [],
   //   'var_year_3': [], 'var_year_4': [], 'var_year_5': []},
   view_multiple: true,
@@ -146,125 +146,123 @@ function reducer(state = initalState, action) {
 
     case 'CHANGESCALE':
       return produce(state, (draft) => {
-        switch(action.value){
+        switch (action.value) {
           case '0':
             draft.currentScale = state.scaleOptions[0];
             break;
           case '1':
-            draft.currentScale = state.scaleOptions[1]
+            draft.currentScale = state.scaleOptions[1];
             break;
           case '2':
             draft.currentScale = state.scaleOptions[2];
             break;
-          }
-
-      })
+        }
+      });
 
     case 'SHOWTABLE':
       return produce(state, (draft) => {
-            draft.showTable = !state.showTable;
-        }
+        draft.showTable = !state.showTable;
+      }
       );
-
 
 
     case 'VIEWMODAL':
       return produce(state, (draft) => {
         draft.show_viewpicker = !state.show_viewpicker;
 	  });
-	case 'RESET':
-		return produce(state, (draft)=>{
-            draft.indicator_data = JSON.parse(context.indicator_data);
-            draft.single_indic_data = JSON.parse(context.single_indic_data);
-			draft.indikator_counter = 4;
-			draft.indikators = ['Indikator 1', 'Indikator 2', 'Indikator 3', 'Indikator 4'];
-			draft.current_map = state.amr12;
-			draft.count_map = 1;
-			draft.view_multiple = true;
-			draft.table_data = JSON.parse(context.table_data)
-			draft.value_dic = {
-								'var_name_0': 'Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200',
-								'var_name_1': 'Lohn pro Beschäftigtem 2010 _ORIGINAL_200',
-								'var_name_2': 'Erwerbstätigenprognose _ORIGINAL_200',
-								'var_name_3': 'Infrastrukturindikator_ORIGINAL_200',
-								'var_name_4': null,
-								'var_name_5': null,
-								'var_year_0': '2009-12', 'var_year_1': '2010', 'var_year_2': '2011-18', 'var_year_3': '2012',
-								'var_year_4': null, 'var_year_5': null,
-								'weight_0': 45, 'weight_1': 40, 'weight_2': 7.5, 'weight_3': 7.5,
-								'weight_4': 0, 'weight_5': 0,
-								'ref_name_0': 'Zivile Erwerbspersonen_100', 'ref_name_1': 'SV-pflichtig Beschäftigte am Wohnort_100',
-								'ref_name_2': 'SV-pflichtig Beschäftigte am Wohnort_100',
-								'ref_name_3': 'SV-pflichtig Beschäftigte am Wohnort_100',
-								'ref_name_4': 'SV-pflichtig Beschäftigte am Wohnort_100', 'ref_name_5': 'SV-pflichtig Beschäftigte am Wohnort_100',
-								'ref_year_0': '2011', 'ref_year_1': '2011', 'ref_year_2': '2012', 'ref_year_3': '2012',
-								'ref_year_4': 2012, 'ref_year_5': 2012,
-								 }
-			draft.table_columns = [{
-									Header: 'Kennziffer',
-									accessor: 'Kennziffer',
-                                      style: {textAlign: 'right'}
-								},
-                                {
-									Header: 'Name',
-									accessor: 'Name',
-                                     style: {textAlign: 'left'}
-								},
+    case 'RESET':
+      return produce(state, (draft)=>{
+        draft.indicator_data = JSON.parse(context.indicator_data);
+        draft.single_indic_data = JSON.parse(context.single_indic_data);
+        draft.indikator_counter = 4;
+        draft.indikators = ['Indikator 1', 'Indikator 2', 'Indikator 3', 'Indikator 4'];
+        draft.current_map = state.amr12;
+        draft.count_map = 1;
+        draft.view_multiple = true;
+        draft.table_data = JSON.parse(context.table_data);
+        draft.value_dic = {
+          'var_name_0': 'Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200',
+          'var_name_1': 'Lohn pro Beschäftigtem 2010 _ORIGINAL_200',
+          'var_name_2': 'Erwerbstätigenprognose _ORIGINAL_200',
+          'var_name_3': 'Infrastrukturindikator_ORIGINAL_200',
+          'var_name_4': null,
+          'var_name_5': null,
+          'var_year_0': '2009-12', 'var_year_1': '2010', 'var_year_2': '2011-18', 'var_year_3': '2012',
+          'var_year_4': null, 'var_year_5': null,
+          'weight_0': 45, 'weight_1': 40, 'weight_2': 7.5, 'weight_3': 7.5,
+          'weight_4': 0, 'weight_5': 0,
+          'ref_name_0': 'Zivile Erwerbspersonen_100', 'ref_name_1': 'SV-pflichtig Beschäftigte am Wohnort_100',
+          'ref_name_2': 'SV-pflichtig Beschäftigte am Wohnort_100',
+          'ref_name_3': 'SV-pflichtig Beschäftigte am Wohnort_100',
+          'ref_name_4': 'SV-pflichtig Beschäftigte am Wohnort_100', 'ref_name_5': 'SV-pflichtig Beschäftigte am Wohnort_100',
+          'ref_year_0': '2011', 'ref_year_1': '2011', 'ref_year_2': '2012', 'ref_year_3': '2012',
+          'ref_year_4': 2012, 'ref_year_5': 2012,
+								 };
+        draft.table_columns = [{
+          Header: 'Kennziffer',
+          accessor: 'Kennziffer',
+          style: {textAlign: 'right'},
+        },
+        {
+          Header: 'Name',
+          accessor: 'Name',
+          style: {textAlign: 'left'},
+        },
 
-								{
-									Header: 'aggregierter Indikator',
-									accessor: 'aggregierter Indikator',
-                                     style: {textAlign: 'right'}
-								},
+        {
+          Header: 'aggregierter Indikator',
+          accessor: 'aggregierter Indikator',
+          style: {textAlign: 'right'},
+        },
 
-								{
-									Header: 'Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200 2009-12',
-									accessor: 'Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200 2009-12',
-                                     style: {textAlign: 'right'}
-								},
-								{
-									Header: 'Lohn pro Beschäftigtem 2010 _ORIGINAL_200 2010',
-									accessor: 'Lohn pro Beschäftigtem 2010 _ORIGINAL_200 2010',
-                                     style: {textAlign: 'right'},
-                                        Cell: props => ((props.value !== null || props.value != "" )  ? props.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "-")
-								},
-								{
-									Header: 'Erwerbstätigenprognose _ORIGINAL_200 2011-18',
-									accessor: 'Erwerbstätigenprognose _ORIGINAL_200 2011-18',
-                                     style: {textAlign: 'right'}
-								},
-								{
-									Header: 'Infrastrukturindikator_ORIGINAL_200 2012',
-									accessor: 'Infrastrukturindikator_ORIGINAL_200 2012',
-                                     style: {textAlign: 'right'}
-								},
+        {
+          Header: 'Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200 2009-12',
+          accessor: 'Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200 2009-12',
+          style: {textAlign: 'right'},
+        },
+        {
+          Header: 'Lohn pro Beschäftigtem 2010 _ORIGINAL_200 2010',
+          accessor: 'Lohn pro Beschäftigtem 2010 _ORIGINAL_200 2010',
+          style: {textAlign: 'right'},
+          Cell: (props) => ((props.value !== null || props.value != '' ) ? props.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '-'),
+        },
+        {
+          Header: 'Erwerbstätigenprognose _ORIGINAL_200 2011-18',
+          accessor: 'Erwerbstätigenprognose _ORIGINAL_200 2011-18',
+          style: {textAlign: 'right'},
+        },
+        {
+          Header: 'Infrastrukturindikator_ORIGINAL_200 2012',
+          accessor: 'Infrastrukturindikator_ORIGINAL_200 2012',
+          style: {textAlign: 'right'},
+        },
 
-								]
-		})  
+        ];
+      });
 
 
     case 'CHANGEVIEW':
       return produce(state, (draft) => {
-		  if(state.view_multiple){
-			draft.indikator_counter = 1;
-			while (draft.indikators.length > 1) {
-			draft.indikators.pop();
-			}
-		}else{
-			draft.indikator_counter = 4;
-			draft.indikators = ['Indikator 1', 'Indikator 2', 'Indikator 3', 'Indikator 4'];
-		}
+		  if (state.view_multiple) {
+          draft.indikator_counter = 1;
+          while (draft.indikators.length > 1) {
+            draft.indikators.pop();
+          }
+        } else {
+          draft.indikator_counter = 4;
+          draft.indikators = ['Indikator 1', 'Indikator 2', 'Indikator 3', 'Indikator 4'];
+        }
         draft.view_multiple = !state.view_multiple;
       });
 
     case 'LOADINGCHANGE':
       return produce(state, (draft) => {
-		draft.loading = !state.loading;
-		// console.log(draft.loading)
+        draft.loading = !state.loading;
+        // console.log(draft.loading)
       }
 
 	  );
-	case 'FIRSTLOADDONE':
+    case 'FIRSTLOADDONE':
       return produce(state, (draft) => {
         draft.firstload = false;
       }
@@ -273,7 +271,7 @@ function reducer(state = initalState, action) {
 
     case 'UPDATECOLUMNS':
       return produce(state, (draft) => {
-          // console.log(state.table_data);
+        // console.log(state.table_data);
         while (draft.table_columns.length > 3) {
           draft.table_columns.pop();
         }
@@ -285,10 +283,10 @@ function reducer(state = initalState, action) {
           // console.log(state.metadata[state.value_dic['var_name_' + i]].csvname);
 
           if (ColumnName in state.table_data[0]) {
-             // const cleanColumnName = state.metadata[state.value_dic['var_name_' + i]].csvname  + ', ' + state.value_dic['var_year_' +i];
+            // const cleanColumnName = state.metadata[state.value_dic['var_name_' + i]].csvname  + ', ' + state.value_dic['var_year_' +i];
             draft.table_columns.push({
-              Header: ColumnName, accessor: ColumnName,  style: {textAlign: 'right'},
-            Cell: props => ((props.value !== undefined )  ? (props.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")) : "-")
+              Header: ColumnName, accessor: ColumnName, style: {textAlign: 'right'},
+              Cell: (props) => ((props.value !== undefined ) ? (props.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')) : '-'),
             });
           }
         }
@@ -297,14 +295,12 @@ function reducer(state = initalState, action) {
     case 'UPDATEDATA':
 
       return produce(state, (draft) => {
-          // console.log(action.data.recieved_data)
+        // console.log(action.data.recieved_data)
         draft.indicator_data = [...action.data.indicator_data];
         // draft.var_year_data = action.data.var_year_data;
         draft.single_indic_data = [...action.data.single_indic_data];
         draft.table_data = [...action.data.table_data];
         // draft.value_dic = [...action.data.recieved_data];
-
-
       });
 
     case 'MODAL':
@@ -313,15 +309,15 @@ function reducer(state = initalState, action) {
       });
 
 
-      case 'INFO':
-          return produce(state, (draft) => {
-              draft.showInfo  = !state.showInfo;
+    case 'INFO':
+      return produce(state, (draft) => {
+        draft.showInfo = !state.showInfo;
       });
 
     case 'INCREMENTINDIKATOR':
       return produce(state, (draft) => {
         draft.indikator_counter = state.indikator_counter + 1;
-        draft.indikators.push('Indikator' + " " + draft.indikator_counter);
+        draft.indikators.push('Indikator' + ' ' + draft.indikator_counter);
       }
       );
     case 'DECREMENTINDIKATOR':
@@ -331,17 +327,16 @@ function reducer(state = initalState, action) {
       }
       );
 
-      case 'UPDATE_VAL_DIC_YEARS':
-          return (produce(state, (draft) => {
-            draft.value_dic['var_year_0'] = action.current_years[0];
-            draft.value_dic['var_year_1'] = action.current_years[1];
-            draft.value_dic['var_year_2'] = action.current_years[2];
-            draft.value_dic['var_year_3'] = action.current_years[3];
-            draft.value_dic['var_year_4'] = action.current_years[4];
-            draft.value_dic['var_year_5'] = action.current_years[5];
-
-          })
-          );
+    case 'UPDATE_VAL_DIC_YEARS':
+      return (produce(state, (draft) => {
+        draft.value_dic['var_year_0'] = action.current_years[0];
+        draft.value_dic['var_year_1'] = action.current_years[1];
+        draft.value_dic['var_year_2'] = action.current_years[2];
+        draft.value_dic['var_year_3'] = action.current_years[3];
+        draft.value_dic['var_year_4'] = action.current_years[4];
+        draft.value_dic['var_year_5'] = action.current_years[5];
+      })
+      );
 
     case 'CHANGEVALUE':
       return produce(state, (draft) => {
@@ -361,12 +356,12 @@ function reducer(state = initalState, action) {
         draft.smalltable[1][1] = state.current_map[action.value]
             .properties.Kennziffer,
         draft.smalltable[2][1] = Math.round(state.current_map[action.value]
-            .properties.Einwohner_2017).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+            .properties.Einwohner_2017).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
         draft.smalltable[3][1] = state.current_map[action.value]
-            .properties.area_km2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+            .properties.area_km2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
         draft.smalltable[4][1] = state.current_map[action.value]
-			.properties.Bundesland;
-		draft.smalltable[5][1] =((state.current_map[action.value].properties.indicator !== null || state.current_map[action.value].properties.indicator != "" ) ? (Math.round(state.current_map[action.value].properties.indicator *10) / 10).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "-")
+            .properties.Bundesland;
+        draft.smalltable[5][1] =((state.current_map[action.value].properties.indicator !== null || state.current_map[action.value].properties.indicator != '' ) ? (Math.round(state.current_map[action.value].properties.indicator *10) / 10).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '-');
         while (draft.smalltable.length > 6) {
           draft.smalltable.pop();
         }
@@ -382,11 +377,11 @@ function reducer(state = initalState, action) {
       return produce(state, (draft) => {
         switch (action.map) {
           case 0:
-            draft.kreise = [...action.value]
+            draft.kreise = [...action.value];
             break;
           case 1:
-			draft.amr12 = [...action.value];
-			draft.current_map = [...action.value];
+            draft.amr12 = [...action.value];
+            draft.current_map = [...action.value];
             break;
           case 2:
             draft.amr15 = [...action.value];
@@ -396,7 +391,7 @@ function reducer(state = initalState, action) {
             break;
           case 4:
             draft.ror = [...action.value];
-			break;
+            break;
 		  case 5:
             draft.bund = [...action.value];
             break;
@@ -421,36 +416,36 @@ function reducer(state = initalState, action) {
             break;
           case 4:
             draft.current_map = state.ror;
-			break;
+            break;
 		  case 5:
             draft.current_map = state.bund;
-			break;
+            break;
         }
       }
       );
 
       // insertion Tobias: load map here with indicators
     case 'CHANGEVARS':
-		// console.log('CHANGEVARS HEREEE')
+      // console.log('CHANGEVARS HEREEE')
       return produce(state, (draft) => {
 		 const template = state.current_map;
-       
-      const value = (state.view_multiple ?
-        state.indicator_data : state.single_indic_data);
-      // console.log(value);
 
-      let i;
-      for (i = 0; i < template.length; i++) {
-        let j;
-        for (j = 0; j < value[0].length; j++) {
-          if (template[i].properties.Kennziffer == value[0][j]) {
-            template[i].properties.indicator = value[1][j];
+        const value = (state.view_multiple ?
+        state.indicator_data : state.single_indic_data);
+        // console.log(value);
+
+        let i;
+        for (i = 0; i < template.length; i++) {
+          let j;
+          for (j = 0; j < value[0].length; j++) {
+            if (template[i].properties.Kennziffer == value[0][j]) {
+              template[i].properties.indicator = value[1][j];
+            }
           }
         }
-      }
 
-		draft.current_map = [...template];
-		draft.loading = false;
+        draft.current_map = [...template];
+        draft.loading = false;
       }
       );
 
@@ -461,8 +456,6 @@ function reducer(state = initalState, action) {
 
 
 export const store = createStore(reducer);
-
-
 
 
 // TOBIAS BOTTOM HARDCODED LIST OF INITIAL VALUES FOR VALUE DICT - does seem to throw an error

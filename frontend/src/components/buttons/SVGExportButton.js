@@ -10,27 +10,27 @@ import {connect} from 'react-redux';
  */
 class SVGExportButton extends Component {
     exportsvg = () => {
-		let legend = $('#legend').html()
-		
+      const legend = $('#legend').html();
+
 
 	  let svgData = $('#svg')[0];
-	  console.log(svgData)
+	  console.log(svgData);
       const serial = new XMLSerializer();
 	  svgData = serial.serializeToString(svgData);
-		var svgBegin = svgData.slice(0, 98)
-		console.log(svgBegin)
-		var svgMap = svgData.slice(98, -6)
-		console.log(svgMap)
-	
-		var newSVG = svgBegin.replace("450", "500")
-		
-		newSVG += legend
-		newSVG += svgMap
-		newSVG += '<text y="445" font-size="9" >&#9400;Bundesministerium der Finanzen</text>'
-		newSVG += `<text y="470" font-size="13" >${this.props.view_multiple ? "Zusammengesetzter Indikator" : (this.props.metadata[this.props.value_dic['var_name_0']].csvname + ', ' + this.props.value_dic['var_year_0'])} </text>`
-		newSVG += '</svg>'
+      const svgBegin = svgData.slice(0, 98);
+      console.log(svgBegin);
+      const svgMap = svgData.slice(98, -6);
+      console.log(svgMap);
 
-	  console.log(newSVG)
+      let newSVG = svgBegin.replace('450', '500');
+
+      newSVG += legend;
+      newSVG += svgMap;
+      newSVG += '<text y="445" font-size="9" >&#9400;Bundesministerium der Finanzen</text>';
+      newSVG += `<text y="470" font-size="13" >${this.props.view_multiple ? 'Zusammengesetzter Indikator' : (this.props.metadata[this.props.value_dic['var_name_0']].csvname + ', ' + this.props.value_dic['var_year_0'])} </text>`;
+      newSVG += '</svg>';
+
+	  console.log(newSVG);
 
 
       const svgBlob = new Blob([newSVG],
@@ -38,7 +38,7 @@ class SVGExportButton extends Component {
       const svgUrl = URL.createObjectURL(svgBlob);
       const downloadLink = document.createElement('a');
       downloadLink.href = svgUrl;
-      downloadLink.download = `Karte_BMF_${this.props.view_multiple ? "Zusammengesetzter Indikator" : (this.props.metadata[this.props.value_dic['var_name_0']].csvname + '_' + this.props.value_dic['var_year_0'])}.svg`;
+      downloadLink.download = `Karte_BMF_${this.props.view_multiple ? 'Zusammengesetzter Indikator' : (this.props.metadata[this.props.value_dic['var_name_0']].csvname + '_' + this.props.value_dic['var_year_0'])}.svg`;
       document.body.appendChild(downloadLink);
       downloadLink.click();
       document.body.removeChild(downloadLink);
@@ -53,10 +53,10 @@ class SVGExportButton extends Component {
     render() {
       return (
 		    <button className="button is-dark is-outlined is-fullwidth" onClick={this.exportsvg.bind(this)}>
-    			
+
    					 <span>Karte</span>
   			</button>
-       
+
       );
     }
 }
@@ -68,12 +68,12 @@ class SVGExportButton extends Component {
  */
 function mapStateToProps(state) {
   return {
-    
+
     view_multiple: state.view_multiple,
- 
-   
-      value_dic: state.value_dic,
-      metadata: state.metadata,
+
+
+    value_dic: state.value_dic,
+    metadata: state.metadata,
   };
 }
 

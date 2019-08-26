@@ -8,19 +8,18 @@ import {connect} from 'react-redux';
  * @extends {Component}
  */
 class InfoButton extends Component {
-   
 	closeInfo = () => {
-      this.props.dispatch({type: 'INFO'});
-    }
+	  this.props.dispatch({type: 'INFO'});
+	}
 
-    /**
+	/**
      *This function renders the button.
      *
      * @return {JSX}
      * @memberof SettingsButton
      */
-    render() {
-      return (
+	render() {
+	  return (
 		  <a className="button is-dark is-outlined is-large" onClick={this.closeInfo.bind(this)}>
     			<span className="icon">
      				 <i className="far fa-question-circle"></i>
@@ -28,8 +27,8 @@ class InfoButton extends Component {
    					 {/* <span>Info</span> */}
   			</a>
 
-      );
-    }
+	  );
+	}
 }
 
 export default connect()(InfoButton);
