@@ -12,7 +12,7 @@ from server.data.dataprep import readin258AMR, readin257AMR, readinBund, mapping
 
 #
 # links to all the required data files
-from server.data.retrieve_db_data import retrieve_db_data
+from server.data.retrieve_db_data import insert_all_years_into_db
 
 link_to_mapping_file = './resources/KRS_ROR_AMR_clean_mapping.csv'
 link_to_template_input = './resources/KRS15_template.csv'
@@ -109,8 +109,7 @@ Kreise_data = Data(link_to_Kreise_data)  # WORKS!!!
 #
 #
 # ## this loads all the years data into a separate table in the database so that we can retrieve it from context
-ret_db_dat = retrieve_db_data(pool)
-ret_db_dat.insert_all_years_into_db()
+insert_all_years_into_db()
 print("done loading in all data")
 #
 #
