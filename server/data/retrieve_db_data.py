@@ -7,7 +7,7 @@ from pymysql import Error
 import time
 import pymysql
 
-
+from django.db import connections
 
 
 # TODO tun the outputs of these formulae into lists of lists, rather than tuple lists
@@ -15,7 +15,6 @@ class retrieve_db_data:
 
     def __init__(self, pool):
         self.pool = pool
-        pool.init()
 
     def retrieve_data(self, var_name, var_year, ref_name, ref_year, layer):
         print("retrieve_data")
@@ -24,7 +23,7 @@ class retrieve_db_data:
         output = []
         # connect to database
         # start_time = time.clock()
-        mySQLconnection = self.pool.get_conn()
+        mySQLconnection = 'stop'
 
         # this is the old quiery that does not work for AMR20 (But curiously, for all others)
         #  Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
@@ -64,11 +63,11 @@ class retrieve_db_data:
         try:
 
             # executed quiery and closes cursor
-            cursor = mySQLconnection.cursor()
+            cursor = connections.cursor()
             cursor.execute(sql_select_Query)
             output = cursor.fetchall()
             cursor.close()
-            self.pool.release(mySQLconnection)
+            # self.pool.release(mySQLconnection)
 
 
 
@@ -106,7 +105,7 @@ class retrieve_db_data:
 
             # print(sql_select_Query)
             # executed quiery and closes cursor
-            cursor = mySQLconnection.cursor()
+            cursor = connections.cursor()
 
             cursor.execute(sql_select_Query)
             output = cursor.fetchall()
@@ -127,7 +126,7 @@ class retrieve_db_data:
             output = output[0][1]
             # print(output)
             # print (output)
-            self.pool.release(mySQLconnection)
+            # self.pool.release(mySQLconnection)
             # print (output)
             # print ("THE ABOVE IS RETURNED FROM THE FORMULA")
             print("MySQL connection is closed")
@@ -142,7 +141,7 @@ class retrieve_db_data:
 
         # connect to database
 
-        mySQLconnection = self.pool.get_conn()
+        # mySQLconnection = self.pool.get_conn()
 
         # Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
         sql_select_Query = (""" SELECT 
@@ -157,7 +156,7 @@ class retrieve_db_data:
         # print(sql_select_Query)
         try:
             # executed quiery and closes cursor
-            cursor = mySQLconnection.cursor()
+            cursor = connections.cursor()
             cursor.execute(sql_select_Query)
             output = cursor.fetchall()
             cursor.close()
@@ -284,7 +283,7 @@ class retrieve_db_data:
         output = []
         # connect to database
 
-        mySQLconnection = self.pool.get_conn()
+        # mySQLconnection = self.pool.get_conn()
         # Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
         sql_select_Query = (""" 
                                     SELECT COLUMN_NAME 
@@ -294,7 +293,7 @@ class retrieve_db_data:
                                         ORDER BY COLUMN_NAME ASC;""" % (table_name))
         try:
             # executed quiery and closes cursor
-            cursor = mySQLconnection.cursor()
+            cursor = connections.cursor()
             cursor.execute(sql_select_Query)
             col_names = cursor.fetchall()
             cursor.close()
@@ -303,7 +302,7 @@ class retrieve_db_data:
             print("Error while connecting to MySQL", e)
         finally:
             # closing database connection.
-            self.pool.release(mySQLconnection)
+            # self.pool.release(mySQLconnection)
             print("MySQL connection is closed")
 
             # for x in range (0, len(col_names)):
@@ -340,7 +339,7 @@ class retrieve_db_data:
         temp = []
         # connect to database
 
-        mySQLconnection = self.pool.get_conn()
+        # mySQLconnection = self.pool.get_conn()
 
         # Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
         sql_select_Query = (""" 
@@ -348,7 +347,7 @@ class retrieve_db_data:
                                           FROM `%s`;""" % (table_name))
         try:
             # executed quiery and closes cursor
-            cursor = mySQLconnection.cursor()
+            cursor = connections.cursor()
             cursor.execute(sql_select_Query)
             col_years = cursor.fetchall()
             cursor.close()
@@ -357,7 +356,7 @@ class retrieve_db_data:
             print("Error while connecting to MySQL", e)
         finally:
             # closing database connection.
-            self.pool.release(mySQLconnection)
+            # self.pool.release(mySQLconnection)
             print("MySQL connection is closed")
             temp = list(col_years)
             for (x,) in temp:
@@ -371,7 +370,7 @@ class retrieve_db_data:
         distinct_years = []
 
         # connect to database
-        mySQLconnection = self.pool.get_conn()
+        # mySQLconnection = self.pool.get_conn()
 
         # Returns quiery with all years for a given variable
         sql_select_Query = (""" SELECT
@@ -380,11 +379,11 @@ class retrieve_db_data:
                                 WHERE `%s` IS NOT NULL; """ % (var_name))
         try:
             # executed quiery and closes cursor
-            cursor = mySQLconnection.cursor()
+            cursor = connections.cursor()
             cursor.execute(sql_select_Query)
             distinct_years = cursor.fetchall()
             cursor.close()
-            self.pool.release(mySQLconnection)
+            # self.pool.release(mySQLconnection)
 
             # error handling
         except Error as e:
@@ -407,8 +406,8 @@ class retrieve_db_data:
         at the beginning of creating the database'''
         #TODO: ask Ben about whether there is a way to do this in one quiery
         # start_time = time.clock()
-        mySQLconnection = self.pool.get_conn()
-        cursor = mySQLconnection.cursor()
+        # mySQLconnection = self.pool.get_conn()
+        cursor = connections.cursor()
         ## this returns a list of all the column names we want
         result = []
         col_names = self.retrieve_col_names('kreise')
@@ -429,17 +428,24 @@ class retrieve_db_data:
             result.append(distinct_years)
             # print(distinct_years)
         cursor.close()
-        self.pool.release(mySQLconnection)
+        # self.pool.release(mySQLconnection)
         # print(time.clock()-start_time)
         return result
 
+    def dictfetchall(self, cursor):
+        "Returns all rows from a cursor as a dict"
+        desc = cursor.description
+        return [
+            dict(zip([col[0] for col in desc], row))
+            for row in cursor.fetchall()
+        ]
 
     def retrieve_metadata(self):
         ''' this function returns the entire set of metadata available as a ..... '''
         #TODO: specify datatype here - currenlty this is a dict of dictionarries
         # start_time = time.clock()
-        mySQLconnection = self.pool.get_conn()
-        cursor = mySQLconnection.cursor(pymysql.cursors.DictCursor)
+        # mySQLconnection = self.pool.get_conn()
+        cursor = connections.cursor()
         # cursor = mySQLconnection.cursor()
 
         ## this returns the entire metadatatable
@@ -447,11 +453,11 @@ class retrieve_db_data:
 
         sql_select_Query = (""" SELECT * FROM `metadata`; """)
         cursor.execute(sql_select_Query)
-        result = cursor.fetchall()
+        result = self.dictfetchall(cursor)
 
         # print(distinct_years)
         cursor.close()
-        self.pool.release(mySQLconnection)
+        # self.pool.release(mySQLconnection)
 
         target_dict = {}
         for x in result:
@@ -476,16 +482,16 @@ class retrieve_db_data:
         table_name = "all_years"
 
         ## create databaselogin etc.
-        mySQLconnection = self.pool.get_conn()
-        cursor = mySQLconnection.cursor()
+        # mySQLconnection = self.pool.get_conn()
+        cursor = connections.cursor()
 
         #create the empty table
         cursor.execute("DROP TABLE IF EXISTS `%s`" % (table_name))
-        mySQLconnection.commit()
+
 
         sql = ("CREATE TABLE `%s` (DATABASENAME VARCHAR(70) NOT NULL);" % (table_name))
         cursor.execute(sql)
-        mySQLconnection.commit()
+        # mySQLconnection.commit()
 
         ## add all the columns
         ## retrieve list of all the required columns
@@ -496,7 +502,7 @@ class retrieve_db_data:
             sql = (""" ALTER TABLE `%s`
                        ADD COLUMN `%s` VARCHAR(20)  """ % (table_name, x))
             cursor.execute(sql)
-            mySQLconnection.commit()
+            # mySQLconnection.commit()
 
         ## create the col_name statement: (name, col_1, col_2): we already have that
         for x in data:
@@ -520,11 +526,11 @@ class retrieve_db_data:
                         VALUES %s; """ % (table_name, col_name_statement, col_value_statement))
             # print(sql)
             cursor.execute(sql)
-            mySQLconnection.commit()
+            # mySQLconnection.commit()
 
         cursor.close()
 
-        self.pool.release(mySQLconnection)
+        # self.pool.release(mySQLconnection)
 
         return print("Alle Werte in Datenbank geschrieben. Prozess erfolgreich abgeschlossen.")
 
@@ -535,7 +541,7 @@ class retrieve_db_data:
 
         filtered_dict = {}
 
-        mySQLconnection = self.pool.get_conn()
+        # mySQLconnection = self.pool.get_conn()
 
         # quiery
         sql_select_Query = (""" SELECT * FROM `all_years` """)
@@ -543,7 +549,7 @@ class retrieve_db_data:
         try:
 
             # executed quiery and closes cursor
-            cursor = mySQLconnection.cursor()
+            cursor = connections.cursor()
             cursor.execute(sql_select_Query)
             output = cursor.fetchall()
             cursor.close()
@@ -556,7 +562,7 @@ class retrieve_db_data:
         finally:
             # closing database connection.
 
-            self.pool.release(mySQLconnection)
+            # self.pool.release(mySQLconnection)
             print("MySQL connection is closed")
             # print(output)
 
@@ -593,8 +599,8 @@ class retrieve_db_data:
 
 
     def retrieve_names_from_db(self, layer):
-        mySQLconnection = self.pool.get_conn()
-        cursor = mySQLconnection.cursor()
+        # mySQLconnection = self.pool.get_conn()
+        cursor = connections.cursor()
 
         ## this returns the name by layer
         result = []
@@ -607,7 +613,7 @@ class retrieve_db_data:
         result = cursor.fetchall()
 
         cursor.close()
-        self.pool.release(mySQLconnection)
+        # self.pool.release(mySQLconnection)
 
         # print (result)
         output =[]
