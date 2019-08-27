@@ -7,22 +7,11 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 
-from server.data.aggregateindic import aggregateindic
-from server.data.retrieve_db_data import retrieve_db_data
+from server.data.aggregateindic import retrieve_everything
 
+from server.data.retrieve_db_data import retrieve_year_dict_from_db, retrieve_metadata, retrieve_col_years, \
+    clean_col_names, retrieve_col_names
 
-# pool = Pool(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
-#             db='mydb',
-#             user='admin',
-#             password='NPmpMe!696rY',
-#             cursorclass=pymysql.cursors.Cursor, timeout=20.0)
-
-pool="hoi"
-# pool = Pool(host='localhost',
-#             db='mydb',
-#             user='user',
-#             password='password',
-#             cursorclass=pymysql.cursors.Cursor, timeout=20.0)
 
 @login_required(login_url='/accounts/login/')
 def index(request):
@@ -35,16 +24,16 @@ def index(request):
 
 
     if request.method == "GET":
-        all_years = retrieve_db_data(pool).retrieve_year_dict_from_db()
+        all_years = retrieve_year_dict_from_db()
         print(all_years)
         # metadata = retrieve_db_data(pool).retrieve_metadata()
-        metadata = retrieve_db_data(pool).retrieve_metadata()
+        metadata = retrieve_metadata()
         col_names_ref = ['Einwohner 15-64_100', 'Zivile Erwerbspersonen_100',
                          'SV-pflichtig Beschäftigte am Wohnort_100',
                         'Einwohner gesamt_100', 'Fläche_100']  # this returns all unique labels for standardisation drop downs
 
 
-        years_ref = retrieve_db_data(pool).retrieve_col_years("reference")
+        years_ref = retrieve_col_years("reference")
         years_ref.reverse()
 
         # years_var = retrieve_col_years("Kreise")
@@ -57,10 +46,10 @@ def index(request):
         # var_year_data = aggregateindic(pool).retrieve_var_year(setup_dict)
         # single_indic_data = aggregateindic(pool).retrieve_single_indic(setup_dict)
         # indicator_data = aggregateindic(pool).retrieve_indicator(setup_dict)
-        col_names_var = retrieve_db_data(pool).clean_col_names(retrieve_db_data(pool).retrieve_col_names("kreise"))  # this returns all unique column names from the KREISE table
+        col_names_var = clean_col_names(retrieve_col_names("kreise"))  # this returns all unique column names from the KREISE table
         # print(metadata)
 
-        data = aggregateindic(pool).retrieve_everything(setup_dict)
+        data = retrieve_everything(setup_dict)
         indicator_data = data['indicator_data']
         single_indic_data = data['single_indic_data']
         table_data = data['table_data']
@@ -81,7 +70,7 @@ def index(request):
         # # print (var_year_data)
         # data = {'indicator_data': indicator_data, 'table_data': table_data,
         #         'single_indic_data': single_indic_data}
-        data = aggregateindic(pool).retrieve_everything(recieved_data)
+        data = retrieve_everything(recieved_data)
         # print (table_data)
         # pool.destroy()
         return HttpResponse(json.dumps(data), content_type="application/json")

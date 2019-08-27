@@ -125,29 +125,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, 'frontend/static/'),
-#     # os.path.join(BASE_DIR, 'frontend/static/bmf/css/'),
-#     # # os.path.join(BASE_DIR, 'frontend/static/bmf/css/map.css'),
-#     # # os.path.join(BASE_DIR, 'frontend/static/bmf/css/style.css'),
-#     # os.path.join(BASE_DIR, 'frontend/static/bmf/fonts/'),
-#     # # os.path.join(BASE_DIR, 'frontend/static/bmf/fonts/BundesSansWeb-Regular.ttf'),
-#     # os.path.join(BASE_DIR, 'frontend/static/bmf/js/'),
-#     # os.path.join(BASE_DIR, 'frontend/static/bmf/resources/'),
-#     # os.path.join(BASE_DIR, 'frontend/static/bmf/resources/AMR15map.json'),
-#     # os.path.join(BASE_DIR, 'frontend/static/bmf/resources/AMR20map.json'),
-#     # os.path.join(BASE_DIR, 'frontend/static/bmf/resources/BMF_2017_WebSVG_de.svg'),
-#     # os.path.join(BASE_DIR, 'frontend/static/bmf/resources/BMF_official_png_logo.png'),
-#     # os.path.join(BASE_DIR, 'frontend/static/bmf/resources/bundeslandmap.json'),
-#     # os.path.join(BASE_DIR, 'frontend/static/bmf/resources/combined_indicator.png'),
-#     # os.path.join(BASE_DIR, 'frontend/static/bmf/resources/favicon.png'),
-#     # os.path.join(BASE_DIR, 'frontend/static/bmf/resources/Kreise15map.json'),
-#     # os.path.join(BASE_DIR, 'frontend/static/bmf/resources/ROR11map.json'),
-#     # os.path.join(BASE_DIR, 'frontend/static/bmf/resources/Scale_HIB.png'),
-#     # os.path.join(BASE_DIR, 'frontend/static/bmf/resources/SCALE_LIB.png'),
-#     # os.path.join(BASE_DIR, 'frontend/static/bmf/resources/standard_deviation.png'),
-#
-# )
+
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
@@ -162,10 +140,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mydb',
         'USER': 'admin',
-        'PASSWORD': os.environ['DB_PASS'],
+        'PASSWORD': 'NPmpMe!696rY',
         'HOST': 'bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com'
         },
     }
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-SESSION_COOKIE_AGE = 10
 # os.environ['DB_PASS']
