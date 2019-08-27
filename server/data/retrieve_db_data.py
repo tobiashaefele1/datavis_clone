@@ -9,8 +9,6 @@ import pymysql
 
 from django.db import connections
 
-
-# TODO tun the outputs of these formulae into lists of lists, rather than tuple lists
 class retrieve_db_data:
 
     def __init__(self, pool):
@@ -75,15 +73,10 @@ class retrieve_db_data:
         except Error as e:
             print("Error while connecting to MySQL", e)
         finally:
-            # closing database connection.
-
-            print("MySQL connection is closed")
-            # print(time.clock() - start_time, "seconds to retrieve data")
             return output
 
 
     def retrieve_fed_avg(self, var_name, var_year, ref_name, ref_year, layer):
-        print("retrieve_fed_avg")
         ''' this function returns the federal average of a chosen variable and year, where available.
             if no federal average is available, the formula will return the arithmetic mean of the inputted variable,
             standardised over the chosen reference value and year - the formula returns a single float'''
@@ -102,60 +95,36 @@ class retrieve_db_data:
                                            WHERE kreise.YEAR = '%s' AND kreise.Kennziffer = "01001" """ % (
                 fed_avg_name, var_year))
 
-            # print(sql_select_Query)
-            # executed quiery and closes cursor
             cursor = connections['default'].cursor()
-
             cursor.execute(sql_select_Query)
-            print('here')
-            # print(cursor.fetchall())
             output = dict(cursor.fetchall())
-            print(output)
+
             try:
                 output = output['01001']
             except:
                 print("Federal avg. not available - using arithmetic mean instead. See error message: adsfasdfasdf ")
                 output = self.retrieve_data(var_name, var_year, ref_name, ref_year, layer)
-                print(output)
                 output = output[0][1]
 
             ## this checks for an none type
             if (output == None or output == []):
                 print("Federal avg. not available - using arithmetic mean instead. See error message: ")
                 output = self.retrieve_data(var_name, var_year, ref_name, ref_year, layer)
-                print(output)
                 output = output[0][1]
 
         except:
             print("Federal avg. not available - using arithmetic mean instead. See error message: ")
             output = self.retrieve_data(var_name, var_year, ref_name, ref_year, layer)
-            print(output)
             output = output[0][1]
 
 
         finally:
-            # print(output)
-            # closing database connection.
-
-            # print(output)
-            # print (output)
-            # self.pool.release(mySQLconnection)
-            # print (output)
-            # print ("THE ABOVE IS RETURNED FROM THE FORMULA")
-            print("MySQL connection is closed")
-            print(output)
-            return (output)
+            return output
 
     def retrieve_ref_share(self, ref_name, ref_year, layer):
-        print("retrieve_ref_share")
         ''' this function returns the share of a chosen reference value in a chosen year, for a chosen layer as a % of the total as a tuple list'''
         output = []
         ref_share = []
-
-        # connect to database
-
-        # mySQLconnection = self.pool.get_conn()
-
         # Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
         sql_select_Query = (""" SELECT 
                                     mapping.`%s`, (SUM(reference.`%s`)), SUM(SUM(reference.`%s`)) over () as grandtotal
@@ -166,79 +135,42 @@ class retrieve_db_data:
                                     GROUP BY mapping.`%s` 
                                     ORDER BY mapping.`%s` ASC """ % (layer, ref_name, ref_name, ref_year, layer, layer))
 
-        # print(sql_select_Query)
         try:
             # executed quiery and closes cursor
             cursor = connections['default'].cursor()
             cursor.execute(sql_select_Query)
             output = cursor.fetchall()
             cursor.close()
-            # print (output)
             ref_share = []
             for i in range(0, len(output)):
                 ref_share.append(((output[i][1]) / (output[i][2])))
-            # print(ref_share)
-            # check whether numbers add up to 1 -> they do
-            # a = 0
-            # for i in range (0, len(ref_share)):
-            #     a += ref_share[i]
-            # print (a)
-            # self.pool.release(mySQLconnection)
-
 
         # error handling
         except Error as e:
             print("Error while connecting to MySQL", e)
         finally:
-            # closing database connection.
-            print("MySQL connection is closed")
             return ref_share
 
 
     def retrieve_sd(self, var_name, var_year, ref_name, ref_year, layer):
-        print("retrieve_sd")
-        # start_time = time.clock()
-
         """ this function returns the standard deviation for a chosen variable and year, standardised by a chosen ref value
             and year as a single float value  """
-        # print(var_name)
-        # print(var_year)
-        # print(ref_name)
-        # print(ref_year)
-        # print(layer)
         data = self.retrieve_data(var_name, var_year, ref_name, ref_year, layer)
-        # print(data)
         fed_avg = self.retrieve_fed_avg(var_name, var_year, ref_name, ref_year, layer)
         ref_share = self.retrieve_ref_share(ref_name, ref_year, layer)
-        # print(type(data[0][1]))
-        # print (fed_avg)
-        # print(ref_share)
 
         Standard_deviation = 0
         for i in range(0, len(data)):
-            # print (len(data))
-            # print(i)
-            # print(ref_share)
-            # print (data[i][1])
-            Standard_deviation += (((float(data[i][1])) - (float(fed_avg))) ** 2) * float((ref_share[i]))
-                # print ( (((data[i][1])-(fed_avg))**2)*(ref_share[i]))
+              Standard_deviation += (((float(data[i][1])) - (float(fed_avg))) ** 2) * float((ref_share[i]))
 
         Standard_deviation = math.sqrt(Standard_deviation / len(data))
-        # print (Standard_deviation)
-        # print ("THIS IS THE STANDARD DEVIATION")
-        # print(time.clock() - start_time, "seconds to retrieve only the standard deviation")
 
-        return (Standard_deviation)
+        return Standard_deviation
 
 
     def scale_HIB(self, data, fed_avg, SD):
-        # print("scale_HIB")
         ''' this function standardises and scales a dataset according to GRW methodology, where higher values
             result in a higher score, this formula currently returns a tuple list'''
-
-        # print(fed_avg)
-        # print(data)
-        # print(SD)
         Sfactor_positive = 100
         Sfactor_scaling = 15
         tuple = ()
@@ -250,13 +182,8 @@ class retrieve_db_data:
 
 
     def scale_NIB(self, data, fed_avg, SD):
-        # print("scale_NIB")
         ''' this function standardises and scales a dataset according to GRW methodology, where lower values
             result in a higher score, this formula currently returns a tuple list'''
-        # print(data)
-        # print(fed_avg)
-        # print(SD)
-
         Sfactor_positive = 100
         Sfactor_negative = 200
         Sfactor_scaling = 15
@@ -270,33 +197,22 @@ class retrieve_db_data:
 
 
     def retrieve_sd_data(self, var_name, var_year, ref_name, ref_year, layer, scale="HIB"):
-        # start_time = time.clock()
-        print("retrieve_sd_data")
         data = self.retrieve_data(var_name, var_year, ref_name, ref_year, layer)
         sd = self.retrieve_sd(var_name, var_year, ref_name, ref_year, layer)
         fed_avg = self.retrieve_fed_avg(var_name, var_year, ref_name, ref_year, layer)
-        # print(data)
-        # print(sd)
-        # print(fed_avg)
-
         if scale == "HIB":
             output = self.scale_HIB(data, fed_avg, sd)
         else:
             output = self.scale_NIB(data, fed_avg, sd)
-
-        # print(time.clock() - start_time, "seconds to retrieve the standardised data")
         return output
 
 
     def retrieve_col_names(self, table_name):
-        print("retrieve_col_names")
         ''' this function returns a LIST of all unique column names in a selected TABLE from the database'''
         col_names = []
         temp = []
         output = []
-        # connect to database
 
-        # mySQLconnection = self.pool.get_conn()
         # Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
         sql_select_Query = (""" 
                                     SELECT COLUMN_NAME 
@@ -305,7 +221,6 @@ class retrieve_db_data:
                                         AND table_name = '%s'
                                         ORDER BY COLUMN_NAME ASC;""" % (table_name))
         try:
-            # executed quiery and closes cursor
             cursor = connections['default'].cursor()
             cursor.execute(sql_select_Query)
             col_names = cursor.fetchall()
@@ -314,20 +229,12 @@ class retrieve_db_data:
         except Error as e:
             print("Error while connecting to MySQL", e)
         finally:
-            # closing database connection.
-            # self.pool.release(mySQLconnection)
-            print("MySQL connection is closed")
-
-            # for x in range (0, len(col_names)):
-            #     output.append(x)
             temp = list(col_names)
             for (x,) in temp:
                 output.append(x)
-            ## this removes the unwanted labels from our input list
+            ## this removes the unwanted labels from input list
             output = [e for e in output if e not in ('KENNZIFFER', 'RAUMEINHEIT', 'AGGREGAT', 'YEAR')]
-
             return output
-
 
     def clean_col_names(self, data):
         '''
@@ -346,20 +253,15 @@ class retrieve_db_data:
 
     def retrieve_col_years(self, table_name):
         ''' this function returns a list of all the years for in the datable'''
-        print("retrieve_col_years")
         output = []
         col_years = []
         temp = []
-        # connect to database
-
-        # mySQLconnection = self.pool.get_conn()
 
         # Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
         sql_select_Query = (""" 
                                       SELECT DISTINCT YEAR
                                           FROM `%s`;""" % (table_name))
         try:
-            # executed quiery and closes cursor
             cursor = connections['default'].cursor()
             cursor.execute(sql_select_Query)
             col_years = cursor.fetchall()
@@ -368,22 +270,13 @@ class retrieve_db_data:
         except Error as e:
             print("Error while connecting to MySQL", e)
         finally:
-            # closing database connection.
-            # self.pool.release(mySQLconnection)
-            print("MySQL connection is closed")
             temp = list(col_years)
             for (x,) in temp:
                 output.append(x)
-
             return output
 
-
     def retrieve_distinct_years(self, var_name):
-        print("retrieve_distinct_years")
         distinct_years = []
-
-        # connect to database
-        # mySQLconnection = self.pool.get_conn()
 
         # Returns quiery with all years for a given variable
         sql_select_Query = (""" SELECT
@@ -391,36 +284,27 @@ class retrieve_db_data:
                                 FROM `kreise`
                                 WHERE `%s` IS NOT NULL; """ % (var_name))
         try:
-            # executed quiery and closes cursor
             cursor = connections['default'].cursor()
             cursor.execute(sql_select_Query)
             distinct_years = cursor.fetchall()
             cursor.close()
-            # self.pool.release(mySQLconnection)
 
             # error handling
         except Error as e:
             print("Error while connecting to MySQL", e)
         finally:
-            # closing database connection.
-            print("MySQL connection is closed")
             output = []
             for (x,) in distinct_years:
                 output.append(x)
-            # print (output)
             return output
-
-
-
 
     def retrieve_complete_col_years(self):
         ''' this function returns a list of list with all the unique variables in kreise and the years which are not
         null in this list. HOWEVER, the function is incredibly slow. Perhaps it should go into setup.py and be run once
         at the beginning of creating the database'''
-        #TODO: ask Ben about whether there is a way to do this in one quiery
-        # start_time = time.clock()
-        # mySQLconnection = self.pool.get_conn()
+
         cursor = connections['default'].cursor()
+
         ## this returns a list of all the column names we want
         result = []
         col_names = self.retrieve_col_names('kreise')
@@ -439,10 +323,7 @@ class retrieve_db_data:
             for (x,) in mysql_result:
                 distinct_years.append(x)
             result.append(distinct_years)
-            # print(distinct_years)
         cursor.close()
-        # self.pool.release(mySQLconnection)
-        # print(time.clock()-start_time)
         return result
 
     def dictfetchall(self, cursor):
@@ -455,11 +336,7 @@ class retrieve_db_data:
 
     def retrieve_metadata(self):
         ''' this function returns the entire set of metadata available as a ..... '''
-        #TODO: specify datatype here - currenlty this is a dict of dictionarries
-        # start_time = time.clock()
-        # mySQLconnection = self.pool.get_conn()
         cursor = connections['default'].cursor()
-        # cursor = mySQLconnection.cursor()
 
         ## this returns the entire metadatatable
         result = []
@@ -468,22 +345,12 @@ class retrieve_db_data:
         cursor.execute(sql_select_Query)
         result = self.dictfetchall(cursor)
 
-        # print(distinct_years)
         cursor.close()
-        # self.pool.release(mySQLconnection)
-
         target_dict = {}
         for x in result:
             for y in x:
                 if y == 'databasename':
                     target_dict[x[y]] = x
-        # print (target_dict)
-                    ### add this as a new dictionary
-        # output = []
-        # output.append(result)
-        # output.replace(result, "result")
-
-        # print(time.clock() - start_time)
         return target_dict
 
 
@@ -494,17 +361,13 @@ class retrieve_db_data:
         # define name for new db table
         table_name = "all_years"
 
-        ## create databaselogin etc.
-        # mySQLconnection = self.pool.get_conn()
         cursor = connections['default'].cursor()
 
         #create the empty table
         cursor.execute("DROP TABLE IF EXISTS `%s`" % (table_name))
 
-
         sql = ("CREATE TABLE `%s` (DATABASENAME VARCHAR(70) NOT NULL);" % (table_name))
         cursor.execute(sql)
-        # mySQLconnection.commit()
 
         ## add all the columns
         ## retrieve list of all the required columns
@@ -515,7 +378,6 @@ class retrieve_db_data:
             sql = (""" ALTER TABLE `%s`
                        ADD COLUMN `%s` VARCHAR(20)  """ % (table_name, x))
             cursor.execute(sql)
-            # mySQLconnection.commit()
 
         ## create the col_name statement: (name, col_1, col_2): we already have that
         for x in data:
@@ -530,69 +392,38 @@ class retrieve_db_data:
          # convert list into string
             col_name_statement = ', '.join(map(str, col_name_statement))
 
-            # print(col_name_statement)
-            # print(col_value_statement)
 
             ## now insert all of these into mysql table:
             sql = (""" INSERT INTO `%s`
                         (%s)
                         VALUES %s; """ % (table_name, col_name_statement, col_value_statement))
-            # print(sql)
             cursor.execute(sql)
-            # mySQLconnection.commit()
-
         cursor.close()
-
-        # self.pool.release(mySQLconnection)
-
         return print("Alle Werte in Datenbank geschrieben. Prozess erfolgreich abgeschlossen.")
-
-
-
 
     def retrieve_year_dict_from_db(self):
 
         filtered_dict = {}
-
-        # mySQLconnection = self.pool.get_conn()
-
-        # quiery
         sql_select_Query = (""" SELECT * FROM `all_years` """)
         try:
-
-            # executed quiery and closes cursor
             cursor = connections['default'].cursor()
-
             cursor.execute(sql_select_Query)
             output = cursor.fetchall()
-            print(output)
             cursor.close()
-
-
 
         # error handling
         except Error as e:
             print("Error while connecting to MySQL", e)
         finally:
-            # closing database connection.
-
-            # self.pool.release(mySQLconnection)
-            print("MySQL connection is closed")
-            # print(output)
-
             list = []
-            print(output)
             for x in output:
-                print (x)
                 temp = []
                 for y in x:
                     if y is not None:
-                        print(y)
                         temp.append(y)
                 list.append(temp)
 
             ## now convert into dictionary:
-
             for x in list:
                 temp = []
                 counter = 0
@@ -602,35 +433,20 @@ class retrieve_db_data:
                     counter += 1
                 temp.reverse()
                 filtered_dict[x[0]] = temp
-
-
-
-
-
-
             return filtered_dict
 
-
-
-
     def retrieve_names_from_db(self, layer):
-        # mySQLconnection = self.pool.get_conn()
         cursor = connections['default'].cursor()
 
         ## this returns the name by layer
         result = []
         layer_name = layer + '_Name'
-        # print(layer)
-
 
         sql_select_Query = (""" SELECT DISTINCT `%s`, `%s` FROM `mapping`; """ % (layer_name, layer))
         cursor.execute(sql_select_Query)
         result = cursor.fetchall()
-
         cursor.close()
-        # self.pool.release(mySQLconnection)
 
-        # print (result)
         output =[]
         temp = []
         for (x,y) in result:

@@ -1,8 +1,6 @@
 import math
-
 import pandas as pd
 import time
-
 from server.data.retrieve_db_data import retrieve_db_data
 import pymysql
 
@@ -20,8 +18,6 @@ class aggregateindic:
                     check += 1
             if check == 0:
                 var.append(x)
-                                # print("not all required values provided - omit")
-
         return var
 
 
@@ -34,12 +30,9 @@ class aggregateindic:
         :param var: dictionary with (var1: [var_name, var_year, ref_name, ref_year, layer, scale, weight], var_2: [...] etc)
         :return: The function returns a list of the target layer ref code, as well as the aggregated indicator
         '''
-
-        start_time = time.clock()
         # this code scans the dictionary to ensure only complete entries are being searched for in the db
         var = []
         var = self.aggregate_args(ajax_dictionary)
-        # print(var)
         empty_return = [[]]
 
         result = []
@@ -51,14 +44,12 @@ class aggregateindic:
             list = []
             for i in range(0, len(var)):
                 list.append(retrieve_db_data(self.pool).retrieve_sd_data(var[i][0], var[i][1], var[i][2], var[i][3], var[i][4], var[i][5]))
-            # print (list)
             var_name = []
 
             ## the following code copies the layer IDs as the first column into the results list
             for (j, k) in list[0]:
                 var_name.append(j)
             result.append(var_name)
-            # print (result)
 
             ### the following code creates the multiplications of each of the variables and stores them in a list of list
             interim = []
@@ -67,15 +58,12 @@ class aggregateindic:
                 for (k, l) in list[i]:
                     multiplication.append(float(l) * (float(var[i][6])/100))
                 interim.append(multiplication)
-            # print(interim)
+
             ### the following code then sums all the individual items and returns one list
             interim = [sum(i) for i in zip(*interim)]
 
             ### the following code then appends the calcualtions to the interim template
             result.append(interim)
-
-            print(time.clock() - start_time, "seconds")
-            # print(result)
             return result
 
 
@@ -84,14 +72,11 @@ class aggregateindic:
         it returns a list of lists of the format output = [[ID1,var1, var2.],[ID2, var1, var2...],[etc
         this can be used to poplate the table
         '''
-
-        start_time = time.clock()
         empty_return = [[]]
 
         # this code scans the dictionary to ensure only complete entries are being searched for in the db
         var = []
         var = self.aggregate_args(ajax_dictionary)
-        print (var)
 
         # this checks whether the aggreagted indicator comes back empty - if it does no valid
         # combination has been submitted, just return empty list
@@ -101,7 +86,6 @@ class aggregateindic:
             ## this code returns the aggregated indicator from the database
             aggregated_indicator = self.retrieve_indicator(ajax_dictionary)
             aggregated_indicator = aggregated_indicator[1]
-            # print(aggregated_indicator)
 
 
             # this code returns the database array from all valid entries and stores them in a list
@@ -111,16 +95,12 @@ class aggregateindic:
             for i in range(0, len(var)):
                 list.append(retrieve_db_data(self.pool).retrieve_data(var[i][0], var[i][1], var[i][2], var[i][3], var[i][4]))
                 dictionary_keys.append(var[i][0] + " " + var[i][1])
-            # print(list)
             result = []
             var_name = []
-            # print (dictionary_keys)
-            loop_time = time.clock()
             ## the following code copies the layer IDs as the first column into the results list
             for (j, k) in list[0]:
                 var_name.append([j])
             result = var_name
-            # print (result)
 
             ## the following converts all of this into a list of lists in the right format
             for x in list:
@@ -154,12 +134,6 @@ class aggregateindic:
                 for y in names:
                     if x['Kennziffer'] == y[1]:
                          x.update({'Name': y[0]})
-
-
-            # print(time.clock()- loop_time, "seconds for the loop")
-            # print(target_dict)
-            print(time.clock() - start_time, "seconds for retrieving table data")
-            # print(target_dict)
             return target_dict
 
     def retrieve_var_year (self, ajax_dictionary):
@@ -174,7 +148,6 @@ class aggregateindic:
         counter = 0
         for x in chosen_indicators:
             if x != '':
-                # print (x)
                 dictionary[dict_keys[counter]] = retrieve_db_data(self.pool).retrieve_distinct_years(x)
                 counter += 1
 
@@ -187,7 +160,6 @@ class aggregateindic:
 
 
     def retrieve_single_indic(self, ajax_dictionary):
-        start_time = time.clock()
         # this code scans the dictionary to ensure only complete entries are being searched for in the db
         var = []
         var = self.aggregate_args(ajax_dictionary)
@@ -202,8 +174,7 @@ class aggregateindic:
             list = []
             for i in range(0, 1):
                 list.append(retrieve_db_data(self.pool).retrieve_data(var[i][0], var[i][1], var[i][2], var[i][3], var[i][4]))
-            # print (list)
-            # print (len(list))
+
             ## the following code copies the layer IDs as the first column into the results list
             var_name = []
             for (j, k) in list[0]:
@@ -214,27 +185,13 @@ class aggregateindic:
             for (j, k) in list[0]:
                 indicator.append(k)
             result.append(indicator)
-
-            print(time.clock() - start_time, "seconds")
             return result
-
-
-#
-#
-#
-#
-
-            ##### RETRIEVE EVERYTHING IN ORDER
-
 
     def retrieve_everything(self, ajax_dictionary):
 
-        ## check for only valid entries: once.
-        start_time = time.clock()
         # this code scans the dictionary to ensure only complete entries are being searched for in the db
         var = []
         var = self.aggregate_args(ajax_dictionary)
-        # print(var)
 
         ## define empty return conditions and return them
         empty_return = {'indicator_data': [[]], 'table_data': [[]],
@@ -250,9 +207,7 @@ class aggregateindic:
             for i in range(0, len(var)):
                 raw_data.append(retrieve_db_data(self.pool).retrieve_data(var[i][0], var[i][1], var[i][2], var[i][3], var[i][4]))
 
-            # print (raw_data)
             ### standardise all these data points and store them in new variables
-
             ### retrieve all ref shares:
             ref_share = []
             for i in range (0, len(var)):
@@ -266,34 +221,24 @@ class aggregateindic:
 
             ### calculate the standard deviation:
             sd = []
-            # print(fed_avg)
-            # print ("THIS IS THE FEDERAL AVERAGE")
             counter = 0
             for x in raw_data:
                 Standard_deviation = 0
                 for g in range(0, len(x)):
                     Standard_deviation += (((float(x[g][1])) - (float(fed_avg[counter]))) ** 2) * float((ref_share[counter][g]))
-                    # print ( (((data[i][1])-(fed_avg))**2)*(ref_share[i]))
                 counter += 1
                 Standard_deviation = math.sqrt(Standard_deviation / len(x))
                 sd.append(Standard_deviation)
 
-            # print(sd)
-
             ## calulate the standardised data
-
             standardised_data = []
             for i in range (0, len(raw_data)):
-                # print(raw_data[i])
                 if var[i][5] == "HIB":
                     single_sd = retrieve_db_data(self.pool).scale_HIB(raw_data[i], fed_avg[i], sd[i])
                     standardised_data.append(single_sd)
                 else:
                     single_sd = retrieve_db_data(self.pool).scale_NIB(raw_data[i], fed_avg[i], sd[i])
                     standardised_data.append(single_sd)
-
-
-
 
              ## calculate the aggregated indicator
             var_name = []
@@ -303,7 +248,6 @@ class aggregateindic:
             for (j, k) in standardised_data[0]:
                 var_name.append(j)
             aggregated_indicator.append(var_name)
-            # print (result)
 
             ### the following code creates the multiplications of each of the variables and stores them in a list of list
             interim = []
@@ -312,7 +256,6 @@ class aggregateindic:
                 for (k, l) in standardised_data[i]:
                     multiplication.append(float(l) * (float(var[i][6]) / 100))
                 interim.append(multiplication)
-            # print(interim)
             ### the following code then sums all the individual items and returns one list
             interim = [sum(i) for i in zip(*interim)]
 
@@ -324,19 +267,9 @@ class aggregateindic:
             # this is what I return
             single_indic_data = list(zip(*raw_data[0]))
             single_indic_data = [list(item) for item in single_indic_data]
-            # print (single_indic_data)
             indicator_data = aggregated_indicator
-            # print (indicator_data)
-
-
-
-
-
-
 
             #### create the table_data output:
-
-            # table_data = [{Kennziffer: xxxx, Name: xxxxx, aggregierte: xxxxx, var_1: xxxx, var2: xxxxx etc}]
 
             table_data = []
             ## create a list of all the dictionary keys
@@ -344,17 +277,13 @@ class aggregateindic:
             dictionary_keys.append("Kennziffer")
             for i in range(0, len(var)):
                 dictionary_keys.append(var[i][0] + " " + var[i][1])
-            # print(dictionary_keys)
 
-
-            ## create a list of lists that is like [[001, 002, 003...], [var1, var1, var....], [var2, var2, var2...]] from the raw data
             ## the following code copies the layer IDs as the first column into the results list
             table_data_prep = []
             var_name = []
             for (j, k) in raw_data[0]:
                 var_name.append([j])
             table_data_prep = var_name
-            # print (result)
 
             ## the following converts all of this into a list of lists in the right format
             for x in raw_data:
@@ -388,10 +317,6 @@ class aggregateindic:
                 for y in names:
                     if x['Kennziffer'] == y[1]:
                         x.update({'Name': y[0]})
-
-            # print(table_data)
-
-
 
             function_return ={'indicator_data': indicator_data, 'table_data': table_data,
                 'single_indic_data': single_indic_data}

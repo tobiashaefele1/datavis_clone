@@ -8,7 +8,6 @@ import pandas as pd
 
 from server.data.data import Data
 
-
 def loadmappingfile (link_to_mapping_file):
     '''
     :param link_to_mapping_file:  link to mapping_file with .csv information of mapping data
@@ -20,7 +19,6 @@ def prepare402template (link_to_template_input):
     ''' this function returns a Data object that has 402 KReise stored in the first three rows and is otherwise empty - no labels or data '''
 
     # create "clean" template from Kreise data as Data object and delete all data from this sheet:
-
     clean_KRS_template = Data(link_to_template_input)
     for i in range(0, len(clean_KRS_template.data)):
         clean_KRS_template.data[i][0:] = clean_KRS_template.data[i][0:3]
@@ -35,7 +33,6 @@ def copy_labels_years_onlylabels (dataset, template):
     template.years = dataset.years
     template.only_labels = dataset.only_labels
     return template
-
 
 def readin257AMR (link_to_data, link_to_mapping_file, link_to_template_input):
     ''' this formula takes in a link to a file with 257 AMRs, and converts it to a Data object, based on 402 KReise'''
@@ -52,7 +49,6 @@ def readin257AMR (link_to_data, link_to_mapping_file, link_to_template_input):
         for j in range(0, len(dataset.data)):
             if mapping_file.iloc[i][5] == dataset.data[j][0]:
                 extension = dataset.data[j][3:]
-                # print (extension)
                 output.data[i].extend(extension)
                 break
     return output
@@ -65,7 +61,6 @@ def readin258AMR (link_to_data, link_to_mapping_file, link_to_template_input):
 
     # read in AMR data & make outputfile, populated with KRS from template, labels, years and only_labels from input
     dataset = Data(link_to_data)
-     
     output = copy_labels_years_onlylabels(dataset, template)
 
     # map values from AMR to Kreise and return completed dataobject
@@ -92,13 +87,6 @@ def readinBund (link_to_data, link_to_template_input):
         output.data[i].extend(extension)
     return output
 
-
-
-
-
-
-
-
 def mapping_to_db (link_to_mapping_file):
     mapping_file = loadmappingfile(link_to_mapping_file)
     # user = "user"
@@ -106,26 +94,12 @@ def mapping_to_db (link_to_mapping_file):
     # host = "localhost"
     # database = "mydb"
 
-
     user = "admin"
     passw = "NPmpMe!696rY"
     host = "bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com"
     database = 'mydb'
     conn = create_engine('mysql+pymysql://' + user + ':' + passw + '@' + host + '/' + database, echo=False)
     mapping_file.to_sql(name="mapping", con=conn, if_exists = 'replace', index=False)
-
-
-def remove_metadata(link_to_data):
-    '''this function takes a .csv file containing metadata and returns back the datafile in original format,
-    without the metadata included as a dataframe object '''
-    #TODO: I do not think we need this function ay more, hence we can perhaps delete it @Jacob?
-    ### load in all the data as string
-    data = pd.read_csv(link_to_data, dtype=str, encoding ='utf8', header=None)
-    data = data.drop(data.index[[0,1,2,3,4,5,6]])
-    data.reset_index(inplace=True)
-    data.drop(data.columns[0], axis=1, inplace=True)
-    return data
-
 
 def extract_metadata(link_to_data, data_code="100"):
     ''' this function that an input file that includes the metadata and returns an dataframe object
@@ -168,16 +142,12 @@ def extract_metadata(link_to_data, data_code="100"):
     data.rename(columns={'Aggregat_{}'.format(data_code): 'databasename', 'Aggregat': 'csvname'}, inplace=True)
     return data
 
-
-
 def load_meta_data_to_db(link_to_KRS_metadata, KRS_datacode,
                          link_to_AMR12_metadata, AMR12_datacode,
                          link_to_AMR15_metadata, AMR15_datacode,
                          link_to_bund_metadata, bund_datacode):
     ''' this function takes in links to 4 metadata sets, extracts the metadata, merges them into one metadatafile and
     stores them in the database in a separate table called "metadata"'''
-
-
     # load the for types of metadata into separate dataframes
     KRS_meta = extract_metadata(link_to_KRS_metadata, KRS_datacode)
     AMR12_meta = extract_metadata(link_to_AMR12_metadata, AMR12_datacode)

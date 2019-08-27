@@ -1,7 +1,47 @@
 <!-- templates/registration/login.html -->
-<h2>Login</h2>
-<form method="post">
+
+<head xmlns:background-color="http://www.w3.org/1999/xhtml">
+        {% load static %}
+        <title>BMF</title>
+        <link
+      rel="shortcut icon"
+      type="image/png"
+      href="{% static './bmf/resources/BMF_official_png_logo.png' %}"
+    />
+    <style>
+body {
+    background-color: black;
+}
+
+</style>
+    <link rel="stylesheet" href="{% static './bmf/css/style.css' %}">
+	<link rel="stylesheet" href="{% static './bmf/css/custom.css' %}">
+	<link rel="stylesheet" href="{% static './bmf/css/map.css' %}">
+</head>
+
+<div style="padding-top: 150px"></div>
+
+<div style="background-color:white; text-align: center " class="modal">
+    <div class="modal-card">
+        <div class="modal-card-body">
+                     <object type="image/svg+xml"
+              data="{% static './bmf/resources/BMF_2017_WebSVG_de.svg' %}" style="text-align: center">
+                  Your browser does not support SVG
+            </object>
+
+
+<h2 text-align="center" class="has-text-black" >Login</h2>
+</div>
+
+<div style="text-align: center; background-color: white " class="has-text-black">
+<form method="post" style="text-align: center">
   {% csrf_token %}
   {{ form.as_p }}
-  <button type="submit">Login</button>
+  <button type="submit" style="text-align:center">Login</button>
 </form>
+</div>
+        </div>
+    </div>
+
+
+
