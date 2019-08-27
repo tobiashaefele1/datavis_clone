@@ -8,10 +8,6 @@ import time
 import pymysql
 from pymysqlpool.pool import Pool
 
-
-
-
-# TODO tun the outputs of these formulae into lists of lists, rather than tuple lists
 class retrieve_db_data:
 
     def __init__(self, pool):
@@ -19,16 +15,14 @@ class retrieve_db_data:
         pool.init()
 
     def retrieve_data(self, var_name, var_year, ref_name, ref_year, layer):
-        print("retrieve_data")
-        ''' this function returns the dataset for a chosen variable, at a chosen year at the chosen level, standardised by the 
+        ''' this function returns the dataset for a chosen variable, at a chosen year at the chosen level, standardised by the
         chosen ref variable and the chosen year, CURRENTLY AS A TUPLE LIST'''
+
         output = []
-        # connect to database
-        # start_time = time.clock()
         mySQLconnection = self.pool.get_conn()
 
-        # this is the old quiery that does not work for AMR20 (But curiously, for all others)
-        #  Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
+        # Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected
+        # ref at selected year, grouped at selected layer.
         sql_select_Query = (""" 
                                 SELECT a.`%s`, (absvalue/relvalue)
                                 FROM (
@@ -63,26 +57,20 @@ class retrieve_db_data:
             layer))
 
         try:
-
-            # executed quiery and closes cursor
+            # executes quiery and closes cursor
             cursor = mySQLconnection.cursor()
             cursor.execute(sql_select_Query)
             output = cursor.fetchall()
             cursor.close()
             self.pool.release(mySQLconnection)
 
-
-
         # error handling
         except Error as e:
             print("Error while connecting to MySQL", e)
         finally:
             # closing database connection.
-
             print("MySQL connection is closed")
-            # print(time.clock() - start_time, "seconds to retrieve data")
             return output
-
 
     def retrieve_fed_avg(self, var_name, var_year, ref_name, ref_year, layer):
         print("retrieve_fed_avg")
@@ -92,48 +80,35 @@ class retrieve_db_data:
         output = []
         fed_avg_name = var_name[:-3]
         fed_avg_name = fed_avg_name + "400"
-        # connect to database
 
+        # connect to database
         mySQLconnection = self.pool.get_conn()
 
         try:
-            # Returns quiery with tuple [(layer_ID, value)] for federal average at kreise level, IF IT EXISTS.
-
+            # Returns query with tuple [(layer_ID, value)] for federal average at kreise level, IF IT EXISTS.
             sql_select_Query = (""" SELECT 
                                            kreise.KENNZIFFER, kreise.`%s`
                                            FROM kreise 
                                            WHERE kreise.YEAR = '%s' AND kreise.Kennziffer = "01001" """ % (
                 fed_avg_name, var_year))
 
-            # print(sql_select_Query)
-            # executed quiery and closes cursor
             cursor = mySQLconnection.cursor()
-
             cursor.execute(sql_select_Query)
             output = cursor.fetchall()
-                ## this checks for an none type
+                ## this checks for a none type
             if output[0][1] == None:
+                print("Federal avg. not available - using arithmetic mean instead.")
                 output = self.retrieve_data(var_name, var_year, ref_name, ref_year, layer)
-                # print(output)
-
-
 
         except Error as e:
             print("Federal avg. not available - using arithmetic mean instead. See error message: ", e)
             output = self.retrieve_data(var_name, var_year, ref_name, ref_year, layer)
 
         finally:
-            # print(output)
-            # closing database connection.
             output = output[0][1]
-            # print(output)
-            # print (output)
             self.pool.release(mySQLconnection)
-            # print (output)
-            # print ("THE ABOVE IS RETURNED FROM THE FORMULA")
             print("MySQL connection is closed")
-
-            return (output)
+            return output
 
     def retrieve_ref_share(self, ref_name, ref_year, layer):
         print("retrieve_ref_share")
