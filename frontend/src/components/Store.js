@@ -45,7 +45,7 @@ const initalState = {
     'ref_name_5': 'SV-pflichtig Beschäftigte am Wohnort_100',
     'ref_year_0': '2011', 'ref_year_1': '2011',
     'ref_year_2': '2012', 'ref_year_3': '2012',
-    'ref_year_4': "2018", 'ref_year_5': "2018",
+    'ref_year_4': '2018', 'ref_year_5': '2018',
   },
   ref_dic: {'Einwohner 15-64_100':
   {'Langname': 'Einwohner 15-64', 'Quelle': 'Zensus Fortschreibung'},
@@ -62,12 +62,12 @@ const initalState = {
   },
 
   // Table variables
-  smalltable: [['Name', 'placeholder'],
-    ['ID', 'placeholder'],
-    ['Einwohner (2017)', 'placeholder'],
-    ['Fläche (km2)', 'placeholder'],
-    ['Bundesland', 'placeholder'],
-    ['Angezeigter Wert', 'placeholder']],
+  smalltable: [['Name', '-'],
+    ['ID', '-'],
+    ['Einwohner (2017)', '-'],
+    ['Fläche (km2)', '-'],
+    ['Bundesland', '-'],
+    ['Angezeigter Wert', '-']],
 
   table_columns: [{
     Header: 'Kennziffer',
@@ -219,7 +219,7 @@ function reducer(state = initalState, action) {
           'ref_name_5': 'SV-pflichtig Beschäftigte am Wohnort_100',
           'ref_year_0': '2011', 'ref_year_1': '2011',
           'ref_year_2': '2012', 'ref_year_3': '2012',
-          'ref_year_4': "2018", 'ref_year_5': "2018",
+          'ref_year_4': '2018', 'ref_year_5': '2018',
         };
         draft.table_columns = [{
           Header: 'Kennziffer',

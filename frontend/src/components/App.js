@@ -314,12 +314,10 @@ class App extends Component {
 
           <div className="column is-one-quarter has-text-centered">
             <div id="optionbox"
-              className="box has-background-white-ter has-text-black">
+              className="box has-background-white-ter has-text-black is-mobile">
               <div> </div>
               <SmallTable/>
-
-              <div className="columns is-centered is-mobile">
-
+              <div className="columns is-centered">
                 <div className="column">
                   <div>Darstellung</div>
                   <div className="buttons is-centered">
