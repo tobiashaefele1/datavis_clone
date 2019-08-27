@@ -25,7 +25,6 @@ class Table extends Component {
     this.ref = createRef();
   }
 
-
   /**
    *This creates the CSV file from current data and offers it as a download.
    *
@@ -45,43 +44,44 @@ class Table extends Component {
       dataToDownload.push(recordToDownload);
     }
     this.setState({dataToDownload: dataToDownload}, () => {
-      // click the CSVLink component to trigger the CSV download
       this.csvLink.link.click();
     });
   }
 
 
+  /**
+   *This is the function that renders the table
+   * if the this.props.showTable value is true.
+   *
+   * @return {JSX}
+   * @memberof Table
+   */
   renderTable = () => {
     if (this.props.showTable) {
       return (
         <div>
-
           <div id='table' className="columns is-marginless has-text-black" >
-
-
           </div>
           <div className="columns is-marginless">
             <div className="column ">
-		 		<div className="box has-background-white-ter has-text-black has-text-centered" >
-                <div className="subtitle has-text-centered" style={{fontWeight: 'bold'}}>vollständige Datentabelle</div>
-
-					 <div className="buttons is-centered">
-
-
-        	            <div className="download_tooltip">
-
+              <div className="box has-background-white-ter
+              has-text-black has-text-centered" >
+                <div className="subtitle has-text-centered"
+                  style={{fontWeight: 'bold'}}>vollständige Datentabelle</div>
+                <div className="buttons is-centered">
+                  <div className="download_tooltip">
                     <span className="download_tooltiptext">
-                   Lädt die in der Tabelle angezeigten Daten herunter. Um alle Daten herunterzuladen, zuerst die entsprechende Zeilenanzahl in der Tabelle auswählen.
+                        Lädt die in der Tabelle angezeigten Daten herunter.
+                        Um alle Daten herunterzuladen,
+                        zuerst die entsprechende
+                         Zeilenanzahl in der Tabelle auswählen.
                     </span>
-
-                    <a className="button is-dark is-outlined" onClick={this.download}>
-
-   					            <span>Datentabelle als .csv Datei exportieren</span>
-  					    </a>
-
-					  </div>
+                    <a className="button is-dark is-outlined"
+                      onClick={this.download}>
+                      <span>Datentabelle als .csv Datei exportieren</span>
+                    </a>
+                  </div>
                 </div>
-
 
                 <div>
                   <CSVLink
@@ -90,15 +90,16 @@ class Table extends Component {
                     className="hidden"
                     ref={(r) => this.csvLink = r}
                     target="_blank" />
-
                 </div>
+
                 <div>
                   <ReactTable ref={(r) => this.reactTable = r }
                     data={this.props.table_data}
                     columns={this.props.table_columns}
-                    pageSizeOptions={[10, 50, 100, 200, `${this.props.single_indic_data[0].length}`]}
+                    pageSizeOptions={[10, 50, 100, 200,
+                      `${this.props.single_indic_data[0].length}`]}
                     previousText={'Zurück'}
-   			nextText={'Nächste'}
+                    nextText={'Nächste'}
                     loadingText={'Lädt...'}
                     noDataText={'Keine Daten verfügbar'}
                     pageText={'Seite'}
@@ -107,19 +108,14 @@ class Table extends Component {
                     pageJumpText={'Springe zu Seite'}
                     rowsSelectorText={'Zeilen pro Seite'}
                   />
-
                 </div>
               </div>
             </div>
           </div>
-
         </div>
-
-
       );
     }
   }
-
 
   /**
    *This function renders the table.
@@ -131,7 +127,6 @@ class Table extends Component {
     return (
       <div>
         {this.renderTable()}
-
       </div>
 
 
