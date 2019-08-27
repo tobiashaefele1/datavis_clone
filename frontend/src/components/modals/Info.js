@@ -69,9 +69,9 @@ class Info extends Component {
                 <p>
                     Dazu werden die folgenden Rechnungsschritte durchgeführt: </p>
                 <p>
-                    1.	Aggregierung der Indikatoren auf entsprechender Ebene, wie oben beschrieben </p>
+                    1. Aggregierung der Indikatoren auf entsprechender Ebene, wie oben beschrieben </p>
                 <p>
-                    2.	Berechnung der Standardabweichung. Dabei werden - wo verfügbar -, die „tatsächlichen“ Bundesmittelwerte als Mittelwert herangezogen. Wo verfügbar haben diese denselben Indikatornamen mit Suffix _400. Ist ein enstprechender Mittelwert nicht verfügbar, wird die Standardabweichung anhand des arithmetischen Mittels gebildet und mit Hilfe der Bezugsgröße gewichtet. Die für die Berechnung der Standardabweichung verwendete Formel ist:
+                    2. Berechnung der Standardabweichung. Dabei werden - wo verfügbar -, die „tatsächlichen“ Bundesmittelwerte als Mittelwert herangezogen. Wo verfügbar haben diese denselben Indikatornamen mit Suffix _400. Ist ein enstprechender Mittelwert nicht verfügbar, wird die Standardabweichung anhand des arithmetischen Mittels gebildet und mit Hilfe der Bezugsgröße gewichtet. Die für die Berechnung der Standardabweichung verwendete Formel ist:
                 </p>
 
                 <div id = "standard_deviation_image"
@@ -82,7 +82,7 @@ class Info extends Component {
                 </div>
 
                 <p>
-                    3.	Transformation. Nach Berechnung der Standardabweichung werden die Skalen transformiert. Dazu werden zwei verschiedene mathematische Methoden angewandt, je nachdem ob für den Indikator ein höherer oder ein niedriger Wert Strukturschwäche abbildet. (bswp: Bruttoverdienst: ein höher Indikatorwert gibt einen niedrigeren Strukturschwächewert an; bswp. Arbeitslosenquote: ein höherer Wert gibt einen höheren Strukturschwächewert an.
+                    3. Transformation. Nach Berechnung der Standardabweichung werden die Skalen transformiert. Dazu werden zwei verschiedene mathematische Methoden angewandt, je nachdem ob für den Indikator ein höherer oder ein niedriger Wert Strukturschwäche abbildet. (bswp: Bruttoverdienst: ein höher Indikatorwert gibt einen niedrigeren Strukturschwächewert an; bswp. Arbeitslosenquote: ein höherer Wert gibt einen höheren Strukturschwächewert an.
                 </p>
                 <p>
                     Formel „höher ist besser“ - d.h. ein höherer Indikatorwert geht mit verringerter Strukturschwäche einher:
@@ -105,7 +105,7 @@ class Info extends Component {
                 </div>
 
                 <p>
-                    4.	Multikative Verknüpfung. Die so erhaltenen Werte werden anhand des gewählten Gewichtungsfaktors multipliziert:
+                    4. Multikative Verknüpfung. Die so erhaltenen Werte werden anhand des gewählten Gewichtungsfaktors multipliziert:
                 </p>
                 <p>
                 </p>
@@ -124,7 +124,7 @@ class Info extends Component {
                 </div>
               </footer>
               <div>
-              </div>    
+              </div>
             </div>
             <button className="modal-close is-large" onClick={this.closeInfo.bind(this)} aria-label="close"></button>
           </div>);
