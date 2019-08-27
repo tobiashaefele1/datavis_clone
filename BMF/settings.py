@@ -27,10 +27,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # X_FRAME_OPTIONS = 'DENY'
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '19nhjo(g3b=2x68wr7&7y$w1vxvr31v#n9xt3c7mnjifzlu*ia'
+#SECRET_KEY = '19nhjo(g3b=2x68wr7&7y$w1vxvr31v#n9xt3c7mnjifzlu*ia'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'cg#p$g+j9tax!#a3cup@1$8obt2_+&k3q+pmu)5%asj6yjpkag')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '0.0.0.0', '127.0.0.1', 'bmfserver.herokuapp.com', 'arcane-reaches-11621.herokuapp.com'
@@ -135,7 +136,10 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mydb',
         'USER': 'admin',
-        'PASSWORD': 'NPmpMe!696rY',
+        'PASSWORD': os.environ['DB_PASS'],
         'HOST': 'bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com'
         },
     }
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_COOKIE_AGE = 10
+# os.environ['DB_PASS']
