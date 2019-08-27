@@ -26,18 +26,6 @@ class Map extends Component {
   }
 
   /**
-   *This function returns the title of the map.
-   * @return {text} the title
-   * @memberof Map
-   */
-  headline = () => {
-    return (this.props.view_multiple ?
-        'Aggregierter Indikator' :
-        `${this.props.metadata[this.props.value_dic['var_name_0']].csvname},
-        ${this.props.value_dic['var_year_0']} ` );
-  }
-
-  /**
    *This function returns the logo and copyright statements for the map.
    *
    * @return {JSX}
