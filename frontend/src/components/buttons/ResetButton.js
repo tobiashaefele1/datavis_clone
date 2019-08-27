@@ -46,6 +46,8 @@ class ResetButton extends Component {
         document.getElementById('weight_1').value = 40;
         document.getElementById('weight_2').value = 7.5;
         document.getElementById('weight_3').value = 7.5;
+  	    document.getElementById('map_selector').value= "1";
+
       });
     }
 
