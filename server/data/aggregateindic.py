@@ -4,7 +4,6 @@ import pandas as pd
 import time
 
 from server.data.retrieve_db_data import retrieve_db_data
-from pymysqlpool.pool import Pool
 import pymysql
 
 class aggregateindic:
@@ -273,7 +272,6 @@ class aggregateindic:
             for x in raw_data:
                 Standard_deviation = 0
                 for g in range(0, len(x)):
-
                     Standard_deviation += (((float(x[g][1])) - (float(fed_avg[counter]))) ** 2) * float((ref_share[counter][g]))
                     # print ( (((data[i][1])-(fed_avg))**2)*(ref_share[i]))
                 counter += 1

@@ -1,25 +1,30 @@
 import json
 
+import pymysql
+from django.contrib.auth.decorators import login_required
+
 from django.http import HttpResponse
 from django.shortcuts import render
 
+
 from server.data.aggregateindic import aggregateindic
 from server.data.retrieve_db_data import retrieve_db_data
-from pymysqlpool.pool import Pool
-import pymysql
-pool = Pool(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
-            db='mydb',
-            user='admin',
-            password='NPmpMe!696rY',
-            cursorclass=pymysql.cursors.Cursor, timeout=20.0)
 
+
+# pool = Pool(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
+#             db='mydb',
+#             user='admin',
+#             password='NPmpMe!696rY',
+#             cursorclass=pymysql.cursors.Cursor, timeout=20.0)
+
+pool="hoi"
 # pool = Pool(host='localhost',
 #             db='mydb',
 #             user='user',
 #             password='password',
 #             cursorclass=pymysql.cursors.Cursor, timeout=20.0)
 
-
+@login_required(login_url='/accounts/login/')
 def index(request):
     # received_data = {}
     # indicator_data = []
@@ -60,7 +65,7 @@ def index(request):
         single_indic_data = data['single_indic_data']
         table_data = data['table_data']
 
-        pool.destroy()
+        # pool.destroy()
 
     if request.method == 'POST':
         recieved_data = (dict(request.POST))
@@ -78,7 +83,7 @@ def index(request):
         #         'single_indic_data': single_indic_data}
         data = aggregateindic(pool).retrieve_everything(recieved_data)
         # print (table_data)
-        pool.destroy()
+        # pool.destroy()
         return HttpResponse(json.dumps(data), content_type="application/json")
 
     context = {
