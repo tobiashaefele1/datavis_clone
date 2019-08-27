@@ -4,7 +4,6 @@ import pandas as pd
 import time
 
 from server.data.retrieve_db_data import retrieve_db_data
-from pymysqlpool.pool import Pool
 import pymysql
 
 class aggregateindic:

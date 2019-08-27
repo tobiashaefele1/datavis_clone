@@ -1,17 +1,21 @@
 import json
+from pymysqlpool import pool
+import pymysql
 
 from django.http import HttpResponse
 from django.shortcuts import render
 
+
 from server.data.aggregateindic import aggregateindic
 from server.data.retrieve_db_data import retrieve_db_data
-from pymysqlpool.pool import Pool
-import pymysql
-pool = Pool(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
+
+
+pool = pool.Pool(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
             db='mydb',
             user='admin',
             password='NPmpMe!696rY',
             cursorclass=pymysql.cursors.Cursor, timeout=20.0)
+
 
 # pool = Pool(host='localhost',
 #             db='mydb',
