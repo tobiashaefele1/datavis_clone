@@ -63,7 +63,7 @@ class retrieve_db_data:
         try:
 
             # executed quiery and closes cursor
-            cursor = connections.cursor()
+            cursor = connections['default'].cursor()
             cursor.execute(sql_select_Query)
             output = cursor.fetchall()
             cursor.close()
@@ -92,7 +92,7 @@ class retrieve_db_data:
         fed_avg_name = fed_avg_name + "400"
         # connect to database
 
-        mySQLconnection = self.pool.get_conn()
+        # mySQLconnection = self.pool.get_conn()
 
         try:
             # Returns quiery with tuple [(layer_ID, value)] for federal average at kreise level, IF IT EXISTS.
@@ -105,32 +105,46 @@ class retrieve_db_data:
 
             # print(sql_select_Query)
             # executed quiery and closes cursor
-            cursor = connections.cursor()
+            cursor = connections['default'].cursor()
 
             cursor.execute(sql_select_Query)
-            output = cursor.fetchall()
-                ## this checks for an none type
-            if output[0][1] == None:
+            print('here')
+            # print(cursor.fetchall())
+            output = dict(cursor.fetchall())
+            print(output)
+            try:
+                output = output['01001']
+            except:
+                print("Federal avg. not available - using arithmetic mean instead. See error message: adsfasdfasdf ")
                 output = self.retrieve_data(var_name, var_year, ref_name, ref_year, layer)
-                # print(output)
+                print(output)
+                output = output[0][1]
 
+            ## this checks for an none type
+            if (output == None or output == []):
+                print("Federal avg. not available - using arithmetic mean instead. See error message: ")
+                output = self.retrieve_data(var_name, var_year, ref_name, ref_year, layer)
+                print(output)
+                output = output[0][1]
 
-
-        except Error as e:
-            print("Federal avg. not available - using arithmetic mean instead. See error message: ", e)
+        except:
+            print("Federal avg. not available - using arithmetic mean instead. See error message: ")
             output = self.retrieve_data(var_name, var_year, ref_name, ref_year, layer)
+            print(output)
+            output = output[0][1]
+
 
         finally:
             # print(output)
             # closing database connection.
-            output = output[0][1]
+
             # print(output)
             # print (output)
             # self.pool.release(mySQLconnection)
             # print (output)
             # print ("THE ABOVE IS RETURNED FROM THE FORMULA")
             print("MySQL connection is closed")
-
+            print(output)
             return (output)
 
     def retrieve_ref_share(self, ref_name, ref_year, layer):
@@ -156,7 +170,7 @@ class retrieve_db_data:
         # print(sql_select_Query)
         try:
             # executed quiery and closes cursor
-            cursor = connections.cursor()
+            cursor = connections['default'].cursor()
             cursor.execute(sql_select_Query)
             output = cursor.fetchall()
             cursor.close()
@@ -170,7 +184,7 @@ class retrieve_db_data:
             # for i in range (0, len(ref_share)):
             #     a += ref_share[i]
             # print (a)
-            self.pool.release(mySQLconnection)
+            # self.pool.release(mySQLconnection)
 
 
         # error handling
@@ -293,7 +307,7 @@ class retrieve_db_data:
                                         ORDER BY COLUMN_NAME ASC;""" % (table_name))
         try:
             # executed quiery and closes cursor
-            cursor = connections.cursor()
+            cursor = connections['default'].cursor()
             cursor.execute(sql_select_Query)
             col_names = cursor.fetchall()
             cursor.close()
@@ -347,7 +361,7 @@ class retrieve_db_data:
                                           FROM `%s`;""" % (table_name))
         try:
             # executed quiery and closes cursor
-            cursor = connections.cursor()
+            cursor = connections['default'].cursor()
             cursor.execute(sql_select_Query)
             col_years = cursor.fetchall()
             cursor.close()
@@ -379,7 +393,7 @@ class retrieve_db_data:
                                 WHERE `%s` IS NOT NULL; """ % (var_name))
         try:
             # executed quiery and closes cursor
-            cursor = connections.cursor()
+            cursor = connections['default'].cursor()
             cursor.execute(sql_select_Query)
             distinct_years = cursor.fetchall()
             cursor.close()
@@ -407,7 +421,7 @@ class retrieve_db_data:
         #TODO: ask Ben about whether there is a way to do this in one quiery
         # start_time = time.clock()
         # mySQLconnection = self.pool.get_conn()
-        cursor = connections.cursor()
+        cursor = connections['default'].cursor()
         ## this returns a list of all the column names we want
         result = []
         col_names = self.retrieve_col_names('kreise')
@@ -445,7 +459,7 @@ class retrieve_db_data:
         #TODO: specify datatype here - currenlty this is a dict of dictionarries
         # start_time = time.clock()
         # mySQLconnection = self.pool.get_conn()
-        cursor = connections.cursor()
+        cursor = connections['default'].cursor()
         # cursor = mySQLconnection.cursor()
 
         ## this returns the entire metadatatable
@@ -483,7 +497,7 @@ class retrieve_db_data:
 
         ## create databaselogin etc.
         # mySQLconnection = self.pool.get_conn()
-        cursor = connections.cursor()
+        cursor = connections['default'].cursor()
 
         #create the empty table
         cursor.execute("DROP TABLE IF EXISTS `%s`" % (table_name))
@@ -545,13 +559,14 @@ class retrieve_db_data:
 
         # quiery
         sql_select_Query = (""" SELECT * FROM `all_years` """)
-
         try:
 
             # executed quiery and closes cursor
-            cursor = connections.cursor()
+            cursor = connections['default'].cursor()
+
             cursor.execute(sql_select_Query)
             output = cursor.fetchall()
+            print(output)
             cursor.close()
 
 
@@ -567,12 +582,13 @@ class retrieve_db_data:
             # print(output)
 
             list = []
-
+            print(output)
             for x in output:
-                # print (x)
+                print (x)
                 temp = []
                 for y in x:
                     if y is not None:
+                        print(y)
                         temp.append(y)
                 list.append(temp)
 
@@ -600,7 +616,7 @@ class retrieve_db_data:
 
     def retrieve_names_from_db(self, layer):
         # mySQLconnection = self.pool.get_conn()
-        cursor = connections.cursor()
+        cursor = connections['default'].cursor()
 
         ## this returns the name by layer
         result = []
