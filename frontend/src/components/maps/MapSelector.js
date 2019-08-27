@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Main_selector} from '../indikators/Main_selector'
-
-
 
 /**
  *Component class for the dropdown menu to select a map.
@@ -26,35 +23,9 @@ class MapSelector extends Component {
     * @param {event} e this is the event from the dropdown
     * @memberof MapSelector
     */
-
-    //  the below is basically my attempt at calling the .ajax function here - no longer necessary
-    // wrapping = () => {
-    //   Main_selector.ajaxRequest()
-    // }
-    //
-    // TH: The function that gets actually called, which calls handleMapchange and then an ajax Request
-    // handleMapChangeProm = (e) => {
-    //       this.handleMapChange(e).then(() => {
-    //         this.wrapping()});
-    // }
-    //
-    // handleMapChange = (e) => {
-    //   return new Promise((resolve, reject) => {
-    //     this.props.dispatch(changeMapDispatch(parseInt(e.target.value)));
-    //     if ("1" == "1") {
-    //       resolve(console.log("it worked"));
-    //     } else {
-    //       reject(Error(console.log("it broke")))
-    //     }
-    //   });
-    // }
-
-
-// TH the old original - see my code above that has replaced it
-  handleMapChange = (e) => {
-	  this.props.dispatch(changeMapDispatch(parseInt(e.target.value)));
-	  // this.props.dispatch({type: 'LOADINGCHANGE'})
-         }
+    handleMapChange = (e) => {
+      this.props.dispatch(changeMapDispatch(parseInt(e.target.value)));
+    }
 
     /**
      *This renders the dropdown menu.
@@ -64,25 +35,23 @@ class MapSelector extends Component {
      */
     render() {
       return (
-		<div className="is-centered" style={{paddingBottom: "25px"}}>
-		<div style={{paddingBottom: "5px"}}>Karte</div>
-		
-		
-        <div className="select is-small is-dark " style={{marginBottom: '10px'}}>
-          <select 
-            id="map_selector"
-            onChange={this.handleMapChange.bind(this)}
-			defaultValue='1'>
-            <option value="0">Kreise (Stand 2015)</option>
-            <option value="1">Arbeitsmarktregionen (Stand 2012)</option>
-            <option value="2">Arbeitsmarktregionen (Stand 2015)</option>
-            <option value="3">Arbeitsmarktregionen (Stand 2020)</option>
-			<option value="4">Raumordnungsregionen</option>
-            <option value="5">Bundesländer</option>
-          </select>
-
+        <div className="is-centered" style={{paddingBottom: '25px'}}>
+          <div style={{paddingBottom: '5px'}}>Karte</div>
+          <div className="select is-small is-dark"
+            style={{marginBottom: '10px'}}>
+            <select
+              id="map_selector"
+              onChange={this.handleMapChange.bind(this)}
+              defaultValue='1'>
+              <option value="0">Kreise (Gebietsstand 2015)</option>
+              <option value="1">Arbeitsmarktregionen (Stand 2012)</option>
+              <option value="2">Arbeitsmarktregionen (Stand 2015)</option>
+              <option value="3">Arbeitsmarktregionen (Stand 2020)</option>
+              <option value="4">Raumordnungsregionen</option>
+              <option value="5">Bundesländer</option>
+            </select>
+          </div>
         </div>
-		</div>
       );
     }
 }
@@ -108,7 +77,7 @@ function changeMapDispatch(value) {
  */
 function mapStateToProps(state) {
   return {
-   count_map: state.count_map,
+    count_map: state.count_map,
   };
 }
 

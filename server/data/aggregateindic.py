@@ -267,8 +267,8 @@ class aggregateindic:
 
             ### calculate the standard deviation:
             sd = []
-            print(fed_avg)
-            print ("THIS IS THE FEDERAL AVERAGE")
+            # print(fed_avg)
+            # print ("THIS IS THE FEDERAL AVERAGE")
             counter = 0
             for x in raw_data:
                 Standard_deviation = 0

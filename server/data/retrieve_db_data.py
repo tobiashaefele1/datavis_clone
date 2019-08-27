@@ -105,7 +105,7 @@ class retrieve_db_data:
                                            WHERE kreise.YEAR = '%s' AND kreise.Kennziffer = "01001" """ % (
                 fed_avg_name, var_year))
 
-            print(sql_select_Query)
+            # print(sql_select_Query)
             # executed quiery and closes cursor
             cursor = mySQLconnection.cursor()
 
@@ -114,7 +114,7 @@ class retrieve_db_data:
                 ## this checks for an none type
             if output[0][1] == None:
                 output = self.retrieve_data(var_name, var_year, ref_name, ref_year, layer)
-                print(output)
+                # print(output)
 
 
 
@@ -129,8 +129,8 @@ class retrieve_db_data:
             # print(output)
             # print (output)
             self.pool.release(mySQLconnection)
-            print (output)
-            print ("THE ABOVE IS RETURNED FROM THE FORMULA")
+            # print (output)
+            # print ("THE ABOVE IS RETURNED FROM THE FORMULA")
             print("MySQL connection is closed")
 
             return (output)
@@ -292,7 +292,7 @@ class retrieve_db_data:
                                         FROM information_schema.columns 
                                         WHERE table_schema = "mydb" 
                                         AND table_name = '%s'
-                                        SORT BY COLUMN_NAME ASC;""" % (table_name))
+                                        ORDER BY COLUMN_NAME ASC;""" % (table_name))
         try:
             # executed quiery and closes cursor
             cursor = mySQLconnection.cursor()

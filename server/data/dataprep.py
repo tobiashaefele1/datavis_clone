@@ -127,12 +127,10 @@ def mapping_to_db (link_to_mapping_file):
      # database = "mydb"
 
 
-
-     #
      user = "admin"
      passw = "NPmpMe!696rY"
      host = "bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com"
-     database = "mydb"
+     database = 'mydb'
      conn = create_engine('mysql+pymysql://' + user + ':' + passw + '@' + host + '/' + database, echo=False)
      mapping_file.to_sql(name="mapping", con=conn, if_exists = 'replace', index=False)
 
@@ -240,7 +238,7 @@ def load_meta_data_to_db(link_to_KRS_metadata, KRS_datacode,
     user = "admin"
     passw = "NPmpMe!696rY"
     host = "bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com"
-    database = "mydb"
+    database = 'mydb'
     conn = create_engine('mysql+pymysql://' + user + ':' + passw + '@' + host + '/' + database, echo=False)
     combined_meta.to_sql(name="metadata", con=conn, if_exists='replace', index=False)
 
