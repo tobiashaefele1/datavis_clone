@@ -283,10 +283,11 @@ function reducer(state = initalState, action) {
         draft.view_multiple = !state.view_multiple;
       });
 
-    case 'LOADINGCHANGE':
+    case 'LOADINGSTART':
       return produce(state, (draft) => {
-        draft.loading = !state.loading;
+        draft.loading = true;
       });
+
 
     case 'FIRSTLOADDONE':
       return produce(state, (draft) => {
