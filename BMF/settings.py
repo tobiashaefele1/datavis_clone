@@ -123,16 +123,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'frontend/static/frontend/'),
-    os.path.join(BASE_DIR, 'frontend/static/bmf/css/'),
-    # os.path.join(BASE_DIR, 'frontend/static/bmf/css/map.css'),
-    # os.path.join(BASE_DIR, 'frontend/static/bmf/css/style.css'),
-    os.path.join(BASE_DIR, 'frontend/static/bmf/fonts/'),
-    # os.path.join(BASE_DIR, 'frontend/static/bmf/fonts/BundesSansWeb-Regular.ttf'),
-    os.path.join(BASE_DIR, 'frontend/static/bmf/js/'),
-    os.path.join(BASE_DIR, 'frontend/static/bmf/resources/'),
+    os.path.join(BASE_DIR, 'frontend/static/'),
+    # os.path.join(BASE_DIR, 'frontend/static/bmf/css/'),
+    # # os.path.join(BASE_DIR, 'frontend/static/bmf/css/map.css'),
+    # # os.path.join(BASE_DIR, 'frontend/static/bmf/css/style.css'),
+    # os.path.join(BASE_DIR, 'frontend/static/bmf/fonts/'),
+    # # os.path.join(BASE_DIR, 'frontend/static/bmf/fonts/BundesSansWeb-Regular.ttf'),
+    # os.path.join(BASE_DIR, 'frontend/static/bmf/js/'),
+    # os.path.join(BASE_DIR, 'frontend/static/bmf/resources/'),
     # os.path.join(BASE_DIR, 'frontend/static/bmf/resources/AMR15map.json'),
     # os.path.join(BASE_DIR, 'frontend/static/bmf/resources/AMR20map.json'),
     # os.path.join(BASE_DIR, 'frontend/static/bmf/resources/BMF_2017_WebSVG_de.svg'),
