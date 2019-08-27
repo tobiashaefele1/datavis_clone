@@ -157,22 +157,22 @@ class Info extends Component {
                   <h5 style={{margin: '20px', fontWeight: 'bold'}}>Exportfunktionen</h5>
 
                   <p>1. csv Datentabelle exportieren <br/></p>
-                  <p>Diese Funktion exportiert alle derzeit in der Tabelle angezeigten Zeilen und Spalten in eine .csv Datei. Um alle Daten in der Tabelle anzuzeigen (und herunterzuladen), müssen in der Tabelle entsprechend erst alle Zeilen zur Anzeige augewählt werden.
+                  <p> <br/>Diese Funktion exportiert alle derzeit in der Tabelle angezeigten Zeilen und Spalten in eine .csv Datei. Um alle Daten in der Tabelle anzuzeigen (und herunterzuladen), müssen in der Tabelle entsprechend erst alle Zeilen zur Anzeige augewählt werden.
                   <br/></p>
 
-                  <p> 2. Karte exportieren <br/></p>
-                   <p>Diese Funktion exportiert die derzeitige Karte, den Titel sowie die Legende als .svg Datei.</p>
+                  <p> <br/>2. Karte exportieren <br/></p>
+                   <p><br/>Diese Funktion exportiert die derzeitige Karte, den Titel sowie die Legende als .svg Datei.</p>
 
-                  <p> 3. Metadaten exportieren <br/></p>
-                   <p>
+                  <p><br/> 3. Metadaten exportieren <br/></p>
+                   <p><br/>
                        Diese Funktion exportiert die  Metadaten für alle in der Datenbank verfügbaren Variablen. Der „databasename“ entspricht dabei dem im Tool angezeigten Namen mit entsprechendem Suffix (_100, _200 etc.). Der „csvname“ entspricht dem in der Importdatei eingegebenen Namen. Die anderen 7 Spalten („Anmerkungen“, „Berechnung“, „Einheit“, „Langname“, „Level“, „Quelle“ und „Standardisierung“) entsprechen den andern in der Importdatei spezifizierten  Metadaten.
 
 
-
+                        <br/>
                    </p>
 
 
-                    <p> Entwicklung: Tobias Haefele und Jacob Roeters van Lennep</p>
+                    <p><br/> Entwicklung: Tobias Haefele und Jacob Roeters van Lennep</p>
 
               </section>
               <footer className="modal-card-foot">
