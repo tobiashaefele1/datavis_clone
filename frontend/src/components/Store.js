@@ -68,7 +68,7 @@ const initalState = {
     'ref_name_3': 'SV-pflichtig Beschäftigte am Wohnort_100',
     'ref_name_4': 'SV-pflichtig Beschäftigte am Wohnort_100', 'ref_name_5': 'SV-pflichtig Beschäftigte am Wohnort_100',
     'ref_year_0': '2011', 'ref_year_1': '2011', 'ref_year_2': '2012', 'ref_year_3': '2012',
-    'ref_year_4': 2012, 'ref_year_5': 2012,
+    'ref_year_4': '2018', 'ref_year_5': '2018',
   },
   table_columns: [{
     Header: 'Kennziffer',
@@ -203,7 +203,7 @@ function reducer(state = initalState, action) {
           'ref_name_3': 'SV-pflichtig Beschäftigte am Wohnort_100',
           'ref_name_4': 'SV-pflichtig Beschäftigte am Wohnort_100', 'ref_name_5': 'SV-pflichtig Beschäftigte am Wohnort_100',
           'ref_year_0': '2011', 'ref_year_1': '2011', 'ref_year_2': '2012', 'ref_year_3': '2012',
-          'ref_year_4': 2012, 'ref_year_5': 2012,
+          'ref_year_4': '2018', 'ref_year_5': '2018',
 								 };
         draft.table_columns = [{
           Header: 'Kennziffer',

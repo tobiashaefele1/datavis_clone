@@ -74,8 +74,7 @@ class Info extends Component {
 				  </header>
               <section className="modal-card-body">
 
-                <p> Diese Website ermöglicht das Nachbauen von GRW-Indikatorik sowie das Anzeigen und Visualiseren einzelner Indikatoren, die die Gleichwertigkeit von Lebensverhältnissen in Deutschland abbilden.
-                        Bei Fragen zu Funktionen, Methodologie oder Umsetzung, wenden Sie sich bitte an Tobias Haefele oder Jacob Roeters van Lennep. </p>
+                <p> Diese Website ermöglicht das Nachbauen von GRW-Indikatorik sowie das Anzeigen und Visualisieren einzelner Indikatoren, die die Gleichwertigkeit von Lebensverhältnissen in Deutschland abbilden.  Bei Fragen zu Funktionen, Methodologie oder Umsetzung wenden Sie sich bitte an Referat L B 3. </p>
 
                 <h5 style={{margin: '20px', fontWeight: 'bold'}}>Indikatorencodierung</h5>
 
