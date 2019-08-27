@@ -221,9 +221,9 @@ export class MainSelector extends Component {
               <div className="select is-dark is-small">
                 <select
                   id={`ref_year_${this.props.number}`}
-                  onChange={this.handleChange.bind(this)}>
+                  onChange={this.handleChange.bind(this)}
                   defaultValue={
-                    this.props.value_dic[`ref_year_${this.props.number}`]}
+                    this.props.value_dic[`ref_year_${this.props.number}`]}>
                   <option disabled value="0"> -- Wähle Jahr -- </option>
                   {this.props.years_ref.map((d, i) =>
                     <option value={d} key={i}>{d}</option>
