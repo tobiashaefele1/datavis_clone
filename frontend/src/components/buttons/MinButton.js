@@ -8,6 +8,11 @@ import {connect} from 'react-redux';
  * @extends {Component}
  */
 class MinButton extends Component {
+    /**
+     *This function removes a indikator from the indikators list
+     *
+     * @memberof MinButton
+     */
     handleButton = () => {
       this.props.dispatch({type: 'DECREMENTINDIKATOR'});
     }
@@ -25,17 +30,18 @@ class MinButton extends Component {
         );
       } else {
         return (
-          <a className="button is-dark is-outlined is-large" onClick={this.handleButton.bind(this)}>
-    			<span className="icon">
-     				 <i className="fas fa-minus"></i>
-    					</span>
-   					 {/* <span>Einstellungen</span> */}
-  			</a>
+          <a className="button is-dark is-outlined is-large"
+            onClick={this.handleButton.bind(this)}>
+            <span className="icon">
+              <i className="fas fa-minus"></i>
+            </span>
+          </a>
 
         );
       }
     }
 }
+
 /**
  * mapStateToProps function
  *

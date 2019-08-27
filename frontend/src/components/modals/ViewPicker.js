@@ -51,32 +51,31 @@ class ViewPicker extends Component {
     render() {
       if (this.props.show_viewpicker) {
         return (
-
-			   <div className="modal is-active">
-  				<div className="modal-background" onClick={this.closeModal.bind(this)}></div>
+          <div className="modal is-active">
+            <div className="modal-background" onClick={this.closeModal.bind(this)}></div>
             <div className="modal-card">
-				  <header className="modal-card-head">
-					  <p className="modal-card-title" style={{textAlign: 'center'}}>Ansicht wählen:</p>
-				  </header>
+              <header className="modal-card-head">
+                <p className="modal-card-title" style={{textAlign: 'center'}}>Ansicht wählen:</p>
+              </header>
               <section className="modal-card-body">
 
 
-				            <div className="btn-group-vertical is-centered" style={{padding: '10px 24px'}}>
+                <div className="btn-group-vertical is-centered" style={{padding: '10px 24px'}}>
 
                   <div className="is-centered" style={{textAlign: 'center', paddingBottom: '20px'}}>
-				                <a className="button is-dark is-outlined is-centered" onClick={this.changeViewMultiple.bind(this)} >
+                    <a className="button is-dark is-outlined is-centered" onClick={this.changeViewMultiple.bind(this)} >
                                     aggregierten Indikator zusammensetzen
-				                </a>
+                    </a>
                   </div>
 
                   <div className="is-centered" style={{textAlign: 'center', paddingBottom: '0px'}}>
                     <a className="button is-dark is-outlined is-centered" onClick={this.changeViewSingle.bind(this)}>
-										einzelne Indikatoren ansehen
+                                        einzelne Indikatoren ansehen
                     </a>
                   </div>
                 </div>
 
-                  			</section>
+              </section>
               <footer className="modal-card-foot">
 
               </footer>
@@ -85,7 +84,7 @@ class ViewPicker extends Component {
             </div>
 
 
-			  <button className="modal-close is-large" onClick={this.closeModal.bind(this)} aria-label="close"></button>
+            <button className="modal-close is-large" onClick={this.closeModal.bind(this)} aria-label="close"></button>
           </div>
 
         );

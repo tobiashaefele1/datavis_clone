@@ -4,7 +4,7 @@ import Map from './maps/Map';
 import MapSelector from './maps/MapSelector';
 import {feature} from 'topojson';
 import SmallTable from './tables/SmallTable';
-import Main_selector from './indikators/Main_selector';
+
 import Indikators from './indikators/Indikators';
 import {connect} from 'react-redux';
 import PlusButton from './buttons/PlusButton';
@@ -15,7 +15,7 @@ import Table from './tables/Table';
 import ViewPicker from './modals/ViewPicker';
 import MinMaxTable from './tables/MinMaxTable';
 import SVGExportButton from './buttons/SVGExportButton';
-import ResetButton from './buttons/ResetButton';
+
 import TableButton from './buttons/TableButton';
 import InfoButton from './buttons/InfoButton';
 import Info from './modals/Info';
@@ -151,6 +151,7 @@ class App extends Component {
    * This is to imporve layout on mobile devices.
    *
    * @param {*} value screen width
+   * @return {ViewPicker} 
    * @memberof App
    */
   mobile(value) {

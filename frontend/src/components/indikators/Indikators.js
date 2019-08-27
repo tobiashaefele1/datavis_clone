@@ -1,5 +1,6 @@
+/* eslint-disable max-len */
 import React, {Component} from 'react';
-import Main_selector from './Main_selector';
+import MainSelector from './MainSelector';
 import {connect} from 'react-redux';
 
 /**
@@ -10,26 +11,32 @@ import {connect} from 'react-redux';
  */
 class Indikators extends Component {
   /**
-   *This function is automatically called when the props or state updates
+   *This is the function that is called every time the component updates
    *
+   * @param {*} prevProps
    * @memberof Indikators
    */
   componentDidUpdate(prevProps) {
-    // this.props.dispatch({type: 'UPDATECOLUMNS'});
     if (prevProps.indikator_counter !== this.props.indikator_counter ||
         prevProps.view_multiple !== this.props.view_multiple ||
             prevProps.count_map !== this.props.count_map
     ) {
-      console.log('AJAX REQUEST THROUGH COMPONENTDIDUPDATE IN INDIKATORS');
       this.props.dispatch({type: 'LOADINGCHANGE'});
       this.ajaxRequest();
     }
   }
 
-  update_Val_dic_yearsDispatch(current_years) {
+  /**
+   *This function creates a dict to dispatch to the store to update the years.
+   *
+   * @param {*} currentYears
+   * @return {dict} that can go into the dispatch
+   * @memberof Indikators
+   */
+  updateValDicYearsDispatch(currentYears) {
     return {
-      type: 'UPDATE_VAL_DIC_YEARS',
-      current_years,
+      type: 'UPDATEVALDICYEARS',
+      currentYears,
     };
   }
 
@@ -40,10 +47,6 @@ class Indikators extends Component {
      * @memberof Indikator
      */
   getData() {
-    console.log(this.props.value_dic['var_year_4']);
-    console.log(this.props.all_years[this.props.value_dic['var_name_4']]);
-    console.log(this.props.value_dic['var_year_5']);
-    console.log(this.props.all_years[this.props.value_dic['var_name_5']]);
     const data = {
 
       'var_1': [this.props.value_dic['var_name_0'],
@@ -63,6 +66,7 @@ class Indikators extends Component {
         this.props.map_name[this.props.count_map],
         (this.props.indikator_counter > 1 ? (this.props.value_dic['var_name_1'] ? this.props.metadata[this.props.value_dic['var_name_1']].Standardisierung : '') : ''),
         (this.props.indikator_counter > 1 ? this.props.value_dic['weight_1'] : '')],
+
       'var_3': [
         (this.props.indikator_counter > 2 ? this.props.value_dic['var_name_2'] : ''),
         (this.props.indikator_counter > 2 ? (this.props.value_dic['var_name_2'] ?
@@ -72,6 +76,7 @@ class Indikators extends Component {
         this.props.map_name[this.props.count_map],
         (this.props.indikator_counter > 2 ? (this.props.value_dic['var_name_2'] ? this.props.metadata[this.props.value_dic['var_name_2']].Standardisierung : '') : ''),
         (this.props.indikator_counter > 2 ? this.props.value_dic['weight_2'] : '')],
+
       'var_4': [
         (this.props.indikator_counter > 3 ? this.props.value_dic['var_name_3'] : ''),
         (this.props.indikator_counter > 3 ? (this.props.value_dic['var_name_3'] ?
@@ -81,6 +86,7 @@ class Indikators extends Component {
         this.props.map_name[this.props.count_map],
         (this.props.indikator_counter > 3 ? (this.props.value_dic['var_name_3'] ? this.props.metadata[this.props.value_dic['var_name_3']].Standardisierung : '') : ''),
         (this.props.indikator_counter > 3 ? this.props.value_dic['weight_3'] : '')],
+
       'var_5': [
         (this.props.indikator_counter > 4 ? this.props.value_dic['var_name_4'] : ''),
         (this.props.indikator_counter > 4 ? (this.props.value_dic['var_name_4'] ?
@@ -90,6 +96,7 @@ class Indikators extends Component {
         this.props.map_name[this.props.count_map],
         (this.props.indikator_counter > 4 ? (this.props.value_dic['var_name_4'] ? this.props.metadata[this.props.value_dic['var_name_4']].Standardisierung : '') : ''),
         (this.props.indikator_counter > 4 ? this.props.value_dic['weight_4'] : '')],
+
       'var_6': [
         (this.props.indikator_counter > 5 ? this.props.value_dic['var_name_5'] : ''),
         (this.props.indikator_counter > 5 ? (this.props.value_dic['var_name_5'] ?
@@ -100,9 +107,8 @@ class Indikators extends Component {
         (this.props.indikator_counter > 5 ? (this.props.value_dic['var_name_5'] ? this.props.metadata[this.props.value_dic['var_name_5']].Standardisierung : '') : ''),
         (this.props.indikator_counter > 5 ? this.props.value_dic['weight_5'] : '')],
     };
-    const current_years = [data['var_1'][1], data['var_2'][1], data['var_3'][1], data['var_4'][1], data['var_5'][1], data['var_6'][1]];
-    console.log(current_years);
-    this.props.dispatch(this.update_Val_dic_yearsDispatch(current_years));
+    const currentYears = [data['var_1'][1], data['var_2'][1], data['var_3'][1], data['var_4'][1], data['var_5'][1], data['var_6'][1]];
+    this.props.dispatch(this.updateValDicYearsDispatch(currentYears));
     return data;
   }
 
@@ -124,30 +130,29 @@ class Indikators extends Component {
       success: function(data) {
         this.updateDataProm(data).then(() => {
           this.props.dispatch({type: 'UPDATECOLUMNS'});
-          this.changeVars();
+          this.props.dispatch({type: 'CHANGEVARS'});
         });
-
-        // this.updateData(data);
       }.bind(this),
-
-
     });
   }
+
+  /**
+   *This function creates the promis to update the data.
+   *
+   * @param {*} data
+   * @return {Promise}
+   * @memberof Indikators
+   */
   updateDataProm(data) {
-    // console.log(data);
     return new Promise((resolve, reject) => {
       this.props.dispatch({type: 'UPDATEDATA', data: data});
       if ('1' == '1') {
-        resolve(console.log('it worked'));
+        resolve();
       } else {
-        reject(Error(console.log('It broke')));
+        reject(Error());
       }
     });
   };
-
-  changeVars() {
-    this.props.dispatch({type: 'CHANGEVARS'});
-  }
 
 
   /**
@@ -159,16 +164,12 @@ class Indikators extends Component {
   render() {
     return (
       <div >
-
-
         {this.props.indikators.map( (d, i) =>
-          <Main_selector key={i} number={i} name={d} ajaxRequest={this.ajaxRequest.bind(this)} getData = {this.getData} />
-
-        )
-        }
+          <MainSelector key = {i} number = {i} name = {d}
+            ajaxRequest = {this.ajaxRequest.bind(this)}
+            getData = {this.getData} />
+        )}
       </div>
-
-
     );
   }
 }
@@ -194,11 +195,9 @@ function mapStateToProps(state) {
     count_map: state.count_map,
     current_map: state.current_map,
     map_name: state.map_name,
-    // var_year_data: state.var_year_data,
     single_indic_data: state.single_indic_data,
     loading: state.loading,
     all_years: state.all_years,
-
   };
 }
 
