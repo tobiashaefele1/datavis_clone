@@ -108,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Berlin'
 
 USE_I18N = True
 
@@ -128,4 +128,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
 
 MEDIA_URL = 'static/media/'
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'app'
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mydb',
+        'USER': 'admin',
+        'PASSWORD': 'NPmpMe!696rY',
+        'HOST': 'bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com'
+        },
+    }
