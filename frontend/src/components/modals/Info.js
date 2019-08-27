@@ -110,7 +110,7 @@ class Info extends Component {
                 </p>
 
                 <div id = "LIB_image" style={{textAlign: 'center'}}>
-                  <img src ="static/bmf/resources/SCALE_LIB.png" style={{width: "30%", align: "middle",
+                  <img src ="static/bmf/resources/SCALE_LIB.png" style={{width: "35%", align: "middle",
                     height:"30%"}}>
                   </img>
                 </div>
@@ -122,7 +122,7 @@ class Info extends Component {
                 </p>
 
                 <div id = "LIB_image" style={{textAlign: 'center'}}>
-                  <img src ="static/bmf/resources/combined_indicator.png" style={{width: "100%", align: "middle",
+                  <img src ="static/bmf/resources/combined_indicator.png" style={{width: "85%", align: "middle",
                     height:"100%"}}>
                   </img>
                 </div>
