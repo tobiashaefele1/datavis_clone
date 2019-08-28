@@ -103,6 +103,7 @@ class Data:
     def convert_to_array_sql(self):
         '''this method converts the whole data set to be ready for the DB'''
         for year in self.unique_years():
+
             for row in self.data:
                 sql_row = []
                 for index in range(0, 3):

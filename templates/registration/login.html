@@ -1,47 +1,48 @@
 <!-- templates/registration/login.html -->
 
-<head xmlns:background-color="http://www.w3.org/1999/xhtml">
+<head>
         {% load static %}
         <title>BMF</title>
-        <link
-      rel="shortcut icon"
-      type="image/png"
-      href="{% static './bmf/resources/BMF_official_png_logo.png' %}"
-    />
-    <style>
-body {
-    background-color: black;
-}
 
-</style>
+
     <link rel="stylesheet" href="{% static './bmf/css/style.css' %}">
 	<link rel="stylesheet" href="{% static './bmf/css/custom.css' %}">
 	<link rel="stylesheet" href="{% static './bmf/css/map.css' %}">
 </head>
 
-<div style="padding-top: 150px"></div>
+<body>
+<div class="modal is-active">
+  <div class="modal-background-login"></div>
+  <div class="modal-content">
+      <div class="box is-centered has-text-centered">
+                    <object type="image/svg+xml"
+                         data="{% static './bmf/resources/BMF_2017_WebSVG_de.svg' %}">
+                           Your browser does not support SVG
+                    </object>
+{#                        <h2 class="has-text-black" >Login</h2>#}
+                            <form method="post" >
+                                {% csrf_token %}
+                                <Label class="label" >Benutzername</Label>
+                                <div class="control has-text-centered">
 
-<div style="background-color:white; text-align: center " class="modal">
-    <div class="modal-card">
-        <div class="modal-card-body">
-                     <object type="image/svg+xml"
-              data="{% static './bmf/resources/BMF_2017_WebSVG_de.svg' %}" style="text-align: center">
-                  Your browser does not support SVG
-            </object>
+                                    {{ form.username }}</div>
+                                <Label class="label" >Passwort</Label>
+                               <div class="control has-text-centered">
 
+                                   {{ form.password }}</div>
 
-<h2 text-align="center" class="has-text-black" >Login</h2>
+                            <div class="buttons is-centered" style="padding-top: 20px">
+
+                                <button class="button" type="submit" >Login</button>
+                            </div>
+
+                            </form>
+  </div>
+          </div>
+  </div>
+
 </div>
 
-<div style="text-align: center; background-color: white " class="has-text-black">
-<form method="post" style="text-align: center">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit" style="text-align:center">Login</button>
-</form>
-</div>
-        </div>
-    </div>
 
-
+</body>
 

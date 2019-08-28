@@ -115,13 +115,13 @@ def add_tuples_new(data, data_base, data_code=100, table_name="kreise"):
             sql = f"""UPDATE `%s` SET %s WHERE `KENNZIFFER` = %s AND `YEAR` = '%s' """\
                   % (table_name, prepare_update_sql(data.unique_labels(), tuple_sql[4:], data_code)
                      , tuple_sql[0], tuple_sql[3])
-            # print (sql)
+            print (sql)
             cursor.execute(sql)
         else:
             sql = f"""INSERT INTO `%s` (%s) VALUES (%s)""" \
                   % (table_name, prepare_columns_for_sql(data.unique_labels(), data_code),
                      prepare_value_list_for_sql(tuple_sql))
-
+            print(sql)
             cursor.execute(sql)
 
 
@@ -208,5 +208,5 @@ def prepare_update_sql(list_columns, list_values, data_code=100):
             else:
                 string = string + '`' + i[1] \
                          + '_' + str(data_code) + '`' + '= ' + '\'' + str(list_values[i[0]]) + '\'' + ', '
-    string = string.replace(" None", " Null")
+    string = string.replace("None", "Null")
     return string[:-2]
