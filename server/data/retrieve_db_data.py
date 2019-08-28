@@ -51,11 +51,11 @@ class retrieve_db_data:
             layer,
             layer))
         try:
-        # executed quiery and closes cursor
-        cursor = self.connections['default'].cursor()
-        cursor.execute(sql_select_Query)
-        output = cursor.fetchall()
-        cursor.close()
+            # executed quiery and closes cursor
+            cursor = self.connections['default'].cursor()
+            cursor.execute(sql_select_Query)
+            output = cursor.fetchall()
+            cursor.close()
 
         # error handling
         except Error as e:
@@ -397,7 +397,7 @@ class retrieve_db_data:
         filtered_dict = {}
         sql_select_Query = (""" SELECT * FROM `all_years` """)
         try:
-            cursor = connections['default'].cursor()
+            cursor = self.connections['default'].cursor()
             cursor.execute(sql_select_Query)
             output = cursor.fetchall()
             cursor.close()
