@@ -14,7 +14,7 @@ def retrieve_data(var_name, var_year, ref_name, ref_year, layer):
     ''' this function returns the dataset for a chosen variable, at a chosen year at the chosen level, standardised by the 
     chosen ref variable and the chosen year, CURRENTLY AS A TUPLE LIST'''
     output = []
-    mySQLconnection = 'stop'
+    # mySQLconnection = 'stop'
 
     #  Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
     sql_select_Query = (""" 
@@ -49,7 +49,6 @@ def retrieve_data(var_name, var_year, ref_name, ref_year, layer):
         layer, layer, var_name, ref_name, var_year, ref_year, layer, layer, layer, ref_name, ref_year, layer, layer,
         layer,
         layer))
-
     try:
 
         # executed quiery and closes cursor
