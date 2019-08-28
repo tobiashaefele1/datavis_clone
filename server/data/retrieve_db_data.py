@@ -244,7 +244,7 @@ def clean_col_names(data):
 
 
 
-def retrieve_col_years(table_name):
+def retrieve_col_years(table_name, cursor=connections['default'].cursor()):
     ''' this function returns a list of all the years for in the datable'''
     output = []
     col_years = []
@@ -256,7 +256,7 @@ def retrieve_col_years(table_name):
                                       FROM `%s`;""" % (table_name))
     try:
         # executed quiery and closes cursor
-        cursor = connections['default'].cursor()
+
         cursor.execute(sql_select_Query)
         col_years = cursor.fetchall()
         cursor.close()
@@ -294,11 +294,11 @@ def retrieve_distinct_years(var_name):
         return output
 
 
-def retrieve_complete_col_years():
+def retrieve_complete_col_years(cursor=connections['default'].cursor()):
     ''' this function returns a list of list with all the unique variables in kreise and the years which are not
-    null in this list. HOWEVER, the function is incredibly slow. Perhaps it should go into setup.py and be run once
+    null in this list. HOWEVER, the function is incredibly slow. Perhaps it should go into upload.py and be run once
     at the beginning of creating the database'''
-    cursor = connections['default'].cursor()
+
     ## this returns a list of all the column names we want
     result = []
     col_names = retrieve_col_names('kreise')
@@ -346,13 +346,13 @@ def retrieve_metadata():
     return target_dict
 
 
-def insert_all_years_into_db():
+def insert_all_years_into_db(cursor):
     # retrieve all the data that we have for th respective variables from kreise
-    data = retrieve_complete_col_years()
+    data = retrieve_complete_col_years(cursor=cursor)
 
     table_name = "all_years"
 
-    cursor = connections['default'].cursor()
+    # cursor = connections['default'].cursor()
 
     #create the empty table
     cursor.execute("DROP TABLE IF EXISTS `%s`" % (table_name))
@@ -363,7 +363,7 @@ def insert_all_years_into_db():
 
     ## add all the columns
     ## retrieve list of all the required columns
-    col_years = retrieve_col_years("kreise")
+    col_years = retrieve_col_years("kreise", cursor=cursor)
 
     ## and drop them into the database as columns
     for x in col_years:
