@@ -116,7 +116,6 @@ const initalState = {
   single_indic_data: JSON.parse(context.single_indic_data),
   table_data: JSON.parse(context.table_data),
   metadata: JSON.parse((context.metadata.replace(/(\r\n|\n|\r)/gm, ''))),
-  all_years: JSON.parse(context.all_years),
 
 
   // Modal variables

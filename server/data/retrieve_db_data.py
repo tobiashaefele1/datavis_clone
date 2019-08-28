@@ -17,47 +17,45 @@ class retrieve_db_data:
         chosen ref variable and the chosen year, CURRENTLY AS A TUPLE LIST'''
         output = []
 
-        #  Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
+    #  Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
         sql_select_Query = (""" 
-                                SELECT a.`%s`, (absvalue/relvalue)
-                                FROM (
-                                      SELECT 
-                                             mapping.`%s`, 
-                                             SUM(kreise.`%s` * reference.`%s`) as absvalue
-                                      FROM 
-                                              kreise 
-                                      LEFT JOIN mapping
-                                            ON kreise.Kennziffer=mapping.KRS_15
-                                      LEFT JOIN reference
-                                             ON kreise.Kennziffer=reference.Kennziffer 
-                                      WHERE kreise.YEAR = '%s' AND reference.Year = '%s'
-                                      GROUP BY mapping.`%s`
-                                      ORDER BY mapping.`%s` ASC
-                                       ) a
-                                LEFT JOIN (                
-                                      SELECT                           
-                                               mapping.`%s`,
-                                                sum(reference.`%s`) as relvalue
-                                      FROM
-                                                reference
-                                      LEFT JOIN mapping
-                                                 ON reference.Kennziffer=mapping.KRS_15
-                                      WHERE reference.year = '%s'
-                                      GROUP BY mapping.`%s`
-                                      ORDER BY mapping.`%s` ASC
-                                       ) r
-                                on a.`%s`=r.`%s` """ % (
+                            SELECT a.`%s`, (absvalue/relvalue)
+                            FROM (
+                                  SELECT 
+                                         mapping.`%s`, 
+                                         SUM(kreise.`%s` * reference.`%s`) as absvalue
+                                  FROM 
+                                          kreise 
+                                  LEFT JOIN mapping
+                                        ON kreise.Kennziffer=mapping.KRS_15
+                                  LEFT JOIN reference
+                                         ON kreise.Kennziffer=reference.Kennziffer 
+                                  WHERE kreise.YEAR = '%s' AND reference.Year = '%s'
+                                  GROUP BY mapping.`%s`
+                                  ORDER BY mapping.`%s` ASC
+                                   ) a
+                            LEFT JOIN (                
+                                  SELECT                           
+                                           mapping.`%s`,
+                                            sum(reference.`%s`) as relvalue
+                                  FROM
+                                            reference
+                                  LEFT JOIN mapping
+                                             ON reference.Kennziffer=mapping.KRS_15
+                                  WHERE reference.year = '%s'
+                                  GROUP BY mapping.`%s`
+                                  ORDER BY mapping.`%s` ASC
+                                   ) r
+                            on a.`%s`=r.`%s` """ % (
             layer, layer, var_name, ref_name, var_year, ref_year, layer, layer, layer, ref_name, ref_year, layer, layer,
             layer,
             layer))
-
         try:
-
-            # executed quiery and closes cursor
-            cursor = self.connections['default'].cursor()
-            cursor.execute(sql_select_Query)
-            output = cursor.fetchall()
-            cursor.close()
+        # executed quiery and closes cursor
+        cursor = self.connections['default'].cursor()
+        cursor.execute(sql_select_Query)
+        output = cursor.fetchall()
+        cursor.close()
 
         # error handling
         except Error as e:

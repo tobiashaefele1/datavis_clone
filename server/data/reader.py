@@ -34,7 +34,6 @@ def create_table_and_load_data(data_base, data, data_code=100, data_base_name="m
     :return:
     """
     data.convert_to_array_sql()
-
     cursor = data_base.cursor()
     with warnings.catch_warnings():
         warnings.simplefilter('ignore')
@@ -50,10 +49,6 @@ def create_table_and_load_data(data_base, data, data_code=100, data_base_name="m
     index_column('YEAR', cursor, table_name)
     add_columns(data, cursor, data_code, table_name)
     add_tuples(data, cursor, table_name)
-
-
-
-
 
 def add_columns(data, cursor, data_code=100, table_name='kreise'):
     """
