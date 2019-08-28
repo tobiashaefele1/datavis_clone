@@ -164,19 +164,13 @@ def load_meta_data_to_db(link_to_KRS_metadata, KRS_datacode,
     combined_meta = combined_meta.replace(r'\"', ' ', regex=True)
     combined_meta = combined_meta.replace (r'\\', ' ', regex=True)
 
-    user = "admin"
-    passw = "NPmpMe!696rY"
-    host = "bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com"
+    user = "user"
+    passw = "password"
+    host = "localhost"
     database = 'mydb'
     conn = create_engine('mysql+pymysql://' + user + ':' + passw + '@' + host + '/' + database, echo=False)
     combined_meta.to_sql(name="metadata", con=conn, if_exists='replace', index=False)
 
-    # user = "user"
-    # passw = "password"
-    # host = "localhost"
-    # database = "mydb"
-    # conn = create_engine('mysql+pymysql://' + user + ':' + passw + '@' + host + '/' + database, echo=False)
-    # combined_meta.to_sql(name="metadata", con=conn, if_exists='replace', index=False)
 def load_meta_data_single(link_to_meta, code ):
     ''' this function takes in links one meta data file, extracts the metadata and
     stores them in the database in a table called "metadata"'''
@@ -186,11 +180,11 @@ def load_meta_data_single(link_to_meta, code ):
     # the following threw lines of code replace all " characters with ' characters so they do not cause trouble
     meta = meta.replace(r'\\n', ' ', regex=True)
     meta = meta.replace(r'\"', ' ', regex=True)
-    meta = meta.replace (r'\\', ' ', regex=True)
+    meta = meta.replace(r'\\', ' ', regex=True)
 
-    user = "admin"
-    passw = "NPmpMe!696rY"
-    host = "bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com"
+    user = "user"
+    passw = "password"
+    host = "localhost"
     database = 'mydb'
     conn = create_engine('mysql+pymysql://' + user + ':' + passw + '@' + host + '/' + database, echo=False)
     meta.to_sql(name="metadata", con=conn, if_exists='append', index=False)

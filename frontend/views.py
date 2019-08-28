@@ -9,21 +9,21 @@ from django.shortcuts import render
 
 from server.data.aggregateindic import retrieve_everything
 
-from server.data.retrieve_db_data import retrieve_year_dict_from_db, retrieve_metadata, retrieve_col_years, \
-    clean_col_names, retrieve_col_names
+from server.data.retrieve_db_data import retrieve_db_data
+from django.db import connections
 
 
 @login_required(login_url='/accounts/login/')
 def index(request):
     if request.method == "GET":
-        all_years = retrieve_year_dict_from_db()
+        all_years = retrieve_db_data(connections).retrieve_year_dict_from_db()
         # metadata = retrieve_db_data(pool).retrieve_metadata()
-        metadata = retrieve_metadata()
+        metadata = retrieve_db_data(connections).retrieve_metadata()
         col_names_ref = ['Einwohner 15-64_100', 'Zivile Erwerbspersonen_100',
                          'SV-pflichtig Beschäftigte am Wohnort_100',
                         'Einwohner gesamt_100', 'Fläche_100']
 
-        years_ref = retrieve_col_years("reference")
+        years_ref = retrieve_db_data(connections).retrieve_col_years("reference")
         years_ref.reverse()
 
         setup_dict = {'var_1': ['Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200', '2009-12', 'Zivile Erwerbspersonen_100', '2011', 'AMR_12', 'NIB', '45'],
@@ -31,7 +31,7 @@ def index(request):
         'var_3': ['Erwerbstätigenprognose _ORIGINAL_200', '2011-18', 'SV-pflichtig Beschäftigte am Wohnort_100', '2012', 'AMR_12', 'HIB', '7.5'],
         'var_4': ['Infrastrukturindikator_ORIGINAL_200', '2012', 'SV-pflichtig Beschäftigte am Wohnort_100', '2012', 'AMR_12', 'HIB', '7.5'],
         'var_5': ['', '', 'SV-pflichtig Beschäftigte am Wohnort_100', '2018', 'AMR_12', 'HIB', '0'], 'var_6': ['', '', 'SV-pflichtig Beschäftigte am Wohnort_100', '2018', 'AMR_12', 'HIB', '0']}
-        col_names_var = clean_col_names(retrieve_col_names("kreise"))  # this returns all unique column names from the KREISE table
+        col_names_var = retrieve_db_data(connections).clean_col_names(retrieve_db_data(connections).retrieve_col_names("kreise"))  # this returns all unique column names from the KREISE table
 
         data = retrieve_everything(setup_dict)
         indicator_data = data['indicator_data']
