@@ -4,7 +4,6 @@ import time
 
 from server.data.retrieve_db_data import retrieve_sd_data, retrieve_data, retrieve_names_from_db, \
     retrieve_distinct_years, retrieve_fed_avg, retrieve_ref_share, scale_HIB, scale_NIB
-from server.data.retrieve_db_data import retrieve_db_data
 import pymysql
 
 

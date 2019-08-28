@@ -143,6 +143,13 @@ DATABASES = {
         'PASSWORD': 'NPmpMe!696rY',
         'HOST': 'bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com'
         },
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'mydb',
+    #     'USER': 'user',
+    #     'PASSWORD': 'password',
+    #     'HOST': 'localhost'
+    # },
     }
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # os.environ['DB_PASS']

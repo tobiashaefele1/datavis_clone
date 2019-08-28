@@ -123,7 +123,6 @@ def retrieve_ref_share(ref_name, ref_year, layer):
                                 ORDER BY mapping.`%s` ASC """ % (layer, ref_name, ref_name, ref_year, layer, layer))
 
     try:
-        # executed quiery and closes cursor
         cursor = connections['default'].cursor()
         cursor.execute(sql_select_Query)
         output = cursor.fetchall()
@@ -211,8 +210,11 @@ def retrieve_col_names(table_name):
                                     AND table_name = '%s'
                                     ORDER BY COLUMN_NAME ASC;""" % (table_name))
     try:
-        # executed quiery and closes cursor
-        cursor = connections['default'].cursor()
+
+        data_base = pymysql.connect('bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com', 'admin', 'NPmpMe!696rY', "mydb")
+        # data_base = pymysql.connect("localhost", "user", "password", "mydb")
+        cursor = data_base.cursor()
+        # cursor = connections['default'].cursor()
         cursor.execute(sql_select_Query)
         col_names = cursor.fetchall()
         cursor.close()
@@ -255,8 +257,11 @@ def retrieve_col_years(table_name):
                                   SELECT DISTINCT YEAR
                                       FROM `%s`;""" % (table_name))
     try:
-        # executed quiery and closes cursor
-        cursor = connections['default'].cursor()
+        data_base = pymysql.connect('bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com', 'admin', 'NPmpMe!696rY', "mydb")
+        # data_base = pymysql.connect("localhost", "user", "password", "mydb")
+        cursor = data_base.cursor()
+
+        # cursor = connections['default'].cursor()
         cursor.execute(sql_select_Query)
         col_years = cursor.fetchall()
         cursor.close()
@@ -298,7 +303,10 @@ def retrieve_complete_col_years():
     ''' this function returns a list of list with all the unique variables in kreise and the years which are not
     null in this list. HOWEVER, the function is incredibly slow. Perhaps it should go into setup.py and be run once
     at the beginning of creating the database'''
-    cursor = connections['default'].cursor()
+    data_base = pymysql.connect('bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com', 'admin', 'NPmpMe!696rY', "mydb")
+    # data_base = pymysql.connect("localhost", "user", "password", "mydb")
+    cursor = data_base.cursor()
+    # cursor = connections['default'].cursor()
     ## this returns a list of all the column names we want
     result = []
     col_names = retrieve_col_names('kreise')
@@ -349,10 +357,12 @@ def retrieve_metadata():
 def insert_all_years_into_db():
     # retrieve all the data that we have for th respective variables from kreise
     data = retrieve_complete_col_years()
-
+    print(data)
     table_name = "all_years"
-
-    cursor = connections['default'].cursor()
+    data_base = pymysql.connect('bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com', 'admin', 'NPmpMe!696rY', "mydb")
+    # data_base = pymysql.connect("localhost", "user", "password", "mydb")
+    cursor = data_base.cursor()
+    # cursor = connections['default'].cursor()
 
     #create the empty table
     cursor.execute("DROP TABLE IF EXISTS `%s`" % (table_name))
@@ -377,8 +387,8 @@ def insert_all_years_into_db():
         col_name_statement = x
         col_name_statement[0] = "DATABASENAME"
         counter = 0
-        for x in col_name_statement:
-            col_name_statement[counter] = (""" `%s` """ % (x))
+        for y in col_name_statement:
+            col_name_statement[counter] = (""" `%s` """ % (y))
             counter +=1
 
      # convert list into string
@@ -388,7 +398,10 @@ def insert_all_years_into_db():
         sql = (""" INSERT INTO `%s`
                     (%s)
                     VALUES %s; """ % (table_name, col_name_statement, col_value_statement))
+        print(sql)
         cursor.execute(sql)
+
+    data_base.commit()
     cursor.close()
     return print("Alle Werte in Datenbank geschrieben. Prozess erfolgreich abgeschlossen.")
 

@@ -19,29 +19,35 @@ body {
 	<link rel="stylesheet" href="{% static './bmf/css/map.css' %}">
 </head>
 
+
+<body>
+
 <div style="padding-top: 150px"></div>
 
-<div style="background-color:white; text-align: center " class="modal">
+{#<div style="background-color:white; text-align: center " class="modal">#}
     <div class="modal-card">
         <div class="modal-card-body">
                      <object type="image/svg+xml"
-              data="{% static './bmf/resources/BMF_2017_WebSVG_de.svg' %}" style="text-align: center">
-                  Your browser does not support SVG
-            </object>
+                    data="{% static './bmf/resources/BMF_2017_WebSVG_de.svg' %}" style="text-align: center">
+                        Your browser does not support SVG
+                    </object>
 
 
-<h2 text-align="center" class="has-text-black" >Login</h2>
-</div>
+                <h2 style="text-align=center"; class="has-text-black" >Login</h2>
 
-<div style="text-align: center; background-color: white " class="has-text-black">
-<form method="post" style="text-align: center">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit" style="text-align:center">Login</button>
-</form>
-</div>
+
+        <div style="text-align: center; background-color: white " class="has-text-black">
+                <form method="post" style="text-align: center">
+          {% csrf_token %}
+            {{ form.as_p }}
+                <button type="submit" style="text-align:center">Login</button>
+                </form>
+        </div>
         </div>
     </div>
+{#</div>#}
+
+</body>
 
 
 
