@@ -109,6 +109,7 @@ export class MainSelector extends Component {
           </div>
         );
       }
+
     }
 
     /**
@@ -176,7 +177,7 @@ export class MainSelector extends Component {
             </div>
 
             <div className="column is-3" style={{textAlign: 'center'}}>
-              {this.weight()}
+              <div>{this.weight()}</div>
             </div>
           </div>
 
