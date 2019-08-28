@@ -4,6 +4,7 @@ from server.data.data import Data
 from server.data.dataprep import readin258AMR, readin257AMR, readinBund, load_meta_data_single
 
 from server.data.reader import  add_columns, add_tuples_new
+from server.data.retrieve_db_data import insert_all_years_into_db
 
 
 def insert_new_data(link_file, level):
@@ -39,6 +40,7 @@ def insert_new_data(link_file, level):
         add_tuples_new(data, data_base=data_base, data_code=400)
         data_base.commit()
         load_meta_data_single(link_file, 400)
+    insert_all_years_into_db()
 
 
 file = input('Where is the file located?')

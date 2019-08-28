@@ -32,7 +32,7 @@ def resetdb():
     data_base.close()
 
 
-    print("1/7")
+    print("1/7... done loading in the Kreise data")
 
     data_base = pymysql.connect('bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com', 'admin', 'NPmpMe!696rY', "mydb")
     cursor = data_base.cursor()
@@ -40,22 +40,22 @@ def resetdb():
     add_columns(AMR12_data, cursor, data_code=200)                          # load in AMR12 data
     add_tuples_new(AMR12_data, data_base=data_base, data_code=200)
     data_base.commit()
-    print("2/7")
+    print("2/7... done loading in the AMR12 data")
 
     add_columns(AMR15_data, cursor, data_code=300)                           # load in AMR15 data
     add_tuples_new(AMR15_data, data_base=data_base, data_code=300)
     data_base.commit()
-    print("3/7")
+    print("3/7... done loading in the AMR15 data")
 
     add_columns(Bund_data, cursor, data_code=400)                           # load in Bund data
     add_tuples_new(Bund_data, data_base=data_base, data_code=400)
     data_base.commit()
-    print("4/7")
+    print("4/7... done loading in the Bund data")
 
     create_table_and_load_data(data_base, reference_data, table_name="reference") # load in reference data
     data_base.commit()
     data_base.close()
-    print("5/7")
+    print("5/7... done loading in the reference table")
 
     link_to_KRS_metadata = './resources/including metadata/KRS15_testfile_updated_ersetzt_mit_primär_null.csv'
     KRS_datacode = 100
@@ -73,9 +73,9 @@ def resetdb():
                          link_to_AMR12_metadata, AMR12_datacode,
                          link_to_AMR15_metadata, AMR15_datacode,
                          link_to_bund_metadata, bund_datacode)
-    print('6/7')
+    print('6/7... done loading in the meta data')
     insert_all_years_into_db()
-    print('7/7')
+    print('7/7... done updating the years')
     print('Cleaning up...')
     print('Done!')
 
