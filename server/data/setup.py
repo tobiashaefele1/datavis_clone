@@ -7,7 +7,7 @@ from server.data.dataprep import readin258AMR, readin257AMR, readinBund, mapping
 
 
 # links to all the required data files
-from server.data.retrieve_db_data import insert_all_years_into_db
+from server.data.retrieve_db_data import retrieve_db_data
 
 
 settings.configure()
@@ -73,25 +73,31 @@ link_to_reference_data = './resources/Referenzgroessen_input_updated_ERSETZT.csv
 # data_base.close()
 # print("5/5")
 #
-link_to_KRS_metadata = './resources/including metadata/KRS15_testfile_updated_ersetzt_mit_primär_None.csv'
-KRS_datacode = 100
-
-link_to_AMR12_metadata = './resources/including metadata/AMR12_testfile_updated.csv'
-AMR12_datacode = 200
-
-link_to_AMR15_metadata = './resources/including metadata/AMR15_testfile_updated.csv'
-AMR15_datacode = 300
-
-link_to_bund_metadata = './resources/including metadata/bund_testfile_updated.csv'
-bund_datacode = 400
+# link_to_KRS_metadata = './resources/including metadata/KRS15_testfile_updated_ersetzt_mit_primär_None.csv'
+# KRS_datacode = 100
 #
-load_meta_data_to_db(link_to_KRS_metadata, KRS_datacode,
-                     link_to_AMR12_metadata, AMR12_datacode,
-                     link_to_AMR15_metadata, AMR15_datacode,
-                     link_to_bund_metadata, bund_datacode)
+# link_to_AMR12_metadata = './resources/including metadata/AMR12_testfile_updated.csv'
+# AMR12_datacode = 200
+#
+# link_to_AMR15_metadata = './resources/including metadata/AMR15_testfile_updated.csv'
+# AMR15_datacode = 300
+#
+# link_to_bund_metadata = './resources/including metadata/bund_testfile_updated.csv'
+# bund_datacode = 400
+# #
+# load_meta_data_to_db(link_to_KRS_metadata, KRS_datacode,
+#                      link_to_AMR12_metadata, AMR12_datacode,
+#                      link_to_AMR15_metadata, AMR15_datacode,
+#                      link_to_bund_metadata, bund_datacode)
 #
 # # ## this loads all the years data into a separate table in the database so that we can retrieve it from context
-# insert_all_years_into_db()
+connections = {
+    'default': pymysql.connect(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
+                                      db='mydb',
+                                      user='admin',
+                                      password='NPmpMe!696rY')
+}
+retrieve_db_data(connections).insert_all_years_into_db()
 # print("done loading in all data")
 # #
 # #
