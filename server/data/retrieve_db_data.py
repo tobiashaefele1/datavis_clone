@@ -396,7 +396,6 @@ def retrieve_year_dict_from_db():
         cursor.close()
 
 
-
     # error handling
     except Error as e:
         print("Error while connecting to MySQL", e)
