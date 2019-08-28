@@ -1,10 +1,16 @@
 from server.data.data import Data
 from server.data.dataprep import readin258AMR, readin257AMR, readinBund, mapping_to_db, load_meta_data_to_db
 from server.data.reader import create_table_and_load_data, add_columns, add_tuples_new
-from server.data.retrieve_db_data import insert_all_years_into_db
+from server.data.retrieve_db_data import retrieve_db_data
 import pymysql
 
 def resetdb():
+    data_base = pymysql.connect("localhost", "user", "password", "mydb")
+    connections = {
+        "default": data_base
+    }
+
+
     link_to_mapping_file = './resources/KRS_ROR_AMR_clean_mapping.csv'
     link_to_template_input = './resources/KRS15_template.csv'
 
@@ -20,19 +26,16 @@ def resetdb():
     Bund_data = readinBund(link_to_Bund_data, link_to_template_input)  # create Bund data object
     reference_data = Data(link_to_reference_data)
     Kreise_data = Data(link_to_Kreise_data)
-    data_base = pymysql.connect("bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com", "admin", "NPmpMe!696rY", "mydb")
-    #
-    print("0/8... connected to db")
+
+    print("0/8... connected to database")
     # load in all the data to DB
     mapping_to_db(link_to_mapping_file)                                     # load in Mapping file to DB
     print("1/8... done loading in the Mapping data")
     create_table_and_load_data(data_base, Kreise_data) # load in Kreise data
     data_base.commit()
-    data_base.close()
 
     print("2/8... done loading in the Kreise data")
 
-    data_base = pymysql.connect('bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com', 'admin', 'NPmpMe!696rY', "mydb")
     cursor = data_base.cursor()
 
     add_columns(AMR12_data, cursor, data_code=200)                          # load in AMR12 data
@@ -72,12 +75,13 @@ def resetdb():
                          link_to_AMR15_metadata, AMR15_datacode,
                          link_to_bund_metadata, bund_datacode)
     print('7/8... done loading in the meta data')
-    insert_all_years_into_db()
+    retrieve_db_data(connections).insert_all_years_into_db()
     print('8/8... done updating the years')
     print('Cleaning up...')
     print('Done!')
 
 
 new_db = input('Reset complete database? True or False')
-if new_db:
+if new_db == "True":
+    print("Starting...")
     resetdb()

@@ -2,8 +2,8 @@ import math
 import pandas as pd
 import time
 
-from server.data.retrieve_db_data import retrieve_sd_data, retrieve_data, retrieve_names_from_db, \
-    retrieve_distinct_years, retrieve_fed_avg, retrieve_ref_share, scale_HIB, scale_NIB
+from server.data.retrieve_db_data import retrieve_db_data
+from django.db import connections
 
 import pymysql
 
@@ -43,7 +43,7 @@ def retrieve_indicator( ajax_dictionary):
         # this code returns the database array from all valid entries and stores them in a list
         list = []
         for i in range(0, len(var)):
-            list.append(retrieve_sd_data(var[i][0], var[i][1], var[i][2], var[i][3], var[i][4], var[i][5]))
+            list.append(retrieve_db_data(connections).retrieve_sd_data(var[i][0], var[i][1], var[i][2], var[i][3], var[i][4], var[i][5]))
         var_name = []
 
         ## the following code copies the layer IDs as the first column into the results list
@@ -92,7 +92,7 @@ def retrieve_table_data(ajax_dictionary):
         dictionary_keys = []
         dictionary_keys.append("Kennziffer")
         for i in range(0, len(var)):
-            list.append(retrieve_data(var[i][0], var[i][1], var[i][2], var[i][3], var[i][4]))
+            list.append(retrieve_db_data(connections).retrieve_data(var[i][0], var[i][1], var[i][2], var[i][3], var[i][4]))
             dictionary_keys.append(var[i][0] + " " + var[i][1])
         result = []
         var_name = []
@@ -128,7 +128,7 @@ def retrieve_table_data(ajax_dictionary):
             target_dict.append(temp_dict)
 
         ## this retrieves the names for the chosen layer and adds them as a dictionary key/value pair into the output dictionary
-        names = retrieve_names_from_db(var[0][4])
+        names = retrieve_db_data(connections).retrieve_names_from_db(var[0][4])
         for x in target_dict:
             for y in names:
                 if x['Kennziffer'] == y[1]:
@@ -145,7 +145,7 @@ def retrieve_var_year (ajax_dictionary):
     counter = 0
     for x in chosen_indicators:
         if x != '':
-            dictionary[dict_keys[counter]] = retrieve_distinct_years(x)
+            dictionary[dict_keys[counter]] = retrieve_db_data(connections).retrieve_distinct_years(x)
             counter += 1
         else:
             dictionary[dict_keys[counter]] = []
@@ -167,7 +167,7 @@ def retrieve_single_indic(ajax_dictionary):
         # this code returns the database array from all valid entries and stores them in a list
         list = []
         for i in range(0, 1):
-            list.append(retrieve_data(var[i][0], var[i][1], var[i][2], var[i][3], var[i][4]))
+            list.append(retrieve_db_data(connections).retrieve_data(var[i][0], var[i][1], var[i][2], var[i][3], var[i][4]))
         ## the following code copies the layer IDs as the first column into the results list
         var_name = []
         for (j, k) in list[0]:
@@ -197,18 +197,18 @@ def retrieve_everything(ajax_dictionary):
         ### retrieve all unstandardised data:
         raw_data = []
         for i in range(0, len(var)):
-            raw_data.append(retrieve_data(var[i][0], var[i][1], var[i][2], var[i][3], var[i][4]))
+            raw_data.append(retrieve_db_data(connections).retrieve_data(var[i][0], var[i][1], var[i][2], var[i][3], var[i][4]))
 
         ### standardise all these data points and store them in new variables
         ### retrieve all ref shares:
         ref_share = []
         for i in range (0, len(var)):
-            ref_share.append(retrieve_ref_share(var[i][2], var[i][3], var[i][4]))
+            ref_share.append(retrieve_db_data(connections).retrieve_ref_share(var[i][2], var[i][3], var[i][4]))
 
         ### retrieve all federal averages
         fed_avg = []
         for i in range (0, len(var)):
-            fed_avg.append(retrieve_fed_avg(var[i][0], var[i][1], var[i][2], var[i][3], var[i][4]))
+            fed_avg.append(retrieve_db_data(connections).retrieve_fed_avg(var[i][0], var[i][1], var[i][2], var[i][3], var[i][4]))
 
         ### calculate the standard deviation:
         sd = []
@@ -225,10 +225,10 @@ def retrieve_everything(ajax_dictionary):
         standardised_data = []
         for i in range (0, len(raw_data)):
             if var[i][5] == "HIB":
-                single_sd = scale_HIB(raw_data[i], fed_avg[i], sd[i])
+                single_sd = retrieve_db_data(connections).scale_HIB(raw_data[i], fed_avg[i], sd[i])
                 standardised_data.append(single_sd)
             else:
-                single_sd = scale_NIB(raw_data[i], fed_avg[i], sd[i])
+                single_sd = retrieve_db_data(connections).scale_NIB(raw_data[i], fed_avg[i], sd[i])
                 standardised_data.append(single_sd)
 
          ## calculate the aggregated indicator
@@ -303,7 +303,7 @@ def retrieve_everything(ajax_dictionary):
             table_data.append(temp_dict)
 
         ## this retrieves the names for the chosen layer and adds them as a dictionary key/value pair into the output dictionary
-        names = retrieve_names_from_db(var[0][4])
+        names = retrieve_db_data(connections).retrieve_names_from_db(var[0][4])
         for x in table_data:
             for y in names:
                 if x['Kennziffer'] == y[1]:

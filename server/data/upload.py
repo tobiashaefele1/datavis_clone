@@ -4,13 +4,16 @@ from server.data.data import Data
 from server.data.dataprep import readin258AMR, readin257AMR, readinBund, load_meta_data_single
 
 from server.data.reader import  add_columns, add_tuples_new
-from server.data.retrieve_db_data import insert_all_years_into_db
+from server.data.retrieve_db_data import retrieve_db_data
 
 
 def insert_new_data(link_file, level):
     link_to_mapping_file = './resources/KRS_ROR_AMR_clean_mapping.csv'
     link_to_template_input = './resources/KRS15_template.csv'
     data_base = pymysql.connect("bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com", "admin", "NPmpMe!696rY", "mydb")
+    connections = {
+        "default": data_base
+    }
     cursor = data_base.cursor()
 
     if level == 0:
@@ -40,7 +43,7 @@ def insert_new_data(link_file, level):
         add_tuples_new(data, data_base=data_base, data_code=400)
         data_base.commit()
         load_meta_data_single(link_file, 400)
-    insert_all_years_into_db()
+    retrieve_db_data(connections).insert_all_years_into_db()
 
 
 file = input('Where is the file located?')
