@@ -41,7 +41,7 @@ class Info extends Component {
                         Bei Fragen zu Funktionen, Methodologie oder Umsetzung wenden Sie sich bitte an Referat L B 3. </p>
 
                 <h5 style={{margin: '20px', fontWeight: 'bold'}}>Indikatorencodierung</h5>
-                <p> Die Suffixe hinter den individuellen Indikatoren geben, den Ursprung der eingespeisten Daten an. <br/> </p>
+                <p> Die Suffixe hinter den individuellen Indikatoren geben den Ursprung der eingespeisten Daten an. <br/> </p>
                 <p>
                   <ul style={{listStyleType: 'square', padding: '0 50px'}}>
                     <li>100: Indikator liegt auf Kreisebene vor.  <br/></li>
