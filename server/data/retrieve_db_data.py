@@ -14,7 +14,6 @@ def retrieve_data(var_name, var_year, ref_name, ref_year, layer):
     ''' this function returns the dataset for a chosen variable, at a chosen year at the chosen level, standardised by the 
     chosen ref variable and the chosen year, CURRENTLY AS A TUPLE LIST'''
     output = []
-    # mySQLconnection = 'stop'
 
     #  Returns quiery with tuple [(layer_ID, value)] for selected variable at selected year, weighted by selected ref at selected year, grouped at selected layer.
     sql_select_Query = (""" 
@@ -209,11 +208,8 @@ def retrieve_col_names(table_name):
                                     AND table_name = '%s'
                                     ORDER BY COLUMN_NAME ASC;""" % (table_name))
     try:
-
-        data_base = pymysql.connect('bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com', 'admin', 'NPmpMe!696rY', "mydb")
-        # data_base = pymysql.connect("localhost", "user", "password", "mydb")
-        cursor = data_base.cursor()
-        # cursor = connections['default'].cursor()
+        # executed quiery and closes cursor
+        cursor = connections['default'].cursor()
         cursor.execute(sql_select_Query)
         col_names = cursor.fetchall()
         cursor.close()
@@ -245,7 +241,7 @@ def clean_col_names(data):
 
 
 
-def retrieve_col_years(table_name):
+def retrieve_col_years(table_name, cursor=connections['default'].cursor()):
     ''' this function returns a list of all the years for in the datable'''
     output = []
     col_years = []
@@ -256,11 +252,7 @@ def retrieve_col_years(table_name):
                                   SELECT DISTINCT YEAR
                                       FROM `%s`;""" % (table_name))
     try:
-        data_base = pymysql.connect('bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com', 'admin', 'NPmpMe!696rY', "mydb")
-        # data_base = pymysql.connect("localhost", "user", "password", "mydb")
-        cursor = data_base.cursor()
-
-        # cursor = connections['default'].cursor()
+        # executed quiery and closes cursor
         cursor.execute(sql_select_Query)
         col_years = cursor.fetchall()
         cursor.close()
@@ -298,14 +290,10 @@ def retrieve_distinct_years(var_name):
         return output
 
 
-def retrieve_complete_col_years():
+def retrieve_complete_col_years(cursor=connections['default'].cursor()):
     ''' this function returns a list of list with all the unique variables in kreise and the years which are not
-    null in this list. HOWEVER, the function is incredibly slow. Perhaps it should go into setup.py and be run once
+    null in this list. HOWEVER, the function is incredibly slow. Perhaps it should go into upload.py and be run once
     at the beginning of creating the database'''
-    data_base = pymysql.connect('bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com', 'admin', 'NPmpMe!696rY', "mydb")
-    # data_base = pymysql.connect("localhost", "user", "password", "mydb")
-    cursor = data_base.cursor()
-    # cursor = connections['default'].cursor()
     ## this returns a list of all the column names we want
     result = []
     col_names = retrieve_col_names('kreise')
@@ -353,26 +341,21 @@ def retrieve_metadata():
     return target_dict
 
 
-def insert_all_years_into_db():
+def insert_all_years_into_db(cursor):
     # retrieve all the data that we have for th respective variables from kreise
-    data = retrieve_complete_col_years()
-    print(data)
+    data = retrieve_complete_col_years(cursor=cursor)
+
     table_name = "all_years"
-    data_base = pymysql.connect('bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com', 'admin', 'NPmpMe!696rY', "mydb")
-    # data_base = pymysql.connect("localhost", "user", "password", "mydb")
-    cursor = data_base.cursor()
-    # cursor = connections['default'].cursor()
 
     #create the empty table
     cursor.execute("DROP TABLE IF EXISTS `%s`" % (table_name))
-
 
     sql = ("CREATE TABLE `%s` (DATABASENAME VARCHAR(70) NOT NULL);" % (table_name))
     cursor.execute(sql)
 
     ## add all the columns
     ## retrieve list of all the required columns
-    col_years = retrieve_col_years("kreise")
+    col_years = retrieve_col_years("kreise", cursor=cursor)
 
     ## and drop them into the database as columns
     for x in col_years:
@@ -397,9 +380,7 @@ def insert_all_years_into_db():
         sql = (""" INSERT INTO `%s`
                     (%s)
                     VALUES %s; """ % (table_name, col_name_statement, col_value_statement))
-        print(sql)
         cursor.execute(sql)
-
     data_base.commit()
     cursor.close()
     return print("Alle Werte in Datenbank geschrieben. Prozess erfolgreich abgeschlossen.")

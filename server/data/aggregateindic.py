@@ -4,6 +4,7 @@ import time
 
 from server.data.retrieve_db_data import retrieve_sd_data, retrieve_data, retrieve_names_from_db, \
     retrieve_distinct_years, retrieve_fed_avg, retrieve_ref_share, scale_HIB, scale_NIB
+
 import pymysql
 
 
@@ -203,7 +204,6 @@ def retrieve_everything(ajax_dictionary):
         ref_share = []
         for i in range (0, len(var)):
             ref_share.append(retrieve_ref_share(var[i][2], var[i][3], var[i][4]))
-        print(ref_share)
 
         ### retrieve all federal averages
         fed_avg = []
@@ -214,8 +214,6 @@ def retrieve_everything(ajax_dictionary):
         sd = []
         counter = 0
         for x in raw_data:
-            print (x)
-            print(raw_data)
             Standard_deviation = 0
             for g in range(0, len(x)):
                 Standard_deviation += (((float(x[g][1])) - (float(fed_avg[counter]))) ** 2) * float((ref_share[counter][g]))

@@ -44,7 +44,6 @@ def create_table_and_load_data(data_base, data, data_code=100, data_base_name="m
            "           AGGREGAT VARCHAR(40),\n"
            "           YEAR VARCHAR(20))" % table_name)
 
-    print(sql)
     cursor.execute(sql)
     index_column('KENNZIFFER', cursor, table_name)
     index_column('YEAR', cursor, table_name)
@@ -81,8 +80,6 @@ def add_tuples(data, cursor, table_name="kreise"):
     :return:
     """
     count = len(data.sql_data[0])
-    # print(data.sql_data)
-    # print(data.sql_data[0])
     quests = prepare_statements(count)
     sql = f"""
             INSERT INTO
@@ -111,14 +108,11 @@ def add_tuples_new(data, data_base, data_code=100, table_name="kreise"):
             sql = f"""UPDATE `%s` SET %s WHERE `KENNZIFFER` = %s AND `YEAR` = '%s' """\
                   % (table_name, prepare_update_sql(data.unique_labels(), tuple_sql[4:], data_code)
                      , tuple_sql[0], tuple_sql[3])
-            print(sql)
             cursor.execute(sql)
         else:
             sql = f"""INSERT INTO `%s` (%s) VALUES (%s)""" \
                   % (table_name, prepare_columns_for_sql(data.unique_labels(), data_code),
                      prepare_value_list_for_sql(tuple_sql))
-            print(sql)
-
             cursor.execute(sql)
 
 
@@ -149,7 +143,7 @@ def prepare_value_list_for_sql(value_list):
             string = string + '\'' + i + '\'' + ', '
         else:
             string = string + str(i) + ', '
-    string = string.replace("None", "NULL")
+    string = string.replace("None", "Null")
     return string[:-2]
 
 
@@ -167,7 +161,7 @@ def prepare_columns_for_sql(column_list, data_code=100):
             string = string + '`' + new_label + '`' + ', '
         else:
             string = string + '`' + i + '_' + str(data_code) + '`' + ', '
-    string = string.replace("None", "NULL")
+    string = string.replace("None", "Null")
     return string[:-2]
 
 
@@ -205,6 +199,5 @@ def prepare_update_sql(list_columns, list_values, data_code=100):
             else:
                 string = string + '`' + i[1] \
                          + '_' + str(data_code) + '`' + '= ' + '\'' + str(list_values[i[0]]) + '\'' + ', '
-    print(string)
-    string = string.replace("None", "NULL")
+    string = string.replace("None", "Null")
     return string[:-2]
