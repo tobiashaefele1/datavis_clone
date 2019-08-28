@@ -21,7 +21,7 @@ class Indikators extends Component {
         prevProps.view_multiple !== this.props.view_multiple ||
             prevProps.count_map !== this.props.count_map
     ) {
-      this.props.dispatch({type: 'LOADINGCHANGE'});
+      this.props.dispatch({type: 'LOADINGSTART'});
       this.ajaxRequest();
     }
   }

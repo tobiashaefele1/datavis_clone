@@ -17,7 +17,7 @@ export class MainSelector extends Component {
      */
     handleChange = (e) => {
       this.handleChangeProm(e).then(() => {
-        this.props.dispatch({type: 'LOADINGCHANGE'});
+        this.props.dispatch({type: 'LOADINGSTART'});
         this.props.ajaxRequest();
       });
     }

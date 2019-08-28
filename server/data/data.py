@@ -16,9 +16,7 @@ class Data:
         self.data = self.__reader(filename)
         self.sql_data = []
         assert self.data, "data set is empty"
-        print(self.labels)
-        print(len(self.labels))
-        print(len(self.data[0]))
+
         assert (len(self.labels) == len(self.data[0])), "Labels do not match the data"
 
     def __reader(self, filename):
@@ -103,6 +101,7 @@ class Data:
     def convert_to_array_sql(self):
         '''this method converts the whole data set to be ready for the DB'''
         for year in self.unique_years():
+
             for row in self.data:
                 sql_row = []
                 for index in range(0, 3):

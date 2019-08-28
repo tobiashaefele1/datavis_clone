@@ -6,4 +6,5 @@ pylint
 pandas
 numpy
 djangorestframework
-pymysql-pooling
+mysqlclient
+whitenoise

@@ -136,7 +136,7 @@ font-weight: bold;
 .image.is-3by5 .has-ratio, .image.is-9by16 img,
 .image.is-9by16 .has-ratio, .image.is-1by2 img,
 .image.is-1by2 .has-ratio, .image.is-1by3 img,
-.image.is-1by3 .has-ratio, .modal, .modal-background, .hero-video {
+.image.is-1by3 .has-ratio, .modal, .modal-background, .modal-background-login, .hero-video {
   bottom: 0;
   left: 0;
   position: absolute;
@@ -4094,6 +4094,9 @@ a.list-item {
 
 .modal-background {
   background-color: rgba(10, 10, 10, 0.86); }
+
+.modal-background-login {
+  background-color: rgb(0, 0, 0); }
 
 .modal-content,
 .modal-card {

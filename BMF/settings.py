@@ -27,7 +27,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # X_FRAME_OPTIONS = 'DENY'
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '19nhjo(g3b=2x68wr7&7y$w1vxvr31v#n9xt3c7mnjifzlu*ia'
+#SECRET_KEY = '19nhjo(g3b=2x68wr7&7y$w1vxvr31v#n9xt3c7mnjifzlu*ia'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'cg#p$g+j9tax!#a3cup@1$8obt2_+&k3q+pmu)5%asj6yjpkag')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -106,9 +108,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'de-de'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Berlin'
 
 USE_I18N = True
 
@@ -124,6 +126,31 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
 
+
 MEDIA_URL = 'static/media/'
+
+LOGIN_REDIRECT_URL = 'app'
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mydb',
+        'USER': 'admin',
+        'PASSWORD': 'NPmpMe!696rY',
+        'HOST': 'bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com'
+        },
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'mydb',
+    #     'USER': 'user',
+    #     'PASSWORD': 'password',
+    #     'HOST': 'localhost'
+    # },
+
+    }
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+# os.environ['DB_PASS']

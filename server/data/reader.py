@@ -34,8 +34,6 @@ def create_table_and_load_data(data_base, data, data_code=100, data_base_name="m
     :return:
     """
     data.convert_to_array_sql()
-    # print(data.data)
-    # print(data.labels)
     cursor = data_base.cursor()
     with warnings.catch_warnings():
         warnings.simplefilter('ignore')
@@ -52,10 +50,6 @@ def create_table_and_load_data(data_base, data, data_code=100, data_base_name="m
     add_columns(data, cursor, data_code, table_name)
     add_tuples(data, cursor, table_name)
 
-
-
-
-
 def add_columns(data, cursor, data_code=100, table_name='kreise'):
     """
     This function adds the data's unique labels as columns to a db table.
@@ -69,7 +63,6 @@ def add_columns(data, cursor, data_code=100, table_name='kreise'):
         raise ValueError('unknown data_code')
     for i in data.unique_labels():
         if len(i) >= 50:
-            print(i)
             new_label = i[:50] + '_' + str(data_code)
             cursor.execute("ALTER TABLE `%s` ADD COLUMN `%s` DOUBLE" % (table_name, new_label))
         else:
@@ -93,7 +86,6 @@ def add_tuples(data, cursor, table_name="kreise"):
              VALUES
                 (%s)
         """ % (table_name, quests)
-    # print(data.sql_data)
     cursor.executemany(sql, data.sql_data)
 
 
@@ -110,18 +102,15 @@ def add_tuples_new(data, data_base, data_code=100, table_name="kreise"):
     data.convert_to_array_sql()
     cursor = data_base.cursor()
     for tuple_sql in data.sql_data:
-        print(tuple_sql)
         if check_if_tuple_exists(cursor, table_name, tuple_sql[0], tuple_sql[3]):
             sql = f"""UPDATE `%s` SET %s WHERE `KENNZIFFER` = %s AND `YEAR` = '%s' """\
                   % (table_name, prepare_update_sql(data.unique_labels(), tuple_sql[4:], data_code)
                      , tuple_sql[0], tuple_sql[3])
-            # print (sql)
             cursor.execute(sql)
         else:
             sql = f"""INSERT INTO `%s` (%s) VALUES (%s)""" \
                   % (table_name, prepare_columns_for_sql(data.unique_labels(), data_code),
                      prepare_value_list_for_sql(tuple_sql))
-
             cursor.execute(sql)
 
 
@@ -208,5 +197,5 @@ def prepare_update_sql(list_columns, list_values, data_code=100):
             else:
                 string = string + '`' + i[1] \
                          + '_' + str(data_code) + '`' + '= ' + '\'' + str(list_values[i[0]]) + '\'' + ', '
-    string = string.replace(" None", " Null")
+    string = string.replace("None", "Null")
     return string[:-2]

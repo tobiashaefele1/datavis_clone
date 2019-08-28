@@ -59,7 +59,7 @@ class ResetButton extends Component {
      */
     handleButtonResetProm() {
       return new Promise((resolve, reject) => {
-        this.props.dispatch({type: 'LOADINGCHANGE'});
+        this.props.dispatch({type: 'LOADINGSTART'});
         this.props.dispatch({type: 'RESET'});
         if ('1' == '1') {
           resolve(console.log('reset worked'));
