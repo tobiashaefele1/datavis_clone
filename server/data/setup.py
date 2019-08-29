@@ -7,6 +7,14 @@ from server.data import retrieve_db_data
 from server.data.data import Data
 from server.data.dataprep import readin258AMR, readin257AMR, readinBund, load_meta_data_to_db, mapping_to_db
 from server.data.retrieve_db_data import retrieve_db_data
+from server.data.dataprep import readin258AMR, readin257AMR, readinBund, mapping_to_db, load_meta_data_to_db
+
+
+# links to all the required data files
+from server.data.retrieve_db_data import retrieve_db_data
+
+
+settings.configure()
 from server.data.reader import create_table_and_load_data, add_columns, add_tuples_new
 settings.configure()
 
@@ -81,15 +89,13 @@ load_meta_data_to_db(link_to_KRS_metadata, KRS_datacode,
 
 
 # load all the years data into a separate table in the database so  we can retrieve it for context
-data_base = pymysql.connect("bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com",
-                            "admin",
-                            "NPmpMe!696rY",
-                            "mydb",
-                            autocommit=True)
-
 connections = {
-        "default": data_base
-    }
+    'default': pymysql.connect(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
+                                      db='mydb',
+                                      user='admin',
+                                      password='NPmpMe!696rY',
+                                        autocommit=True)
+}
 
-x = retrieve_db_data(connections).insert_all_years_into_db()
+retrieve_db_data(connections).insert_all_years_into_db()
 print("done loading in all data")

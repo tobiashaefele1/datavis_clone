@@ -10,7 +10,7 @@ from server.data.retrieve_db_data import retrieve_db_data
 def insert_new_data(link_file, level):
     link_to_mapping_file = './resources/KRS_ROR_AMR_clean_mapping.csv'
     link_to_template_input = './resources/KRS15_template.csv'
-    data_base = pymysql.connect("bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com", "admin", "NPmpMe!696rY", "mydb")
+    data_base = pymysql.connect("bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com", "admin", "NPmpMe!696rY", "mydb", autocommit=True)
     connections = {
         "default": data_base
     }
@@ -43,6 +43,7 @@ def insert_new_data(link_file, level):
         add_tuples_new(data, data_base=data_base, data_code=400)
         data_base.commit()
         load_meta_data_single(link_file, 400)
+
     retrieve_db_data(connections).insert_all_years_into_db()
 
 
