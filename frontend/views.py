@@ -33,6 +33,7 @@ def index(request):
         indicator_data = data['indicator_data']
         single_indic_data = data['single_indic_data']
         table_data = data['table_data']
+        print(table_data)
 
     if request.method == 'POST':
         recieved_data = (dict(request.POST))

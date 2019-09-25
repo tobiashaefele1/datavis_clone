@@ -16,6 +16,8 @@ import MinMaxTable from './tables/MinMaxTable';
 import SVGExportButton from './buttons/SVGExportButton';
 import TableButton from './buttons/TableButton';
 import InfoButton from './buttons/InfoButton';
+import PCA from "./modals/PCA";
+import PCAButton from "./buttons/PCAButton";
 import Info from './modals/Info';
 import MetaExportButton from './buttons/MetaExportButton';
 import ChangeViewButton from './buttons/ChangeViewButton';
@@ -274,9 +276,11 @@ class App extends Component {
             <div className=" buttons is-centered " >
               <SettingsButton/>
               <InfoButton/>
+              <PCAButton/>
             </div>
             <Info/>
             <Settings/>
+            <PCA/>
           </div>
 
         </div>

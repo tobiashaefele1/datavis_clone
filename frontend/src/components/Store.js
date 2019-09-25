@@ -121,6 +121,7 @@ const initalState = {
   // Modal variables
   show_modal: false,
   showInfo: false,
+  showPCA: false,
 
 
   // Loading variables
@@ -331,6 +332,11 @@ function reducer(state = initalState, action) {
       return produce(state, (draft) => {
         draft.showInfo = !state.showInfo;
       });
+
+    case 'PCA':
+      return produce (state, (draft) => {
+        draft.showPCA = !state.showPCA;
+      })
 
     case 'INCREMENTINDIKATOR':
       return produce(state, (draft) => {
