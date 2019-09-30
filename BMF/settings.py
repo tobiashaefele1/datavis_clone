@@ -143,6 +143,8 @@ DATABASES = {
         'PASSWORD': 'NPmpMe!696rY',
         'HOST': 'bmfvis.c35zrhmszzzr.eu-central-1.rds.amazonaws.com'
         },
+
+
     # 'default': {
     #     'ENGINE': 'django.db.backends.mysql',
     #     'NAME': 'mydb',

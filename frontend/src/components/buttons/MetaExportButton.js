@@ -51,7 +51,7 @@ class MetaExportButton extends Component {
     });
 
     const csvBlob = new Blob([result],
-        {type: 'data:text/csv;charset=utf-8'});
+        {type: 'data:text/csv; charset=utf-8'});
     const csvUrl = URL.createObjectURL(csvBlob);
 
     const downloadLink = document.createElement('a');
