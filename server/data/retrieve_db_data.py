@@ -389,6 +389,7 @@ class retrieve_db_data:
                         (%s)
                         VALUES %s; """ % (table_name, col_name_statement, col_value_statement))
             cursor.execute(sql)
+        self.connections['default'].commit()
         cursor.close()
         return print("Alle Werte in Datenbank geschrieben. Prozess erfolgreich abgeschlossen.")
 
