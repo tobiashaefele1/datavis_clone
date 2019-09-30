@@ -27,10 +27,10 @@ link_to_reference_data = './resources/Referenzgroessen_input_updated_ERSETZT.csv
 # pool = Pool(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
 #                                       db='mydb',
 #                                       user='admin',
-#                                       password='NPmpMe!696rY',
-#                                         cursorclass=pymysql.cursors.Cursor, autocommit=True)
-
-# load in all the data as data objects
+# #                                       password='NPmpMe!696rY',
+# #                                         cursorclass=pymysql.cursors.Cursor, autocommit=True)
+#
+# # load in all the data as data objects
 # AMR12_data = readin258AMR(link_to_AMR12_data, link_to_mapping_file, link_to_template_input)  # create AMR12 data object
 # AMR15_data = readin257AMR(link_to_AMR15_data, link_to_mapping_file, link_to_template_input)   # create AMR15 data object
 # Bund_data = readinBund(link_to_Bund_data, link_to_template_input)                            # create Bund data object
@@ -39,7 +39,7 @@ link_to_reference_data = './resources/Referenzgroessen_input_updated_ERSETZT.csv
 # print("done making data objects")
 #
 # # data_base = pymysql.connect("localhost", "user", "password", "mydb")
-# data_base = pymysql.connect("bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com", "admin", "NPmpMe!696rY", "mydb")
+# data_base = pymysql.connect("bmfvis.c35zrhmszzzr.eu-central-1.rds.amazonaws.com", "admin", "NPmpMe!696rY", "mydb")
 # print("connected to db")
 #
 # # load in all the data to DB
@@ -51,7 +51,7 @@ link_to_reference_data = './resources/Referenzgroessen_input_updated_ERSETZT.csv
 # print("1/5")
 # #
 # # data_base = pymysql.connect("localhost", "user", "password", "mydb")
-# data_base = pymysql.connect('bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com', 'admin', 'NPmpMe!696rY', "mydb")
+# data_base = pymysql.connect('bmfvis.c35zrhmszzzr.eu-central-1.rds.amazonaws.com', 'admin', 'NPmpMe!696rY', "mydb")
 # cursor = data_base.cursor()
 # add_columns(AMR12_data, cursor, data_code=200)                          # load in AMR12 data
 # add_tuples_new(AMR12_data, data_base=data_base, data_code=200)
@@ -67,38 +67,38 @@ link_to_reference_data = './resources/Referenzgroessen_input_updated_ERSETZT.csv
 # add_tuples_new(Bund_data, data_base=data_base, data_code=400)
 # data_base.commit()
 # print("4/5")
-#
+# #
 # create_table_and_load_data(data_base, reference_data, table_name="reference") # load in reference data
 # data_base.commit()
 # data_base.close()
 # print("5/5")
+
+link_to_KRS_metadata = './resources/including metadata/KRS15_testfile_updated_ersetzt_mit_primär_None.csv'
+KRS_datacode = 100
+
+link_to_AMR12_metadata = './resources/including metadata/AMR12_testfile_updated.csv'
+AMR12_datacode = 200
+
+link_to_AMR15_metadata = './resources/including metadata/AMR15_testfile_updated.csv'
+AMR15_datacode = 300
+
+link_to_bund_metadata = './resources/including metadata/bund_testfile_updated.csv'
+bund_datacode = 400
 #
-# link_to_KRS_metadata = './resources/including metadata/KRS15_testfile_updated_ersetzt_mit_primär_None.csv'
-# KRS_datacode = 100
-#
-# link_to_AMR12_metadata = './resources/including metadata/AMR12_testfile_updated.csv'
-# AMR12_datacode = 200
-#
-# link_to_AMR15_metadata = './resources/including metadata/AMR15_testfile_updated.csv'
-# AMR15_datacode = 300
-#
-# link_to_bund_metadata = './resources/including metadata/bund_testfile_updated.csv'
-# bund_datacode = 400
-# #
-# load_meta_data_to_db(link_to_KRS_metadata, KRS_datacode,
-#                      link_to_AMR12_metadata, AMR12_datacode,
-#                      link_to_AMR15_metadata, AMR15_datacode,
-#                      link_to_bund_metadata, bund_datacode)
+load_meta_data_to_db(link_to_KRS_metadata, KRS_datacode,
+                     link_to_AMR12_metadata, AMR12_datacode,
+                     link_to_AMR15_metadata, AMR15_datacode,
+                     link_to_bund_metadata, bund_datacode)
 #
 # # ## this loads all the years data into a separate table in the database so that we can retrieve it from context
 connections = {
-    'default': pymysql.connect(host='bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com',
+    'default': pymysql.connect(host='bmfvis.c35zrhmszzzr.eu-central-1.rds.amazonaws.com',
                                       db='mydb',
                                       user='admin',
                                       password='NPmpMe!696rY')
 }
 retrieve_db_data(connections).insert_all_years_into_db()
-# print("done loading in all data")
+print("done loading in all data")
 # #
 # #
 # #

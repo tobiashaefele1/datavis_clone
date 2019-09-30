@@ -141,7 +141,7 @@ DATABASES = {
         'NAME': 'mydb',
         'USER': 'admin',
         'PASSWORD': 'NPmpMe!696rY',
-        'HOST': 'bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com'
+        'HOST': 'bmfvis.c35zrhmszzzr.eu-central-1.rds.amazonaws.com'
         },
     # 'default': {
     #     'ENGINE': 'django.db.backends.mysql',
