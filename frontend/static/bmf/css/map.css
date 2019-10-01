@@ -1,0 +1,118 @@
+path {
+  /*fill: #ccc;*/
+  stroke: #ffffff;
+  stroke-width: .25px;
+}
+
+path:hover {
+  fill: black;
+  stroke-width: 1px;
+  stroke: #ffffff; 
+}
+
+
+#map {
+  position:relative;
+
+}
+
+.map_legend {
+  position: absolute;
+  top: 50px;
+  left: 15px;
+  text-align: left;
+  object-position: left;
+  font-weight : 400;
+}
+.map_loader {
+  position: absolute;
+  left: 50%;
+	margin-left: -50px;
+  top: 50%;
+  margin-top: -50px;
+}
+
+#map_logo {
+  position: absolute;
+bottom: 50px;
+  right: 20px;
+  object-position: right;
+  width: 100px;
+  height: 40px;
+}
+#map_reset {
+  position: absolute;
+top: 45px;
+  right: 20px;
+  object-position: right;
+  width: 40px;
+  height: 40px;
+}
+
+.map_copyright{
+	position: absolute;
+
+bottom: 5px;
+  text-align: right;
+  font-size: 10px;
+  letter-spacing: 0rem;
+  right: 20px;
+  /*overflow: scroll;*/
+
+}
+
+#map_legend_headline {
+  margin-bottom: 7px;
+  font-weight : 600;
+}
+
+#bottom_label_fliessend{
+  text-align: right;
+  width: 30px;
+
+
+}
+
+#top_label_fliessend{
+  position: absolute;
+  text-align: right;
+  width: 30px;
+}
+
+@media only screen and  (max-width: 768px) {
+  .map_legend {
+	top: 0px;
+	left: 0px;
+  }
+  #map_logo{
+    bottom: 10px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+
+  }
+  #map_reset {
+
+top: 0px;
+  right: 22.5px;
+
+}
+  .map_copyright
+  {
+    text-align: right;
+    font-size: 5px;
+  }
+  #legend_bar_fliessend {
+    width: 10px;
+    height: 60px;
+  }
+  #legend_svg_fliessend{
+    width: 10px;
+    height: 60px;
+  }
+  #legend_div_fliessend{
+    height: 60px;
+  }
+}
+.fa-question-circle:before {
+  content: "\f059"; }

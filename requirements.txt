@@ -1,1 +1,10 @@
+sqlalchemy
+django
+django-heroku
+pymysql
 pylint
+pandas
+numpy
+djangorestframework
+mysqlclient
+whitenoise

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <title>BMF</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="{% static './bmf/resources/BMF_official_png_logo.png' %}"
+    />
+
+	<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+	<link rel="stylesheet" href="{% static './bmf/css/style.css' %}">
+	<link rel="stylesheet" href="{% static './bmf/css/custom.css' %}">
+	<link rel="stylesheet" href="{% static './bmf/css/map.css' %}">
+
+  
+  </head>
+
+  <body>
+    <div  id="container"></div>
+
+    <script>
+      var csrftoken = "{{ csrf_token }}";
+
+      var context = {
+          all_years: `{{ all_years|safe }}`,
+        col_names_var: `{{ col_names_var|safe }}`,
+        col_names_ref: `{{ col_names_ref|safe }}`,
+        years_ref: `{{ years_ref|safe }}`,
+          indicator_data: `{{ indicator_data|safe }}`,
+          single_indic_data: `{{ single_indic_data|safe }}`,
+          var_year_data: `{{ var_year_data|safe }}`,
+          table_data: `{{ table_data|safe }}`,
+          metadata: `{{ metadata|safe }}`,
+
+      };
+
+    </script>
+
+    <script src="{% static 'bmf/js/jquery-3.4.1.min.js' %}"></script>
+	<script src="{% static 'frontend/main.js' %}"></script>
+
+
+  </body>
+</html>
