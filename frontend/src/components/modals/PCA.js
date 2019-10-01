@@ -28,15 +28,29 @@ class PCA extends Component {
      */
 
         // I need an additional scale for the size
-         zScale = () => {
+    zScale = (x) => {
 
+         const inhabitants = [];
+         const current_map = this.props.current_map;
+        var value = 5;
+         current_map.map((d,i) =>
+             inhabitants.push([d.properties.Kennziffer, d.properties.Einwohner_2017]))
+        current_map.forEach((function(d){
+           if(d.properties.Kennziffer == x) {
+                 value = d.properties.Einwohner_2017}
+        })
 
-
+        )
+        const min = Math.min(...inhabitants.map(o => o[1]))
+        const max = Math.max(...inhabitants.map(o => o[1]))
+        console.log(min)
+        console.log(max)
+        console.log(value)
         const z_scale = d3.scaleLinear()
-            .domain([10,10])
-            .range([0, 200])
-            .nice
-    return z_scale
+            .domain([min,max])
+            .range([3, 15])
+            .nice()
+    return z_scale(value)
     };
 
     xScale = (x) => {
@@ -95,23 +109,132 @@ class PCA extends Component {
                 <p className="modal-card-title">PCA Analyse</p>
               </header>
               <section className="modal-card-body">
-                  <p> test </p>
+                  <h3> Regression of the first two variables </h3>
 
 
               <svg id="svg" width="100%" height="100%" viewBox="0 0 400 400">
                   <g className="pca">
 
                       {this.props.table_data.map((d,i) =>
+
+
                       <circle
                           id={d["Kennziffer"]}
                           text={i}
                           cx={this.xScale(d[input["var_name_0"] + " " + input["var_year_0"]])}
                           cy={this.yScale(d[input["var_name_1"] + " " + input["var_year_1"]])}
-                           r="5"
 
-                      />
+                           r={((this.zScale(d["Kennziffer"])))}
+                          >
+                          <title> {this.props.current_map[i].properties.Name}
+                              {this.props.current_map[i].properties.Einwohner_2017 + " "}
+                              {" "+  i} </title>
+
+                      </circle>
+
+
+
                       )}
+
                   </g>
+
+                    <g>
+                    <line
+                           x1="0"
+                           y1="0"
+                          x2="0"
+                          y2="400"
+                          style={{stroke: "rgb(0,0,0)", strokeWidth: "2"}}
+                            />
+                             <text
+                                                           className="pca_label"
+                               x = "0"
+                                   y = {`${400/5}`} >
+                               {Math.min(...this.props.table_data.map(o => o[this.props.value_dic["var_name_0"] + " " + this.props.value_dic["var_year_0"]]))/5}
+                           </text>
+
+                         <text
+                                                       className="pca_label"
+                               x = "0"
+                                   y = {`${400/5*2}`} >
+                               {Math.min(...this.props.table_data.map(o => o[this.props.value_dic["var_name_0"] + " " + this.props.value_dic["var_year_0"]]))/5*2}
+                           </text>
+
+                         <text
+                                                       className="pca_label"
+                               x = "0"
+                                   y = {`${400/5*3}`} >
+                               {Math.min(...this.props.table_data.map(o => o[this.props.value_dic["var_name_0"] + " " + this.props.value_dic["var_year_0"]]))/5*3}
+                           </text>
+
+                         <text
+                                                       className="pca_label"
+                               x = "0"
+                                   y = {`${400/5*4}`} >
+                               {Math.min(...this.props.table_data.map(o => o[this.props.value_dic["var_name_0"] + " " + this.props.value_dic["var_year_0"]]))/5*4}
+                           </text>
+
+
+
+                           <text
+                                                         className="pca_label"
+                               x = "0"
+                                   y = "400" >
+                               {Math.min(...this.props.table_data.map(o => o[this.props.value_dic["var_name_0"] + " " + this.props.value_dic["var_year_0"]]))}
+                           </text>
+
+                    </g>
+
+
+
+
+                <g>
+                      <line
+                           x1="0"
+                           y1="0"
+                          x2="400"
+                          y2="0"
+                          style={{stroke: "rgb(0,0,0)", strokeWidth: "2"}}
+                            />
+
+                      <text
+                          className="pca_label"
+                               x = {`${400/5}`}
+                                   y = "10" >
+                               {Math.round(Math.min(...this.props.table_data.map(o => o[this.props.value_dic["var_name_1"] + " " + this.props.value_dic["var_year_1"]]))/5)}
+                      </text>
+
+                      <text
+                          className="pca_label"
+                               x = {`${400/5*2}`}
+                                   y = "10" >
+                               {Math.round(Math.min(...this.props.table_data.map(o => o[this.props.value_dic["var_name_1"] + " " + this.props.value_dic["var_year_1"]]))/5*2)}
+                      </text>
+
+                      <text
+                                                    className="pca_label"
+                               x = {`${400/5*3}`}
+                                   y = "10" >
+                               {Math.round(Math.min(...this.props.table_data.map(o => o[this.props.value_dic["var_name_1"] + " " + this.props.value_dic["var_year_1"]]))/5*3)}
+                      </text>
+
+                       <text
+                           className="pca_label"
+                               x = {`${400/5*4}`}
+                                   y = "10" >
+                               {Math.round(Math.min(...this.props.table_data.map(o => o[this.props.value_dic["var_name_1"] + " " + this.props.value_dic["var_year_1"]]))/5*4)}
+                       </text>
+
+                       <text
+                                                     className="pca_label"
+                               x = "380"
+                                   y = "10" >
+                               {Math.round(Math.min(...this.props.table_data.map(o => o[this.props.value_dic["var_name_1"] + " " + this.props.value_dic["var_year_1"]])))}
+                       </text>
+
+                </g>
+
+
 
               </svg>
 
@@ -145,6 +268,7 @@ function mapStateToProps(state) {
     value_dic: state.value_dic,
       metadata: state.metadata,
       smalltable: state.smalltable,
+      current_map: state.current_map,
 
   };
 }
