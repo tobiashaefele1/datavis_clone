@@ -610,11 +610,15 @@
 }
 
 
-
-
-
-
-
-
-
 }
+
+text.pca_label {
+    font-size: 10px;
+}
+
+circle:hover {
+  fill: darkgrey;
+}
+
+
+
