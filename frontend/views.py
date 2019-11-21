@@ -34,7 +34,7 @@ def index(request):
         single_indic_data = data['single_indic_data']
         table_data = data['table_data']
         ost_west = retrieve_db_data(connections).retrieve_Ost_West()
-        print(ost_west)
+        # print(ost_west)
 
     if request.method == 'POST':
         recieved_data = (dict(request.POST))

@@ -347,6 +347,13 @@ legendColours = (x) => {
      * @memberof Map
      */
     render() {
+
+
+      if (this.props.showPCA) {
+      var width = '60%'
+      }
+      else{var width = '100%'}
+
       if (this.props.firstload) {
         return (<div className="lds-roller1">
           <div></div><div></div>
@@ -360,7 +367,7 @@ legendColours = (x) => {
           <div id = "map_content">
             {this.renderLegend()}
             {this.loadingCirkle()}
-            <svg id="svg" width="100%" height="100%" viewBox="0 0 400 460">
+            <svg id="svg" width={width} height="100%" viewBox="0 0 400 460">
               <g className="map">
                 {this.props.current_map.map((d, i) =>
                   <path

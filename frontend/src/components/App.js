@@ -21,6 +21,7 @@ import PCAButton from "./buttons/PCAButton";
 import Info from './modals/Info';
 import MetaExportButton from './buttons/MetaExportButton';
 import ChangeViewButton from './buttons/ChangeViewButton';
+import PCAinline from './modals/PCAinline';
 
 
 /**
@@ -177,6 +178,7 @@ class App extends Component {
       return (<div className="column
       is-half is-mobile is-centered is-vcentered has-text-centered ">
         <div><Map/></div>
+          <div><PCAinline/></div>
         <div className="columns is-centered is-mobile ">
           <MinMaxTable/>
         </div></div>);
@@ -222,6 +224,8 @@ class App extends Component {
         <div className="column is-mobile is-half is-centered
          is-vcentered has-text-centered">
           <div><Map/></div>
+                      <div><PCAinline/></div>
+
           <div className="columns is-centered is-mobile">
             <MinMaxTable/>
           </div>

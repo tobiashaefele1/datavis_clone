@@ -10,28 +10,16 @@ import * as d3 from 'd3';
  * @class Info
  * @extends {Component}
  */
-class PCA extends Component {
+class PCAinline extends Component {
+
     /**
      *This function closes the modal.
      *
      * @memberof Info
      */
-    closePCA = () => {
-      this.props.dispatch({type: 'PCA'});
-    }
-
-    /**
-     *This function renders the Info modal.
-     *
-     * @return {JSX}
-     * @memberof Info
-     */
-
-
-
-
 
     // figure out East / West colorscheme
+
         eastWestColor = (x) => {
 
             var layer = 3;
@@ -133,22 +121,14 @@ class PCA extends Component {
 
     render() {
 
+
       if (this.props.showPCA) {
-          const input = this.props.value_dic;
+                const input = this.props.value_dic;
 
 
-                  return (
-          <div className="modal is-active">
-            <div className="modal-background"
-              onClick={this.closePCA.bind(this)}></div>
-            <div className="modal-card">
-              <header className="modal-card-head">
+                       return (
 
-                <p className="modal-card-title">PCA Analyse</p>
-              </header>
-              <section className="modal-card-body">
-                  <h3> Regression of the first two variables </h3>
-              <svg id="svg" width="100%" height="100%" viewBox="0 0 400 400">
+              <svg id="svg-pca" width="50%" height="50%" viewBox="0 0 400 400">
                   <g className="pca">
 
                       {this.props.table_data.map((d,i) =>
@@ -257,22 +237,9 @@ class PCA extends Component {
                        </text>
                 </g>
 
-              </svg>
+              </svg>) }
+      else {return ('')}
 
-
-
-
-              </section>
-              <footer className="modal-card-foot">
-              </footer>
-              <div>
-              </div>
-            </div>
-            <button className="modal-close is-large" onClick={this.closePCA.bind(this)} aria-label="close"></button>
-          </div>);
-      } else {
-        return ('');
-      }
     }
 }
 
@@ -295,4 +262,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(PCA);
+export default connect(mapStateToProps)(PCAinline);

@@ -143,6 +143,7 @@ class PCA extends Component {
               onClick={this.closePCA.bind(this)}></div>
             <div className="modal-card">
               <header className="modal-card-head">
+
                 <p className="modal-card-title">PCA Analyse</p>
               </header>
               <section className="modal-card-body">
