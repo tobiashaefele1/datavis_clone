@@ -475,3 +475,33 @@ class retrieve_db_data:
             output.append(temp)
             temp = []
         return output
+
+    def retrieve_Ost_West(self):
+
+
+        cursor = self.connections['default'].cursor()
+
+        result = []
+
+        sql_select_Query = ("""select `KRS_15`, `AMR_12`, `AMR_15`, `AMR_20`, `ROR11`, `Bundesland_ID`, `Ost_West` FROM `mapping`;""")
+        cursor.execute(sql_select_Query)
+        result = cursor.fetchall()
+        cursor.close()
+
+        output = []
+        temp = []
+        for (a, b, c, d, e, f, g) in result:
+            temp.append(a)
+            temp.append(b)
+            temp.append(c)
+            temp.append(d)
+            temp.append(e)
+            temp.append(f)
+            temp.append(g)
+            output.append(temp)
+            temp = []
+
+        return output
+
+
+

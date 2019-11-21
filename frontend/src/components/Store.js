@@ -25,6 +25,7 @@ const initalState = {
   indikator_counter: 4,
   indikators: ['Indikator 1', 'Indikator 2', 'Indikator 3', 'Indikator 4'],
   all_years: JSON.parse(context.all_years),
+  ost_west: JSON.parse(context.ost_west),
   value_dic: {
     'var_name_0': 'Arbeitslosenquote auf alle Erwerbspersonen ORIGINA_200',
     'var_name_1': 'Lohn pro Beschäftigtem 2010 _ORIGINAL_200',

@@ -33,7 +33,8 @@ def index(request):
         indicator_data = data['indicator_data']
         single_indic_data = data['single_indic_data']
         table_data = data['table_data']
-        print(table_data)
+        ost_west = retrieve_db_data(connections).retrieve_Ost_West()
+        print(ost_west)
 
     if request.method == 'POST':
         recieved_data = (dict(request.POST))
@@ -49,5 +50,6 @@ def index(request):
               'indicator_data': json.dumps(indicator_data),
               'single_indic_data': json.dumps(single_indic_data),
               'table_data': json.dumps(table_data),
+               'ost_west': json.dumps(ost_west)
               }
     return render(request, 'frontend/index.html', context=context)
