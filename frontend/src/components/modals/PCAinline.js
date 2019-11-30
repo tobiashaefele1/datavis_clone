@@ -118,6 +118,23 @@ class PCAinline extends Component {
    // then I render these things in react by calling the function and they update, when the values update (e.g. table_data)
     renderthewholething = (x) => {}
 
+    handleClick = (i) =>{
+      console.log(i)
+      this.props.dispatch(changeNameDispatch(i));
+    }
+
+
+    mouseover = (d) => {
+
+            document.getElementById(d).style.fill = "black"
+        }
+
+    mouseout = (d) => {
+
+            document.getElementById(d).style.fill = ""
+        }
+
+
 
     render() {
 
@@ -133,14 +150,17 @@ class PCAinline extends Component {
 
                       {this.props.table_data.map((d,i) =>
                       <circle
-                          id={d["Kennziffer"]}
+                          id={`circle_${d["Kennziffer"]}`}
                           text={i+1}
+                          className = "pcaCircles"
                           cx={this.xScale(d[input["var_name_0"] + " " + input["var_year_0"]])}
                           cy={this.yScale(d[input["var_name_1"] + " " + input["var_year_1"]])}
                            r={((this.zScale(d["Kennziffer"])))}
                           fill={
                                 this.eastWestColor(d["Kennziffer"])
                           }
+                          onMouseOver= {this.mouseover.bind(this,d["Kennziffer"])}
+                          onMouseOut = {this.mouseout.bind(this,d["Kennziffer"])}
                           >
                           <title>
                               {d.Name}
@@ -242,6 +262,17 @@ class PCAinline extends Component {
 
     }
 }
+
+function changeNameDispatch(value) {
+  return {
+    type: 'CHANGE_NAME',
+    value,
+  };
+}
+
+
+
+
 
 /**
  *Here the props are selected from the store.

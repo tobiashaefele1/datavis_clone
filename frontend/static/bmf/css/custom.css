@@ -617,7 +617,11 @@ text.pca_label {
 }
 
 circle:hover {
-  fill: darkgrey;
+  fill: black;
+}
+
+.pcaCircles:hover{
+  fill: black;
 }
 
 

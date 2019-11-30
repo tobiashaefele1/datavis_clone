@@ -310,10 +310,16 @@ legendColours = (x) => {
      * @param {int} i this is the number in current_map
      * @memberof Map
      */
-    handleClick = (i) =>{
-      this.props.dispatch(changeNameDispatch(i));
+    handleClickIn = (d,i) =>{
+      console.log(i)
+      document.getElementById("circle_"+i).style.fill = "black"
+      this.props.dispatch(changeNameDispatch(d));
     }
 
+
+   handleClickOut = (i) =>{
+      document.getElementById("circle_"+i).style.fill = ""
+    }
     /**
      *This function creates the loading crikle when needed.
      *
@@ -338,6 +344,20 @@ legendColours = (x) => {
         return '';
       }
     }
+
+    mouseover = (d) => {
+
+            document.getElementById("circle_"+d).style.fill = "black"
+        }
+
+    mouseout = (d) => {
+
+            document.getElementById("circle_"+d).style.fill = ""
+        }
+
+
+
+
 
 
     /**
@@ -379,8 +399,11 @@ legendColours = (x) => {
                     text="HELLO TEST"
                     stroke="#000000"
                     strokeWidth={0.5}
-                    onMouseOver={this.handleClick.bind(this, i)}
-                    onClick={this.handleClick.bind(this, i)}
+                    onMouseOver={this.handleClickIn.bind(this, i, d.properties.Kennziffer)}
+                    onMouseOut ={this.handleClickOut.bind(this, d.properties.Kennziffer)}
+                    onClick={this.handleClickIn.bind(this, i)
+
+                    }
                   />
                 )}
               </g>

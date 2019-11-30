@@ -133,7 +133,7 @@ class PCA extends Component {
 
     render() {
 
-      if (this.props.showPCA) {
+      if (this.props.showPCA == 7) {
           const input = this.props.value_dic;
 
 
