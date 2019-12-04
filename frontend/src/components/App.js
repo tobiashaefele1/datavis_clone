@@ -22,6 +22,7 @@ import Info from './modals/Info';
 import MetaExportButton from './buttons/MetaExportButton';
 import ChangeViewButton from './buttons/ChangeViewButton';
 import PCAinline from './modals/PCAinline';
+import MoneyButton from "./buttons/MoneyButton";
 
 
 /**
@@ -281,6 +282,7 @@ class App extends Component {
               <SettingsButton/>
               <InfoButton/>
               <PCAButton/>
+              <MoneyButton/>
             </div>
             <Info/>
             <Settings/>

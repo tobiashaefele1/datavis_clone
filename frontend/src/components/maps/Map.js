@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React,{Component} from 'react';
 import 'd3';
 import * as d3 from 'd3';
 import {connect} from 'react-redux';
@@ -23,7 +23,21 @@ class Map extends Component {
     this.state = {
       germany: [10.3736325636218, 51.053178814923065],
     };
+
   }
+
+       shouldComponentUpdate(nextProps, nextState) {
+        console.log("test")
+    if(this.props.current_map === nextProps.current_map && this.props.indicator_data === nextProps.indicator){
+        return false
+    }
+
+    else {
+      return true;
+    }
+  }
+
+
 
   /**
    *This function returns the logo and copyright statements for the map.
@@ -268,6 +282,15 @@ legendColours = (x) => {
       }
     }
   }
+        nestedSort = (prop1, prop2 = null, direction = 'asc') => (e1, e2) => {
+        const a = prop2 ? e1[prop1][prop2] : e1[prop1],
+            b = prop2 ? e2[prop1][prop2] : e2[prop1],
+            sortOrder = direction === "asc" ? 1 : -1
+        return (a < b) ? -sortOrder : (a > b) ? sortOrder : 0;
+    }
+
+
+
 
   /**
    *This function creates the values for the colors on the map.
@@ -281,6 +304,11 @@ legendColours = (x) => {
         || this.props.indicator_data[1] === undefined) {
       return '#6C7B8B';
     } else {
+      // #TODO: in here I should: check whether the vlaue is within 25.85% of population (top score), and then
+      // either fill with a color of my choice (make it orange for now; or go back to the normal
+
+      // if(this.props.money == false){
+
       if (this.props.currentScale == 0) {
         return this.valueQuantile(x);
       } else if (this.props.currentScale == 1) {
@@ -288,8 +316,86 @@ legendColours = (x) => {
       } else {
         return this.valueInterpolar(x);
       }
+
+      // }
+      // else{
+      //
+      //
+      //   // #todo rank the array by size
+      //   // var my_list = this.props.current_map.sort(function(a,b){
+      //   //   return a.properties.indicator - b.properties.indicator
+      //   // })
+      //   var my_list = this.props.current_map
+      //
+      //   my_list.sort(this.nestedSort("properties", "indicator"))
+      //
+      //   var total_share = 0.2585;
+      //   var total_population = 0;
+      //   var clean_list = []
+      //   my_list.forEach(function(d,i){
+      //     total_population += d.properties.Einwohner_2017
+      //     if(d.properties.Bundesland != null)
+      //     {clean_list.push(d)}
+      //   })
+      //
+      //   clean_list.sort(this.nestedSort("properties", "indicator"))
+      //   console.log(clean_list)
+      //
+      //   var current_share = 0;
+      //   var return_colour = 0;
+      //   clean_list.forEach(function(d,i){
+      //     current_share += d.properties.Einwohner_2017
+      //     if (x == d.properties.indicator && ((current_share/total_population) < total_share))
+      //     {
+      //       return_colour =  "#000"}})
+      //
+      //   if (return_colour == 0) {
+      //     if (this.props.currentScale == 0) {
+      //       return this.valueQuantile(x);
+      //     } else if (this.props.currentScale == 1) {
+      //       return this.valueQuantize(x);
+      //     } else {
+      //       return this.valueInterpolar(x);
+      //     }
+      //   }
+      // else {return return_colour}
+      //
+      //   }
+      }
+    };
+
+    strokeFunc = (x) => {
+
+        var my_list = this.props.current_map
+
+        my_list.sort(this.nestedSort("properties", "indicator"))
+
+
+        var total_share = 0.2585;
+        var total_population = 0;
+        var clean_list = []
+        my_list.forEach(function(d,i){
+          total_population += d.properties.Einwohner_2017
+          if(d.properties.Bundesland != null)
+          {clean_list.push(d)}
+        })
+
+
+        clean_list.sort(this.nestedSort("properties", "indicator"))
+        // console.log(clean_list)
+
+        var current_share = 0;
+        var return_colour = "nomoney";
+        clean_list.forEach(function(d,i){
+          current_share += d.properties.Einwohner_2017
+          if (x == d.properties.indicator && ((current_share/total_population) < total_share))
+          {
+            return_colour =  "money"}})
+
+        return return_colour
     }
-  };
+
+
 
   /**
     *This function creates the projection of the map.
@@ -311,15 +417,24 @@ legendColours = (x) => {
      * @memberof Map
      */
     handleClickIn = (d,i) =>{
-      console.log(i)
-      document.getElementById("circle_"+i).style.fill = "black"
+      // console.log(i)
       this.props.dispatch(changeNameDispatch(d));
-    }
+
+            if (this.props.showPCA) {
+
+            document.getElementById("circle_"+i).style.fill = "black"
+            document.getElementById("circle_"+i).style.r = 15;
+
+    }}
 
 
    handleClickOut = (i) =>{
+              if (this.props.showPCA) {
+
       document.getElementById("circle_"+i).style.fill = ""
-    }
+      document.getElementById("circle_"+i).style.r = ""
+
+    }}
     /**
      *This function creates the loading crikle when needed.
      *
@@ -367,12 +482,13 @@ legendColours = (x) => {
      * @memberof Map
      */
     render() {
+        console.log("map-re-render")
 
 
       if (this.props.showPCA) {
-      var width = '60%'
+      var width = '55%'
       }
-      else{var width = '100%'}
+      else{var width = '75%'}
 
       if (this.props.firstload) {
         return (<div className="lds-roller1">
@@ -389,6 +505,8 @@ legendColours = (x) => {
             {this.loadingCirkle()}
             <svg id="svg" width={width} height="100%" viewBox="0 0 400 460">
               <g className="map">
+
+
                 {this.props.current_map.map((d, i) =>
                   <path
                     key={`path-${i}`}
@@ -397,12 +515,10 @@ legendColours = (x) => {
                     className={d.properties.Kennziffer}
                     fill= {this.color(d.properties.indicator)}
                     text="HELLO TEST"
-                    stroke="#000000"
-                    strokeWidth={0.5}
+                    className={this.props.money ? this.strokeFunc(d.properties.indicator) : "nomoney"}
                     onMouseOver={this.handleClickIn.bind(this, i, d.properties.Kennziffer)}
                     onMouseOut ={this.handleClickOut.bind(this, d.properties.Kennziffer)}
                     onClick={this.handleClickIn.bind(this, i)
-
                     }
                   />
                 )}
@@ -451,6 +567,8 @@ function mapStateToProps(state) {
     firstload: state.firstload,
     value_dic: state.value_dic,
     metadata: state.metadata,
+    showPCA: state.showPCA,
+    money: state.money
   };
 }
 

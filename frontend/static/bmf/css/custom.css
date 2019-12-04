@@ -612,15 +612,17 @@
 
 }
 
-text.pca_label {
-    font-size: 10px;
-}
+
 
 circle:hover {
   fill: black;
 }
 
 .pcaCircles:hover{
+  fill: black;
+}
+
+path:hover{
   fill: black;
 }
 

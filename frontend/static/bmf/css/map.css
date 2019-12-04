@@ -1,7 +1,5 @@
 path {
-  /*fill: #ccc;*/
-  stroke: #ffffff;
-  stroke-width: .25px;
+
 }
 
 path:hover {
@@ -9,6 +7,21 @@ path:hover {
   stroke-width: 1px;
   stroke: #ffffff; 
 }
+
+.nomoney{
+  /*fill: #ccc;*/
+  stroke: #ffffff;
+  stroke-width: 0.25px;
+}
+
+.money{
+  stroke: #FFA500;
+  stroke-width: 1.25;
+}
+
+
+
+
 
 
 #map {

@@ -123,6 +123,7 @@ const initalState = {
   show_modal: false,
   showInfo: false,
   showPCA: false,
+  money: false,
 
 
   // Loading variables
@@ -198,6 +199,8 @@ function reducer(state = initalState, action) {
         draft.current_map = state.amr12;
         draft.count_map = 1;
         draft.view_multiple = true;
+        draft.money = false;
+        draft.showPCA = false;
         draft.table_data = JSON.parse(context.table_data);
         draft.value_dic = {
           'var_name_0':
@@ -272,6 +275,9 @@ function reducer(state = initalState, action) {
     case 'CHANGEVIEW':
       return produce(state, (draft) => {
         if (state.view_multiple) {
+
+          draft.money = false;
+          draft.showPCA = false;
           draft.indikator_counter = 1;
           while (draft.indikators.length > 1) {
             draft.indikators.pop();
@@ -337,6 +343,11 @@ function reducer(state = initalState, action) {
     case 'PCA':
       return produce (state, (draft) => {
         draft.showPCA = !state.showPCA;
+      })
+
+    case 'money':
+      return produce (state, (draft) =>{
+        draft.money =! state.money;
       })
 
     case 'INCREMENTINDIKATOR':

@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack --mode development ./frontend/src/index.js --output ./frontend/static/frontend/main.js",
-	"build": "webpack --mode production ./frontend/src/index.js --output ./frontend/static/frontend/main.js",
-	"css-build": "node-sass --omit-source-map-url ./frontend/static/bmf/sass/style.scss --output ./frontend/static/bmf/css/mystyles.css",
-	"css-watch": "npm run css-build -- --watch",
-	"start": "npm run css-watch"
+    "build": "webpack --mode production ./frontend/src/index.js --output ./frontend/static/frontend/main.js",
+    "css-build": "node-sass --omit-source-map-url ./frontend/static/bmf/sass/style.scss --output ./frontend/static/bmf/css/mystyles.css",
+    "css-watch": "npm run css-build -- --watch",
+    "start": "npm run css-watch"
   },
   "repository": {
     "type": "git",
@@ -58,6 +58,7 @@
     "reactstrap": "^8.0.1",
     "redux": "^4.0.4",
     "topojson": "^3.0.2",
-    "topojson-simplify": "^3.0.2"
+    "topojson-simplify": "^3.0.2",
+    "victory": "^33.1.6"
   }
 }

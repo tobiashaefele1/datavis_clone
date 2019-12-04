@@ -19,6 +19,8 @@ class PCAButton extends Component {
      * @memberof PCAButton
      */
     render() {
+
+         if(this.props.view_multiple){
       return (
         <a className="button is-dark is-outlined is-large"
           onClick={this.closePCA.bind(this)}>
@@ -28,8 +30,15 @@ class PCAButton extends Component {
         </a>
       );
     }
+    else {return ''}
+    }
 }
+function mapStateToProps(state) {
+  return {
+    view_multiple: state.view_multiple}}
 
-export default connect()(PCAButton);
+
+
+export default connect(mapStateToProps)(PCAButton);
 
 

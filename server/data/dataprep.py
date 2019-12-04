@@ -241,9 +241,17 @@ def load_meta_data_single(link_to_meta, code ):
     meta = meta.replace(r'\"', ' ', regex=True)
     meta = meta.replace(r'\\', ' ', regex=True)
 
+    ## life  database - ON HEROKU:
     user = "admin"
     passw = "NPmpMe!696rY"
-    host = "bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com"
+    host = "bmfvis.c35zrhmszzzr.eu-central-1.rds.amazonaws.com"
     database = 'mydb'
+
+    ## my own database - private:
+    # user = "user"
+    # passw = "password"
+    # host = "localhost"
+    # database = 'mydb'
+
     conn = create_engine('mysql+pymysql://' + user + ':' + passw + '@' + host + '/' + database, echo=False)
     meta.to_sql(name="metadata", con=conn, if_exists='append', index=False)

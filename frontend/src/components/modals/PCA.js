@@ -215,44 +215,44 @@ class PCA extends Component {
                 <g>
                       <line
                            x1="0"
-                           y1="0"
+                           y1="400"
                           x2="400"
-                          y2="0"
+                          y2="400"
                           style={{stroke: "rgb(0,0,0)", strokeWidth: "2"}}
                             />
 
                       <text
                           className="pca_label"
                                x = {`${400/5}`}
-                                   y = "10" >
+                                   y = "410" >
                                {Math.round(Math.min(...this.props.table_data.map(o => o[this.props.value_dic["var_name_1"] + " " + this.props.value_dic["var_year_1"]]))/5)}
                       </text>
 
                       <text
                           className="pca_label"
                                x = {`${400/5*2}`}
-                                   y = "10" >
+                                   y = "410" >
                                {Math.round(Math.min(...this.props.table_data.map(o => o[this.props.value_dic["var_name_1"] + " " + this.props.value_dic["var_year_1"]]))/5*2)}
                       </text>
 
                       <text
                                                     className="pca_label"
                                x = {`${400/5*3}`}
-                                   y = "10" >
+                                   y = "410" >
                                {Math.round(Math.min(...this.props.table_data.map(o => o[this.props.value_dic["var_name_1"] + " " + this.props.value_dic["var_year_1"]]))/5*3)}
                       </text>
 
                        <text
                            className="pca_label"
                                x = {`${400/5*4}`}
-                                   y = "10" >
+                                   y = "410" >
                                {Math.round(Math.min(...this.props.table_data.map(o => o[this.props.value_dic["var_name_1"] + " " + this.props.value_dic["var_year_1"]]))/5*4)}
                        </text>
 
                        <text
                                                      className="pca_label"
                                x = "380"
-                                   y = "10" >
+                                   y = "410" >
                                {Math.round(Math.min(...this.props.table_data.map(o => o[this.props.value_dic["var_name_1"] + " " + this.props.value_dic["var_year_1"]])))}
                        </text>
                 </g>
