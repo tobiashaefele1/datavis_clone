@@ -245,10 +245,10 @@ class PCAinline extends Component {
                 //
                 //
                 //        )
-               <svg id="svg-pca" width="65%" height="65%" viewBox="0 0 450 450">
+               <svg id="svg-pca" width="62%" height="62%" viewBox="0 0 500 450">
 
       <g
-      transform = "translate(50,0)"
+      transform = "translate(70,10)"
       >
 
       <line
@@ -292,50 +292,49 @@ class PCAinline extends Component {
                  />
 
 
-                        {/*horizontal lines below*/}
 
 
 
 
 
 
-               <text className="pca_label"
-                 x = "-45"
+               <text className="pca_label y-axis"
+                 x = "-10"
                      y = "10" >
                  {Math.round(yMax).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
              </text>
 
            <text
-                                         className="pca_label"
-                 x = "-45"
+                                         className="pca_label y-axis"
+                 x = "-10"
                      y = {`${400/5*1}`} >
                  {Math.round((yMin+((yMax-yMin)/5*4))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
              </text>
 
            <text
-                                         className="pca_label"
-                 x = "-45"
+                                         className="pca_label y-axis"
+                 x = "-10"
                      y = {`${400/5*2}`} >
                  {Math.round((yMin+((yMax-yMin)/5*3))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
              </text>
 
            <text
-                                         className="pca_label"
-                 x = "-45"
+                                         className="pca_label y-axis"
+                 x = "-10"
                      y = {`${400/5*3}`} >
                  {Math.round((yMin+((yMax-yMin)/5*2))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
              </text>
 
              <text
-                                           className="pca_label"
-                 x = "-45"
+                                           className="pca_label y-axis"
+                 x = "-10"
                      y = {`${400/5*4}`} >
                  {`${Math.round((yMin+((yMax-yMin)/5)))}`.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
              </text>
       </g>
 
   <g
-                      transform = "translate(50,0)"
+                      transform = "translate(70,10)"
   >
         <line
              x1="0"
@@ -423,7 +422,7 @@ class PCAinline extends Component {
 
 
       <g className="pca"
-                              transform="translate(50,0)"
+                              transform="translate(70,10)"
     >
 
         {this.props.table_data.map((d,i) =>

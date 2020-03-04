@@ -1,0 +1,413 @@
+﻿,,Level,Kreis (2015),Kreis (2015)
+,,Langname,Nettohaushaltvermögen (Schätzung ROR),Nettohaushaltvermögen (Schätzung Bundesland)
+,,Berechnung,-,-
+,,Einheit,Euro,Euro
+,,Anmerkungen,Die Schätzung erfolgt auf ROR-Ebene. Alle in der entsprechenden ROR enthaltenen Kreise erhalten denselben Wert.,Die Schätzung erfolgt auf ROR-Bundeslandebene. Alle in der entsprechenden ROR enthaltenen Kreise erhalten denselben Wert.
+,,Quelle,Kreutzmann et al (2019) auf Basis PHF,Kreutzmann et al (2019) auf Basis PHF
+,,Standardisierung,HIB,HIB
+Kennziffer,Raumeinheit,Aggregat,Nettohaushaltvermögen (Schätzung ROR),Nettohaushaltvermögen (Schätzung Bundesland)
+,,,2014,2014
+1001,"Flensburg, Stadt",krsfr. Stadt,350000,255000
+1002,"Kiel, Stadt",krsfr. Stadt,185000,255000
+1003,"Lübeck, Stadt",krsfr. Stadt,170000,255000
+1004,"Neumünster, Stadt",krsfr. Stadt,185000,255000
+1051,Dithmarschen,Landkreis,225000,255000
+1053,Herzogtum Lauenburg,Landkreis,375000,255000
+1054,Nordfriesland,Landkreis,350000,255000
+1055,Ostholstein,Landkreis,170000,255000
+1056,Pinneberg,Landkreis,375000,255000
+1057,Plön,Landkreis,185000,255000
+1058,Rendsburg-Eckernförde,Landkreis,185000,255000
+1059,Schleswig-Flensburg,Landkreis,350000,255000
+1060,Segeberg,Landkreis,375000,255000
+1061,Steinburg,Landkreis,225000,255000
+1062,Stormarn,Landkreis,375000,255000
+2000,"Hamburg, Stadt",krsfr. Stadt,175000,190000
+3101,"Braunschweig, Stadt",krsfr. Stadt,140000,235000
+3102,"Salzgitter, Stadt",krsfr. Stadt,140000,235000
+3103,"Wolfsburg, Stadt",krsfr. Stadt,140000,235000
+3151,Gifhorn,Landkreis,140000,235000
+3152,Göttingen,Landkreis,110000,235000
+3153,Goslar,Landkreis,140000,235000
+3154,Helmstedt,Landkreis,140000,235000
+3155,Northeim,Landkreis,110000,235000
+3156,Osterode am Harz,Landkreis,110000,235000
+3157,Peine,Landkreis,140000,235000
+3158,Wolfenbüttel,Landkreis,140000,235000
+3241,Region Hannover,Landkreis,170000,235000
+3251,Diepholz,Landkreis,255000,235000
+3252,Hameln-Pyrmont,Landkreis,120000,235000
+3254,Hildesheim,Landkreis,120000,235000
+3255,Holzminden,Landkreis,110000,235000
+3256,Nienburg (Weser),Landkreis,170000,235000
+3257,Schaumburg,Landkreis,170000,235000
+3351,Celle,Landkreis,160000,235000
+3352,Cuxhaven,Landkreis,185000,235000
+3353,Harburg,Landkreis,290000,235000
+3354,Lüchow-Dannenberg,Landkreis,210000,235000
+3355,Lüneburg,Landkreis,210000,235000
+3356,Osterholz,Landkreis,255000,235000
+3357,Rotenburg (Wümme),Landkreis,290000,235000
+3358,Heidekreis,Landkreis,160000,235000
+3359,Stade,Landkreis,290000,235000
+3360,Uelzen,Landkreis,210000,235000
+3361,Verden,Landkreis,255000,235000
+3401,"Delmenhorst, Stadt",krsfr. Stadt,255000,235000
+3402,"Emden, Stadt",krsfr. Stadt,425000,235000
+3403,"Oldenburg (Oldenburg), Stadt",krsfr. Stadt,305000,235000
+3404,"Osnabrück, Stadt",krsfr. Stadt,200000,235000
+3405,"Wilhelmshaven, Stadt",krsfr. Stadt,425000,235000
+3451,Ammerland,Landkreis,305000,235000
+3452,Aurich,Landkreis,425000,235000
+3453,Cloppenburg,Landkreis,305000,235000
+3454,Emsland,Landkreis,325000,235000
+3455,Friesland,Landkreis,425000,235000
+3456,Grafschaft Bentheim,Landkreis,325000,235000
+3457,Leer,Landkreis,425000,235000
+3458,Oldenburg,Landkreis,305000,235000
+3459,Osnabrück,Landkreis,200000,235000
+3460,Vechta,Landkreis,200000,235000
+3461,Wesermarsch,Landkreis,185000,235000
+3462,Wittmund,Landkreis,425000,235000
+4011,"Bremen, Stadt",krsfr. Stadt,90000,80000
+4012,"Bremerhaven, Stadt",krsfr. Stadt,185000,80000
+5111,"Düsseldorf, Stadt",krsfr. Stadt,250000,220000
+5112,"Duisburg, Stadt",krsfr. Stadt,125000,220000
+5113,"Essen, Stadt",krsfr. Stadt,125000,220000
+5114,"Krefeld, Stadt",krsfr. Stadt,250000,220000
+5116,"Mönchengladbach, Stadt",krsfr. Stadt,250000,220000
+5117,"Mülheim an der Ruhr, Stadt",krsfr. Stadt,125000,220000
+5119,"Oberhausen, Stadt",krsfr. Stadt,125000,220000
+5120,"Remscheid, Stadt",krsfr. Stadt,250000,220000
+5122,"Solingen, Stadt",krsfr. Stadt,250000,220000
+5124,"Wuppertal, Stadt",krsfr. Stadt,250000,220000
+5154,Kleve,Landkreis,125000,220000
+5158,Mettmann,Landkreis,250000,220000
+5162,Rhein-Kreis Neuss,Landkreis,250000,220000
+5166,Viersen,Landkreis,250000,220000
+5170,Wesel,Landkreis,125000,220000
+5314,"Bonn, Stadt",krsfr. Stadt,200000,220000
+5315,"Köln, Stadt",krsfr. Stadt,240000,220000
+5316,"Leverkusen, Stadt",krsfr. Stadt,240000,220000
+5334,Städteregion Aachen,Landkreis,85000,220000
+5358,Düren,Landkreis,85000,220000
+5362,Rhein-Erft-Kreis,Landkreis,240000,220000
+5366,Euskirchen,Landkreis,85000,220000
+5370,Heinsberg,Landkreis,85000,220000
+5374,Oberbergischer Kreis,Landkreis,240000,220000
+5378,Rheinisch-Bergischer Kreis,Landkreis,240000,220000
+5382,Rhein-Sieg-Kreis,Landkreis,200000,220000
+5512,"Bottrop, Stadt",krsfr. Stadt,120000,220000
+5513,"Gelsenkirchen, Stadt",krsfr. Stadt,120000,220000
+5515,"Münster, Stadt",krsfr. Stadt,485000,220000
+5554,Borken,Landkreis,485000,220000
+5558,Coesfeld,Landkreis,485000,220000
+5562,Recklinghausen,Landkreis,120000,220000
+5566,Steinfurt,Landkreis,485000,220000
+5570,Warendorf,Landkreis,485000,220000
+5711,"Bielefeld, Stadt",krsfr. Stadt,140000,220000
+5754,Gütersloh,Landkreis,140000,220000
+5758,Herford,Landkreis,140000,220000
+5762,Höxter,Landkreis,240000,220000
+5766,Lippe,Landkreis,140000,220000
+5770,Minden-Lübbecke,Landkreis,140000,220000
+5774,Paderborn,Landkreis,240000,220000
+5911,"Bochum, Stadt",krsfr. Stadt,125000,220000
+5913,"Dortmund, Stadt",krsfr. Stadt,115000,220000
+5914,"Hagen, Stadt",krsfr. Stadt,125000,220000
+5915,"Hamm, Stadt",krsfr. Stadt,115000,220000
+5916,"Herne, Stadt",krsfr. Stadt,125000,220000
+5954,Ennepe-Ruhr-Kreis,Landkreis,125000,220000
+5958,Hochsauerlandkreis,Landkreis,165000,220000
+5962,Märkischer Kreis,Landkreis,125000,220000
+5966,Olpe,Landkreis,130000,220000
+5970,Siegen-Wittgenstein,Landkreis,130000,220000
+5974,Soest,Landkreis,165000,220000
+5978,Unna,Landkreis,115000,220000
+6411,"Darmstadt, Stadt",krsfr. Stadt,445000,280000
+6412,"Frankfurt am Main, Stadt",krsfr. Stadt,330000,280000
+6413,"Offenbach am Main, Stadt",krsfr. Stadt,330000,280000
+6414,"Wiesbaden, Stadt",krsfr. Stadt,330000,280000
+6431,Bergstraße,Landkreis,445000,280000
+6432,Darmstadt-Dieburg,Landkreis,445000,280000
+6433,Groß-Gerau,Landkreis,445000,280000
+6434,Hochtaunuskreis,Landkreis,330000,280000
+6435,Main-Kinzig-Kreis,Landkreis,330000,280000
+6436,Main-Taunus-Kreis,Landkreis,330000,280000
+6437,Odenwaldkreis,Landkreis,445000,280000
+6438,Offenbach,Landkreis,330000,280000
+6439,Rheingau-Taunus-Kreis,Landkreis,330000,280000
+6440,Wetteraukreis,Landkreis,330000,280000
+6531,Gießen,Landkreis,315000,280000
+6532,Lahn-Dill-Kreis,Landkreis,315000,280000
+6533,Limburg-Weilburg,Landkreis,315000,280000
+6534,Marburg-Biedenkopf,Landkreis,315000,280000
+6535,Vogelsbergkreis,Landkreis,315000,280000
+6611,"Kassel, Stadt",krsfr. Stadt,180000,280000
+6631,Fulda,Landkreis,175000,280000
+6632,Hersfeld-Rotenburg,Landkreis,175000,280000
+6633,Kassel,Landkreis,180000,280000
+6634,Schwalm-Eder-Kreis,Landkreis,180000,280000
+6635,Waldeck-Frankenberg,Landkreis,180000,280000
+6636,Werra-Meißner-Kreis,Landkreis,180000,280000
+7111,"Koblenz, Stadt",krsfr. Stadt,270000,200000
+7131,Ahrweiler,Landkreis,270000,200000
+7132,Altenkirchen (Westerwald),Landkreis,270000,200000
+7133,Bad Kreuznach,Landkreis,200000,200000
+7134,Birkenfeld,Landkreis,200000,200000
+7135,Cochem-Zell,Landkreis,270000,200000
+7137,Mayen-Koblenz,Landkreis,270000,200000
+7138,Neuwied,Landkreis,270000,200000
+7140,Rhein-Hunsrück-Kreis,Landkreis,270000,200000
+7141,Rhein-Lahn-Kreis,Landkreis,270000,200000
+7143,Westerwaldkreis,Landkreis,270000,200000
+7211,"Trier, Stadt",krsfr. Stadt,170000,200000
+7231,Bernkastel-Wittlich,Landkreis,170000,200000
+7232,Eifelkreis Bitburg-Prüm,Landkreis,170000,200000
+7233,Vulkaneifel,Landkreis,170000,200000
+7235,Trier-Saarburg,Landkreis,170000,200000
+7311,"Frankenthal (Pfalz), Stadt",krsfr. Stadt,165000,200000
+7312,"Kaiserslautern, Stadt",krsfr. Stadt,155000,200000
+7313,"Landau in der Pfalz, Stadt",krsfr. Stadt,165000,200000
+7314,"Ludwigshafen am Rhein, Stadt",krsfr. Stadt,165000,200000
+7315,"Mainz, kreisfreie Stadt",krsfr. Stadt,200000,200000
+7316,"Neustadt an der Weinstraße, Stadt",krsfr. Stadt,165000,200000
+7317,"Pirmasens, Stadt",krsfr. Stadt,155000,200000
+7318,"Speyer, Stadt",krsfr. Stadt,165000,200000
+7319,"Worms, Stadt",krsfr. Stadt,200000,200000
+7320,"Zweibrücken, Stadt",krsfr. Stadt,155000,200000
+7331,Alzey-Worms,Landkreis,200000,200000
+7332,Bad Dürkheim,Landkreis,165000,200000
+7333,Donnersbergkreis,Landkreis,155000,200000
+7334,Germersheim,Landkreis,165000,200000
+7335,Kaiserslautern,Landkreis,155000,200000
+7336,Kusel,Landkreis,155000,200000
+7337,Südliche Weinstraße,Landkreis,165000,200000
+7338,Rhein-Pfalz-Kreis,Landkreis,165000,200000
+7339,Mainz-Bingen,Landkreis,200000,200000
+7340,Südwestpfalz,Landkreis,155000,200000
+8111,Stuttgart,krsfr. Stadt,365000,305000
+8115,Böblingen,Landkreis,365000,305000
+8116,Esslingen,Landkreis,365000,305000
+8117,Göppingen,Landkreis,365000,305000
+8118,Ludwigsburg,Landkreis,365000,305000
+8119,Rems-Murr-Kreis,Landkreis,365000,305000
+8121,Heilbronn,krsfr. Stadt,265000,305000
+8125,Heilbronn,Landkreis,265000,305000
+8126,Hohenlohekreis,Landkreis,265000,305000
+8127,Schwäbisch Hall,Landkreis,265000,305000
+8128,Main-Tauber-Kreis,Landkreis,265000,305000
+8135,Heidenheim,Landkreis,220000,305000
+8136,Ostalbkreis,Landkreis,220000,305000
+8211,Baden-Baden,krsfr. Stadt,220000,305000
+8212,Karlsruhe,krsfr. Stadt,220000,305000
+8215,Karlsruhe,Landkreis,220000,305000
+8216,Rastatt,Landkreis,220000,305000
+8221,Heidelberg,krsfr. Stadt,295000,305000
+8222,Mannheim,krsfr. Stadt,295000,305000
+8225,Neckar-Odenwald-Kreis,Landkreis,295000,305000
+8226,Rhein-Neckar-Kreis,Landkreis,295000,305000
+8231,Pforzheim,Landkreis,205000,305000
+8235,Calw,Landkreis,205000,305000
+8236,Enzkreis,Landkreis,205000,305000
+8237,Freudenstadt,Landkreis,205000,305000
+8311,Freiburg im Breisgau,krsfr. Stadt,395000,305000
+8315,Breisgau-Hochschwarzwald,Landkreis,395000,305000
+8316,Emmendingen,Landkreis,395000,305000
+8317,Ortenaukreis,Landkreis,395000,305000
+8325,Rottweil,Landkreis,180000,305000
+8326,Schwarzwald-Baar-Kreis,Landkreis,180000,305000
+8327,Tuttlingen,Landkreis,180000,305000
+8335,Konstanz,Landkreis,310000,305000
+8336,Lörrach,Landkreis,310000,305000
+8337,Waldshut,Landkreis,310000,305000
+8415,Reutlingen,Landkreis,255000,305000
+8416,Tübingen,Landkreis,255000,305000
+8417,Zollernalbkreis,Landkreis,255000,305000
+8421,Ulm,krsfr. Stadt,265000,305000
+8425,Alb-Donau-Kreis,Landkreis,265000,305000
+8426,Biberach,Landkreis,265000,305000
+8435,Bodenseekreis,Landkreis,310000,305000
+8436,Ravensburg,Landkreis,310000,305000
+8437,Sigmaringen,Landkreis,310000,305000
+9161,"Ingolstadt, Stadt",krsfr. Stadt,195000,270000
+9162,"München, Stadt",krsfr. Stadt,385000,270000
+9163,"Rosenheim, Stadt",krsfr. Stadt,535000,270000
+9171,Altötting,Landkreis,535000,270000
+9172,Berchtesgadener Land,Landkreis,535000,270000
+9173,Bad Tölz-Wolfratshausen,Landkreis,505000,270000
+9174,Dachau,Landkreis,385000,270000
+9175,Ebersberg,Landkreis,385000,270000
+9176,Eichstätt,Landkreis,195000,270000
+9177,Erding,Landkreis,385000,270000
+9178,Freising,Landkreis,385000,270000
+9179,Fürstenfeldbruck,Landkreis,385000,270000
+9180,Garmisch-Partenkirchen,Landkreis,505000,270000
+9181,Landsberg am Lech,Landkreis,385000,270000
+9182,Miesbach,Landkreis,505000,270000
+9183,Mühldorf a.Inn,Landkreis,535000,270000
+9184,München,Landkreis,385000,270000
+9185,Neuburg-Schrobenhausen,Landkreis,195000,270000
+9186,Pfaffenhofen a.d.Ilm,Landkreis,195000,270000
+9187,Rosenheim,Landkreis,535000,270000
+9188,Starnberg,Landkreis,385000,270000
+9189,Traunstein,Landkreis,535000,270000
+9190,Weilheim-Schongau,Landkreis,505000,270000
+9261,"Landshut, Stadt",krsfr. Stadt,215000,270000
+9262,"Passau, Stadt",krsfr. Stadt,140000,270000
+9263,"Straubing, Stadt",krsfr. Stadt,140000,270000
+9271,Deggendorf,Landkreis,140000,270000
+9272,Freyung-Grafenau,Landkreis,140000,270000
+9273,Kelheim,Landkreis,235000,270000
+9274,Landshut,Landkreis,215000,270000
+9275,Passau,Landkreis,140000,270000
+9276,Regen,Landkreis,140000,270000
+9277,Rottal-Inn,Landkreis,215000,270000
+9278,Straubing-Bogen,Landkreis,140000,270000
+9279,Dingolfing-Landau,Landkreis,215000,270000
+9361,"Amberg, Stadt",krsfr. Stadt,130000,270000
+9362,"Regensburg, Stadt",krsfr. Stadt,235000,270000
+9363,"Weiden i.d.OPf., Stadt",krsfr. Stadt,130000,270000
+9371,Amberg-Sulzbach,Landkreis,130000,270000
+9372,Cham,Landkreis,235000,270000
+9373,Neumarkt i.d.OPf.,Landkreis,235000,270000
+9374,Neustadt a.d.Waldnaab,Landkreis,130000,270000
+9375,Regensburg,Landkreis,235000,270000
+9376,Schwandorf,Landkreis,130000,270000
+9377,Tirschenreuth,Landkreis,130000,270000
+9461,"Bamberg, Stadt",krsfr. Stadt,255000,270000
+9462,"Bayreuth, Stadt",krsfr. Stadt,140000,270000
+9463,"Coburg, Stadt",krsfr. Stadt,255000,270000
+9464,"Hof, Stadt",krsfr. Stadt,140000,270000
+9471,Bamberg,Landkreis,255000,270000
+9472,Bayreuth,Landkreis,140000,270000
+9473,Coburg,Landkreis,255000,270000
+9474,Forchheim,Landkreis,255000,270000
+9475,Hof,Landkreis,140000,270000
+9476,Kronach,Landkreis,255000,270000
+9477,Kulmbach,Landkreis,140000,270000
+9478,Lichtenfels,Landkreis,255000,270000
+9479,Wunsiedel i.Fichtelgebirge,Landkreis,140000,270000
+9561,"Ansbach, Stadt",krsfr. Stadt,235000,270000
+9562,"Erlangen, Stadt",krsfr. Stadt,280000,270000
+9563,"Fürth, Stadt",krsfr. Stadt,280000,270000
+9564,"Nürnberg, Stadt",krsfr. Stadt,280000,270000
+9565,"Schwabach, Stadt",krsfr. Stadt,280000,270000
+9571,Ansbach,Landkreis,235000,270000
+9572,Erlangen-Höchstadt,Landkreis,280000,270000
+9573,Fürth,Landkreis,280000,270000
+9574,Nürnberger Land,Landkreis,280000,270000
+9575,Neustadt a.d.Aisch-Bad Windsheim,Landkreis,235000,270000
+9576,Roth,Landkreis,280000,270000
+9577,Weißenburg-Gunzenhausen,Landkreis,235000,270000
+9661,"Aschaffenburg, Stadt",krsfr. Stadt,265000,270000
+9662,"Schweinfurt, Stadt",krsfr. Stadt,245000,270000
+9663,"Würzburg, Stadt",krsfr. Stadt,165000,270000
+9671,Aschaffenburg,Landkreis,265000,270000
+9672,Bad Kissingen,Landkreis,245000,270000
+9673,Rhön-Grabfeld,Landkreis,245000,270000
+9674,Haßberge,Landkreis,245000,270000
+9675,Kitzingen,Landkreis,165000,270000
+9676,Miltenberg,Landkreis,265000,270000
+9677,Main-Spessart,Landkreis,165000,270000
+9678,Schweinfurt,Landkreis,245000,270000
+9679,Würzburg,Landkreis,165000,270000
+9761,"Augsburg, Stadt",krsfr. Stadt,310000,270000
+9762,"Kaufbeuren, Stadt",krsfr. Stadt,380000,270000
+9763,"Kempten (Allgäu), Stadt",krsfr. Stadt,380000,270000
+9764,"Memmingen, Stadt",krsfr. Stadt,300000,270000
+9771,Aichach-Friedberg,Landkreis,310000,270000
+9772,Augsburg,Landkreis,310000,270000
+9773,Dillingen a.d.Donau,Landkreis,310000,270000
+9774,Günzburg,Landkreis,300000,270000
+9775,Neu-Ulm,Landkreis,300000,270000
+9776,Lindau (Bodensee),Landkreis,380000,270000
+9777,Ostallgäu,Landkreis,380000,270000
+9778,Unterallgäu,Landkreis,300000,270000
+9779,Donau-Ries,Landkreis,310000,270000
+9780,Oberallgäu,Landkreis,380000,270000
+10041,Regionalverband Saarbrücken,Landkreis,145000,145000
+10042,Merzig-Wadern,Landkreis,145000,145000
+10043,Neunkirchen,Landkreis,145000,145000
+10044,Saarlouis,Landkreis,145000,145000
+10045,Saarpfalz-Kreis,Landkreis,145000,145000
+10046,St. Wendel,Landkreis,145000,145000
+11000,"Berlin, Stadt",krsfr. Stadt,75000,90000
+12051,"Brandenburg an der Havel, Stadt",krsfr. Stadt,135000,110000
+12052,"Cottbus, Stadt",krsfr. Stadt,110000,110000
+12053,"Frankfurt (Oder), Stadt",krsfr. Stadt,90000,110000
+12054,"Potsdam, Stadt",krsfr. Stadt,135000,110000
+12060,Barnim,Landkreis,65000,110000
+12061,Dahme-Spreewald,Landkreis,110000,110000
+12062,Elbe-Elster,Landkreis,110000,110000
+12063,Havelland,Landkreis,135000,110000
+12064,Märkisch-Oderland,Landkreis,90000,110000
+12065,Oberhavel,Landkreis,100000,110000
+12066,Oberspreewald-Lausitz,Landkreis,110000,110000
+12067,Oder-Spree,Landkreis,90000,110000
+12068,Ostprignitz-Ruppin,Landkreis,100000,110000
+12069,Potsdam-Mittelmark,Landkreis,135000,110000
+12070,Prignitz,Landkreis,100000,110000
+12071,Spree-Neiße,Landkreis,110000,110000
+12072,Teltow-Fläming,Landkreis,135000,110000
+12073,Uckermark,Landkreis,65000,110000
+13003,"Rostock, Stadt",krsfr. Stadt,105000,85000
+13004,"Schwerin, Stadt",krsfr. Stadt,130000,85000
+13071,Mecklenburgische Seenplatte,Landkreis,120000,85000
+13072,Landkreis Rostock,Landkreis,105000,85000
+13073,Vorpommern-Rügen,Landkreis,145000,85000
+13074,Nordwestmecklenburg,Landkreis,130000,85000
+13075,Vorpommern-Greifswald,Landkreis,145000,85000
+13076,Ludwigslust-Parchim,Landkreis,130000,85000
+14511,"Chemnitz, Stadt",krsfr. Stadt,85000,95000
+14521,Erzgebirgskreis,Landkreis,85000,95000
+14522,Mittelsachsen,Landkreis,85000,95000
+14523,Vogtlandkreis,Landkreis,85000,95000
+14524,Zwickau,Landkreis,85000,95000
+14612,"Dresden, Stadt",krsfr. Stadt,155000,95000
+14625,Bautzen,Landkreis,100000,95000
+14626,Görlitz,Landkreis,100000,95000
+14627,Meißen,Landkreis,155000,95000
+14628,Sächsische Schweiz-Osterzgebirge,Landkreis,155000,95000
+14713,"Leipzig, Stadt",krsfr. Stadt,55000,95000
+14729,Leipzig,Landkreis,55000,95000
+14730,Nordsachsen,Landkreis,55000,95000
+15001,"Dessau-Roßlau, Stadt",krsfr. Stadt,75000,75000
+15002,"Halle (Saale), Stadt",krsfr. Stadt,65000,75000
+15003,"Magdeburg, Stadt",krsfr. Stadt,75000,75000
+15081,Altmarkkreis Salzwedel,Landkreis,70000,75000
+15082,Anhalt-Bitterfeld,Landkreis,75000,75000
+15083,Börde,Landkreis,75000,75000
+15084,Burgenlandkreis,Landkreis,65000,75000
+15085,Harz,Landkreis,75000,75000
+15086,Jerichower Land,Landkreis,75000,75000
+15087,Mansfeld-Südharz,Landkreis,65000,75000
+15088,Saalekreis,Landkreis,65000,75000
+15089,Salzlandkreis,Landkreis,75000,75000
+15090,Stendal,Landkreis,70000,75000
+15091,Wittenberg,Landkreis,75000,75000
+16051,"Erfurt, Stadt",krsfr. Stadt,75000,85000
+16052,"Gera, Stadt",krsfr. Stadt,105000,85000
+16053,"Jena, Stadt",krsfr. Stadt,105000,85000
+16054,"Suhl, Stadt",krsfr. Stadt,60000,85000
+16055,"Weimar, Stadt",krsfr. Stadt,75000,85000
+16056,"Eisenach, Stadt",krsfr. Stadt,60000,85000
+16061,Eichsfeld,Landkreis,85000,85000
+16062,Nordhausen,Landkreis,85000,85000
+16063,Wartburgkreis,Landkreis,60000,85000
+16064,Unstrut-Hainich-Kreis,Landkreis,85000,85000
+16065,Kyffhäuserkreis,Landkreis,85000,85000
+16066,Schmalkalden-Meiningen,Landkreis,60000,85000
+16067,Gotha,Landkreis,75000,85000
+16068,Sömmerda,Landkreis,75000,85000
+16069,Hildburghausen,Landkreis,60000,85000
+16070,Ilm-Kreis,Landkreis,75000,85000
+16071,Weimarer Land,Landkreis,75000,85000
+16072,Sonneberg,Landkreis,60000,85000
+16073,Saalfeld-Rudolstadt,Landkreis,105000,85000
+16074,Saale-Holzland-Kreis,Landkreis,105000,85000
+16075,Saale-Orla-Kreis,Landkreis,105000,85000
+16076,Greiz,Landkreis,105000,85000
+16077,Altenburger Land,Landkreis,105000,85000
+,,,55000,
+,,,535000,

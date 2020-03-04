@@ -268,14 +268,14 @@ legendColours = (x) => {
       if (this.props.currentScale == 0) {
         const output = this.scaleQuantile()
             .invertExtent(this.props.current_color[x]);
-        output[0] = Math.round(output[0]);
-        output[1] = Math.round(output[1]);
+        output[0] = Math.round(output[0]).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        output[1] = Math.round(output[1]).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
         return output;
       } else if (this.props.currentScale ==1) {
         const output = this.scaleQuantize()
             .invertExtent(this.props.current_color[x]);
-        output[0] = Math.round(output[0]);
-        output[1] = Math.round(output[1]);
+        output[0] = Math.round(output[0]).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        output[1] = Math.round(output[1]).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
         return output;
       } else {
         return ['n/a', 'n/a'];

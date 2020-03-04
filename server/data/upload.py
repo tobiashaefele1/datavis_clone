@@ -6,15 +6,15 @@ from server.data.dataprep import readin258AMR, readin257AMR, readinBund, load_me
 from server.data.reader import add_columns, add_tuples_new
 from server.data.retrieve_db_data import retrieve_db_data
 
-# link_to_template_input = './resources/including metadata/KRS15_testfile_updated_ersetzt_mit_primär_None_dec.csv'
-# link_to_template_input = './resources/including metadata/test_erik2.csv'
+link_to_template_input = './resources/including metadata/20200221_template_datenergaenzung - Wahlen.csv'
+# link_to_template_input = '20200221_template_datenergaenzung - Wahlen.csv'
 
 
 def insert_new_data(link_file, level):
     link_to_mapping_file = './resources/KRS_ROR_AMR_clean_mapping.csv'
     link_to_template_input = './resources/KRS15_template.csv'
-    data_base = pymysql.connect("bmfvis.c35zrhmszzzr.eu-central-1.rds.amazonaws.com", "admin", "NPmpMe!696rY", "mydb", autocommit=True)
-    # data_base = pymysql.connect("localhost", "user", "password", "mydb", autocommit=True)
+    # data_base = pymysql.connect("bmfvis.c35zrhmszzzr.eu-central-1.rds.amazonaws.com", "admin", "NPmpMe!696rY", "mydb", autocommit=True)
+    data_base = pymysql.connect("localhost", "user", "password", "mydb", autocommit=True)
 
 
 

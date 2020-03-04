@@ -62,7 +62,7 @@ def readin257AMR (link_to_data, link_to_mapping_file, link_to_template_input):
     # read in AMR data & make outputfile populated with KRS from template, labels, years and only_labels from input
     dataset = Data(link_to_data)
     output = copy_labels_years_onlylabels(dataset, template)
-    
+
     # map values from AMR to Kreise and return completed dataobject
     for i in range (0, len(output.data)):
         for j in range(0, len(dataset.data)):
@@ -223,8 +223,17 @@ def load_meta_data_to_db(link_to_KRS_metadata, KRS_datacode,
     passw = "NPmpMe!696rY"
     host = "bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com"
     database = 'mydb'
+
+    # my own database - private:
+    # user = "user"
+    # passw = "password"
+    # host = "localhost"
+    # database = 'mydb'
+
     conn = create_engine('mysql+pymysql://' + user + ':' + passw + '@' + host + '/' + database, echo=False)
     combined_meta.to_sql(name="metadata", con=conn, if_exists='replace', index=False)
+
+
 
 def load_meta_data_single(link_to_meta, code ):
     '''
@@ -247,7 +256,7 @@ def load_meta_data_single(link_to_meta, code ):
     host = "bmfvis.c35zrhmszzzr.eu-central-1.rds.amazonaws.com"
     database = 'mydb'
 
-    ## my own database - private:
+    # my own database - private:
     # user = "user"
     # passw = "password"
     # host = "localhost"
@@ -255,3 +264,8 @@ def load_meta_data_single(link_to_meta, code ):
 
     conn = create_engine('mysql+pymysql://' + user + ':' + passw + '@' + host + '/' + database, echo=False)
     meta.to_sql(name="metadata", con=conn, if_exists='append', index=False)
+
+#
+# link_to_meta = './resources/including metadata/test_erik3.csv'
+# code = 100
+# load_meta_data_single(link_to_meta, code)
