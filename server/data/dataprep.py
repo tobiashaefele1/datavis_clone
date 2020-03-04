@@ -250,7 +250,7 @@ def load_meta_data_single(link_to_meta, code ):
     meta = meta.replace(r'\"', ' ', regex=True)
     meta = meta.replace(r'\\', ' ', regex=True)
 
-    ## life  database - ON HEROKU:
+    # ## life  database - ON HEROKU:
     user = "admin"
     passw = "NPmpMe!696rY"
     host = "bmfvis.c35zrhmszzzr.eu-central-1.rds.amazonaws.com"
@@ -265,7 +265,7 @@ def load_meta_data_single(link_to_meta, code ):
     conn = create_engine('mysql+pymysql://' + user + ':' + passw + '@' + host + '/' + database, echo=False)
     meta.to_sql(name="metadata", con=conn, if_exists='append', index=False)
 
-#
-# link_to_meta = './resources/including metadata/test_erik3.csv'
+# this will update the metadata _manually_
+# link_to_meta = './resources/including metadata/20200221_template_datenergaenzung - Wahlen.csv'
 # code = 100
 # load_meta_data_single(link_to_meta, code)

@@ -82,14 +82,14 @@ load_meta_data_to_db(link_to_KRS_metadata, KRS_datacode,
 
 
 # load all the years data into a separate table in the database so  we can retrieve it for context
-# data_base = pymysql.connect("bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com",
-#                             "admin",
-#                             "NPmpMe!696rY",
-#                             "mydb",
-#                             autocommit=True)
+data_base = pymysql.connect("bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com",
+                            "admin",
+                            "NPmpMe!696rY",
+                            "mydb",
+                            autocommit=True)
 
-data_base = pymysql.connect("localhost", "user", "password", "mydb")
-
+# data_base = pymysql.connect("localhost", "user", "password", "mydb")
+#
 
 connections = {
         "default": data_base

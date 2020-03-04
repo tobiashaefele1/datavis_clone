@@ -13,8 +13,8 @@ link_to_template_input = './resources/including metadata/20200221_template_daten
 def insert_new_data(link_file, level):
     link_to_mapping_file = './resources/KRS_ROR_AMR_clean_mapping.csv'
     link_to_template_input = './resources/KRS15_template.csv'
-    # data_base = pymysql.connect("bmfvis.c35zrhmszzzr.eu-central-1.rds.amazonaws.com", "admin", "NPmpMe!696rY", "mydb", autocommit=True)
-    data_base = pymysql.connect("localhost", "user", "password", "mydb", autocommit=True)
+    data_base = pymysql.connect("bmfvis.c35zrhmszzzr.eu-central-1.rds.amazonaws.com", "admin", "NPmpMe!696rY", "mydb", autocommit=True)
+    # data_base = pymysql.connect("localhost", "user", "password", "mydb", autocommit=True)
 
 
 
