@@ -19,8 +19,9 @@ class SVGExportButton extends Component {
       let svgData = $('#svg')[0];
       const serial = new XMLSerializer();
       svgData = serial.serializeToString(svgData);
-      const svgBegin = svgData.slice(0, 98);
-      const svgMap = svgData.slice(98, -6);
+      console.log(svgData)
+      const svgBegin = svgData.slice(0, 97);
+      const svgMap = svgData.slice(97, -6);
       let newSVG = svgBegin.replace('450', '500');
       newSVG += `<text y="10" x="200" text-anchor='middle' font-size="13" >
        ${this.props.view_multiple ?
