@@ -261,7 +261,6 @@ legendColours = (x) => {
    * @memberof Map
    */
   legendLabels = (x) => {
-      console.log(this.props.current_map)
     if (typeof this.props.current_map[0].properties.indicator === 'undefined'
     || this.props.indicator_data[1] === undefined) {
       return ['n/a', 'n/a'];
