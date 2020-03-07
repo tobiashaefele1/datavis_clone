@@ -135,7 +135,7 @@ def mapping_to_db (link_to_mapping_file):
 
     user = "admin"
     passw = "NPmpMe!696rY"
-    host = "bmf.cvh00sxb8ti6.eu-central-1.rds.amazonaws.com"
+    host = "bmfvis.c35zrhmszzzr.eu-central-1.rds.amazonaws.com"
     database = 'mydb'
     conn = create_engine('mysql+pymysql://' + user + ':' + passw + '@' + host + '/' + database, echo=False)
     mapping_file.to_sql(name="mapping", con=conn, if_exists = 'replace', index=False)
@@ -269,3 +269,7 @@ def load_meta_data_single(link_to_meta, code ):
 # link_to_meta = './resources/including metadata/20200221_template_datenergaenzung - Wahlen.csv'
 # code = 100
 # load_meta_data_single(link_to_meta, code)
+
+
+# link_to_mapping_file = './resources/KRS_ROR_AMR_clean_mapping.csv'
+# mapping_to_db(link_to_mapping_file)
